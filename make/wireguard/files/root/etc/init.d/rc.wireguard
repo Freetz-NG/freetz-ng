@@ -8,6 +8,9 @@ DAEMON_CHECK=wg-crypt-wg0
 
 start() {
 	echo -n "Starting ${DAEMON_LONG_NAME} ... "
+	if [ ! -z "$WIREGUARD_PRE_UP" ]; then
+		eval "$WIREGUARD_PRE_UP"
+	fi
 	modprobe wireguard
 	ip link add dev wg0 type wireguard
 	ip address add $WIREGUARD_IP dev wg0
@@ -18,15 +21,24 @@ start() {
 	wg setconf wg0 /tmp/flash/wireguard/wireguard.conf
 	ip link set wg0 up
 	wg show wg0 allowed-ips | while read peer ip; do for i in $ip; do if [ "$i" != "0.0.0.0/0" ]; then ip route add $i dev wg0 ; fi ; done ; done
+	if [ ! -z "$WIREGUARD_POST_UP" ]; then
+		eval "$WIREGUARD_POST_UP"
+	fi
 	modreg status $DAEMON $DAEMON_LONG_NAME peers
 	echo 'done.'
 }
 
 stop() {
 	modunreg status $DAEMON peers
+	if [ ! -z "$WIREGUARD_PRE_DOWN" ]; then
+		eval "$WIREGUARD_PRE_DOWN"
+	fi
 	wg show wg0 allowed-ips | while read peer ip; do for i in $ip; do if [ "$i" != "0.0.0.0/0" ]; then ip route del $i dev wg0 ; fi ; done ; done
 	ip link set wg0 down
 	ip link delete dev wg0 type wireguard
+	if [ ! -z "$WIREGUARD_POST_DOWN" ]; then
+		eval "$WIREGUARD_POST_DOWN"
+	fi
 }
 
 case $1 in
