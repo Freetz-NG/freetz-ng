@@ -2,7 +2,7 @@
 
 DAEMON=wireguard
 DAEMON_LONG_NAME="WireGuard"
-DAEMON_CHECK=wg-crypt-wg0
+DAEMON_CHECK=wg-crypt-$WIREGUARD_INTERFACE
 
 . /etc/init.d/modlibrc
 
@@ -12,15 +12,19 @@ start() {
 		eval "$WIREGUARD_PRE_UP"
 	fi
 	modprobe wireguard
-	ip link add dev wg0 type wireguard
-	ip address add $WIREGUARD_IP dev wg0
+	ip link add dev $WIREGUARD_INTERFACE type wireguard
+	ip address add $WIREGUARD_IP dev $WIREGUARD_INTERFACE
 	if [ ! -z "$WIREGUARD_IP6" ]; then
-		sysctl -w net.ipv6.conf.wg0.disable_ipv6=0
-		ip -6 address add $WIREGUARD_IP6 dev wg0
+		sysctl -w net.ipv6.conf.$WIREGUARD_INTERFACE.disable_ipv6=0
+		ip -6 address add $WIREGUARD_IP6 dev $WIREGUARD_INTERFACE
 	fi
-	wg setconf wg0 /tmp/flash/wireguard/wireguard.conf
-	ip link set wg0 up
-	wg show wg0 allowed-ips | while read peer ip; do for i in $ip; do if [ "$i" != "0.0.0.0/0" ]; then ip route add $i dev wg0 ; fi ; done ; done
+	wg setconf $WIREGUARD_INTERFACE /tmp/flash/wireguard/wireguard.conf
+	if [ -z "$WIREGUARD_MTU" ]; then
+		ip link set mtu "$WIREGUARD_MTU" up dev $WIREGUARD_INTERFACE
+	else
+		ip link set $WIREGUARD_INTERFACE up
+	fi
+	wg show $WIREGUARD_INTERFACE allowed-ips | while read peer ip; do for i in $ip; do if [ "$i" != "0.0.0.0/0" ]; then ip route add $i dev $WIREGUARD_INTERFACE ; fi ; done ; done
 	if [ ! -z "$WIREGUARD_POST_UP" ]; then
 		eval "$WIREGUARD_POST_UP"
 	fi
@@ -33,9 +37,9 @@ stop() {
 	if [ ! -z "$WIREGUARD_PRE_DOWN" ]; then
 		eval "$WIREGUARD_PRE_DOWN"
 	fi
-	wg show wg0 allowed-ips | while read peer ip; do for i in $ip; do if [ "$i" != "0.0.0.0/0" ]; then ip route del $i dev wg0 ; fi ; done ; done
-	ip link set wg0 down
-	ip link delete dev wg0 type wireguard
+	wg show $WIREGUARD_INTERFACE allowed-ips | while read peer ip; do for i in $ip; do if [ "$i" != "0.0.0.0/0" ]; then ip route del $i dev $WIREGUARD_INTERFACE ; fi ; done ; done
+	ip link set $WIREGUARD_INTERFACE down
+	ip link delete dev $WIREGUARD_INTERFACE type wireguard
 	if [ ! -z "$WIREGUARD_POST_DOWN" ]; then
 		eval "$WIREGUARD_POST_DOWN"
 	fi
