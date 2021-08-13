@@ -19,7 +19,7 @@ start() {
 		ip -6 address add $WIREGUARD_IP6 dev $WIREGUARD_INTERFACE
 	fi
 	wg setconf $WIREGUARD_INTERFACE /tmp/flash/wireguard/wireguard.conf
-	if [ -z "$WIREGUARD_MTU" ]; then
+	if [ -n "$WIREGUARD_MTU" ]; then
 		ip link set mtu "$WIREGUARD_MTU" up dev $WIREGUARD_INTERFACE
 	else
 		ip link set $WIREGUARD_INTERFACE up
