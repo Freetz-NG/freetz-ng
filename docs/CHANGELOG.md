@@ -79,7 +79,7 @@ Latest changes
    * expat 2.4.1
    * git 2.33.0
    * gnutls 3.6.16
-   * haproxy 2.4.2
+   * haproxy 2.4.3
    * iperf 3.9
    * libgcrypt 1.9.3
    * libgd 2.3.2
