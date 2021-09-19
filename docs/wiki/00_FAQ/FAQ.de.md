@@ -190,7 +190,7 @@ nicht so hoch, wie bei Branches und Tags.
 
 > Hier gibt es einmal die Möglichkeit dem Entwicklerteam eine Geldspende
 > zukommen zu lassen. Dazu ist in der rechten untern Ecke ein
-> Paypal-Spendenbutton angebracht. Weiterhin kann eine Box natürlich
+> PayPal-Spendenbutton angebracht. Weiterhin kann eine Box natürlich
 > besser unterstützt werden, wenn das Entwicklerteam "Testboxen"
 > besitzt. Im
 > [IPPF](http://www.ip-phone-forum.de/showpost.php?p=959253&postcount=1)

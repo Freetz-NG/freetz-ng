@@ -57,9 +57,9 @@ ausreichen (*ohne* DS-Mod/Freetz):
 ### Client
 
 -   Web-Browser mit eingeschaltetem
-    [Javascript](http://de.wikipedia.org/wiki/JavaScript);
+    [JavaScript](http://de.wikipedia.org/wiki/JavaScript);
     getestetet mit IE7, Opera 9.10, Firefox 2.0.0.2. Es wird ein wenig
-    Javascript benutzt, um im
+    JavaScript benutzt, um im
     [DOM](http://de.wikipedia.org/wiki/Document_Object_Model)
     zu navigieren, die Historie zu steuern und
     [CGI](http://de.wikipedia.org/wiki/Common_Gateway_Interface)-Unterprozesse

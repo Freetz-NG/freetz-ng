@@ -179,7 +179,7 @@ German.
 ### I like Freetz and I want to support the development.
 
 > It is possible to donate money to the development team using the
-> Paypal donation button at the bottom right-hand corner. Further, a
+> PayPal donation button at the bottom right-hand corner. Further, a
 > specific hardware variation will of course be better supported when
 > the development team has some test hardware. Currently we would very
 > much benefit from some 7270s (who wouldn't?!). There is a thread on

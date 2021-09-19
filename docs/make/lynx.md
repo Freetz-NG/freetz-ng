@@ -13,7 +13,7 @@ und
 werden ebenfalls unterstützt - Tabellen hingegen nur eingeschränkt,
 [Java](http://de.wikipedia.org/wiki/Java_(Programmiersprache))
 sowie
-[JavaScript](http://de.wikipedia.org/wiki/Javascript)
+[JavaScript](http://de.wikipedia.org/wiki/JavaScript)
 überhaupt nicht.
 
 ### Weiterführende Links

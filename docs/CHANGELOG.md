@@ -318,8 +318,8 @@ Latest changes
     * Most files are move to docs/ directory.
     * Just point your brwoser to: https://freetz-ng.github.io/
     * Could also be opened by the [README.md](../README.md) in the main directory
-       + on Gitlab: https://gitlab.com/Freetz-NG/freetz-ng/blob/master/README.md
-       + on Github: https://github.com/Freetz-NG/freetz-ng/blob/master/README.md
+       + on GitLab: https://gitlab.com/Freetz-NG/freetz-ng/blob/master/README.md
+       + on GitHub: https://github.com/Freetz-NG/freetz-ng/blob/master/README.md
     * This works also offline with a checkout. You need a markdown (.md) viewer or browser with markdown-addon
     * Now the documentation is always in sync with the source code, for releases and tags
 

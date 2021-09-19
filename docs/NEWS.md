@@ -81,7 +81,7 @@
    Siehe [ng21010](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng21010)<br>
 
  * __[2021-01-01](#2021-01-01)__<a id='2021-01-01'></a><br>
-   Auf Github gibt es einen neuen [Discussions](https://github.com/Freetz-NG/freetz-ng/discussions)-Bereich für
+   Auf GitHub gibt es einen neuen [Discussions](https://github.com/Freetz-NG/freetz-ng/discussions)-Bereich für
    jedes Projekt. Im Gegensatz zu den [Issues](https://github.com/Freetz-NG/freetz-ng/issues) stellt dies keinen<br>
    Bugtrack sondern mehr etwas in Richtung eines Forums dar. Wohin es sich entwickelt wird sich mit der Zeit zeigen.<br>
    Hoffentlich wird es mehr als 1 Person geben die dort Fragen beantwortet!<br>
@@ -296,7 +296,7 @@
 
  * __[2019-11-06](#2019-11-06)__<a id='2019-11-06'></a><br>
    Das Trac auf boxmatrix funktioniert aktuell nicht richtig.<br>
-   Bitte stattdessen [Github](https://github.com/Freetz-NG/freetz-ng/issues) verwenden.<br>
+   Bitte stattdessen [GitHub](https://github.com/Freetz-NG/freetz-ng/issues) verwenden.<br>
 
  * __[2019-11-03](#2019-11-03)__<a id='2019-11-03'></a><br>
    In [./docs](./) liegt nun die gesammte Dokumentation und das alte Wiki.<br>
