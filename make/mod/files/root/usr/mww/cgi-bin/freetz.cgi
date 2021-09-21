@@ -32,7 +32,7 @@ feedzapper
 fidelio-dev
 flosch-dev
 forenuser
-FriederBluemle
+friederbluemle
 Greg57070
 GregoryAUZANNEAU
 Hadis
