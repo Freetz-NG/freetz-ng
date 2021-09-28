@@ -37,6 +37,7 @@ start() {
 	echo -n "Starting ${DAEMON_LONG_NAME} ... "
 	config
 	[ -f $DAEMON_STORAGE/secret_id_key ] && savetimer=no
+	[ ! "$TOR_SOFTLIMIT" == "0" ] && DAEMON="nice softlimit -m $TOR_SOFTLIMIT $DAEMON -maxmeminqueues $(($TOR_SOFTLIMIT * 2 / 3))"
 	$DAEMON --runasdaemon 1 >/dev/null 2>&1
 	exitval=$?
 	if [ "$exitval" -eq 0 ]; then

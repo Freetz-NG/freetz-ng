@@ -26,6 +26,7 @@ $(lang de:"Port" en:"Port"):&nbsp;<input id="port" type="text" size="5" maxlengt
 <span style="font-size:10px;">$(lang de:"Falls ein Control Interface angegeben wurde, muss hier ebenfalls ein Passwort-Hash angegeben werden." en:"If Control Interface is not empty you must provide a password.")<br />
 ($(lang de:"Ein Passwort Hash kann durch den Befehl <i>tor --hash-password mein_passwort</i> erzeugt werden." en:"You can create a password hash with <i>tor --hash-password my_password</i>."))</span></p>
 <p>$(lang de:"Zeitlimit f&uuml;r Tor-Verbindungen" en:"Circuits Available Timeout") (optional):&nbsp;<input id="circuits_available_timeout" type="text" size="5" maxlength="5" name="circuits_available_timeout" value="$(html "$TOR_CIRCUITS_AVAILABLE_TIMEOUT")"></p>
+<p>memory soft limit (bytes):&nbsp;<input id="softlimit" type="text" size="5" maxlength="15" name="softlimit" value="$(html "$TOR_SOFTLIMIT")"></p>
 EOF
 
 sec_end
