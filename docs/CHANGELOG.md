@@ -64,7 +64,7 @@ Latest changes
    * CCID driver 1.4.36
    * cifs-utils 6.14
    * git 2.33.1
-   * HAProxy 2.4.7
+   * HAProxy 2.4.8
    * libexif 0.6.23
    * libgcrypt 1.9.4
    * Nano 5.9
