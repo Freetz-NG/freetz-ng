@@ -58,6 +58,7 @@ retval=0
 while read parser file depends; do
 	[ -z "$file" ] && continue
 	# check dependencies
+	MODE="or"
 	[ "${depends%% *}" == 'and' ] && \
 	  MODE="and" && \
 	  depends="${depends#and }"
