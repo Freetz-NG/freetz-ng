@@ -26,14 +26,14 @@ program     javac                  FREETZ_PACKAGE_CLASSPATH
 program     libtool
 program     libtoolize             FREETZ_PACKAGE_GNTPSEND
 program     md5sum
-program     openssl             or FREETZ_FWMOD_VALIDATE FREETZ_FWMOD_SIGN
+program     openssl                FREETZ_FWMOD_VALIDATE FREETZ_FWMOD_SIGN
 program     patch
 program     perl
 program     pkg-config
 program     python
 program     readlink
 program     realpath
-program     rpcgen                 FREETZ_PACKAGE_NFS_UTILS FREETZ_PACKAGE_AUTOFS
+program     rpcgen                 FREETZ_PACKAGE_NFS_UTILS
 program     rsync                  FREETZ_AVM_VERSION_07_25_MIN
 program     sed
 program     sha256sum
