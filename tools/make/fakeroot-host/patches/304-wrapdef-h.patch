@@ -1,0 +1,10 @@
+--- wrapdef.horig
++++ wrapdef.h
+@@ -2,6 +2,7 @@
+ #ifndef WRAPDEF_H
+ #define WRAPDEF_H
+ 
++#include <sys/capability.h>
+ 
+ int (*NEXT_LSTAT_NOARG)LSTAT_ARG(int ver, const char *file_name, struct stat *buf)=TMP_LSTAT;
+ int (*NEXT_STAT_NOARG)STAT_ARG(int ver, const char *file_name, struct stat *buf)=TMP_STAT;
