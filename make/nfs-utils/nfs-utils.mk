@@ -3,6 +3,8 @@ $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_SOURCE_MD5:=2fabdadb8ff415a1eafcfb12ab1bf781
 $(PKG)_SITE:=@SF/nfs
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(or $(FREETZ_TARGET_UCLIBC_0_9_28),$(FREETZ_TARGET_UCLIBC_0_9_29)),uclibc-0.9.28)
+
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),,libtirpc)
 
 $(PKG)_BINARIES            := exportfs mountd nfsd showmount
