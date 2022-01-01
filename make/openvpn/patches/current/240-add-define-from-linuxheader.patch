@@ -1,0 +1,28 @@
+diff -Naur openvpn-2.5.5-orig/src/openvpn/lladdr.c openvpn-2.5.5/src/openvpn/lladdr.c
+--- openvpn-2.5.5/src/openvpn/lladdr.c	2021-12-15 07:33:53.000000000 +0100
++++ openvpn-2.5.5/src/openvpn/lladdr.c	2021-12-31 18:00:07.213566775 +0100
+@@ -25,6 +25,10 @@
+         return -1;
+     }
+ 
++#ifndef ETH_ALEN
++#define ETH_ALEN        6               /* Octets in one ethernet addr   */
++#endif
++
+ #if defined(TARGET_LINUX)
+     uint8_t addr[ETH_ALEN];
+ 
+diff -Naur openvpn-2.5.5-orig/src/openvpn/networking_sitnl.c openvpn-2.5.5/src/openvpn/networking_sitnl.c
+--- openvpn-2.5.5/src/openvpn/networking_sitnl.c	2021-12-15 07:33:53.000000000 +0100
++++ openvpn-2.5.5/src/openvpn/networking_sitnl.c	2021-12-31 17:59:20.053721136 +0100
+@@ -55,6 +55,10 @@
+ #define NLMSG_TAIL(nmsg) \
+     ((struct rtattr *)(((uint8_t *)(nmsg)) + NLMSG_ALIGN((nmsg)->nlmsg_len)))
+ 
++#ifndef ETH_ALEN
++#define ETH_ALEN        6               /* Octets in one ethernet addr   */
++#endif
++
+ /**
+  * Generic address data structure used to pass addresses and prefixes as
+  * argument to AF family agnostic functions
