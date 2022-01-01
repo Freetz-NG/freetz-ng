@@ -1,11 +1,10 @@
 --- utils/exportfs/exportfs.c	2016-08-03 20:25:15.000000000 +0200
 +++ utils/exportfs/exportfs.c	2021-12-31 17:15:10.006395547 +0100
-@@ -54,6 +54,90 @@
+@@ -54,6 +54,88 @@
  static const char *lockfile = EXP_LOCKFILE;
  static int _lockfd = -1;
  
 +
-+#if defined(__UCLIBC__) && __UCLIBC_MAJOR__ == 0 && __UCLIBC_MINOR__ == 9 && __UCLIBC_SUBLEVEL__ <= 29
 +#define  S_N    0x0
 +#define  S_I    0x3
 +#define  S_F    0x6
@@ -85,7 +84,6 @@
 +{
 +        return strverscmp((*a)->d_name, (*b)->d_name);
 +}
-+#endif
 +
 +
  /*
