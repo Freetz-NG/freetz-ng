@@ -14,7 +14,7 @@ More features - less bugs!
 
 ### Requirements:
  * You need an up to date Linux System with some [prerequisites](docs/PREREQUISITES.md).
- * Or download a ready-to-use VM like Gismotro's [Freetz-Linux](https://freetz.digital-eliteboard.com/?dir=Teamserver/Freetz/Freetz-VM/VirtualBox/).
+ * Or download a ready-to-use VM like Gismotro's [Freetz-Linux](https://freetz.digital-eliteboard.com/?dir=Teamserver/Freetz/Freetz-VM/VirtualBox/). (admin & pass: freetz)
  * Your linux user needs to have set `umask 0022` before checkout and during make.
 
 ### Clone the main branch:
