@@ -1201,7 +1201,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 		DETECTED_OPENSSL_VER_AVM="$(find ${FILESYSTEM_DIR}/lib/libcrypto.so.* -type f  -exec strings {} \; 2>/dev/null | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
 		echo2 "... used by AVM ...... ${DETECTED_OPENSSL_VER_AVM:-none}"
 		if [ "$FREETZ_LIB_libcrypto" == "y" ]; then
-			DETECTED_OPENSSL_VER_MOD="$(find ${FILESYSTEM_MOD_DIR}/usr/lib/freetz/libcrypto.so.* -type f  -exec strings {} \; | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
+			DETECTED_OPENSSL_VER_MOD="$(find ${FILESYSTEM_MOD_DIR}${FREETZ_LIBRARY_DIR}/libcrypto.so.* -type f  -exec strings {} \; | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
 			echo2 "... used by Freetz ... ${DETECTED_OPENSSL_VER_MOD:-none}"
 		#	[ "$DETECTED_OPENSSL_VER_MOD" != "$DETECTED_OPENSSL_VER_AVM" ] & warn2 "Freetz and AVM OpenSSL versions do not match"
 		fi
