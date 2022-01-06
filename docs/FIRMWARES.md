@@ -462,7 +462,7 @@ Currently supported devices and firmwares
   - 128.06.51 rev34135 {ALL}
   - 128.06.92 rev47360 {ALL}
   - 128.07.01 rev63068 {ALL}
-  - 128.07.13 rev84190 {ALL} [MESH18 NL3]
+  - 128.07.14 rev93705 {ALL} [WU21 MESH18]
 * __Fritz!WLAN Repeater DVB-C__
   - 133.06.32 rev31507 {ALL}
   - 133.06.50 rev33858 {ALL}
