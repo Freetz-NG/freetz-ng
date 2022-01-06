@@ -1,7 +1,7 @@
 --- configure
 +++ configure
-@@ -24187,7 +24187,9 @@
-    export LD_LIBRARY_PATH
+@@ -24241,7 +24241,9 @@
+    eval "export $library_path_var"
     if test "$cross_compiling" = yes
  then :
 +     if test "${curl_cv_writable_argv+set}" != set; then :
