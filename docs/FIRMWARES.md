@@ -439,7 +439,7 @@ Currently supported devices and firmwares
   - 118.06.50 rev33971 {ALL}
   - 118.06.92 rev47429 {ALL}
   - 118.07.01 rev65031 {ALL}
-  - 118.07.13 rev84269 {ALL} [MESH18 NL3]
+  - 118.07.14 rev93758 {ALL} [WU21 MESH18]
 
 * __Fritz!Powerline 1240E (UNTESTED)__
   - 150.06.92 rev47432 {ALL}

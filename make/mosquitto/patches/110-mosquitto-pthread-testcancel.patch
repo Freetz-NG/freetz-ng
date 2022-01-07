@@ -1,0 +1,12 @@
+--- lib/dummypthread.h        2021-06-09 16:06:23.000000000 +0200
++++ lib/dummypthread.h        2021-12-30 11:56:21.898242877 +0100
+@@ -4,7 +4,7 @@
+ #define pthread_create(A, B, C, D)
+ #define pthread_join(A, B)
+ #define pthread_cancel(A)
+-#define pthread_testcancel()
++#define pthread_testcancel(void)
+ 
+ #define pthread_mutex_init(A, B)
+ #define pthread_mutex_destroy(A)
+

@@ -52,7 +52,7 @@ Index:
   * **<u>atop 2.2.3 (binary only)</u><a id='atop'></a>**<br>
     The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
-  * **[AutoFS 5.0.5/5.1.7](autofs.md)<a id='autofs'></a>**<br>
+  * **[AutoFS 5.0.5/5.1.8](autofs.md)<a id='autofs'></a>**<br>
     Autofs is a kernel-based automounter for Linux. It performs a job similar to amd(8) but relies on a small stub of kernel code instead of pretending to be an NFS server. The result is simpler code, better reliability, and much faster operation in the common case (everything already mounted).
 
   * **<u>autossh 1.4g (binary only)</u><a id='autossh'></a>**<br>
@@ -773,7 +773,7 @@ Index:
   * **[wireguard-tools 1.0.20210914](wireguard.md)<a id='wireguard'></a>**<br>
     WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPSec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it plans to be cross-platform and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.
 
-  * **[wireguard-linux-compat 1.0.20210606](wireguard-linux-compat.md)<a id='wireguard-linux-compat'></a>**<br>
+  * **[wireguard-linux-compat 1.0.20211208](wireguard-linux-compat.md)<a id='wireguard-linux-compat'></a>**<br>
     This package provides the kernel module required for Wireguard
 
   * **[WOL 0.7.1 (binary only)](wol.md)<a id='wol'></a>**<br>

@@ -1,0 +1,11 @@
+--- Makefile.rules
++++ Makefile.rules
+@@ -3,7 +3,7 @@
+ #
+ 
+ # Root directory contents
+-SUBDIRS = lib daemon modules man samples
++SUBDIRS = lib daemon modules
+ INCDIRS = include
+ INCFILES = COPYING COPYRIGHT NEWS README* TODO Makefile Makefile.rules \
+ 	   Makefile.conf.in .version .autofs-* configure.in aclocal.m4 \

@@ -56,7 +56,7 @@ Index:
   * **<u>atop 2.2.3 (binary only)</u><a id='atop'></a>**<br>
     The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
-  * **[AutoFS 5.0.5/5.1.7](../docs/make/autofs.md)<a id='autofs'></a>**<br>
+  * **[AutoFS 5.0.5/5.1.8](../docs/make/autofs.md)<a id='autofs'></a>**<br>
     Autofs is a kernel-based automounter for Linux. It performs a job similar to amd(8) but relies on a small stub of kernel code instead of pretending to be an NFS server. The result is simpler code, better reliability, and much faster operation in the common case (everything already mounted).
      - [Optionale Aufrufparameter](../docs/make/autofs.md#optionale-aufrufparameter)
      - [Beispielkonfigurationen der auto.conf](../docs/make/autofs.md#beispielkonfigurationen-der-autoconf)
@@ -1038,7 +1038,7 @@ Index:
      - [Datendurchsatz](../docs/make/wireguard.md#datendurchsatz)
      - [Konfiguration für einen Wireguard-Server auf der Fritzbox mit einem PC erstellen](../docs/make/wireguard.md#konfiguration-für-einen-wireguard-server-auf-der-fritzbox-mit-einem-pc-erstellen)
 
-  * **[wireguard-linux-compat 1.0.20210606](../docs/make/wireguard-linux-compat.md)<a id='wireguard-linux-compat'></a>**<br>
+  * **[wireguard-linux-compat 1.0.20211208](../docs/make/wireguard-linux-compat.md)<a id='wireguard-linux-compat'></a>**<br>
     This package provides the kernel module required for Wireguard
 
   * **[WOL 0.7.1 (binary only)](../docs/make/wol.md)<a id='wol'></a>**<br>

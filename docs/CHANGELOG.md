@@ -61,6 +61,7 @@ Latest changes
  - Updated packages and libs:
    * ACME.sh 3.0.1 (letsencrypt)
    * Apache 2.4.52
+   * AutoFS 5.0.5/5.1.8
    * BIND 9.11.36
    * Bip 0.9.2
    * CA-bundle 2021-10-26
@@ -93,6 +94,7 @@ Latest changes
    * Unbound 1.14.0
    * UnRAR 6.1.3
    * Wget GNU 1.21.2
+   * wireguard-linux-compat 1.0.20211208
    * wireguard-tools 1.0.20210914
 
  - Firmware updates:

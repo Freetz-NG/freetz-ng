@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_WIREGUARD_LINUX_COMPAT
-	bool "wireguard-linux-compat 1.0.20210606"
+	bool "wireguard-linux-compat 1.0.20211208"
 	depends on FREETZ_PACKAGE_WIREGUARD
 	default n
 	select FREETZ_MODULE_wireguard
