@@ -632,6 +632,15 @@ config FREETZ_MODULE_sunrpc
 	depends on FREETZ_MODULE_lockd
 	default n
 
+config FREETZ_MODULE_auth_rpcgss
+	bool "auth_rpcgss.ko"
+	select FREETZ_MODULE_oid_registry
+	default n
+
+config FREETZ_MODULE_rpcsec_gss_krb5
+	bool "rpcsec_gss_krb5.ko"
+	select FREEZ_MODULE_auth_rpcgss
+	default n
 
 config FREETZ_MODULE_nfs
 	bool "nfs.ko"
@@ -711,6 +720,10 @@ config FREETZ_MODULE_lzo_compress
 config FREETZ_MODULE_lzo_decompress
 	bool "lzo_decompress.ko"
 	depends on !FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	default n
+
+config FREETZ_MODULE_oid_registry
+	bool "oid_registry"
 	default n
 
 endmenu #lib

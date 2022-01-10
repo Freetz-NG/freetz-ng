@@ -5,37 +5,40 @@ $(PKG)_SITE:=@SF/nfs
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(or $(FREETZ_TARGET_UCLIBC_0_9_28),$(FREETZ_TARGET_UCLIBC_0_9_29)),uclibc-0.9.28)
 
-$(PKG)_DEPENDS_ON += $(if $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),,libtirpc)
-
-$(PKG)_BINARIES            := exportfs mountd nfsd showmount
-$(PKG)_BINARIES_BUILD_DIR  := $(addprefix $($(PKG)_DIR)/utils/, $(join $($(PKG)_BINARIES),$(addprefix /,$($(PKG)_BINARIES))))
-$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/sbin/%)
-
 $(PKG)_DEPENDS_ON += tcp_wrappers
+ifeq ($(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),y)
+	$(PKG)_CONFIGURE_OPTIONS += --disable-tirpc
+else
+	$(PKG)_DEPENDS_ON += libtirpc
+	$(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
+endif
 
-# IPv6 support requires TIRPC
-#$(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
-#ifeq ($(FREETZ_TARGET_IPV6_SUPPORT),y)
-#$(PKG)_CONFIGURE_OPTIONS += --enable-ipv6=yes
-#else
-$(PKG)_CONFIGURE_OPTIONS += --enable-ipv6=no
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),--disable-tirpc,--enable-tirpc)
-#endif
+#gss depends on kerberos:
+$(PKG)_CONFIGURE_OPTIONS += --disable-gss
+
+ifeq ($(FREETZ_PACKAGE_NFSDv4),y)
+	$(PKG)_BINARIES		+=  blkmapd idmapd  nfsdcltrack nfsstat sm-notify statd
+	$(PKG)_BINARIES_PATH	+=  blkmapd idmapd  nfsdcltrack nfsstat statd statd
+else
+	$(PKG)_CONFIGURE_OPTIONS += --disable-nfsv4 --disable-uuid --disable-ipv6
+endif
+
+#mount.nfs does not build on a fb 7490 with fw 7.29:
+ifeq ($(FREETZ_PACKAGE_NFSDv4plus),y)
+	$(PKG)_BINARIES		+= mount.nfs
+	$(PKG)_BINARIES_PATH	+= mount 
+else
+	$(PKG)_CONFIGURE_OPTIONS += --disable-mount
+endif
+
+$(PKG)_BINARIES_BUILD_DIR  := $(addprefix $($(PKG)_DIR)/utils/, $(join $($(PKG)_BINARIES_PATH),$(addprefix /,$($(PKG)_BINARIES))))
+$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/sbin/%)
 
 $(PKG)_CONFIGURE_ENV += ac_cv_type_getgroups=gid_t
 $(PKG)_CONFIGURE_ENV += ac_cv_func_getgroups_works=yes
 $(PKG)_CONFIGURE_ENV += ac_cv_func_stat_empty_string_bug=no
 $(PKG)_CONFIGURE_ENV += ac_cv_func_lstat_empty_string_bug=no
 $(PKG)_CONFIGURE_ENV += ac_cv_func_lstat_dereferences_slashed_symlink=no
-
-$(PKG)_CONFIGURE_OPTIONS += --disable-nfsv4
-$(PKG)_CONFIGURE_OPTIONS += --disable-mount
-$(PKG)_CONFIGURE_OPTIONS += --disable-gss
-$(PKG)_CONFIGURE_OPTIONS += --disable-uuid
-
-ifneq ($(strip $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc)),y)
-$(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
-endif
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)

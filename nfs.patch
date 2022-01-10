@@ -1,0 +1,262 @@
+diff -aur ff/config/ui/modules.in /home/e/u/PATCH/config/ui/modules.in
+--- ff/config/ui/modules.in	2022-01-09 20:46:56.823659939 +0100
++++ /home/e/u/PATCH/config/ui/modules.in	2022-01-09 20:53:34.822688290 +0100
+@@ -632,6 +632,15 @@
+ 	depends on FREETZ_MODULE_lockd
+ 	default n
+ 
++config FREETZ_MODULE_auth_rpcgss
++	bool "auth_rpcgss.ko"
++	select FREETZ_MODULE_oid_registry
++	default n
++
++config FREETZ_MODULE_rpcsec_gss_krb5
++	bool "rpcsec_gss_krb5.ko"
++	select FREEZ_MODULE_auth_rpcgss
++	default n
+ 
+ config FREETZ_MODULE_nfs
+ 	bool "nfs.ko"
+@@ -713,6 +722,10 @@
+ 	depends on !FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+ 	default n
+ 
++config FREETZ_MODULE_oid_registry
++	bool "oid_registry"
++	default n
++
+ endmenu #lib
+ 
+ 
+diff -aur ff/docs/libs/README.md /home/e/u/PATCH/docs/libs/README.md
+--- ff/docs/libs/README.md	2022-01-09 20:46:56.828659920 +0100
++++ /home/e/u/PATCH/docs/libs/README.md	2022-01-09 20:57:13.759800070 +0100
+@@ -177,6 +177,9 @@
+   * **<u>libnet (libnet.so)</u><a id='libnet'></a>**<br>
+     A C library for portable packet creation and injection. Libnet is an API to help with the construction and handling of network packets.  It provides a portable framework for low-level network packet writing and handling (use libnet in conjunction with libpcap and you can write some really cool stuff).  Libnet includes packet creation at the IP layer and at the link layer as well as a host of supplementary and complementary functionality.  Libnet is very handy with which to write network tools and network test code.  See the manpage and sample test code for more detailed information. http://github.com/sam-github/libnet Contact Sam Roberts <vieuxtech@gmail.com> if you have patches or have found bugs.
+ 
++  * **<u>libnfsidmap (libnfsidmap.so)</u><a id='libnfsidmap'></a>**<br>
++	This library provides support for the idmapd service used by NFSv4.
++	
+   * **<u>libogg (libogg.so)</u><a id='libogg'></a>**<br>
+     Libogg is a library for manipulating ogg bitstreams. It handles both making ogg bitstreams and getting packets from ogg bitstreams.
+ 
+diff -aur ff/make/libs/Config.in /home/e/u/PATCH/make/libs/Config.in
+--- ff/make/libs/Config.in	2022-01-09 20:46:57.217658457 +0100
++++ /home/e/u/PATCH/make/libs/Config.in	2022-01-06 13:28:24.848712000 +0100
+@@ -182,6 +182,7 @@
+ source "make/libs/libffi/Config.in"
+ source "make/libs/libctlmgr/Config.in"
+ source "make/libs/libmultid/Config.in"
++source "make/libs/libnfsidmap/Config.in"
+ source "make/libs/libtool/Config.in"
+ source "make/lua/Config.in.libs"
+ source "make/pcsc-lite/Config.in.libs"
+diff -aur ff/make/linux/configs/freetz/config-grx5-7590_07.25 /home/e/u/PATCH/make/linux/configs/freetz/config-grx5-7590_07.25
+--- ff/make/linux/configs/freetz/config-grx5-7590_07.25	2022-01-09 20:46:57.325658051 +0100
++++ /home/e/u/PATCH/make/linux/configs/freetz/config-grx5-7590_07.25	2022-01-10 09:26:43.774241146 +0100
+@@ -3113,6 +3113,7 @@
+ # CONFIG_ORANGEFS_FS is not set
+ # CONFIG_ADFS_FS is not set
+ # CONFIG_AFFS_FS is not set
++# CONFIG_ECRYPT_FS is not set
+ # CONFIG_HFS_FS is not set
+ # CONFIG_HFSPLUS_FS is not set
+ # CONFIG_BEFS_FS is not set
+@@ -3184,12 +3185,15 @@
+ CONFIG_NFSD=m
+ CONFIG_NFSD_V3=y
+ # CONFIG_NFSD_V3_ACL is not set
+-# CONFIG_NFSD_V4 is not set
++CONFIG_NFSD_V4=y
++CONFIG_NFSD_V4_SECURITY_LABEL=y
+ CONFIG_GRACE_PERIOD=m
+ CONFIG_LOCKD=m
+ CONFIG_LOCKD_V4=y
+ CONFIG_NFS_COMMON=y
+ CONFIG_SUNRPC=m
++CONFIG_SUNRPC_GSS=m
++CONFIG_RPCSEC_GSS_KRB5=m
+ # CONFIG_SUNRPC_DEBUG is not set
+ # CONFIG_CEPH_FS is not set
+ CONFIG_CIFS=m
+@@ -3444,7 +3448,7 @@
+ #
+ # Security options
+ #
+-# CONFIG_KEYS is not set
++CONFIG_KEYS=y
+ # CONFIG_SECURITY_DMESG_RESTRICT is not set
+ CONFIG_SECURITY=y
+ CONFIG_SECURITYFS=y
+@@ -3514,7 +3518,7 @@
+ #
+ CONFIG_CRYPTO_CBC=y
+ CONFIG_CRYPTO_CTR=y
+-# CONFIG_CRYPTO_CTS is not set
++CONFIG_CRYPTO_CTS=y
+ CONFIG_CRYPTO_ECB=y
+ # CONFIG_CRYPTO_LRW is not set
+ # CONFIG_CRYPTO_PCBC is not set
+@@ -3652,6 +3656,7 @@
+ CONFIG_TEXTSEARCH_KMP=y
+ CONFIG_TEXTSEARCH_BM=y
+ CONFIG_TEXTSEARCH_FSM=y
++CONFIG_ASSOCIATIVE_ARRAY=y
+ CONFIG_HAS_IOMEM=y
+ CONFIG_HAS_IOPORT_MAP=y
+ CONFIG_HAS_DMA=y
+@@ -3663,6 +3668,7 @@
+ # CONFIG_DDR is not set
+ # CONFIG_IRQ_POLL is not set
+ CONFIG_LIBFDT=y
++CONFIG_OID_REGISTRY=m
+ # CONFIG_SG_SPLIT is not set
+ CONFIG_SG_POOL=y
+ # CONFIG_ARCH_HAS_SG_CHAIN is not set
+diff -aur ff/make/linux/configs/freetz/config-vr9-7490_07.27 /home/e/u/PATCH/make/linux/configs/freetz/config-vr9-7490_07.27
+--- ff/make/linux/configs/freetz/config-vr9-7490_07.27	2022-01-09 20:46:57.348657964 +0100
++++ /home/e/u/PATCH/make/linux/configs/freetz/config-vr9-7490_07.27	2022-01-10 09:35:46.726017402 +0100
+@@ -2494,11 +2494,13 @@
+ CONFIG_NFSD=m
+ CONFIG_NFSD_V3=y
+ # CONFIG_NFSD_V3_ACL is not set
+-# CONFIG_NFSD_V4 is not set
++CONFIG_NFSD_V4=y
+ CONFIG_LOCKD=m
+ CONFIG_LOCKD_V4=y
+ CONFIG_NFS_COMMON=y
+ CONFIG_SUNRPC=m
++CONFIG_SUNRPC_GSS=m
++CONFIG_NFSD_V4_SECURITY_LABEL=y
+ # CONFIG_SUNRPC_DEBUG is not set
+ # CONFIG_CEPH_FS is not set
+ CONFIG_CIFS=m
+@@ -2725,7 +2727,7 @@
+ #
+ CONFIG_CRYPTO_CBC=m
+ # CONFIG_CRYPTO_CTR is not set
+-# CONFIG_CRYPTO_CTS is not set
++CONFIG_CRYPTO_CTS=y
+ CONFIG_CRYPTO_ECB=m
+ # CONFIG_CRYPTO_LRW is not set
+ # CONFIG_CRYPTO_PCBC is not set
+@@ -2832,6 +2834,7 @@
+ CONFIG_TEXTSEARCH_KMP=m
+ CONFIG_TEXTSEARCH_BM=m
+ CONFIG_TEXTSEARCH_FSM=m
++CONFIG_ASSOCIATIVE_ARRAY=y
+ CONFIG_HAS_IOMEM=y
+ CONFIG_HAS_IOPORT=y
+ CONFIG_HAS_DMA=y
+@@ -2843,4 +2846,5 @@
+ # CONFIG_AVERAGE is not set
+ # CONFIG_CORDIC is not set
+ # CONFIG_DDR is not set
++CONFIG_OID_REGISTRY=m
+ # CONFIG_VIRTUALIZATION is not set
+diff -aur ff/make/nfs-utils/Config.in /home/e/u/PATCH/make/nfs-utils/Config.in
+--- ff/make/nfs-utils/Config.in	2022-01-09 20:46:57.491657426 +0100
++++ /home/e/u/PATCH/make/nfs-utils/Config.in	2022-01-09 13:23:43.638384000 +0100
+@@ -1,7 +1,7 @@
+ comment "nfs-utils (not available, needs kernel modules)"
+ 	depends on !(FREETZ_AVM_HAS_NFSD_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE)
+ 
+-config FREETZ_PACKAGE_NFS_UTILS
++config	FREETZ_PACKAGE_NFS_UTILS
+ 	bool "nfs-utils 1.3.4 (binary only)"
+ 	default n
+ 	depends on FREETZ_AVM_HAS_NFSD_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE
+@@ -14,3 +14,25 @@
+ 		Select nfsd-cgi if you want a configuration web interface.
+ 		If this does not work, enable replace-kernel!
+ 
++config FREETZ_PACKAGE_NFSDv4
++	bool "v4 support for NFS server (EXPERIMENTAL)"
++	depends on FREETZ_PACKAGE_NFS_UTILS && !FREETZ_AVM_HAS_NFSD_BUILTIN
++	select FREETZ_MODULE_auth_rpcgss
++#	select FREETZ_MODULE_rpcsec_gss_krb5
++	select FREETZ_LIB_sqlite3
++	select FREETZ_LIB_libblkid
++	select FREETZ_LIB_libdevmapper
++	select FREETZ_LIB_libevent
++	select FREETZ_LIB_libnfsidmap
++	select FREETZ_LIB_libsqlite3
++	help
++		Provides restricted v4 support for nfs servers. This includes
++		username mapping (idmapd). Security support (kerberos) is missing.
++		The web interface nfsd-cgi lacks full v4 support. In particular, the
++		idmapd daemon has to be configered and started manually.
++		
++config FREETZ_PACKAGE_NFSDv4plus
++	bool "plus v4.1 and v4.2 support"
++	depends on FREETZ_PACKAGE_NFSDv4
++	help
++		Adds v4.1 and v4.2 protocol (mount.nfs). Does not build for older kernels.
+diff -aur ff/make/nfs-utils/nfs-utils.mk /home/e/u/PATCH/make/nfs-utils/nfs-utils.mk
+--- ff/make/nfs-utils/nfs-utils.mk	2022-01-09 20:46:57.491657426 +0100
++++ /home/e/u/PATCH/make/nfs-utils/nfs-utils.mk	2022-01-09 12:47:30.658666000 +0100
+@@ -5,22 +5,34 @@
+ 
+ $(PKG)_CONDITIONAL_PATCHES+=$(if $(or $(FREETZ_TARGET_UCLIBC_0_9_28),$(FREETZ_TARGET_UCLIBC_0_9_29)),uclibc-0.9.28)
+ 
+-$(PKG)_DEPENDS_ON += $(if $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),,libtirpc)
++$(PKG)_DEPENDS_ON += tcp_wrappers
++ifeq ($(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),y)
++	$(PKG)_CONFIGURE_OPTIONS += --disable-tirpc
++else
++	$(PKG)_DEPENDS_ON += libtirpc
++	$(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
++endif
+ 
+-$(PKG)_BINARIES            := exportfs mountd nfsd showmount
+-$(PKG)_BINARIES_BUILD_DIR  := $(addprefix $($(PKG)_DIR)/utils/, $(join $($(PKG)_BINARIES),$(addprefix /,$($(PKG)_BINARIES))))
+-$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/sbin/%)
++#gss depends on kerberos:
++$(PKG)_CONFIGURE_OPTIONS += --disable-gss
+ 
+-$(PKG)_DEPENDS_ON += tcp_wrappers
++ifeq ($(FREETZ_PACKAGE_NFSDv4),y)
++	$(PKG)_BINARIES		+=  blkmapd idmapd  nfsdcltrack nfsstat sm-notify statd
++	$(PKG)_BINARIES_PATH	+=  blkmapd idmapd  nfsdcltrack nfsstat statd statd
++else
++	$(PKG)_CONFIGURE_OPTIONS += --disable-nfsv4 --disable-uuid --disable-ipv6
++endif
+ 
+-# IPv6 support requires TIRPC
+-#$(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
+-#ifeq ($(FREETZ_TARGET_IPV6_SUPPORT),y)
+-#$(PKG)_CONFIGURE_OPTIONS += --enable-ipv6=yes
+-#else
+-$(PKG)_CONFIGURE_OPTIONS += --enable-ipv6=no
+-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),--disable-tirpc,--enable-tirpc)
+-#endif
++#mount.nfs does not build on a fb 7490 with fw 7.29:
++ifeq ($(FREETZ_PACKAGE_NFSDv4plus),y)
++	$(PKG)_BINARIES		+= mount.nfs
++	$(PKG)_BINARIES_PATH	+= mount 
++else
++	$(PKG)_CONFIGURE_OPTIONS += --disable-mount
++endif
++
++$(PKG)_BINARIES_BUILD_DIR  := $(addprefix $($(PKG)_DIR)/utils/, $(join $($(PKG)_BINARIES_PATH),$(addprefix /,$($(PKG)_BINARIES))))
++$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/sbin/%)
+ 
+ $(PKG)_CONFIGURE_ENV += ac_cv_type_getgroups=gid_t
+ $(PKG)_CONFIGURE_ENV += ac_cv_func_getgroups_works=yes
+@@ -28,15 +40,6 @@
+ $(PKG)_CONFIGURE_ENV += ac_cv_func_lstat_empty_string_bug=no
+ $(PKG)_CONFIGURE_ENV += ac_cv_func_lstat_dereferences_slashed_symlink=no
+ 
+-$(PKG)_CONFIGURE_OPTIONS += --disable-nfsv4
+-$(PKG)_CONFIGURE_OPTIONS += --disable-mount
+-$(PKG)_CONFIGURE_OPTIONS += --disable-gss
+-$(PKG)_CONFIGURE_OPTIONS += --disable-uuid
+-
+-ifneq ($(strip $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc)),y)
+-$(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
+-endif
+-
+ $(PKG_SOURCE_DOWNLOAD)
+ $(PKG_UNPACKED)
+ $(PKG_CONFIGURED_CONFIGURE)

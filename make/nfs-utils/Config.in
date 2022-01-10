@@ -1,7 +1,7 @@
 comment "nfs-utils (not available, needs kernel modules)"
 	depends on !(FREETZ_AVM_HAS_NFSD_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE)
 
-config FREETZ_PACKAGE_NFS_UTILS
+config	FREETZ_PACKAGE_NFS_UTILS
 	bool "nfs-utils 1.3.4 (binary only)"
 	default n
 	depends on FREETZ_AVM_HAS_NFSD_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE
@@ -14,3 +14,25 @@ config FREETZ_PACKAGE_NFS_UTILS
 		Select nfsd-cgi if you want a configuration web interface.
 		If this does not work, enable replace-kernel!
 
+config FREETZ_PACKAGE_NFSDv4
+	bool "v4 support for NFS server (EXPERIMENTAL)"
+	depends on FREETZ_PACKAGE_NFS_UTILS && !FREETZ_AVM_HAS_NFSD_BUILTIN
+	select FREETZ_MODULE_auth_rpcgss
+#	select FREETZ_MODULE_rpcsec_gss_krb5
+	select FREETZ_LIB_sqlite3
+	select FREETZ_LIB_libblkid
+	select FREETZ_LIB_libdevmapper
+	select FREETZ_LIB_libevent
+	select FREETZ_LIB_libnfsidmap
+	select FREETZ_LIB_libsqlite3
+	help
+		Provides restricted v4 support for nfs servers. This includes
+		username mapping (idmapd). Security support (kerberos) is missing.
+		The web interface nfsd-cgi lacks full v4 support. In particular, the
+		idmapd daemon has to be configered and started manually.
+		
+config FREETZ_PACKAGE_NFSDv4plus
+	bool "plus v4.1 and v4.2 support"
+	depends on FREETZ_PACKAGE_NFSDv4
+	help
+		Adds v4.1 and v4.2 protocol (mount.nfs). Does not build for older kernels.
