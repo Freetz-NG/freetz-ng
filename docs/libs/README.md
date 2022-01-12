@@ -177,6 +177,9 @@ Index:
   * **<u>libnet (libnet.so)</u><a id='libnet'></a>**<br>
     A C library for portable packet creation and injection. Libnet is an API to help with the construction and handling of network packets.  It provides a portable framework for low-level network packet writing and handling (use libnet in conjunction with libpcap and you can write some really cool stuff).  Libnet includes packet creation at the IP layer and at the link layer as well as a host of supplementary and complementary functionality.  Libnet is very handy with which to write network tools and network test code.  See the manpage and sample test code for more detailed information. http://github.com/sam-github/libnet Contact Sam Roberts <vieuxtech@gmail.com> if you have patches or have found bugs.
 
+  * **<u>libnfsidmap (libnfsidmap.so)</u><a id='libnfsidmap'></a>**<br>
+    This library provides support for the idmapd service used by NFSv4.
+
   * **<u>libogg (libogg.so)</u><a id='libogg'></a>**<br>
     Libogg is a library for manipulating ogg bitstreams. It handles both making ogg bitstreams and getting packets from ogg bitstreams.
 
