@@ -1,0 +1,12 @@
+--- libnfsidmap.c
++++ libnfsidmap.c
+@@ -89,6 +89,9 @@
+ #define NFS4DNSTXTREC "_nfsv4idmapdomain"
+ #endif
+ 
++#ifndef NS_MAXMSG
++#define NS_MAXMSG 65535
++#endif
+ 
+ /* Default logging fuction */
+ static void default_logger(const char *fmt, ...)

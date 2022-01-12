@@ -1,0 +1,7 @@
+config FREETZ_LIB_libnfsidmap
+	bool "libnfsidmap (libnfsidmap.so)"
+	default n
+	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	help
+		This library provides support for the idmapd service used by NFSv4.
+
