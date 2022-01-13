@@ -1798,8 +1798,7 @@ if [ "$action_names" ]; then
 			modstring+="_${modmakedate}"
 		fi
 		#EXTRA
-		if [ -n "$FREETZ_IMAGE_NAME_EXTRA" ] \
-		  || [ -z "$FREETZ_IMAGE_NAME_CUSTOM" ]; then
+		if [ ! -z ${FREETZ_IMAGE_NAME_EXTRA+x} ]; then
 			modstring+="-${FREETZ_IMAGE_NAME_EXTRA}"
 		fi
 		#done
