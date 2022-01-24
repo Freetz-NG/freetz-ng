@@ -1,10 +1,10 @@
---- Makefile.am.orig	2013-06-19 00:29:28.000000000 +0200
-+++ Makefile.am	2013-06-19 00:32:18.060238855 +0200
-@@ -6,7 +6,7 @@
- python_d = python
- endif
+--- ./source/target-mips_gcc-4.8.5_uClibc-0.9.33.2-nptl/iksemel-3.1.1/Makefile.am	2016-03-05 12:11:02.000000000 +0000
++++ /tmp/Makefile.am	2022-01-24 23:04:42.708798342 +0000
+@@ -2,7 +2,7 @@
+ ## Process this file with automake to produce Makefile.in
+ ##
  
--SUBDIRS = include src tools $(python_d) test doc
+-SUBDIRS = include src tools test doc
 +SUBDIRS = include src
  
  EXTRA_DIST = HACKING iksemel.pc.in
