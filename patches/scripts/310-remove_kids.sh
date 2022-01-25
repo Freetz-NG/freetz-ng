@@ -1,9 +1,23 @@
 [ "$FREETZ_REMOVE_KIDS" == "y" ] || return 0
 echo1 "removing kids files (userman/contfiltd)"
 
-rm_files \
+list='';file='';path=''
+while read; do
+	case "${REPLY}" in
+		('') path=; file= ;;
+		(*'/'*':') path="${REPLY%:}" ;;
+		('userlist'*|'useradd'*) file="${REPLY}" ;;
+		(*) file= ;;
+	esac
+	if test -n "${path}" && test -n "${file}"; then
+		list="${list} ${path}/${file}"
+	fi
+done <<-EOF
+	$(ls -R ${HTML_LANG_MOD_DIR})
+EOF
+
+rm_files ${list} \
   ${FILESYSTEM_MOD_DIR}/bin/userman* \
-  $(find ${HTML_LANG_MOD_DIR} -name 'userlist*' -o -name 'useradd*') \
   ${HTML_LANG_MOD_DIR}/internet/kids*.lua \
   ${FILESYSTEM_MOD_DIR}/sbin/contfiltd \
   ${FILESYSTEM_MOD_DIR}/etc/bpjm.data \
@@ -11,7 +25,22 @@ rm_files \
 
 # Prevent continous reboots on 3170 with replace kernel
 if [ "$FREETZ_REMOVE_DSLD" = "y" ] || ! ( [ "$FREETZ_SYSTEM_TYPE_AR7_OHIO" = "y" -a "$FREETZ_REPLACE_KERNEL" = "y" ] ); then
-	rm_files $(find ${FILESYSTEM_MOD_DIR}/lib/modules -name userman -type d)	# removes dir of userman_mod.ko
+list='';path=''
+while read; do
+	case "${REPLY}" in
+		('') path= ;;
+		(*'/userman'*':') path="${REPLY%:}" ;;
+		(*) path='' ;;
+	esac
+	if test -n "${path}"; then
+		list="${list} ${path}"
+	fi
+done <<-EOF
+	$(ls -R ${FILESYSTEM_MOD_DIR}/lib/modules)
+EOF
+
+	test -n "${list}" &&
+	rm_files ${list} # removes dir of userman_mod.ko
 else
 	modsed "s/^modprobe kdsldmod$/modprobe kdsldmod\nmodprobe userman_mod/g" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.S"
 	# patcht Uebersicht (by removing HasRestriction() function)
@@ -57,16 +86,59 @@ fi
 modsed '/^<div>$/{N;N;N;/^.*\n.*2031:1282.*/d}' "${HTML_LANG_MOD_DIR}/wlan/guest_access.lua"
 
 # redirect on webif to prio settings
+list='';path='';file=''
 for j in home.html menu2_internet.html; do
-	for i in $(find "${HTML_LANG_MOD_DIR}" -type f -name $j); do
+	while read; do
+		case "${REPLY}" in
+			('') path=; file= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			('home.html'|'menu2_internet.html')
+				file="$REPLY"
+			;;
+			(*) file= ;;
+		esac
+		if test -d "${path}" && test -n "${file}"; then
+			list="${list} ${path}/${file}"
+		fi
+	done <<-EOF
+	$(ls -R "${HTML_LANG_MOD_DIR}")
+	EOF
+	for i in ${list}; do
 		modsed "s/'userlist'/'trafficprio'/g" $i
 	done
 done
 
+path='';file=''
 for j in userlist useradd; do
-	for i in $(find "${HTML_LANG_MOD_DIR}" -type f -name '*.html' | xargs grep -l $j); do
-		modsed "/$j/d" $i
-	done
+	while read; do
+		case "${REPLY}" in
+			('') path=; file= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			(*'.html') file="$REPLY" ;;
+			(*) file= ;;
+		esac
+		if test -d "${path}" && test -n "${file}"; then
+			if test -L "${path}/${file}"; then
+				link=$(realpath -m ${path}/${file})
+				case "${link}" in
+					('/'?*) link=${FILESYSTEM_MOD_DIR}/${link} ;;
+					([!/]*) link=$(realpath ${path}/${file}) ;;
+					(*) continue ;;
+				esac
+				if test -e "${link}"; then
+					i=$(grep -l $j ${link})
+				else
+					warn1 "${link} missing"
+				fi
+			else
+				i=$(grep -l $j ${path}/${file})
+			fi
+			test -f "$i" &&
+			modsed "/$j/d" $i
+		fi
+	done <<-EOF
+	$(ls -R "${HTML_LANG_MOD_DIR}")
+	EOF
 done
 
 if [ -e "$FILESYSTEM_MOD_DIR/etc/init.d/rc.init" ]; then
@@ -75,4 +147,3 @@ else
 	modsed "s/CONFIG_KIDS=.*$/CONFIG_KIDS=\"n\"/g" "$FILESYSTEM_MOD_DIR/etc/init.d/rc.conf"
 	modsed "s/CONFIG_KIDS_CONTENT=.*$/CONFIG_KIDS_CONTENT=\"n\"/g" "$FILESYSTEM_MOD_DIR/etc/init.d/rc.conf"
 fi
-

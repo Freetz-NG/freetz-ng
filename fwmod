@@ -342,7 +342,7 @@ FAKEROOT_CACHE_DIR="$ABS_BASE_DIR/.fakeroot-cache"
 [ "$FREETZ_ROOTEMU_FAKEROOT" != 'y' ] && FAKEROOT_CACHE_DB="$FAKEROOT_CACHE_DIR/files.db" || FAKEROOT_CACHE_DB="$FAKEROOT_CACHE_DIR/fakeroot.cvs"
 
 # Are we in a fakeroot context?
-if [ -n "$FWMOD_RECURSIVE" ] && [ $UID -eq 0 ]; then
+if [ -n "$FWMOD_RECURSIVE" ] || [ $UID -eq 0 ]; then
 	# Yes -> fakeroot is active
 	# Make sure fakeroot call came from ourselves so we can assume the cache settings to be correct
 	if [ $((FWMOD_RECURSIVE)) -eq 0 ] || [ "$SELF" != "$(sed -nr 's/^Name:[[:blank:]]+(.*)/\1/p' /proc/$FWMOD_RECURSIVE/status)" ]; then
@@ -366,9 +366,9 @@ else
 		rm -f $FAKEROOT_CACHE_DIR/*
 	fi
 	if [ "$FREETZ_ROOTEMU_FAKEROOT" != 'y' ]; then
-		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -B  &>/dev/null  #scan
+		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -B  #scan
 		FWMOD_RECURSIVE="$$" PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR" PSEUDO_DEBUG="0" "$TOOLS_DIR/build/bin/pseudo" '--' "${CMDLINE_ORIG[@]}"
-		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -S  &>/dev/null  #halt
+		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -S  #halt
 	else
 		# Has current combination of firmware already been unpacked?
 		if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" == "$FIRMWARE_MD5" ]; then
@@ -844,7 +844,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 	# Fix some permissions
 	chmod -R u+w "$FILESYSTEM_MOD_DIR"
-	find "${FILESYSTEM_MOD_DIR}" "${VARTAR_MOD_DIR}" -type d -exec chmod 755 {} '+'
+	# BUGGY find "${FILESYSTEM_MOD_DIR}" "${VARTAR_MOD_DIR}" -type d -exec chmod -v 755 {} '+'
+	for i in "${FILESYSTEM_MOD_DIR}" "${VARTAR_MOD_DIR}"; do
+		chmod -R u=rwX,go=rX ${ABS_BASE_DIR}${ABS_BASE_DIR:+/}$i
+	done
 	# Give all users write permissions to /var/tmp to allow it to be used as a temp-directory.
 	# Set sticky bit to prevent users from deleting/renaming files they are not the owners of.
 	# NB: The permissions set are the regular temp-directory permissions on Unix-like systems.
@@ -876,7 +879,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 		# some recent LTE firmwares contain both avm and avme OEMs (identical in all firmwares seen so far)
 		# use the 1st of them (according to the alphabetical order) as the main one
-		main_oem=$(find "${webdir}" -maxdepth 1 -type d -name "avm*" -printf "%P\n" | sort | head -n 1)
+		# BUGGY main_oem=$(find "${webdir}" -maxdepth 1 -type d -name "avm*" -printf "%P\n" | sort | head -n 1)
+		main_oem=$(cd "${webdir}" && ls -d avm* | sort | head -n 1)
 
 		if [ -n "${main_oem}" ]; then
 			echo1 -ln " ${webdir#${FILESYSTEM_MOD_DIR}/}"
@@ -924,6 +928,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 	done
 	shopt -u nullglob
 
+	HTML_LANG_MOD_DIR="${HTML_MOD_DIR}"
+
 	# Now we are in place to check html directory
 	for i in all/en all ewetel; do
 		if [ -d "${HTML_MOD_DIR}/$i" ]; then
@@ -961,7 +967,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	[ -d "$LUA_MOD_DIR" ] && echo1 "LUA directory: ${LUA_MOD_DIR}" || FREETZ_AVM_HAS_ONLY_HTML=y
 
 	# Determine $MODULES_DIR in AVM image, eg: "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.19.2
-	MODULES_DIR="$(find ${FILESYSTEM_MOD_DIR}/lib/modules/[2345].[0123456789]*.* -maxdepth 0 -type d 2>/dev/null)"
+	MODULES_DIR="$(ls -d ${FILESYSTEM_MOD_DIR}/lib/modules/[2345].[0123456789]*.*)"
 	[ ! -d "$MODULES_DIR" ] && error 1 "Cannot find modules dir."
 	# Set $MODULES_SUBDIR relative to root dir in AVM image, eg: "lib/modules/2.6.19.2
 	MODULES_SUBDIR="${MODULES_DIR#${FILESYSTEM_MOD_DIR}/}"
@@ -1042,7 +1048,23 @@ if [ "$DO_MOD" -gt 0 ]; then
 			rm -rf "${FILESYSTEM_MOD_DIR}/usr/www/${i}"
 			rm -rf "${FILESYSTEM_MOD_DIR}/usr/www.nas/${i}"
 			rm -rf "${FILESYSTEM_MOD_DIR}/usr/www.myfritz/${i}"
-			find ${FILESYSTEM_MOD_DIR}/etc/default.* -name "*${i}*" | xargs rm -rf
+
+			entry=;path=
+			while read; do
+				case "${REPLY}" in
+					('') path=; entry= ;;
+					(*'/etc/default.'*':') path="${REPLY%:}" ;;
+					(*${i}*)
+						entry="$REPLY"
+					;;
+					(*) entry= ;;
+				esac
+				if test -d "${path}" && test -n "${entry}"; then
+					rm -rv "${path}/${entry}"
+				fi
+			done <<-EOF
+			$(ls -R ${FILESYSTEM_MOD_DIR}/etc/default.*)
+			EOF
 			oem_removed=1
 		else
 			oem_list+=" $i"
@@ -1259,7 +1281,20 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 		# Remove old busybox links
 		# be compatible: do not use -delete (not found in older versions of find)
-		find ${DIRS_BUSYBOX_TO_REPLACE_WITHIN} \( -lname "busybox" -or -lname "*/busybox" \) -print0 | xargs -0 rm
+		path='';file=''
+		while read; do
+			case "${REPLY}" in
+				('') path=; file= ;;
+				(*'/busybox'*':') path="${REPLY%:}" ;;
+				(?*) file="$REPLY" ;;
+				(*) file= ;;
+			esac
+			if test -d "${path}" && test -n "${file}"; then
+				rm -v ${path}/${file}
+			fi
+		done <<-EOF
+		$(ls -R ${DIRS_BUSYBOX_TO_REPLACE_WITHIN})
+		EOF
 
 		# Install new busybox links
 		for link in $(cat "${PACKAGES_DIR}/busybox/busybox.links"); do
@@ -1308,11 +1343,27 @@ if [ "$DO_MOD" -gt 0 ]; then
 		sizeinfo "$pkg"
 		pkg_name=$(pkg_name "$pkg")
 
-		"$TAR_GNU" $(find "${PACKAGES_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-		  -c -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
+		path='';file='';excl=''
+		while read; do
+			case "${REPLY}" in
+				('') path=; file= ;;
+				(*'/'*':') path="${REPLY%:}" ;;
+				('.exclude'*) file="$REPLY" ;;
+				(*) file= ;;
+			esac
+			if test -d "${path}" && test -n "${file}"; then
+				excl="${excl} --exclude-from=${path}/${file}"
+			fi
+		done <<-EOF
+		$(ls -Ra "${PACKAGES_DIR}/${pkg}/")
+		EOF
+
+		"$TAR_GNU" ${excl} -c -C "${PACKAGES_DIR}/${pkg}/root" . |
+		"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
 
 		if [ -d "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
-			"$TAR_GNU" -c -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || exit 1
+			"$TAR_GNU" -c -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . |
+			"$TAR" -x -C ${VARTAR_MOD_DIR} || exit 1
 		fi
 
 		[ -r "${PACKAGES_DIR}/${pkg}/.language" ] && \
@@ -1340,13 +1391,28 @@ if [ "$DO_MOD" -gt 0 ]; then
 			echo "NOTICE: addon '$pkg' is in old-style format (no language support)." 1>&2
 			"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
 		elif [ "$(echo ${pkg^^}-corrupt | sed -r 's/([^.-_-]*).*/\LfLawed-\1-Addon/' | md5sum | sed 's/ .*//')" != "80d00cf16e1a48ec11801feed60a2be7" ]; then
-			"$TAR"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-				-c -C "${ADDON_DIR}/${pkg}/root" \
-				. | \
+			path='';file='';excl=''
+			while read; do
+				echo REPLY=$REPLY
+				case "${REPLY}" in
+					('') path=; file= ;;
+					(*'/'*':') path="${REPLY%:}" ;;
+					('.exclude'*) file="$REPLY" ;;
+					(*) file= ;;
+				esac
+				if test -d "${path}" && test -n "${file}"; then
+					excl="${excl} --exclude-from=${path}/${file}"
+				fi
+			done <<-EOF
+			$(ls -Ra "${ADDON_DIR}/${pkg}/")
+			EOF
+
+			"$TAR" ${excl} -c -C "${ADDON_DIR}/${pkg}/root" . |
 			"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
 
 			if [ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
-				"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || exit 1
+				"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . |
+				"$TAR" -x -C ${VARTAR_MOD_DIR} || exit 1
 			fi
 
 			[ -r "${ADDON_DIR}/${pkg}/.language" ] && \
@@ -1402,10 +1468,24 @@ if [ "$DO_MOD" -gt 0 ]; then
 	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
 		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
 		echo0 "installing$strip_output modules"
-		for i in \
-		$( \
-			cd "${KERNEL_REP_DIR}/modules-${KERNEL_ID}" && \
-			find . -type f \( -name modules.dep -o -name "*.ko" \) \
+		for i in $(
+			cd "${KERNEL_REP_DIR}/modules-${KERNEL_ID}" || exit 1
+			entry=;path=
+			while read; do
+				case "${REPLY}" in
+					('') path=; entry= ;;
+					(*'/'*':') path="${REPLY%:}" ;;
+					('modules.dep'|*'.ko')
+						entry="$REPLY"
+					;;
+					(*) entry= ;;
+				esac
+				if test -d "${path}" && test -n "${entry}"; then
+					echo "${path}/${entry}"
+				fi
+			done <<-EOF
+			$(ls -R .)
+			EOF
 		); do
 			bn="$(basename "$i")"
 			ko_symbol="$(echo "${bn%\.ko}" | tr '\-+' '_x')"
@@ -1456,7 +1536,22 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	kolinecnt="$(cat $MODULES_DIR/modules.dep | wc -l)"
-	kofilecnt="$(find $MODULES_DIR -type f -name '*.ko' | wc -l)"
+
+	path=;entry=;cnt=0
+	while read; do
+		case "${REPLY}" in
+			('') path=; entry= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			(*'.ko') entry=$REPLY ;;
+			(*) entry= ;;
+		esac
+		if test -d "${path}" && test -n "${entry}"; then
+			let cnt++
+		fi
+	done <<-EOF
+	$(ls -R $MODULES_DIR)
+	EOF
+	kofilecnt=$cnt
 	echo1 "kernel modules installed: $kolinecnt entries in modules.dep and $kofilecnt .ko-files found."
 	if [ "$FREETZ_KERNEL_VERSION_2_6_28" == "y" ]; then
 		if [ "$FREETZ_REPLACE_KERNEL" != "y" ];then
@@ -1471,9 +1566,22 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	echo1 "removing empty kernel module directories"
-	for dir in $(find ${MODULES_DIR} -type d -empty -delete -printf "%P\n"); do
-		echo2 $dir
-	done
+	path=
+	while read; do
+		case "${REPLY}" in
+			(*'/'*':')
+				path="${REPLY%:}"
+				case "$(ls -1 ${path} | wc -l)" in
+					('0')
+						rmdir -v ${path}
+						echo2 ${path}
+					;;
+				esac
+			;;
+		esac
+	done <<-EOF
+	$(ls -R ${MODULES_DIR}| grep ':$' | sort -r)
+	EOF
 
 	invoke_fwmod_custom all
 
@@ -1530,6 +1638,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 		# logo tagging
 		if [ "$FREETZ_TAGGING_ENABLED" == "y" ]; then
+			composite() { echo >&2 composite "$*"; command composite "$*"; }
+			inkscape() { echo >&2 inkscape "$*"; command inkscape "$*"; }
 			tagging() {
 				[ $# -lt 3 ] && return
 				local tagging_geo="$1"
@@ -1538,25 +1648,46 @@ if [ "$DO_MOD" -gt 0 ]; then
 				for d in ${HTML_MOD_DIR}*; do
 					[ ! -d "$d" ] && continue
 					local tagging_ren=""
-					for tagging_file in $(find "$d" -name "$tagging_arg"); do
+					local path= entry= tagging_files=''
+					while read; do
+						case "${REPLY}" in
+							('') path=; entry= ;;
+							(*'/'*':') path="${REPLY%:}" ;;
+							(${tagging_arg})
+								entry="$REPLY"
+							;;
+							(*) entry= ;;
+						esac
+						if test -d "${path}" && test -n "${entry}"; then
+							tagging_files="${tagging_files} ${path}/${entry}"
+						fi
+					done <<-EOF
+					$(ls -R "$d")
+					EOF
+					local tagging_file
+					for tagging_file in ${tagging_files}; do
 						echo2 "${tagging_file}"
 						if [ "${tagging_file##*/}" == "logo_fritzDiamond.svg" ]; then
 							sed 's/>/&<svg>/' -i $tagging_file
 							echo "<svg>$(tail -n+2 ${TAGGING_DIR}/${FREETZ_TAGGING_STRING}.svg)</svg>" >> $tagging_file
 							continue
 						fi
-						[ "${tagging_file}" != "${tagging_file%svg}" ] && tagging_temp="${tagging_file%svg}png" || tagging_temp=""
+						[ "${tagging_file}" != "${tagging_file%svg}" ] &&
+						tagging_temp="${tagging_file%svg}png" || tagging_temp=""
 						if [ -n "$tagging_temp" ]; then
 							if ! inkscape "$tagging_file" --export-type=png --export-filename="$tagging_temp" -w 98 -h 77 -y 0 &>/dev/null; then
-							if ! inkscape --without-gui "$tagging_file" --export-png="$tagging_temp" -w 98 -h 77 -y 0 &>/dev/null; then
-							if ! convert -compress NONE -background NONE -resize 98x77 "$tagging_file" "$tagging_temp"; then
-								error 1 "tagging failed on converting, is inkscape installed?"
-							fi
-							fi
+								if ! inkscape --without-gui "$tagging_file" --export-png="$tagging_temp" -w 98 -h 77 -y 0 &>/dev/null; then
+									if ! convert -compress NONE -background NONE -resize 98x77 "$tagging_file" "$tagging_temp"; then
+										error 1 "tagging failed on converting, is inkscape installed?"
+									fi
+								fi
 							fi
 						fi
-						composite -dissolve 100% -gravity $tagging_pos -geometry $tagging_geo -quality 100 \
-						  "${TAGGING_DIR}/${FREETZ_TAGGING_STRING}.png" ${tagging_temp:-$tagging_file} ${tagging_temp:-$tagging_file}
+						composite -dissolve 100% \
+								${tagging_pos:+-gravity} $tagging_pos \
+								${tagging_geo:+-geometry} $tagging_geo -quality 100 \
+								"${TAGGING_DIR}/${FREETZ_TAGGING_STRING}.png" \
+								${tagging_temp:-$tagging_file} ${tagging_temp:-$tagging_file}
 						[ $? -ne 0 ] && error 1 "tagging failed on compositing, is imagemagick and libpng installed?"
 						[ -n "$tagging_temp" ] && tagging_ren="$tagging_ren ${tagging_file##*/}" && rm -f "${tagging_file}"
 					done
@@ -1587,7 +1718,23 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 	if  [ "$FREETZ_STRIP_MODULES_ALL" == "y" ]; then
 		echo0 "stripping all kernel modules"
-		for i in $(find ${MODULES_DIR} -name '*.ko'); do
+		entry=;path=;list=''
+		while read; do
+			case "${REPLY}" in
+				('') path=; entry= ;;
+				(*'/'*':') path="${REPLY%:}" ;;
+				(*'.ko')
+					entry="$REPLY"
+				;;
+				(*) entry= ;;
+			esac
+			if test -d "${path}" && test -n "${entry}"; then
+				list="${list} ${path}/${entry}"
+			fi
+		done <<-EOF
+		$(ls -R ${MODULES_DIR})
+		EOF
+		for i in ${list}; do
 			echo2 $i
 			${ABS_BASE_DIR}/toolchain/kernel/bin/${FREETZ_KERNEL_CROSS}strip -p --strip-unneeded \
 			  --remove-section={.comment,.pdr,.mdebug.abi32,.note.gnu.build-id} $i
@@ -1596,7 +1743,21 @@ if [ "$DO_MOD" -gt 0 ]; then
 	if [ "$FREETZ_STRIP_SCRIPTS" == "y" ]; then
 		echo0 "stripping shell scripts"
 		# This is (necessarily) slow because it checks *all* files
-		for f in $(find ${FILESYSTEM_MOD_DIR} -type f); do
+		entry=;path=;list=''
+		while read; do
+			case "${REPLY}" in
+				('') path=; entry= ;;
+				(*'/'*':') path="${REPLY%:}" ;;
+				(?*) entry="$REPLY" ;;
+				(*) entry= ;;
+			esac
+			if test -d "${path}" && test -n "${entry}"; then
+				list="${list} ${path}/${entry}"
+			fi
+		done <<-EOF
+		$(ls -R ${FILESYSTEM_MOD_DIR})
+		EOF
+		for f in ${list}; do
 			# Syntax check. Use ash (not bash) because on target we also have ash.
 			# This is the first step because it is faster than 'file'.
 			$BUSYBOX ash -n "$f" 2>/dev/null &&
@@ -1625,12 +1786,34 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 	if [ "$FREETZ_STRIP_BINARIES" == "y" ]; then
 		echo0 "stripping leftover unstripped binaries"
-		for i in $(find \
-				"${FILESYSTEM_MOD_DIR}" $([ "${FREETZ_AVM_HAS_INNER_OUTER_FILESYSTEM}" == "y" -a "$FREETZ_REPLACE_OUTER_UCLIBC_AND_BUSYBOX" == "y" ] && echo "${FILESYSTEM_OUTER_MOD_DIR}") \
-				! \( -name '*.ko' -o -path '*/usr/www/*' -o -path '*/etc/default*' -o -path '*/lib/modules*' \) \
-				\( -perm /100 -o -name "*.so*" \) \
-				-type f \
-				-exec file {} '+' | sed -n 's|^\(.*\):.* not stripped.*|\1|p' \
+		[ "${FREETZ_AVM_HAS_INNER_OUTER_FILESYSTEM}" == "y" ] &&
+		[ "$FREETZ_REPLACE_OUTER_UCLIBC_AND_BUSYBOX" == "y" ] &&
+		outer="${FILESYSTEM_OUTER_MOD_DIR}"
+		for i in $(
+			path=;entry=
+			while read; do
+				case "${REPLY}" in
+					('') path=; entry= ;;
+					(*'/'*':') path="${REPLY%:}" ;;
+					(*'.so'*) entry=$REPLY ;;
+					(?*)
+						case "$(stat -c %a ${path}/${ENTRY})" in
+							([1357][0-7][0-7]|?[1357][0-7][0-7]) entry=$REPLY ;;
+							(*) entry= ;;
+						esac
+					;;
+				esac
+				if test -d "${path}" && test -n "${entry}"; then
+					case "${path}" in
+						(*'/usr/www/'*) ;;
+						(*'/etc/default'*) ;;
+						(*'/lib/modules'*) ;;
+						(?*) file ${path}/${entry} | sed -n 's|^\(.*\):.* not stripped.*|\1|p' ;;
+					esac
+				fi
+			done <<-EOF
+			$(ls -R "${FILESYSTEM_MOD_DIR}" ${outer})
+			EOF
 		); do
 			echo2 $i
 			chmod u+r $i
@@ -1710,7 +1893,22 @@ if [ "$action_names" ]; then
 
 	# Remove left over version-constrol-system files
 	echo1 "checking for left over version-control-system files"
-	find "$MOD_DIR" \( -type d -name '.svn' \) -o \( -type d -name '.git' \) -o -name '.gitignore' | xargs rm -rf
+	entry=;path=
+	while read; do
+		case "${REPLY}" in
+			('') path=; entry= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			('.svn'|'.git'|'.gitignore')
+				entry="$REPLY"
+			;;
+			(*) entry= ;;
+		esac
+		if test -d "${path}" && test -n "${entry}"; then
+			rm -v "${path}/${entry}"
+		fi
+	done <<-EOF
+	$(ls -R ${MODE_DIR})
+	EOF
 
 	# Delete all files that we are going to re-create now
 	rm -f "$VARTAR_MOD"
@@ -1808,7 +2006,21 @@ if [ "$action_names" ]; then
 	modstring="$(get_modstring)"
 
 	# collect externalized files
-	externalised_files=$(find "$EXTERNAL_MOD_DIR/" -type f 2>/dev/null | sed -e "/external[.]pkg/d;/[.]external/d;s,$EXTERNAL_MOD_DIR/,,")
+	entry=;path=;list=''
+	while read; do
+		case "${REPLY}" in
+			('') path=; entry= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			(?*) entry="$REPLY" ;;
+			(*) entry= ;;
+		esac
+		if test -d "${path}" && test -n "${entry}"; then
+			list="${list} ${path}/${entry}"
+		fi
+	done <<-EOF
+	$(ls -R "$EXTERNAL_MOD_DIR/")
+	EOF
+	externalised_files=$(echo ${list}|sed -e "/external[.]pkg/d;/[.]external/d;s,$EXTERNAL_MOD_DIR/,,")
 
 	if [ ! "$DO_AVOID_MOD_IN_STEP3" -gt 0 ]; then
 		# Create freetz-info

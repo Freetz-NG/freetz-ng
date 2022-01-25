@@ -155,7 +155,7 @@ rm_files()
 {
 	for file in "$@"; do
 		echo2 "rm -rf $file"
-		rm -rf $file
+		rm -rfv $file
 	done
 }
 
@@ -361,7 +361,7 @@ moduncpio()
 {
 	mkdir -p "$1"
 	cat "$2" | gunzip | cpio -mid --quiet -D "$1" 2>&1
-	
+
 	if [ $? -gt 0 ]; then
 		error 1 "moduncpio: Error in $2"
 	fi
@@ -531,9 +531,36 @@ collect_pkg_files()
 			pkg_dir="${p}"
 		fi
 
-		(
-			cd "${PACKAGES_DIR}/${pkg_dir}/root/"
-			find . -type f -print0 | tar-gnu -cv $(find "../" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') --null -T - -f /dev/null
+		( cd "${PACKAGES_DIR}/${pkg_dir}/root/" || exit
+			entry=;path=;excl=''
+			while read; do
+				case "${REPLY}" in
+					('') path=; entry= ;;
+					(*'/'*':') path="${REPLY%:}" ;;
+					('.exclude'*) entry="$REPLY" ;;
+					(*) entry= ;;
+				esac
+				if test -d "${path}" && test -n "${entry}"; then
+					excl="${excl} --exclude-from=${path}/${entry}"
+				fi
+			done <<-EOF
+			$(ls -R ..)
+			EOF
+			entry=;path=;list=''
+			while read; do
+				case "${REPLY}" in
+					('') path=; entry= ;;
+					(*'/'*':') path="${REPLY%:}" ;;
+					(?*) entry="$REPLY" ;;
+					(*) entry= ;;
+				esac
+				if test -d "${path}" && test -n "${entry}"; then
+					#list="${list} ${path}/${entry}"
+					echo "${path}/${entry}"
+				fi
+			done <<-EOF | tar-gnu -cv ${excl} -T - -f /dev/null
+			$(ls -R .)
+			EOF
 		)
 	done | sed -r -e 's,^[.],,' -e 's,^([^/]),/\1,'
 }
@@ -620,7 +647,7 @@ function symlinks-abs2rel() {
 	)"
 
 	local VERBOSE="echo2"
-	local DEPTH="-maxdepth 1"
+	local DEPTH=""
 	while [ -n "$1" -a "${1:0:1}" == "-" ]; do
 		case "$1" in
 			-v|-verbose|--verbose)
@@ -628,7 +655,7 @@ function symlinks-abs2rel() {
 				shift
 				;;
 			-r|-recursive|--recursive)
-				DEPTH=""
+				DEPTH="-R"
 				shift
 				;;
 			--)
@@ -648,8 +675,24 @@ function symlinks-abs2rel() {
 		error 1 "$USAGE"
 	fi
 
+	entry=;path=;list=''
+	while read; do
+		case "${REPLY}" in
+			('') path=; entry= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			(${MASK}) entry="$REPLY" ;;
+			(*) entry= ;;
+		esac
+		if test -d "${path}" && test -n "${entry}"; then
+			if test -L "${path}/${entry}"; then
+				list="${list} ${path}/${entry}"
+			fi
+		fi
+	done <<-EOF
+	$(ls ${DEPTH} ${TARGET_FS_ROOT}${DIR})
+	EOF
 	local LINK LINK_DIR TARGET TARGET_CANONICAL TARGET_RELATIVE
-	for LINK in $(find "${TARGET_FS_ROOT}${DIR}" ${DEPTH} -type l -lname "/*" -name "$MASK"); do
+	for LINK in ${list}; do
 		LINK_DIR=$(dirname "${LINK#${TARGET_FS_ROOT}}")
 		LINK_DIR=$(addTrailingSlash "$LINK_DIR")
 		TARGET=$(readlink --no-newline "$LINK")
@@ -737,7 +780,24 @@ function is_valid_tarball() {
 #
 function supported_brandings() {
 	local etc_default_PRODUKT_path brandings
-	etc_default_PRODUKT_path=$(find "${FILESYSTEM_MOD_DIR}/etc" -type d -name "default.*" | sed -e "\|${FILESYSTEM_MOD_DIR}/etc/default.[0-9]*$|d")
-	brandings=$(find "${etc_default_PRODUKT_path}" -maxdepth 1 -type d | sed -n -e "s|${etc_default_PRODUKT_path}[/]*||p" | sed -e "/^$/d" | sort -u)
-	echo $brandings
+	local path=''
+	while read; do
+		case "${REPLY}" in
+			('') path= ;;
+			(*'/etc/default.'[0-9]*':') path= ;;
+			(*'/'*':') path="${REPLY%:}" ;;
+			(*) path= ;;
+		esac
+		if test -d "${path}"; then
+			etc_default_PRODUKT_path="${path}"
+			break
+		fi
+	done <<-EOF
+	$(ls -R "${FILESYSTEM_MOD_DIR}/etc")
+	EOF
+
+	brandings=$(ls -d "${etc_default_PRODUKT_path}/"* |
+				sed -n -e "s|${etc_default_PRODUKT_path}[/]*||p" -e "/^$/d")
+
+	echo $brandings | sort -u
 }
