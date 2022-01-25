@@ -13,7 +13,7 @@ while read; do
 		list="${list} ${path}/${file}"
 	fi
 done <<-EOF
-	$(ls -R ${HTML_LANG_MOD_DIR})
+	$(ls -1R ${HTML_LANG_MOD_DIR})
 EOF
 
 rm_files ${list} \
@@ -36,7 +36,7 @@ while read; do
 		list="${list} ${path}"
 	fi
 done <<-EOF
-	$(ls -R ${FILESYSTEM_MOD_DIR}/lib/modules)
+	$(ls -1R ${FILESYSTEM_MOD_DIR}/lib/modules)
 EOF
 
 	test -n "${list}" &&
@@ -101,7 +101,7 @@ for j in home.html menu2_internet.html; do
 			list="${list} ${path}/${file}"
 		fi
 	done <<-EOF
-	$(ls -R "${HTML_LANG_MOD_DIR}")
+	$(ls -1R "${HTML_LANG_MOD_DIR}")
 	EOF
 	for i in ${list}; do
 		modsed "s/'userlist'/'trafficprio'/g" $i
@@ -137,7 +137,7 @@ for j in userlist useradd; do
 			modsed "/$j/d" $i
 		fi
 	done <<-EOF
-	$(ls -R "${HTML_LANG_MOD_DIR}")
+	$(ls -1R "${HTML_LANG_MOD_DIR}")
 	EOF
 done
 

@@ -1063,7 +1063,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					rm -rv "${path}/${entry}"
 				fi
 			done <<-EOF
-			$(ls -R ${FILESYSTEM_MOD_DIR}/etc/default.*)
+			$(ls -1R ${FILESYSTEM_MOD_DIR}/etc/default.*)
 			EOF
 			oem_removed=1
 		else
@@ -1293,7 +1293,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 				rm -v ${path}/${file}
 			fi
 		done <<-EOF
-		$(ls -R ${DIRS_BUSYBOX_TO_REPLACE_WITHIN})
+		$(ls -1R ${DIRS_BUSYBOX_TO_REPLACE_WITHIN})
 		EOF
 
 		# Install new busybox links
@@ -1355,7 +1355,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 				excl="${excl} --exclude-from=${path}/${file}"
 			fi
 		done <<-EOF
-		$(ls -Ra "${PACKAGES_DIR}/${pkg}/")
+		$(ls -1Ra "${PACKAGES_DIR}/${pkg}/")
 		EOF
 
 		"$TAR_GNU" ${excl} -c -C "${PACKAGES_DIR}/${pkg}/root" . |
@@ -1404,7 +1404,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					excl="${excl} --exclude-from=${path}/${file}"
 				fi
 			done <<-EOF
-			$(ls -Ra "${ADDON_DIR}/${pkg}/")
+			$(ls -1Ra "${ADDON_DIR}/${pkg}/")
 			EOF
 
 			"$TAR" ${excl} -c -C "${ADDON_DIR}/${pkg}/root" . |
@@ -1484,7 +1484,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					echo "${path}/${entry}"
 				fi
 			done <<-EOF
-			$(ls -R .)
+			$(ls -1R .)
 			EOF
 		); do
 			bn="$(basename "$i")"
@@ -1549,7 +1549,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			let cnt++
 		fi
 	done <<-EOF
-	$(ls -R $MODULES_DIR)
+	$(ls -1R $MODULES_DIR)
 	EOF
 	kofilecnt=$cnt
 	echo1 "kernel modules installed: $kolinecnt entries in modules.dep and $kofilecnt .ko-files found."
@@ -1580,7 +1580,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			;;
 		esac
 	done <<-EOF
-	$(ls -R ${MODULES_DIR}| grep ':$' | sort -r)
+	$(ls -1R ${MODULES_DIR}| grep ':$' | sort -r)
 	EOF
 
 	invoke_fwmod_custom all
@@ -1662,7 +1662,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 							tagging_files="${tagging_files} ${path}/${entry}"
 						fi
 					done <<-EOF
-					$(ls -R "$d")
+					$(ls -1R "$d")
 					EOF
 					local tagging_file
 					for tagging_file in ${tagging_files}; do
@@ -1732,7 +1732,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 				list="${list} ${path}/${entry}"
 			fi
 		done <<-EOF
-		$(ls -R ${MODULES_DIR})
+		$(ls -1R ${MODULES_DIR})
 		EOF
 		for i in ${list}; do
 			echo2 $i
@@ -1755,7 +1755,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 				list="${list} ${path}/${entry}"
 			fi
 		done <<-EOF
-		$(ls -R ${FILESYSTEM_MOD_DIR})
+		$(ls -1R ${FILESYSTEM_MOD_DIR})
 		EOF
 		for f in ${list}; do
 			# Syntax check. Use ash (not bash) because on target we also have ash.
@@ -1812,7 +1812,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					esac
 				fi
 			done <<-EOF
-			$(ls -R "${FILESYSTEM_MOD_DIR}" ${outer})
+			$(ls -1R "${FILESYSTEM_MOD_DIR}" ${outer})
 			EOF
 		); do
 			echo2 $i
@@ -1907,7 +1907,7 @@ if [ "$action_names" ]; then
 			rm -v "${path}/${entry}"
 		fi
 	done <<-EOF
-	$(ls -R ${MODE_DIR})
+	$(ls -1R ${MODE_DIR})
 	EOF
 
 	# Delete all files that we are going to re-create now
@@ -2018,7 +2018,7 @@ if [ "$action_names" ]; then
 			list="${list} ${path}/${entry}"
 		fi
 	done <<-EOF
-	$(ls -R "$EXTERNAL_MOD_DIR/")
+	$(ls -1R "$EXTERNAL_MOD_DIR/")
 	EOF
 	externalised_files=$(echo ${list}|sed -e "/external[.]pkg/d;/[.]external/d;s,$EXTERNAL_MOD_DIR/,,")
 

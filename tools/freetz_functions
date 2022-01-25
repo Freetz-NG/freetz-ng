@@ -544,7 +544,7 @@ collect_pkg_files()
 					excl="${excl} --exclude-from=${path}/${entry}"
 				fi
 			done <<-EOF
-			$(ls -R ..)
+			$(ls -1R ..)
 			EOF
 			entry=;path=;list=''
 			while read; do
@@ -559,7 +559,7 @@ collect_pkg_files()
 					echo "${path}/${entry}"
 				fi
 			done <<-EOF | tar-gnu -cv ${excl} -T - -f /dev/null
-			$(ls -R .)
+			$(ls -1R .)
 			EOF
 		)
 	done | sed -r -e 's,^[.],,' -e 's,^([^/]),/\1,'
@@ -793,7 +793,7 @@ function supported_brandings() {
 			break
 		fi
 	done <<-EOF
-	$(ls -R "${FILESYSTEM_MOD_DIR}/etc")
+	$(ls -1R "${FILESYSTEM_MOD_DIR}/etc")
 	EOF
 
 	brandings=$(ls -d "${etc_default_PRODUKT_path}/"* |

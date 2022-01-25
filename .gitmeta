@@ -1,6 +1,7 @@
 .exclude-release  mode=0644  uid=6015  gid=6015
 .gitattributes  mode=0644  uid=6015  gid=6015
 .gitignore  mode=0644  uid=6015  gid=6015
+.gitmeta  mode=0640  uid=6015  gid=6015
 .prerequisites  mode=0644  uid=6015  gid=6015
 .revdiff  mode=0644  uid=6015  gid=6015
 .version  mode=0644  uid=6015  gid=6015

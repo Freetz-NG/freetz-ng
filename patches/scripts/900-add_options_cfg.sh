@@ -34,7 +34,7 @@ else
 			fi
 		fi
 	done <<-EOF
-	$(ls -R make/*/files/root/usr/)
+	$(ls -1R make/*/files/root/usr/)
 	EOF
 	OPTIONS_NAMES="$(grep -hoE "FREETZ_REPLACE_KERNEL|FREETZ_TYPE_[A-Z0-9_]*|FREETZ_AVMDAEMON_DISABLE_[A-Z0-9]*|FREETZ_AVM_HAS_[A-Z0-9_]*|FREETZ_AVM_VERSION_[X0-9_]*(_MIN)?|FREETZ_(TARGET|BUSYBOX)_[A-Z0-9_]*|EXTERNAL_DYNAMIC[a-zA-Z0-9_]*|(EXTERNAL_)?FREETZ_(PACKAGE|LIB|PATCH|CUSTOM|LANG)[a-zA-Z0-9_]*" $OPTIONS_FILES | sort -u)"
 
