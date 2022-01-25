@@ -539,7 +539,7 @@ menu "Download options"
 		#
 		default "FRITZ.Box_WLAN_Repeater_DVB_C.133.06.32.image"                                if FREETZ_TYPE_1759 && FREETZ_TYPE_FIRMWARE_06_2X
 		default "FRITZ.Box_WLAN_Repeater_DVB_C.133.06.50.image"                                if FREETZ_TYPE_1759 && FREETZ_TYPE_FIRMWARE_06_5X
-		default "FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.01.image"              if FREETZ_TYPE_1759 && FREETZ_TYPE_FIRMWARE_07_0X
+		default "FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.02.image"              if FREETZ_TYPE_1759 && FREETZ_TYPE_FIRMWARE_07_0X
 		default "FRITZ.Box_WLAN_Repeater_DVB_C-07.08-66669-Inhaus.image"                       if FREETZ_TYPE_1759 && FREETZ_TYPE_FIRMWARE_07_1X_INHAUS
 		#
 		default "FRITZ.Box_2170.51.04.57.image"                                                if FREETZ_TYPE_2170
