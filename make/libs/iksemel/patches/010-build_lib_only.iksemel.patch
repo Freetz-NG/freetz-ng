@@ -1,5 +1,5 @@
---- ./source/target-mips_gcc-4.8.5_uClibc-0.9.33.2-nptl/iksemel-3.1.1/Makefile.am	2016-03-05 12:11:02.000000000 +0000
-+++ /tmp/Makefile.am	2022-01-24 23:04:42.708798342 +0000
+--- Makefile.am	2016-03-05 12:11:02.000000000 +0000
++++ Makefile.am	2022-01-24 23:04:42.708798342 +0000
 @@ -2,7 +2,7 @@
  ## Process this file with automake to produce Makefile.in
  ##
