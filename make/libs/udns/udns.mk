@@ -1,0 +1,43 @@
+$(call PKG_INIT_LIB, 0.4)
+$(PKG)_LIB_VERSION:=0
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE_SHA1:=115108dc791a2f9e99e150012bcb459d9095da2dd7d80699b584ac0ac3768710
+$(PKG)_SITE:=https://www.corpit.ru/mjt/$(pkg)
+
+$(PKG)_BINARY:=$($(PKG)_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
+$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)
+$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_LIB)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
+
+$(PKG)_LIBNAME_SHORT := lib$(pkg)
+
+$(PKG)_CONFIGURE_PRE_CMDS += autoreconf --install --force;
+
+$(PKG_SOURCE_DOWNLOAD)
+$(PKG_UNPACKED)
+$(PKG_CONFIGURED_CONFIGURE)
+
+
+
+$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+	$(SUBMAKE) -C $(UDNS_DIR)
+
+$($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
+	$(SUBMAKE) -C $(UDNS_DIR) DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" install
+	$(PKG_FIX_LIBTOOL_LA) \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$(UDNS_LIBNAME_SHORT).la
+
+$($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
+	$(INSTALL_LIBRARY_STRIP)
+
+$(pkg): $($(PKG)_STAGING_BINARY)
+
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
+$(pkg)-clean:
+	-$(SUBMAKE) -C $(UDNS_DIR) clean
+	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/lib/$(UDNS_LIBNAME_SHORT)*
+
+$(pkg)-uninstall:
+	$(RM) $(UDNS_DEST_LIB)/$(UDNS_LIBNAME_SHORT).so*
+
+$(PKG_FINISH)

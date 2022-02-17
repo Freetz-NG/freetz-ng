@@ -1,0 +1,8 @@
+config FREETZ_LIB_libgsasl
+	bool "libgsasl (libgsasl.so)"
+	default n
+	help
+		GNU SASL is an implementation of the Simple Authentication and Security Layer framework
+		and a few common SASL mechanisms. SASL is used by network servers (e.g., IMAP, SMTP, XMPP)
+		to request authentication from clients, and in clients to authenticate against servers.
+
