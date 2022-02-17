@@ -1,6 +1,12 @@
 --- support/apxs.in
 +++ support/apxs.in
-@@ -35,7 +35,8 @@
+@@ -29,13 +29,11 @@
+ 
+ my $destdir = "";
+ my $ddi = rindex($0, "@exp_bindir@");
+-if ($ddi >= 0) {
+-  $destdir = substr($0, 0, $ddi);
+-}
  
  my %config_vars = ();
  
@@ -10,7 +16,7 @@
  get_config_vars($destdir . "$installbuilddir/config_vars.mk",\%config_vars);
  
  # read the configuration variables once
-@@ -559,6 +560,8 @@
+@@ -559,6 +557,8 @@
      &execute_cmds(@cmds);
  
      #   activate module via LoadModule/AddModule directive
@@ -19,7 +25,7 @@
      if ($opt_a or $opt_A) {
          if (not -f "$CFG_SYSCONFDIR/$CFG_TARGET.conf") {
              error("Config file $CFG_SYSCONFDIR/$CFG_TARGET.conf not found");
-@@ -663,6 +666,7 @@
+@@ -663,6 +663,7 @@
              }
  	}
      }
