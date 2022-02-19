@@ -1,0 +1,11 @@
+--- fitimg
++++ fitimg
+@@ -436,7 +436,7 @@
+ 			}
+ 
+ 			if ($name eq 'type' && $string eq 'avm,fit') { # inner fit image without crc
+-				$section .= '.fit' unless $section =~ /\.fit$/;
++#				$section .= '.fit' unless $section =~ /\.fit$/;
+ 				if (defined($opts{t}) || defined($opts{x}) || defined($opts{c})) {
+ 					if (defined($opts{x})) {
+ 						open(BLOB, ">$dir$section") || abort("Can't write to $dir$section");

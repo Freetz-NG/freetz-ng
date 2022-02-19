@@ -14,7 +14,6 @@ $(DL_DIR)/$(FITIMG_HOST_SOURCE): | $(DL_DIR)
 fitimg-host-unpacked: $(FITIMG_HOST_DIR)/.unpacked
 $(FITIMG_HOST_DIR)/.unpacked: $(DL_DIR)/$(FITIMG_HOST_SOURCE) | $(TOOLS_SOURCE_DIR) $(UNPACK_TARBALL_PREREQUISITES)
 	$(call UNPACK_TARBALL,$(DL_DIR)/$(FITIMG_HOST_SOURCE),$(TOOLS_SOURCE_DIR))
-	$(SED) -i "/$$section .= '.fit' unless/d" $(FITIMG_HOST_DIR)/fitimg
 	$(call APPLY_PATCHES,$(FITIMG_HOST_MAKE_DIR)/patches,$(FITIMG_HOST_DIR))
 	touch $@
 

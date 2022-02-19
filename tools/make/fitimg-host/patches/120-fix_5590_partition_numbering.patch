@@ -1,0 +1,21 @@
+--- fitimg
++++ fitimg
+@@ -54,14 +54,14 @@
+ 	},
+ 	# HWR 273 - 5590 ARM
+ 	272 => {
+-		'qcaarmv8_HW272_kernel' => 'kernel3.image',
++		'qcaarmv8_HW272_kernel' => 'kernel.image',
+ 		'qcaarmv8_HW272_flat_dt_0' => 'flatdt3_0.image',
+-		'qcaarmv8_HW272_squashFS_filesystem' => 'filesystem3.image',
++		'qcaarmv8_HW272_squashFS_filesystem' => 'filesystem.image',
+ 	},
+ 	# HWR 273 - 5590 PRX
+ 	273 => {
+-		'prxI_HW273_kernel' => 'kernel.image',
+-		'prxI_HW273_squashFS_filesystem' => 'filesystem.image',
++		'prxI_HW273_kernel' => 'kernel1.image',
++		'prxI_HW273_squashFS_filesystem' => 'filesystem1.image',
+ 		'prxI_HW273_flat_dt_0_aon' => 'flatdt_0_aon.image',
+ 		'prxI_HW273_flat_dt_0_pon' => 'flatdt_0_pon.image',
+ 		'prxB_HW0273_kernel' => 'kernel2.image',

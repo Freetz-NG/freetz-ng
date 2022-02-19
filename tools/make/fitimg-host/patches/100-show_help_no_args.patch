@@ -1,0 +1,10 @@
+--- fitimg
++++ fitimg
+@@ -147,6 +147,7 @@
+ 	version() if $ARGV[0] =~ /^(-v|--version)$/;
+ 	release() if $ARGV[0] eq '--release'; # [--public] create release archive - BUMP $VERSION IN SECOND LINE AFTER!
+ }
++else { help() }
+ 
+ # read the arguments: -l -t -x -r -c -s -h -o -d -p require an argument, -n -f and -q do not
+ my %opts;
