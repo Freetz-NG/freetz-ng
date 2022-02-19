@@ -54,6 +54,7 @@ Latest changes
  - Updated tools and hooks:
    * BusyBox 1.34.1
    * fakeroot 1.27-1
+   * fitimg 0.7
    * kconfig 5.16
    * ncurses 6.3
    * pseudo 1.9.0 oe-core 300d757
