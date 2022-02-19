@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_LIB_libexpat" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libexpat.so.1.8.4"
+[ "$EXTERNAL_FREETZ_LIB_libexpat" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libexpat.so.1.8.5"
 
