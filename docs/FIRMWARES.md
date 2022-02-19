@@ -26,7 +26,6 @@ Currently supported devices and firmwares
 ### Not supported devices
 
   * Repeater N/G, 310, 600 v1+v2 & 1160: No LAN ports, so a recovery is not possible.
-  * Repeater 1200 AX, Fritz!Box 5590 & 7510 are not supported yet by [fitimg](https://boxmatrix.info/wiki/FIT-Image#History)
 
 ### Newer firmware versions
 
