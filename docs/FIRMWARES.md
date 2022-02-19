@@ -367,6 +367,8 @@ Currently supported devices and firmwares
   - 75.04.92 rev27423 {INT} (Annex A/B)
   - Alien 7270 v2 {GER+INT}
 
+* __Fritz!Box Fon WLAN 7510 (DEVELOPER)__
+  - 271.07.30 rev94120 {ALL} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
   - 175.07.21 rev82822 {ALL} [PSQ19]
