@@ -358,7 +358,16 @@ determine_() {
 #										X="FREETZ_SYSTEM_TYPE_QCA956x"
 #outp ">mips74" "$X"
 				;;
-		*) echo "ERROR-09" 1>&2 &&	CPU="ERROR $X"			&& X="ERROR: $X" ;;
+		*)
+			Y="$(readelf -A "$unpacked/usr/bin/ctlmgr" | sed -rn 's/.*Tag_CPU_name: "*([^"]*)"*/\1/p')"
+			Z="$(readelf -A "$unpacked/usr/bin/ctlmgr" | sed -rn 's/.*Tag_.*arch: .* for //p' | uniq)"
+			if [ -n "$Y$Z" ]; then
+						CPU="$Y"			&& X="$Z"
+			else
+				echo "ERROR-09" 1>&2 &&	\
+						CPU="ERROR $X"			&& X="ERROR: $X"
+			fi
+			;;
 	esac
 #	[ "$X" != "%" ] && in_b "FREETZ_AVM_HAS_..."
 	[ $DOSHOW -ge 1 ] && outp " type" "$X"
