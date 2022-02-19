@@ -127,7 +127,6 @@ Currently supported devices and firmwares
   - 151.07.01 rev63544 {ALL}
   - 151.07.12 rev72271 {ALL} [MESH18 NL2]
   - 151.07.29 rev92214 {ALL} [PSQ19P2NL4]
-
 * __Fritz!Box 5491 Fiber__
   - 171.07.01 rev64362 {ALL}
   - 171.07.12 rev71193 {ALL} [MESH18 NL2]
@@ -136,6 +135,8 @@ Currently supported devices and firmwares
 * __Fritz!Box 5530 Fiber (DEVELOPER)__
   - 257.07.21 rev83233 {GER} [AXKFW2]
   - 257.07.29 rev93005 {ALL} [PSQ19P2NL4]
+* __Fritz!Box 5590 Fiber (DEVELOPER)__
+  - 272.07.27 rev94541 {ALL} [PSQ19P2NL4] (Inhaus)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 

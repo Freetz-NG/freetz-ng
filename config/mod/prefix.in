@@ -42,6 +42,7 @@ config FREETZ_TYPE_PREFIX
 	default "5490"              if FREETZ_TYPE_5490
 	default "5491"              if FREETZ_TYPE_5491
 	default "5530"              if FREETZ_TYPE_5530
+	default "5590"              if FREETZ_TYPE_5590
 	default "6000"              if FREETZ_TYPE_6000
 	default "6430"              if FREETZ_TYPE_6430
 	default "6490"              if FREETZ_TYPE_6490
