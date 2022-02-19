@@ -517,7 +517,7 @@ menu "Download options"
 		default "FRITZ.Repeater_1200-07.21.image"                                              if FREETZ_TYPE_1200 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Repeater_1200-07.29.image"                                              if FREETZ_TYPE_1200 && FREETZ_TYPE_FIRMWARE_07_25
 		#
-#		default "FRITZ.Repeater_1200_AX-07.29.image"                                           if FREETZ_TYPE_1209 && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Repeater_1200_AX-07.30.image"                                           if FREETZ_TYPE_1209 && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "FRITZ.Powerline_1240E.06.92.image"                                            if FREETZ_TYPE_1240 && FREETZ_TYPE_FIRMWARE_06_9X
 		default "FRITZ.Powerline_1240E.150.07.01.image"                                        if FREETZ_TYPE_1240 && FREETZ_TYPE_FIRMWARE_07_0X
