@@ -20,6 +20,7 @@ case "$1" in
 
 		modreg cgi 'mosquitto' 'mosquitto'
 		modreg daemon $DAEMON
+                modreg file $DAEMON extra 'extra' 0 mosquitto_extra
 
 		modlib_start $MOSQUITTO_ENABLED
 		;;
