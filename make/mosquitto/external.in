@@ -13,6 +13,14 @@ if EXTERNAL_FREETZ_PACKAGE_MOSQUITTO
 			externals the following file(s):
 			 /usr/bin/mosquitto
 
+	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_PASSWD
+		bool "Mosquitto passwd utility"
+		depends on FREETZ_PACKAGE_MOSQUITTO_PASSWD
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/mosquitto_passwd
+
 	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB
 		bool "Mosquitto publish client"
 		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB
