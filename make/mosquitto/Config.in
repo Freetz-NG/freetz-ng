@@ -60,5 +60,12 @@ if FREETZ_PACKAGE_MOSQUITTO
 		help
 			This option enables SSL support for mosquitto.
 
+	config FREETZ_PACKAGE_MOSQUITTO_PASSWD
+		bool "include passwd binary"
+		depends on FREETZ_PACKAGE_MOSQUITTO_WITH_SSL
+		default n
+		help
+			Adds the mosquitto_passwd utility to the image
+
 endif # FREETZ_PACKAGE_MOSQUITTO
 
