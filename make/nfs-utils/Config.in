@@ -14,3 +14,25 @@ config FREETZ_PACKAGE_NFS_UTILS
 		Select nfsd-cgi if you want a configuration web interface.
 		If this does not work, enable replace-kernel!
 
+config FREETZ_PACKAGE_NFSD_V4
+	bool "v4 support for NFS server (EXPERIMENTAL)"
+	depends on FREETZ_PACKAGE_NFS_UTILS && !FREETZ_AVM_HAS_NFSD_BUILTIN
+	select FREETZ_MODULE_NFSD_V4
+	select FREETZ_LIB_libblkid
+	select FREETZ_LIB_libdevmapper
+	select FREETZ_LIB_libevent
+	select FREETZ_LIB_libsqlite3
+	select FREETZ_LIB_libnfsidmap
+	default n
+	help
+		Provides v4 support and utilities for nfsd. Kerberos support is missing.
+		Note:
+		1. NFSv4 has to be enabled with "make kernel-menuconfig".
+		2. The kernel modules auth_rpcgss and oid_registry must be selected manually (in the field
+		"Own kernel modules").
+		3. The mapper daemon idmapd is built but is disabled by default since it needs kerberos for
+		full functionality.
+		4. If you wish to use idmapd anyway then dnotify needs to be enabled using
+		"make kernel-menuconfig". If dnotify does not work (check whether
+		/proc/sys/fs/dir-notify-enabled exists) then try "replace kernel".
+		
