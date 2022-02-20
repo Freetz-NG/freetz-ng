@@ -39,6 +39,9 @@ case "$1" in
 	restart)
 		modlib_restart
 		;;
+	reload)
+		modlib_reload
+		;;
 	status)
 		modlib_status
 		;;

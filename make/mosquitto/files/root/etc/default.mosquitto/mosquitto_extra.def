@@ -1,5 +1,5 @@
 CAPTION="Mosquitto: $(lang de:"Experten Optionen" en:"Advanced options")"
 DESCRIPTION="$(lang de:"Optional. Mosquitto typische Syntax" en:"Optional. Mosquitto typical syntax")"
 CONFIG_FILE='/tmp/flash/mosquitto/mosquitto.extra'
-CONFIG_SAVE='modsave flash; /mod/etc/init.d/rc.mosquitto restart'
+CONFIG_SAVE='modsave flash; pidof mosquitto >/dev/null && /mod/etc/init.d/rc.mosquitto reload'
 CONFIG_TYPE='text'
