@@ -1,81 +1,71 @@
 #!/bin/sh
 
-[ -x "$(which rpcbind 2>/dev/null)" ] && RPCPROG='rpcbind' || RPCPROG='portmap'
 DAEMON=nfsd
-DAEMON_CHECK="$RPCPROG nfsd mountd"
+DAEMON_CHECK="rpcbind nfsd mountd"
 . /etc/init.d/modlibrc
 
 PROCNFSD_DIR=/proc/fs/nfsd
+NFS_DIR=/var/lib/nfs
 
 start() {
-	set -o noglob
-	echo -n 'Starting nfsd ... '
+        set -o noglob
 
-	if [ ! -e /etc/exports ]; then
-		echo "can't open /etc/exports ... failed."
-		exit 1
-	fi
+	echo 'Exporting shares ... '
+	exportfs -av >> /var/log/messages
 
-	modprobe nfsd > /dev/null 2>&1
-
-	# Fill /proc/fs/nfsd
-	mount -t nfsd nfsd $PROCNFSD_DIR > /dev/null 2>&1
-
-	# set max rsize/wsize supported by server to 64kb
-	[ -e $PROCNFSD_DIR/max_block_size ] && echo 65536 > $PROCNFSD_DIR/max_block_size
-
-	local NFS_DIR=/var/lib/nfs
-	mkdir -p $NFS_DIR
-	for file in etab rmtab xtab; do
-		touch $NFS_DIR/$file
-	done
-
-	# rpcbind needs this for xdr
-	if [ "$RPCPROG" == 'rpcbind' ]; then
-		mkdir -p /var/run/rpcbind
-		chown -R nobody.nobody /var/run/rpcbind
-	fi
-
-	"$RPCPROG"
-	exitval1=$?
-	exportfs -r > /dev/null 2>&1
-	exitval2=$?
-	[ "$NFSD_NO_NFS_V4" == "yes" ] && NO_NFS_VERSION_4="-N 4"
-	nfsd $NO_NFS_VERSION_4
-	exitval3=$?
-	[ -n "$NFSD_MOUNTD_PORT" ] && PORTARG="-p $NFSD_MOUNTD_PORT"
+        if [ -n "$NFSD_MOUNTD_PORT" ]
+        then
+                PORTARG="-p $NFSD_MOUNTD_PORT"
+        fi
+	echo "Starting mountd $PORTARG ... "
 	mountd $PORTARG
-	exitval4=$?
+	if [ $? != 0 ]; then echo 'failed.'; exit 1; fi
 
-	if [ "$exitval1" -eq 0 ] && [ "$exitval2" -eq 0 ] \
-		&& [ "$exitval3" -eq 0 ] && [ "$exitval4" -eq 0 ]; then
-		echo 'done.'
-	else
-		echo 'failed.'
-		return 1
-	fi
+        if [ -n "$NFSD_NFSD_PORT" ]
+        then
+                PORTARG="-p $NFSD_NFSD_PORT"
+        else
+                PORTARG="-p 2049"
+        fi
+
+        if [ $NFSD_NO_NFS_V4 = 'yes' ]
+        then
+            NFSDARG="-N 4"
+        fi
+        
+        echo "Starting nfsd -s $PORTARG $NFSDARG ... "
+        nfsd -s $PORTARG $NFSDARG
+	if [ $? != 0 ]; then echo "failed"; exit 1; fi
+
+	echo 'done.'; return 0
 }
 
 stop() {
-	killall mountd >/dev/null 2>&1
+	echo ""   #'Stopping nfsd ... '
+	nfsd 0
 	exitval1=$?
-	killall -9 nfsd > /dev/null 2>&1
-	exitval2=$?
+
+	echo 'Retracting exports ... '
 	/usr/sbin/exportfs -au
+	/usr/sbin/exportfs -f
+	exitval2=$?
+
+	echo 'Stopping mountd ... '
+	killall mountd >/dev/null 2>&1
 	exitval3=$?
-	killall "$RPCPROG" > /dev/null 2>&1
-	exitval4=$?
-	umount $PROCNFSD_DIR > /dev/null 2>&1
-	[ "$exitval1" -eq 0 -a "$exitval2" -eq 0 -a "$exitval3" -eq 0 -a "$exitval4" -eq 0 ] && return 0
+
+	[ "$exitval1" -eq 0 -a "$exitval2" -eq 0 -a "$exitval3" -eq 0 ] && \
+		return 0
 }
 
 reload() {
-	/usr/sbin/exportfs -r > /dev/null 2>&1
+    /usr/sbin/exportfs -r > /dev/null 2>&1
+    echo "Reloading exports ... "
 }
 
 case $1 in
 	""|load)
-		[ -d "/tmp/flash/nfsd" ] || mkdir -p /tmp/flash/nfsd
+	        [ -d "/tmp/flash/nfsd" ] || mkdir -p /tmp/flash/nfsd
 		ln -fs /tmp/flash/nfsd/exports /var/tmp/exports
 
 		# portmap/rpcbind needs this
@@ -87,14 +77,38 @@ case $1 in
 		modreg file nfsd hosts_deny 'hosts.deny' 1 "hosts_deny"
 		modreg file nfsd exports 'exports' 1 "exports"
 
+#		echo -n 'Inserting nfsd module ... '
+
+		modprobe nfsd > /dev/null 2>&1
+		mount -t nfsd nfsd $PROCNFSD_DIR > /dev/null 2>&1
+		[ -e $PROCNFSD_DIR/max_block_size ] && \
+		    echo 65536 > $PROCNFSD_DIR/max_block_size
+
+#		echo -n 'Starting rpcbind ... '
+		if [ -z $(pidof rpcbind) ]
+		then
+	            mkdir -p $NFS_DIR/rpc_pipefs
+		    mount -t rpc_pipefs sunrpc $NFS_DIR/rpc_pipefs \
+			  > /dev/null 2>&1
+		    for file in etab rmtab xtab; do
+			  touch $NFS_DIR/$file
+		    done
+		    mkdir -p /var/run/rpcbind
+		    chown -R nobody.nobody /var/run/rpcbind
+		    rpcbind
+		fi
+		
+		#Waiting for all external devices to mount:
+		sleep 60
+
 		modlib_start $NFSD_ENABLED
 		;;
+	
 	unload)
 		modunreg file nfsd
 		modunreg daemon $DAEMON
 		modunreg cgi nfsd
 		modlib_stop
-		rmmod nfsd lock lockd grace sunrpc exportfs > /dev/null 2>&1
 		;;
 	start)
 		modlib_start

@@ -2,13 +2,14 @@ comment "NFSD CGI (not available, needs kernel modules)"
 	depends on !(FREETZ_AVM_HAS_NFSD_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE)
 
 config FREETZ_PACKAGE_NFSD_CGI
-	bool "NFSD CGI 0.1"
+	bool "NFSD CGI 0.2"
 	depends on FREETZ_AVM_HAS_NFSD_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE
 	select FREETZ_PACKAGE_NFS_UTILS
 	select FREETZ_PACKAGE_PORTMAP if FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
 	select FREETZ_PACKAGE_RPCBIND if !FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
 	default n
 	help
-		Configuration frontend to NFS-server
-		If this does not work, enable replace-kernel!
+		Configuration frontend to NFS-server. Covers also NFSv4-support
+		if enabled for nfs-utils. In case of problems try replacing the kernel.
+		
 
