@@ -4,15 +4,16 @@ $(PKG)_SOURCE_MD5:=27cfb22f1ee85e51b863b71858a97da0
 $(PKG)_SITE:=https://fedorapeople.org/~steved/libnfsidmap/$($(PKG)_VERSION)
 $(PKG)_SHLIB_VERSION:=1.0.0
 
-$(PKG)_LIBNAME=$(pkg).so
-$(PKG)_BINARY:=$($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
-$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
-$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME)
+$(PKG)_LIBNAME := $(pkg).so
+$(PKG)_BINARY := $($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
+$(PKG)_STAGING_BINARY := $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
+$(PKG)_TARGET_BINARY := $($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME)
 
-# zlib is needed only for tests, pretend not to have it to avoid the run-time dependency
-#$(PKG)_CONFIGURE_ENV += ac_cv_header_zlib_h=no
+LIBNFSIDMAP_PLUGIN_ADDON_DIR := $(ADDON_DIR)/$(pkg)-plugin/root$(FREETZ_LIBRARY_DIR)/$(pkg)
+LIBNFSIDMAP_PLUGIN_PKG := $(ADDON_DIR)/$(pkg)-plugin.pkg
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-static
+$(PKG)_CONFIGURE_OPTIONS += --with-pluginpath=$(FREETZ_LIBRARY_DIR)/$(pkg)
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -25,12 +26,12 @@ $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 	$(SUBMAKE) -C $(LIBNFSIDMAP_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install-strip
-	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libnfsidmap.la \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libnfsidmap.pc
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
-	$(INSTALL_LIBRARY_STRIP_WILDCARD_BEFORE_SO)
+	$(INSTALL_LIBRARY_STRIP)
+	echo libnfsidmap-plugin > $(LIBNFSIDMAP_PLUGIN_PKG); \
+	mkdir -p $(LIBNFSIDMAP_PLUGIN_ADDON_DIR)
+	cp -a $(dir $<)libnfsidmap/*.so  $(LIBNFSIDMAP_PLUGIN_ADDON_DIR)
 
 $(pkg): $($(PKG)_STAGING_BINARY)
 
@@ -41,9 +42,10 @@ $(pkg)-clean:
 	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libnfsidmap* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libnfsidmap.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/nfsidmap.h
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/nfsidmap.h \
+		$(ADDON_DIR)/$(pkg)*
 
 $(pkg)-uninstall:
-	$(RM) $(LIB_TARGET_DIR)/libnfsidmap*.so*
+	$(RM) -r $(LIB_TARGET_DIR)/libnfsidmap*
 
 $(PKG_FINISH)
