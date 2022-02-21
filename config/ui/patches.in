@@ -1298,7 +1298,7 @@ config FREETZ_PATCH_MODFS_BOOT_MANAGER
 	bool "Add boot manager"
 	depends on FREETZ_AVM_VERSION_06_5X_MIN
 	depends on FREETZ_AVM_VERSION_07_25_MAX
-	depends on FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE
+	depends on FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE && !FREETZ_AVM_HAS_FWLAYOUT_6
 	default n
 	help
 		Extends the "reboot" page of FRITZ!OS to select system version and branding.

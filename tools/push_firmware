@@ -436,7 +436,7 @@ You could use '-ram 0' to detect the size and use the maximum. The value AVM use
 hardcoded into the recovery file and does not always use all available memory. A smaller
 value is okay as long as the image in the ram has enough ram to boot and flash itsef.
 For Fritzbox 5490 and Repeater 3000 it is known that 128MB are to less, use: '-ram 256'
-The Repeater 6000 you have to use: '-ram 1024 -map 0x40000000'
+To flash the Repeater 6000 you have to use like avm: '-ram 1024 -map 0x40000000'
 With Broadcom devices (7581+7582) you have to use like avm: '-ram 512 -map 0x00000000'
 
 EOX

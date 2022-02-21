@@ -101,7 +101,7 @@ Currently supported devices and firmwares
   - 155.07.01 rev61489 {ALL}
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
   - 155.07.29 rev92647 {ALL} [PSQ19P2NL4]
-* __Fritz!Box 4060 (DEVELOPER)__
+* __Fritz!Box 4060 (UNTESTED)__
   - 261.07.29 rev92827 {ALL} [PSQ19P2NL4]
 
 ### Fritz!Box Fon (50xx/51xx)
@@ -132,10 +132,10 @@ Currently supported devices and firmwares
   - 171.07.12 rev71193 {ALL} [MESH18 NL2]
   - 171.07.29 rev92216 {ALL} [PSQ19P2NL4]
 
-* __Fritz!Box 5530 Fiber (DEVELOPER)__
+* __Fritz!Box 5530 Fiber (UNTESTED)__
   - 257.07.21 rev83233 {GER} [AXKFW2]
   - 257.07.29 rev93005 {ALL} [PSQ19P2NL4]
-* __Fritz!Box 5590 Fiber (DEVELOPER)__
+* __Fritz!Box 5590 Fiber (UNTESTED)__
   - 272.07.27 rev94541 {ALL} [PSQ19P2NL4] (Inhaus)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
@@ -367,7 +367,7 @@ Currently supported devices and firmwares
   - 75.04.92 rev27423 {INT} (Annex A/B)
   - Alien 7270 v2 {GER+INT}
 
-* __Fritz!Box Fon WLAN 7510 (DEVELOPER)__
+* __Fritz!Box Fon WLAN 7510 (UNTESTED)__
   - 271.07.30 rev94120 {ALL} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
@@ -381,7 +381,7 @@ Currently supported devices and firmwares
   - 164.07.13 rev75481 {INT} [MESH18 NL3]
   - 164.07.21 rev82823 {ALL} [PSQ19]
   - 164.07.29 rev92062 {ALL} [PSQ19P2NL4]
-* __Fritz!Box Fon WLAN 7530 AX (DEVELOPER)__
+* __Fritz!Box Fon WLAN 7530 AX (UNTESTED)__
   - 256.07.22 rev85878 {ALL} [PSQ19]
   - 256.07.29 rev92446 {ALL} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7560__
@@ -486,7 +486,7 @@ Currently supported devices and firmwares
   - 172.07.14 rev73941 {ALL} [MESH18 NL4]
   - 172.07.21 rev83014 {ALL} [PSQ19]
   - 172.07.29 rev93267 {ALL} [PSQ19P2NL4]
-* __Fritz!Repeater 1200 AX (DEVELOPER)__
+* __Fritz!Repeater 1200 AX (UNTESTED)__
   - 268.07.30 rev93528 {ALL} [PSQ19P2NL4]
 * __Fritz!Repeater 2400 (UNTESTED)__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
@@ -497,7 +497,7 @@ Currently supported devices and firmwares
   - 174.07.14 rev73940 {ALL} [MESH18 NL4]
   - 174.07.21 rev83015 {ALL} [PSQ19]
   - 174.07.29 rev93268 {ALL} [PSQ19P2NL4]
-* __Fritz!Repeater 6000 (DEVELOPER)__
+* __Fritz!Repeater 6000__
   - 253.07.29 rev93257 {ALL} [PSQ19P2NL4]
 
 ### T-Com derivatives

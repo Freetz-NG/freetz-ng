@@ -835,6 +835,7 @@ determine_() {
 	X="$(sed -rn 's/^firmware layout v([0-9])/\1/p' "$unpacked.nfo")"
 	[ -z "$X" ] && echo "ERROR-14" 1>&2 && X=ERROR
 	[ "$X" == "3" -o "$X" == "4" -o "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE"
+	[ "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_HAS_FWLAYOUT_$X"
 	X="$(echo $X | sed 's/1/&-old/;s/2/&-most/;s/3/&-nand/;s/4/&-docsis/;s/5/&-uimg/;s/6/&-fit/')"
 	[ $DOSHOW -ge 1 ] && outp "layout" "v$X"
 

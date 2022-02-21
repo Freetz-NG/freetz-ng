@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libexpat
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libexpat.so.1.8.5
+		 ${FREETZ_LIBRARY_DIR}/libexpat.so.1.8.6
 
