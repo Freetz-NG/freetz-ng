@@ -1,7 +1,70 @@
-# NFSD CGI 0.1
- - Package: [master/make/nfsd-cgi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/nfsd-cgi/)
+# NFSD CGI 0.2
 
-NFSD_CGI is the web-interface for the NFSD (Server) on Freetz.
+NFSD_CGI is the web-interface for the NFSD (Server) on Freetz. It supports
+nfs versions 3 and 4.
+
+## Changes with V4 support
+
+If NFSv4 support is selected then `nsfd.ko` is compiled with "--nfsv4-enabled" (the default).
+Moreover, the v4-versions of the tools
+```
+exportfs, mountd, nfsd, showmount, blkmapd, idmapd, nfsdcltrack, nfsstat, sm-notify, statd
+```
+are being created. Only the first three are
+essential. Most notable of the others are `showmount` and `nfsstat` which provide useful
+information about the nfs mounts and `idmapd` which is covered further below. Missing is the
+service `gssd` since it needs the `kerberos` library to build.
+
+### exports
+
+The principal novelty is that v4 requires the use of a pseudoroot, i.e., a directory of which
+all shared directories are subdirectories. This is often the case on the nose. Assume e.g. that
+there is is an external harddisk attached to the box with two partitions which are to be shared.
+Let them be mounted as `/ftp/BACKUPS` and `/ftp/MEDIA`. With nsfv4 they are exported by writing
+the following lines into "exports":
+```
+/ftp *(fsid=0,rw)
+/ftp/BACKUPS *(rw)
+/ftp/MEDIA *(rw)
+```
+It is mandatory that the pseudoroot `/ftp` (a link to `/var/media/ftp`) has to be
+exported and that it is distinguished by the option `fsid=0`. On the client, the shares are imported
+without including the pseudoroot, e.g.,
+```
+mount -t nfs4 -o rw server-ip:/BACKUPS /some_dir
+mount -t nfs4 -o rw server-ip:/MEDIA /another_dir
+```
+If there is no natural pseudoroot then one can create one using `mount --bind` operations.
+
+### ports
+
+The new interface allows to set the ports of mountd and nfsd.
+
+The port of mountd is only relevant for v3. By default it is chosen randomly. You can set a
+fixed port if, e.g., the server is behind a firewall.
+
+The nfsd port defaults to 2049. Change this value if port 2049 is already used by another
+service. For v4, you have to inform all clients of the change using the port=nnnn option.
+
+Remark: In the past (around 2010) there seem to have been problems with multid or ctlmgr
+using 2049. Therefore, `/etc/services` of freetz-ng sets the default nfs port to 2047. Since
+this appears to be outdated, the WebIf sets the default port back to 2049. So if your client is also
+run by freetz-ng then make sure that client and server use the same port.
+
+### idmapd
+
+The service `idmapd` translates usernames on the client to usernames on the server and vice versa.
+This is useful if the uid of a user is not the same on clients and server. Without `kerberos` (option `sec=sys`),
+permissions are not translated, though. Since this renders the service quite useless it is not loaded
+by default and if it were loaded its functionality would be disabled. If you still want to try it out
+follow these steps: Enable `dnotify` in kernel-menuconfig and select "replace kernel" in menuconfig. Then
+`idmapd` should load correctly (test it with `idmapd -fvvv`) but translation is still disabled. To enable it do
+```
+echo "N" > /sys/module/nfsd/parameters/nfs4_disable_idmapping
+```
+Same on the client with "nfsd" replaced by "nfs". The configuration file is `/etc/idmapd.conf`.
+
+## Previous info for v3
 
 Some observations:
 Currently using NFS with a 7390 using Freetz-trunk revision 11466.
