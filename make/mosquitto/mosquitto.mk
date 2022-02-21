@@ -16,8 +16,8 @@ $(PKG)_TARGET_BINARY_CLIENT_SUB:=$($(PKG)_DEST_DIR)/usr/bin/mosquitto_sub
 $(PKG)_LIB_BINARY:=$($(PKG)_DIR)/lib/libmosquitto.so.1
 $(PKG)_LIB_TARGET_BINARY:=$($(PKG)_DEST_LIBDIR)/libmosquitto.so.1
 
-$(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_BROKER),,usr/bin/mosquitto etc/default.mosquitto/mosquitto.cfg etc/default.mosquitto/mosquitto_conf etc/init.d/rc.mosquitto usr/lib/cgi-bin/mosquitto.cgi)
-$(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_PASSWD),,mosquitto_passwd)
+$(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_BROKER),,usr/bin/mosquitto etc/default.mosquitto/mosquitto.cfg etc/default.mosquitto/mosquitto_conf etc/default.mosquitto/mosquitto_extra.def etc/init.d/rc.mosquitto usr/lib/cgi-bin/mosquitto.cgi)
+$(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_PASSWD),,usr/bin/mosquitto_passwd)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB),,usr/bin/mosquitto_pub)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB),,usr/bin/mosquitto_sub)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_MOSQUITTO_CLIENTS),,$(FREETZ_LIBRARY_DIR)/libmosquitto.so.1)
@@ -62,7 +62,7 @@ $($(PKG)_LIB_TARGET_BINARY): $($(PKG)_LIB_BINARY)
 
 $(pkg):
 
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY_BROKER) $($(PKG)_TARGET_BINARY_MOSQUITTO_PASSWD) $($(PKG)_TARGET_BINARY_CLIENT_PUB) $($(PKG)_TARGET_BINARY_CLIENT_SUB) $($(PKG)_LIB_TARGET_BINARY)
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY_BROKER) $(if $(FREETZ_PACKAGE_MOSQUITTO_PASSWD),$($(PKG)_TARGET_BINARY_MOSQUITTO_PASSWD)) $($(PKG)_TARGET_BINARY_CLIENT_PUB) $($(PKG)_TARGET_BINARY_CLIENT_SUB) $($(PKG)_LIB_TARGET_BINARY)
 
 $(pkg)-clean:
 	-$(SUBMAKE) $(MOSQUITTO_MAKE_OPTIONS) clean
