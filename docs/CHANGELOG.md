@@ -72,7 +72,7 @@ Latest changes
    * davfs2 1.5.2/1.6.1
    * expat 2.4.6
    * git 2.34.1
-   * HAProxy 2.5.3
+   * HAProxy 2.5.4
    * iksemel 3.1.1
    * libexif 0.6.24
    * libgcrypt 1.9.4

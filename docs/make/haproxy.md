@@ -1,4 +1,4 @@
-# HAProxy 2.5.3
+# HAProxy 2.5.4
  - Homepage: [https://www.haproxy.org/](https://www.haproxy.org/)
  - Manpage: [https://linux.die.net/man/1/haproxy](https://linux.die.net/man/1/haproxy)
  - Changelog: [https://www.haproxy.org/download/2.5/src/CHANGELOG](https://www.haproxy.org/download/2.5/src/CHANGELOG)
