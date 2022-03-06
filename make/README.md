@@ -941,7 +941,7 @@ Index:
      - [Features](../docs/make/tinc.md#features)
      - [Verwendete Bibliotheken](../docs/make/tinc.md#verwendete-bibliotheken)
 
-  * **[Tinyproxy 1.8.4](../docs/make/tinyproxy.md)<a id='tinyproxy'></a>**<br>
+  * **[Tinyproxy 1.11.0](../docs/make/tinyproxy.md)<a id='tinyproxy'></a>**<br>
     Tinyproxy is a lightweight HTTP and HTTPS proxy. http://tinyproxy.sourceforge.net
      - [Proxy auto-config (pac)](../docs/make/tinyproxy.md#proxy-auto-config-pac)
      - [URL blocking](../docs/make/tinyproxy.md#url-blocking)
