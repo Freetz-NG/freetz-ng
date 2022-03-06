@@ -1,6 +1,6 @@
 --- src/tool_operate.c
 +++ src/tool_operate.c
-@@ -2614,9 +2614,11 @@
+@@ -2592,9 +2592,11 @@
        /* Check if we were asked for the help */
        if(res == PARAM_HELP_REQUESTED)
          tool_help(global->help_category);

@@ -1,8 +1,8 @@
 --- configure
 +++ configure
-@@ -24241,7 +24241,9 @@
-    eval "export $library_path_var"
-    if test "$cross_compiling" = yes
+@@ -24246,7 +24246,9 @@
+      darwin*)
+       if test "$cross_compiling" = yes
  then :
 +     if test "${curl_cv_writable_argv+set}" != set; then :
    curl_cv_writable_argv=cross

@@ -68,7 +68,7 @@ Latest changes
    * CA-bundle 2022-02-01
    * CCID driver 1.4.36
    * cifs-utils 6.14
-   * Curl 7.81.0
+   * Curl 7.82.0
    * davfs2 1.5.2/1.6.1
    * expat 2.4.6
    * git 2.34.1
