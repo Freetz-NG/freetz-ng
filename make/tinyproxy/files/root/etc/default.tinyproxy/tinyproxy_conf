@@ -26,10 +26,6 @@ if echo "$BUILDIN_SUPPORT" | grep -q -i upstream ; then
 	[ -n "${TINYPROXY_NOUPSTREAM// /}" ] && echo "No Upstream $TINYPROXY_NOUPSTREAM" | sed 's/[[:space:]]*;[[:space:]]*/;No Upstream /g' | tr ';' '\n'
 fi
 [ -n "${TINYPROXY_MAXCLIENTS// /}" ] && echo "MaxClients $TINYPROXY_MAXCLIENTS"
-[ -n "${TINYPROXY_MINSPARESERVERS// /}" ] && echo "MinSpareServers $TINYPROXY_MINSPARESERVERS"
-[ -n "${TINYPROXY_MAXSPARESERVERS// /}" ] && echo "MaxSpareServers $TINYPROXY_MAXSPARESERVERS"
-[ -n "${TINYPROXY_STARTSERVERS// /}" ] && echo "StartServers $TINYPROXY_STARTSERVERS"
-[ -n "${TINYPROXY_MAXREQUESTSPERCHILD// /}" ] && echo "MaxRequestsPerChild $TINYPROXY_MAXREQUESTSPERCHILD"
 [ -n "${TINYPROXY_ALLOW// /}" ] && echo "Allow $TINYPROXY_ALLOW" | sed 's/[[:space:]]*;[[:space:]]*/;Allow /g' | tr ';' '\n'
 [ -n "${TINYPROXY_DENY// /}" ] && echo "Deny $TINYPROXY_DENY" | sed 's/[[:space:]]*;[[:space:]]*/;Deny /g' | tr ';' '\n'
 [ -n "${TINYPROXY_ADDHEADER_NAME// /}" ] && echo "AddHeader \"$TINYPROXY_ADDHEADER_NAME\" \"$TINYPROXY_ADDHEADER_VALUE\""
