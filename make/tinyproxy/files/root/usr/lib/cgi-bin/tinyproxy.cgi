@@ -33,7 +33,7 @@ cat << EOF
 </tr>
 <tr>
 <td>Timeout:</td><td><input id="id_timeout" type="text" size="8" name="timeout" value="$TINYPROXY_TIMEOUT"></td>
-<td>MaxClients:</td><td><input id="id_maxclients" type="text" size="8" name="maxclients" value="$TINYPROXY_MAXCLIENTS"></td>
+<td>&nbsp; &nbsp;</td><td>MaxClients:</td><td><input id="id_maxclients" type="text" size="8" name="maxclients" value="$TINYPROXY_MAXCLIENTS"></td>
 </tr>
 <tr>
 <td>ViaProxyName:</td><td><input id="id_viaproxyname" type="text" size="8" name="viaproxyname" value="$TINYPROXY_VIAPROXYNAME"></td>
