@@ -18,7 +18,7 @@ $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_TINYPROXY_WITH_TRANSPARENT_PRO
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_TINYPROXY_WITH_FILTER),--enable-filter,--disable-filter)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_TINYPROXY_WITH_UPSTREAM),--enable-upstream,--disable-upstream)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_TINYPROXY_WITH_REVERSE),--enable-reverse,--disable-reverse)
-+$(PKG)_CONFIGURE_OPTIONS += --disable-manpage-support
+$(PKG)_CONFIGURE_OPTIONS += --disable-manpage-support
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
