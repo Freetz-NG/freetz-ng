@@ -11,7 +11,7 @@
 
 [ -n "$COLLECTD_GRAPH_SCRIPT" ] && . $COLLECTD_GRAPH_SCRIPT
 
-HOSTS_DIR=$(cat /tmp/flash/collectd/collectd.conf | sed -e 's/^[ \t]*//' -n -e 's/DataDir *\"\(.*\)\"/\1/p')
+HOSTS_DIR=$(cat /tmp/flash/collectd/collectd.conf | sed -e 's/^[ \t]*//' -n -e 's/^DataDir *\"\(.*\)\"/\1/p')
 RRDTOOL=$(which rrdtool)
 
 #Error message will be printed later
