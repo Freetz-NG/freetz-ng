@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 9.11.36)
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_SHA256:=c953fcb6703b395aaa53e65ff8b2869b69a5303dd60507cba2201305e1811681
+$(call PKG_INIT_BIN, 9.16.25)
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
+$(PKG)_SOURCE_SHA1:=3fcb01831712b05735b51519032e0e502b6e35ff
 $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.isc.org/isc/bind9/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.isc.org/bind/
 ### MANPAGE:=https://bind9.readthedocs.io/en/latest/
@@ -26,14 +26,14 @@ $(PKG)_EXCLUDED+=$(if $(FREETZ_PACKAGE_BIND_NAMED),,usr/lib/bind usr/lib/cgi-bin
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure) 
 
 $(PKG)_CONFIGURE_OPTIONS += BUILD_CC="$(HOSTCC)"
-$(PKG)_CONFIGURE_OPTIONS += --disable-shared
-$(PKG)_CONFIGURE_OPTIONS += --enable-static
-$(PKG)_CONFIGURE_OPTIONS += --enable-atomic=no
+#$(PKG)_CONFIGURE_OPTIONS += --disable-shared
+#$(PKG)_CONFIGURE_OPTIONS += --enable-static
+$(PKG)_CONFIGURE_OPTIONS += --prefix=$(TARGET_TOOLCHAIN_STAGING_DIR)
 $(PKG)_CONFIGURE_OPTIONS += --enable-epoll=no
 $(PKG)_CONFIGURE_OPTIONS += --with-lmdb=no
 $(PKG)_CONFIGURE_OPTIONS += --with-randomdev="/dev/random"
-$(PKG)_CONFIGURE_OPTIONS += --with-libtool
-$(PKG)_CONFIGURE_OPTIONS += --without-openssl
+$(PKG)_CONFIGURE_OPTIONS += --without-libtool
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_BIND_OPENSSL),--with-openssl,--without-openssl)
 $(PKG)_CONFIGURE_OPTIONS += --without-python
 $(PKG)_CONFIGURE_OPTIONS += --without-gssapi
 $(PKG)_CONFIGURE_OPTIONS += --disable-isc-spnego
@@ -54,7 +54,6 @@ $(PKG)_MAKE_FLAGS += EXTRA_CFLAGS="-ffunction-sections -fdata-sections" EXTRA_BI
 
 $(PKG)_EXPORT_LIB_DIR := $(FREETZ_BASE_DIR)/$(BIND_DIR)/_exportlib
 
-
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -67,6 +66,7 @@ $($(PKG)_EXPORT_LIB_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(SUBMAKE1) -C $(BIND_DIR)/lib $(BIND_MAKE_FLAGS) \
 		DESTDIR=$(BIND_EXPORT_LIB_DIR) \
 		install
+	cp -r $(BIND_EXPORT_LIB_DIR)/usr/include/ $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/
 	@touch $@
 
 $($(PKG)_BINARIES_BUILD_DIR_sbin) $($(PKG)_BINARIES_BUILD_DIR_bin): $($(PKG)_DIR)/.compiled

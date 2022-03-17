@@ -1,6 +1,9 @@
 config FREETZ_PACKAGE_BIND
-	bool "BIND 9.11.36"
+	bool "BIND 9.16.25"
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libuv
+	select FREETZ_LIB_libcap
+	select FREETZ_LIB_libatomic
 	default n
 	help
 		BIND is an implementation of the Domain Name System (DNS) protocols.
@@ -47,6 +50,13 @@ if FREETZ_PACKAGE_BIND
 		default n
 		help
 			Adds the dig DNS lookup utility.
+
+	config FREETZ_PACKAGE_BIND_OPENSSL
+		bool "Enable OpenSSL support"
+		select FREETZ_PACKAGE_OPENSSL
+		default n
+		help
+			Compile bind with openssl support for verification of TSIG / DoT
 
 endif # FREETZ_PACKAGE_BIND
 
