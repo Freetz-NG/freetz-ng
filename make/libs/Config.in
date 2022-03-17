@@ -177,6 +177,8 @@ endmenu ### "XML & XSLT"
 
 source "make/libs/attr/Config.in"
 source "make/libs/libcap/Config.in"
+source "make/libs/libatomic/Config.in"
+source "make/libs/libev/Config.in"
 source "make/dbus/Config.in.libs"
 source "make/libs/libconfig/Config.in"
 source "make/libs/libdaemon/Config.in"

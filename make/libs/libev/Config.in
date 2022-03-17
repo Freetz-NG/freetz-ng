@@ -11,4 +11,3 @@ config FREETZ_LIB_libev
 		It uses a priority queue to manage timers and uses arrays as fundamental
 		data structure. It has no artificial limitations on the number
 		of watchers waiting for the same event.
-
