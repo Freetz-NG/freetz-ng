@@ -358,7 +358,16 @@ determine_() {
 #										X="FREETZ_SYSTEM_TYPE_QCA956x"
 #outp ">mips74" "$X"
 				;;
-		*) echo "ERROR-09" 1>&2 &&	CPU="ERROR $X"			&& X="ERROR: $X" ;;
+		*)
+			Y="$(readelf -A "$unpacked/usr/bin/ctlmgr" | sed -rn 's/.*Tag_CPU_name: "*([^"]*)"*/\1/p')"
+			Z="$(readelf -A "$unpacked/usr/bin/ctlmgr" | sed -rn 's/.*Tag_.*arch: .* for //p' | uniq)"
+			if [ -n "$Y$Z" ]; then
+						CPU="$Y"			&& X="$Z"
+			else
+				echo "ERROR-09" 1>&2 &&	\
+						CPU="ERROR $X"			&& X="ERROR: $X"
+			fi
+			;;
 	esac
 #	[ "$X" != "%" ] && in_b "FREETZ_AVM_HAS_..."
 	[ $DOSHOW -ge 1 ] && outp " type" "$X"
@@ -826,6 +835,7 @@ determine_() {
 	X="$(sed -rn 's/^firmware layout v([0-9])/\1/p' "$unpacked.nfo")"
 	[ -z "$X" ] && echo "ERROR-14" 1>&2 && X=ERROR
 	[ "$X" == "3" -o "$X" == "4" -o "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE"
+	[ "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_HAS_FWLAYOUT_$X"
 	X="$(echo $X | sed 's/1/&-old/;s/2/&-most/;s/3/&-nand/;s/4/&-docsis/;s/5/&-uimg/;s/6/&-fit/')"
 	[ $DOSHOW -ge 1 ] && outp "layout" "v$X"
 

@@ -17,7 +17,6 @@ sec_end
 fi
 
 sec_begin "$(lang de:"Einstellungen" en:"Configuration")"
-cgi_print_textline_p "interface" "$WIREGUARD_INTERFACE" 5/10 "$(lang de:"Netzwierkschnittstelle" en:"Interface name"): "
 cgi_print_textline_p "mtu" "$WIREGUARD_MTU" 5/10 "$(lang de:"MTU" en:"MTU"): "
 cgi_print_textline_p "ip" "$WIREGUARD_IP" 20/255 "$(lang de:"IPv4-Adresse" en:"IPv4 address"): "
 cgi_print_textline_p "ip6" "$WIREGUARD_IP6" 35/255 "$(lang de:"IPv6-Adresse" en:"IPv6 address"): "

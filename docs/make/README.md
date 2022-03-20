@@ -34,7 +34,7 @@ Index:
   * **[ACME.sh 3.0.2 (letsencrypt)](acme.md)<a id='acme'></a>**<br>
     A pure Unix shell script implementing ACME client protocol.
 
-  * **[apache2: Apache HTTP Server 2.4.52 (binary only)](apache2.md)<a id='apache2'></a>**<br>
+  * **[apache2: Apache HTTP Server 2.4.53 (binary only)](apache2.md)<a id='apache2'></a>**<br>
     The Apache httpd server
 
   * **<u>asterisk-chan-capi: chan_capi: ISDN API 2.0 module for asterisk</u><a id='asterisk-chan-capi'></a>**<br>
@@ -100,13 +100,13 @@ Index:
 
 ### C
 
-  * **[CA-bundle 2022-02-01](ca-bundle.md)<a id='ca-bundle'></a>**<br>
+  * **[CA-bundle 2022-03-18](ca-bundle.md)<a id='ca-bundle'></a>**<br>
     The Mozilla CA certificate store in PEM format, see https://www.curl.se/docs/caextract.html Size of uncompressed file is about 250 KB.
 
   * **[Callmonitor 1.20.9-git](callmonitor.md)<a id='callmonitor'></a>**<br>
     Callmonitor enables you to perform arbitrary actions upon incoming calls on your AVM Fritz!Box (e.g., to send notifications to your favorite set-top box, to wake up your PC, or to send you a mail when you have missed a call).
 
-  * **<u>CCID driver 1.4.36</u><a id='ccid'></a>**<br>
+  * **[CCID 1.5.0](ccid.md)<a id='ccid'></a>**<br>
     ccid provides the source code for a generic USB CCID (Chip/Smart Card Interface Devices) driver and ICCD (Integrated Circuit(s) Card Devices).
 
   * **[Checkmaild 0.4.7](checkmaild.md)<a id='checkmaild'></a>**<br>
@@ -133,7 +133,7 @@ Index:
   * **[Ctorrent dnh3.3.2 (binary only)](ctorrent.md)<a id='ctorrent'></a>**<br>
     CTorrent is a BitTorrent client written in the C programming language, known to be a very robust and mature programming language, which produces fast and optimized application.
 
-  * **[Curl 7.81.0 (binary only)](curl.md)<a id='curl'></a>**<br>
+  * **[Curl 7.82.0 (binary only)](curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
   * **<u>CurlFtpFS 0.9.2</u><a id='curlftpfs'></a>**<br>
@@ -248,7 +248,7 @@ Index:
 
 ### H
 
-  * **[HAProxy 2.5.0](haproxy.md)<a id='haproxy'></a>**<br>
+  * **[HAProxy 2.5.4](haproxy.md)<a id='haproxy'></a>**<br>
     HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications.
 
   * **[haserl 0.9.35 (binary only)](haserl.md)<a id='haserl'></a>**<br>
@@ -347,7 +347,7 @@ Index:
 
 ### L
 
-  * **[LCD4linux 38ef448-git](lcd4linux.md)<a id='lcd4linux'></a>**<br>
+  * **[LCD4linux e2cfdc5-git](lcd4linux.md)<a id='lcd4linux'></a>**<br>
     LCD4Linux is a small program that grabs information from the kernel and some subsystems and displays it on an external liquid crystal display.
 
   * **<u>lftp 4.8.4 (binary only)</u><a id='lftp'></a>**<br>
@@ -473,13 +473,13 @@ Index:
   * **[Openntpd 3.9p1](openntpd.md)<a id='openntpd'></a>**<br>
     OpenNTPD is a FREE, easy to use implementation of the Network Time Protocol. This package automatically removes AVM'S chronyd if necessary.
 
-  * **[OpenSSH 8.8p1](openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 8.9p1](openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
-  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1m/3.0.1 (binary only)](openssl.md)<a id='openssl'></a>**<br>
+  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1n/3.0.2 (binary only)](openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
-  * **[OpenVPN 2.4.11/2.5.5](openvpn.md)<a id='openvpn'></a>**<br>
+  * **[OpenVPN 2.4.12/2.5.6](openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
 
   * **[owfs 2.7p32 (binary only)](owfs.md)<a id='owfs'></a>**<br>
@@ -490,7 +490,7 @@ Index:
   * **<u>p7zip 16.02 (binary only)</u><a id='p7zip'></a>**<br>
     7-Zip  is  a  file  archiver  with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better  than ratio in ZIP format.
 
-  * **<u>PCSC-lite (pcscd) 1.9.4 (binary only)</u><a id='pcsc-lite'></a>**<br>
+  * **[PCSC-lite 1.9.5 (binary only)](pcsc-lite.md)<a id='pcsc-lite'></a>**<br>
     The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a very small form factor for communicating to smart cards and readers.
 
   * **<u>phonebook-tools: Phone book tools 0.0</u><a id='phonebook-tools'></a>**<br>
@@ -707,8 +707,8 @@ Index:
   * **[Tinc 1.0.36/1.1pre18](tinc.md)<a id='tinc'></a>**<br>
     Tinc is a Virtual Private Network (VPN) daemon that uses tunneling and encryption to create a secure private network between hosts on the Internet.
 
-  * **[Tinyproxy 1.8.4](tinyproxy.md)<a id='tinyproxy'></a>**<br>
-    Tinyproxy is a lightweight HTTP and HTTPS proxy. http://tinyproxy.sourceforge.net
+  * **[Tinyproxy 1.11.0](tinyproxy.md)<a id='tinyproxy'></a>**<br>
+    Tinyproxy is a lightweight HTTP and HTTPS proxy.
 
   * **<u>tmux 2.5 (binary only)</u><a id='tmux'></a>**<br>
     tmux, a BSD-licensed alternative to GNU screen. Uses ncurses.

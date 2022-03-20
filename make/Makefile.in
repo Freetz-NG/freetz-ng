@@ -70,12 +70,19 @@ MAKE_ENV+=FREETZ_LIBRARY_DIR="$(FREETZ_LIBRARY_DIR)"
 
 TARGET_CFLAGS_HW_CAPABILITIES :=
 ifeq ($(strip $(FREETZ_TARGET_ARCH_ARM)),y)
+ifeq ($(strip $(FREETZ_SYSTEM_TYPE_BCM63138)),y)
+TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_ARCH)),-march=$(call qstrip,$(FREETZ_GCC_ARCH)))
+TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_CPU)),-mtune=$(call qstrip,$(FREETZ_GCC_CPU)))
+else
 TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_CPU)),-mcpu=$(call qstrip,$(FREETZ_GCC_CPU)))
+endif
 else
 TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_CPU)),-march=$(call qstrip,$(FREETZ_GCC_CPU)))
 TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_CPU)),-mtune=$(call qstrip,$(FREETZ_GCC_CPU)))
 endif
+ifneq ($(strip $(FREETZ_SYSTEM_TYPE_BCM63138)),y)
 TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_FPU)),-mfpu=$(call qstrip,$(FREETZ_GCC_FPU)))
+endif
 ifeq ($(strip $(FREETZ_TARGET_ARCH_ARM)),y)
 # ARM is the only ARCH using -mfloat-abi=%
 TARGET_CFLAGS_HW_CAPABILITIES += $(if $(call qstrip,$(FREETZ_GCC_FLOAT_ABI)),-mfloat-abi=$(call qstrip,$(FREETZ_GCC_FLOAT_ABI)))

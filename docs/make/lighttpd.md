@@ -73,8 +73,7 @@ Außerdem muss darauf geachtet werden, dass jegliche Perl-Skripte
 Ausführrechte haben, dies ist mit einem einfachen `chmod 755 DATEI.pl`
 zu erledigen.
 
-Lua
----
+### Lua
 
 make menuconfig:
 
@@ -100,7 +99,35 @@ return 200
 
 -   browse to *http://fritz.box:<configured port>/ip.lua*
 
-Links:
+### Geoblocking
+Um die Zugriffe aus bestimmten Ländern zu sperren werden die Lighttpd-Module `mod_magnet` und `mod_maxminddb` genutzt.
+Dadurch wird die Library `libmaxminddb` ausgewählt welche eine `GeoLite2-City.mmdb`-Datenbank (~70MB) benötigt die von
+[https://github.com/P3TERX/GeoLite.mmdb/](https://github.com/P3TERX/GeoLite.mmdb/) heruntergelden werden kann.
+
+Ausserdem ein LUA-Script `geoblock.lua`, `XX` entsprechend anpassen:
+```
+if (lighty.r.req_env["GEOIP_COUNTRY_CODE"] == "XX") then return 403 end
+return 0
+```
+
+Erweiterung der Lighttpd-Konfiguration, die Pfade der `.lua` und `.mmdb` sind anzupassen:
+```
+server.modules += ( "mod_maxminddb" )
+maxminddb.activate = "enable"
+maxminddb.db = "/var/media/ftp/GeoLite2-City.mmdb"
+maxminddb.env = (
+ "GEOIP_COUNTRY_CODE"   => "country/iso_code",
+ "GEOIP_COUNTRY_NAME"   => "country/names/en",
+ "GEOIP_CITY_NAME"      => "city/names/en",
+ "GEOIP_CITY_LATITUDE"  => "location/latitude",
+ "GEOIP_CITY_LONGITUDE" => "location/longitude",
+)
+
+server.modules += ( "mod_magnet" )
+magnet.attract-raw-url-to = ( "/var/media/ftp/geoblock.lua" )
+```
+
+### Links
 
 -   [The Programming Language
     LUA](http://www.lua.org/)

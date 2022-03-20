@@ -26,7 +26,6 @@ Currently supported devices and firmwares
 ### Not supported devices
 
   * Repeater N/G, 310, 600 v1+v2 & 1160: No LAN ports, so a recovery is not possible.
-  * Repeater 1200 AX & Fritz!Box 7510 are not supported yet by [fitimg](https://boxmatrix.info/wiki/FIT-Image#History)
 
 ### Newer firmware versions
 
@@ -102,7 +101,7 @@ Currently supported devices and firmwares
   - 155.07.01 rev61489 {ALL}
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
   - 155.07.29 rev92647 {ALL} [PSQ19P2NL4]
-* __Fritz!Box 4060 (DEVELOPER)__
+* __Fritz!Box 4060__
   - 261.07.29 rev92827 {ALL} [PSQ19P2NL4]
 
 ### Fritz!Box Fon (50xx/51xx)
@@ -128,15 +127,16 @@ Currently supported devices and firmwares
   - 151.07.01 rev63544 {ALL}
   - 151.07.12 rev72271 {ALL} [MESH18 NL2]
   - 151.07.29 rev92214 {ALL} [PSQ19P2NL4]
-
 * __Fritz!Box 5491 Fiber__
   - 171.07.01 rev64362 {ALL}
   - 171.07.12 rev71193 {ALL} [MESH18 NL2]
   - 171.07.29 rev92216 {ALL} [PSQ19P2NL4]
 
-* __Fritz!Box 5530 Fiber (DEVELOPER)__
+* __Fritz!Box 5530 Fiber (UNTESTED)__
   - 257.07.21 rev83233 {GER} [AXKFW2]
   - 257.07.29 rev93005 {ALL} [PSQ19P2NL4]
+* __Fritz!Box 5590 Fiber (UNTESTED)__
+  - 272.07.27 rev94541 {ALL} [PSQ19P2NL4] (Inhaus)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 
@@ -160,10 +160,13 @@ Currently supported devices and firmwares
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
   - 161.07.22 rev84582 {GER} [PSQ19]
   - 161.07.29 rev92035 {GER} [PSQ19P2NL4]
+  - 161.07.39 rev94697 {GER} [MOVE21] (Labor)
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
   - 252.07.24 rev85910 {GER} [PSQ19]
   - 252.07.29 rev92037 {GER} [PSQ19P2NL4]
+* __Fritz!Box 6690 Cable (UNTESTED)__
+  - 267.07.28 rev91892 {GER} [PSQ19P2NL4] (Inhaus)
 
 ### Fritz!Box LTE (68xx)
 
@@ -185,10 +188,10 @@ Currently supported devices and firmwares
 * __Fritz!Box 6840 LTE__
   - 105.06.30 rev31187 {GER}
   - 105.06.50 rev33168 {GER}
-  - 105.06.85 rev64222 {GER}
+  - 105.06.87 rev94195 {GER}
   - 105.06.30 rev31224 {INT}
   - 105.06.50 rev33168 {INT}
-  - 105.06.85 rev64221 {INT}
+  - 105.06.87 rev94196 {INT}
 * __Fritz!Box 6842 LTE (UNTESTED)__
   - 123.06.34 rev36874 {GER}
 
@@ -196,7 +199,7 @@ Currently supported devices and firmwares
   - 262.07.21 rev82687 {ALL} [PSQ19]
   - 262.07.29 rev92911 {ALL} [PSQ19P2NL4]
 * __Fritz!Box 6850 5G (UNTESTED)__
-  - 258.07.29 rev93816 {ALL} [PSQ19P2NL4]
+  - 258.07.30 rev94600 {ALL} [PSQ19P2NL4]
 
 * __Fritz!Box 6890 LTE__
   - 162.06.87 rev59283 {ALL}
@@ -367,6 +370,8 @@ Currently supported devices and firmwares
   - 75.04.92 rev27423 {INT} (Annex A/B)
   - Alien 7270 v2 {GER+INT}
 
+* __Fritz!Box Fon WLAN 7510 (UNTESTED)__
+  - 271.07.30 rev94120 {ALL} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
   - 175.07.21 rev82822 {ALL} [PSQ19]
@@ -379,7 +384,8 @@ Currently supported devices and firmwares
   - 164.07.13 rev75481 {INT} [MESH18 NL3]
   - 164.07.21 rev82823 {ALL} [PSQ19]
   - 164.07.29 rev92062 {ALL} [PSQ19P2NL4]
-* __Fritz!Box Fon WLAN 7530 AX (DEVELOPER)__
+  - 164.07.39 rev94937 {ALL} [MOVE21] (Labor)
+* __Fritz!Box Fon WLAN 7530 AX (UNTESTED)__
   - 256.07.22 rev85878 {ALL} [PSQ19]
   - 256.07.29 rev92446 {ALL} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7560__
@@ -400,7 +406,7 @@ Currently supported devices and firmwares
   - 153.07.12 rev70352 {GER} [MESH18 NL2]
   - 153.07.21 rev82454 {GER} [PSQ19]
   - 153.07.29 rev92247 {GER} [PSQ19P2NL4]
-* __Fritz!Box Fon WLAN 7581 (UNTESTED)__
+* __Fritz!Box Fon WLAN 7581__
   - 152.07.16 rev93246 {ALL} [WU21 MESH18]
 * __Fritz!Box Fon WLAN 7582 (UNTESTED)__
   - 156.07.16 rev93247 {ALL} [WU21 MESH18]
@@ -425,7 +431,7 @@ Currently supported devices and firmwares
   - 154.07.39 rev00000 {ALL} [MOVE21] (Inhaus)
   - 154.07.39 rev94022 {ALL} [MOVE21] (Labor)
 * __Fritz!Box Fon WLAN 7590 AX__
-  - 259.07.29 rev92052 {ALL} [PSQ19P2NL4]
+  - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.39 rev00000 {ALL} [MOVE21] (Inhaus)
   - 259.07.39 rev94093 {ALL} [MOVE21] (Labor)
 
@@ -484,16 +490,19 @@ Currently supported devices and firmwares
   - 172.07.14 rev73941 {ALL} [MESH18 NL4]
   - 172.07.21 rev83014 {ALL} [PSQ19]
   - 172.07.29 rev93267 {ALL} [PSQ19P2NL4]
+* __Fritz!Repeater 1200 AX__
+  - 268.07.30 rev93528 {ALL} [PSQ19P2NL4]
 * __Fritz!Repeater 2400 (UNTESTED)__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
   - 169.07.21 rev83013 {ALL} [PSQ19]
   - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
+  - 169.07.39 rev94804 {ALL} [MOVE21] (Labor)
 * __Fritz!Repeater 3000__
   - 174.07.04 rev66458 {ALL}
   - 174.07.14 rev73940 {ALL} [MESH18 NL4]
   - 174.07.21 rev83015 {ALL} [PSQ19]
   - 174.07.29 rev93268 {ALL} [PSQ19P2NL4]
-* __Fritz!Repeater 6000 (DEVELOPER)__
+* __Fritz!Repeater 6000__
   - 253.07.29 rev93257 {ALL} [PSQ19P2NL4]
 
 ### T-Com derivatives

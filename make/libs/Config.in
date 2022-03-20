@@ -42,6 +42,7 @@ endmenu ### "Data compression"
 
 menu "Database"
 	source "make/libs/db/Config.in"
+	source "make/libs/libmaxminddb/Config.in"
 	source "make/sqlite/Config.in.libs"
 endmenu ### "Database"
 

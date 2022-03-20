@@ -1,0 +1,10 @@
+--- linux-4.1/.kernelvariables
++++ linux-4.1/.kernelvariables
+@@ -35,7 +35,6 @@
+ CP ?= /bin/cp
+ export CP
+ 
+-export AVM_KCONFIG_CONFIG = avm/conf/linux-4.1.brcma9
+ 
+ # INC_BCMDRIVER_PATH is exported because it is included in $(kernelvariables_extra)
+ override INC_BCMDRIVER_PATH := brcm_sdk/targets/963138BGWV_FB7569/fs.build/bcmdrivers/

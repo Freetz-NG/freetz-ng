@@ -1295,13 +1295,20 @@ config FREETZ_PATCH_MODFS_ANNEX_SELECTION
 		Unhides Annex selection in Fritz!OS web interface.
 
 config FREETZ_PATCH_MODFS_BOOT_MANAGER
-	bool "Add boot manager"
+	bool "Add yf-bootmanager"
 	depends on FREETZ_AVM_VERSION_06_5X_MIN
-	depends on FREETZ_AVM_VERSION_07_25_MAX
-	depends on FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE
+	depends on FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE && !FREETZ_AVM_HAS_FWLAYOUT_6
 	default n
 	help
 		Extends the "reboot" page of FRITZ!OS to select system version and branding.
+
+	config FREETZ_PATCH_MODFS_BOOT_MANAGER__TESTTAG
+		bool "Use freetz-ng-test tag - DEVELOPER"
+		depends on FREETZ_PATCH_MODFS_BOOT_MANAGER
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Uses the tag "freetz-ng-test" for yourfritz-host, -juis_check and -bootmanager.
 
 if FREETZ_AVM_HAS_USB_HOST
 comment "USB patches ----------------------------------------------"
@@ -1342,10 +1349,10 @@ if FREETZ_PATCH_UDEVMOUNT
 			This adds fat module to your firmware.
 
 	comment "Intern Ext2"
-		depends on FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+		depends on FREETZ_AVM_HAS_EXT2_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	config FREETZ_UDEVMOUNT_EXT2
 		bool "Select Ext2"
-		depends on !FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+		depends on !FREETZ_AVM_HAS_EXT2_FS_BUILTIN && !(FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_ext2
 		default n
@@ -1353,10 +1360,10 @@ if FREETZ_PATCH_UDEVMOUNT
 			This adds ext2 module to your firmware.
 
 	comment "Intern Ext3"
-		depends on FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+		depends on FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	config FREETZ_UDEVMOUNT_EXT3
 		bool "Select Ext3"
-		depends on !FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+		depends on !FREETZ_AVM_HAS_EXT3_FS_BUILTIN && !(FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_ext3
 		default y
@@ -1438,19 +1445,19 @@ config FREETZ_USBSTORAGE_AUTOMOUNT
 if FREETZ_USBSTORAGE_AUTOMOUNT
 config FREETZ_AUTOMOUNT_EXT2
 	bool "ext2"
-	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT2_FS_BUILTIN) # && any kernel version
+	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT2_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)) # && any kernel version
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_EXT
-	select FREETZ_MODULE_ext2 if ! FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	select FREETZ_MODULE_ext2 if ! FREETZ_AVM_HAS_EXT2_FS_BUILTIN && ! (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	default n
 	help
 		This adds support for ext2 filesystem to your firmware.
 
 config FREETZ_AUTOMOUNT_EXT3
 	bool "ext3"
-	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT3_FS_BUILTIN) # && any kernel version
+	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)) # && any kernel version
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_EXT
-	select FREETZ_MODULE_ext3 if ! FREETZ_AVM_HAS_EXT3_FS_BUILTIN
-	default y if FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	select FREETZ_MODULE_ext3 if ! FREETZ_AVM_HAS_EXT3_FS_BUILTIN && ! (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
+	default y if FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	default n
 	help
 		This adds support for ext3 filesystem to your firmware.

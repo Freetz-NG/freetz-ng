@@ -44,63 +44,67 @@ Latest changes
 
  - Build system:
    * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.37.x
-   * ccache 4.5.1
-   * precompiled host-tools 2022-02-13
-   * precompiled toolchains r18095/r18877
+   * ccache 4.6
+   * precompiled host-tools 2022-03-07
+   * precompiled toolchains r18095/r18877/r18922
 
- - New packages and libs:
-   * libnfsidmap 0.27
-
- - Updated tools and hooks:
+ - Host tools:
    * BusyBox 1.34.1
-   * fakeroot 1.27-1
+   * fakeroot 1.28-1
+   * fitimg 0.7.2
    * kconfig 5.16
    * ncurses 6.3
-   * pseudo 1.9.0 oe-core 300d757
+   * patchelf 0.13.1
+   * pseudo 1.9.0 oe-core 0cda3ba
+   * yourfritz 5e33421
 
- - BusyBox package:
-   * Version 1.33.2 removed
-   * Version 1.34.1 updated
-   * Version 1.35.0 added
-   
- - Updated packages and libs:
+ - Patches:
+   * remove smd-httpd: http server on port 81 without config (broadcom devices)
+   * yf-bootmanager 0.8.3
+
+ - Packages & libs:
    * ACME.sh 3.0.2 (letsencrypt)
-   * Apache 2.4.52
+   * Apache 2.4.53
    * AutoFS 5.0.5/5.1.8
    * BIND 9.11.36
    * Bip 0.9.2
-   * CA-bundle 2022-02-01
-   * CCID driver 1.4.36
+   * BusyBox 1.34.1
+   * BusyBox 1.35.0
+   * CA-bundle 2022-03-18
+   * CCID 1.5.0
    * cifs-utils 6.14
-   * Curl 7.81.0
+   * Curl 7.82.0
    * davfs2 1.5.2/1.6.1
-   * expat 2.4.4
+   * expat 2.4.7
    * git 2.34.1
-   * HAProxy 2.5.0
+   * HAProxy 2.5.4
    * iksemel 3.1.1
    * libexif 0.6.24
    * libgcrypt 1.9.4
    * libgpg-error 1.43
    * lighttpd 1.4.64
+   * libmaxminddb 1.6.0
    * libneon 0.32.1
+   * libnfsidmap 0.27
    * libusb1 1.0.23/1.0.25
-   * LCD4linux 38ef448-git
+   * LCD4linux e2cfdc5-git
    * mbed TLS 2.7.19/2.28.0
    * minicom 2.8
    * Nano 6.0
    * ncurses 6.3
    * ncursesw 6.3
-   * OpenSSH 8.8p1
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1m/3.0.1
-   * OpenVPN 2.4.11/2.5.5
+   * OpenSSH 8.9p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1n/3.0.2
+   * OpenVPN 2.4.12/2.5.6
    * pcre 8.45
-   * PCSC-lite (pcscd) 1.9.4
+   * PCSC-lite 1.9.5
    * socat 1.7.4.2
    * SQLite 3.37.0
    * strace 4.9/5.0/5.16
    * Stunnel 5.60
    * Sundtek DVB driver 130210.134617/170310.204343/210803.071224
    * tinc 1.0.36/1.1pre18
+   * tinyproxy 1.11.0
    * Tor 0.4.6.9
    * uClibc-ng 1.0.40
    * Unbound 1.14.0

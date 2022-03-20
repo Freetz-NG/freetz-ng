@@ -33,7 +33,7 @@ sudo dnf -y update && sudo systemctl daemon-reload
  - Fedora 35 64-Bit:
 ```
 sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
-sudo dnf -y install pv rsync kmod execstack sqlite.i686 sqlite-devel libzstd-devel.i686 cmake zlib-devel.i686 libstdc++-devel.x86_64 libstdc++-devel.i686 openssl xz bc unar inkscape ImageMagick subversion ccache gcc gcc-c++ binutils autoconf automake libtool make bzip2 ncurses-devel ncurses-term zlib-devel flex bison patch texinfo gettext pkgconfig ecj perl perl-String-CRC32 wget glib2-devel git libacl-devel libattr-devel libcap-devel ncurses-devel.i686 glibc-devel.i686 libgcc.i686
+sudo dnf -y install pv rsync kmod execstack sqlite.i686 sqlite-devel libzstd-devel.x86_64 cmake zlib-devel.i686 libstdc++-devel.x86_64 libstdc++-devel.i686 openssl xz bc unar inkscape ImageMagick subversion ccache gcc gcc-c++ binutils autoconf automake libtool make bzip2 ncurses-devel ncurses-term zlib-devel flex bison patch texinfo gettext pkgconfig ecj perl perl-String-CRC32 wget glib2-devel git libacl-devel libattr-devel libcap-devel ncurses-devel.i686 glibc-devel.i686 libgcc.i686
 ```
 
  - Fedora 33/34 64-Bit:

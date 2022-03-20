@@ -1,6 +1,6 @@
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -505,7 +505,7 @@
+@@ -503,7 +503,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  usbdropdir = @usbdropdir@

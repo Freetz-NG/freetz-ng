@@ -27,6 +27,9 @@ config FREETZ_AVM_HAS_DTRACE
 config FREETZ_AVM_HAS_FAX
 	def_bool y
 
+config FREETZ_AVM_HAS_FWLAYOUT_6
+	def_bool y
+
 config FREETZ_AVM_HAS_INETD
 	def_bool y
 

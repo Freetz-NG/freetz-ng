@@ -1,7 +1,12 @@
-YOURFRITZ_HOST_VERSION:=60deb45a11906080365c08c7f7d924abc720f1f2
+YOURFRITZ_HOST_GIT_REPOSITORY:=https://github.com/PeterPawn/YourFritz.git
+YOURFRITZ_HOST_VERSION:=$(if $(FREETZ_PATCH_MODFS_BOOT_MANAGER__TESTTAG),$(call git-get-tag-revision,$(YOURFRITZ_HOST_GIT_REPOSITORY),freetz-ng-test),5e3342106f241f9378cb295fcccd41350a394ff6)
 YOURFRITZ_HOST_SOURCE:=yourfritz-$(YOURFRITZ_HOST_VERSION).tar.xz
-YOURFRITZ_HOST_SOURCE_SHA256:=9803495068a5ed94b6aa059308a988d7f5d564e792f61c878c063faf3f219c4f
-YOURFRITZ_HOST_SITE:=git_no_submodules@https://github.com/PeterPawn/YourFritz.git
+YOURFRITZ_HOST_SOURCE_SHA256:=X
+YOURFRITZ_HOST_SITE:=git_no_submodules@$(YOURFRITZ_HOST_GIT_REPOSITORY)
+### WEBSITE:=https://github.com/PeterPawn/YourFritz
+### MANPAGE:=https://github.com/PeterPawn/YourFritz#readme
+### CHANGES:=https://github.com/PeterPawn/YourFritz/tags
+### CVSREPO:=https://github.com/PeterPawn/YourFritz/commits/main
 
 YOURFRITZ_HOST_BASH_AS_SHEBANG += signimage/avm_pubkey_to_pkcs8
 YOURFRITZ_HOST_BASH_AS_SHEBANG += signimage/check_signed_image
@@ -20,8 +25,6 @@ YOURFRITZ_HOST_BASH_AS_SHEBANG += eva_tools/image2ram
 
 YOURFRITZ_HOST_BASH_AS_SHEBANG += avm_kernel_config/unpack_kernel.sh
 
-YOURFRITZ_HOST_STRIP_TRAILING_WHITESPACES += bootmanager/gui_bootmanager
-
 YOURFRITZ_HOST_MAKE_DIR:=$(TOOLS_DIR)/make/yourfritz-host
 YOURFRITZ_HOST_DIR:=$(TOOLS_SOURCE_DIR)/yourfritz-$(YOURFRITZ_HOST_VERSION)
 
@@ -35,7 +38,6 @@ $(YOURFRITZ_HOST_DIR)/.unpacked: $(DL_DIR)/$(YOURFRITZ_HOST_SOURCE) | $(TOOLS_SO
 	$(call UNPACK_TARBALL,$(DL_DIR)/$(YOURFRITZ_HOST_SOURCE),$(TOOLS_SOURCE_DIR))
 	$(call APPLY_PATCHES,$(YOURFRITZ_HOST_MAKE_DIR)/patches,$(YOURFRITZ_HOST_DIR))
 	@$(SED) -i -r -e '1 s,^($(_hash)$(_bang)[ \t]*/bin/)(sh),\1ba\2,' $(YOURFRITZ_HOST_BASH_AS_SHEBANG:%=$(YOURFRITZ_HOST_DIR)/%)
-	@$(SED) -i -r -e 's,([ \t])+$(_dollar),,' $(YOURFRITZ_HOST_STRIP_TRAILING_WHITESPACES:%=$(YOURFRITZ_HOST_DIR)/%)
 	touch $@
 
 $(YOURFRITZ_HOST_DIR)/.symlinked: | $(YOURFRITZ_HOST_DIR)/.unpacked

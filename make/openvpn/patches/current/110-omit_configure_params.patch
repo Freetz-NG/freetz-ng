@@ -1,9 +1,9 @@
 --- src/openvpn/options.c
 +++ src/openvpn/options.c
-@@ -4395,7 +4395,7 @@
+@@ -4398,7 +4398,7 @@
  #endif
      msg(M_INFO|M_NOPREFIX, "Originally developed by James Yonan");
-     msg(M_INFO|M_NOPREFIX, "Copyright (C) 2002-2021 OpenVPN Inc <sales@openvpn.net>");
+     msg(M_INFO|M_NOPREFIX, "Copyright (C) 2002-2022 OpenVPN Inc <sales@openvpn.net>");
 -#ifndef ENABLE_SMALL
 +#if 0
  #ifdef CONFIGURE_DEFINES

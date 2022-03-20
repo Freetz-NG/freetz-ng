@@ -7,7 +7,7 @@ Fix it by changing the language standard used.
 
 --- configure
 +++ configure
-@@ -6282,7 +6282,7 @@
+@@ -6294,7 +6294,7 @@
  # Set -std=c99 unless user already specified a -std=
  case "${CFLAGS}" in
    *-std=*) ;;

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DAEMON=tinyproxy
+DAEMON_LONG_NAME=Tinyproxy
 PID_FILE=/var/run/$DAEMON/$DAEMON.pid
 . /etc/init.d/modlibrc
 
@@ -9,7 +10,7 @@ config() {
 	modlib_config
 	chown nobody:nobody $DAEMON_CONFIG
 	[ -e /var/tmp/tinyproxy.filter ] && chown nobody:nobody /var/tmp/tinyproxy.filter
-	if [ ! "$TINYPROXY_SYSLOG" = "yes" ]; then
+	if [ "$TINYPROXY_SYSLOG" != "yes" ]; then
 		touch "$TINYPROXY_LOGFILE"
 		chown nobody:nobody "$TINYPROXY_LOGFILE"
 	fi
@@ -69,7 +70,7 @@ stop_addons() {
 
 case $1 in
 	""|load)
-		modreg cgi 'tinyproxy' 'tinyproxy'
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
 
 		modlib_add_user_and_group nobody
@@ -79,9 +80,8 @@ case $1 in
 		modlib_start $TINYPROXY_ENABLED
 		;;
 	unload)
-		modunreg file tinyproxy
 		modunreg daemon $DAEMON
-		modunreg cgi tinyproxy
+		modunreg cgi $DAEMON
 		modlib_stop
 		;;
 	start)

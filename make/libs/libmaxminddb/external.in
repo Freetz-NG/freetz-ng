@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_LIB_libmaxminddb
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libmaxminddb
+	bool "libmaxminddb"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libmaxminddb.so.0.0.7
+

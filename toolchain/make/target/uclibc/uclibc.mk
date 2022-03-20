@@ -112,6 +112,10 @@ $(UCLIBC_DIR)/.config: $(UCLIBC_DIR)/.unpacked | $(UCLIBC_PREREQ_GCC_INITIAL)
 		) \
 		\
 		DODEBUG=$(if $(FREETZ_TARGET_UCLIBC_DODEBUG),y,n) \
+		$(if $(FREETZ_SYSTEM_TYPE_BCM63138), \
+			UCLIBC_HAS_FPU=n \
+			UCLIBC_HAS_SOFT_FLOAT=y \
+		) \
 	) $(UCLIBC_DIR)/.config
 
 	mkdir -p $(TARGET_TOOLCHAIN_DIR)/$(UCLIBC_DEVEL_SUBDIR)/usr/include

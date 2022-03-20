@@ -34,11 +34,12 @@ Index:
   * **[ACME.sh 3.0.2 (letsencrypt)](../docs/make/acme.md)<a id='acme'></a>**<br>
     A pure Unix shell script implementing ACME client protocol.
 
-  * **[apache2: Apache HTTP Server 2.4.52 (binary only)](../docs/make/apache2.md)<a id='apache2'></a>**<br>
+  * **[apache2: Apache HTTP Server 2.4.53 (binary only)](../docs/make/apache2.md)<a id='apache2'></a>**<br>
     The Apache httpd server
      - [apache.conf](../docs/make/apache2.md#apacheconf)
      - [Passwortschutz mit .htaccess](../docs/make/apache2.md#passwortschutz-mit-htaccess)
      - [Apache als Proxy](../docs/make/apache2.md#apache-als-proxy)
+     - [Geoblocking](../docs/make/apache2.md#geoblocking)
      - [Sonstiges](../docs/make/apache2.md#sonstiges)
 
   * **<u>asterisk-chan-capi: chan_capi: ISDN API 2.0 module for asterisk</u><a id='asterisk-chan-capi'></a>**<br>
@@ -126,13 +127,13 @@ Index:
 
 ### C
 
-  * **[CA-bundle 2022-02-01](../docs/make/ca-bundle.md)<a id='ca-bundle'></a>**<br>
+  * **[CA-bundle 2022-03-18](../docs/make/ca-bundle.md)<a id='ca-bundle'></a>**<br>
     The Mozilla CA certificate store in PEM format, see https://www.curl.se/docs/caextract.html Size of uncompressed file is about 250 KB.
 
   * **[Callmonitor 1.20.9-git](../docs/make/callmonitor.md)<a id='callmonitor'></a>**<br>
     Callmonitor enables you to perform arbitrary actions upon incoming calls on your AVM Fritz!Box (e.g., to send notifications to your favorite set-top box, to wake up your PC, or to send you a mail when you have missed a call).
 
-  * **<u>CCID driver 1.4.36</u><a id='ccid'></a>**<br>
+  * **[CCID 1.5.0](../docs/make/ccid.md)<a id='ccid'></a>**<br>
     ccid provides the source code for a generic USB CCID (Chip/Smart Card Interface Devices) driver and ICCD (Integrated Circuit(s) Card Devices).
 
   * **[Checkmaild 0.4.7](../docs/make/checkmaild.md)<a id='checkmaild'></a>**<br>
@@ -167,7 +168,7 @@ Index:
   * **[Ctorrent dnh3.3.2 (binary only)](../docs/make/ctorrent.md)<a id='ctorrent'></a>**<br>
     CTorrent is a BitTorrent client written in the C programming language, known to be a very robust and mature programming language, which produces fast and optimized application.
 
-  * **[Curl 7.81.0 (binary only)](../docs/make/curl.md)<a id='curl'></a>**<br>
+  * **[Curl 7.82.0 (binary only)](../docs/make/curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
   * **<u>CurlFtpFS 0.9.2</u><a id='curlftpfs'></a>**<br>
@@ -336,7 +337,7 @@ Index:
 
 ### H
 
-  * **[HAProxy 2.5.0](../docs/make/haproxy.md)<a id='haproxy'></a>**<br>
+  * **[HAProxy 2.5.4](../docs/make/haproxy.md)<a id='haproxy'></a>**<br>
     HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications.
 
   * **[haserl 0.9.35 (binary only)](../docs/make/haserl.md)<a id='haserl'></a>**<br>
@@ -444,7 +445,7 @@ Index:
 
 ### L
 
-  * **[LCD4linux 38ef448-git](../docs/make/lcd4linux.md)<a id='lcd4linux'></a>**<br>
+  * **[LCD4linux e2cfdc5-git](../docs/make/lcd4linux.md)<a id='lcd4linux'></a>**<br>
     LCD4Linux is a small program that grabs information from the kernel and some subsystems and displays it on an external liquid crystal display.
 
   * **<u>lftp 4.8.4 (binary only)</u><a id='lftp'></a>**<br>
@@ -454,6 +455,9 @@ Index:
     Security, speed, compliance, and flexibility -- all of these describe lighttpd (pron. lighty) which is rapidly redefining efficiency of a webserver; as it is designed and optimized for high performance environments. With a small memory footprint compared to other web-servers, effective management of the cpu-load, and advanced feature set (FastCGI, SCGI, Auth, Output-Compression, URL-Rewriting and many more) lighttpd is the perfect solution for every server that is suffering load problems. In case you want to configure virtual hosts, you may want to consider the package onlinechanged-cgi which allows you to configure multiple DynDNS entries for your box.
      - [Einrichtung](../docs/make/lighttpd.md#einrichtung)
      - [Perl](../docs/make/lighttpd.md#perl)
+     - [Lua](../docs/make/lighttpd.md#lua)
+     - [Geoblocking](../docs/make/lighttpd.md#geoblocking)
+     - [Links](../docs/make/lighttpd.md#links)
 
   * **[Lua 5.1.5 (binary only)](../docs/make/lua.md)<a id='lua'></a>**<br>
     Lua Scripting Language. Lua is a powerful light-weight programming language designed for extending applications. Lua is also frequently used as a general-purpose, stand-alone language. Lua is free software. Lua combines simple procedural syntax with powerful data description constructs based on associative arrays and extensible semantics. Lua is dynamically typed, runs by interpreting bytecode for a register-based virtual machine, and has automatic memory management with incremental garbage collection, making it ideal for configuration, scripting, and rapid prototyping. A fundamental concept in the design of Lua is to provide meta-mechanisms for implementing features, instead of providing a host of features directly in the language. For example, although Lua is not a pure object-oriented language, it does provide meta-mechanisms for implementing classes and inheritance. Lua's meta-mechanisms bring an economy of concepts and keep the language small, while allowing the semantics to be extended in unconventional ways. Extensible semantics is a distinguishing feature of Lua. Lua is a language engine that you can embed into your application. This means that, besides syntax and semantics, Lua has an API that allows the application to exchange data with Lua programs and also to extend Lua with C functions. In this sense, Lua can be regarded as a language framework for building domain-specific languages. Lua is implemented as a small library of C functions, written in ANSI C, and compiles unmodified in all known platforms. The implementation goals are simplicity, efficiency, portability, and low embedding cost. The result is a fast language engine with small footprint, making it ideal in embedded systems too.
@@ -631,13 +635,13 @@ Index:
      - [Fehlerbehebung](../docs/make/openntpd.md#fehlerbehebung)
      - [Alternative](../docs/make/openntpd.md#alternative)
 
-  * **[OpenSSH 8.8p1](../docs/make/openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 8.9p1](../docs/make/openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
-  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1m/3.0.1 (binary only)](../docs/make/openssl.md)<a id='openssl'></a>**<br>
+  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1n/3.0.2 (binary only)](../docs/make/openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
-  * **[OpenVPN 2.4.11/2.5.5](../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
+  * **[OpenVPN 2.4.12/2.5.6](../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
      - [Häufige Fragen / Howto](../docs/make/openvpn.md#häufige-fragen--howto)
      - [Konfigurationsanleitung](../docs/make/openvpn.md#konfigurationsanleitung)
@@ -660,7 +664,7 @@ Index:
   * **<u>p7zip 16.02 (binary only)</u><a id='p7zip'></a>**<br>
     7-Zip  is  a  file  archiver  with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better  than ratio in ZIP format.
 
-  * **<u>PCSC-lite (pcscd) 1.9.4 (binary only)</u><a id='pcsc-lite'></a>**<br>
+  * **[PCSC-lite 1.9.5 (binary only)](../docs/make/pcsc-lite.md)<a id='pcsc-lite'></a>**<br>
     The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a very small form factor for communicating to smart cards and readers.
 
   * **<u>phonebook-tools: Phone book tools 0.0</u><a id='phonebook-tools'></a>**<br>
@@ -941,8 +945,8 @@ Index:
      - [Features](../docs/make/tinc.md#features)
      - [Verwendete Bibliotheken](../docs/make/tinc.md#verwendete-bibliotheken)
 
-  * **[Tinyproxy 1.8.4](../docs/make/tinyproxy.md)<a id='tinyproxy'></a>**<br>
-    Tinyproxy is a lightweight HTTP and HTTPS proxy. http://tinyproxy.sourceforge.net
+  * **[Tinyproxy 1.11.0](../docs/make/tinyproxy.md)<a id='tinyproxy'></a>**<br>
+    Tinyproxy is a lightweight HTTP and HTTPS proxy.
      - [Proxy auto-config (pac)](../docs/make/tinyproxy.md#proxy-auto-config-pac)
      - [URL blocking](../docs/make/tinyproxy.md#url-blocking)
      - [Memory usage](../docs/make/tinyproxy.md#memory-usage)

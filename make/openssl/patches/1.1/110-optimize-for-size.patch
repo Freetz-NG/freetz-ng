@@ -1,6 +1,6 @@
 --- Configurations/10-main.conf
 +++ Configurations/10-main.conf
-@@ -1818,4 +1818,59 @@
+@@ -1825,4 +1825,59 @@
          pointer_size     => "64",
      },
  

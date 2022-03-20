@@ -22,12 +22,19 @@ endif
 
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES:=
 ifeq ($(strip $(FREETZ_TARGET_ARCH_ARM)),y)
+ifeq ($(strip $(FREETZ_SYSTEM_TYPE_BCM63138)),y)
+GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_CPU)),--with-tune=$(call qstrip,$(FREETZ_GCC_CPU)))
+GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_ARCH)),--with-arch=$(call qstrip,$(FREETZ_GCC_ARCH)))
+else
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_CPU)),--with-cpu=$(call qstrip,$(FREETZ_GCC_CPU)))
+endif
 else
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_ARCH)),--with-arch=$(call qstrip,$(FREETZ_GCC_ARCH)))
 endif
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_ABI)),--with-abi=$(call qstrip,$(FREETZ_GCC_ABI)))
+ifneq ($(strip $(FREETZ_SYSTEM_TYPE_BCM63138)),y)
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_FPU)),--with-fpu=$(call qstrip,$(FREETZ_GCC_FPU)))
+endif
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_FLOAT_ABI)),--with-float=$(call qstrip,$(FREETZ_GCC_FLOAT_ABI)))
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES+=$(if $(call qstrip,$(FREETZ_GCC_MODE)),--with-mode=$(call qstrip,$(FREETZ_GCC_MODE)))
 

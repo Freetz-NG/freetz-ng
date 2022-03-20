@@ -1,4 +1,8 @@
-# Tinyproxy 1.8.4
+# Tinyproxy 1.11.0
+ - Homepage: [https://tinyproxy.github.io/](https://tinyproxy.github.io/)
+ - Manpage: [https://tinyproxy.github.io/#documentation](https://tinyproxy.github.io/#documentation)
+ - Changelog: [https://github.com/tinyproxy/tinyproxy/releases](https://github.com/tinyproxy/tinyproxy/releases)
+ - Repository: [https://github.com/tinyproxy/tinyproxy](https://github.com/tinyproxy/tinyproxy)
  - Package: [master/make/tinyproxy/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/tinyproxy/)
 
 Das [tinyproxy](http://tinyproxy.sourceforge.net/)

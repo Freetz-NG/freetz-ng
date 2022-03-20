@@ -5,3 +5,4 @@ config FREETZ_LIB_libpcsclite
 	default n
 	help
 		Middleware to access smart cards using PC/SC.
+

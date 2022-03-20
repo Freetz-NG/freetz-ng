@@ -1,6 +1,6 @@
 --- src/openvpn/options.c
 +++ src/openvpn/options.c
-@@ -821,6 +821,9 @@
+@@ -825,6 +825,9 @@
      o->resolve_retry_seconds = RESOLV_RETRY_INFINITE;
      o->resolve_in_advance = false;
      o->proto_force = -1;
@@ -10,7 +10,7 @@
      o->occ = true;
  #ifdef ENABLE_MANAGEMENT
      o->management_log_history_cache = 250;
-@@ -973,6 +976,9 @@
+@@ -978,6 +981,9 @@
      setenv_str_i(es, "local_port", e->local_port, i);
      setenv_str_i(es, "remote", e->remote, i);
      setenv_str_i(es, "remote_port", e->remote_port, i);
@@ -20,7 +20,7 @@
  
      if (e->http_proxy_options)
      {
-@@ -1452,6 +1458,9 @@
+@@ -1457,6 +1463,9 @@
      SHOW_BOOL(bind_ipv6_only);
      SHOW_INT(connect_retry_seconds);
      SHOW_INT(connect_timeout);
@@ -30,7 +30,7 @@
  
      if (o->http_proxy_options)
      {
-@@ -6279,6 +6288,46 @@
+@@ -6293,6 +6302,46 @@
          }
          options->proto_force = proto_force;
      }

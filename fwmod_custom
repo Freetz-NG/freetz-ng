@@ -57,8 +57,8 @@ all_no_freetz() {
 	# restore volume counter support, 7412 only
 	source "${patches_scripts}/241-restore_vol_counter.sh"
 
-	# add modfs boot-manager
-	source "${patches_scripts}/800-modfs_boot_manager.sh"
+	# add yf-bootmanager
+	source "${patches_scripts}/800-yf_bootmanager.sh"
 
 	# unhide Annex selection in Fritz!OS web-if
 	source "${patches_scripts}/801-modfs_annex_selection.sh"

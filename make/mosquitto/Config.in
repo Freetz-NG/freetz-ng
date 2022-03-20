@@ -1,7 +1,7 @@
 config FREETZ_PACKAGE_MOSQUITTO
 	bool "Mosquitto 1.6.15"
 	default n
-	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB)
+	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB && !FREETZ_PACKAGE_MOSQUITTO_PASSWD)
 	help
 		Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements
 		the MQTT protocol versions 5.0, 3.1.1 and 3.1. MQTT provides a lightweight method of
@@ -39,6 +39,17 @@ if FREETZ_PACKAGE_MOSQUITTO
 		help
 			Adds the mosquitto subscribe client to the image
 
+	comment "passwd binary not available, needs OpenSSL 1.0 or newer"
+		depends on !FREETZ_OPENSSL_VERSION_1_MIN
+
+	config FREETZ_PACKAGE_MOSQUITTO_PASSWD
+		bool "include passwd binary"
+		depends on FREETZ_OPENSSL_VERSION_1_MIN
+		select FREETZ_PACKAGE_MOSQUITTO_WITH_SSL
+		default n
+		help
+			Adds the mosquitto_passwd utility to the image
+
 	config FREETZ_PACKAGE_MOSQUITTO_WITH_UUID
 		bool "enable uuid support in mosquitto"
 		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENTS
@@ -47,7 +58,7 @@ if FREETZ_PACKAGE_MOSQUITTO
 		help
 			Build using libuuid for clientid generation.
 
-	comment "SSL not available, needs OpenSSL 1.0 or newer"
+	comment "SSL support not available, needs OpenSSL 1.0 or newer"
 		depends on !FREETZ_OPENSSL_VERSION_1_MIN
 
 	config FREETZ_PACKAGE_MOSQUITTO_WITH_SSL

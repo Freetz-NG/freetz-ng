@@ -224,6 +224,17 @@ $(shell rev=$$(git ls-remote --heads $(strip $(1)) $(if $(strip $(2)),$(strip $(
 endef
 
 #
+# $1 - git repository
+# $2 - tag name
+#
+# returns:
+#   revision of the specified tag
+#
+define git-get-tag-revision
+$(shell rev=$$(git ls-remote --tags $(strip $(1)) $(strip $(2)) | sed -rn -e 's,^([0-9a-f]{10})[0-9a-f]{30}.*,\1,p'); echo "$${rev:-FAILED_TO_DETERMINE_TAG_REVISION}")
+endef
+
+#
 # $1 - menuconfig file
 # $2 - (optional) dir name, if omitted "make" is used
 #

@@ -507,8 +507,11 @@ Index:
   * **<u>PATCH_MODFS_ANNEX_SELECTION: Unhide Annex selection</u><a id='patch-modfs-annex-selection'></a>**<br>
     Unhides Annex selection in Fritz!OS web interface.
 
-  * **<u>PATCH_MODFS_BOOT_MANAGER: Add boot manager</u><a id='patch-modfs-boot-manager'></a>**<br>
+  * **<u>PATCH_MODFS_BOOT_MANAGER: Add yf-bootmanager</u><a id='patch-modfs-boot-manager'></a>**<br>
     Extends the "reboot" page of FRITZ!OS to select system version and branding.
+
+  * **<u>PATCH_MODFS_BOOT_MANAGER__TESTTAG: Use freetz-ng-test tag - DEVELOPER</u><a id='patch-modfs-boot-manager--testtag'></a>**<br>
+    Uses the tag "freetz-ng-test" for yourfritz-host, -juis_check and -bootmanager.
 
   * **[PATCH_MULTIPLE_PRINTERS: Add support for multiple printers](PATCH_MULTIPLE_PRINTERS.md)<a id='patch-multiple-printers'></a>**<br>
     Use this patch if you want to use more than one printer.

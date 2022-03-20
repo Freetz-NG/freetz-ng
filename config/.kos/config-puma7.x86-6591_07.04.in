@@ -84,6 +84,9 @@ config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
 config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
 	def_bool y
 
+config FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN
+	def_bool y
+
 config FREETZ_AVM_HAS_FAT_FS_BUILTIN
 	def_bool y
 

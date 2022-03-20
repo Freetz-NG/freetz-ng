@@ -69,7 +69,7 @@ die individuelle Firmware ...
     entstanden.
 -   **Installieren** über das normale Firmware-Update der Box.
 -   Die neuen Funktionalitäten auf der Box **konfigurieren** und
-    **benutzen**. In der Konfiguration der Box findet sich jetzt in Link
+    **benutzen**. In der Konfiguration der Box findet sich jetzt ein Link
     auf Freetz. Hier können die zusätzlichen neuen Pakete konfiguriert
     werden.
 

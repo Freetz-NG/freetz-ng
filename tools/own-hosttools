@@ -1,0 +1,46 @@
+#!/bin/bash
+# packs host-tools to dl/tools-DATE.tar.xz
+
+read -p "WARNING: This runs distclean. Maybe you want to use a new directory. Proceed? [y] " -n1 -a"x" ; echo
+[ -n "$x" ] && [ "$x" != "y" ] && [ "$x" != "Y" ] && echo Abort && exit
+
+MYPWD="$(dirname $(realpath $0))"
+SKIP="config decoder yf"
+FILE="tools-$(sed -n 's/^TOOLS_HOST_VERSION:=//p' "$MYPWD/../tools/make/tools-host/tools-host.mk")"
+OUTP="dl/$FILE.tar.xz"
+[ -s "$OUTP" ] && echo "File $OUTP exists" && exit 1
+
+TOOLS="$(ls tools/make/*/*.mk | sed 's!.*/!!;s/.mk$//g')"
+LOCAL="$(sed -n 's/^TOOLS_BUILD_LOCAL.=//p' tools/make/Makefile.in)"
+BUILD="$(echo "$TOOLS" | grep -vE "^$(echo $LOCAL | sed 's/ /|/g')$")"
+
+function cleanup() {
+	local val=$?
+	trap '' EXIT SIGTERM SIGINT
+	rm -f .config "$OUTP.tmp"
+	mv .config.tmp .config 2>/dev/null
+	make distclean
+	[ "$val" == "0" ] && echo "Created $OUTP successfully." || echo "Failed."
+	exit $val
+}
+trap cleanup EXIT SIGTERM SIGINT
+mv .config .config.tmp 2>/dev/null
+
+TOOL_CONF=tools/config/conf
+make distclean
+[ ! -d dl ] && ln -sf ~/.freetz-dl dl
+[ ! -d dl ] && mkdir -p dl
+make $TOOL_CONF
+cat << EOF > .config
+FREETZ_USER_LEVEL_EXPERT=y
+# FREETZ_TOOLCHAIN_32BIT is not set
+# FREETZ_TOOLCHAIN_CCACHE is not set
+# FREETZ_HOSTTOOLS_DOWNLOAD is not set
+FREETZ_JLEVEL=7
+EOF
+$TOOL_CONF --olddefconfig config/Config.in
+for x in $BUILD; do make $x; done
+for x in $LOCAL; do [ "$x" != "tools-host" ] && make $x-distclean; done
+sed -n 's,^/,tools/,p' tools/.gitignore | grep -vE "/(${SKIP// /|})$" | tar cvf - -T - | xz -9 - > "$OUTP.tmp"
+[ -s "$OUTP.tmp" ] && mv "$OUTP.tmp" "$OUTP"
+

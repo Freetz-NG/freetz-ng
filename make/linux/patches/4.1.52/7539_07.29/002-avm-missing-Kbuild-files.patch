@@ -1,0 +1,11 @@
+--- linux-4.1/scripts/Makefile.headersinst
++++ linux-4.1/scripts/Makefile.headersinst
+@@ -11,7 +11,7 @@
+ gen := $(if $(gen),$(gen),$(subst include/,include/generated/,$(obj)))
+ 
+ kbuild-file := $(srctree)/$(obj)/Kbuild
+-include $(kbuild-file)
++-include $(kbuild-file)
+ 
+ # called may set destination dir (when installing to asm/)
+ _dst := $(if $(destination-y),$(destination-y),$(if $(dst),$(dst),$(obj)))

@@ -1,0 +1,12 @@
+--- linux-4.1/arch/arm/Makefile
++++ linux-4.1/arch/arm/Makefile
+@@ -355,6 +355,9 @@
+ 
+ PHONY += bzImage $(BOOT_TARGETS) $(INSTALL_TARGETS)
+ 
++vmlinux.eva_pad: Image FORCE
++	cp $(boot)/$< $(boot)/$@
++
+ $(BOOT_TARGETS): vmlinux
+ 	$(Q)$(MAKE) $(build)=$(boot) MACHINE=$(MACHINE) $(boot)/$@
+ 

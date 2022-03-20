@@ -18,7 +18,7 @@ menu "Download options"
 		help
 			Detect the .image file name automatically.
 			For archive files it is not needed anymore to
-			define FREETZ_DL_SOURCE and FREETZ_DL_SOURCE_MD5
+			define FREETZ_DL_SOURCE and FREETZ_DL_SOURCE_SHA256
 
 	config FREETZ_DL_VCS_REPO_FIRST
 		bool "Search first on repository for VCS downloads" if FREETZ_SHOW_EXPERT
@@ -40,87 +40,90 @@ menu "Download options"
 			this option.
 
 	config FREETZ_DL_TOOLCHAIN_OVERRIDE
-		bool "Override precompiled toolchain options" if FREETZ_SHOW_EXPERT
+		bool "Override precompiled toolchain options"                                 if FREETZ_SHOW_EXPERT
 		depends on FREETZ_DOWNLOAD_TOOLCHAIN
 		default n
 		help
 			Enable this to override precompiled-toolchain related options.
 
 	config FREETZ_DL_TOOLCHAIN_SITE
-		string "Download toolchain site"              if FREETZ_DL_TOOLCHAIN_OVERRIDE
+		string "Download toolchain site"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
 		default ""
 
 	config FREETZ_DL_KERNEL_TOOLCHAIN_VERSION
-		string "Kernel toolchain version"             if FREETZ_DL_TOOLCHAIN_OVERRIDE
-		default "rLOCAL"                              if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
+		string "Kernel toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
+		default "rLOCAL"                                                              if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
 		#
+		default "r18922"                                                              if FREETZ_SYSTEM_TYPE_BCM63138
 		default "r18095"
 
-	config FREETZ_DL_KERNEL_TOOLCHAIN_MD5
-		string "Kernel toolchain MD5"                 if FREETZ_DL_TOOLCHAIN_OVERRIDE
-		default "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"    if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
+	config FREETZ_DL_KERNEL_TOOLCHAIN_SHA256
+		string "Kernel toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
+		default "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"    if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
 		#
-		default "df7f7dfa7fd767fd8f8bcd2f82502f96"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_KERNEL_GCC_3_4
-		default "4bcf22bb0ea219ec52ed3148a859f6b0"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_KERNEL_GCC_4_6
-		default "333fdb72986bad26d389e7ba6ae8a59d"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_6
-		default "e5cedd14bed9ed273da26ccbb9317b1a"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_7
-		default "6ddf5b2f2a45364636624668cd3555bb"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_8
-		default "11cac5a43b0769db2a1575f7c031fadc"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_5
-		default "a6798a9fa4839d68ddd6fdc774a5ee58"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_8
-		default "2915b3b0b4e94c3b0105256ece2b1c85"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_5
-		default "d56aca6d4a4ef2bdeb63f1cf89e1531e"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_4_7
-		default "053846dbdfdb13f3842f8dcbd4833cdb"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_5
-		default "32f26a7821be1302492dbe70bb2a5aa2"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_8
+		default "0badcbb3db1365f603990e40bf207e99a2987d45bbd0a546c46ed585f95ba873"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_KERNEL_GCC_3_4
+		default "67eac2268a0aa1fcc0fe0e7488ddd33a0968bf12cf8352bf7df588e6da2b3a9b"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_KERNEL_GCC_4_6
+		default "fefe61c33373352ab44aa6c1b37f8e40acfafbd24f306ba1d75aa327749fab57"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_6
+		default "3b7568e41cf0e865e074b39b5ecc82846d6b33b97cb6d0418c1965829126fb41"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_7
+		default "07b009cb5531ef849f7aaa88bb7e7df4bb9ad9374c3271ebcca4015fdbd077c6"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_8
+		default "895057597b88c2e6b0adf67110edb6596ddad028110b8b563633b72476a7b8f9"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_5
+		default "ae61eca6bbb6ff6798f9a776a97e41bf1c7dbaa2a96ed73e5c2af23a89dd2d78"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_8
+		default "9de0eae1e2e3e1e96c7b08d3242dde7acf606559badb584912f4e4f0f560750b"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_5   && FREETZ_SYSTEM_TYPE_BCM63138
+		default "96f2c16bdee36e7a4a83bb2f06b1fb382221978e676c221f4de1df5d78c14fec"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_5
+		default "9952dc8759234fc41aad60b72bcf026ad984334e4186ddee9d5d05669a09fe9e"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_4_7
+		default "7873304ffb2ab9e0d7f93feaf32014de7f22bea563f1af592208bb7721a8212c"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_5
+		default "009477cfd9c02089be264db510aa4c90021cd267e9a98a2da462fbaa01573884"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_8
 		#
 		default "X"
 
 	config FREETZ_DL_TARGET_TOOLCHAIN_VERSION
-		string "Target toolchain version"             if FREETZ_DL_TOOLCHAIN_OVERRIDE
-		default "rLOCAL"                              if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
+		string "Target toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
+		default "rLOCAL"                                                              if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
 		#
-		default "r18877"                              if FREETZ_SEPARATE_AVM_UCLIBC
+		default "r18922"                                                              if FREETZ_SYSTEM_TYPE_BCM63138
+		default "r18877"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
 		default "r18095"
 
 
-	config FREETZ_DL_TARGET_TOOLCHAIN_MD5
-		string "Target toolchain MD5"                 if FREETZ_DL_TOOLCHAIN_OVERRIDE
-		default "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"    if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
+	config FREETZ_DL_TARGET_TOOLCHAIN_SHA256
+		string "Target toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
+		default "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"    if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
 		#
-		default "83602c8ac3263103fda057d70aa5a71b"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_28 && FREETZ_KERNEL_VERSION_2
-		default "2b548b09434c7b391462b4bae3c1d091"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_29 && FREETZ_KERNEL_VERSION_2
-		default "6488b0d8b5b8bcb24d02c21906ec573a"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_32 && FREETZ_KERNEL_VERSION_2
-		default "cf7411898778bfbadae33419aa351d09"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
-		default "44403d7ed1dba9d60554ebf35fcc3678"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_32 && FREETZ_KERNEL_VERSION_2
-		default "5a0e30f209ae6257f40bebaa2343fd4d"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
+		default "b79720b22dde2173c3300cf070e31645f52ab3e94c95721e19ac4203206ef891"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_28 && FREETZ_KERNEL_VERSION_2
+		default "7d58b91ee0159a29b6310437f425bffc6dd1e142291179e7f530637d68fb304c"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_29 && FREETZ_KERNEL_VERSION_2
+		default "f821cd21689d05fb743db8df883c48a83f96a3f67366716c759cdb2af6c8e3bf"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_32 && FREETZ_KERNEL_VERSION_2
+		default "ad5cff343d6542ae21adf8fa98c25e282ce1e99c662f30ba89843aa8c80434aa"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
+		default "defc591ad0206628619ed690c8194390dcda57733e73ffeaea71f43e8cbd0986"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_32 && FREETZ_KERNEL_VERSION_2
+		default "199b219c90a0a910fe8eeaf9805ba0e890813a9b633e503b0838e1fa336d9fbe"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
 		# NPTL
-		default "1a0bfa06c4b446311f3ef93a9deb12b3"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_7 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
-		default "c07f81101674abdb8d216abcd0ff88ab"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_8 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
+		default "e529b89a4a036a9471343d540596b2a9e7e07880c2388d22158eb1b5eaacb98c"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_7 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
+		default "a21dba458a17776dffb4f7eaf544362db2edfeade6e3892049388c6ec72fb531"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_8 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
 		# NPTL/KERNEL-3.10
-		default "d3857babf7dae45ffe0fbcf9274474ca"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_8 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_3_10
-		default "31ae8161f2bf970eff46cdc35e8db0b3"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_3_10
+		default "75ba4183c0d46e6bfad76f92a3c8f04263b1e0cdb1339d810cb838ef47433318"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_4_8 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_3_10
+		default "f9748b204832d65fb6a644ced33ddfeb921f696c2326603d4b3fcf5842a51e07"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_3_10
 		#MIPS
-		default "ee46034a7d14003868a8d32013ff502a"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_3_10
-		default "def6ff41ed4965f3eac9441e98f3eed6"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_4_4
-		default "647db53d2e9ab3f32214b1153fdd64ff"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_3_10
-		default "034e3f81e053fc4af9d312204c14d837"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_4
-		default "2c5183c67d211a5532a41d71f1e6fc23"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_8   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_9
-
+		default "796940bf82c7933481b76952166d43f2012fff6b9abe0384b25f6ff5cf22a557"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_3_10
+		default "767cffc08eaf351abfeaa8cd9a96cffedf0a1c3d29f6ad47795395e9be0445bf"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_4_4
+		default "67e1fae1adc3ff3e9fd25c802939d4355161151b8be48758e602dbe063e29706"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_3_10
+		default "3f48db28777116018138448beb5d467e7b80d36965aa20de5843e28c552e0945"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_4
+		default "4ef885ac5c5b7d518d153abeaf346bebcb9169633de9e381ba55162789b07726"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_8   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_9
 		#ARM
-		default "6d4b8f5b406db23187a546e82b233527"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_4_4
-		default "e792e821bf7e0858d24b5a1313a55063"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_1
-		default "14e79d2f941e6d3c4db38748c3fe1351"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_4
+		default "abb7d72a24fe967e022d8f78fcd4781f2e0972fd4956a948b1f92d88b2e4fa09"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_4_4
+		default "cb996a621e5d6f56ee4ce7641bd8504b9466af9d454374d0fe238790f0d421cd"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_1 && FREETZ_SYSTEM_TYPE_BCM63138
+		default "84a7b8dc542ef345b5ef007586b74c3c34ad7610c35d4413dfa1533a0493d669"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_1
+		default "4bbbf743cd1521914d09ce3b2947498f92286f6c08a363b68b5da38cec448fec"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_4
 		#X86
-		default "8666f8b78d626c6e1c31918ebb5ded99"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_4_7 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
-		default "dbc24c8ae6ec0b012d6ba72f2a254360"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_2
-		default "a9a431f70c91b9e02ad77b4f26b80a24"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_2
-		default "5e26a82319ac9f3f130467b660f79bec"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_3_12
-		default "7cbb01f68f1480b8c5d04393691ed246"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_9
-		default "601bf1b6ea8896fb82fdbff783ad0f6e"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_8   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_9
+		default "ed5be9de7e2ffa1aa57d6206c1470cac225bffef2bf6bdbe1f258f09dc393506"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_4_7 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
+		default "1f316ce356395a58fa5dd8dccf1c7ce83e65d72a5803ee9dff4efef2b998d43d"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_2
+		default "9b9ce6d5c8b1f20c9a45902c4b0d9947ad57cbc2a7b9267343c57b30de11e9c7"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_2
+		default "a42f52a6f234faae684e0af80ce2e24520fbddaeeab64a92add3cdda89f38b87"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_3_12
+		default "0b31e9bf717e3cf82b6cde39b1ab77a6583c22888c8bac133424e75ce6944243"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_9
+		default "07a45e477d0c6c0e08b22efc0d1279ef7e08e628d608f114532ba68bae3db181"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_8   && FREETZ_TARGET_UCLIBC_1_0_40 && FREETZ_KERNEL_VERSION_4_9
 		#
 		default "X"
 
 	config FREETZ_DL_TOOLCHAIN_SUFFIX
-		string "Precompiled toolchain suffix"         if FREETZ_DL_TOOLCHAIN_OVERRIDE
+		string "Precompiled toolchain suffix"                                         if FREETZ_DL_TOOLCHAIN_OVERRIDE
 		default "shared-glibc"
 
 
@@ -131,7 +134,7 @@ menu "Download options"
 			Enable this to override automatically generated entries.
 
 	config FREETZ_DL_KERNEL_SITE
-		string "Kernel site"                                    if FREETZ_DL_OVERRIDE
+		string "Kernel site"                       if FREETZ_DL_OVERRIDE
 		default ""
 
 	config FREETZ_DL_KERNEL_SOURCE_ID
@@ -171,78 +174,79 @@ menu "Download options"
 		string "Kernel source"                     if FREETZ_DL_OVERRIDE
 		default "${FREETZ_DL_KERNEL_SOURCE_ID}${FREETZ_SYSTEM_TYPE_CORE_SUFFIX}-release_kernel.tar.xz"
 
-	config FREETZ_DL_KERNEL_SOURCE_MD5
-		string "MD5 checksum for downloaded Kernel source file" if FREETZ_DL_OVERRIDE
-		default "f2c43e04bf8b9294960df8d628445f91"  if FREETZ_AVM_SOURCE_04_30
-		default "b86ab70776619055a24947013f6b581c"  if FREETZ_AVM_SOURCE_04_33
-		default "7dc896b5384cbb55b57e3eafdfef44fb"  if FREETZ_AVM_SOURCE_04_40
-		default "2e5c3757f710b0370bf8da3ac990f8f8"  if FREETZ_AVM_SOURCE_04_49
-		default "d6f15b6bc0d4cb16b32c48d22de1ef9e"  if FREETZ_AVM_SOURCE_04_57
-		default "a7043ec41695b4cc5dee2506c4e988d8"  if FREETZ_AVM_SOURCE_04_67
-		default "1f6187851ffad1c07c6a2b2cc929c0ef"  if FREETZ_AVM_SOURCE_04_70
-		default "31d63ef951c6077b2084aff6fd3c150f"  if FREETZ_AVM_SOURCE_04_76
-		default "eaaeaf96a43521c930416b0bfac3c718"  if FREETZ_AVM_SOURCE_04_80
-		default "a673a5facbaf1fe8dce9144a05dfaf88"  if FREETZ_AVM_SOURCE_04_87
-		default "0e9d60bc40867db9aaeefe2f71db060e"  if FREETZ_AVM_SOURCE_0546_07_12
-		default "0ae2fc9c7813d1429c8a56166f39913b"  if FREETZ_AVM_SOURCE_1200_07_14
-		default "6701d0b9421d4afe368d7acb699c435c"  if FREETZ_AVM_SOURCE_1200_07_20
-		default "6c74a4ae7823891d9f7b3a3f8fce23c5"  if FREETZ_AVM_SOURCE_1200_07_27
-		default "f4304595f33c7445af5c27382183f520"  if FREETZ_AVM_SOURCE_1759_06_30
-		default "0933615049899b83b80b2f6b0e03849a"  if FREETZ_AVM_SOURCE_1750_07_01
-		default "5b366f1222b7a673f8059f9fcf6f726f"  if FREETZ_AVM_SOURCE_1750_07_12
-		default "d70930be2afb636fcc072a8917e7a36f"  if FREETZ_AVM_SOURCE_1750_07_20
-		default "f2c41d8319e8c0cc2cfdbb58b7539e30"  if FREETZ_AVM_SOURCE_1750_07_27
-		default "16ba3988368eeb6c1603490ca2ea3aac"  if FREETZ_AVM_SOURCE_3490_06_31 || FREETZ_AVM_SOURCE_6810_06_21 || FREETZ_AVM_SOURCE_7272_06_20 || FREETZ_AVM_SOURCE_7320_06_30 || FREETZ_AVM_SOURCE_7360_06_20 || FREETZ_AVM_SOURCE_7490_06_30
-		default "1390697d202eb9870a8734e06e066620"  if FREETZ_AVM_SOURCE_7272_06_87 || FREETZ_AVM_SOURCE_3272_06_86
-		default "72042917adc8e11569e14138ee581cd8"  if FREETZ_AVM_SOURCE_4020_06_50
-		default "87b7125af1539f3ebbc3052f3487a7d9"  if FREETZ_AVM_SOURCE_4020_06_83
-		default "e7dd518abefc09899e8bc81823aa3422"  if FREETZ_AVM_SOURCE_4020_07_01
-		default "605644ad90019638705ca90dc81ba372"  if FREETZ_AVM_SOURCE_4040_07_01
-		default "4754a7048ba93dc9209f5a1f7f9398ff"  if FREETZ_AVM_SOURCE_4040_07_14
-		default "68575bfe323be39e452d36d736ea13c5"  if FREETZ_AVM_SOURCE_5530_07_21
-		default "fe5b56ac42c988d53f513c9b89f2dddc"  if FREETZ_AVM_SOURCE_5530_07_29
-		default "7a504cc6fc26e29f09ab2db21f6b3c30"  if FREETZ_AVM_SOURCE_6000_07_27
-		default "391e59ca4c6c6bf9f41303aaf472937f"  if FREETZ_AVM_SOURCE_6490_06_87
-		default "02d2208b7cd6dc7f5016e1487f2c9141"  if FREETZ_AVM_SOURCE_6490_07_02 || FREETZ_AVM_SOURCE_6490_07_10
-		default "ca90a7c34d8ebe45dff4bc5f8d59e2fe"  if FREETZ_AVM_SOURCE_6590_06_87
-		default "c82116524bdfea01646067aa42203e6b"  if FREETZ_AVM_SOURCE_6590_07_02
-		default "5708c5d12150f41761c68fb1f57b1103"  if FREETZ_AVM_SOURCE_6590_07_20
-		default "8fa3af88fbefc7396ea9ffaa7101cc46"  if FREETZ_AVM_SOURCE_6590_07_25
-		default "891f0e25c6f7c11bbade30d3a65bb099"  if FREETZ_AVM_SOURCE_6591_07_04
-		default "8f29d957f11fcc62acc338475da1f4d3"  if FREETZ_AVM_SOURCE_6591_07_13
-		default "c704b8227f2d027ed9b3091aedec7028"  if FREETZ_AVM_SOURCE_6660_07_14
-		default "e6e60c4331fbda346880c5082b32576d"  if FREETZ_AVM_SOURCE_6660_07_20
-		default "bf0201a4f02b4fb5c2935e835b830b09"  if FREETZ_AVM_SOURCE_6660_07_26
-		default "61e92063b3c9164c7d85f614d53a4afb"  if FREETZ_AVM_SOURCE_7270_04_86
-		default "e396bbfcbd88c09cfcc652f94b7f8a57"  if FREETZ_AVM_SOURCE_7270_05_21
-		default "3eef51f7c80d46d706d53fd59860ea17"  if FREETZ_AVM_SOURCE_7270_05_51
-		default "52d0d1bbcefd49834ff3e8e23f1277a4"  if FREETZ_AVM_SOURCE_7270_06_05
-		default "0a91ac096c8c09f41ccc1055bb63b55a"  if FREETZ_AVM_SOURCE_7330_06_50
-		default "2e8b43c176c1cbe9f815078109d88e61"  if FREETZ_AVM_SOURCE_7390_05_21
-		default "93522806e71da89b5cf7d474e1fe9eac"  if FREETZ_AVM_SOURCE_7390_06_01 || FREETZ_AVM_SOURCE_7340_06_06
-		default "742f1710cbb613a0dd48b8f18f0a2890"  if FREETZ_AVM_SOURCE_7390_06_30 || FREETZ_AVM_SOURCE_7390_06_51 || FREETZ_AVM_SOURCE_7369_06_33
-		default "f46f1c3e9473f99a235af201c9c64caf"  if FREETZ_AVM_SOURCE_7390_06_80
-		default "e4ed72a1182e7160de95579334685b0b"  if FREETZ_AVM_SOURCE_7490_06_51 || FREETZ_AVM_SOURCE_3390_06_51
-		default "9f3b5210c4709fd0c0ed669783f60cfa"  if FREETZ_AVM_SOURCE_7490_06_60
-		default "d2bc6b4ea5f067e232fc5b9c04ff0ff4"  if FREETZ_AVM_SOURCE_7490_06_83
-		default "fa236f0b43aa2a7b903173bc0e726848"  if FREETZ_AVM_SOURCE_7490_06_93
-		default "9dc643cfd52afb67a4ea169cfe82551d"  if FREETZ_AVM_SOURCE_7490_07_01 || FREETZ_AVM_SOURCE_5491_07_01
-		default "4fc638c195942e5850caf9b13054fc6b"  if FREETZ_AVM_SOURCE_7490_07_11
-		default "1b3ff9b2193903a5310f43257e1dd63a"  if FREETZ_AVM_SOURCE_7490_07_21
-		default "c16a915a89f3d203b641d49d86425360"  if FREETZ_AVM_SOURCE_7490_07_27 || FREETZ_AVM_SOURCE_5491_07_27
-		default "750f8e9800f77d7bb8fc345e635602e2"  if FREETZ_AVM_SOURCE_7530_07_02
-		default "81f68fda36d25d3dcfbedc58b66d8194"  if FREETZ_AVM_SOURCE_7530_07_20
-		default "42d571c141d1c0d9713c3774530fefe8"  if FREETZ_AVM_SOURCE_7530_07_25
-		default "157cc04f0d6bac668093d0340b6f1d55"  if FREETZ_AVM_SOURCE_7539_07_22
-		default "35ed17f95d709de7a2509f56976b47e5"  if FREETZ_AVM_SOURCE_7580_06_53
-		default "350317ac647aae7ad39645353581aff2"  if FREETZ_AVM_SOURCE_7580_06_81
-		default "8e5e00682c84614ec7d3422a3c3acc02"  if FREETZ_AVM_SOURCE_7581_07_13
-		default "8e1304c7f87d8afe0e55ccae3340f12c"  if FREETZ_AVM_SOURCE_7583_07_10
-		default "2eb692782a5dd61fad672b87891d36bf"  if FREETZ_AVM_SOURCE_7590_06_92
-		default "95972b38ff1d7db207b81825642a0d93"  if FREETZ_AVM_SOURCE_7590_07_01
-		default "4e4652e96bf0cdce90c56b1e05568e37"  if FREETZ_AVM_SOURCE_7590_07_20
-		default "2217a1f61cc0e28caed1fcec5990076c"  if FREETZ_AVM_SOURCE_7590_07_25
-		default "eb82c0948e81288253f63f63915489a2"  if FREETZ_AVM_SOURCE_r7203
+	config FREETZ_DL_KERNEL_SOURCE_SHA256
+		string "SHA256 checksum for downloaded Kernel source file"                  if FREETZ_DL_OVERRIDE
+		default "128e868b50d30464e05101387b2ef810909c1dafdee92718b4984792a0a969b2"  if FREETZ_AVM_SOURCE_04_30
+		default "ee3789e11d54d476285a563426987c8ba2b709fe5ef6f85d7cfaea388cea6121"  if FREETZ_AVM_SOURCE_04_33
+		default "58231ee953eeab88fb80770373e173df8387106026d57686b3440c7a2e072dc6"  if FREETZ_AVM_SOURCE_04_40
+		default "2b8d966f57b87bb8b5357b4fcebb7e628643b8973db5ae9852dcd532e773b790"  if FREETZ_AVM_SOURCE_04_49
+		default "149a7aed7956a61cb7cf1c270c6306a53cc2d9c0dcd5f9671799cbcbebae318e"  if FREETZ_AVM_SOURCE_04_57
+		default "d8ba4a9c8fee9ea3976926b1ccf0c03103dfef06393d9591c38fbc0203df4351"  if FREETZ_AVM_SOURCE_04_67
+		default "69411913e2927a9ccfacdfe5b8fa1f12e65e957e78b0518ed5a37b8ba037946a"  if FREETZ_AVM_SOURCE_04_70
+		default "54314023caacfded71679f6ddaca437dc3c1ac5bf842d3242c637a8e0c56d01e"  if FREETZ_AVM_SOURCE_04_76
+		default "db85b7602a1111218c0fc0604d82380c8e350b0df3f4a35edfdaf990db721577"  if FREETZ_AVM_SOURCE_04_80
+		default "6479e0d1dfe111849c53be13fef5c99033073bb067d709c53eb9e7ac05dc1bd4"  if FREETZ_AVM_SOURCE_04_87
+		default "140a3f962fb70a399abd78e88e75dced067dee761f256da776746793f26e221e"  if FREETZ_AVM_SOURCE_0546_07_12
+		default "ea5c8ce4fb43ae0cde9fc26e70d62c9cd05b1e9b6de8d64f270985baf0ec6520"  if FREETZ_AVM_SOURCE_1200_07_14
+		default "6a9d263a08cf0ffecfc565be1f7ec9f3a667c95bb588b60183cb3a6f984db81c"  if FREETZ_AVM_SOURCE_1200_07_20
+		default "5642305dda0d1c46be0ed9cbe007b548dc3bc35c3ebbfefce500af45123d67c4"  if FREETZ_AVM_SOURCE_1200_07_27
+		default "801a634a1f10ed704d1bc3b456d0146c072601ed8b83e15315dac287ca8ae2a5"  if FREETZ_AVM_SOURCE_1759_06_30
+		default "0c1c400368be02b3ede742a7dad518e6c2a88c6080a667d4cc9956395d8eda55"  if FREETZ_AVM_SOURCE_1750_07_01
+		default "425a25790d4c8227f25f7c47d425942cd519ea1ff222842c79c0296053931918"  if FREETZ_AVM_SOURCE_1750_07_12
+		default "198b6bdb95c81a366953ddfc00e486b2286eeaebed8d71b9e41c3e39a4326c78"  if FREETZ_AVM_SOURCE_1750_07_20
+		default "4fc149b2146eace191d36bcf68b1eaf0d6a18d9435f3e86075112519dbe72aff"  if FREETZ_AVM_SOURCE_1750_07_27
+		default "50ad609bfc0e72d39d97b789d6da5598418c3b2a1e389a69cdc76b5cbfd2d6eb"  if FREETZ_AVM_SOURCE_3490_06_31 || FREETZ_AVM_SOURCE_6810_06_21 || FREETZ_AVM_SOURCE_7272_06_20 || FREETZ_AVM_SOURCE_7320_06_30 || FREETZ_AVM_SOURCE_7360_06_20 || FREETZ_AVM_SOURCE_7490_06_30
+		default "4ad249d6c785e40aa059f087a6d6559e9e6759461d8b1680b5b7edc2512bd320"  if FREETZ_AVM_SOURCE_7272_06_87 || FREETZ_AVM_SOURCE_3272_06_86
+		default "e9e6bb9bf1d7851c7ccf1859a1667d5f4371db663db1d1ecac3f6195d9444f04"  if FREETZ_AVM_SOURCE_4020_06_50
+		default "82da02e5d9e4947bfc0da733d730bda8bb4407dfdb4216cd99259a13cf846b6f"  if FREETZ_AVM_SOURCE_4020_06_83
+		default "5217cd8332c4a44477fc62d1d35518b9bfb0b263f5e8b6a55045b6e4f2ace920"  if FREETZ_AVM_SOURCE_4020_07_01
+		default "df191dc4f9467f7707b4c0c600643a56df06d262038c38b21f3027ebbb6a99a8"  if FREETZ_AVM_SOURCE_4040_07_01
+		default "fcbc33b1be22078e2f51e4d5a54135252b75a04076bea431e9f1a3fe57339541"  if FREETZ_AVM_SOURCE_4040_07_14
+		default "c9a30b2f6070ad107d66971a3cc6d9263e2ee8efb41e853beac422e24e013d9a"  if FREETZ_AVM_SOURCE_5530_07_21
+		default "72a1de85fd0b6d20b496127110544c2fc269d72ecee9bac3af76d061ba5d0735"  if FREETZ_AVM_SOURCE_5530_07_29
+		default "c652927dbfde2d5f17231a3c1268d50938be29a259d653c62a36da0ec01decb0"  if FREETZ_AVM_SOURCE_6000_07_27
+		default "fea493dae941a68ab1b09bb11e63a021c13bd4a21230ffbc8312875968120ab9"  if FREETZ_AVM_SOURCE_6490_06_87
+		default "68a2a69e3ca97554d21b8efbda67fa735367f8770612092e911cca32c03e83a7"  if FREETZ_AVM_SOURCE_6490_07_02 || FREETZ_AVM_SOURCE_6490_07_10
+		default "d39c81221f5cce09e89c9771bbbdbb78d47a1031b78af79bb62a168f268f05c2"  if FREETZ_AVM_SOURCE_6590_06_87
+		default "78202df8affa0e847920e69803d88af93a5ceac804c322e6fc8548fdbde6c600"  if FREETZ_AVM_SOURCE_6590_07_02
+		default "a7c1522b89da781a0610bc8429c93dea46e94b3dd8f34c3414856489bf686210"  if FREETZ_AVM_SOURCE_6590_07_20
+		default "5905ca01282451c9d2788567428eb5873b8c8f2dad25b0b4e7a848d0aaccb2a5"  if FREETZ_AVM_SOURCE_6590_07_25
+		default "7d7aee504ccbb62267fcf0922ec44ab7ffc6f0993a38ea9751bef0af58bc61c5"  if FREETZ_AVM_SOURCE_6591_07_04
+		default "4224fe4b873463c74a9eeaed31cd810645cbd397187d6f72e472dae03a5df482"  if FREETZ_AVM_SOURCE_6591_07_13
+		default "cd96dfa1d8f10ef50c2443b43a25db3e730c5e44d2a59c71090532e26e6c2a90"  if FREETZ_AVM_SOURCE_6660_07_14
+		default "4a662bb5e710ff755a09216c134aef4ad3e744decf29b4c2068f02063696df4a"  if FREETZ_AVM_SOURCE_6660_07_20
+		default "38d9b05b4760de536f26a6fc8626f79d07dabbe08bdfad2fb6f6e895fbab0848"  if FREETZ_AVM_SOURCE_6660_07_26
+		default "868c5529029c886e5376099cb8a2d9e574773340b05a4130b1f1c8afb6ffd161"  if FREETZ_AVM_SOURCE_7270_04_86
+		default "26b5ff1b8c6630ab7e7cde6ea4ae54eff2fc77e823d2be0eb3ed7eabc9e6dbb7"  if FREETZ_AVM_SOURCE_7270_05_21
+		default "70d72325ab7c17a2842443a35baafd2715c14fa5d053e2a8762a0a0c7b5424f9"  if FREETZ_AVM_SOURCE_7270_05_51
+		default "5f35fbec59018889142f8c3ccf9dff12565536d14dcd656560afcb4aa73340f7"  if FREETZ_AVM_SOURCE_7270_06_05
+		default "3acd09b55fe6dcf4deba0e2c04ff88a1cbcbe83f0956e8871139de19ce246adf"  if FREETZ_AVM_SOURCE_7330_06_50
+		default "03fcb651ec8d2682f13bc3988874febfc48c7ebf2b9c1a67206fa426cfc0d3d9"  if FREETZ_AVM_SOURCE_7390_05_21
+		default "00ff4b90e147461f4efb051d0067a479a6ac3c499d93b41945bbc8d64597c4f5"  if FREETZ_AVM_SOURCE_7390_06_01 || FREETZ_AVM_SOURCE_7340_06_06
+		default "ad4b9162ef4eb031cdbdf3f4a9be5410f2c9510b686ab85c41a9df2b18783a47"  if FREETZ_AVM_SOURCE_7390_06_30 || FREETZ_AVM_SOURCE_7390_06_51 || FREETZ_AVM_SOURCE_7369_06_33
+		default "e7bc109df70234e97a02f6ed0b5999e15716a89898e0a33acb28a6f305c5fe4e"  if FREETZ_AVM_SOURCE_7390_06_80
+		default "92da5f6c5ea0b3c1762cbd970f7b639ec35cc153b9fadc7530ea193f2625c570"  if FREETZ_AVM_SOURCE_7490_06_51 || FREETZ_AVM_SOURCE_3390_06_51
+		default "9fd4e87740ecd492686b0c7d43e8e16211ee57ca66b74d8059f2864605c2a87e"  if FREETZ_AVM_SOURCE_7490_06_60
+		default "e5822d42d179a3e81b4791fd001e160196d15bf2d702ec348aaf9973c08688b2"  if FREETZ_AVM_SOURCE_7490_06_83
+		default "893214895a53442b444db622901938c75e37cba031d0ec3e449523cc1d6af9d8"  if FREETZ_AVM_SOURCE_7490_06_93
+		default "a305274879691473fd3b294de423f62a597fb31b349e172e845c22abe217bb5e"  if FREETZ_AVM_SOURCE_7490_07_01 || FREETZ_AVM_SOURCE_5491_07_01
+		default "24824ada57493716efdd1b4966ab5a285dab1158841f8bcf7c8d8f9508b50c8c"  if FREETZ_AVM_SOURCE_7490_07_11
+		default "2f76ac00e77f162cfef4d4a28dbc451ed4e635f62c1c6eac13e6b073012ced70"  if FREETZ_AVM_SOURCE_7490_07_21
+		default "154b09815496fff0e9531b3a1d6a886ae73f8e6d2e3f6d143f05671cbf46fb1c"  if FREETZ_AVM_SOURCE_7490_07_27 || FREETZ_AVM_SOURCE_5491_07_27
+		default "c579fcdbfa81f61ec587554d708ff8ed02dffbe480aeff7466ff42cfc5b7dbed"  if FREETZ_AVM_SOURCE_7530_07_02
+		default "9fdcb834a1aeb78af0570985f2ddfc227f4d4b74bce505b3d414648062ad4e21"  if FREETZ_AVM_SOURCE_7530_07_20
+		default "bd80ab0e4f9bed9fd30dfdf971be03b79ffad9a23dc12ba8e14edea6a5c50167"  if FREETZ_AVM_SOURCE_7530_07_25
+		default "783af30b6fe6ce0f77ad26122ee419b5eeeb2906e1d144492f5fab5363ba1f45"  if FREETZ_AVM_SOURCE_7539_07_22
+		default "c10db8138b4e2c66d0eb086a5c9c0e0d9f197401654e945884812866d2ac4f81"  if FREETZ_AVM_SOURCE_7539_07_29
+		default "1e627e14435686c37554300facb7e0a3d8c852b8f560c056f89d3d11be9f28e0"  if FREETZ_AVM_SOURCE_7580_06_53
+		default "f967c316f3d5baf28d1c435d3a9398fcc76f66c6aece3dc06fb7e499d997c888"  if FREETZ_AVM_SOURCE_7580_06_81
+		default "3c9b69129228c0649cf49924b4219b1b34a4edd73cc740bcc5318dc8ac7619fe"  if FREETZ_AVM_SOURCE_7581_07_13
+		default "5d8acf157a7f0a056097d806dedcd6a52eda853c246ac03251032730cfa46896"  if FREETZ_AVM_SOURCE_7583_07_10
+		default "39c25a5a03ba3329369e7958f48b95ca9cc08b9c1591a6492ec01ad6e9972024"  if FREETZ_AVM_SOURCE_7590_06_92
+		default "462a31ad624365cad047df850f76ef5b4e09f7abb0f8dc2002c98796a6636e51"  if FREETZ_AVM_SOURCE_7590_07_01
+		default "ab0701407aaee81751749d360d410e081899ed84844a88dbe6fe2901a1e7b571"  if FREETZ_AVM_SOURCE_7590_07_20
+		default "260b6a41bb64e1c8d9f01508e16e2c08b8201725585eb39f4e31dbc5891f58d5"  if FREETZ_AVM_SOURCE_7590_07_25
+		default "14de41995572aa2c56b71fac7b4c2564b9744773dbe8743ced2d16d28bb5284e"  if FREETZ_AVM_SOURCE_r7203
 
 	config FREETZ_DL_SITE
 		string "Firmware site"                                                                                             if FREETZ_DL_OVERRIDE && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
@@ -336,6 +340,8 @@ menu "Download options"
 		#
 		default "@AVM/fritzbox-5530-fiber/{other,deutschland}/fritz.os"                                                    if FREETZ_TYPE_5530
 		#
+		default "@AVM/fritzbox-5590-fiber/{other,deutschland}/fritz.os"                                                    if FREETZ_TYPE_5590
+		#
 		default "@AVM/fritzwlan/fritzrepeater-6000/deutschland/fritz.os"                                                   if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "@AVM/firmware/6430/65797387"                                                                              if FREETZ_TYPE_6430 && FREETZ_TYPE_FIRMWARE_07_1X
@@ -360,6 +366,8 @@ menu "Download options"
 		default "@AVM/firmware/6660/89746785"                                                                              if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_1X
 		default "@AVM/firmware/6660/4424247314"                                                                            if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "@AVM/fritzbox-6660-cable/{deutschland,other}/fritz.os"                                                    if FREETZ_TYPE_6660
+		#
+		default "@AVM/fritzbox-6690-cable/{deutschland,other}/fritz.os"                                                    if FREETZ_TYPE_6690
 		#
 		default "@AVM/{fritzbox-6810-lte/deutschland/fritz.os,fritzbox_6810_lte/firmware/deutsch}"                         if FREETZ_TYPE_6810 && FREETZ_TYPE_LANG_DE
 		default "@AVM/{fritzbox-6810-lte/other/fritz.os,fritzbox_6810_lte/firmware/english}"                               if FREETZ_TYPE_6810 && FREETZ_TYPE_LANG_EN
@@ -517,7 +525,7 @@ menu "Download options"
 		default "FRITZ.Repeater_1200-07.21.image"                                              if FREETZ_TYPE_1200 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Repeater_1200-07.29.image"                                              if FREETZ_TYPE_1200 && FREETZ_TYPE_FIRMWARE_07_25
 		#
-#		default "FRITZ.Repeater_1200_AX-07.29.image"                                           if FREETZ_TYPE_1209 && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Repeater_1200_AX-07.30.image"                                           if FREETZ_TYPE_1209 && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "FRITZ.Powerline_1240E.06.92.image"                                            if FREETZ_TYPE_1240 && FREETZ_TYPE_FIRMWARE_06_9X
 		default "FRITZ.Powerline_1240E.150.07.01.image"                                        if FREETZ_TYPE_1240 && FREETZ_TYPE_FIRMWARE_07_0X
@@ -547,6 +555,7 @@ menu "Download options"
 		default "FRITZ.Repeater_2400-07.12.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_1X
 		default "FRITZ.Repeater_2400-07.21.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Repeater_2400-07.29.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Repeater_2400-07.39-94804-Labor.image"                                  if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_4X_LABOR
 		#
 		default "fritz.box_sl_wlan.09.04.34.image"                                             if FREETZ_TYPE_3020
 		#
@@ -627,6 +636,8 @@ menu "Download options"
 		default "FRITZ.Box_5530-07.21.image"                                                   if FREETZ_TYPE_5530 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_5530-07.29.image"                                                   if FREETZ_TYPE_5530 && FREETZ_TYPE_FIRMWARE_07_25
 		#
+		default "FRITZ.Box_5590-07.27-94541-Inhaus.image"                                      if FREETZ_TYPE_5590 && FREETZ_TYPE_FIRMWARE_07_25_INHAUS
+		#
 		default "FRITZ.Repeater_6000-07.29.image"                                              if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "FRITZ.Box_6430_Cable-07.12.image"                                             if FREETZ_TYPE_6430 && FREETZ_TYPE_FIRMWARE_07_1X
@@ -648,10 +659,13 @@ menu "Download options"
 		default "FRITZ.Box_6591_Cable-07.13.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_1X
 		default "FRITZ.Box_6591_Cable-07.22.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_6591_Cable-07.29.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Box_6591_Cable-07.39-94697-Labor.image"                                 if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_4X_LABOR
 		#
 		default "FRITZ.Box_6660_Cable-07.15.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_1X
 		default "FRITZ.Box_6660_Cable-07.24.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_6660_Cable-07.29.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_25
+		#
+		default "FRITZ.Box_6690_Cable-07.28-91892-Inhaus.image"                                if FREETZ_TYPE_6690 && FREETZ_TYPE_FIRMWARE_07_25_INHAUS
 		#
 		default "FRITZ.Box_6810_LTE.108.06.34.image"                                           if FREETZ_TYPE_6810 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_2X
 		default "FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.34.image"                            if FREETZ_TYPE_6810 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_2X
@@ -668,17 +682,17 @@ menu "Download options"
 		#
 		default "FRITZ.Box_6840_LTE.105.06.30.image"                                           if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_2X
 		default "FRITZ.Box_6840_LTE.105.06.50.image"                                           if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_5X
-		default "FRITZ.Box_6840_LTE.105.06.85.image"                                           if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_8X
+		default "FRITZ.Box_6840_LTE.105.06.87.image"                                           if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_8X
 		default "FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.30.image"                         if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_2X
 		default "FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.50.image"                         if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_5X
-		default "FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.85.image"                         if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_8X
+		default "FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.87.image"                         if FREETZ_TYPE_6840 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_8X
 		#
 		default "FRITZ.Box_6842_LTE.123.06.34.image"                                           if FREETZ_TYPE_6842 && FREETZ_TYPE_FIRMWARE_06_2X
 		#
 		default "FRITZ.Box_6850_LTE-07.21.image"                                               if FREETZ_TYPE_6850_4G && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_6850_LTE-07.29.image"                                               if FREETZ_TYPE_6850_4G && FREETZ_TYPE_FIRMWARE_07_25
 		#
-		default "FRITZ.Box_6850_5G-07.29.image"                                                if FREETZ_TYPE_6850_5G && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Box_6850_5G-07.30.image"                                                if FREETZ_TYPE_6850_5G && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.06.87.image"                      if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_06_8X
 		default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.07.03.image"                      if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_07_0X
@@ -809,7 +823,7 @@ menu "Download options"
 		default "FRITZ.Box_7490-07.21.image"                                                   if FREETZ_TYPE_7490 &&                        FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_7490-07.29.image"                                                   if FREETZ_TYPE_7490 &&                        FREETZ_TYPE_FIRMWARE_07_25
 		#
-#		default "FRITZ.Box_7510-07.30.image"                                                   if FREETZ_TYPE_7510                        && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Box_7510-07.30.image"                                                   if FREETZ_TYPE_7510                        && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "FRITZ.Box_7520-07.14.image"                                                   if FREETZ_TYPE_7520 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_07_1X
 		default "FRITZ.Box_7520-07.21.image"                                                   if FREETZ_TYPE_7520                        && FREETZ_TYPE_FIRMWARE_07_2X
@@ -821,6 +835,7 @@ menu "Download options"
 		default "FRITZ.Box_7530-07.14.image"                                                   if (FREETZ_TYPE_7530 || FREETZ_TYPE_7520_7530) && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_07_1X
 		default "FRITZ.Box_7530-07.21.image"                                                   if (FREETZ_TYPE_7530 || FREETZ_TYPE_7520_7530)                        && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_7530-07.29.image"                                                   if (FREETZ_TYPE_7530 || FREETZ_TYPE_7520_7530)                        && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Box_7530-07.39-94937-Labor.image"                                       if (FREETZ_TYPE_7530 || FREETZ_TYPE_7520_7530)                        && FREETZ_TYPE_FIRMWARE_07_4X_LABOR
 		#
 		default "FRITZ.Box_7530_AX-07.22.image"                                                if FREETZ_TYPE_7539 && FREETZ_TYPE_FIRMWARE_07_2X
 		default "FRITZ.Box_7530_AX-07.29.image"                                                if FREETZ_TYPE_7539 && FREETZ_TYPE_FIRMWARE_07_25
@@ -867,55 +882,58 @@ menu "Download options"
 		default "FRITZ.Box_7590-07.29.image"                                                   if FREETZ_TYPE_7590 &&                        FREETZ_TYPE_FIRMWARE_07_25
 		default "FRITZ.Box_7590-07.39-94022-Labor.image"                                       if FREETZ_TYPE_7590 &&                        FREETZ_TYPE_FIRMWARE_07_4X_LABOR
 		#
-		default "FRITZ.Box_7590_AX-07.29.image"                                                if FREETZ_TYPE_7599 &&                        FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Box_7590_AX-07.31.image"                                                if FREETZ_TYPE_7599 &&                        FREETZ_TYPE_FIRMWARE_07_25
 		default "FRITZ.Box_7590_AX-07.39-94093-Labor.image"                                    if FREETZ_TYPE_7599 &&                        FREETZ_TYPE_FIRMWARE_07_4X_LABOR
 		#
 		default "fw_Speedport_W501V_v_28.04.38.image"                                          if FREETZ_TYPE_W501V
 
-	config FREETZ_DL_SOURCE_MD5
-		string "MD5 checksum for downloaded Image"      if FREETZ_DL_OVERRIDE
-		depends                                         on !FREETZ_AVM_HAS_SIGNATURE
+	config FREETZ_DL_SOURCE_SHA256
+		string "SHA256 checksum for downloaded Image"                                          if FREETZ_DL_OVERRIDE
+		depends                                                                                on !FREETZ_AVM_HAS_SIGNATURE
 		#
-		default "57692fa45d7d8cfa9c97be2cbe3879ad"      if (FREETZ_TYPE_300IP || FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_DE
-		default "8acd3c4d936b7ff8c5d2065ee7bc7f9b"      if (FREETZ_TYPE_300IP || FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_A
-		default "d4f060e9f5b0f10f1b9bc38d58a35bb6"      if (FREETZ_TYPE_300IP || FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_B
+		default "59919012d080a3a0b5ffa165640a01ba6e22cd99a79132851ff6c129d400213c"             if (FREETZ_TYPE_300IP || FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_DE
+		default "4fe9a77b1c0e58af66ce9ea9e744639331d29c36cc3d89d8ea6b72f04b9baa82"             if (FREETZ_TYPE_300IP || FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_A
+		default "30198209bcdef4f8dc09a6c3c38c494ce8b97dd33270a1af01fe1aadd3aff9ee"             if (FREETZ_TYPE_300IP || FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_B
 		#
-		default "240ec5c8484f8fee97cd122297bee186"      if FREETZ_TYPE_WLAN && FREETZ_TYPE_LANG_DE
-		default "7b08d49af5bfd00bee1ce6593b033630"      if FREETZ_TYPE_WLAN && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_A
-		default "9880d790edde44b3a75886c30f57df3e"      if FREETZ_TYPE_WLAN && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_B
+		default "8430aecc76cc62a1bbdaa0839b491d7f2183f3a3be06366639df9e2cb54f908f"             if FREETZ_TYPE_WLAN && FREETZ_TYPE_LANG_DE
+		default "e6e2e41ba650820d9aa0d7928c3204f1d11fbc4d2921fb1b956dcfd3697cfe22"             if FREETZ_TYPE_WLAN && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_A
+		default "ff4cb437013e0b068ed4c82aea03211618cae1702d0af125f4b1565e4927a715"             if FREETZ_TYPE_WLAN && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_B
 		#
-		default "7b109464d953dac912352dd9906c9d61"      if FREETZ_TYPE_2170
-		default "f483cfab8da97207248f5e0703993a72"      if FREETZ_TYPE_3020
-		default "31653fb1ba044375ab389474951c1cf4"      if FREETZ_TYPE_3030
-		default "1c8dcee29f84c96648aa4b96271c9a16"      if FREETZ_TYPE_3130
-		default "a34a8d4f7af511d5dd6fff5f3c4e8276"      if FREETZ_TYPE_3131
-		default "f08942a9679002e21c29bb2cad9ded3e"      if FREETZ_TYPE_3170
-		default "cdea5c36f629ce85e1a1613342cfc9f3"      if FREETZ_TYPE_5010
-		default "8961ba722c8e0be5ece061d75a07cf65"      if FREETZ_TYPE_5050
-		default "1eda8531cceea471e04985fa635ba146"      if FREETZ_TYPE_5140
-		default "7fabbf13889cf66b6f2dd47fe472a265"      if FREETZ_TYPE_7050
-		default "2d6ec2aa688a0af9fb6602d5ba62bd28"      if FREETZ_TYPE_7150
+		default "5b02e3096bafe5723c473ebd71cbc21efbfdeb67d2f70f2c35983d8d208d4fd2"             if FREETZ_TYPE_2170
+		default "6ba5a40a77030c9eaedadd01c3e49bb4536f7b80f1cf85f0ff20f3af4660ceb7"             if FREETZ_TYPE_3020
+		default "5f1b72bb965c82dae2e59ce819dfce546d4f2c318c19b0a0a420e688ea8a03f3"             if FREETZ_TYPE_3030
+		default "afaec7ebc8ca445f22aae892421237c943417c62806a75c0d6a96bf5a20139b8"             if FREETZ_TYPE_3130
+		default "f89882fe4a6de52de59c717f119105b85a9b914dd980288bc5edd590ac7c229a"             if FREETZ_TYPE_3131
+		default "03b1cfb34153115d03beb2db664824786fbeeeca62dc70f165c3c6eebf66fa77"             if FREETZ_TYPE_3170
+		default "53b312bbd5089c35591553cec2353382e58fe0de467582f04f227418cabef9f6"             if FREETZ_TYPE_5010
+		default "e121121c668d7baee12c4c38136cd98a63fb6e273f3e64b94e106bb0c85bcc79"             if FREETZ_TYPE_5050
+		default "04f403d71ce73ac11c38f80c8880506cd69ed2d06bb852d416fdcf51c8eef77d"             if FREETZ_TYPE_5140
+		default "d9acc3b26aa9f613eeeefa59ad343b9aed3364647ced037a1b64313264573054"             if FREETZ_TYPE_7050
+		default "e31d455299d2c7bda0b262d28fd02bb5f4b96f2d127b5ddb5a749d422fe330a9"             if FREETZ_TYPE_7150
 		#
-		default "acac9d43d4117606bdf1e88065d20534"      if FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_DE
-		default "8df368a2f0151ba84e30a0ce5bcd6475"      if FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_A
-		default "080b04118f9441114b16951e3b3d51f4"      if FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_B
+		default "697bebae075f31e9b8064a351f8153da38b8a7e4dd363dd16911de81d2dcb061"             if FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_DE
+		default "217a62cbd788df627ae8ba996f7cec1c540f4a90ff8dc7a4cc36c7d922a2ce74"             if FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_A
+		default "e945a650f9af052858a50ee5753bff93cd139799a5310b2aead0064430cf79cb"             if FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_ANNEX_B
 		#
-		default "f64d17124ba354427a1710d12b35e00f"      if FREETZ_TYPE_W501V
+		default "f58830a336c53d8d54ddc5a32d81467770315b2b2738018a91d4dba5b466e9d0"             if FREETZ_TYPE_W501V
 		#
-		default "00000000000000000000000000000000"
+		default "0000000000000000000000000000000000000000000000000000000000000000"
 
 	config FREETZ_DL_SOURCE_CONTAINER
 		string "Downloaded container file"              if FREETZ_DL_OVERRIDE
 		depends                                         on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 		#
+		default "fritz-repeater-2400-labor-94804.zip"   if FREETZ_TYPE_2400
+		default "fritzbox-7530-labor-94937.zip"         if FREETZ_TYPE_7530
+		default "fritzbox-6591-labor-94697.zip"         if FREETZ_TYPE_6591
 		default "fritzbox-7590-labor-94022.zip"         if FREETZ_TYPE_7590
 		default "fritzbox-7590_AX-labor-94093.zip"      if FREETZ_TYPE_7599
 #		default "xxxxxxxxxxxxxxxxxxxxxxxxx.zip"         if FREETZ_TYPE_xxxx
 		#
 		default ""
 
-#	config FREETZ_DL_SOURCE_CONTAINER_MD5
-#		string "MD5 checksum for container"             if FREETZ_DL_OVERRIDE
+#	config FREETZ_DL_SOURCE_CONTAINER_SHA256
+#		string "SHA256 checksum for container"          if FREETZ_DL_OVERRIDE
 #		depends                                         on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 #		#
 #		default ""
@@ -1006,13 +1024,13 @@ menu "Download options"
 		default "fw_speedport_w900v_v34.04.57.image"                                    if FREETZ_TYPE_W900V_7170
 		default "Firmware_Speedport_W_920V.AnnexB.65.04.79.image"                       if FREETZ_TYPE_W920V_7570
 
-	config FREETZ_DL_SOURCE2_MD5
-		string "AVM alien web interface MD5"                                            if FREETZ_DL_OVERRIDE
+	config FREETZ_DL_SOURCE2_SHA256
+		string "AVM alien web interface SHA256"                                         if FREETZ_DL_OVERRIDE
 		depends on FREETZ_DL_ALIEN && !FREETZ_AVM_HAS_SIGNATURE
 		#
-		default "f08942a9679002e21c29bb2cad9ded3e"                                      if FREETZ_TYPE_3170_7170
-		default "2d6ec2aa688a0af9fb6602d5ba62bd28"                                      if FREETZ_TYPE_7150_7170
-		default "c49167da6dca42cdb34fbffbaf2c4097"                                      if FREETZ_TYPE_W501V
+		default "03b1cfb34153115d03beb2db664824786fbeeeca62dc70f165c3c6eebf66fa77"      if FREETZ_TYPE_3170_7170
+		default "e31d455299d2c7bda0b262d28fd02bb5f4b96f2d127b5ddb5a749d422fe330a9"      if FREETZ_TYPE_7150_7170
+		default "49807f1aa040a88402d5db48f7d745940eebea3006e7ba1dd7e22bdc488c346b"      if FREETZ_TYPE_W501V
 
 endmenu # Download options #
 

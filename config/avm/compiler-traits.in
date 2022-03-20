@@ -96,8 +96,9 @@ config FREETZ_GCC_FPU
 # -mfloat-abi=% (ARM) / -m%-float (MIPS)
 config FREETZ_GCC_FLOAT_ABI
 	string
-	default "softfp"   if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex
-	default "soft"     if FREETZ_TARGET_ARCH_MIPS
+	default "softfp"   if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex    && !FREETZ_SYSTEM_TYPE_BCM63138
+	default "soft"     if FREETZ_TARGET_ARCH_MIPS || \
+		             (FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex_a9 &&  FREETZ_SYSTEM_TYPE_BCM63138)
 
 # -mmode=%
 config FREETZ_GCC_MODE

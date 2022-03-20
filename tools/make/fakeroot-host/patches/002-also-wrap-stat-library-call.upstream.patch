@@ -24,7 +24,7 @@ Forwarded: Yes
 
 --- configure.ac
 +++ configure.ac
-@@ -361,9 +361,13 @@
+@@ -362,9 +362,13 @@
  
  :>fakerootconfig.h.tmp
  
@@ -40,7 +40,7 @@ Forwarded: Yes
    FOUND=
    for WRAPPED in __${PRE}x${FUNC} _${PRE}x${FUNC} __${PRE}${FUNC}13 ${PRE}${FUNC}; do
      AC_CHECK_FUNCS($WRAPPED,FOUND=$WRAPPED)
-@@ -374,8 +378,8 @@
+@@ -375,8 +379,8 @@
  dnl  for WRAPPED in _${PRE}${FUNC}; do
  dnl    FOUND=$WRAPPED
      if test -n "$FOUND"; then
@@ -51,7 +51,7 @@ Forwarded: Yes
        DEFINE_NEXT=[`echo wrap_${FOUND}| tr '[a-z]' '[A-Z]'`]
        DEFINE_ARG=[`echo wrap_${FOUND}| tr '[a-z]' '[A-Z]'`]
        AC_DEFINE_UNQUOTED(WRAP_${PF}, $FOUND)
-@@ -517,6 +521,12 @@
+@@ -518,6 +522,12 @@
  #define TMP_STAT  __astat
  #define NEXT_STAT_NOARG  next___astat
  

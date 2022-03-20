@@ -1,6 +1,7 @@
-PSEUDO_HOST_VERSION:=300d7570720bc14d01f49d285498d71cce3ce44e
+PSEUDO_HOST_VERSION:=0cda3ba5f94aed8d50652a99ee9c502975aa2926
+# Newer versions build with Ubuntu 14 and 18 cause problems on other systems with tar-host: https://github.com/Freetz-NG/freetz-ng/issues/468
 PSEUDO_HOST_SOURCE:=pseudo-$(PSEUDO_HOST_VERSION).tar.xz
-PSEUDO_HOST_SOURCE_SHA256:=c044bc6df6218bfed15b751512199b76619f5ee62338289ebc7e10a28f873ae3
+PSEUDO_HOST_SOURCE_SHA256:=405652c57ed80f9230c7be213350c0bf51aeb8a4d629778b338160dd25cbf642
 PSEUDO_HOST_SITE:=git@https://git.yoctoproject.org/git/pseudo
 #PSEUDO_HOST_SITE:=http://downloads.yoctoproject.org/releases/pseudo/
 ### WEBSITE:=https://www.yoctoproject.org/software-item/pseudo/

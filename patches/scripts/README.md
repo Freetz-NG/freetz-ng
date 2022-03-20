@@ -11,6 +11,7 @@
  - 222-drop_noexec.sh               - FREETZ_AVM_HAS_NOEXEC
  - 250-remove_avm_inetd.sh          - FREETZ_AVM_HAS_INETD
  - 700-set_lang_to_utf8.sh          - FREETZ_BUSYBOX_UNICODE_SUPPORT
+ - 840-remove_smd_httpd.sh          - FREETZ_CPU_MODEL_ARM_cortex_a9
 
 ### wrapper
  - 105-wrapper_ctlmgr.sh            - FREETZ_LIB_libctlmgr

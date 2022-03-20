@@ -1,6 +1,6 @@
 --- session.c
 +++ session.c
-@@ -1331,6 +1331,15 @@
+@@ -1330,6 +1330,15 @@
  	
  		debug3_f("checking '%s'", component);
  

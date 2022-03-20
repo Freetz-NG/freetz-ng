@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_LIB_libmaxminddb" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmaxminddb.so.0.0.7"

@@ -237,10 +237,14 @@ if FREETZ_PACKAGE_LIGHTTPD
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModIndexFile
 			for more information on this module.
 
-#	requires libmaxminddb not available in freetz
-#	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
-#		bool "mod_maxminddb"
-#		default n
+	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
+		bool "mod_maxminddb"
+		select FREETZ_LIB_libmaxminddb
+		default n
+		help
+			This option adds mod_maxminddb.so to the image.
+			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModMaxMindDB
+			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAGNET
 		bool "mod_magnet"

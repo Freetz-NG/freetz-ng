@@ -4,7 +4,7 @@
 TMP=''
 
 MAJOR="$(sed -nr 's/^firmware_info[ \t]*([^\.]*).*/\1/p' /proc/sys/urlader/environment)"
-VER="$(sed -n 's/^firmware_info[ \t]*[^\.]*.//p' /proc/sys/urlader/environment)"
+VER="$(sed -nr 's/^firmware_info[ \t]*[^\.]*.([^,]*).*/\1/p' /proc/sys/urlader/environment)"
 REV="$(sed -nr 's/.*[ ^]*CONFIG_BUILDNUMBER="?([^"]*).*/\1/p' /etc/init.d/rc.conf)"
 [ -z "$REV" ] && REV="$(/etc/version --project)"
 [ -z "$REV" ] && REV="$(/etc/version -vsub | sed 's/-//')"

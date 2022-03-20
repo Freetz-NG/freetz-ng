@@ -1,6 +1,6 @@
-TOOLS_HOST_VERSION:=2022-02-13
+TOOLS_HOST_VERSION:=2022-03-07
 TOOLS_HOST_SOURCE:=tools-$(TOOLS_HOST_VERSION).tar.xz
-TOOLS_HOST_SOURCE_SHA256:=b93d36ee3d70a5ebbf34d743b61f7ddd1469d46af8e98915a136b0d3e9f78ccd
+TOOLS_HOST_SOURCE_SHA256:=eb6337d7f0a555d7821ace48fe5ea3d5fc5aff4e7a96eabcf95bc2744ed44f88
 TOOLS_HOST_SITE:=@MIRROR/
 
 TOOLS_HOST_DIR:=$(TOOLS_SOURCE_DIR)/tools-host-$(TOOLS_HOST_VERSION)
@@ -9,6 +9,11 @@ TOOLS_HOST_DIR:=$(TOOLS_SOURCE_DIR)/tools-host-$(TOOLS_HOST_VERSION)
 tools-host-source: $(DL_DIR)/$(TOOLS_HOST_SOURCE)
 $(DL_DIR)/$(TOOLS_HOST_SOURCE): | $(DL_DIR)
 	$(DL_TOOL) $(DL_DIR) $(TOOLS_HOST_SOURCE) $(TOOLS_HOST_SITE) $(TOOLS_HOST_SOURCE_SHA256)
+#	$(info ERROR: File '$(DL_DIR)/$(TOOLS_HOST_SOURCE)' not found.)
+#	$(info There is and will no download source be available.)
+#	$(info Either disable 'FREETZ_HOSTTOOLS_DOWNLOAD' in menuconfig)
+#	$(info or create the file by yourself with 'tools/own-hosttools'.)
+#	$(error )
 
 tools-host-unpacked: $(TOOLS_HOST_DIR)/.unpacked
 $(TOOLS_HOST_DIR)/.unpacked: $(DL_DIR)/$(TOOLS_HOST_SOURCE) | $(TOOLS_SOURCE_DIR)

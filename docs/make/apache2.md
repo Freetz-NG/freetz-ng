@@ -1,4 +1,4 @@
-# Apache HTTP Server 2.4.52 (binary only)
+# Apache HTTP Server 2.4.53 (binary only)
  - Homepage: [https://httpd.apache.org/](https://httpd.apache.org/)
  - Manpage: [https://httpd.apache.org/docs/2.4/](https://httpd.apache.org/docs/2.4/)
  - Changelog: [https://downloads.apache.org/httpd/CHANGES_2.4](https://downloads.apache.org/httpd/CHANGES_2.4)
@@ -198,6 +198,21 @@ ServerName freetz.meinedomain.at
 
 Das Location Element bewirkt, dass der Benutzer sich vor dem
 Seitenaufbau anmelden muss.
+
+### Geoblocking
+Bestimmte Länder können über eine `.htaccess`-Datei blockiert werden, `XX` entsprechend ersetzen:
+```
+<IfModule mod_geoip.c>
+    GeoIPEnable On
+#   SetEnvIf GEOIP_COUNTRY_CODE XX AllowCountry
+#   Require env AllowCountry
+    SetEnvIf GEOIP_COUNTRY_CODE XX BlockCountry
+    <RequireAll>
+        Require all granted
+        Require not env BlockCountry
+    </RequireAll>
+</IfModule>
+```
 
 ### Sonstiges
 

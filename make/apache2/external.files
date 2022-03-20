@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_PACKAGE_APACHE2" = y ] && EXTERNAL_FILES+="$(find "$PACKAGES_DIR/apache2-2.4.52/root" -type f -printf ' /%P' 2>/dev/null)"
+[ "$EXTERNAL_FREETZ_PACKAGE_APACHE2" = y ] && EXTERNAL_FILES+="$(find "$PACKAGES_DIR/apache2-2.4.53/root" -type f -printf ' /%P' 2>/dev/null)"
 

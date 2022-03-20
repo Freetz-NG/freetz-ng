@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_LCD4LINUX
-	bool "LCD4linux 38ef448-git"
+	bool "LCD4linux e2cfdc5-git"
 	select FREETZ_LIB_libncurses
 	select FREETZ_LIB_libgd
 	select FREETZ_LIB_libjpeg

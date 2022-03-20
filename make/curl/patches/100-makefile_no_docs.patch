@@ -1,6 +1,6 @@
 --- Makefile.am
 +++ Makefile.am
-@@ -195,7 +195,7 @@
+@@ -156,7 +156,7 @@
  bin_SCRIPTS = curl-config
  
  SUBDIRS = lib src
@@ -9,7 +9,7 @@
  
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
-@@ -309,14 +309,14 @@
+@@ -270,14 +270,14 @@
  # We extend the standard install with a custom hook:
  install-data-hook:
  	(cd include && $(MAKE) install)
@@ -30,7 +30,7 @@
  	@echo "generating a fresh ca-bundle.crt"
 --- Makefile.in
 +++ Makefile.in
-@@ -708,7 +708,7 @@
+@@ -669,7 +669,7 @@
  
  bin_SCRIPTS = curl-config
  SUBDIRS = lib src
@@ -39,7 +39,7 @@
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
  LIB_VAUTH_CFILES = \
-@@ -1792,14 +1792,14 @@
+@@ -1749,14 +1749,14 @@
  # We extend the standard install with a custom hook:
  install-data-hook:
  	(cd include && $(MAKE) install)

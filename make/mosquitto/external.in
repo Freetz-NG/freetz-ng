@@ -1,0 +1,40 @@
+config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_MOSQUITTO
+	bool "mosquitto"
+	default n
+
+if EXTERNAL_FREETZ_PACKAGE_MOSQUITTO
+
+	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_BROKER
+		bool "Mosquitto broker"
+		depends on FREETZ_PACKAGE_MOSQUITTO_BROKER
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/mosquitto
+
+	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_PASSWD
+		bool "Mosquitto passwd utility"
+		depends on FREETZ_PACKAGE_MOSQUITTO_PASSWD
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/mosquitto_passwd
+
+	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB
+		bool "Mosquitto publish client"
+		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/mosquitto_pub
+
+	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB
+		bool "Mosquitto subscribe client"
+		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/mosquitto_sub
+
+endif # EXTERNAL_FREETZ_PACKAGE_MOSQUITTO

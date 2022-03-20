@@ -730,9 +730,10 @@ fi
 
 VARTAR_MOD="${FILESYSTEM_MOD_DIR}/${VARTAR_FILE}"
 
+[ "${FREETZ_SYSTEM_TYPE_BCM63138}" == "y" ] && TARGET_TOOLCHAIN_ID__GCC_SUFFIX="-bcm"
 [ "${FREETZ_AVM_UCLIBC_NPTL_ENABLED}" == "y" ] && TARGET_TOOLCHAIN_ID__UCLIBC_SUFFIX="-nptl"
 [ "${FREETZ_KERNEL_VERSION_3_10_MIN}" == "y" ] && TARGET_TOOLCHAIN_ID__KERNEL_SUFFIX="_kernel-${FREETZ_KERNEL_VERSION_MAJOR}"
-TARGET_TOOLCHAIN_ID="${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_TARGET_GCC_VERSION}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${TARGET_TOOLCHAIN_ID__UCLIBC_SUFFIX}${TARGET_TOOLCHAIN_ID__KERNEL_SUFFIX}"
+TARGET_TOOLCHAIN_ID="${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_TARGET_GCC_VERSION}${TARGET_TOOLCHAIN_ID__GCC_SUFFIX}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${TARGET_TOOLCHAIN_ID__UCLIBC_SUFFIX}${TARGET_TOOLCHAIN_ID__KERNEL_SUFFIX}"
 PACKAGES_DIR="${PACKAGES_DIR_ROOT}/target-${TARGET_TOOLCHAIN_ID}"
 TARGET_SPECIFIC_ROOT_DIR="${PACKAGES_DIR}/root"
 
@@ -1952,11 +1953,14 @@ if [ "$DO_PACK" -gt 0 ]; then
 	# Check size of kernel image (multiple of 64 kB blocks)
 	if [ -n "$FREETZ_KERNEL_CUSTOM_MTD_SIZE" ]; then
 		let KERNEL_LIMIT="$FREETZ_KERNEL_CUSTOM_MTD_SIZE*64*1024"
+	elif [ -e "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" ]; then
+		KERNEL_LIMIT=
+		# kernel_size seems to be for ARM and not ATOM, so ignore it as real size is not known - and RK not available
 	else
 		KERNEL_LIMIT="$(sed -nr 's/^kernel_size=(.*)/\1/p' ${FIRMWARE_DIR}/var/install)"
 	#	[ -z "$KERNEL_LIMIT" ] && error 1 "Can't find kernel_size in var/install"
 	fi
-	[ -e "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" ] && KERNEL_SIZE="$(gzip "$KERNEL_MOD" -c | wc -c)" || KERNEL_SIZE="$(wc -c < "$KERNEL_MOD")"
+	KERNEL_SIZE="$(wc -c < "$KERNEL_MOD")"
 
 	[ "$KERNEL_SIZE" -eq 0 ] && error 1 "kernel image is empty"
 	if [ -z "$KERNEL_LIMIT" ]; then

@@ -13,7 +13,7 @@ evalconfig() {
 		echo -e "\n# $*"
 		. ./.config
 		[ "${FREETZ_KERNEL_VERSION:0:1}" != "2" ] && kernel="_kernel-$FREETZ_KERNEL_VERSION_MAJOR"
-		echo ${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_KERNEL_GCC_VERSION}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${FREETZ_AVM_UCLIBC_NPTL_ENABLED/y/-nptl}$kernel
+		echo ${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_TARGET_GCC_VERSION}${FREETZ_SYSTEM_TYPE_BCM63138/y/-bcm}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${FREETZ_AVM_UCLIBC_NPTL_ENABLED/y/-nptl}$kernel
 	) >> out.raw
 }
 
@@ -41,8 +41,8 @@ FK="dl/${line%_uCli*}-freetz-${VERSION}-shared-glibc.tar.lzma"
 FT="dl/$line-freetz-${VERSION}-shared-glibc.tar.lzma"
 echo $FK >> out.kernel
 echo $FT >> out.target
-SK="$(md5sum $FK 2>/dev/null || echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')"
-ST="$(md5sum $FT 2>/dev/null || echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')"
+SK="$(sha256sum $FK 2>/dev/null || echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')"
+ST="$(sha256sum $FT 2>/dev/null || echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')"
 echo -n "default \"${SK%% *}\"    " >> out.kernel
 echo -n "default \"${ST%% *}\"    " >> out.target
 
@@ -74,6 +74,8 @@ echo -n " && FREETZ_TARGET_UCLIBC_$UCLI" >> out.target
 KERN="$(echo $line | sed -n 's/.*kernel-//p')"
 [ -z "$KERN" ] && KERN=2
 echo -n " && FREETZ_KERNEL_VERSION_${KERN//./_}" >> out.target
+
+echo $line | sed -nr 's/.*_gcc-[0-9.]*-bcm.*/ \&\& FREETZ_SYSTEM_TYPE_BCM63138/p' | tee -a out.kernel >> out.target
 
 echo | tee -a out.kernel >> out.target
 done

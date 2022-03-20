@@ -1,0 +1,17 @@
+--- etc/cms_entity_info.d/eid_bcm_mgmt.txt
++++ etc/cms_entity_info.d/eid_bcm_mgmt.txt
+@@ -38,14 +38,6 @@
+ #  port        = TR64C_HTTP_CONN_PORT
+ #END
+ 
+-BEGIN
+-  eid         = EID_HTTPD        /*      3 */
+-  accessBit   = NDA_ACCESS_HTTPD /* 0x0004 */
+-  name        = httpd
+-  flags = EIF_MDM|EIF_SERVER|EIF_SERVER_TCP|EIF_MESSAGING_CAPABLE|EIF_DESKTOP_LINUX_CAPABLE|EIF_IPV6
+-  backLog     = 3
+-  port        = HTTPD_PORT
+-END
+ 
+ # AVM: no snmpd in Fritz!OS
+ #BEGIN

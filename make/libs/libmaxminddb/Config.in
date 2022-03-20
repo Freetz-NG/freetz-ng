@@ -1,0 +1,8 @@
+config FREETZ_LIB_libmaxminddb
+	bool "libmaxminddb (libmaxminddb.so)"
+	default n
+	help
+		C library for the MaxMind DB file format.
+		You'll need an additional .mmdb file, put it on storage.
+		Get it here: https://github.com/P3TERX/GeoLite.mmdb/
+

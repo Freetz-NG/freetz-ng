@@ -1,0 +1,111 @@
+if FREETZ_AVM_SOURCE_7539_07_29
+
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+
+endif

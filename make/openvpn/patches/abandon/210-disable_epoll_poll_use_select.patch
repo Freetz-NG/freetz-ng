@@ -1,15 +1,15 @@
 --- configure
 +++ configure
-@@ -15000,7 +15000,7 @@
+@@ -15012,7 +15012,7 @@
  	unistd.h signal.h libgen.h stropts.h \
  	syslog.h pwd.h grp.h \
  	sys/sockio.h sys/uio.h linux/sockios.h \
--	linux/types.h sys/poll.h sys/epoll.h err.h \
-+	linux/types.h                        err.h \
+-	linux/types.h linux/errqueue.h sys/poll.h sys/epoll.h err.h \
++	linux/types.h linux/errqueue.h                        err.h \
  
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
-@@ -15600,7 +15600,6 @@
+@@ -15603,7 +15603,6 @@
  	ctime memset vsnprintf strdup \
  	setsid chdir putenv getpeername unlink \
  	chsize ftruncate execve getpeereid umask basename dirname access \
@@ -17,7 +17,7 @@
  
  do :
    as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
-@@ -15933,7 +15932,7 @@
+@@ -15936,7 +15935,7 @@
  fi
  done
  

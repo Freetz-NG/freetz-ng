@@ -53,7 +53,7 @@ TOOL_CONF=tools/config/conf
 # xx  FREETZ_TYPE_6590+07.0X           5   LE     1.0.x    LE NPTL (X86)
 #
 
-# grep -iE "NPTL|UCLIBC_VERSION=|GCC_[^XAMINCPU]*=|KERNEL_VERSION=|ARCH_.*=.$" .config
+# grep -iE "bcm63138\"|NPTL|UCLIBC_VERSION=|GCC_[^XAMINCPU]*=|KERNEL_VERSION=|ARCH_.*=.$" .config
 
 miniconfig() {
 local i
@@ -83,6 +83,10 @@ dltc() {
 	make KTV=${SUFFIX} TTV=${SUFFIX} toolchain 2>&1 | tee tc-${options// /_}.make
 }
 
+if [ -n "$1" ]; then
+  dltc "$*"
+else
+
 # dltc "FREETZ_TYPE_WLAN    FREETZ_TYPE_FIRMWARE_04_XX"
 
 # dltc "FREETZ_TYPE_7270_V1 FREETZ_TYPE_FIRMWARE_04_XX FREETZ_TARGET_IPV6_SUPPORT"
@@ -105,6 +109,7 @@ dltc() {
 # dltc "FREETZ_TYPE_1750    FREETZ_TYPE_FIRMWARE_07_0X"
   dltc "FREETZ_TYPE_1750    FREETZ_TYPE_FIRMWARE_07_2X"
 
+  dltc "FREETZ_TYPE_7581    FREETZ_TYPE_FIRMWARE_07_1X"
   dltc "FREETZ_TYPE_7539    FREETZ_TYPE_FIRMWARE_07_2X"
 
 # dltc "FREETZ_TYPE_4040    FREETZ_TYPE_FIRMWARE_07_0X"
@@ -119,3 +124,5 @@ dltc() {
   dltc "FREETZ_TYPE_6660    FREETZ_TYPE_FIRMWARE_07_1X"
   dltc "FREETZ_TYPE_6660    FREETZ_TYPE_FIRMWARE_07_2X"
 
+fi
+exit 0

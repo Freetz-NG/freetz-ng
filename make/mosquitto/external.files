@@ -1,0 +1,4 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_BROKER"     == "y" ] && EXTERNAL_FILES+=" /usr/bin/mosquitto"
+[ "$EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_PASSWD"     == "y" ] && EXTERNAL_FILES+=" /usr/bin/mosquitto_passwd"
+[ "$EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB" == "y" ] && EXTERNAL_FILES+=" /usr/bin/mosquitto_pub"
+[ "$EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB" == "y" ] && EXTERNAL_FILES+=" /usr/bin/mosquitto_sub"

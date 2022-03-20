@@ -1,7 +1,11 @@
-$(call PKG_INIT_BIN, 1.4.36)
+$(call PKG_INIT_BIN, 1.5.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_SOURCE_SHA256:=2b73ac885f1bcab819dc3578944d17406241e0c724042989cea437353b6749c1
+$(PKG)_SOURCE_SHA256:=81549b3422469d503996d03a3aed2ef1375b359167f10d66be9e3844e729322e
 $(PKG)_SITE:=https://ccid.apdu.fr/files
+### WEBSITE:=https://ccid.apdu.fr/
+### MANPAGE:=https://salsa.debian.org/rousseau/CCID/blob/master/README.md
+### CHANGES:=https://salsa.debian.org/rousseau/CCID/blob/master/README.md#history
+### CVSREPO:=https://salsa.debian.org/rousseau/CCID
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/libccid.so
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)$(PCSC_LITE_USBDROPDIR)/ifd-ccid.bundle/Contents/Linux/libccid.so

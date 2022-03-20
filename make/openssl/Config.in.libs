@@ -36,35 +36,35 @@ choice
 	default FREETZ_OPENSSL_VERSION_1
 	help
 		Version 0.9.8:
-		 - NOT supported by the OpenSSL development team anymore
-		   (s. https://www.openssl.org/policies/releasestrat.html)
-		 - could be used (with some limitations) as a replacement for AVM's OpenSSL library
 		 - Supported until 2015-12-31, Long Term Support (LTS) version
+		 - NOT supported by the OpenSSL development team anymore
+		 - could be used (with some limitations) as a replacement for AVM's OpenSSL library
 
 		Version 1.0.2:
-		 - NOT supported by the OpenSSL development team anymore
-		   (s. https://www.openssl.org/policies/releasestrat.html)
 		 - Supported until 2019-12-31, Long Term Support (LTS) version
+		 - NOT supported by the OpenSSL development team anymore
 
 		Version 1.1.1:
 		 - Supported until 2023-09-11, Long Term Support (LTS) version
 
-		Version 3.0.1:
+		Version 3.0:
 		 - Supported until 2023-09-07
 
+		See https://www.openssl.org/policies/releasestrat.html
+
 	config FREETZ_OPENSSL_VERSION_0
-		bool "0.9.8 - DEPRECATED"
+		bool "0.9.8zh - DEPRECATED"
 		depends on FREETZ_AVM_HAS_OPENSSL_VERSION_0
 
 	config FREETZ_OPENSSL_VERSION_1
-		bool "1.0.2 - DEPRECATED"
+		bool "1.0.2u - DEPRECATED"
 
 	config FREETZ_OPENSSL_VERSION_2
-		bool "1.1.1"
+		bool "1.1.1n"
 		depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 
 	config FREETZ_OPENSSL_VERSION_3
-		bool "3.0.1 - EXPERIMENTAL"
+		bool "3.0.2 - EXPERIMENTAL"
 		depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29 && FREETZ_TARGET_GCC_4_8_MIN
 
 endchoice # "OpenSSL version"
