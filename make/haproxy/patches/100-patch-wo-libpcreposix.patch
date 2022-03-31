@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -721,11 +721,11 @@
+@@ -728,11 +728,11 @@
  ifeq ($(USE_STATIC_PCRE),)
  # dynamic PCRE
  OPTIONS_CFLAGS  += -DUSE_PCRE $(if $(PCRE_INC),-I$(PCRE_INC))
