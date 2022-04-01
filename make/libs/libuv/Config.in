@@ -1,0 +1,6 @@
+config FREETZ_LIB_libuv
+	bool "libuv (libuv.so)"
+	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	default n
+	help
+		libuv is a async IO library for various programs

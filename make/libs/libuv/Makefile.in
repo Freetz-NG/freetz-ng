@@ -1,0 +1,3 @@
+ifeq ($(strip $(FREETZ_LIB_libuv)),y)
+LIBS+=libuv
+endif
