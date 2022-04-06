@@ -1,6 +1,6 @@
-$(call PKG_INIT_LIB, 2.24)
+$(call PKG_INIT_LIB, 2.63)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_SOURCE_MD5:=d43ab9f680435a7fff35b4ace8d45b80
+$(PKG)_SOURCE_SHA256:=0c637b8f44fc7d8627787e9cf57f15ac06c1ddccb53e41feec5496be3466f77f
 $(PKG)_SITE:=@KERNEL/linux/libs/security/linux-privs/libcap2
 
 $(PKG)_DEPENDS_ON += attr
@@ -20,6 +20,7 @@ $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 		RANLIB="$(TARGET_RANLIB)" \
 		CFLAGS="$(TARGET_CFLAGS) -fPIC" \
 		BUILD_CC="$(CC)" \
+		PAM_CAP=no \
 		BUILD_CFLAGS="-W -Wall -O2" \
 		lib=lib
 
