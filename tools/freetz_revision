@@ -10,7 +10,7 @@ if [ -d $DIR/.svn ]; then
 	[ "${RB}" != "trunk" -o "${RC}" != "${RC/_/}" -o "${1:0:1}" == "f" ] && [ "$(svn status $DIR | wc -l)" != "0" ] && RC="${RC%M}M"
 	RH="$(svn log $DIR -l9 | sed -n 's/^commit [0-9a-z]* -- https:\/\/github\.com\/freetz-ng\/freetz-ng\/commit\///p' | head -n1)"
 	[ "${1:0:1}" == "f" ] && RB="${RB/trunk/}" || RD="$(LC_ALL=C svn info $DIR | sed -rn 's/^Last Changed Date: ([^ ]*).*/\1/p')"
-elif [ -d $DIR/.git ]; then
+elif [ -e $DIR/.git ]; then
 	GDB="$DIR/.git"
 	RB="$(git --git-dir=$GDB rev-parse --abbrev-ref @)"
 	RM="M"
