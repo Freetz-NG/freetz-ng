@@ -743,6 +743,7 @@ menu "Download options"
 		default "FRITZ.Box_4040-07.29.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_25
 		#
 		default "FRITZ.Box_4060-07.30.image"                                                   if FREETZ_TYPE_4060 && FREETZ_TYPE_FIRMWARE_07_25
+		default "FRITZ.Box_4060-07.39-97259-Inhaus.image"                                      if FREETZ_TYPE_4060 && FREETZ_TYPE_FIRMWARE_07_4X_INHAUS
 		#
 		default "fritz.box_fon_5010.annexa.48.04.43.image"                                     if FREETZ_TYPE_5010
 		#

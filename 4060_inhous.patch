@@ -1,0 +1,30 @@
+--- config/mod/download.in	2022-06-15 17:14:40.118298000 +0200
++++ config/mod/download.in	2022-06-15 17:12:27.700051000 +0200
+@@ -743,6 +743,7 @@
+ 		default "FRITZ.Box_4040-07.29.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_25
+ 		#
+ 		default "FRITZ.Box_4060-07.30.image"                                                   if FREETZ_TYPE_4060 && FREETZ_TYPE_FIRMWARE_07_25
++		default "FRITZ.Box_4060-07.39-97259-Inhaus.image"                                      if FREETZ_TYPE_4060 && FREETZ_TYPE_FIRMWARE_07_4X_INHAUS
+ 		#
+ 		default "fritz.box_fon_5010.annexa.48.04.43.image"                                     if FREETZ_TYPE_5010
+ 		#
+--- config/avm/availability.in	2022-06-15 17:14:40.114298000 +0200
++++ config/avm/availability.in	2022-06-15 17:12:26.320071000 +0200
+@@ -445,6 +445,7 @@
+ 		(FREETZ_AVM_HAS_FIRMWARE_07_4X_LABOR && !FREETZ_TYPE_CABLE) || \
+ 		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+ 			FREETZ_TYPE_3000 || \
++			FREETZ_TYPE_4060 || \
+ 			FREETZ_TYPE_7490 || \
+ 			FREETZ_TYPE_7539 || \
+ 			FREETZ_TYPE_6850_5G \
+--- config/mod/kernel.in	2022-06-12 09:21:36.148672203 +0200
++++ config/mod/kernel.in	2022-06-15 17:40:03.453837834 +0200
+@@ -44,6 +44,7 @@
+ 	depends on !FREETZ_KERNEL_VERSION_4_4_271   # 07_4X-inhaus 3000/7530/6850_4G/6850_5G + 2400
+ 	depends on !FREETZ_KERNEL_VERSION_4_9_218   # 07_4X-inhaus 7590/7599
+ 	depends on !FREETZ_KERNEL_VERSION_4_19_183  # 07_4X-inhaus 7539
++	depends on !(FREETZ_SYSTEM_TYPE_QCAARMv8 && FREETZ_AVM_VERSION_07_4X_MIN) # no kernel 4.4.271 sources for 4060
+ 	depends on !FREETZ_DL_KERNEL_KONGLOMERAT
+ 	default y
+ 	help
