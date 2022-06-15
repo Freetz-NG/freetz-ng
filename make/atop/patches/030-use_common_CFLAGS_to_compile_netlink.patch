@@ -1,0 +1,12 @@
+--- Makefile
++++ Makefile
+@@ -40,9 +40,6 @@
+ atopacctd:	atopacctd.o netlink.o
+ 		$(CC) atopacctd.o netlink.o -o atopacctd $(LDFLAGS)
+ 
+-netlink.o:	netlink.c
+-		$(CC) -I. -Wall -c netlink.c
+-
+ clean:
+ 		rm -f *.o
+ 

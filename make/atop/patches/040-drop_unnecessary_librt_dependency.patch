@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -32,7 +32,7 @@
+ all: 		atop atopsar atopacctd
+ 
+ atop:		atop.o    $(ALLMODS) Makefile
+-		$(CC) atop.o $(ALLMODS) -o atop -lncurses -lz -lm -lrt $(LDFLAGS)
++		$(CC) atop.o $(ALLMODS) -o atop -lncurses -lz -lm      $(LDFLAGS)
+ 
+ atopsar:	atop
+ 		ln -sf atop atopsar
