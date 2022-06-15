@@ -1,6 +1,6 @@
 --- deviate.c
 +++ deviate.c
-@@ -176,6 +176,7 @@
+@@ -36,6 +36,7 @@
  #include <signal.h>
  #include <time.h>
  #include <stdio.h>

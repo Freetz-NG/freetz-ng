@@ -1,6 +1,6 @@
 --- ifprop.c
 +++ ifprop.c
-@@ -53,6 +53,14 @@
+@@ -46,6 +46,14 @@
  #include <linux/ethtool.h>
  #include <linux/wireless.h>
  

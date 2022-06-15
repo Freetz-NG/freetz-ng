@@ -422,7 +422,7 @@ Latest changes
     * asterisk-chan-dongle 1.1-git (asterisk11 branch)
     * asterisk-chan-sccp 4.1.0RC1
     * asterisk-gui 2.1.0RC1
-    * atop 2.2.3
+    * atop 2.7.1
     * autossh 1.4g
     * avm-forwarding 0.0.1b
     * AVM-portfw 0.9
