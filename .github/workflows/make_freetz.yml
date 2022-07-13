@@ -44,7 +44,7 @@ jobs:
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
 
       - name: cache
-        uses: actions/cache@v3.0.4
+        uses: actions/cache@v3.0.5
         with:
           path: |
             dl/*
