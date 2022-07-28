@@ -16,7 +16,7 @@ jobs:
     steps:
 
       - name: release
-        uses: actions/stale@v5.1.0
+        uses: actions/stale@v5.1.1
         with:
           stale-issue-message: 'stalled'
           stale-pr-message: 'stalled'
