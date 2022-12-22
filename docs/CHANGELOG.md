@@ -64,6 +64,7 @@ Latest changes
    * ACME.sh 3.0.5 (letsencrypt)
    * BIND 9.11.37/9.16.35
    * CCID 1.5.1
+   * classpath 0.99
    * Curl 7.86.0
    * dehydrated 0.7.1 (letsencrypt)
    * Dnsmasq 2.80/2.88
