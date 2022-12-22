@@ -1,17 +1,19 @@
 --- src/jam.h
 +++ src/jam.h
-@@ -734,12 +734,12 @@
- 
- /* default minimum size of object heap */
+@@ -849,13 +849,13 @@
+ /* minimum size of object heap used when size of physical memory
+    is not available */
  #ifndef DEFAULT_MIN_HEAP
 -#define DEFAULT_MIN_HEAP 16*MB
 +#define DEFAULT_MIN_HEAP 1*MB
  #endif
  
- /* default maximum size of object heap */
+ /* maximum size of object heap used when size of physical memory
+    is not available */
  #ifndef DEFAULT_MAX_HEAP
--#define DEFAULT_MAX_HEAP 128*MB
+-#define DEFAULT_MAX_HEAP 256*MB
 +#define DEFAULT_MAX_HEAP 8*MB
  #endif
  
- /* default size of the Java stack */
+ /* the mimimum heap size is a ratio of the size of physical memory
+

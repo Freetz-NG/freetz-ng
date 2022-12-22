@@ -1,15 +1,14 @@
-$(call PKG_INIT_BIN, 1.5.4)
-$(PKG)_LIB_VERSION:=0.0.0
+$(call PKG_INIT_BIN, 2.0.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=7865693698bc4322cabe1014a4b7ebdec1bc1daf45f1a4457b6e908a4446b124
+$(PKG)_HASH:=76428e96df0ae9dd964c7a7c74c1e9a837e2f312c39e9a357fa8178f7eff80da
 $(PKG)_SITE:=@SF/$(pkg)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/jamvm
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/jamvm
-$(PKG)_LIB_BINARY:=$($(PKG)_DIR)/src/.libs/libjvm.so.$($(PKG)_LIB_VERSION)
-$(PKG)_TARGET_LIB_BINARY:=$($(PKG)_DEST_LIBDIR)/libjvm.so.$($(PKG)_LIB_VERSION)
+$(PKG)_LIB_BINARY:=$($(PKG)_DIR)/src/.libs/libjvm.so
+$(PKG)_TARGET_LIB_BINARY:=$($(PKG)_DEST_LIBDIR)/libjvm.so
 
-$(PKG)_CLASSES_ZIP:=$($(PKG)_DIR)/lib/classes.zip
+$(PKG)_CLASSES_ZIP:=$($(PKG)_DIR)/src/classlib/gnuclasspath/lib/classes.zip
 $(PKG)_TARGET_CLASSES_ZIP:=$($(PKG)_DEST_DIR)/usr/share/jamvm/classes.zip
 
 $(PKG)_DEPENDS_ON += zlib libffi classpath

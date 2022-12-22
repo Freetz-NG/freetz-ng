@@ -70,6 +70,7 @@ Latest changes
    * Dropbear 2022.83
    * Git 2.39.0
    * HAProxy 2.6.7
+   * jamvm 2.0.0
    * Knock 0.8
    * Lua 5.1.5/5.4.4
    * Nano 7.0

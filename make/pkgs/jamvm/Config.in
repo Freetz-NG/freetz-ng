@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_JAMVM
-	bool "JamVM 1.5.4 (binary only)"
+	bool "JamVM 2.0.0 (binary only)"
 	select FREETZ_PACKAGE_CLASSPATH
 	select FREETZ_LIB_libffi
 	select FREETZ_LIB_libz
@@ -7,24 +7,19 @@ config FREETZ_PACKAGE_JAMVM
 	help
 		JamVM - extremely small Java VM
 
-		JamVM is a new Java Virtual Machine which conforms to the JVM
-		specification version 2 (blue book). In comparison to most other VM's
-		(free and commercial) it is extremely small, with a stripped executable
-		on PowerPC of only ~160K, and Intel 140K. However, unlike other small
-		VMs (e.g. KVM) it is designed to support the full specification, and
-		includes support for object finalisation, Soft/Weak/Phantom References,
-		class-unloading, the Java Native Interface (JNI) and the Reflection API.
+		JamVM 2.0.0 is the first release of JamVM with support for OpenJDK.  Although
+		IcedTea already includes JamVM with OpenJDK support, this has been based on
+		periodic snapshots of the development tree.
 
-		Class Libraries: JamVM is designed to use the GNU Classpath Java class
-		library. A number of classes are reference classes which must be
-		modified for a particular VM. These are provided along with JamVM (see
-		INSTALL). JamVM should always work with the latest development snapshot
-		of Classpath (currently 0.93). It should also work with the latest
-		version direct from CVS, and the upcoming 0.94 snapshot (but check the
-		Classpath mailing lists for possible patches). Later snapshots of
-		Classpath may also work, if no modifications have been made to the VM
-		interface.
+		This release supports OpenJDK 6, 7 and 8 (the latest).  With OpenJDK 7 and 8
+		this includes full support for JSR 292 (invokedynamic).  JamVM 2.0.0
+		with OpenJDK 8 also includes full support for Lambda expressions (JSR 335),
+		type annotations (JSR 308) and method parameter reflection.
 
-		Note, JamVM will not work with the class library from Sun or IBM's
-		Virtual Machines.
+		In addition to OpenJDK support, JamVM 2.0.0 also includes many bug-fixes,
+		performance improvements and improved compatibility (from running the OpenJDK
+		jtreg tests).  The following is an edited list of the top ~100 commits (out
+		of 300+) in date order (most recent first).  The list has been categorised
+		into those affecting OpenJDK only, GNU Classpath only, and both OpenJDK and
+		GNU Classpath (All).
 
