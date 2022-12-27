@@ -3,20 +3,16 @@ Eine einfache Möglichkeit die benötigten Pakete zu installieren besteht darin,
 
 ### Getestete Distributionen
  - [Fedora](#fedora)
+ - [Debian](#debian)
  - [Ubuntu](#ubuntu)
  - [Kali](#kali)
  - sonst keine
 
 ### Problematische Distributionen
- - Debian
  - Gentoo
 
 ### Alle anderen Distributionen
-... sind ungetestet und können funktionieren oder auch nicht. Dies hängt start von den Fähigkeiten des Bedieners ab.
-
-### Kali
-Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
-Das meiste wird bei Kali sowieso schon dabei installiert sein.
+... sind ungetestet und können funktionieren oder auch nicht. Dies hängt stark von den Fähigkeiten des Bedieners ab.
 
 ### Distribution ermitteln
 Wenn man vergessen hat welche Linux Version installiert ist kann dies so prüfen:
@@ -28,7 +24,7 @@ $ hostnamectl status
 	    Kernel: Linux 5.10.15-200.fc33.x86_64
 ```
 
- - Ubuntu Version:
+ - Ubuntu/Debian Version:
 ```
 $ lsb_release -d
 Description:    Ubuntu 14.04.6 LTS
@@ -75,6 +71,23 @@ sudo yum -y install ncurses-devel.i686 glibc-devel.i686 libgcc.i686
 sudo yum -y install ImageMagick subversion gcc gcc-c++ binutils autoconf automake libtool make bzip2 ncurses-devel zlib-devel flex bison patch texinfo gettext pkgconfig ecj perl perl-String-CRC32 wget glib2-devel git libacl-devel libattr-devel libcap-devel
 ```
 
+### Debian
+
+ - System aktualisieren:
+```
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y dist-upgrade
+```
+ - Debian 11 (Bullseye) 64-Bit:
+```
+sudo apt -y install pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar perl libstring-crc32-perl ruby gawk python2 python-is-python3 libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl uuid-dev libssl-dev libgnutls28-dev sharutils
+wget http://ftp.de.debian.org/debian/pool/main/p/prelink/execstack_0.0.20131005-1+b10_amd64.deb
+sudo apt install ./execstack_0.0.20131005-1+b10_amd64.deb
+echo "export PATH=$PATH:/usr/sbin" >> ~/.bashrc
+```
+
+
 ### Ubuntu
 
  - Deutsche Tastaturbelegung:<br>
@@ -100,12 +113,12 @@ sudo apt-get -y dist-upgrade
 
  - Ubuntu 22 64-Bit:
 ```
-sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar          perl libstring-crc32-perl ruby         gawk python2 python-is-python3 libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl uuid-dev libssl-dev libgnutls28-dev sharutils
+sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar perl libstring-crc32-perl ruby gawk python2 python-is-python3 libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl uuid-dev libssl-dev libgnutls28-dev sharutils
 ```
 
  - Ubuntu 20 64-Bit:
 ```
-sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar          perl libstring-crc32-perl ruby         gawk python libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl uuid-dev libssl-dev libgnutls28-dev sharutils
+sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar perl libstring-crc32-perl ruby gawk python libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl uuid-dev libssl-dev libgnutls28-dev sharutils
 # sqlite-32bit lässt sich mit apt nicht installieren, aber mit apt-get schon. Siehe auch: https://developpaper.com/ubuntu-solves-the-problem-of-libsqlite3-0-dependency-recommended/
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
 ```
@@ -127,7 +140,7 @@ sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphi
 
  - Ubuntu 14 64-Bit:
 ```
-sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool     make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.9 gawk python libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 netcat curl openssl build-essential automake1.9
+sudo apt-get -y install pv cpio rsync kmod execstack imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake autopoint libtool make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.9 gawk python libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 netcat curl openssl build-essential automake1.9
 ```
 Zusätzlich muss manuell installiert werden:
 ```
@@ -171,3 +184,6 @@ sudo apt-get -y install imagemagick subversion gcc g++ bzip2 binutils automake p
 sudo apt-get -y install imagemagick subversion gcc g++ binutils autoconf automake automake1.9 libtool make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config jikes ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.8 gawk python libusb-dev unzip intltool libglib2.0-dev xz-utils git-core libacl1-dev libattr1-dev libcap-dev
 ```
 
+### Kali
+Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
+Das meiste wird bei Kali sowieso schon dabei installiert sein.
