@@ -14,7 +14,7 @@ Eine einfache Möglichkeit die benötigten Pakete zu installieren besteht darin,
 ... sind ungetestet und können funktionieren oder auch nicht. Dies hängt start von den Fähigkeiten des Bedieners ab.
 
 Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
-Das meiste wird bei Kali sowiso schon dabei sein.
+Das meiste wird bei Kali sowiso schon dabei installiert sein.
 
 ### Distribution ermitteln
 Wenn man vergessen hat welche Linux Version installiert ist kann dies so prüfen:
