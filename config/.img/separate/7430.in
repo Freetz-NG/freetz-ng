@@ -121,6 +121,9 @@ config FREETZ_AVM_PROP_HWREV
 config FREETZ_AVM_PROP_INNER_OUTER_FILESYSTEM
 	def_bool y
 
+config FREETZ_AVM_PROP_LIBC_UCLIBC
+	def_bool y
+
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "146"

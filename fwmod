@@ -1456,7 +1456,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 		echo1 "generating modules.dep"
 		DEPMOD_TEMP="$(mktemp)"
 		if [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ]; then
-			touch "$MODULES_DIR/modules.builtin"
+			touch \
+			  "$MODULES_DIR/modules.builtin" \
+			  "$MODULES_DIR/modules.order"
 			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
 			  $FREETZ_KERNEL_VERSION \

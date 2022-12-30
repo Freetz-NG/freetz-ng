@@ -190,6 +190,9 @@ config FREETZ_AVM_PROP_HWREV
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
 
+config FREETZ_AVM_PROP_LIBC_GLIBC
+	def_bool y
+
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "256"

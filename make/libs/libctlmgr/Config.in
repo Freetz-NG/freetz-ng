@@ -1,6 +1,6 @@
 config FREETZ_LIB_libctlmgr
 	bool "libctlmgr (libctlmgr.so)"
-	depends on FREETZ_AVM_HAS_AVMDAEMON_PRELOAD
+	depends on FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD
 	depends on FREETZ_AVM_HAS_USB_HOST || FREETZ_AVM_VERSION_07_0X_MIN
 	default n
 	help

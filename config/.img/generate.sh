@@ -946,7 +946,7 @@ determine_() {
 		X="${X#lib}"
 		Y="$(echo -n "${X#uClibc-}" | sed 's/\(......\).*/\1/')"
 		case $Y in
-			0.9.*)		Z=0  ;;
+			0.9.*)	Z=0  ;;
 			1.0.14)	Z=0  ;;
 		esac
 	# glibc
@@ -963,6 +963,7 @@ determine_() {
 	fi
 #	in_b "FREETZ_AVM_PROP_$(echo -n ${X^^} | sed 's/-.*//')_${Y//\./_}"
 	[ $DOSHOW -ge 1 ] && outp "${X%-*}" "${X#*-}"
+	in_b "FREETZ_AVM_PROP_LIBC_$(echo -n ${X^^} | sed 's/-.*//')"
 
 	if [ "$Z" == "0" ]; then
 in_b "FREETZ_AVM_PROP_UCLIBC_${Y//\./_}"

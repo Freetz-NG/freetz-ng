@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 7.0)
+$(call PKG_INIT_BIN, 7.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=8dd6eac38b2b8786d82681f0e1afd84f6b75210d17391b6443c437e451552149
+$(PKG)_HASH:=57ba751e9b7519f0f6ddee505202e387c75dde440c1f7aa1b9310cc381406836
 $(PKG)_SITE:=https://www.nano-editor.org/dist/v7
 ### WEBSITE:=https://www.nano-editor.org/
 ### MANPAGE:=https://www.nano-editor.org/docs.php

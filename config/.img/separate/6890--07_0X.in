@@ -27,6 +27,9 @@ config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 
+config FREETZ_AVM_PROP_LIBC_UCLIBC
+	def_bool y
+
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 

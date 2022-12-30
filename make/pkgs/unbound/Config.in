@@ -18,9 +18,10 @@ if FREETZ_PACKAGE_UNBOUND
 		help
 			Freetz web interface to configure unbound daemon.
 
+if FREETZ_PACKAGE_UNBOUND_WEBIF
+
 		config FREETZ_PACKAGE_UNBOUND_WEBIF_CRON
 			bool "Update root servers"
-			depends on FREETZ_PACKAGE_UNBOUND_WEBIF
 			select FREETZ_BUSYBOX_MD5SUM
 			select FREETZ_PACKAGE_WGET
 			select FREETZ_PACKAGE_WGET_WITH_SSL
@@ -31,11 +32,25 @@ if FREETZ_PACKAGE_UNBOUND
 
 		config FREETZ_PACKAGE_UNBOUND_WEBIF_STATS
 			bool "Show daemon stats"
-			depends on FREETZ_PACKAGE_UNBOUND_WEBIF
 			select FREETZ_PACKAGE_UNBOUND_CONTROL
 			default n
 			help
 				Uses unbound-control to show stats.
+
+		comment "HINT: Don't forget to enable the DNS server."
+		depends on FREETZ_AVMDAEMON_DISABLE_DNS
+
+		config FREETZ_PACKAGE_BIND_NAMED_DISABLE_DNS
+			bool "Disable multid's DNS"
+			depends on FREETZ_AVM_HAS_AVMMULTID_PRELOAD
+			select FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
+			select FREETZ_AVMDAEMON_DISABLE_DNS
+			select FREETZ_AVMDAEMON_DISABLE_LLMNR
+			default y
+			help
+				This selects the remapping of multid's DNS (and LLMNR) ports.
+
+endif # FREETZ_PACKAGE_UNBOUND_WEBIF
 
 	config FREETZ_PACKAGE_UNBOUND_DAEMON
 		bool "Binary unbound"

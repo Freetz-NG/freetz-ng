@@ -21,7 +21,7 @@
  
  # Set AR_DASH= (empty string) to use an ar implementation that does not accept
  # the - prefix for command line options (e.g. llvm-ar)
-@@ -211,9 +219,11 @@
+@@ -212,9 +220,11 @@
  
  libmbedtls.$(SOEXT_TLS): $(OBJS_TLS) libmbedx509.so
  	echo "  LD    $@"
@@ -34,7 +34,7 @@
  	echo "  LN    $@ -> $<"
  	ln -sf $< $@
  
-@@ -238,9 +248,11 @@
+@@ -239,9 +249,11 @@
  
  libmbedx509.$(SOEXT_X509): $(OBJS_X509) libmbedcrypto.so
  	echo "  LD    $@"
@@ -47,7 +47,7 @@
  	echo "  LN    $@ -> $<"
  	ln -sf $< $@
  
-@@ -265,9 +277,11 @@
+@@ -266,9 +278,11 @@
  
  libmbedcrypto.$(SOEXT_CRYPTO): $(OBJS_CRYPTO)
  	echo "  LD    $@"

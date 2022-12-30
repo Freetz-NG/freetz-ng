@@ -1,4 +1,4 @@
-# Tor 0.4.7.11
+# Tor 0.4.7.12
  - Homepage: [https://www.torproject.org/download/tor/](https://www.torproject.org/download/tor/)
  - Manpage: [https://trac.torproject.org/projects/tor/wiki/](https://trac.torproject.org/projects/tor/wiki/)
  - Changelog: [https://gitweb.torproject.org/tor.git/tree/ChangeLog](https://gitweb.torproject.org/tor.git/tree/ChangeLog)

@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_NANO
-	bool "Nano 7.0 (binary only)"
+	bool "Nano 7.1 (binary only)"
 	select FREETZ_LIB_libncurses if !FREETZ_PACKAGE_NANO_UTF8
 	default n
 	help

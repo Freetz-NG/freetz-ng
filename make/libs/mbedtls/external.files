@@ -1,4 +1,4 @@
-[ "FREETZ_AVM_GCC_4_MAX" == "y" ] && ELIBVER="2.7.19" || ELIBVER="2.28.1"
+[ "FREETZ_AVM_GCC_4_MAX" == "y" ] && ELIBVER="2.7.19" || ELIBVER="2.28.2"
 
 [ "$EXTERNAL_FREETZ_LIB_libmbedcrypto" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmbedcrypto.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_libmbedtls"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmbedtls.so.$ELIBVER"
