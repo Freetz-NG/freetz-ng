@@ -130,6 +130,9 @@ config FREETZ_AVM_PROP_ARCH_ARM
 config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 
+config FREETZ_AVM_PROP_LIBC_MUSL
+	def_bool y
+
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 

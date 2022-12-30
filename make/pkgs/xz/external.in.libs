@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_liblzma
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/liblzma.so.5.2.9
+		 ${FREETZ_LIBRARY_DIR}/liblzma.so.5.2.10
 

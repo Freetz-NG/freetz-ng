@@ -50,10 +50,10 @@ Latest changes
  - Host tools:
    * fakeroot 1.30.1
    * kconfig 6.1
-   * precompiled host-tools 2022-12-10
+   * precompiled host-tools 2022-12-27
    * pseudo 1.9.0 oe-core c9670c2
    * sed 4.9
-   * xz 5.2.9
+   * xz 5.2.10
 
  - Patches:
    * remove AVMCOUNTERD: collects some data for you
@@ -65,15 +65,16 @@ Latest changes
    * BIND 9.11.37/9.16.35
    * CCID 1.5.1
    * classpath 0.99
-   * Curl 7.86.0
+   * Curl 7.87.0
    * dehydrated 0.7.1 (letsencrypt)
    * Dnsmasq 2.80/2.88
    * Dropbear 2022.83
    * Git 2.39.0
    * HAProxy 2.6.7
+   * IGMPproxy 0.4
    * Knock 0.8
    * Lua 5.1.5/5.4.4
-   * Nano 7.0
+   * Nano 7.1
    * OpenSSH 9.1p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1s/3.0.7
    * OpenVPN 2.4.12/2.5.8
@@ -81,9 +82,9 @@ Latest changes
    * RPCBind 1.2.6
    * strace 4.9/5.0/6.1
    * SQLite 3.40.0
-   * Tor 0.4.7.11
+   * Tor 0.4.7.12
    * Unbound 1.17.0
-   * XZ Utils 5.2.9
+   * XZ Utils 5.2.10
 
  - Libraries:
    * expat 2.5.0
@@ -91,6 +92,7 @@ Latest changes
    * libgpg-error 1.46
    * libusb-compat 0.1.8
    * libxml2 2.10.3
+   * mbedTLS 2.7.19/2.28.2
    * neon 0.30.2/0.32.4
    * pcre2 10.42
 

@@ -227,7 +227,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### M
 
-  * **[mbedtls: mbed crypto (libmbedcrypto.so) 2.7.19/2.28.1](mbedtls.md)<a id='mbedtls'></a>**<br>
+  * **[mbedtls: mbedCrypto (libmbedcrypto.so) 2.7.19/2.28.2](mbedtls.md)<a id='mbedtls'></a>**<br>
     Enables support for the Blowfish block cipher.
 
   * **[mpc: GNU MPC Library (libmpc.so) 1.1.0](mpc.md)<a id='mpc'></a>**<br>

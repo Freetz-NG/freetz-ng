@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_CURL
-	bool "Curl 7.86.0 (binary only)"
+	bool "Curl 7.87.0 (binary only)"
 	default n
 	select FREETZ_LIB_libcurl if ! FREETZ_PACKAGE_CURL_STATIC
 	help

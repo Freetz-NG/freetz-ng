@@ -1,4 +1,7 @@
-# igmpproxy 0.1
+# IGMPproxy 0.4
+ - Homepage: [https://github.com/pali/igmpproxy](https://github.com/pali/igmpproxy)
+ - Changelog: [https://github.com/pali/igmpproxy/releases](https://github.com/pali/igmpproxy/releases)
+ - Repository: [https://github.com/pali/igmpproxy/commits/master](https://github.com/pali/igmpproxy/commits/master)
  - Package: [master/make/pkgs/igmpproxy/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/igmpproxy/)
 
 **[igmpproxy](http://sourceforge.net/projects/igmpproxy/)**

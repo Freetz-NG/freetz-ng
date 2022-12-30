@@ -1,5 +1,5 @@
 config FREETZ_LIB_libmbedcrypto
-	bool "mbed crypto (libmbedcrypto.so)"
+	bool "mbedCrypto (libmbedcrypto.so)"
 	default n
 
 	config FREETZ_LIB_libmbedcrypto_WITH_BLOWFISH
@@ -15,10 +15,10 @@ config FREETZ_LIB_libmbedcrypto
 			Enables the RSA prime-number generation code.
 
 config FREETZ_LIB_libmbedtls
-	bool "mbed TLS (libmbedtls.so)"
+	bool "mbedTLS (libmbedtls.so)"
 	default n
 
 config FREETZ_LIB_libmbedx509
-	bool "mbed X.509 (libmbedx509.so)"
+	bool "mbedX.509 (libmbedx509.so)"
 	default n
 

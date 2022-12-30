@@ -48,6 +48,9 @@ config FREETZ_AVM_PROP_GCC_3_4
 config FREETZ_AVM_PROP_KERNEL_2_6_13
 	def_bool y
 
+config FREETZ_AVM_PROP_LIBC_UCLIBC
+	def_bool y
+
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_LZMA
 	def_bool y
 

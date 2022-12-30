@@ -28,20 +28,26 @@
 #define str(s) #s
 
 #ifndef LIBC_LOCATION
-#if defined(__UCLIBC__)
+#if defined(D_UCLIBC)
 #define LIBC_LOCATION "/lib/libc.so." xstr(__UCLIBC_MAJOR__)
+#endif
+#if defined(D_MUSL)
+#define LIBC_LOCATION "/lib/libc.so"
+#endif
+#if defined(D_GLIBC)
+#define LIBC_LOCATION "/lib/libc.so.6"
 #endif
 #endif
 
-static void debug_printf(char *fmt, ...) {
 #ifdef DEBUG
+static void debug_printf(char *fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
 	vfprintf(stdout, fmt, ap);
 	va_end(ap);
 	fflush(stdout);
-#endif
 }
+#endif
 
 static int (*real_bind)(int, const struct sockaddr *, socklen_t) = NULL;
 
@@ -69,7 +75,10 @@ static void _libmultid_init (void)
 		fprintf(stderr, "[libmultid::_libmultid_init()] Unable to get bind-handle: %s\n", err);
 		exit(1);
 	}
-	debug_printf("[libmultid::_libmultid_init()] successfully initialized\n");
+
+#ifdef DEBUG
+	debug_printf("[libmultid::_libmultid_init()] Successfully initialized\n");
+#endif
 }
 
 #ifdef D_LOCAL
@@ -113,13 +122,13 @@ int bind (int fd, const struct sockaddr *sk, socklen_t sl)
 #ifdef DEBUG
 		char addr_buf[INET_ADDRSTRLEN];
 		inet_ntop(AF_INET, &lsk_in->sin_addr, addr_buf, sizeof(addr_buf));
-		debug_printf("[libmultid::bind()] IPv4 fd=%d %s:%d\n", fd, addr_buf, ntohs (lsk_in->sin_port));
+		debug_printf("[libmultid::bind()] IPv4 src: fd=%d %s:%d\n", fd, addr_buf, ntohs (lsk_in->sin_port));
 #endif
 		if (change_port (&lsk_in->sin_port))
 			BIND_TO_LOCAL4(lsk_in->sin_addr.s_addr);
 #ifdef DEBUG
 		inet_ntop(AF_INET, &lsk_in->sin_addr, addr_buf, sizeof(addr_buf));
-		debug_printf("[libmultid::bind()] IPv4 fd=%d %s:%d\n", fd, addr_buf, ntohs (lsk_in->sin_port));
+		debug_printf("[libmultid::bind()] IPv4 dst: fd=%d %s:%d\n", fd, addr_buf, ntohs (lsk_in->sin_port));
 #endif
 		}
 		break;
@@ -129,20 +138,21 @@ int bind (int fd, const struct sockaddr *sk, socklen_t sl)
 #ifdef DEBUG
 		char addr_buf[INET6_ADDRSTRLEN];
 		inet_ntop(AF_INET6, &lsk_in6->sin6_addr, addr_buf, sizeof(addr_buf));
-		debug_printf("[libmultid::bind()] IPv6 fd=%d [%s]:%d\n", fd, addr_buf, ntohs (lsk_in6->sin6_port));
+		debug_printf("[libmultid::bind()] IPv6 src: fd=%d [%s]:%d\n", fd, addr_buf, ntohs (lsk_in6->sin6_port));
 #endif
 		if (change_port (&lsk_in6->sin6_port))
 			BIND_TO_LOCAL6(lsk_in6->sin6_addr);
 #ifdef DEBUG
 		inet_ntop(AF_INET6, &lsk_in6->sin6_addr, addr_buf, sizeof(addr_buf));
-		debug_printf("[libmultid::bind()] IPv6 fd=%d [%s]:%d\n", fd, addr_buf, ntohs (lsk_in6->sin6_port));
+		debug_printf("[libmultid::bind()] IPv6 dst: fd=%d [%s]:%d\n", fd, addr_buf, ntohs (lsk_in6->sin6_port));
 #endif
 		}
 		break;
 #endif
 	default:
-		debug_printf("[libmultid::bind()] address family unknown af=%d fd=%d\n", sk->sa_family, fd);
+		fprintf(stderr, "[libmultid::bind()] Address family unknown: af=%d fd=%d\n", sk->sa_family, fd);
 		break;
 	}
 	return real_bind (fd, sk, sl);
 }
+

@@ -1,4 +1,4 @@
-# Curl 7.86.0 (binary only)
+# Curl 7.87.0 (binary only)
  - Homepage: [https://curl.se/](https://curl.se/)
  - Manpage: [https://curl.se/docs/manpage.html](https://curl.se/docs/manpage.html)
  - Changelog: [https://curl.se/changes.html](https://curl.se/changes.html)

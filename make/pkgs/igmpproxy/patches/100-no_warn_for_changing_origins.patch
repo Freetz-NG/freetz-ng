@@ -1,17 +1,13 @@
 --- ./src/rttable.c	2009-05-13 21:43:18.000000000 +0200
 +++ ./src/rttable.c	2012-07-03 12:52:32.319651922 +0200
-@@ -366,12 +366,14 @@
-     if(croute != NULL) {
-         // If the origin address is set, update the route data.
-         if(originAddr > 0) {
-+/*
-             if(croute->originAddr > 0 && croute->originAddr!=originAddr) {
-                 my_log(LOG_WARNING, 0, "The origin for route %s changed from %s to %s",
-                     inetFmt(croute->group, s1),
-                     inetFmt(croute->originAddr, s2),
-                     inetFmt(originAddr, s3));
-             }
-+*/
-             croute->originAddr = originAddr;
-         }
+@@ -453,10 +453,6 @@
+             if (i == MAX_ORIGINS) {
+                 i = MAX_ORIGINS - 1;
  
+-                my_log(LOG_WARNING, 0, "Too many origins for route %s; replacing %s with %s",
+-                    inetFmt(croute->group, s1),
+-                    inetFmt(croute->originAddrs[i], s2),
+-                    inetFmt(originAddr, s3));
+             }
+ 
+             // set origin

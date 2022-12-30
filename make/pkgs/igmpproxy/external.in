@@ -1,6 +1,6 @@
 config EXTERNAL_FREETZ_PACKAGE_IGMPPROXY
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_IGMPPROXY
-	bool "igmpproxy"
+	bool "IGMPproxy"
 	default n
 	help
 		externals the following file(s):

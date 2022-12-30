@@ -1,4 +1,4 @@
-# XZ Utils 5.2.9 (binary only)
+# XZ Utils 5.2.10 (binary only)
  - Homepage: [https://tukaani.org/xz/](https://tukaani.org/xz/)
  - Changelog: [https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS;hb=HEAD](https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS;hb=HEAD)
  - Repository: [https://git.tukaani.org/?p=xz.git](https://git.tukaani.org/?p=xz.git)

@@ -1,6 +1,6 @@
 config FREETZ_LIB_libmultid
 	bool "libmultid (libmultid.so)"
-	depends on FREETZ_AVM_HAS_AVMDAEMON_PRELOAD
+	depends on FREETZ_AVM_HAS_AVMMULTID_PRELOAD
 	default n
 	help
 		If this library is preloaded to multid,

@@ -70,6 +70,9 @@ config FREETZ_AVM_PROP_ARCH_MIPS
 config FREETZ_AVM_PROP_GCC_3_4
 	def_bool y
 
+config FREETZ_AVM_PROP_LIBC_UCLIBC
+	def_bool y
+
 config FREETZ_AVM_PROP_UCLIBC_0_9_28
 	def_bool y
 

@@ -1,9 +1,9 @@
 --- ./src/mroute-api.c_	2009-05-13 21:43:18.000000000 +0200
 +++ ./src/mroute-api.c	2012-07-03 13:06:43.115046989 +0200
-@@ -214,8 +214,10 @@
+@@ -227,8 +227,10 @@
  
      rc = setsockopt( MRouterFD, IPPROTO_IP, MRT_DEL_MFC,
- 		    (void *)&CtlReq, sizeof( CtlReq ) );
+                     (void *)&CtlReq, sizeof( CtlReq ) );
 +/*
      if (rc)
          my_log( LOG_WARNING, errno, "MRT_DEL_MFC" );

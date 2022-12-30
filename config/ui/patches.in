@@ -1949,40 +1949,41 @@ config FREETZ_AVMDAEMON_DISABLE_TR069
 
 config FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
 	bool "Disable services by preload"
-	depends on FREETZ_AVM_HAS_AVMDAEMON_PRELOAD
+	depends on FREETZ_AVM_HAS_AVMMULTID_PRELOAD
 	select FREETZ_LIB_libmultid
 	default n
 	help
 		This disables some ports bindings of multid
 		by remapping them to higher ones.
 
-config FREETZ_AVMDAEMON_DISABLE_DNS
-	bool "Disable DNS"
-	depends on FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
-	select FREETZ_LIB_libmultid_WITH_DNS
-	default n
-	help
-		Remaps multid's binding of the DNS ports, so another
-		dns-server could be used, avm's dynamic-dns updater
-		and timesync works correct.
+if FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
 
-config FREETZ_AVMDAEMON_DISABLE_DHCP
-	bool "Disable DHCP"
-	depends on FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
-	select FREETZ_LIB_libmultid_WITH_DHCP
-	default n
-	help
-		Remaps multid's binding of the DHCP port. Don't
-		forget to set up a server for the guest-wlan too.
+	config FREETZ_AVMDAEMON_DISABLE_DNS
+		bool "Disable DNS"
+		select FREETZ_LIB_libmultid_WITH_DNS
+		default n
+		help
+			Remaps multid's binding of the DNS ports, so another
+			dns-server could be used, avm's dynamic-dns updater
+			and timesync works correct.
 
-config FREETZ_AVMDAEMON_DISABLE_LLMNR
-	bool "Disable LLMNR"
-	depends on FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
-	select FREETZ_LIB_libmultid_WITH_LLMNR
-	default n
-	help
-		Remaps multid's binding of both LLMNR ("Link-
-		local Multicast Name Resolution) ports.
+	config FREETZ_AVMDAEMON_DISABLE_DHCP
+		bool "Disable DHCP"
+		select FREETZ_LIB_libmultid_WITH_DHCP
+		default n
+		help
+			Remaps multid's binding of the DHCP port. Don't
+			forget to set up a server for the guest-wlan too.
+
+	config FREETZ_AVMDAEMON_DISABLE_LLMNR
+		bool "Disable LLMNR"
+		select FREETZ_LIB_libmultid_WITH_LLMNR
+		default n
+		help
+			Remaps multid's binding of both LLMNR ("Link-
+			local Multicast Name Resolution) ports.
+
+endif # FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
 
 endmenu # "Other patches" #
 
