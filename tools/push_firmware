@@ -176,7 +176,7 @@ function push_fw() {
 	fi
 
 	if [ $FOUND_NCFTP ]; then
-		if [ $ISFIT -a -n "$FITV" ]; then
+		if [ "$ISFIT" -a -n "$FITV" ]; then
 			ncftpput \
 				-C -d stdout -u adam2 -p adam2 \
 				-o doNotGetStartCWD=1,useFEAT=0,useHELP_SITE=0,useCLNT=0,useSIZE=0,useMDTM=0 \
@@ -185,7 +185,7 @@ function push_fw() {
 				-W "quote SETENV kernel_args_tmp \"mtdram=rootfs_ram,${FITV/ /,}\"" \
 				-Y "quote QUIT" \
 				$ip ${fitimage} "${FITV}" || exit $?
-		elif [ $ISFIT -a -z "$FITV" ]; then
+		elif [ "$ISFIT" -a -z "$FITV" ]; then
 			ncftpput \
 				-C -d stdout -u adam2 -p adam2 \
 				-o doNotGetStartCWD=1,useFEAT=0,useHELP_SITE=0,useCLNT=0,useSIZE=0,useMDTM=0 \
