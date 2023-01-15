@@ -22,7 +22,7 @@ program     glib-genmarshal        FREETZ_LIB_libglib_2
 program     grep
 program     hexdump                FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 program     inkscape           and FREETZ_TAGGING_ENABLED FREETZ_AVM_VERSION_06_5X_MIN FREETZ_AVM_VERSION_07_0X_MAX
-program     javac                  FREETZ_PACKAGE_CLASSPATH
+program     ecj                    FREETZ_PACKAGE_CLASSPATH
 program     ldconfig
 program     libtool
 program     libtoolize             FREETZ_PACKAGE_GNTPSEND

@@ -32,7 +32,7 @@ $(PKG)_DEPENDS_ON += iconv
 endif
 
 $(PKG)_CONFIGURE_ENV += HAVE_INET6_I_KNOW_IT_BETTER=$(if $(FREETZ_TARGET_IPV6_SUPPORT),yes,no)
-$(PKG)_CONFIGURE_ENV += JAVAC=javac
+$(PKG)_CONFIGURE_ENV += JAVAC=ecj
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-alsa
 $(PKG)_CONFIGURE_OPTIONS += --disable-gconf-peer
