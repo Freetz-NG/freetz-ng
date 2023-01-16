@@ -41,6 +41,7 @@ netcat
 openssl
 openssl-devel
 patch
+patchutils
 perl
 perl-String-CRC32
 pkgconfig

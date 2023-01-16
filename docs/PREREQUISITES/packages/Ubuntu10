@@ -28,8 +28,6 @@ perl
 pkg-config
 python
 realpath
-ruby
-ruby1.8
 subversion
 texinfo
 tofrodos
