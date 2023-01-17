@@ -27,6 +27,7 @@ libglade2-devel
 libstdc++-devel.i686
 libtool
 libuuid-devel
+libxml2-devel
 libzstd-devel.i686
 make
 ncurses-devel
@@ -40,6 +41,7 @@ perl-String-CRC32
 pkgconfig
 pv
 qt5-qtbase-devel
+readline-devel
 rsync
 sqlite-devel
 sqlite.i686

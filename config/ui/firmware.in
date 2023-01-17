@@ -733,7 +733,7 @@ choice
 			For more details see <http://www.avm.de/Labor/>.
 
 	config FREETZ_TYPE_FIRMWARE_07_5X
-		bool "FRITZ!OS 07.50+ - UNTESTED"
+		bool "FRITZ!OS 07.50+"
 		select FREETZ_AVM_VERSION_07_5X
 		depends on FREETZ_AVM_HAS_FIRMWARE_07_5X
 

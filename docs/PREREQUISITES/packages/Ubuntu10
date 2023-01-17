@@ -24,14 +24,10 @@ libtool
 libusb-dev
 make
 patch
-patch
 perl
-pkg-config
 pkg-config
 python
 realpath
-ruby
-ruby1.8
 subversion
 texinfo
 tofrodos

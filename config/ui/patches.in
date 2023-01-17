@@ -1831,24 +1831,118 @@ config FREETZ_ENFORCE_URLADER_SETTING_MY_IPADDRESS
 		This is the AVM default, enforce to also to reseller boxes, eg. from T-Com
 		If this is empty the urlader setting won't be touched.
 
-config FREETZ_ENFORCE_FIRMWARE_VERSION_VIA_RCCONF
-	depends on FREETZ_AVM_VERSION_06_5X_MIN
-	string "Enforce firmware_version via rc.conf"
-	default ""
-	help
-		This option enforces branding by hardcoding it in /etc/init.d/rc.conf
+choice
+	prompt "Enforce branding"
+		depends on FREETZ_AVM_VERSION_06_5X_MIN
+		default FREETZ_ENFORCE_BRANDING_none
+		help
+			This option enforces the branding by hardcoding it in /etc/init.d/rc.conf
 
-		This method is useful on some recently produced boxes (since 2017), which
-		do not allow to change the value of the urlader variable 'firmware_version'
-		in a non-volatile way.
+			This method is useful on some recently produced boxes (since 2017), which
+			do not allow to change the value of the urlader variable 'firmware_version'
+			in a non-volatile way.
 
-		Affected boxes (known so far): all boxes with the following bootloaderVersion
-		 - 1.3179
-		 - 1.3229
-		use "cat /proc/sys/urlader/environment | grep bootloaderVersion" or EVA
-		to check the value
+			Affected boxes has bootloaderVersion 1.3179 or 1.3229 and newer.
+			Use "grep bootloaderVersion /proc/sys/urlader/environment", EVA or
+			AVM-Info page in Freetz to check the value.
 
-		Choose the value wisely. Your image must support it.
+	config FREETZ_ENFORCE_BRANDING_none
+		bool "none"
+		help
+			Don't touch it
+
+	config FREETZ_ENFORCE_BRANDING_1und1
+		bool "1und1"
+		depends on !FREETZ_REMOVE_BRANDING_1und1
+		depends on FREETZ_AVM_HAS_BRANDING_1und1
+		help
+			1&1 branding
+
+	config FREETZ_ENFORCE_BRANDING_aol
+		bool "aol"
+		depends on !FREETZ_REMOVE_BRANDING_aol
+		depends on FREETZ_AVM_HAS_BRANDING_aol
+		help
+			AOL branding
+
+	config FREETZ_ENFORCE_BRANDING_avm
+		bool "avm"
+		depends on !FREETZ_REMOVE_BRANDING_avm
+		depends on FREETZ_AVM_HAS_BRANDING_avm
+		help
+			AVM (german) branding
+
+	config FREETZ_ENFORCE_BRANDING_avme
+		bool "avme"
+		depends on !FREETZ_REMOVE_BRANDING_avme
+		depends on FREETZ_AVM_HAS_BRANDING_avme
+		help
+			AVME (international) branding
+
+	config FREETZ_ENFORCE_BRANDING_ewetel
+		bool "ewetel"
+		depends on !FREETZ_REMOVE_BRANDING_ewetel
+		depends on FREETZ_AVM_HAS_BRANDING_ewetel
+		help
+			EWE TEL branding
+
+	config FREETZ_ENFORCE_BRANDING_freenet
+		bool "freenet"
+		depends on !FREETZ_REMOVE_BRANDING_freenet
+		depends on FREETZ_AVM_HAS_BRANDING_freenet
+		help
+			Freenet branding
+
+	config FREETZ_ENFORCE_BRANDING_kabelbw
+		bool "kabelbw"
+		depends on !FREETZ_REMOVE_BRANDING_kabelbw
+		depends on FREETZ_AVM_HAS_BRANDING_kabelbw
+		help
+			Kabel Baden-Württemberg branding
+
+	config FREETZ_ENFORCE_BRANDING_kdg
+		bool "kdg"
+		depends on !FREETZ_REMOVE_BRANDING_kdg
+		depends on FREETZ_AVM_HAS_BRANDING_kdg
+		help
+			Kabel Deutschland GmbH branding
+
+	config FREETZ_ENFORCE_BRANDING_lgi
+		bool "lgi"
+		depends on !FREETZ_REMOVE_BRANDING_lgi
+		depends on FREETZ_AVM_HAS_BRANDING_lgi
+		help
+			Liberty Global Incorporated branding
+
+	config FREETZ_ENFORCE_BRANDING_otwo
+		bool "otwo"
+		depends on !FREETZ_REMOVE_BRANDING_otwo
+		depends on FREETZ_AVM_HAS_BRANDING_otwo
+		help
+			O2 branding
+
+	config FREETZ_ENFORCE_BRANDING_tcom
+		bool "tcom"
+		depends on !FREETZ_REMOVE_BRANDING_tcom
+		depends on FREETZ_AVM_HAS_BRANDING_tcom
+		help
+			Deutsche Telekom AG branding
+
+	config FREETZ_ENFORCE_BRANDING_unity
+		bool "unity"
+		depends on !FREETZ_REMOVE_BRANDING_unity
+		depends on FREETZ_AVM_HAS_BRANDING_unity
+		help
+			Unitymedia GmbH branding
+
+	config FREETZ_ENFORCE_BRANDING_versatel
+		bool "versatel"
+		depends on !FREETZ_REMOVE_BRANDING_versatel
+		depends on FREETZ_AVM_HAS_BRANDING_versatel
+		help
+			Versatel branding
+
+endchoice
 
 comment "Misc patches ---------------------------------------------"
 

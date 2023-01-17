@@ -11,6 +11,7 @@ program     cpio                   FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 program     dd                     FREETZ_PACKAGE_SUNDTEK
 program     depmod                 FREETZ_AVM_VERSION_07_2X_MIN
 program     file
+program     filterdiff             FREETZ_SHOW_DEVELOPER
 program     find
 program     flex
 program     g++
@@ -22,11 +23,13 @@ program     glib-genmarshal        FREETZ_LIB_libglib_2
 program     grep
 program     hexdump                FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 program     inkscape           and FREETZ_TAGGING_ENABLED FREETZ_AVM_VERSION_06_5X_MIN FREETZ_AVM_VERSION_07_0X_MAX
-program     javac                  FREETZ_PACKAGE_CLASSPATH
+program     ecj                    FREETZ_PACKAGE_CLASSPATH
 program     ldconfig
 program     libtool
 program     libtoolize             FREETZ_PACKAGE_GNTPSEND
+program     lsdiff                 FREETZ_SHOW_DEVELOPER
 program     md5sum
+program     mktemp
 program     nc                     FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 program     openssl             or FREETZ_FWMOD_VALIDATE FREETZ_FWMOD_SIGN
 program     patch

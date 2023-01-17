@@ -38,8 +38,6 @@ pkg-config
 pv
 realpath
 rsync
-ruby
-ruby1.9
 subversion
 sudo
 texinfo

@@ -45,21 +45,23 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 36/37 64-Bit:
+ - Fedora 37 64-Bit:
 ```
-sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
+sudo dnf -y install %%Fedora37%%
+```
+
+ - Fedora 36 64-Bit:
+```
 sudo dnf -y install %%Fedora36%%
 ```
 
  - Fedora 35 64-Bit:
 ```
-sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
 sudo dnf -y install %%Fedora35%%
 ```
 
  - Fedora 33/34 64-Bit:
 ```
-sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
 sudo dnf -y install %%Fedora33%%
 ```
 

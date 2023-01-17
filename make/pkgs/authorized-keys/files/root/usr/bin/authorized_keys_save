@@ -40,7 +40,7 @@ for id in $ids; do
 	if [ -f "$dir/authorized_keys.new" ]; then
 		mv $dir/authorized_keys.new $dir/authorized_keys
 		chown -R $user $dir/authorized_keys
-		chmod -R 700 $dir/authorized_keys
+		chmod -R 600 $dir/authorized_keys
 		[ "$user" = "root" ] && modsave flash
 	else
 		rm -f $dir/authorized_keys

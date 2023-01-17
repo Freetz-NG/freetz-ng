@@ -599,7 +599,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7490-07.12.image"                                                   if FREETZ_TYPE_7490 && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_7490-07.21.image"                                                   if FREETZ_TYPE_7490 &&                        FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7490-07.29.image"                                                   if FREETZ_TYPE_7490 &&                        FREETZ_TYPE_FIRMWARE_07_25
-	default "FRITZ.Box_7490-07.51-102214-Labor.image"                                      if FREETZ_TYPE_7490 &&                        FREETZ_TYPE_FIRMWARE_07_5X_LABOR
+	default "FRITZ.Box_7490-07.51-102539-Labor.image"                                      if FREETZ_TYPE_7490 &&                        FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "FRITZ.Box_7510-07.30.image"                                                   if FREETZ_TYPE_7510                        && FREETZ_TYPE_FIRMWARE_07_25
 	default "FRITZ.Box_7510-07.39-101109-Inhaus.image"                                     if FREETZ_TYPE_7510                        && FREETZ_TYPE_FIRMWARE_07_5X_INHAUS
@@ -720,7 +720,7 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritzbox-6850_lte-labor-99732.zip"       if FREETZ_TYPE_6850_4G
 	default "fritzbox-6850_5g-labor-99728.zip"        if FREETZ_TYPE_6850_5G
 	default "fritzbox-6890_lte-labor-98285.zip"       if FREETZ_TYPE_6890
-	default "fritzbox-7490-labor-102214.zip"          if FREETZ_TYPE_7490
+	default "fritzbox-7490-labor-102539.zip"          if FREETZ_TYPE_7490
 	default "fritzbox-7530ax-labor-101163.zip"        if FREETZ_TYPE_7539
 	default "fritzbox-7590_AX-labor-101158.zip"       if FREETZ_TYPE_7599
 #	default "xxxxxxxxxxxxxxxxxxxxxxxxx.zip"           if FREETZ_TYPE_xxxx

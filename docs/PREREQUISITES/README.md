@@ -45,42 +45,54 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 36/37 64-Bit:
+ - Fedora 37 64-Bit:
 ```
-sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
-  javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
-  libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libzstd-devel.x86_64 make ncurses-devel \
-  ncurses-devel.i686 ncurses-term netcat openssl openssl-devel patch perl perl-String-CRC32 pkgconfig pv \
-  qt5-qtbase-devel rpcgen rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz \
-  zlib-devel zlib-devel.i686
+  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inet-tools \
+  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
+  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
+  patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
+  rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz zlib-devel \
+  zlib-devel.i686
+```
+
+ - Fedora 36 64-Bit:
+```
+sudo dnf -y install \
+  autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
+  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inet-tools \
+  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
+  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
+  patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
+  rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz zlib-devel \
+  zlib-devel.i686
 ```
 
  - Fedora 35 64-Bit:
 ```
-sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
-  javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
-  libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libzstd-devel.x86_64 make ncurses-devel \
-  ncurses-devel.i686 ncurses-term netcat openssl openssl-devel patch perl perl-String-CRC32 pkgconfig pv \
-  qt5-qtbase-devel rpcgen rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz \
-  zlib-devel zlib-devel.i686
+  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inet-tools \
+  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
+  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
+  patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
+  rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz zlib-devel \
+  zlib-devel.i686
 ```
 
  - Fedora 33/34 64-Bit:
 ```
-sudo dnf -y groupinstall 'Development Tools' 'Development Libraries'
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio ecj flex gcc gcc-c++ gettext git \
   glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape kmod libacl-devel libattr-devel \
-  libcap-devel libgcc.i686 libglade2-devel libstdc++-devel.i686 libtool libuuid-devel \
+  libcap-devel libgcc.i686 libglade2-devel libstdc++-devel.i686 libtool libuuid-devel libxml2-devel \
   libzstd-devel.i686 make ncurses-devel ncurses-devel.i686 ncurses-term openssl openssl-devel patch perl \
-  perl-String-CRC32 pkgconfig pv qt5-qtbase-devel rsync sqlite-devel sqlite.i686 subversion texinfo unar \
-  util-linux wget xz zlib-devel zlib-devel.i686
+  perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rsync sqlite-devel sqlite.i686 subversion \
+  texinfo unar util-linux wget xz zlib-devel zlib-devel.i686
 ```
 
  - Falls auf dem folgenden System ein 64-Bit Linux installiert ist wird zusätzlich benötigt:
@@ -112,8 +124,8 @@ sudo apt -y install \
   java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
   libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
   libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make netcat patch \
-  perl pkg-config pv rsync ruby sharutils sqlite3 subversion sudo texinfo tofrodos unar unzip \
-  uuid-dev wget zlib1g-dev
+  perl pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo tofrodos unar unzip uuid-dev \
+  wget zlib1g-dev
 ```
 
 
@@ -144,24 +156,24 @@ sudo apt-get -y dist-upgrade
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool \
-  java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
-  libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
-  netcat-openbsd patch perl pkg-config pv rsync ruby sharutils sqlite3 subversion sudo texinfo tofrodos unar \
-  unzip uuid-dev wget zlib1g-dev
+  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inet-tools inkscape \
+  intltool java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
+  libc6-dev-i386 libcap-dev libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
+  libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
+  ncftp netcat-openbsd patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo \
+  texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
 ```
 
  - Ubuntu 20 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool \
-  java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
-  libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make netcat patch \
-  perl pkg-config pv rsync ruby sharutils sqlite3 subversion sudo texinfo tofrodos unar unzip \
-  uuid-dev wget zlib1g-dev
+  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inet-tools inkscape \
+  intltool java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
+  libc6-dev-i386 libcap-dev libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
+  libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
+  ncftp netcat patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo \
+  tofrodos unar unzip uuid-dev wget zlib1g-dev
 # sqlite-32bit lässt sich mit apt nicht installieren, aber mit apt-get schon. Siehe auch:
 # https://developpaper.com/ubuntu-solves-the-problem-of-libsqlite3-0-dependency-recommended/
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
@@ -171,11 +183,12 @@ sudo apt -y install libzstd-dev:i386 sqlite3:i386
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache \
-  cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inkscape \
-  intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
-  libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
-  libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make netcat openssl patch perl pkg-config pv rsync ruby \
-  ruby1.9 sqlite3 subversion sudo texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
+  cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick \
+  inet-tools inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
+  libc6-dev-i386 libcap-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
+  libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make ncftp netcat \
+  openssl patch patchutils perl pkg-config pv rsync sqlite3 subversion sudo texinfo tofrodos unar \
+  unzip uuid-dev wget zlib1g-dev
 ```
 
  - Ubuntu 15/16 64-Bit:
@@ -184,8 +197,8 @@ sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 cpio ecj flex g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool kmod lib32ncurses5-dev \
   lib32stdc++6 libacl1-dev libc6-dev-i386 libcap-dev libglib2.0-dev libncurses5-dev libreadline-dev \
-  libstring-crc32-perl libtool-bin libusb-dev make patch perl pkg-config pv realpath rsync ruby ruby1.9 subversion \
-  sudo texinfo tofrodos unar unzip wget zlib1g-dev
+  libstring-crc32-perl libtool-bin libusb-dev make patch perl pkg-config pv realpath rsync subversion sudo texinfo \
+  tofrodos unar unzip wget zlib1g-dev
 ```
 
  - Ubuntu 14 64-Bit:
@@ -195,8 +208,8 @@ sudo apt-get -y install \
   bzip2 ccache cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git graphicsmagick \
   imagemagick inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
   libc6-dev-i386 libcap-dev libglib2.0-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libstring-crc32-perl libtool libusb-dev make netcat openssl patch perl pkg-config pv realpath rsync ruby ruby1.9 \
-  sqlite3 subversion sudo texinfo tofrodos unar unzip wget zlib1g-dev
+  libstring-crc32-perl libtool libusb-dev make netcat openssl patch perl pkg-config pv realpath rsync sqlite3 \
+  subversion sudo texinfo tofrodos unar unzip wget zlib1g-dev
 ```
 Zusätzlich muss manuell installiert werden:
 ```
@@ -230,8 +243,8 @@ sudo apt-get -y install libtool-bin
 sudo apt-get -y install \
   autoconf automake automake1.9 binutils bison bzip2 ecj fastjar flex g++ gawk gcc gettext \
   graphicsmagick intltool libacl1-dev libcap-dev libncurses5-dev libreadline-dev libstring-crc32-perl \
-  libtool libusb-dev make patch perl pkg-config python realpath ruby ruby1.8 subversion texinfo \
-  tofrodos unzip zlib1g-dev
+  libtool libusb-dev make patch perl pkg-config python realpath subversion texinfo tofrodos unzip \
+  zlib1g-dev
 ```
 
  - Ubuntu 10/11/12 32-Bit:
@@ -239,8 +252,8 @@ sudo apt-get -y install \
 sudo apt-get -y install \
   autoconf automake binutils bison bzip2 ecj fastjar flex g++ gawk gcc gettext git-core \
   imagemagick intltool libacl1-dev libattr1-dev libcap-dev libglib2.0-dev libncurses5-dev \
-  libreadline-dev libstring-crc32-perl libtool libusb-dev make patch patch perl pkg-config pkg-config \
-  python realpath ruby ruby1.8 subversion texinfo tofrodos unzip xz-utils zlib1g-dev
+  libreadline-dev libstring-crc32-perl libtool libusb-dev make patch perl pkg-config python realpath \
+  subversion texinfo tofrodos unzip xz-utils zlib1g-dev
 ```
 
  - Ubuntu 9.04 32-Bit (kein automake 1.8, "ecj" statt "ecj-bootstrap"):
@@ -249,7 +262,7 @@ sudo apt-get -y install \
   autoconf automake automake1.9 binutils bison bzip2 ecj fastjar flex g++ gawk gcc gettext \
   git-core imagemagick intltool jikes libacl1-dev libattr1-dev libcap-dev libglib2.0-dev \
   libncurses5-dev libreadline-dev libstring-crc32-perl libtool libusb-dev make patch perl pkg-config \
-  python realpath ruby ruby1.8 subversion texinfo tofrodos unzip xz-utils zlib1g-dev
+  python realpath subversion texinfo tofrodos unzip xz-utils zlib1g-dev
 ```
 
 ### Kali

@@ -47,8 +47,6 @@ pkg-config
 pv
 realpath
 rsync
-ruby
-ruby1.9
 sqlite3
 subversion
 sudo

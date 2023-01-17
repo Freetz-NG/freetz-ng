@@ -136,7 +136,7 @@ if [ -e /proc/clocks -o -e /proc/sys/urlader/environment ]; then
 		echo "<dt>$(lang de:"Prozessor" en:"Processor")</dt><dl>"
 		_CPU_TMP="$(sed -rn 's!^Channel .: ([0-9.]*) .*!\1!p' /proc/chip_temperature 2>/dev/null | sort -r | head -n1)"
 		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/^../&./' /sys/devices/virtual/thermal/thermal_zone0/temp 2>/dev/null)"
-		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/ .*//g' /proc/avm/powermanagmentressourceinfo/powerdevice_temperature 2>/dev/null)"
+		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/ .*//g' /proc/avm/powermanagmentressourceinfo/powerdevice_temperature | grep -v '^0$' 2>/dev/null)"
 		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed -rn 's!^cpu-thermal *: ([0-9.]*) .*!\1!p' /proc/avm/temp_sensors 2>/dev/null)"
 		[ -n "$_CPU_TMP" ] && echo "<dt>$(lang de:"Temperatur" en:"Temperature")</dt><dd>${_CPU_TMP%%.} $(echo -e '\260')C</dd>"
 	elif [ -e /proc/clocks ]; then

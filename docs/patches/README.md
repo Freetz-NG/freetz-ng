@@ -425,8 +425,47 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Enable LED deactivation page</u><a id='enable-led-deactivation'></a>**<br>
     Re-enables access to the LED deactivation page in expert mode.
 
-  * **<u>ENFORCE_FIRMWARE_VERSION_VIA_RCCONF: Enforce firmware_version via rc.conf</u><a id='enforce-firmware-version-via-rcconf'></a>**<br>
-    This option enforces branding by hardcoding it in /etc/init.d/rc.conf This method is useful on some recently produced boxes (since 2017), which do not allow to change the value of the urlader variable 'firmware_version' in a non-volatile way. Affected boxes (known so far): all boxes with the following bootloaderVersion - 1.3179 - 1.3229 use "cat /proc/sys/urlader/environment | grep bootloaderVersion" or EVA to check the value Choose the value wisely. Your image must support it.
+  * **<u>ENFORCE_BRANDING_1und1: 1und1</u><a id='enforce-branding-1und1'></a>**<br>
+    1&1 branding
+
+  * **<u>ENFORCE_BRANDING_aol: aol</u><a id='enforce-branding-aol'></a>**<br>
+    AOL branding
+
+  * **<u>ENFORCE_BRANDING_avm: avm</u><a id='enforce-branding-avm'></a>**<br>
+    AVM (german) branding
+
+  * **<u>ENFORCE_BRANDING_avme: avme</u><a id='enforce-branding-avme'></a>**<br>
+    AVME (international) branding
+
+  * **<u>ENFORCE_BRANDING_ewetel: ewetel</u><a id='enforce-branding-ewetel'></a>**<br>
+    EWE TEL branding
+
+  * **<u>ENFORCE_BRANDING_freenet: freenet</u><a id='enforce-branding-freenet'></a>**<br>
+    Freenet branding
+
+  * **<u>ENFORCE_BRANDING_kabelbw: kabelbw</u><a id='enforce-branding-kabelbw'></a>**<br>
+    Kabel Baden-Württemberg branding
+
+  * **<u>ENFORCE_BRANDING_kdg: kdg</u><a id='enforce-branding-kdg'></a>**<br>
+    Kabel Deutschland GmbH branding
+
+  * **<u>ENFORCE_BRANDING_lgi: lgi</u><a id='enforce-branding-lgi'></a>**<br>
+    Liberty Global Incorporated branding
+
+  * **<u>ENFORCE_BRANDING_none: none</u><a id='enforce-branding-none'></a>**<br>
+    Don't touch it
+
+  * **<u>ENFORCE_BRANDING_otwo: otwo</u><a id='enforce-branding-otwo'></a>**<br>
+    O2 branding
+
+  * **<u>ENFORCE_BRANDING_tcom: tcom</u><a id='enforce-branding-tcom'></a>**<br>
+    Deutsche Telekom AG branding
+
+  * **<u>ENFORCE_BRANDING_unity: unity</u><a id='enforce-branding-unity'></a>**<br>
+    Unitymedia GmbH branding
+
+  * **<u>ENFORCE_BRANDING_versatel: versatel</u><a id='enforce-branding-versatel'></a>**<br>
+    Versatel branding
 
   * **<u>ENFORCE_URLADER_SETTING_FIRMWARE_VERSION: Enforce firmware_version variable</u><a id='enforce-urlader-setting-firmware-version'></a>**<br>
     Choose wisely. Your image beeing built must support this. Typical settings are eg.: avm, avme, tcom, 1und1, ... If this is empty the urlader setting won't be touched.

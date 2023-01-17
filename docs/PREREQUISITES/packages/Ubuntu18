@@ -21,6 +21,7 @@ gettext
 git
 graphicsmagick
 imagemagick
+inet-tools
 inkscape
 intltool
 kmod
@@ -41,15 +42,15 @@ libtool-bin
 libusb-dev
 libzstd-dev
 make
+ncftp
 netcat
 openssl
 patch
+patchutils
 perl
 pkg-config
 pv
 rsync
-ruby
-ruby1.9
 sqlite3
 subversion
 sudo

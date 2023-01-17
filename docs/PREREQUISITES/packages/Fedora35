@@ -19,6 +19,7 @@ glib2-devel
 glibc-devel.i686
 gnutls-devel
 ImageMagick
+inet-tools
 inkscape
 javapackages-tools
 kmod
@@ -31,8 +32,10 @@ libstdc++-devel.i686
 libstdc++-devel.x86_64
 libtool
 libuuid-devel
+libxml2-devel
 libzstd-devel.x86_64
 make
+ncftp
 ncurses-devel
 ncurses-devel.i686
 ncurses-term
@@ -40,11 +43,13 @@ netcat
 openssl
 openssl-devel
 patch
+patchutils
 perl
 perl-String-CRC32
 pkgconfig
 pv
 qt5-qtbase-devel
+readline-devel
 rpcgen
 rsync
 sharutils

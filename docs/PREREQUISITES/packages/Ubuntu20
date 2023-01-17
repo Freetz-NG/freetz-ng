@@ -20,6 +20,7 @@ gettext
 git
 graphicsmagick
 imagemagick
+inet-tools
 inkscape
 intltool
 java-wrappers
@@ -43,13 +44,14 @@ libusb-dev
 libxml2-dev
 libzstd-dev
 make
+ncftp
 netcat
 patch
+patchutils
 perl
 pkg-config
 pv
 rsync
-ruby
 sharutils
 sqlite3
 subversion
