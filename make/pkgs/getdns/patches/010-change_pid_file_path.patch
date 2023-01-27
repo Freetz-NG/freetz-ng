@@ -1,0 +1,11 @@
+--- stubby/src/stubby.c.old	2022-12-22 15:16:12.000000000 +0100
++++ stubby/src/stubby.c	2023-01-27 13:38:48.928018300 +0100
+@@ -51,7 +51,7 @@
+ #if defined(ENABLE_WINDOWS_SERVICE)
+ #include "windowsservice.h"
+ #else
+-#define STUBBYPIDFILE RUNSTATEDIR"/stubby.pid"
++#define STUBBYPIDFILE "/var/run/stubby.pid"
+ #endif
+ 
+ void

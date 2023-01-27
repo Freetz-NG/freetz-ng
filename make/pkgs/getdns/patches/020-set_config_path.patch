@@ -1,0 +1,11 @@
+--- stubby/CMakeLists.txt.org	2022-12-22 15:16:12.000000000 +0100
++++ stubby/CMakeLists.txt	2023-01-27 14:50:07.204730200 +0100
+@@ -65,7 +65,7 @@
+   GROUP_READ GROUP_EXECUTE
+   WORLD_READ WORLD_EXECUTE
+   )
+-set(STUBBYCONFDIR "${CMAKE_INSTALL_FULL_SYSCONFDIR}/stubby")
++set(STUBBYCONFDIR "/etc/stubby")
+ 
+ find_package(Libyaml REQUIRED)
+ 
