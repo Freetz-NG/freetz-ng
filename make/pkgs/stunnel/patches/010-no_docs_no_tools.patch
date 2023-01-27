@@ -1,6 +1,6 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -367,7 +367,7 @@
+@@ -368,7 +368,7 @@
  top_srcdir = @top_srcdir@
  AM_DISTCHECK_CONFIGURE_FLAGS = --with-bashcompdir='$$(datarootdir)/bash-completion/completions'
  ACLOCAL_AMFLAGS = -I m4

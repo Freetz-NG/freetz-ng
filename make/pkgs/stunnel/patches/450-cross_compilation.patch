@@ -1,20 +1,20 @@
---- configure
-+++ configure
-@@ -14836,7 +14836,7 @@
+--- configure.org	2022-10-08 20:05:59.000000000 +0200
++++ configure	2022-11-02 22:54:18.718732728 +0100
+@@ -15667,7 +15667,7 @@
  
- { $as_echo "$as_me:${as_lineno-$LINENO}: **************************************** PTY device files" >&5
- $as_echo "$as_me: **************************************** PTY device files" >&6;}
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: **************************************** PTY device files" >&5
+ printf "%s\n" "$as_me: **************************************** PTY device files" >&6;}
 -if test "x$cross_compiling" = "xno"; then
 +if true || test "x$cross_compiling" = "xno"; then
-     as_ac_File=`$as_echo "ac_cv_file_"/dev/ptmx"" | $as_tr_sh`
- { $as_echo "$as_me:${as_lineno-$LINENO}: checking for \"/dev/ptmx\"" >&5
- $as_echo_n "checking for \"/dev/ptmx\"... " >&6; }
-@@ -14891,7 +14891,7 @@
- { $as_echo "$as_me:${as_lineno-$LINENO}: **************************************** entropy sources" >&5
- $as_echo "$as_me: **************************************** entropy sources" >&6;}
+     as_ac_File=`printf "%s\n" "ac_cv_file_"/dev/ptmx"" | $as_tr_sh`
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for \"/dev/ptmx\"" >&5
+ printf %s "checking for \"/dev/ptmx\"... " >&6; }
+@@ -15726,7 +15726,7 @@
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: **************************************** entropy sources" >&5
+ printf "%s\n" "$as_me: **************************************** entropy sources" >&6;}
  
 -if test "x$cross_compiling" = "xno"; then
 +if true || test "x$cross_compiling" = "xno"; then
  
  # Check whether --with-egd-socket was given.
- if test "${with_egd_socket+set}" = set; then :
+ if test ${with_egd_socket+y}
