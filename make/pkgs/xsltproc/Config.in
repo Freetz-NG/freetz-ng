@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_XSLTPROC
-	bool "xsltproc 1.1.33 (binary only)"
+	bool "xsltproc 1.1.37 (binary only)"
 	select FREETZ_LIB_libxslt  if !FREETZ_PACKAGE_XSLTPROC_STATIC
 	select FREETZ_LIB_libexslt if !FREETZ_PACKAGE_XSLTPROC_STATIC
 	default n

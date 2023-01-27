@@ -12,5 +12,5 @@ config EXTERNAL_FREETZ_LIB_libxslt
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libxslt.so.1.1.33
+		 ${FREETZ_LIBRARY_DIR}/libxslt.so.1.1.37
 

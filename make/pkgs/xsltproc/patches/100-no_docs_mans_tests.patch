@@ -1,6 +1,6 @@
 --- libexslt/Makefile.in
 +++ libexslt/Makefile.in
-@@ -763,7 +763,7 @@
+@@ -794,7 +794,7 @@
  
  info-am:
  
@@ -11,7 +11,7 @@
  install-dvi: install-dvi-am
 --- libxslt/Makefile.in
 +++ libxslt/Makefile.in
-@@ -812,7 +812,7 @@
+@@ -848,7 +848,7 @@
  
  info-am:
  
@@ -20,29 +20,26 @@
  	install-xsltincHEADERS
  
  install-dvi: install-dvi-am
---- Makefile.in
-+++ Makefile.in
-@@ -415,12 +415,9 @@
- SUBDIRS = \
- 	libxslt \
- 	libexslt \
--	xsltproc \
--	doc \
--	$(PYTHON_SUBDIR) \
--	tests
-+	xsltproc
- 
+--- Makefile.org	2022-08-29 16:47:39.000000000 +0200
++++ Makefile.in	2022-11-03 00:23:54.670437000 +0100
+@@ -429,8 +429,8 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ ACLOCAL_AMFLAGS = -I m4
+-SUBDIRS = libxslt libexslt xsltproc doc tests $(am__append_1)
 -DIST_SUBDIRS = libxslt libexslt xsltproc python doc tests
++SUBDIRS = libxslt libexslt xsltproc $(am__append_1)
 +DIST_SUBDIRS = libxslt libexslt xsltproc
  confexecdir = $(libdir)
  confexec_DATA = xsltConf.sh
  bin_SCRIPTS = xslt-config
-@@ -963,13 +960,13 @@
+@@ -1024,14 +1024,13 @@
  
  info-am:
  
--install-data-am: install-m4dataDATA install-pkgconfigDATA
-+install-data-am:                    install-pkgconfigDATA
+-install-data-am: install-cmakeDATA install-dist_cmakeDATA \
+-	install-dist_m4dataDATA install-pkgconfigDATA
++install-data-am: install-cmakeDATA install-dist_cmakeDATA install-pkgconfigDATA
  
  install-dvi: install-dvi-recursive
  

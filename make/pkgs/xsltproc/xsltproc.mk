@@ -1,13 +1,13 @@
-$(call PKG_INIT_BIN, 1.1.33)
-$(PKG)_SOURCE:=libxslt-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=8e36605144409df979cab43d835002f63988f3dc94d5d3537c12796db90e38c8
+$(call PKG_INIT_BIN, 1.1.37)
+$(PKG)_SOURCE:=libxslt-$($(PKG)_VERSION).tar.xz
+$(PKG)_HASH:=3a4b27dc8027ccd6146725950336f1ec520928f320f144eb5fa7990ae6123ab4
 $(PKG)_SITE:=ftp://xmlsoft.org/libxslt
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/$(pkg)$(if $(FREETZ_PACKAGE_XSLTPROC_STATIC),,/.libs)/$(pkg)
 $(PKG)_BINARY_TARGET_DIR := $($(PKG)_DEST_DIR)/usr/bin/$(pkg)
 
 $(PKG)_LIBNAMES_SHORT := libxslt libexslt
-$(PKG)_LIBVERSIONS := 1.1.33 0.8.20
+$(PKG)_LIBVERSIONS := 1.1.37 0.8.20
 $(PKG)_LIBNAMES_LONG :=  $(join $($(PKG)_LIBNAMES_SHORT:%=%.so.),$($(PKG)_LIBVERSIONS))
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
