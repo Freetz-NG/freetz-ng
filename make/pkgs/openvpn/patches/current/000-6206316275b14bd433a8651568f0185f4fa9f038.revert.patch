@@ -1,0 +1,27 @@
+
+  reverts https://github.com/OpenVPN/openvpn/commit/6206316275b14bd433a8651568f0185f4fa9f038
+
+--- configure.ac
++++ configure.ac
+@@ -433,7 +433,7 @@
+ 	unistd.h libgen.h stropts.h \
+ 	syslog.h pwd.h grp.h termios.h \
+ 	sys/sockio.h sys/uio.h linux/sockios.h \
+-	linux/types.h linux/errqueue.h poll.h sys/epoll.h err.h \
++	linux/types.h linux/errqueue.h sys/poll.h sys/epoll.h err.h \
+ ])
+ 
+ SOCKET_INCLUDES="
+--- src/openvpn/syshead.h
++++ src/openvpn/syshead.h
+@@ -147,8 +147,8 @@
+ #include <resolv.h>
+ #endif
+ 
+-#ifdef HAVE_POLL_H
+-#include <poll.h>
++#ifdef HAVE_SYS_POLL_H
++#include <sys/poll.h>
+ #endif
+ 
+ #ifdef ENABLE_SELINUX

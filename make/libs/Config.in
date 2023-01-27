@@ -185,6 +185,7 @@ endmenu ### "XML & XSLT"
 
 source "make/libs/attr/Config.in"
 source "make/libs/libcap/Config.in"
+source "make/libs/libcap-ng/Config.in"
 source "make/libs/libconfig/Config.in"
 source "make/libs/libctlmgr/Config.in"
 source "make/libs/libdaemon/Config.in"

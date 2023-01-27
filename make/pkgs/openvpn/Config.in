@@ -10,6 +10,7 @@ config FREETZ_PACKAGE_OPENVPN
 	select FREETZ_BUSYBOX_BRCTL         if !FREETZ_PACKAGE_BRIDGE_UTILS
 	select FREETZ_MODULE_tun            if !FREETZ_AVM_HAS_TUN_BUILTIN
 	select FREETZ_MODULE_yf_patchkernel if FREETZ_AVM_HAS_BUGON_IN_NET_CORE
+	select FREETZ_LIB_libcap_ng         if FREETZ_PACKAGE_OPENVPN_VERSION_CURRENT
 	default n
 	help
 		VPN Server

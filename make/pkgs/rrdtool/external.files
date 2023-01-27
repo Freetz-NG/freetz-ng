@@ -1,6 +1,6 @@
 [ "FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ] && ELIBVER="2.0.15" || ELIBVER="8.3.0"
 
-[ "$EXTERNAL_FREETZ_PACKAGE_RRDTOOL" == "y" ] && EXTERNAL_FILES+=" /usr/bin/rrdtool"
+[ "$EXTERNAL_FREETZ_PACKAGE_RRDTOOL" == "y" ] && EXTERNAL_FILES+=" /usr/bin/rrdtool-freetz"
 [ "$EXTERNAL_FREETZ_PACKAGE_RRDTOOL" == "y" -a "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ] && EXTERNAL_FILES+=" /usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf"
 
 [ "$EXTERNAL_FREETZ_LIB_librrd" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/librrd.so.$ELIBVER"

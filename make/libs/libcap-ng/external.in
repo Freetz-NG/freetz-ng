@@ -1,0 +1,16 @@
+config EXTERNAL_FREETZ_LIB_libcap_ng
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libcap_ng
+	bool "libcap-ng"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libcap-ng.so.1.0.0
+
+config EXTERNAL_FREETZ_LIB_libdrop_ambient
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libdrop_ambient
+	bool "libdrop_ambient"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libdrop_ambient.so.1.0.0
+

@@ -1,0 +1,19 @@
+config FREETZ_LIB_libcap_ng
+	bool "libcap-ng (libcap-ng.so)"
+	default n
+	help
+		The libcap-ng library should make programming with posix capabilities
+		easier. The library has some utilities to help you analyse a system
+		for apps that may have too much privileges.
+
+config FREETZ_LIB_libdrop_ambient
+	bool "libdrop_ambient (libdrop_ambient.so)"
+	default n
+	help
+		This library can be used via LD_PRELOAD to force an application
+		started with ambient capabilities to drop them. It leaves other
+		capabilities intact. This can also be linked against and
+		automatically does the right thing. You do not need to make any
+		calls into the library because all the work is done in the
+		constructor which runs before main() is called.
+

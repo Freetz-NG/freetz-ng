@@ -4,6 +4,6 @@ config EXTERNAL_FREETZ_PACKAGE_RRDTOOL
 	default n
 	help
 		externals the following file(s):
-		 /usr/bin/rrdtool
+		 /usr/bin/rrdtool-freetz
 		 /usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf (only rrdtool 1.2)
 

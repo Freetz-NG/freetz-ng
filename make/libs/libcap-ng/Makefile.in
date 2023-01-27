@@ -1,0 +1,3 @@
+ifeq ($(or $(strip $(FREETZ_LIB_libcap_ng)),$(strip $(FREETZ_LIB_libdrop_ambient))),y)
+LIBS+=libcap-ng
+endif
