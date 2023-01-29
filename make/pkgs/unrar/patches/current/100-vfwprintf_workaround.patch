@@ -1,0 +1,16 @@
+--- consio.cpp
++++ consio.cpp
+@@ -108,7 +108,13 @@
+   DWORD Written;
+   WriteConsole(hOut,Msg,(DWORD)wcslen(Msg),&Written,NULL);
+ #else
++#if !defined(VFWPRINTF_WORKAROUND_REQUIRED)
+   vfwprintf(dest,fmtw,arglist);
++#else
++  char fmtc[2048];
++  WideToChar(fmtw,fmtc,ASIZE(fmtc));
++  vfprintf(dest, fmtc, arglist);
++#endif
+   // We do not use setbuf(NULL) in Unix (see comments in InitConsole).
+   fflush(dest);
+ #endif

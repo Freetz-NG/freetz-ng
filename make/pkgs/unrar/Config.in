@@ -17,7 +17,7 @@ if FREETZ_PACKAGE_UNRAR
 
 		config FREETZ_PACKAGE_UNRAR_VERSION_CURRENT
 			bool "6.2.5"
-			depends on !FREETZ_KERNEL_VERSION_2_6_13
+			depends on FREETZ_TARGET_GCC_4_8_MIN
 
 	endchoice
 

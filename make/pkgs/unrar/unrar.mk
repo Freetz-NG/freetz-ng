@@ -11,6 +11,8 @@ $(PKG)_SITE:=https://www.rarlab.com/rar
 $(PKG)_BINARY:=$($(PKG)_DIR)/unrar
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/unrar
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_UNRAR_VERSION_ABANDON),abandon,current)
+
 $(PKG)_DEPENDS_ON += $(STDCXXLIB)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
 

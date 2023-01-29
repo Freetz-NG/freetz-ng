@@ -1,0 +1,120 @@
+--- errhnd.cpp
++++ errhnd.cpp
+@@ -337,7 +337,11 @@
+     mprintf(L"\n%s\n",St(MProgAborted));
+ #endif
+   SetErrorCode(Code);
++#ifdef ALLOW_EXCEPTIONS
+   throw Code;
++#else
++  exit(Code);
++#endif
+ }
+ 
+ 
+--- rar.cpp
++++ rar.cpp
+@@ -32,7 +32,9 @@
+   POWER_MODE ShutdownOnClose=POWERMODE_KEEP;
+ #endif
+ 
++#ifdef ALLOW_EXCEPTIONS
+   try 
++#endif
+   {
+   
+     CommandData *Cmd=new CommandData;
+@@ -80,6 +82,7 @@
+     Cmd->ProcessCommand();
+     delete Cmd;
+   }
++#ifdef ALLOW_EXCEPTIONS
+   catch (RAR_EXIT ErrCode)
+   {
+     ErrHandler.SetErrorCode(ErrCode);
+@@ -93,6 +96,7 @@
+   {
+     ErrHandler.SetErrorCode(RARX_FATAL);
+   }
++#endif
+ 
+ #if defined(_WIN_ALL) && !defined(SFX_MODULE)
+   if (ShutdownOnClose!=POWERMODE_KEEP && ErrHandler.IsShutdownEnabled() &&
+--- unpack50frag.cpp
++++ unpack50frag.cpp
+@@ -47,7 +47,11 @@
+       Size-=Size/32;
+     }
+     if (NewMem==NULL)
++#ifdef ALLOW_EXCEPTIONS
+       throw std::bad_alloc();
++#else
++      ErrHandler.MemoryError();
++#endif
+ 
+     // Clean the window to generate the same output when unpacking corrupt
+     // RAR files, which may access to unused areas of sliding dictionary.
+@@ -59,7 +63,11 @@
+     BlockNum++;
+   }
+   if (TotalSize<WinSize) // Not found enough free blocks.
++#ifdef ALLOW_EXCEPTIONS
+     throw std::bad_alloc();
++#else
++    ErrHandler.MemoryError();
++#endif
+ }
+ 
+ 
+--- unpack.cpp
++++ unpack.cpp
+@@ -100,7 +100,11 @@
+ 
+   // We do not handle growth for existing fragmented window.
+   if (Grow && Fragmented)
++#ifdef ALLOW_EXCEPTIONS
+     throw std::bad_alloc();
++#else
++    ErrHandler.MemoryError();
++#endif
+ 
+   byte *NewWindow=Fragmented ? NULL : (byte *)malloc(WinSize);
+ 
+@@ -109,7 +113,11 @@
+     {
+       // We do not support growth for new fragmented window.
+       // Also exclude RAR4 and small dictionaries.
++#ifdef ALLOW_EXCEPTIONS
+       throw std::bad_alloc();
++#else
++      ErrHandler.MemoryError();
++#endif
+     }
+     else
+     {
+
+
+--- model.cpp
++++ model.cpp
+@@ -43,13 +43,21 @@
+   InitRL=-(MaxOrder < 12 ? MaxOrder:12)-1;
+   MinContext = MaxContext = (RARPPM_CONTEXT*) SubAlloc.AllocContext();
+   if (MinContext == NULL)
++#ifdef ALLOW_EXCEPTIONS
+     throw std::bad_alloc();
++#else
++    ErrHandler.MemoryError();
++#endif
+   MinContext->Suffix=NULL;
+   OrderFall=MaxOrder;
+   MinContext->U.SummFreq=(MinContext->NumStats=256)+1;
+   FoundState=MinContext->U.Stats=(RARPPM_STATE*)SubAlloc.AllocUnits(256/2);
+   if (FoundState == NULL)
++#ifdef ALLOW_EXCEPTIONS
+     throw std::bad_alloc();
++#else
++    ErrHandler.MemoryError();
++#endif
+   for (RunLength=InitRL, PrevSuccess=i=0;i < 256;i++) 
+   {
+     MinContext->U.Stats[i].Symbol=i;      
