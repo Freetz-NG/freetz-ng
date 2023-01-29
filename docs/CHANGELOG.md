@@ -279,7 +279,7 @@ Latest changes
    * Tor 0.4.7.8
    * uClibc-ng 1.0.41
    * Unbound 1.16.0
-   * UnRAR 6.1.7
+   * UnRAR 6.1.7/6.2.5
    * Vim 8.2.5052
    * Wget GNU 1.21.3
 
