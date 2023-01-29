@@ -1,6 +1,6 @@
 --- errhnd.cpp
 +++ errhnd.cpp
-@@ -334,7 +334,11 @@
+@@ -337,7 +337,11 @@
      mprintf(L"\n%s\n",St(MProgAborted));
  #endif
    SetErrorCode(Code);

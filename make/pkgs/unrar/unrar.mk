@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 6.1.7)
+$(call PKG_INIT_BIN, 6.2.5)
 $(PKG)_SOURCE:=unrarsrc-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=de75b6136958173fdfc530d38a0145b72342cf0d3842bf7bb120d336602d88ed
+$(PKG)_HASH:=9a3974410d1d340e3998dd2a6f98faefbe838cad556266e714adfb0e8cf9377c
 $(PKG)_SITE:=https://www.rarlab.com/rar
 ### WEBSITE:=https://www.rarlab.com/rar_add.htm
 ### MANPAGE:=https://linux.die.net/man/1/unrar
@@ -31,7 +31,7 @@ $(PKG_CONFIGURED_NOP)
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(UNRAR_DIR) -f makefile \
 		CXX="$(TARGET_CXX)" \
-		CXXFLAGS="$(TARGET_CFLAGS) -fno-rtti -fno-exceptions" \
+		CXXFLAGS="$(TARGET_CFLAGS) -fno-rtti -fno-exceptions -std=c++11" \
 		DEFINES="$(UNRAR_DEFINES)" \
 		LDFLAGS="$(UNRAR_LDFLAGS)" \
 		STRIP=true
