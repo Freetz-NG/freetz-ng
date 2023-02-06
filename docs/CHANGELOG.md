@@ -88,7 +88,7 @@ Latest changes
    * Curl 7.87.0
    * dehydrated 0.7.1 (letsencrypt)
    * DejaVu Fonts TTF 2.37
-   * Dnsmasq 2.80/2.88
+   * Dnsmasq 2.80/2.89
    * Dropbear 2022.83
    * Fontconfig 2.14.1
    * getdns 1.7.3
