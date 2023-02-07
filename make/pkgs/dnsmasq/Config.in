@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_DNSMASQ
-	bool "Dnsmasq 2.80/2.88"
+	bool "Dnsmasq 2.80/2.89"
 	default n
 	help
 		Combined DHCP, DNS and TFTP server.
@@ -18,7 +18,7 @@ if FREETZ_PACKAGE_DNSMASQ
 				you want to use a newer version, enable IPv6 support.
 
 		config FREETZ_PACKAGE_DNSMASQ_VERSION_CURRENT
-			bool "2.88"
+			bool "2.89"
 			depends on FREETZ_TARGET_IPV6_SUPPORT
 
 	endchoice
