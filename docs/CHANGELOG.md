@@ -56,6 +56,7 @@ Latest changes
    * Fontconfig 2.14.2
    * OpenVPN 2.4.12/2.5.9/2.6.0
    * strace 4.9/5.0/6.2
+   * Stunnel 5.69
    * Sudo 1.9.13p2
    * UnRAR 6.1.7/6.2.6
 
@@ -141,7 +142,6 @@ Latest changes
    * RRDtool 1.2.30/1.8.0
    * Swiss File Knife 1.9.8.2
    * strace 4.9/5.0/6.1
-   * Stunnel 5.69
    * SQLite 3.40.1
    * tcpdump 4.1.1/4.99.3
    * Tor 0.4.7.13
