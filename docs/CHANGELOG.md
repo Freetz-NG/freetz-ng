@@ -57,6 +57,7 @@ Latest changes
    * OpenVPN 2.4.12/2.5.9/2.6.0
    * strace 4.9/5.0/6.2
    * Sudo 1.9.13p2
+   * UnRAR 6.1.7/6.2.6
 
  - Libraries:
    * glib2 2.32.4/2.75.3
