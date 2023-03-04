@@ -58,6 +58,7 @@ Latest changes
    * strace 4.9/5.0/6.2
    * Stunnel 5.69
    * Sudo 1.9.13p2
+   * SQLite 3.41.0
    * UnRAR 6.1.7/6.2.6
 
  - Libraries:
