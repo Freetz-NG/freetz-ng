@@ -1,6 +1,6 @@
 --- src/openvpn/socket.c
 +++ src/openvpn/socket.c
-@@ -2919,10 +2919,11 @@
+@@ -2922,10 +2922,11 @@
  const char *
  print_in6_addr(struct in6_addr a6, unsigned int flags, struct gc_arena *gc)
  {

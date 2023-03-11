@@ -3,7 +3,7 @@
 
 --- configure.ac
 +++ configure.ac
-@@ -433,7 +433,7 @@
+@@ -463,7 +463,7 @@
  	unistd.h libgen.h stropts.h \
  	syslog.h pwd.h grp.h termios.h \
  	sys/sockio.h sys/uio.h linux/sockios.h \
@@ -14,7 +14,7 @@
  SOCKET_INCLUDES="
 --- src/openvpn/syshead.h
 +++ src/openvpn/syshead.h
-@@ -147,8 +147,8 @@
+@@ -146,8 +146,8 @@
  #include <resolv.h>
  #endif
  
