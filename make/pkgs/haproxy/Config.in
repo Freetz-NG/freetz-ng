@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_HAPROXY
-	bool "HAProxy 2.6.8"
+	bool "HAProxy 2.6.9"
 	select FREETZ_LIB_libcrypt if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	default n

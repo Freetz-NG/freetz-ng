@@ -54,10 +54,11 @@ Latest changes
  - Packages:
    * Curl 7.88.1
    * Fontconfig 2.14.2
+   * HAProxy 2.6.9
    * OpenVPN 2.4.12/2.5.9/2.6.1
    * strace 4.9/5.0/6.2
    * Stunnel 5.69
-   * Sudo 1.9.13p2
+   * Sudo 1.9.13p3
    * SQLite 3.41.0
    * UnRAR 6.1.7/6.2.6
 
