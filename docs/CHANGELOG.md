@@ -53,6 +53,7 @@ Latest changes
 
  - Packages:
    * Apache2 2.4.56
+   * BIND 9.11.37/9.16.38
    * Curl 7.88.1
    * Fontconfig 2.14.2
    * HAProxy 2.6.9
