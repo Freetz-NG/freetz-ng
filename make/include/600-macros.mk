@@ -12,7 +12,7 @@ ifneq ($($(PKG)_BUILD_PREREQ),)
 	for fv in $($(PKG)_BUILD_PREREQ); do \
 		f=$$$$(echo $$$$fv | cut -d ':' -f 1); \
 		v=$$$$(echo $$$$fv | cut -d ':' -sf 2 | sed -e 's,[.],[.],g'); \
-		if ! which $$$$f >/dev/null 2>&1; then \
+		if ! command -v $$$$f >/dev/null 2>&1; then \
 			MISSING_PREREQ="$$$$MISSING_PREREQ $$$$f"; \
 		elif [ -n "$$$$v" ] && ! $$$$f --version 2>&1 | grep -q "$$$$v"; then \
 			MISSING_PREREQ="$$$$MISSING_PREREQ $$$$fv"; \
