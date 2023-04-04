@@ -1,0 +1,195 @@
+---> package/iperf ... 
+downloading ... 
+--2023-04-04 21:03:14--  https://downloads.es.net/pub/iperf/iperf-3.13.tar.gz
+Resolving downloads.es.net (downloads.es.net)... 2001:400:210:152::c, 198.128.152.12
+Connecting to downloads.es.net (downloads.es.net)|2001:400:210:152::c|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 646508 (631K) [application/octet-stream]
+Saving to: ‘dl/iperf-3.13.tar.gz’
+
+dl/iperf-3.13.tar.gz             100%[========================================================>] 631,36K   876KB/s    in 0,7s    
+
+2023-04-04 21:03:15 (876 KB/s) - ‘dl/iperf-3.13.tar.gz’ saved [646508/646508]
+
+Download succeeded - "https://downloads.es.net/pub/iperf/iperf-3.13.tar.gz"  ->  saved to folder "dl"
+Checksum verified for dl/iperf-3.13.tar.gz: SHA256:=bee427aeb13d6a2ee22073f23261f63712d82befaa83ac8cb4db5da4c2bdc865
+preparing ... mkdir -p source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13; tools/gunzip -c dl/iperf-3.13.tar.gz | tools/tar-gnu -x -C source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13 --transform='s|^./\+||' --strip-components=1 
+set -e; shopt -s nullglob; for i in make/pkgs/iperf/patches/*.patch*; do case $i in *.patch|*.patch.gz|*.patch.bzip2|*.patch.bz2|*.patch.bz|*.patch.xz|*.patch.lz|*.patch.lzma|*.patch.Z|*.patch.diff) ;; *) continue ;; esac; tools/freetz_patch source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13 $i ; done; 
+    applying patch file make/pkgs/iperf/patches/010-uclibc_has_endian.h.patch
+    patching file src/portable_endian.h
+    ----------------------------------------------------------------------
+    applying patch file make/pkgs/iperf/patches/020-GNU_SOURCE_fixes.patch
+    patching file src/iperf_api.c
+    patching file src/iperf_auth.c
+    ----------------------------------------------------------------------
+(cd source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13; find /home/user/src/freetz/freetz-ng/source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13 -name Makefile.in -type f -exec sed -i -r -e 's,^(LDFLAGS|LIBS)[ \t]*=[ \t]*@\1@,& $(EXTRA_\1),' \{\} \+;)
+configuring ... (conf_cmd() { ./configure  "$@"  || { [ "2" = "0" ] && echo && cat .build.log 2>/dev/null; kill $ 2>/dev/null || kill $$ 2>/dev/null; printf "\n\\033[33m%s\\033[m\n" "ERROR: Build failed.";  exit 1; } }; cd source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13; { rm -f -r config.{cache,status} CMakeCache.txt builddir/; } ;   PATH="/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin:/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-3.4.6/mipsel-unknown-linux-gnu/bin:/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin-ccache:/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-3.4.6/mipsel-unknown-linux-gnu/bin-ccache:/home/user/src/freetz/freetz-ng/tools/path:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/sbin" FREETZ_LIBRARY_DIR="/usr/lib/freetz" FREETZ_KERNEL_VERSION_MAJOR="2.6.13" FREETZ_TARGET_ARCH="mips" FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT="mipsel" CC="/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc" CXX="/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-g++-wrapper" CFLAGS="-march=4kc -mtune=4kc -msoft-float -Os -pipe -Wa,--trap -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 --std=gnu99" CXXFLAGS="-march=4kc -mtune=4kc -msoft-float -Os -pipe -Wa,--trap -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 --std=gnu99" LDFLAGS="" PKG_CONFIG_PATH="/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/../lib/pkgconfig" PKG_CONFIG_LIBDIR="/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/../lib/pkgconfig" GLOBAL_LIBDIR=/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/usr/lib  CONFIG_SITE=/home/user/src/freetz/freetz-ng/include/config.site/mipsel-linux-uclibc conf_cmd  --cache-file=/dev/null --target=mipsel-linux --host=mipsel-linux --build=x86_64-pc-linux-gnu --program-prefix="" --program-suffix="" --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --datadir=/usr/share --includedir=/usr/include --infodir=/usr/share/info --libdir=/usr/lib --libexecdir=/usr/lib --localstatedir=/var --mandir=/usr/share/man --sbindir=/usr/sbin --sysconfdir=/etc --with-gnu-ld --disable-nls --disable-shared --without-openssl   )
+configure: WARNING: unrecognized options: --disable-nls
+configure: loading site script /home/user/src/freetz/freetz-ng/include/config.site/mipsel-linux-uclibc
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for mipsel-linux-strip... mipsel-linux-strip
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... mipsel-unknown-linux-gnu
+checking how to print strings... printf
+checking whether make supports the include directive... yes (GNU style)
+checking for mipsel-linux-gcc... /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... yes
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc accepts -g... yes
+checking for /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc option to enable C11 features... unsupported
+checking for /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc option to enable C99 features... none needed
+checking whether /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc understands -c and -o together... yes
+checking dependency style of /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc... gcc3
+checking for a sed that does not truncate output... /home/user/src/freetz/freetz-ng/tools/path/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc... /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/mipsel-linux-uclibc/bin/ld
+checking if the linker (/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/mipsel-linux-uclibc/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-nm -B
+checking the name lister (/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to mipsel-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/mipsel-linux-uclibc/bin/ld option to reload object files... -r
+checking for mipsel-linux-file... no
+checking for file... file
+checking for mipsel-linux-objdump... mipsel-linux-objdump
+checking how to recognize dependent libraries... pass_all
+checking for mipsel-linux-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for mipsel-linux-ar... mipsel-linux-ar
+checking for archiver @FILE support... @
+checking for mipsel-linux-strip... (cached) mipsel-linux-strip
+checking for mipsel-linux-ranlib... mipsel-linux-ranlib
+checking command to parse /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-nm -B output from /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mipsel-linux-mt... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc supports -fno-rtti -fno-exceptions... no
+checking for /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc option to produce PIC... -fPIC -DPIC
+checking if /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc PIC flag -fPIC -DPIC works... yes
+checking if /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc static flag -static works... yes
+checking if /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc supports -c -o file.o... yes
+checking if /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc supports -c -o file.o... (cached) yes
+checking whether the /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc linker (/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/mipsel-linux-uclibc/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for mipsel-linux-gcc... (cached) /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc
+checking whether the compiler supports GNU C... (cached) yes
+checking whether /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc accepts -g... (cached) yes
+checking for /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc option to enable C11 features... (cached) unsupported
+checking for /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc option to enable C99 features... (cached) none needed
+checking whether /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc understands -c and -o together... (cached) yes
+checking dependency style of /home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin/mipsel-linux-uclibc-gcc... (cached) gcc3
+checking for mipsel-linux-ranlib... (cached) mipsel-linux-ranlib
+checking whether ln -s works... yes
+checking for library containing floor... -lm
+checking for library containing socket... none required
+checking for library containing inet_ntop... none required
+checking for an ANSI C-conforming const... yes
+checking for poll.h... yes
+checking for linux/tcp.h... yes
+checking for sys/socket.h... yes
+checking for netinet/sctp.h... no
+checking for endian.h... yes
+configure: WARNING: Building without OpenSSL; disabling iperf_auth functionality. 
+checking TCP_CONGESTION socket option... no
+checking TCP_USER_TIMEOUT socket option... no
+checking IPv6 flowlabel support... yes
+checking for cpuset_setaffinity... no
+checking for sched_setaffinity... yes
+checking for SetProcessAffinityMask... no
+checking for daemon... yes
+checking for sendfile... yes
+checking for getline... yes
+checking SO_MAX_PACING_RATE socket option... no
+checking SO_BINDTODEVICE socket option... yes
+checking IP_MTU_DISCOVER socket option... yes
+checking IP_DONTFRAG socket option... no
+checking IP_DONTFRAGMENT socket option... no
+checking any kind of DF socket option... yes
+checking for struct tcp_info.tcpi_snd_wnd... no
+checking for library containing clock_gettime... none required
+checking for clock_gettime... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/version.h
+config.status: creating examples/Makefile
+config.status: creating iperf3.spec
+config.status: creating src/iperf_config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+configure: WARNING: unrecognized options: --disable-nls
+cmd() { PATH="/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin:/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-3.4.6/mipsel-unknown-linux-gnu/bin:/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-4.6.4_uClibc-0.9.29/mipsel-linux-uclibc/bin-ccache:/home/user/src/freetz/freetz-ng/toolchain/build/mipsel_gcc-3.4.6/mipsel-unknown-linux-gnu/bin-ccache:/home/user/src/freetz/freetz-ng/tools/path:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/sbin" LD_RUN_PATH="/usr/lib/freetz" FREETZ_LIBRARY_DIR="/usr/lib/freetz" make -j5  "$@"  || { [ "2" = "0" ] && echo && cat .build.log 2>/dev/null; kill $$ 2>/dev/null || kill $$$$ 2>/dev/null; printf "\n\\033[33m%s\\033[m\n" "ERROR: Build failed.";  exit 1; } }; 			mkdir -p source; [ -n "" ] && step="/" || step=""; [ -n "" ] && step="$step/"; case "" in BIN)	echo -n "package/"         >source/.echo_item_tmp ;; LIB)	echo -n "library/"         >source/.echo_item_tmp ;; HTL)	echo -n "tools/"           >source/.echo_item_tmp ;; KTC)	echo -n "toolchain/kernel$step" >source/.echo_item_tmp ;; TTC)	echo -n "toolchain/target$step" >source/.echo_item_tmp ;; KRN)	echo -n "kernel"                 >source/.echo_item_tmp ;; esac; if ! diff -q source/.echo_item_tmp source/.echo_item_new >/dev/null 2>&1 || [ ! -e source/.echo_item_1st ]; then 	if [ -e source/.echo_item_end -a -e source/.echo_item_new -a -e source/.echo_item_1st ]; then echo -e "\e[48;5;26mdone\e[49m."; rm -f source/.echo_item_end source/.echo_item_1st; fi; [ -s source/.echo_item_tmp ] && cat source/.echo_item_tmp > source/.echo_item_new 2>/dev/null; [ -s source/.echo_item_new ] || cat source/.echo_item_old > source/.echo_item_new 2>/dev/null; if [ -s "source/.echo_item_new" ]; then echo -ne "\e[48;5;90m---> "; cat source/.echo_item_new 2>/dev/null | tee source/.echo_item_old; echo -ne "\e[49m ... "; [ "2" != "0" ] && echo; touch source/.echo_item_end; touch source/.echo_item_1st; fi; fi; echo -ne "\e[48;5;56mbuilding\e[49m ... "; cmd -C source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13/src \
+	EXTRA_LDFLAGS="" \
+	EXTRA_LIBS="" \
+	iperf3
+building ...   CC       cjson.lo
+  CC       iperf3-main.o
+  CC       iperf_api.lo
+  CC       iperf_error.lo
+  CC       iperf_auth.lo
+  CC       iperf_client_api.lo
+  CC       iperf_locale.lo
+  CC       iperf_server_api.lo
+  CC       iperf_tcp.lo
+  CC       iperf_udp.lo
+  CC       iperf_sctp.lo
+  CC       iperf_util.lo
+  CC       iperf_time.lo
+iperf_udp.c: In function 'iperf_udp_recv':
+iperf_udp.c:110:6: warning: implicit declaration of function 'be64toh' [-Wimplicit-function-declaration]
+iperf_udp.c: In function 'iperf_udp_send':
+iperf_udp.c:230:2: warning: implicit declaration of function 'htobe64' [-Wimplicit-function-declaration]
+  CC       dscp.lo
+  CC       net.lo
+  CC       tcp_info.lo
+  CC       timer.lo
+  CC       units.lo
+  CCLD     libiperf.la
+  CCLD     iperf3
+./.libs/libiperf.a(iperf_udp.o): In function `iperf_udp_recv':
+iperf_udp.c:(.text+0x148): undefined reference to `be64toh'
+./.libs/libiperf.a(iperf_udp.o): In function `iperf_udp_send':
+iperf_udp.c:(.text+0x4b4): undefined reference to `htobe64'
+./.libs/libiperf.a(net.o): In function `create_socket':
+net.c:(.text+0x380): undefined reference to `in6addr_any'
+net.c:(.text+0x398): undefined reference to `in6addr_any'
+collect2: ld returned 1 exit status
+make[2]: *** [Makefile:862: iperf3] Error 1
+make[1]: *** [make/pkgs/iperf/iperf.mk:37: source/target-mipsel_gcc-4.6.4_uClibc-0.9.29/iperf-3.13/src/iperf3] Terminated
+make: *** [Makefile:46: envira] Terminated
