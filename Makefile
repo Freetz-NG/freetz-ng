@@ -58,7 +58,7 @@ CONFIG_IN_CACHE=config/.cache.in
 CONFIG_IN_CUSTOM=config/custom.in
 CONFIG=tools/kconfig
 
-SHELL:=/bin/bash
+SHELL:=bash
 IMAGE:=
 LOCALIP:=
 RECOVER:=
