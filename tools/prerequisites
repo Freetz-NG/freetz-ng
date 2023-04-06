@@ -19,9 +19,19 @@ check_requisite() {
 			[ -x "$1" ]
 			;;
 		lib)
-			ldconfig -p | grep -Eq "^[[:space:]]*$1(\.[01])* "
+			libname=${1#lib*}
+			libname=${libname%*.so}
+			# example: libsqlite3.so -> sqlite3
+			#echo "libname: ${libname@Q}" # debug
+			tempfile=$(mktemp --suffix=.c)
+			printf "int main() { return 0; }\n" "$1" >>$tempfile
+			gcc -Wall $tempfile -l$libname -o /dev/null 2>/dev/null
+			result=$?
+			rm $tempfile
+			return $result
 			;;
 		lib32)
+			# TODO similar as above
 			ldconfig -p | grep -v 'x86-64' | grep -Eq "^[[:space:]]*$1(\.[01])* "
 			;;
 		header)
@@ -54,7 +64,7 @@ failed_requisite() {
 			echo "ERROR: The exeutabe binary '$1' was not found"
 			;;
 		lib)
-			echo "ERROR: The library '$1' was not found in /etc/ld.so.cache"
+			echo "ERROR: The library '$1' was not found in the library path"
 			;;
 		lib32)
 			echo "ERROR: The library '$1' (32-bit) was not found in /etc/ld.so.cache"
