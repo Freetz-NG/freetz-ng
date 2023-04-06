@@ -7,9 +7,11 @@ PACKAGES="$PARENT/tools/.prerequisites"
 check_requisite() {
 	case "$2" in
 		pkgconf)
-			[ -n "$(find /usr/lib*/pkgconfig/ /usr/local/lib*/pkgconfig/ /usr/lib/*/pkgconfig/ -name "$1" 2>/dev/null)" ]
+			pkgname=${1%*.pc}
+			pkg-config --exists "$pkgname"
 			;;
 		pkgconf32)
+			# TODO similar as above
 			[ -n "$(find /usr/lib/pkgconfig/  /usr/local/lib/pkgconfig/  /usr/lib/*/pkgconfig/ -name "$1" 2>/dev/null | grep -v 'x86_64')" ]
 			;;
 		program)
@@ -52,7 +54,7 @@ check_requisite() {
 failed_requisite() {
 	case "$2" in
 		pkgconf)
-			echo "ERROR: The pkgconf '$1' was not found in /usr/(local/)lib*/(*/)pkgconfig/"
+			echo "ERROR: The pkgconf '$1' was not found in the pkgconfig path"
 			;;
 		pkgconf32)
 			echo "ERROR: The pkgconf '$1' (32-bit) was not found in /usr/(local/)lib/(*/)pkgconfig/"
