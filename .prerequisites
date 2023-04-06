@@ -51,7 +51,6 @@ program     unzip
 program     xml2-config            FREETZ_PACKAGE_GNTPSEND FREETZ_PACKAGE_ASTERISK
 program     xz
 program     zip                    FREETZ_PACKAGE_PYTHON
-binary      /bin/bash
 binary      /bin/sh
 binary      /usr/bin/env
 
