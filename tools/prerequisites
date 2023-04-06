@@ -25,7 +25,13 @@ check_requisite() {
 			ldconfig -p | grep -v 'x86-64' | grep -Eq "^[[:space:]]*$1(\.[01])* "
 			;;
 		header)
-			[ -n "$(find /usr/include/ /usr/local/include/ -path "*/$1" 2>/dev/null)" ]
+			tempfile=$(mktemp --suffix=.c)
+			printf "#include <%s>\n" "$1" >>$tempfile
+			printf "int main() { return 0; }\n" "$1" >>$tempfile
+			gcc -Wall $tempfile -o /dev/null 2>/dev/null
+			result=$?
+			rm $tempfile
+			return $result
 			;;
 		*)
 			false
@@ -54,7 +60,7 @@ failed_requisite() {
 			echo "ERROR: The library '$1' (32-bit) was not found in /etc/ld.so.cache"
 			;;
 		header)
-			echo "ERROR: The header file '$1' was not found in /usr/(local/)include"
+			echo "ERROR: The header file '$1' was not found in the include path"
 			;;
 		*)
 			echo "Unknown requisite type '$2' for '$1'."
