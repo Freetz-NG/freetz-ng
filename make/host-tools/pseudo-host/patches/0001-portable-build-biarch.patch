@@ -1,0 +1,106 @@
+From 89ffac8725dbc05ebfb0f6e9667d1092db6cdbcc Mon Sep 17 00:00:00 2001
+From: Milan Hauth <milahu@gmail.com>
+Date: Thu, 6 Apr 2023 21:17:17 +0200
+Subject: [PATCH] portable build
+
+---
+ Makefile.in |  4 ++--
+ configure   | 23 ++++++++++++++---------
+ 2 files changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 48fdbd2..276ef09 100644
+--- a/biarch/Makefile.in
++++ b/biarch/Makefile.in
+@@ -10,7 +10,7 @@
+ PREFIX=@PREFIX@
+ LIBDIR=@LIBDIR@
+ SUFFIX=@SUFFIX@
+-SQLITE=@SQLITE@
++SQLITE_INCLUDE=@SQLITE_INCLUDE@
+ SQLITE_LIB=@SQLITE_LIB@
+ SQLITE_MEMORY=@SQLITE_MEMORY@
+ FORCE_ASYNC=@FORCE_ASYNC@
+@@ -46,7 +46,7 @@ CFLAGS_BASE=-pipe -std=gnu99 -Wall -W -Wextra -Wno-deprecated-declarations
+ CFLAGS_CODE=-fPIC -D_LARGEFILE64_SOURCE -D_ATFILE_SOURCE $(ARCH_FLAGS)
+ CFLAGS_DEFS=-DPSEUDO_PREFIX='"$(PREFIX)"' -DPSEUDO_SUFFIX='"$(SUFFIX)"' -DPSEUDO_BINDIR='"$(BIN)"' -DPSEUDO_LIBDIR='"$(LIB)"' -DPSEUDO_LOCALSTATEDIR='"$(LOCALSTATE)"' -DPSEUDO_VERSION='"$(VERSION)"' $(SQLITE_MEMORY) $(FORCE_ASYNC) -DPSEUDO_PASSWD_FALLBACK='$(PASSWD_FALLBACK)' $(OPTDEFS) $(EPOLL)
+ CFLAGS_DEBUG=-O2 -g
+-@DEFAULT_SQLITE@CFLAGS_SQL=-L$(SQLITE)/$(SQLITE_LIB) -I$(SQLITE)/include $(RPATH)
++@DEFAULT_SQLITE@CFLAGS_SQL=-L$(SQLITE_LIB) -I$(SQLITE_INCLUDE) $(RPATH)
+ CFLAGS_PSEUDO=$(CFLAGS_BASE) $(CFLAGS_CODE) $(CFLAGS_DEFS) \
+ 	$(CFLAGS_DEBUG) $(CFLAGS_SQL)
+ 
+diff --git a/configure b/configure
+index 39b5fbe..0ca7099 100755
+--- a/biarch/configure
++++ b/biarch/configure
+@@ -12,7 +12,8 @@ opt_libdir=
+ opt_suffix=
+ opt_arch=x86
+ opt_bits=
+-opt_sqlite=/usr
++opt_sqlite_include=
++opt_sqlite_lib=
+ opt_rpath=
+ opt_epoll=
+ opt_memory=
+@@ -132,7 +133,7 @@ do
+         opt_memory=true
+ 	;;
+     --with-sqlite=*)
+-        opt_sqlite=${arg#--with-sqlite=}
++        opt_sqlite_include=${arg#--with-sqlite=}/include
+         # assign new value if unset
+         maybe_rpath='-Wl,-R$(SQLITE)/$(SQLITE_LIB)'
+         ;;
+@@ -228,20 +229,24 @@ if [ "$opt_lib" = "$opt_libdir" ]; then
+     exit 1
+ fi
+ 
++if [ -z "$opt_sqlite_include" ]; then
++    opt_sqlite_include=$(pkg-config sqlite3 --variable=includedir)
++fi
++
+ if [ -z "$opt_sqlite_lib" ]; then
+-    opt_sqlite_lib=$opt_lib
++    opt_sqlite_lib=$(pkg-config sqlite3 --variable=libdir)
+ fi
+ 
+-if [ ! -f "${opt_sqlite}/include/sqlite3.h" ]; then
+-    echo >&2 "SQLite3 headers not found in at ${opt_sqlite}/include/sqlite3.h. Please check that SQLite3 and SQLite3 headers are installed."
++if [ ! -f "${opt_sqlite_include}/sqlite3.h" ]; then
++    echo >&2 "SQLite3 headers not found in at ${opt_sqlite_include}/sqlite3.h. Please check that SQLite3 and SQLite3 headers are installed."
+     exit 1
+ fi
+ 
+ read t1 t2 SQLITE3_VERSION << EOF
+-  `grep "#define SQLITE_VERSION_NUMBER " ${opt_sqlite}/include/sqlite3.h`
++  `grep "#define SQLITE_VERSION_NUMBER " ${opt_sqlite_include}/sqlite3.h`
+ EOF
+ 
+-echo "SQLite header for version ${SQLITE3_VERSION} found in ${opt_sqlite}."
++echo "SQLite header for version ${SQLITE3_VERSION} found in ${opt_sqlite_include}."
+ 
+ if [ "${SQLITE3_VERSION}" -lt "03006000" ]; then
+     echo >&2 "Pseudo requires SQLite version 3, 3.6.x or later."
+@@ -320,7 +325,7 @@ else
+ fi
+ 
+ # Suppress the -L if sqlite is in the default path.
+-if [ "$opt_sqlite" = "/usr" ]; then
++if [ "$opt_sqlite_include" = "/usr/include" ]; then
+     default_sqlite="# "
+ fi
+ 
+@@ -336,7 +341,7 @@ sed -e '
+   s,@LIBDIR@,'"$opt_libdir"',g
+   s,@LIB@,'"$opt_lib"',g
+   s,@SUFFIX@,'"$opt_suffix"',g
+-  s,@SQLITE@,'"$opt_sqlite"',g
++  s,@SQLITE_INCLUDE@,'"$opt_sqlite_include"',g
+   s,@ARCH_FLAGS@,'"$arch_flags"',g
+   s,@DEFAULT_SQLITE@,'"$default_sqlite"',g
+   s,@SQLITE_LDARG@,'"$sqlite_ldarg"',g
+-- 
+2.39.1
+
