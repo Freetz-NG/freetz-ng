@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env -S perl -w
 # vi: set sw=4 ts=4:
 # Copyright (c) 2001 David Schleef <ds@schleef.org>
 # Copyright (c) 2001 Erik Andersen <andersen@codepoet.org>
