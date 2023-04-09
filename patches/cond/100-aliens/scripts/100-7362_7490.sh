@@ -1,4 +1,3 @@
-
 isFreetzType 7362_7490 || return 0
 echo1 "adapt firmware for 7362"
 
@@ -17,4 +16,3 @@ modsed 's/CONFIG_VERSION_MAJOR=.*$/CONFIG_VERSION_MAJOR="131"/g' "${FILESYSTEM_M
 # patch install script to accept firmware from 7490
 echo2 "applying install patch"
 modsed "s/mips34_512MB_xilinx_vdsl_dect446_4geth_2ab_isdn_nt_te_pots_2usb_host_wlan11n_27490/mips34_128MB_vdsl_dect441_2eth_2geth_1ab_2usb_host_wlan11n_10101/g" "${FIRMWARE_MOD_DIR}/var/install"
-modsed "s/mips74_16MB_7490_wlan11ac_28854//g" "${FIRMWARE_MOD_DIR}/var/install"
