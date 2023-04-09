@@ -800,7 +800,7 @@ config FREETZ_DL_SOURCE2
 	default "FRITZ.Box_7362_SL.131.06.50.image"                                     if FREETZ_TYPE_7362_7490 && FREETZ_TYPE_FIRMWARE_06_5X
 	default "FRITZ.Box_7362_SL.131.06.83.image"                                     if FREETZ_TYPE_7362_7490 && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_7362_SL.131.07.01.image"                                     if FREETZ_TYPE_7362_7490 && FREETZ_TYPE_FIRMWARE_07_0X
-	default "FRITZ.Box_7362_SL-07.13.image"                                         if FREETZ_TYPE_7362_7490 && (FREETZ_TYPE_FIRMWARE_07_1X || FREETZ_TYPE_FIRMWARE_07_2X)
+	default "FRITZ.Box_7362_SL-07.13.image"                                         if FREETZ_TYPE_7362_7490 && (FREETZ_TYPE_FIRMWARE_07_1X || FREETZ_TYPE_FIRMWARE_07_2X || FREETZ_TYPE_FIRMWARE_07_5X_LABOR)
 	#
 	default "FRITZ.Box_7412.137.06.87.image"                                        if FREETZ_TYPE_7412_7430
 	#
