@@ -33,10 +33,6 @@ echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW203
 
 echo2 "patching rc.S and rc.conf"
-modsed -r 's/(CONFIG_ETH_COUNT)=.*$/\1="1"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-#modsed -r 's/(CONFIG_DECT_HOME)=.*$/\1="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  #AHA?
-#modsed -r 's/(CONFIG_HOME_AUTO)=.*$/\1="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  #AHA?
-#modsed -r 's/(CONFIG_HOME_AUTO_NET)=.*$/\1="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  #AHA?
 modsed 's/CONFIG_USB_XHCI=.*$/CONFIG_USB_XHCI="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_INSTALL_TYPE=.*$/CONFIG_INSTALL_TYPE="mips34_128MB_vdsl_dect441_2eth_2geth_1ab_2usb_host_wlan11n_10101"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_PRODUKT=.*$/CONFIG_PRODUKT="Fritz_Box_HW203"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
