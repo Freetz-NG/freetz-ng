@@ -208,7 +208,7 @@ config FREETZ_DL_SITE
 	default "@AVM/{fritzbox-7430/deutschland/fritz.os,fritzbox.7430/firmware/deutsch}"                                 if (FREETZ_TYPE_7430 || FREETZ_TYPE_7412_7430) && FREETZ_TYPE_LANG_DE
 	default "@AVM/{fritzbox-7430/other/fritz.os,fritzbox.7430/firmware/english}"                                       if FREETZ_TYPE_7430 && FREETZ_TYPE_LANG_EN
 	#
-	default "@AVM/{fritzbox-7490/deutschland/fritz.os,fritzbox.7490/firmware/deutsch},@1&1/7490"                       if FREETZ_TYPE_7490 && FREETZ_TYPE_LANG_DE
+	default "@AVM/{fritzbox-7490/deutschland/fritz.os,fritzbox.7490/firmware/deutsch},@1&1/7490"                       if (FREETZ_TYPE_7490 || FREETZ_TYPE_7362_7490) && FREETZ_TYPE_LANG_DE
 	default "@AVM/{fritzbox-7490/{other,belgium}/fritz.os,fritzbox.7490/firmware/{english,belgium}}"                   if FREETZ_TYPE_7490 && FREETZ_TYPE_LANG_EN
 	#
 	default "@AVM/fritzbox-7510/{deutschland,other}/fritz.os,@AVM/7510"                                                if FREETZ_TYPE_7510
