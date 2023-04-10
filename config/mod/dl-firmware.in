@@ -761,7 +761,7 @@ config FREETZ_DL_SITE2
 	#
 	default "@AVM/fritzbox.fon_wlan_7340/firmware/english"                          if FREETZ_TYPE_7340_7390
 	#
-	default "@AVM/fritzbox-7362-sl/deutschland/fritz.os,fritzbox.7362_sl/firmware/deutsch,@1&1/7362SL"                          if FREETZ_TYPE_7362_7490
+	default "@AVM/{fritzbox-7362-sl/deutschland/fritz.os,fritzbox.7362_sl/firmware/deutsch},@1&1/7362SL"                          if FREETZ_TYPE_7362_7490
 	#
 	default "@AVM/fritzbox-7412/deutschland/fritz.os,@1&1/7412"                     if FREETZ_TYPE_7412_7430
 	#
