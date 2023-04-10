@@ -11,8 +11,8 @@ echo1 "adapt firmware for 7362"
 echo2 "copying 7362 wlan files"
 cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/avm/wlan* ${FILESYSTEM_MOD_DIR}/etc/185/avm/
 
-modules=" net/ath_hal.ko"
-#modules=" net/ath_hal.ko net/aae.ko net/asf.ko"
+#modules=" net/ath_hal.ko"
+modules=" net/ath_hal.ko net/aae.ko net/asf.ko"
 for i in $modules; do
 	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/3.10.73/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
