@@ -19,8 +19,7 @@ oems="1und1 avm avme"
 for i in $oems; do
 	cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/$i/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/$i/
 done
-mkdir -p "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net"
-cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net/*" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net/"
+cp -a -r "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net/*" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net/"
 
 echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
