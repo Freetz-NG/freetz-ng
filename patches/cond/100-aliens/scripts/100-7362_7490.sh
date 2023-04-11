@@ -8,18 +8,27 @@ fi
 
 echo1 "adapt firmware for 7362"
 
+echo2 "deleting isdn files"
+files="bitfile.bit bitfile_isdn.bit bitfile_pots.bit"
+for i in $files; do
+	rm "${FILESYSTEM_MOD_DIR}/lib/modules/$i"
+done
+
 echo2 "copying 7362 wlan files"
-cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/avm/wlan* ${FILESYSTEM_MOD_DIR}/etc/185/avm/
+cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/avm/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/avm/wlan*
 
 #modules=" net/ath_hal.ko"
 modules=" net/ath_hal.ko net/aae.ko net/asf.ko"
 for i in $modules; do
-	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/3.10.73/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
+	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
 
 echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
+
+echo2 "copying 7362 led files"
+cp -a "${FILESYSTEM_TK_DIR}/lib/modules/led_modul_Fritz_Box_HW203.ko" "${FILESYSTEM_MOD_DIR}/lib/modules/led_modul_Fritz_Box_HW185.ko"
 
 echo2 "copying 7362 webif files"
 #dsl
