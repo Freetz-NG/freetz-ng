@@ -13,12 +13,21 @@ files="bitfile.bit bitfile_isdn.bit bitfile_pots.bit"
 for i in $files; do
 	rm "${FILESYSTEM_MOD_DIR}/lib/modules/$i"
 done
+modules=" kernel\drivers\isdn\isdn_fon5\isdn_fbox_fon5.ko"
+for i in $modules; do
+	rm "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
+done
+
 
 echo2 "copying 7362 wlan files"
-cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/avm/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/avm/wlan*
+oems="1und1 avm avme"
+for i in $oems; do
+	cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/$i/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/$i/wlan*
+done
 
 #modules=" net/ath_hal.ko"
 modules=" net/ath_hal.ko net/aae.ko net/asf.ko"
+mkdir ${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net
 for i in $modules; do
 	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
@@ -28,7 +37,10 @@ file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "copying 7362 led files"
-cp -a "${FILESYSTEM_TK_DIR}/lib/modules/led_modul_Fritz_Box_HW203.ko" "${FILESYSTEM_MOD_DIR}/lib/modules/led_modul_Fritz_Box_HW185.ko"
+modules=" kernel/drivers/char/led_module.ko"
+for i in $modules; do
+	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
+done
 
 echo2 "copying 7362 webif files"
 #dsl
