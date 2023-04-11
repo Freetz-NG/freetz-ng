@@ -19,13 +19,7 @@ oems="1und1 avm avme"
 for i in $oems; do
 	cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/$i/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/$i/
 done
-
-#modules=" net/ath_hal.ko"
-#modules=" net/ath_hal.ko net/aae.ko net/asf.ko"
 mkdir ${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net
-#for i in $modules; do
-#	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
-#done
 cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net/*" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net/"
 
 echo2 "copying 7362 dect files"
@@ -37,14 +31,6 @@ modules=" kernel/drivers/char/led_module.ko"
 for i in $modules; do
 	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
-
-echo2 "copying 7362 webif files"
-#dsl
-[ "$FREETZ_AVM_VERSION_07_1X_MIN" == "y" ] && file="usr/www/avm/css/rd/illustrations/box.gif" || file="usr/www/avm/css/default/images/box.gif"
-cp -a "${FILESYSTEM_TK_DIR}/usr/www/avm/css/default/images/box.gif" "${FILESYSTEM_MOD_DIR}/$file"
-#dect
-[ "$FREETZ_AVM_VERSION_07_1X_MIN" == "y" ] && file="usr/www/avm/css/rd/illustrations/illu_dectFbox.png" || file="usr/www/avm/css/default/images/dect_fbox_icon.png"
-cp -a "${FILESYSTEM_TK_DIR}/usr/www/avm/css/default/images/dect_fbox_icon.png" "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW203
