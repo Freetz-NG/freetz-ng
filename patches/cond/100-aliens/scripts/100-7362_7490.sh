@@ -20,6 +20,7 @@ else
 fi
 rm_files \
   ${FILESYSTEM_MOD_DIR}/etc/init.d/S17-isdn \
+  ${FILESYSTEM_MOD_DIR}/etc/init.d/S11-piglet \
 [ "$FREETZ_AVM_HAS_USB_HOST_AHCI" != "y" ] && \
   modsed '/microvoip_isdn_top.bit/d' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.S"
 
