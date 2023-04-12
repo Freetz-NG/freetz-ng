@@ -9,10 +9,19 @@ fi
 echo1 "adapt firmware for 7362"
 
 echo2 "deleting isdn files"
-files="bitfile_isdn.bit bitfile_pots.bit"
-for i in $files; do
-	rm "${FILESYSTEM_MOD_DIR}/lib/modules/$i"
-done
+if [ "$FREETZ_AVM_HAS_USB_HOST" == "y" ]; then
+	rm_files \
+	  $(find ${FILESYSTEM_MOD_DIR} ! -path '*/lib/*' -a -name '*isdn*' | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/') \
+	  $(find ${FILESYSTEM_MOD_DIR}/lib/modules/2.6.*/ ${FILESYSTEM_MOD_DIR}/lib/modules/3.*.*/ -name '*isdn*' 2>/dev/null | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/') \
+	[ "$FREETZ_AVM_HAS_USB_HOST_AHCI" != "y" ] && \
+	  rm_files ${FILESYSTEM_MOD_DIR}/lib/modules/microvoip_isdn_top.bit
+else
+	rm_files $(find ${FILESYSTEM_MOD_DIR} -name '*isdn*' -o -name '*iglet*' | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/')
+fi
+rm_files \
+  ${FILESYSTEM_MOD_DIR}/etc/init.d/S17-isdn \
+[ "$FREETZ_AVM_HAS_USB_HOST_AHCI" != "y" ] && \
+  modsed '/microvoip_isdn_top.bit/d' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.S"
 
 echo2 "copying 7362 wlan files"
 oems="1und1 avm"
