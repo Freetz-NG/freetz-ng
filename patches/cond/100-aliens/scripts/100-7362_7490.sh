@@ -9,13 +9,13 @@ fi
 echo1 "adapt firmware for 7362"
 
 echo2 "deleting isdn files"
-files="bitfile.bit bitfile_isdn.bit bitfile_pots.bit"
+files="bitfile_isdn.bit bitfile_pots.bit"
 for i in $files; do
 	rm "${FILESYSTEM_MOD_DIR}/lib/modules/$i"
 done
 
 echo2 "copying 7362 wlan files"
-oems="1und1 avm avme"
+oems="1und1 avm"
 for i in $oems; do
 	cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/$i/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/$i/
 done
