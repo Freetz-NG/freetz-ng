@@ -53,6 +53,9 @@ Latest changes
    * python 3.11.3
    * xz 5.4.2
 
+ - Patches:
+   * patch VLAN: re-enables vlan config of voip in ata-mode
+
  - Packages:
    * CCID 1.5.2
    * Curl 8.0.1
@@ -169,7 +172,7 @@ Latest changes
    * libpng 1.6.39
    * libusb-compat 0.1.8
    * libxml2 2.10.3
-   * mbedTLS 2.7.19/2.28.2
+   * mbedTLS 2.7.19/2.28.3
    * neon 0.30.2/0.32.4
    * openjp2 2.5.0
    * pango 1.50.12

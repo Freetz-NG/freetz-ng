@@ -1107,6 +1107,14 @@ config FREETZ_PATCH_ATA
 		ATA will not work with some 7170/7140 due to limited hardware,
 		see http://wiki.ip-phone-forum.de/gateways:avm:fbf:kabel
 
+config FREETZ_ENABLE_VLAN
+	bool "Enable VLAN"
+	depends on FREETZ_TYPE_CABLE || FREETZ_TYPE_LTE
+	depends on FREETZ_AVM_VERSION_07_2X_MIN
+	default n
+	help
+		Re-enables the VLAN configuration pages of voip in ata-mode.
+
 config FREETZ_PATCH_GUEST
 	bool "Patch GUEST"
 	depends on !FREETZ_TYPE_EXTENDER
