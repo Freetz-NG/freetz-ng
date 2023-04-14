@@ -8,7 +8,9 @@ fi
 
 echo1 "adapt firmware for 7362"
 
-echo2 "deleting isdn files"
+export FREETZ_REMOVE_WLAN=y
+
+echo1 "removing isdn files"
 if [ "$FREETZ_AVM_HAS_USB_HOST" == "y" ]; then
 	rm_files \
 	  $(find ${FILESYSTEM_MOD_DIR} ! -path '*/lib/*' -a -name '*isdn*' | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/') \
@@ -21,8 +23,7 @@ fi
 rm_files \
   ${FILESYSTEM_MOD_DIR}/etc/init.d/S17-isdn \
   ${FILESYSTEM_MOD_DIR}/etc/init.d/S11-piglet \
-[ "$FREETZ_AVM_HAS_USB_HOST_AHCI" != "y" ] && \
-  modsed '/microvoip_isdn_top.bit/d' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.S"
+
 
 echo2 "copying 7362 wlan files"
 oems="1und1 avm"
