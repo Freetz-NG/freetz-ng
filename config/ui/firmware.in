@@ -1026,7 +1026,7 @@ choice
 			on a 7270 image.
 
 	config FREETZ_TYPE_7362_7490
-		bool "7362 - No wlan, no usb!"
+		bool "7362 - No wlan, no usb, no telephony!"
 		depends on FREETZ_TYPE_7490
 		help
 			Enable this to compile an alien image for FritzBox 7362 SL based
