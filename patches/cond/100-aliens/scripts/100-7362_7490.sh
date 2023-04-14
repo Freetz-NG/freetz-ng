@@ -19,9 +19,9 @@ echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
-echo2 "copying 7362 S11-piglet file"
+echo2 "removing S11-piglet file"
 file="etc/init.d/S11-piglet"
-cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
+rm_files "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing remove unnecessary files"
 modules=" kernel/drivers/usb/host/xhci-hcd.ko"
