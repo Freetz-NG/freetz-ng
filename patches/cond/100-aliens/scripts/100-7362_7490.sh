@@ -16,10 +16,10 @@ export FREETZ_REMOVE_PIGLET_V1=y
 export FREETZ_REMOVE_PIGLET_V2=y
 
 echo2 "copying 7362 dect files"
-file="lib/modules/dectfw_secondlevel_441.hex"
+file="lib/modules/dectfw_secondlevel_441.hex etc/init.d/S11-piglet"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
-echo2 "removing kernel modules"
+echo2 "removing remove unnecessary files"
 modules=" kernel/drivers/usb/host/xhci-hcd.ko"
 for i in $modules; do
 	rm_files "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
