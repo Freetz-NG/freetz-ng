@@ -19,6 +19,12 @@ echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
+echo2 "removing kernel modules"
+modules=" kernel/drivers/usb/host/xhci-hcd.ko"
+for i in $modules; do
+	rm_files "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
+done
+
 echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW203
 
