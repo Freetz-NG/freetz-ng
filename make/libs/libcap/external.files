@@ -1,3 +1,3 @@
-[ "FREETZ_AVM_GCC_4_MAX" == "y" ] && ELIBVER="2.49" || ELIBVER="2.66"
+[ "FREETZ_AVM_GCC_4_MAX" == "y" ] && ELIBVER="2.49" || ELIBVER="2.68"
 
 [ "$EXTERNAL_FREETZ_LIB_libcap" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libcap.so.$ELIBVER"

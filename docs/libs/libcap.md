@@ -1,4 +1,4 @@
-# libcap (libcap.so) 2.49/2.66
+# libcap (libcap.so) 2.49/2.68
  - Homepage: [https://sites.google.com/site/fullycapable/](https://sites.google.com/site/fullycapable/)
  - Manpage: [https://pkg.go.dev/kernel.org/pub/linux/libs/security/libcap/cap](https://pkg.go.dev/kernel.org/pub/linux/libs/security/libcap/cap)
  - Changelog: [https://sites.google.com/site/fullycapable/release-notes-for-libcap](https://sites.google.com/site/fullycapable/release-notes-for-libcap)

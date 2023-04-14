@@ -1,14 +1,14 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.9,2.6.2)))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.9,2.6.3)))
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_24:=66952d9c95490e5875f04c9f8fa313b5e816d1b7b4d6cda3fb2ff749ad405dee
 $(PKG)_HASH_25:=8794b7125998c68f30de654267a702b9581454ca1e7061511fcc5f99fea4bd32
-$(PKG)_HASH_26:=42d561a9af150b21bc914e3b7aa09f88013d2ffa6d5ce75a025a3b34caa948d4
+$(PKG)_HASH_26:=13b207a376d8880507c74ff78aabc3778a9da47c89f1e247dcee3c7237138ff6
 $(PKG)_HASH:=$($(PKG)_HASH_$(subst .,,$($(PKG)_MAJOR_VERSION)))
 $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openvpn.net/downloads/releases
 ### WEBSITE:=https://openvpn.net/community-downloads/
 ### MANPAGE:=https://community.openvpn.net/openvpn/wiki
-### CHANGES:=https://github.com/OpenVPN/openvpn/blob/master/Changes.rst
+### CHANGES:=https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst
 ### CVSREPO:=https://github.com/OpenVPN/openvpn
 
 $(PKG)_CONDITIONAL_PATCHES+=$($(PKG)_MAJOR_VERSION)
