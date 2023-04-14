@@ -16,7 +16,7 @@ export FREETZ_REMOVE_PIGLET_V1=y
 export FREETZ_REMOVE_PIGLET_V2=y
 
 echo2 "copying 7362 dect files"
-file="etc/init.d/S11-piglet"
+file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "copying 7362 S11-piglet file"
