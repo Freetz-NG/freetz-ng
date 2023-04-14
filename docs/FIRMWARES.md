@@ -137,7 +137,7 @@ Currently supported devices and firmwares
 
 * __Fritz!Box 5530 Fiber (DEVELOPER, No fiber!)__
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
-  - 257.07.39 rev102667 {ALL} [MOVE21] (Labor)
+  - 257.07.50 rev104375 {ALL} [MOVE21]
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.39 rev103612 {ALL} [MOVE21] (Labor)

@@ -425,6 +425,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Enable LED deactivation page</u><a id='enable-led-deactivation'></a>**<br>
     Re-enables access to the LED deactivation page in expert mode.
 
+  * **<u>Enable VLAN</u><a id='enable-vlan'></a>**<br>
+    Re-enables the VLAN configuration pages of voip in ata-mode.
+
   * **<u>ENFORCE_BRANDING_1und1: 1und1</u><a id='enforce-branding-1und1'></a>**<br>
     1&1 branding
 

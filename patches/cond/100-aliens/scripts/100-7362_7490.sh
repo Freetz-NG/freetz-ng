@@ -8,37 +8,25 @@ fi
 
 echo1 "adapt firmware for 7362"
 
-echo2 "deleting isdn files"
-if [ "$FREETZ_AVM_HAS_USB_HOST" == "y" ]; then
-	rm_files \
-	  $(find ${FILESYSTEM_MOD_DIR} ! -path '*/lib/*' -a -name '*isdn*' | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/') \
-	  $(find ${FILESYSTEM_MOD_DIR}/lib/modules/2.6.*/ ${FILESYSTEM_MOD_DIR}/lib/modules/3.*.*/ -name '*isdn*' 2>/dev/null | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/') \
-	[ "$FREETZ_AVM_HAS_USB_HOST_AHCI" != "y" ] && \
-	  rm_files ${FILESYSTEM_MOD_DIR}/lib/modules/microvoip_isdn_top.bit
-else
-	rm_files $(find ${FILESYSTEM_MOD_DIR} -name '*isdn*' -o -name '*iglet*' | grep -Ev '^${FILESYSTEM_MOD_DIR}/(proc|dev|sys|oldroot|var)/')
-fi
-rm_files \
-  ${FILESYSTEM_MOD_DIR}/etc/init.d/S17-isdn \
-  ${FILESYSTEM_MOD_DIR}/etc/init.d/S11-piglet \
-[ "$FREETZ_AVM_HAS_USB_HOST_AHCI" != "y" ] && \
-  modsed '/microvoip_isdn_top.bit/d' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.S"
+export FREETZ_REMOVE_WLAN=y
 
-echo2 "copying 7362 wlan files"
-oems="1und1 avm"
-for i in $oems; do
-	cp -a ${FILESYSTEM_TK_DIR}/etc/default.Fritz_Box_HW203/$i/wlan* ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185/$i/
-done
-cp -a -r "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/net" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/"
+export FREETZ_REMOVE_PIGLET_POTS=y
+export FREETZ_REMOVE_PIGLET_ISDN=y
+export FREETZ_REMOVE_PIGLET_V1=y
+export FREETZ_REMOVE_PIGLET_V2=y
 
 echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
-echo2 "copying 7362 led files"
-modules=" kernel/drivers/char/led_module.ko"
+echo2 "removing S11-piglet file"
+file="etc/init.d/S11-piglet"
+rm_files "${FILESYSTEM_MOD_DIR}/$file"
+
+echo2 "removing remove unnecessary files"
+modules=" kernel/drivers/usb/host/xhci-hcd.ko"
 for i in $modules; do
-	cp -a "${FILESYSTEM_TK_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i" "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
+	rm_files "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
 
 echo2 "moving default config dir"
