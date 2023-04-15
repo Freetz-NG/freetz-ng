@@ -23,7 +23,7 @@ file="etc/init.d/S11-piglet"
 modsed 's/piglet_bitfile=.*bit/"/g' "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing remove unnecessary files"
-modules=" kernel/drivers/usb/host/xhci-hcd.ko"
+modules=" kernel/drivers/usb/host/xhci-hcd.ko kernel/drivers/isdn/isdn_fon5/isdn_fbox_fon5.ko"
 for i in $modules; do
 	rm_files "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
