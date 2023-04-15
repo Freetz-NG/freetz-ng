@@ -20,11 +20,11 @@ cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing reference to the bitfile_pots.bit file"
 file="etc/init.d/S11-piglet"
-modsed 's/piglet_potsbitfile=.*}/"/g' "${FILESYSTEM_MOD_DIR}/$file"
+modsed 's/piglet_potsbitfile=.*}//g' "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing reference to the bitfile_isdn.bit file"
 file="etc/init.d/S11-piglet"
-modsed 's/piglet_bitfile=.*}/"/g' "${FILESYSTEM_MOD_DIR}/$file"
+modsed 's/piglet_bitfile=.*}//g' "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing remove unnecessary files"
 modules=" kernel/drivers/usb/host/xhci-hcd.ko kernel/drivers/isdn/isdn_fon5/isdn_fbox_fon5.ko"
