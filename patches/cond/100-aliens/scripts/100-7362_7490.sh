@@ -1,6 +1,5 @@
 isFreetzType 7362_7490 || return 0
 
-
 if [ -z "$FIRMWARE2" ]; then
 	echo "ERROR: no tk firmware" 1>&2
 	exit 1
@@ -19,12 +18,16 @@ echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
-echo2 "removing S11-piglet file"
+echo2 "removing reference to the bitfile_pots.bit file"
 file="etc/init.d/S11-piglet"
-rm_files "${FILESYSTEM_MOD_DIR}/$file"
+modsed 's/piglet_potsbitfile=.*}/ /g' "${FILESYSTEM_MOD_DIR}/$file"
+
+echo2 "removing reference to the bitfile_isdn.bit file"
+file="etc/init.d/S11-piglet"
+modsed 's/piglet_bitfile=.*}/ /g' "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing remove unnecessary files"
-modules=" kernel/drivers/usb/host/xhci-hcd.ko"
+modules=" kernel/drivers/usb/host/xhci-hcd.ko kernel/drivers/isdn/isdn_fon5/isdn_fbox_fon5.ko"
 for i in $modules; do
 	rm_files "${FILESYSTEM_MOD_DIR}/lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}/$i"
 done
