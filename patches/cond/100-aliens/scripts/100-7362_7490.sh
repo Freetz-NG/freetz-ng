@@ -18,9 +18,12 @@ echo2 "copying 7362 dect files"
 file="lib/modules/dectfw_secondlevel_441.hex"
 cp -a "${FILESYSTEM_TK_DIR}/$file" "${FILESYSTEM_MOD_DIR}/$file"
 
-echo2 "removing reference to the bitfile_*.bit file"
+echo2 "removing reference to the bitfile_pots.bit file"
 file="etc/init.d/S11-piglet"
 modsed 's/piglet_potsbitfile=.*}/"/g' "${FILESYSTEM_MOD_DIR}/$file"
+
+echo2 "removing reference to the bitfile_isdn.bit file"
+file="etc/init.d/S11-piglet"
 modsed 's/piglet_bitfile=.*}/"/g' "${FILESYSTEM_MOD_DIR}/$file"
 
 echo2 "removing remove unnecessary files"
