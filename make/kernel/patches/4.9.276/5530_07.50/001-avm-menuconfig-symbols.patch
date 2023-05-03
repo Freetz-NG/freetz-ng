@@ -1,0 +1,172 @@
+--- linux-4.9/drivers/net/nlaudio/Kconfig
++++ linux-4.9/drivers/net/nlaudio/Kconfig
+@@ -0,0 +1,3 @@
++config AVM_NET_LINK_AUDIO
++	tristate "AVM_NET_LINK_AUDIO"
++	default m
+--- linux-4.9/drivers/char/dect_io/Kconfig
++++ linux-4.9/drivers/char/dect_io/Kconfig
+@@ -0,0 +1,12 @@
++menu "AVM DECT_IO"
++
++config AVM_DECT_IO
++	tristate "AVM dect IO managment support"
++	default n
++	help
++	  This driver provides power managment functions for AVMs own drivers.
++
++	  To compile this driver as a module, choose M here. The module
++	  will be called avm.
++
++endmenu
+--- linux-4.9/drivers/char/Piglet_noemif/Kconfig
++++ linux-4.9/drivers/char/Piglet_noemif/Kconfig
+@@ -0,0 +1,22 @@
++#config AVM_PIGLET
++#	tristate "AVM Piglet load support"
++#	default n
++#	help
++#	  This driver provides the piglet load support.
++
++menu "AVM Piglet (no emif)"
++
++config AVM_PIGLET_NOEMIF
++	tristate "AVM Piglet load support (No Emif)"
++	default n
++	help
++	  This driver provides the piglet load support (without Emif).
++
++config AVM_PIGLET_DECT
++	bool "AVM Piglet DECT Loader support (only on Piglet No Emif)"
++	depends on AVM_PIGLET_NOEMIF
++	default y
++	help
++	  This driver provides the DECT loader support in piglet
++
++endmenu
+--- linux-4.9/drivers/isdn/avm_dect/Kconfig
++++ linux-4.9/drivers/isdn/avm_dect/Kconfig
+@@ -0,0 +1,10 @@
++menu "AVM DECT Stack"
++
++config AVM_DECT
++    tristate "AVM DECT Stack"
++
++config AVM_DECT_DEBUG
++    bool "AVM DECT debug version"
++    depends on AVM_DECT
++
++endmenu
+--- linux-4.9/drivers/isdn/capi_codec/Kconfig
++++ linux-4.9/drivers/isdn/capi_codec/Kconfig
+@@ -0,0 +1,43 @@
++menu "AVM CAPI-CODEC"
++
++config CAPI_CODEC
++    tristate "capi driver codec support"
++    depends on ISDN
++
++config CAPI_CODEC_SPEEX
++    bool "capi driver codec SPEEX"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_ILBC
++    bool "capi driver codec ILBC"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_G729
++    bool "capi driver codec G729"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_G711
++    bool "capi driver codec G711"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_G726
++    bool "capi driver codec G726"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_G722
++    bool "capi driver codec G722"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_VAD
++    bool "capi driver codec VAD"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_CNG
++    bool "capi driver codec CNG (comfort noise generator)"
++    depends on CAPI_CODEC
++
++config CAPI_CODEC_FAX
++    bool "capi driver codec FAX (T30/T38)"
++    depends on CAPI_CODEC
++
++endmenu
+--- linux-4.9/drivers/isdn/isdn_fon5/Kconfig
++++ linux-4.9/drivers/isdn/isdn_fon5/Kconfig
+@@ -0,0 +1,64 @@
++#
++# ISDN-PCMLINK driver
++#
++
++config ISDN_CAPI_ISDN_NT_PCMLINK
++    tristate "AVM ISDN NT PCMLINK driver"
++    depends on CAPI_AVM
++    select ISDN_NT_PCMLINK_BLK
++    select ISDN_NT_PCMLINK_E1
++    select ISDN_NT_PCMLINK_STACK
++    select ISDN_NT_PCMLINK_ISDN_AB
++
++config ISDN_NT_PCMLINK_BLK
++    tristate "AVM ISDN NT PCMLINK driver (hardware interfacing part)"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_E1
++    tristate "AVM ISDN NT PCMLINK driver (layer 1 part)"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_STACK
++    tristate "AVM ISDN NT PCMLINK driver (protocol stack)"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_ISDN_AB
++    tristate "AVM ISDN NT PCMLINK driver (telephony part)"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_DEBUG
++    bool "AVM ISDN NT PCMLINK driver debug"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_NO_BCHANNEL
++    bool "AVM ISDN NT PCMLINK driver without B-Channels support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_FAX
++    bool "AVM ISDN NT PCMLINK driver with FAX support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK && !ISDN_NT_PCMLINK_NO_BCHANNEL
++
++config ISDN_NT_PCMLINK_COMPRESS
++    bool "AVM ISDN NT PCMLINK driver with Compression support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK && !ISDN_NT_PCMLINK_NO_BCHANNEL
++
++config ISDN_NT_PCMLINK_MODEM
++    bool "AVM ISDN NT PCMLINK driver with MODEM support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK && !ISDN_NT_PCMLINK_NO_BCHANNEL
++
++config ISDN_NT_PCMLINK_DTMF
++    bool "AVM ISDN NT PCMLINK driver with DTMF support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK && !ISDN_NT_PCMLINK_NO_BCHANNEL
++
++config ISDN_NT_PCMLINK_VCTRLS
++    bool "AVM ISDN NT PCMLINK driver virtual controller support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK
++
++config ISDN_NT_PCMLINK_VCTRLS_NUMBER
++    int "AVM ISDN NT PCMLINK driver, number of virtual controllers"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK && ISDN_NT_PCMLINK_VCTRLS
++    default 1
++
++config ISDN_NT_PCMLINK_FRITZX
++    bool "AVM ISDN NT PCMLINK driver with FRITZX controller support"
++    depends on ISDN_CAPI_ISDN_NT_PCMLINK

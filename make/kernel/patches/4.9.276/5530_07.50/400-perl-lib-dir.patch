@@ -1,0 +1,11 @@
+--- linux-4.9/drivers/char/avm_new/event/struct/avm_event_generate.pl
++++ linux-4.9/drivers/char/avm_new/event/struct/avm_event_generate.pl
+@@ -2,7 +2,7 @@
+ 
+ use strict;
+ use warnings;
+-
++use lib '.';
+ use input_enum;
+ use input_params;
+ use avm_event_generate_enum;

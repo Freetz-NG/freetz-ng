@@ -1,0 +1,17 @@
+--- linux-4.9/GNUmakefile
++++ linux-4.9/GNUmakefile
+@@ -38,14 +38,6 @@
+ endif
+ export _kernelvariables_read := 1
+ -include $(kernelvariables)
+-
+-# Iff /GU/tmp/ is not available and CCACHE_DISABLE is not set, disable ccache
+-ifeq ($(wildcard /GU/tmp/)$(CCACHE_DISABLE),)
+-ifneq (,$(V))
+-$(info /GU/tmp is not available, disabling ccache)
+-endif
+-export CCACHE_DISABLE = true
+-endif
+ endif
+ 
+ # Prevent accidental influence of user space targeted settings in standard
