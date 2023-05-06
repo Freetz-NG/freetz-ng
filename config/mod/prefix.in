@@ -123,6 +123,7 @@ config FREETZ_TYPE_PREFIX_SERIES_SUBDIR
 	default "07_1X"             if FREETZ_AVM_VERSION_07_1X
 	default "07_2X"             if FREETZ_AVM_VERSION_07_2X
 	default "07_5X"             if FREETZ_AVM_VERSION_07_5X
+	default "07_51"             if FREETZ_AVM_VERSION_07_51
 
 config FREETZ_TYPE_PREFIX_ALIEN_HARDWARE
 	string

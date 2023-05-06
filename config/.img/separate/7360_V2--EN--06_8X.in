@@ -1,33 +1,15 @@
 if FREETZ_TYPE_7360_V2 && FREETZ_TYPE_LANG_EN && FREETZ_AVM_VERSION_06_8X
 
-config FREETZ_AVM_HAS_BRANDING_avme
-	def_bool y
-
-config FREETZ_AVM_HAS_MULTIPLE_LANGUAGES
-	def_bool y
-
-config FREETZ_AVM_HAS_LANGUAGE_de
-	def_bool y
-
-config FREETZ_AVM_HAS_LANGUAGE_en
-	def_bool y
-
-config FREETZ_AVM_HAS_LANGUAGE_es
-	def_bool y
-
-config FREETZ_AVM_HAS_LANGUAGE_fr
-	def_bool y
-
-config FREETZ_AVM_HAS_LANGUAGE_it
-	def_bool y
-
-config FREETZ_AVM_HAS_LANGUAGE_pl
+config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
 
 config FREETZ_AVM_HAS_IP_BINARY
 	def_bool y
 
 config FREETZ_AVM_HAS_NOEXEC
+	def_bool y
+
+config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
 
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
