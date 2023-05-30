@@ -1,6 +1,6 @@
 --- src/main.c
 +++ src/main.c
-@@ -1251,8 +1251,6 @@
+@@ -1253,8 +1253,6 @@
  {
    const char *wgetrc_title  = _("Wgetrc: ");
    const char *locale_title  = _("Locale: ");
@@ -9,7 +9,7 @@
    char *env_wgetrc, *user_wgetrc;
    int i;
  
-@@ -1312,18 +1310,6 @@
+@@ -1314,18 +1312,6 @@
      exit (WGET_EXIT_IO_FAIL);
  #endif /* def ENABLE_NLS */
  
@@ -30,7 +30,7 @@
  
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -2940,11 +2940,6 @@
+@@ -3144,11 +3144,6 @@
  	echo '' >> $@
  	echo '#include "version.h"' >> $@
  	echo 'const char *version_string = "@VERSION@";' >> $@

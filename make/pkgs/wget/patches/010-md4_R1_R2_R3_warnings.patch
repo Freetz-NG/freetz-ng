@@ -17,7 +17,7 @@ In file included from /freetz/freetz-dev/toolchain/build/arm_gcc-5.5.0_uClibc-1.
 
 --- lib/md4.c
 +++ lib/md4.c
-@@ -201,6 +201,15 @@
+@@ -200,6 +200,15 @@
  #define G(x, y, z) (((x) & (y)) | ((x) & (z)) | ((y) & (z)))
  #define H(x, y, z) ((x) ^ (y) ^ (z))
  #define rol(x, n) (((x) << (n)) | ((uint32_t) (x) >> (32 - (n))))

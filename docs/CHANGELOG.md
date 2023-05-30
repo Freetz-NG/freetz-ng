@@ -52,6 +52,7 @@ Latest changes
    * CA-bundle 2023-05-30
    * Curl 8.1.2
    * UnRAR 6.1.7/6.2.7
+   * Wget GNU 1.21.4
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
