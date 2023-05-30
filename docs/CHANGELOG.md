@@ -53,6 +53,7 @@ Latest changes
    * Curl 8.1.2
    * UnRAR 6.1.7/6.2.7
    * Wget GNU 1.21.4
+   * xsltproc 1.1.38
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.

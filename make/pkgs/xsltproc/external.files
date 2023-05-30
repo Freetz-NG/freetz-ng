@@ -1,4 +1,4 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_XSLTPROC" == "y" ] && EXTERNAL_FILES+=" /usr/bin/xsltproc"
 
-[ "$EXTERNAL_FREETZ_LIB_libexslt" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libexslt.so.0.8.20"
-[ "$EXTERNAL_FREETZ_LIB_libxslt" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libxslt.so.1.1.37"
+[ "$EXTERNAL_FREETZ_LIB_libexslt" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libexslt.so.0.8.21"
+[ "$EXTERNAL_FREETZ_LIB_libxslt" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libxslt.so.1.1.38"

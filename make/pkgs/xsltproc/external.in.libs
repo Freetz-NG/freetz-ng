@@ -4,7 +4,7 @@ config EXTERNAL_FREETZ_LIB_libexslt
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libexslt.so.0.8.20
+		 ${FREETZ_LIBRARY_DIR}/libexslt.so.0.8.21
 
 config EXTERNAL_FREETZ_LIB_libxslt
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libxslt
@@ -12,5 +12,5 @@ config EXTERNAL_FREETZ_LIB_libxslt
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libxslt.so.1.1.37
+		 ${FREETZ_LIBRARY_DIR}/libxslt.so.1.1.38
 
