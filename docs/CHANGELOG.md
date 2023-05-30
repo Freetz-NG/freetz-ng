@@ -51,6 +51,7 @@ Latest changes
  - Packages:
    * CA-bundle 2023-05-30
    * Curl 8.1.2
+   * SQLite 3.42.0
    * UnRAR 6.1.7/6.2.7
    * Wget GNU 1.21.4
    * xsltproc 1.1.38
