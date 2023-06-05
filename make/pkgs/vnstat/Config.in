@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_VNSTAT
-	bool "vnstat 1.17 (binary only)"
+	bool "vnstat 1.18 (binary only)"
 	default n
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	help
