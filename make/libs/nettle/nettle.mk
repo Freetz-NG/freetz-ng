@@ -1,6 +1,6 @@
-$(call PKG_INIT_LIB, 3.9)
+$(call PKG_INIT_LIB, 3.9.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa
+$(PKG)_HASH:=ccfeff981b0ca71bbd6fbcb054f407c60ffb644389a5be80d6716d5b550c6ce3
 $(PKG)_SITE:=@GNU/nettle,https://www.lysator.liu.se/~nisse/archive
 ### WEBSITE:=https://www.lysator.liu.se/~nisse/nettle/
 ### MANPAGE:=https://www.lysator.liu.se/~nisse/nettle/nettle.html
@@ -8,7 +8,7 @@ $(PKG)_SITE:=@GNU/nettle,https://www.lysator.liu.se/~nisse/archive
 ### CVSREPO:=https://git.lysator.liu.se/nettle/nettle
 
 $(PKG)_LIBNAMES         := nettle hogweed
-$(PKG)_LIBVERSIONS      := 8.7    6.7
+$(PKG)_LIBVERSIONS      := 8.8    6.8
 $(PKG)_LIBNAMES_LONG    := $(join $($(PKG)_LIBNAMES:%=lib%.so.),$($(PKG)_LIBVERSIONS))
 $(PKG)_LIBS_BUILD_DIR   := $($(PKG)_LIBNAMES:%=$($(PKG)_DIR)/lib%.so)
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)

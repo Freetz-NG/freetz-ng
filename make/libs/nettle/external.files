@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_LIB_libnettle" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libnettle.so.8.7"
-[ "$EXTERNAL_FREETZ_LIB_libhogweed" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libhogweed.so.6.7"
+[ "$EXTERNAL_FREETZ_LIB_libnettle" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libnettle.so.8.8"
+[ "$EXTERNAL_FREETZ_LIB_libhogweed" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libhogweed.so.6.8"
