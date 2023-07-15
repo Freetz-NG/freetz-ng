@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libfreetype
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libfreetype.so.6.19.0
+		 ${FREETZ_LIBRARY_DIR}/libfreetype.so.6.20.0
 

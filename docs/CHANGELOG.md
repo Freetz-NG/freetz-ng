@@ -104,6 +104,7 @@ Latest changes
    * xsltproc 1.1.38
 
  - Libraries:
+   * FreeType 2.13.1
    * libdeflate 1.18
    * glib2 2.32.4/2.76.4
    * libnettle 3.9.1
