@@ -24,7 +24,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_func_openpty=no
 endif
 
 $(PKG)_CONFIGURE_PRE_CMDS += chmod +x compile config.guess config.sub configure depcomp install-sh missing;
-#$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -i;
+$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -i;
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 # touch configure.ac to prevent aclocal.m4 & configure from being regenerated
