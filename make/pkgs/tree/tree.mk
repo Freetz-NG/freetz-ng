@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN,1.8.0)
+$(call PKG_INIT_BIN,2.1.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tgz
-$(PKG)_HASH:=715d5d4b434321ce74706d0dd067505bb60c5ea83b5f0b3655dae40aa6f9b7c2
+$(PKG)_HASH:=d3c3d55f403af7c76556546325aa1eca90b918cbaaf6d3ab60a49d8367ab90d5
 $(PKG)_SITE:=ftp://mama.indstate.edu/linux/tree
 $(PKG)_BINARY:=$($(PKG)_DIR)/tree
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/tree
