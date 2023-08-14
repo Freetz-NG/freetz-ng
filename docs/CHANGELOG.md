@@ -111,6 +111,7 @@ Latest changes
    * Sudo 1.9.14p3
    * Tor 0.4.7.14
    * Transmission 3.00/4.0.3
+   * tree 2.1.1
    * UnRAR 6.1.7/6.2.8
    * vnstat 1.18
    * Wget GNU 1.21.4
