@@ -17,6 +17,22 @@ config FREETZ_PACKAGE_OPENSSH
 
 if FREETZ_PACKAGE_OPENSSH
 
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON
+			bool "9.3p2"
+			depends on FREETZ_PACKAGE_OPENSSL_VERSION_0 || FREETZ_PACKAGE_OPENSSL_VERSION_1
+			help
+				Version 9.3p2 is the last with support for OpenSSL 1.0.2.
+
+		config FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
+			bool "9.4p1"
+			depends on !FREETZ_PACKAGE_OPENSSL_VERSION_0 && !FREETZ_PACKAGE_OPENSSL_VERSION_1
+
+	endchoice
+
 	config FREETZ_PACKAGE_OPENSSH_AUTHORIZED_KEYS
 		bool "Select authorized_keys"
 		default y
