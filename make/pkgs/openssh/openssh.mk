@@ -9,6 +9,8 @@ $(PKG)_SITE:=https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable,ftp://ftp.open
 ### CHANGES:=https://www.openssh.com/releasenotes.html
 ### CVSREPO:=https://github.com/openssh/openssh-portable
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),abandon,current)
+
 $(PKG)_BIN_BINARIES             := ssh scp ssh-add ssh-agent ssh-keygen ssh-keysign ssh-keyscan sftp
 $(PKG)_BIN_BINARIES_INCLUDED    := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BIN_BINARIES))
 $(PKG)_BIN_BINARIES_BUILD_DIR   := $(addprefix $($(PKG)_DIR)/,$($(PKG)_BIN_BINARIES))
