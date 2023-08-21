@@ -1,0 +1,53 @@
+Configure test for getpagesize considers only Solaris and thus checks for getpagesize being contained in libucb.
+On Linux getagesize is however contained in libc.
+
+The proper fix would be to check for both "in libc?" and if not "in libucb?".
+
+We workaround the problem for Freetz in a hackish way by patching the "in libucb?"-test to "in libc?".
+
+--- configure
++++ configure
+@@ -14575,14 +14575,13 @@
+ printf "%s\n" "#define HAVE_GETPAGESIZE 1" >>confdefs.h
+ 
+ else $as_nop
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for getpagesize in -lucb" >&5
+-printf %s "checking for getpagesize in -lucb... " >&6; }
+-if test ${ac_cv_lib_ucb_getpagesize+y}
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for getpagesize" >&5
++printf %s "checking for getpagesize... " >&6; }
++if test ${ac_cv_lib_c_getpagesize+y}
+ then :
+   printf %s "(cached) " >&6
+ else $as_nop
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lucb  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -14600,19 +14599,19 @@
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"
+ then :
+-  ac_cv_lib_ucb_getpagesize=yes
++  ac_cv_lib_c_getpagesize=yes
+ else $as_nop
+-  ac_cv_lib_ucb_getpagesize=no
++  ac_cv_lib_c_getpagesize=no
+ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.beam \
+     conftest$ac_exeext conftest.$ac_ext
+ LIBS=$ac_check_lib_save_LIBS
+ fi
+-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ucb_getpagesize" >&5
+-printf "%s\n" "$ac_cv_lib_ucb_getpagesize" >&6; }
+-if test "x$ac_cv_lib_ucb_getpagesize" = xyes
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_c_getpagesize" >&5
++printf "%s\n" "$ac_cv_lib_c_getpagesize" >&6; }
++if test "x$ac_cv_lib_c_getpagesize" = xyes
+ then :
+-  LIBS="$LIBS -lucb"; printf "%s\n" "#define HAVE_GETPAGESIZE 1" >>confdefs.h
++  printf "%s\n" "#define HAVE_GETPAGESIZE 1" >>confdefs.h
+ 
+ fi
+ 

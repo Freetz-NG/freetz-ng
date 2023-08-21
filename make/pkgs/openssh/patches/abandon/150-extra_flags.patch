@@ -1,0 +1,65 @@
+--- Makefile.in
++++ Makefile.in
+@@ -44,8 +44,8 @@
+ 
+ CC=@CC@
+ LD=@LD@
+-CFLAGS=@CFLAGS@
+-CFLAGS_NOPIE=@CFLAGS_NOPIE@
++CFLAGS=@CFLAGS@ $(EXTRA_CFLAGS)
++CFLAGS_NOPIE=@CFLAGS_NOPIE@ $(EXTRA_CFLAGS)
+ CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ $(PATHS) @DEFS@
+ PICFLAG=@PICFLAG@
+ LIBS=@LIBS@
+@@ -61,8 +61,8 @@
+ INSTALL=@INSTALL@
+ SED=@SED@
+ XAUTH_PATH=@XAUTH_PATH@
+-LDFLAGS=-L. -Lopenbsd-compat/ @LDFLAGS@
+-LDFLAGS_NOPIE=-L. -Lopenbsd-compat/ @LDFLAGS_NOPIE@
++LDFLAGS=-L. -Lopenbsd-compat/ @LDFLAGS@ $(EXTRA_LDFLAGS)
++LDFLAGS_NOPIE=-L. -Lopenbsd-compat/ @LDFLAGS_NOPIE@ $(EXTRA_LDFLAGS)
+ EXEEXT=@EXEEXT@
+ MANFMT=@MANFMT@
+ MKDIR_P=@MKDIR_P@
+--- openbsd-compat/Makefile.in
++++ openbsd-compat/Makefile.in
+@@ -6,16 +6,16 @@
+ VPATH=@srcdir@
+ CC=@CC@
+ LD=@LD@
+-CFLAGS=@CFLAGS@
+-CFLAGS_NOPIE=@CFLAGS_NOPIE@
++CFLAGS=@CFLAGS@ $(EXTRA_CFLAGS)
++CFLAGS_NOPIE=@CFLAGS_NOPIE@ $(EXTRA_CFLAGS)
+ CPPFLAGS=-I. -I.. -I$(srcdir) -I$(srcdir)/.. @CPPFLAGS@ @DEFS@
+ PICFLAG=@PICFLAG@
+ LIBS=@LIBS@
+ AR=@AR@
+ RANLIB=@RANLIB@
+ INSTALL=@INSTALL@
+-LDFLAGS=-L. @LDFLAGS@
+-LDFLAGS_NOPIE=-L. -Lopenbsd-compat/ @LDFLAGS_NOPIE@
++LDFLAGS=-L. @LDFLAGS@ $(EXTRA_LDFLAGS)
++LDFLAGS_NOPIE=-L. -Lopenbsd-compat/ @LDFLAGS_NOPIE@ $(EXTRA_LDFLAGS)
+ 
+ OPENBSD=arc4random.o \
+ 	arc4random_uniform.o \
+--- openbsd-compat/regress/Makefile.in
++++ openbsd-compat/regress/Makefile.in
+@@ -6,13 +6,13 @@
+ VPATH=@srcdir@
+ CC=@CC@
+ LD=@LD@
+-CFLAGS=@CFLAGS@
++CFLAGS=@CFLAGS@ $(EXTRA_CFLAGS)
+ CPPFLAGS=-I. -I.. -I../.. -I$(srcdir) -I$(srcdir)/.. -I$(srcdir)/../.. @CPPFLAGS@ @DEFS@
+ EXEEXT=@EXEEXT@
+ LIBCOMPAT=../libopenbsd-compat.a
+ LIBSSH=../../libssh.a
+ LIBS=@LIBS@ @CHANNELLIBS@
+-LDFLAGS=@LDFLAGS@ $(LIBCOMPAT)
++LDFLAGS=@LDFLAGS@ $(EXTRA_LDFLAGS) $(LIBCOMPAT)
+ 
+ TESTPROGS=closefromtest$(EXEEXT) snprintftest$(EXEEXT) strduptest$(EXEEXT) \
+ 	strtonumtest$(EXEEXT) opensslvertest$(EXEEXT) utimensattest$(EXEEXT)
