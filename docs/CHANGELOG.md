@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23080](#ng23080)
   * [ng23050](#ng23050)
   * [ng23030](#ng23030)
   * [ng22100](#ng22100)
@@ -43,6 +44,15 @@ Latest changes
 <br>
 
 ### devel
+
+ - Packages:
+   * CA-bundle 2023-08-22
+   * UnRAR 6.1.7/6.2.10
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23080
 
  - Build system:
    * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.41.x
@@ -135,7 +145,7 @@ Latest changes
    * zlib 1.3
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23080/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23050
 

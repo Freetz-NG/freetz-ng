@@ -203,8 +203,10 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Box_6840_LTE-06.85.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/source-files-FRITZ.Box_6840_LTE-06.85.tar.gz)
  * fritzbox-6842-lte/
    - [fritz_box_6842_source_files.06.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6842-lte/fritz_box_6842_source_files.06.21.tar.gz)
+ * fritzbox-6850-5g/
+   - [source-files-FRITZ.Box_6850_5G-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-5g/source-files-FRITZ.Box_6850_5G-07.56.tar.gz)
  * fritzbox-6850-lte/
-   - [source-files-FRITZ.Box_6850_LTE-cortexa9-07.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-lte/source-files-FRITZ.Box_6850_LTE-cortexa9-07.21.tar.gz)
+   - [source-files-FRITZ.Box_6850_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-lte/source-files-FRITZ.Box_6850_LTE-07.56.tar.gz)
  * fritzbox-6890-lte/
    - [source-files-FRITZ.Box_6890_LTE-grx5-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6890-lte/source-files-FRITZ.Box_6890_LTE-grx5-07.29.tar.gz)
  * fritzbox-7112/

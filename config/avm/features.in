@@ -270,16 +270,22 @@ config FREETZ_AVM_HAS_LIBC_FILE
 	default "libc.so.1"  if FREETZ_AVM_PROP_LIBC_UCLIBC && FREETZ_TARGET_UCLIBC_1
 	default "libc.so.6"  if FREETZ_AVM_PROP_LIBC_GLIBC
 
+config FREETZ_AVM_HAS_AVMMULTID_NTPCLIENT
+	bool
+	default y
+	depends on FREETZ_AVM_VERSION_04_XX_MAX
+
 config FREETZ_AVM_HAS_AVMMULTID_PRELOAD
 	bool
 	default y
+	depends on !FREETZ_AVM_VERSION_07_2X
 	help
 		This is not mandatory for FOS 7.2X
 
 config FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD
 	bool
 	default y
-	depends on !FREETZ_SEPARATE_AVM_UCLIBC
+	depends on !FREETZ_AVM_VERSION_07_2X
 	help
 		This is not mandatory for FOS 7.2X
 

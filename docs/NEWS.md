@@ -1,5 +1,12 @@
 # NEWS
 
+ * __[2023-08-20](#2023-08-20)__<a id='2023-08-20'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23080` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng23080](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng23080)<br>
+
  * __[2023-07-04](#2023-07-04)__<a id='2023-07-04'></a><br>
    Für Kernelmodule gibt es die neue ".ko-on"-Option im menuconfig. Diese sorgt dafür dass im Kernel automatisch<br>
    Module aus Freetz heraus ausgewählt werden. Da nicht alle möglichen Kombinationen geprüft wurden kann es zu<br>

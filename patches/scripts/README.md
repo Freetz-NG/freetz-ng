@@ -15,8 +15,8 @@
  - 850-patch_fiber_fit-image.sh     - FREETZ_TYPE_FIBER
 
 ### wrapper
- - 105-wrapper_ctlmgr.sh            - FREETZ_LIB_libctlmgr
- - 106-wrapper_multid.sh            - all (rextd on extender)
+ - 105-wrapper_ctlmgr.sh            - FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD
+ - 106-wrapper_avm.sh               - all (dsld+multid/rextd)
 
 ### fixes
  - 090-var_install_fixes.sh         - all

@@ -2060,6 +2060,7 @@ config FREETZ_AVMDAEMON_DISABLE_IGD
 
 config FREETZ_AVMDAEMON_DISABLE_NTP
 	bool "Disable ntp client"
+	depends on FREETZ_AVM_HAS_AVMMULTID_NTPCLIENT
 	default n
 	help
 		Disables multid's basic NTP client
