@@ -65,6 +65,7 @@ Latest changes
    * PCSC-lite 2.0.0
    * Screen 4.9.1
    * SQLite 3.43.0
+   * Tor 0.4.8.5
    * Transmission 3.00/4.0.4
    * UnRAR 6.1.7/6.2.10
 

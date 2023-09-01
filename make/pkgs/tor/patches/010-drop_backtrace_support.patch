@@ -1,6 +1,6 @@
 --- configure.ac
 +++ configure.ac
-@@ -655,8 +655,6 @@
+@@ -687,8 +687,6 @@
  	RtlSecureZeroMemory \
  	SecureZeroMemory \
  	accept4 \
@@ -9,7 +9,7 @@
  	eventfd \
  	explicit_bzero \
  	timingsafe_memcmp \
-@@ -1579,7 +1577,6 @@
+@@ -1611,7 +1609,6 @@
  		  unistd.h \
  		  arpa/inet.h \
  		  crt_externs.h \
@@ -19,7 +19,7 @@
  		  ifaddrs.h \
 --- configure
 +++ configure
-@@ -9766,8 +9766,6 @@
+@@ -9821,8 +9821,6 @@
  	RtlSecureZeroMemory \
  	SecureZeroMemory \
  	accept4 \
@@ -28,7 +28,7 @@
  	eventfd \
  	explicit_bzero \
  	timingsafe_memcmp \
-@@ -13946,7 +13944,6 @@
+@@ -14001,7 +13999,6 @@
  		  unistd.h \
  		  arpa/inet.h \
  		  crt_externs.h \
