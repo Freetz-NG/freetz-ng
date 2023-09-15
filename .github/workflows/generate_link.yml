@@ -56,7 +56,7 @@ jobs:
 
       - name: comment
         if: "contains(steps.generate.outputs.link, 'http')"
-        uses: peter-evans/commit-comment@v2
+        uses: peter-evans/commit-comment@v3
         with:
           sha: ${{ github.sha }}
           body: |
