@@ -1,0 +1,37 @@
+--- TabIndex.cpp        2010-02-26 04:33:44.000000000 +0100
++++ TabIndex.cpp        2023-09-17 20:05:46.804928422 +0200
+@@ -164,7 +164,7 @@
+                pHashFunc = TbixCalculateHash;
+
+        /* Build index file name */
+-       if (TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile) < 0)
++       if ((int)(TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile)) < 0)
+                return ErrGetErrorCode();
+
+        if ((pTabFile = fopen(pszTabFilePath, "rb")) == NULL) {
+@@ -463,7 +463,7 @@
+        TabHashIndex THI;
+        char szIdxFile[SYS_MAX_PATH], szRefKey[KEY_BUFFER_SIZE];
+
+-       if (TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile) < 0)
++       if ((int)(TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile)) < 0)
+                return NULL;
+
+        /* Calculate key & hash */
+@@ -533,7 +533,7 @@
+        char szIdxFile[SYS_MAX_PATH];
+
+        if (SysGetFileInfo(pszTabFilePath, FI_Tab) < 0 ||
+-           TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile) < 0)
++           (int)(TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile)) < 0)
+                return ErrGetErrorCode();
+        if (SysGetFileInfo(szIdxFile, FI_Index) < 0 || FI_Tab.tMod > FI_Index.tMod ||
+            TbixCheckIndex(szIdxFile) < 0) {
+@@ -557,7 +557,7 @@
+        TabHashIndex THI;
+        char szIdxFile[SYS_MAX_PATH];
+
+-       if (TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile) < 0 ||
++       if ((int)(TbixGetIndexFile(pszTabFilePath, piFieldsIdx, szIdxFile)) < 0 ||
+            (hArray = ArrayCreate(TAB_INIT_RESSET_SIZE)) == INVALID_ARRAY_HANDLE)
+                return INVALID_INDEX_HANDLE;
