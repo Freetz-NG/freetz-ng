@@ -1,10 +1,10 @@
---- configure
-+++ configure
+--- configure.org	2023-09-20 20:14:28.000000000 +0200
++++ configure	2023-09-20 20:23:24.809626500 +0200
 @@ -15588,7 +15588,7 @@
  
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: **************************************** PTY device files" >&5
  printf "%s\n" "$as_me: **************************************** PTY device files" >&6;}
--if test "x$cross_compiling" = "xno"; then
+-if test "x${cross_compiling}" = "xno"; then
 +if true || test "x$cross_compiling" = "xno"; then
      as_ac_File=`printf "%s\n" "ac_cv_file_"/dev/ptmx"" | $as_tr_sh`
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for \"/dev/ptmx\"" >&5
@@ -13,7 +13,7 @@
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: **************************************** entropy sources" >&5
  printf "%s\n" "$as_me: **************************************** entropy sources" >&6;}
  
--if test "x$cross_compiling" = "xno"; then
+-if test "x${cross_compiling}" = "xno"; then
 +if true || test "x$cross_compiling" = "xno"; then
  
  # Check whether --with-egd-socket was given.

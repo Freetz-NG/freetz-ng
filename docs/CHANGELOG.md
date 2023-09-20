@@ -72,6 +72,7 @@ Latest changes
    * Screen 4.9.1
    * SQLite 3.43.0
    * strace 4.9/5.0/6.5
+   * Stunnel 5.71
    * Tor 0.4.8.6
    * Transmission 3.00/4.0.4
    * Unbound 1.18.0
