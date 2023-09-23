@@ -78,7 +78,7 @@ Latest changes
    * Tor 0.4.8.6
    * Transmission 3.00/4.0.4
    * Unbound 1.18.0
-   * UnRAR 6.1.7/6.2.10
+   * UnRAR 6.1.7/6.2.11
    * Vim 9.0.1872
 
  - Libraries:
