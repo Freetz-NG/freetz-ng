@@ -75,7 +75,7 @@ Latest changes
    * SQLite 3.43.1
    * strace 4.9/5.0/6.5
    * Stunnel 5.71
-   * Tor 0.4.8.6
+   * Tor 0.4.8.7
    * Transmission 3.00/4.0.4
    * Unbound 1.18.0
    * UnRAR 6.1.7/6.2.11
