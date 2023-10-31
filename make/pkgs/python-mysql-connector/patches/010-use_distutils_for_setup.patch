@@ -1,0 +1,11 @@
+--- setup.py
++++ setup.py
+@@ -37,7 +37,7 @@
+ 
+ """
+ 
+-from setuptools import setup
++from distutils.core import setup
+ from distutils.command.install import INSTALL_SCHEMES
+ 
+ # Make sure that data files are actually installed in the package directory

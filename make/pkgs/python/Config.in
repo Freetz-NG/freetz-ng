@@ -332,6 +332,7 @@ if FREETZ_PACKAGE_PYTHON
 		source "make/pkgs/python-cheetah/Config.in"
 		source "make/pkgs/python-imaging-library/Config.in"
 		source "make/pkgs/python-mechanize/Config.in"
+		source "make/pkgs/python-mysql-connector/Config.in"
 		source "make/pkgs/python-pycrypto/Config.in"
 		source "make/pkgs/python-pycurl/Config.in"
 		source "make/pkgs/python-pyopenssl/Config.in"

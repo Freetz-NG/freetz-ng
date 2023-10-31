@@ -728,6 +728,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>python-mechanize: mechanize 0.2.5</u><a id='python-mechanize'></a>**<br>
     Stateful programmatic web browsing, after Andy Lester's Perl module WWW::Mechanize.
 
+  * **<u>python-mysql-connector: mysql-connector 8.0.21</u><a id='python-mysql-connector'></a>**<br>
+    Python MySQL Connector.
+
   * **<u>python-pycrypto: pycrypto 2.6.1</u><a id='python-pycrypto'></a>**<br>
     A collection of both secure hash functions (such as MD5 and SHA), and various encryption algorithms (AES, DES, IDEA, RSA, ElGamal, etc.).
 
