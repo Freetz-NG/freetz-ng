@@ -1,39 +1,24 @@
---- configure.org	2023-09-25 16:26:59.000000000 +0200
-+++ configure	2023-10-03 17:19:26.298510700 +0200
-@@ -10412,18 +10412,6 @@
-   printf "%s\n" "#define HAVE_ACCEPT4 1" >>confdefs.h
- 
- fi
--ac_fn_c_check_func "$LINENO" "backtrace" "ac_cv_func_backtrace"
--if test "x$ac_cv_func_backtrace" = xyes
--then :
--  printf "%s\n" "#define HAVE_BACKTRACE 1" >>confdefs.h
--
--fi
--ac_fn_c_check_func "$LINENO" "backtrace_symbols_fd" "ac_cv_func_backtrace_symbols_fd"
--if test "x$ac_cv_func_backtrace_symbols_fd" = xyes
--then :
--  printf "%s\n" "#define HAVE_BACKTRACE_SYMBOLS_FD 1" >>confdefs.h
--
--fi
- ac_fn_c_check_func "$LINENO" "eventfd" "ac_cv_func_eventfd"
- if test "x$ac_cv_func_eventfd" = xyes
- then :
-@@ -15116,12 +15104,6 @@
-   printf "%s\n" "#define HAVE_CRT_EXTERNS_H 1" >>confdefs.h
- 
- fi
--ac_fn_c_check_header_compile "$LINENO" "execinfo.h" "ac_cv_header_execinfo_h" "$ac_includes_default"
--if test "x$ac_cv_header_execinfo_h" = xyes
--then :
--  printf "%s\n" "#define HAVE_EXECINFO_H 1" >>confdefs.h
--
--fi
- ac_fn_c_check_header_compile "$LINENO" "gnu/libc-version.h" "ac_cv_header_gnu_libc_version_h" "$ac_includes_default"
- if test "x$ac_cv_header_gnu_libc_version_h" = xyes
- then :
---- configure.ac.org	2023-09-25 15:58:39.000000000 +0200
-+++ configure.ac	2023-10-03 17:15:57.957594200 +0200
+--- configure.org	2023-11-03 14:41:02.000000000 +0100
++++ configure	2023-11-07 22:07:55.000000000 +0100
+@@ -9821,8 +9821,6 @@
+ 	RtlSecureZeroMemory \
+ 	SecureZeroMemory \
+ 	accept4 \
+-	backtrace \
+-	backtrace_symbols_fd \
+ 	eventfd \
+ 	explicit_bzero \
+ 	timingsafe_memcmp \
+@@ -14001,7 +13999,6 @@
+ 		  unistd.h \
+ 		  arpa/inet.h \
+ 		  crt_externs.h \
+-		  execinfo.h \
+ 		  gnu/libc-version.h \
+ 		  grp.h \
+ 		  ifaddrs.h \
+--- configure.ac.org	2023-11-03 14:41:02.000000000 +0100
++++ configure.ac	2023-11-07 22:08:35.000000000 +0100
 @@ -687,8 +687,6 @@
  	RtlSecureZeroMemory \
  	SecureZeroMemory \

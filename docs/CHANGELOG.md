@@ -116,7 +116,7 @@ Latest changes
    * sslh 2.0.1
    * strace 4.9/5.0/6.6
    * Stunnel 5.71
-   * Tor 0.4.8.7
+   * Tor 0.4.8.8
    * Transmission 3.00/4.0.4
    * Unbound 1.18.0
    * UnRAR 6.1.7/6.2.12
