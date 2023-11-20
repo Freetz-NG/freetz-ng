@@ -20,7 +20,7 @@ jobs:
     steps:
 
       - name: lockdown
-        uses: dessant/repo-lockdown@v3
+        uses: dessant/repo-lockdown@v4
         with:
           github-token: ${{ github.token }}
           exclude-issue-labels: 'task,bug'
