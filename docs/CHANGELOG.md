@@ -61,6 +61,7 @@ Latest changes
    * SQLite 3.44.0
    * Tor 0.4.8.8
    * Unbound 1.19.0
+   * xsltproc 1.1.39
 
  - Libraries:
    * cairo 1.18.0
