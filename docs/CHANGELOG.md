@@ -66,8 +66,9 @@ Latest changes
  - Libraries:
    * cairo 1.18.0
    * harfbuzz 8.3.0
-   * libuv 1.44.2/1.47.0
    * libmaxminddb 1.8.0
+   * libuv 1.44.2/1.47.0
+   * libxml2 2.11.5
    * mbedTLS 2.7.19/2.28.6
 
  - Firmware updates:
