@@ -20,7 +20,7 @@ jobs:
     steps:
 
       - name: stalled
-        uses: actions/stale@v8
+        uses: actions/stale@v9
         with:
           stale-issue-message: 'stalled'
           stale-pr-message: 'stalled'
