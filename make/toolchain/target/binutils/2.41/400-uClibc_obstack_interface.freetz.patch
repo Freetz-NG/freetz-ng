@@ -1,0 +1,33 @@
+Workaround the following link problem:
+	tc-mips.o: In function `mips_parse_arguments':
+	tc-mips.c:(.text+0x9af8): undefined reference to `_obstack_free'
+	tc-mips.o: In function `md_assemble':
+	tc-mips.c:(.text+0xfb5c): undefined reference to `_obstack_free'
+	cond.o: In function `s_endif':
+	cond.c:(.text+0xcb0): undefined reference to `_obstack_free'
+	cond.o: In function `cond_exit_macro':
+	cond.c:(.text+0x120c): undefined reference to `_obstack_free'
+	hash.o: In function `hash_die':
+	hash.c:(.text+0x28c): undefined reference to `_obstack_free'
+	hash.o:hash.c:(.text+0x65c): more undefined references to `_obstack_free' follow
+
+The alternative would be to backport the following uclibc/uclibc-ng commits:
+ 1. http://www.uclibc-ng.org/changeset/532c68d561128b390b5436f2962c2f47aa8bc5f0/uclibc-ng
+ 2. http://www.uclibc-ng.org/changeset/975bca165c3e10e74c05c0384fd58f45a7025a3c/uclibc-ng
+ 3. http://www.uclibc-ng.org/changeset/736d9eee2731ba8c442ada629b14f4887cafaae2/uclibc-ng
+ 4. http://www.uclibc-ng.org/changeset/06e4fe64bbd01f16ee84da161b8e1a61e73b4cdb/uclibc-ng
+
+--- libiberty/obstack.c
++++ libiberty/obstack.c
+@@ -47,6 +47,11 @@
+ # endif
+ #endif
+ 
++/* uClibc(-ng) versions prior to 1.0.14 do not provide _obstack_free symbol */
++#if defined(__UCLIBC__) && ( (__UCLIBC_MAJOR__ == 0) || (__UCLIBC_MAJOR__ == 1 && __UCLIBC_MINOR__ == 0 && __UCLIBC_SUBLEVEL__ < 14) )
++# undef _OBSTACK_ELIDE_CODE
++#endif
++
+ #ifndef _OBSTACK_ELIDE_CODE
+ /* If GCC, or if an oddball (testing?) host that #defines __alignof__,
+    use the already-supplied __alignof__.  Otherwise, this must be Gnulib
