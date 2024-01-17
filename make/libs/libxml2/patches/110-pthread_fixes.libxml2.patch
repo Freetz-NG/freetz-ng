@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -15627,7 +15627,7 @@
+@@ -15636,7 +15636,7 @@
          *linux*)
              if test "${GCC}" = "yes" ; then
                  BASE_THREAD_LIBS="$THREAD_LIBS"
