@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, 3440200)
+$(call PKG_INIT_BIN, 3450000)
 $(PKG)_LIB_VERSION:=0.8.6
 $(PKG)_SOURCE:=$(pkg)-autoconf-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=1c6719a148bc41cf0f2bbbe3926d7ce3f5ca09d878f1246fcc20767b175bb407
-$(PKG)_SITE:=https://www.sqlite.org/2023
-### VERSION:=3.44.2
+$(PKG)_HASH:=72887d57a1d8f89f52be38ef84a6353ce8c3ed55ada7864eb944abd9a495e436
+$(PKG)_SITE:=https://www.sqlite.org/2024
+### VERSION:=3.45.0
 ### WEBSITE:=https://www.sqlite.org
 ### MANPAGE:=https://www.sqlite.org/docs.html
 ### CHANGES:=https://www.sqlite.org/changes.html
