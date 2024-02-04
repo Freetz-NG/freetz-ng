@@ -658,21 +658,45 @@ for horst in $(ip -4 -o addr show scope global up | grep -Po 'inet \K[\d.]+'); d
 	[ ${horst%.*} == ${ip%.*} ] && oa=$horst
 done
 if [ "$oa" == "unknown" ]; then
-	echo -ne "\n * Warning: It seems your network is not able to reach\n   $ip directly."
-	case $(ls /sys/class/net/ | grep -v "^lo$" | wc -w) in
-		0)	echo ;;
-		1)	echo " This command could help to fix:" ;;
-		*)	echo " One(!) of these commands could help to fix:" ;;
-	esac
-	for x in $(ls /sys/class/net/ | grep -v "^lo$"); do
-		if command -v ifconfig >/dev/null; then
-			IPNUM="$(ifconfig $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*) .*/\1/p')"
-			echo -e  "   $ \033[4msudo ifconfig $x:0 ${ip%.*}.$IPNUM up\033[0m"
+	if [ -n "${WSL_DISTRO_NAME}" ]; then
+		wsl_eth_ip=$(
+			netsh.exe interface ipv4 show ipaddresses "Ethernet" 2>/dev/null | \
+			grep '^Address * 192.168.178.'| \
+			sed 's/^Address *//; s/ .*$//'
+		)
+		if [ -n "${wsl_eth_ip}" ]; then
+			oa=${wsl_eth_ip}
 		else
-			IPNUM="$(ip -4 -o addr show up $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*)\/.*/\1/p' | head -n1)"
-			echo -e  "   $ \033[4msudo ip address add ${ip%.*}.$IPNUM dev $x\033[0m"
+			echo
+			echo " * Warning: It seems you run WSL with no static Ethernet Address configured."
+			echo
+			echo "   Notice also that the device shall be connected via Ethernet card (not WiFi),"
+			echo "   so that the device can be booted to allow the firmware to be loaded at boot."
+			echo
+			echo "   This command, to be run from CMD as Administrator, could help:"
+			echo
+			echo '   netsh interface ip set address "Ethernet" static 192.168.178.220 255.255.255.0 192.168.178.1'
+			echo
 		fi
-	done
+	else
+		echo -ne "\n * Warning: It seems your network is not able to reach\n   $ip directly."
+		case $(ls /sys/class/net/ | grep -v "^lo$" | wc -w) in
+			0)	echo ;;
+			1)	echo " This command could help to fix:" ;;
+			*)	echo " One(!) of these commands could help to fix:" ;;
+		esac
+		for x in $(ls /sys/class/net/ | grep -v "^lo$"); do
+			if command -v ifconfig >/dev/null; then
+				IPNUM="$(ifconfig $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*) .*/\1/p')"
+				echo -e  "   $ \033[4msudo ifconfig $x:0 ${ip%.*}.$IPNUM up\033[0m"
+			else
+				IPNUM="$(ip -4 -o addr show up $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*)\/.*/\1/p' | head -n1)"
+				echo -e  "   $ \033[4msudo ip address add ${ip%.*}.$IPNUM dev $x\033[0m"
+			fi
+		done
+	fi
+fi
+if [ "$oa" == "unknown" ]; then
 	echo -n  "   Proceed anyway? ([y]/n) "
 	read -n 1 -s PROCEED_NETCFG
 	[ "$PROCEED_NETCFG" != "y" -a -n "$PROCEED_NETCFG" ] && echo -e "n\n\naborted\n" && exit
