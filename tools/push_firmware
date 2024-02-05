@@ -78,7 +78,9 @@ quit" | ftp -v -n -p 2>/dev/null 1>&2 &
 	done
 	kill $bg_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
 	wait $bg_pid
+	[ $count -lt 10 -a -s "$tmpenv" ] || return 1
 	grep -qs ^wlan_ssid "$tmpenv" && dos2unix -q "$tmpenv" || rm -f "$tmpenv"
+	return 0
 }
 
 function read_enval() {
@@ -102,13 +104,17 @@ function push_fw() {
 	echo
 
 	wait_loader
-	read_env
+	if ! read_env; then
+		echo -e "\nIt appears that you are not actually connected to the device at boot time."
+		echo -e "Besides, the device shall be connected via Ethernet card (not Wi-Fi).\n"
+		exit 1
+	fi
 	for x in ProductID SerialNumber HWRevision HWSubRevision memsize linux_fs_start; do
 		eval env_$x="\$(read_enval '$x')"
 		eval echo -e "\ \ \ $x:\ \ \ \ \ \\\t   \$env_$x"
 	done
 	echo
-	[ "${PRODUCT% (*}" != "$env_ProductID" ] && echo "Error, ProductID of image does not match device"&& exit 1
+	[ "${PRODUCT% (*}" != "$env_ProductID" ] && echo "Error, ProductID of image does not match device" && exit 1
 
 	if [ -n "$ISRAM$ISFIT" ]; then
 		if [ "${FULLSIZE//0/}" == "x" ]; then
