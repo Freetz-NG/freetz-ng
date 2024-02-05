@@ -38,6 +38,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(TAR_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) $(TAR_TARGET_BINARY)
+	$(RM) $(TAR_HOST_TARGET_BINARY)
 
 $(TOOLS_FINISH)

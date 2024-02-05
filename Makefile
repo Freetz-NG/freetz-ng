@@ -494,7 +494,7 @@ tools-dirclean: $(TOOLS_DIRCLEAN)
 tools-distclean: $(TOOLS_DISTCLEAN)
 
 .PHONY: push_firmware push-firmware pf pfp tools-push_firmware
-pfp tools-push_firmware: netkit-ftp-host ncftp-host tichksum-host dtc-host uimg-host
+pfp tools-push_firmware: netkit-ftp-host ncftp-host dos2unix-host tichksum-host dtc-host uimg-host
 push_firmware push-firmware pf: tools-push_firmware
 	@if [ ! -e "images/latest.image" ]; then \
 		echo "Please run 'make' first to build an image."; exit 1; \

@@ -47,9 +47,7 @@ UIMG_TOOL="${TOOLS_DIR}/uimg"
 TSUM_TOOL="${TOOLS_DIR}/tichksum"
 FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
 
-WAIT_FOR_LOADER_DONE='n'
 function wait_loader() {
-	[ "$WAIT_FOR_LOADER_DONE" == "y" ] && return
 	echo -en " * No reply from box, assuming switch-off or restart. Trying to re-detect box.\n   Waiting "
 	[ -z "$SLEEP1" ] && SLEEP1=do || sleep 1
 	while ! ping $ping_params $ip > /dev/null; do
@@ -57,87 +55,34 @@ function wait_loader() {
 		sleep 0.2
 	done
 	echo -e ". found!\n"
-	WAIT_FOR_LOADER_DONE='y'
 }
 
-# Download the "env" file from the device and set ProductID, MAPSTART,
-# FULLSIZE, CURRENT_LFS, LFS. Check that the "env" file includes all needed
-# settings, as well as wlan_ssid (as the last setting of the file).
-# Will not replace variables already valued.
-# Return 0 if success, else 1
+# Download the "env" file from the device. Check that the "env" file includes 
+# wlan_ssid (as it is the last setting of the file).
 function read_env() {
-	echo "Reading 'env' file:"
-	TMP_ENV="/tmp/env-$$"
-	rm -f "$TMP_ENV"
+	tmpenv="$(mktemp -tu freetz_env_XXX)"
+	echo " * Reading 'env' file to $tmpenv"
 	echo "open $ip
 user adam2 adam2
 debug
 bin
 quote MEDIA SDRAM
-get env $TMP_ENV
-quit" | ftp -v -n -p &
+get env $tmpenv
+quit" | ftp -v -n -p 2>/dev/null 1>&2 &
 	bg_pid=$!
 
 	count=0  # give 10 seconds to read the file, detecting the ending line, then kill the FTP
-	until (( count == 10 )) || grep -qs wlan_ssid "$TMP_ENV"; do
+	until (( count == 10 )) || grep -qs wlan_ssid "$tmpenv"; do
 		sleep 1
 		let count=count+1
 	done
 	kill $bg_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
 	wait $bg_pid
-	test -f "$TMP_ENV" || return 1
-	env_file=$(<"$TMP_ENV")
-	rm -f "$TMP_ENV"
-
-	# All references must exist to continue
-	[[ "$env_file" == *"memsize "* ]] || return 1
-	[[ "$env_file" == *"linux_fs_start "* ]] || return 1
-	[[ "$env_file" == *"ProductID "* ]] || return 1
-	[[ "$env_file" == *"firstfreeaddress "* ]] || return 1
-
-	enval=$(echo "$env_file" | sed '/^memsize[\t ]/!d; s/^memsize[\t ]*//; s/\r//')
-	[ -z "$enval" ] && echo "Invalid value for memsize." && return 1
-	[ -z "$FULLSIZE" ] && [ "$enval" != "${enval#0x}" ] && FULLSIZE="$enval"
-
-	enval=$(echo "$env_file" | sed '/^linux_fs_start[\t ]/!d; s/^linux_fs_start[\t ]*//; s/\r//')
-	[ "$enval" != "0" -a "$enval" != "1" ] && echo "Invalid value for linux_fs_start." && return 1
-	CURRENT_LFS="$enval"
-	[ -z "$LFS" ] && LFS="$(( ($enval + 1) % 2))" #other
-	[ "$LFS" == "9" ] && LFS="$enval" #current
-
-	enval=$(echo "$env_file" | sed '/^ProductID[\t ]/!d; s/^ProductID[\t ]*//; s/\r//')
-	[ -z "$enval" ] && echo "Invalid value for ProductID." && return 1
-	[ -z "$ProductID" ] && ProductID="$enval"
-
-	enval=$(echo "$env_file" | sed '/^firstfreeaddress[\t ]/!d; s/^firstfreeaddress[\t ]*//; s/\r//')
-	[ -z "$enval" ] && echo "Invalid value for firstfreeaddress." && return 1
-	[ -z "$MAPSTART" ] && [ "$enval" != "${enval#0x}" ] && MAPSTART="$enval"
-	echo -e "'env' file downloaded with valid values.\n"
-	return 0
-}
-
-function get_device_params() {
-	wait_loader
-	if ! read_env; then
-		echo -e "\nYou need to run this program before booting the device."
-		echo -e "The device shall be connected via Ethernet card.\n"
-		exit 1
-	fi
-	if ! [[ "$PRODUCT" =~ "$ProductID"* ]]; then
-		echo "Firmware not appropriate for this device."
-		exit 1
-	fi
-	ISWAITS=true
+	grep -qs ^wlan_ssid "$tmpenv" && dos2unix -q "$tmpenv" || rm -f "$tmpenv"
 }
 
 function read_enval() {
-	ftp -v -n <<EOT | sed -rn "s/^$1[ \t]*//p"
-open $ip
-user adam2 adam2
-quote GETENV $1
-quote BYE
-quit
-EOT
+	sed -n "s/^$1[ \t]*[ \t]//p" "$tmpenv" 2>/dev/null
 }
 
 function push_fw() {
@@ -156,13 +101,20 @@ function push_fw() {
 	fi
 	echo
 
+	wait_loader
+	read_env
+	for x in ProductID SerialNumber HWRevision HWSubRevision memsize linux_fs_start; do
+		eval env_$x="\$(read_enval '$x')"
+		eval echo -e "\ \ \ $x:\ \ \ \ \ \\\t   \$env_$x"
+	done
+	echo
+	[ "${PRODUCT% (*}" != "$env_ProductID" ] && echo "Error, ProductID of image does not match device"&& exit 1
+
 	if [ -n "$ISRAM$ISFIT" ]; then
 		if [ "${FULLSIZE//0/}" == "x" ]; then
-			wait_loader
-			enval="$(read_enval memsize)"
-			[ "$enval" != "${enval#0x}" ] && FULLSIZE="$enval"
+			[ "$env_memsize" != "${env_memsize#0x}" ] && FULLSIZE="$env_memsize"
 			[ -z "$FULLSIZE" ] && echo "Invalid value for memsize." && exit 1
-			echo " * Detected memsize: '$enval'"
+			echo " * Detected memsize: '$env_memsize' (~$(($env_memsize/1024/1024)) MB)"
 			echo
 		fi
 
@@ -190,13 +142,11 @@ function push_fw() {
 
 	if [ ! $ISSINGLE ]; then
 		if [ ! $LFS ] || [ -n "$ISDUAL$ISUIMG" -a "$LFS" == "9" ]; then
-			wait_loader
-			enval="$(read_enval linux_fs_start)"
-			[ "$enval" != "0" -a "$enval" != "1" -a "$enval" != "" ] && echo "Invalid value for linux_fs_start." && exit 1
-			echo " * Detected linux_fs_start: '${enval:-<unset>}'"
-			[ -z "$enval" ] && enval=0 #factory
-			[ -z "$LFS" ]     && LFS="$(( ($enval + 1) % 2))" #other
-			[ "$LFS" == "9" ] && LFS="$enval" #current
+			[ "$env_linux_fs_start" != "0" -a "$env_linux_fs_start" != "1" -a "$env_linux_fs_start" != "" ] && echo "Invalid value for linux_fs_start." && exit 1
+			echo " * Detected linux_fs_start: '${env_linux_fs_start:-<unset>}'"
+			[ -z "$env_linux_fs_start" ] && env_linux_fs_start=0 #factory
+			[ -z "$LFS" ]     && LFS="$(( ($env_linux_fs_start + 1) % 2))" #other
+			[ "$LFS" == "9" ] && LFS="$env_linux_fs_start" #current
 			echo " * Designated linux_fs_start: $LFS"
 			echo
 		fi
@@ -219,7 +169,6 @@ function push_fw() {
 		fi
 	fi
 
-	wait_loader
 	echo " * Box is back up again, initiating transfer."
 	echo
 
@@ -491,10 +440,11 @@ prepare_image() {
 
 function cleanup() {
 	local val=$?
-	[ -n "$tmpdir"        -a -d "$tmpdir"        ] && rm -rf "$tmpdir";
-	[ -n "$tmpimg"        -a -f "$tmpimg"        ] && rm -rf "$tmpimg";
-	[ -n "${kernel_mtd1}" -a -f "${kernel_mtd1}" ] && rm -rf "${kernel_mtd1}";
-	[ -n "${kernel_mtd5}" -a -f "${kernel_mtd5}" ] && rm -rf "${kernel_mtd5}";
+	[ -n "${tmpenv}"      ] && [ -f "${tmpenv}"      ] && rm -f  "${tmpenv}"       # all modes
+	[ -n "${tmpdir}"      ] && [ -d "${tmpdir}"      ] && rm -fr "${tmpdir}"       # not single
+	[ -n "${tmpimg}"      ] && [ -f "${tmpimg}"      ] && rm -f  "${tmpimg}"       # single only
+	[ -n "${kernel_mtd1}" ] && [ -f "${kernel_mtd1}" ] && rm -f  "${kernel_mtd1}"  # alice only
+	[ -n "${kernel_mtd5}" ] && [ -f "${kernel_mtd5}" ] && rm -f  "${kernel_mtd5}"  # alice only
 	exit $val
 }
 trap cleanup EXIT SIGTERM SIGINT
@@ -534,6 +484,8 @@ EOX
 exit 1
 }
 
+
+# main
 while [ $# -ge 1 ]; do
 	case "$1" in
 		(-f|-force)
@@ -602,6 +554,13 @@ while [ $# -ge 1 ]; do
 	esac
 	shift
 done
+
+# trap cleanup
+tmpenv=""
+tmpdir=""
+tmpimg=""
+kernel_mtd1=""
+kernel_mtd5=""
 
 # environment
 [ "$FREETZ_FORCEPF" == "true" ] && ISFORCE=true
@@ -743,6 +702,7 @@ function relpath() {
 	echo "${URI#$PWD/}"
 }
 [ -n "$PRODUCT" ] && echo " * Product: $PRODUCT"
+echo " * Using dos2unix binary: $(relpath dos2unix)"
 echo " * Using tar binary: $(relpath tar)"
 echo " * Using ftp binary: $(relpath $UCMD)"
 echo " * Target host: $ip"
@@ -766,20 +726,20 @@ echo " * Flash mode: $OUTVAL-boot"
 if [ -n "$ISRAM$ISFIT" ]; then
 	if [ -z "$MAPSTART" ]; then
 		case "$PRODUCT" in
-			# RAM (BCM only!)
+			# BCM
 			Fritz_Box_HW224*)	MAPSTART=0x00000000 ;;  # 7581
 			Fritz_Box_HW228*)	MAPSTART=0x00000000 ;;  # 7582
 			# FIT
-			Fritz_Box_HW253*)	MAPSTART=0x40000000 ;;  # 6000
-			Fritz_Box_HW256*)	MAPSTART=0x00000000 ;;  # 7539
+###			Fritz_Box_HW253*)	MAPSTART=0x40000000 ;;  # 6000
+			Fritz_Box_HW256*)	MAPSTART=0x00000000 ;;  # 7530 AX
 			Fritz_Box_HW257*)	MAPSTART=0x20000000 ;;  # 5530
-			Fritz_Box_HW261*)	MAPSTART=0x40000000 ;;  # 4060
-#			Fritz_Box_HW265*)	MAPSTART=0x40000000 ;;  # GATEWAY
-			Fritz_Box_HW268*)	MAPSTART=0x40000000 ;;  # 1200 AX
-			Fritz_Box_HW270*)	MAPSTART=0x40000000 ;;  # 3000 AX
-			Fritz_Box_HW271*)	MAPSTART=0x40000000 ;;  # 7510
-			Fritz_Box_HW272*)	MAPSTART=0x40000000 ;;  # 5590
-#			Fritz_Box_HW275*)	MAPSTART=0x40000000 ;;  # 1240 AX
+###			Fritz_Box_HW261*)	MAPSTART=0x40000000 ;;  # 4060
+#			Fritz_Box_HW265*)	MAPSTART=0x??000000 ;;  # GATEWAY
+###			Fritz_Box_HW268*)	MAPSTART=0x40000000 ;;  # 1200 AX
+###			Fritz_Box_HW270*)	MAPSTART=0x40000000 ;;  # 3000 AX
+###			Fritz_Box_HW271*)	MAPSTART=0x40000000 ;;  # 7510
+###			Fritz_Box_HW272*)	MAPSTART=0x40000000 ;;  # 5590
+#			Fritz_Box_HW275*)	MAPSTART=0x??000000 ;;  # 1240 AX
 			*)
 				[ $ISRAM ] &&   MAPSTART=0x80000000
 				[ $ISFIT ] &&   MAPSTART=0x40000000
@@ -789,18 +749,18 @@ if [ -n "$ISRAM$ISFIT" ]; then
 	if [ -z "$FULLSIZE" ]; then
 		case "$PRODUCT" in
 			# RAM
-			Fritz_Box_HW175*)	FULLSIZE=0x08000000 ;;  # 3370      (128 MB)
-			Fritz_Box_HW177*)	FULLSIZE=0x08000000 ;;  # 6840      (128 MB)
-#			Fritz_Box_HW185*)	FULLSIZE=0x??000000 ;;  # 7490      (??? MB)
+			Fritz_Box_HW175*)	FULLSIZE=0x08000000 ;;  # 3370      (128 MB of 128 MB)
+			Fritz_Box_HW177*)	FULLSIZE=0x08000000 ;;  # 6840      (128 MB of 128 MB)
+#			Fritz_Box_HW185*)	FULLSIZE=0x??000000 ;;  # 7490      (??? MB of 256 MB)
 #			Fritz_Box_HW191*)	FULLSIZE=0x??000000 ;;  # 7369      (??? MB)
-			Fritz_Box_HW192*)	FULLSIZE=0x08000000 ;;  # 7272      (128 MB)
-			Fritz_Box_HW193*)	FULLSIZE=0x08000000 ;;  # 3390      (128 MB)
-			Fritz_Box_HW198*)	FULLSIZE=0x08000000 ;;  # 3272      (128 MB)
-			Fritz_Box_HW203*)	FULLSIZE=0x08000000 ;;  # 7362      (128 MB)
-			Fritz_Box_HW209*)	FULLSIZE=0x08000000 ;;  # 7412      (128 MB)
+			Fritz_Box_HW192*)	FULLSIZE=0x08000000 ;;  # 7272      (128 MB of 128 MB)
+			Fritz_Box_HW193*)	FULLSIZE=0x08000000 ;;  # 3390      (128 MB of 128 MB)
+			Fritz_Box_HW198*)	FULLSIZE=0x08000000 ;;  # 3272      (128 MB of 128 MB)
+			Fritz_Box_HW203*)	FULLSIZE=0x08000000 ;;  # 7362      (128 MB of 128 MB)
+			Fritz_Box_HW209*)	FULLSIZE=0x08000000 ;;  # 7412      (128 MB of 128 MB)
 #			Fritz_Box_HW212*)	FULLSIZE=0x??000000 ;;  # 3490      (??? MB)
-			Fritz_Box_HW214*)	FULLSIZE=0x08000000 ;;  # 6820 LTE  (128 MB)
-			Fritz_Box_HW218*)	FULLSIZE=0x08000000 ;;  # 7430      (128 MB)
+			Fritz_Box_HW214*)	FULLSIZE=0x08000000 ;;  # 6820 LTE  (128 MB of 128 MB)
+			Fritz_Box_HW218*)	FULLSIZE=0x08000000 ;;  # 7430      (128 MB of 128 MB)
 #			Fritz_Box_HW221*)	FULLSIZE=0x??000000 ;;  # 7560      (??? MB)
 			Fritz_Box_HW223*)	FULLSIZE=0x10000000 ;;  # 5490      (256 MB)
 			Fritz_Box_HW224*)	FULLSIZE=0x20000000 ;;  # 7581 BCM  (512 MB)
@@ -811,13 +771,13 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW236*)	FULLSIZE=0x10000000 ;;  # 7530      (256 MB)
 #			Fritz_Box_HW239*)	FULLSIZE=0x??000000 ;;  # 7583      (??? MB)
 #			Fritz_Box_HW243*)	FULLSIZE=0x??000000 ;;  # 5491      (??? MB)
-			Fritz_Box_HW244*)	FULLSIZE=0x10000000 ;;  # 1200      (256 MB)
+			Fritz_Box_HW244*)	FULLSIZE=0x10000000 ;;  # 1200      (256 MB of 256 MB)
 			Fritz_Box_HW246*)	FULLSIZE=0x10000000 ;;  # 3000      (256 MB)
 			Fritz_Box_HW247*)	FULLSIZE=0x10000000 ;;  # 7520      (256 MB)
 #			Fritz_Box_HW249*)	FULLSIZE=0x??000000 ;;  # 1260 V2   (??? MB)
-			Fritz_Box_HW254*)	FULLSIZE=0x08000000 ;;  # 6820 V3   (128 MB)
+			Fritz_Box_HW254*)	FULLSIZE=0x08000000 ;;  # 6820 V3   (128 MB of 128 MB)
 			Fritz_Box_HW258*)	FULLSIZE=0x20000000 ;;  # 6850 5G   (512 MB)
-			Fritz_Box_HW259*)	get_device_params   ;;  # 7590 AX   (192 MB)
+			Fritz_Box_HW259*)	FULLSIZE=0x0C000000 ;;  # 7590 AX   (192 MB of 512 MB)
 #			Fritz_Box_HW260*)	FULLSIZE=0x??000000 ;;  # 7583 VDSL (??? MB)
 			Fritz_Box_HW262*)	FULLSIZE=0x20000000 ;;  # 6850 LTE  (512 MB)
 			Fritz_Box_HW276*)	FULLSIZE=0x10000000 ;;  # 7520 B    (256 MB)
@@ -832,6 +792,7 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW271*)	FULLSIZE=0x20000000 ;;  # 7510      (512 MB)
 			Fritz_Box_HW272*)	FULLSIZE=0x40000000 ;;  # 5590      (1.0 GB)
 			Fritz_Box_HW275*)	FULLSIZE=0x10000000 ;;  # 1240 AX   (256 MB)
+			# defaults
 			*)
 				[ $ISRAM ] &&   FULLSIZE=0x0D000000     #           (208 MB)
 				[ $ISFIT ] &&   FULLSIZE=0x18000000     #           (384 MB)
@@ -879,3 +840,4 @@ fi
 echo
 echo done
 exit 0
+

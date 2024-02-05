@@ -45,6 +45,7 @@ TOOLS_TARXZBUNDLE:=tools-host
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
 TOOLS_CONDITIONAL+=avm-rle-host
+TOOLS_CONDITIONAL+=dos2unix-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
 TOOLS_CONDITIONAL+=gmp-host
