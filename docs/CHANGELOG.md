@@ -83,6 +83,7 @@ Latest changes
    * ProxyChains-NG 4.17
    * pyLoad 0.4.20/78162d75
    * socat 1.7.4.4
+   * Stunnel 5.72
    * Subversion 1.9.12/1.14.3
    * SQLite 3.45.0
    * strace 4.9/5.0/6.7
