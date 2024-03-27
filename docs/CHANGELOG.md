@@ -119,7 +119,7 @@ Latest changes
    * libtirpc 1.3.4
    * libusb1 1.0.23/1.0.27
    * libuv 1.44.2/1.48.0
-   * libxml2 2.12.5
+   * libxml2 2.12.6
    * mbedTLS 2.7.19/2.28.7
    * pcre2 10.43
    * zlib 1.3.1
