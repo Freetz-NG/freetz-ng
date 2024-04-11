@@ -35,6 +35,9 @@ $(PKG)_CONFIGURE_ENV += tor_cv_ldflags__pie=no
 $(PKG)_CONFIGURE_ENV += ac_cv_lib_cap_cap_init=no
 
 $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc
+$(PKG)_CONFIGURE_OPTIONS += --disable-asciidoc
+$(PKG)_CONFIGURE_OPTIONS += --disable-manpage
+$(PKG)_CONFIGURE_OPTIONS += --disable-html-manual
 $(PKG)_CONFIGURE_OPTIONS += --disable-tool-name-check
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
 $(PKG)_CONFIGURE_OPTIONS += --with-libevent-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
