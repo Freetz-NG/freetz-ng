@@ -188,14 +188,14 @@ ospf6d=$QUAGGA_OSPF6D
 ripd=$QUAGGA_RIPD
 ripngd=$QUAGGA_RIPNGD
 isisd=$QUAGGA_ISISD
-vtysh_enable=yes
-zebra_options=" --daemon -A 127.0.0.1"
-bgpd_options="  --daemon -A 127.0.0.1"
-ospfd_options=" --daemon -A 127.0.0.1"
-ospf6d_options="--daemon -A ::1"
-ripd_options="  --daemon -A 127.0.0.1"
-ripngd_options="--daemon -A ::1"
-isisd_options=" --daemon -A 127.0.0.1"
+vtysh_enable=$QUAGGA_VTYSH_OPTIONS
+zebra_options=$QUAGGA_ZEBRA_OPTIONS
+bgpd_options=$QUAGGA_BGPD_OPTIONS
+ospfd_options=$QUAGGA_OSPFD_OPTIONS
+ospf6d_options=$QUAGGA_OSPFD6_OPTIONS
+ripd_options=$QUAGGA_RIPD_OPTIONS
+ripngd_options=$QUAGGA_RIPNGD_OPTIONS
+isisd_options=$QUAGGA_ISISD_OPTIONS
 
 # Set priority of un-startable daemons to 'no' and substitute 'yes' to '0'
 convert_daemon_prios
