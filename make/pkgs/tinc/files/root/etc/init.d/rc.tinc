@@ -24,7 +24,7 @@ start() {
 }
 
 stop() {
-	$DAEMON_BIN --kill
+	$DAEMON_BIN --stop
 	for x in 1 2 3 4 5 6 7 8 9; do
 		pidof $DAEMON_BIN >/dev/null || break
 		sleep 1
