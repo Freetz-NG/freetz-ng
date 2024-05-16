@@ -84,6 +84,7 @@ Latest changes
  - Libraries:
    * libidn 1.42
    * libpng 1.6.43
+   * libxml2 2.12.7
    * pixman 0.43.4
 
  - Firmware updates:
