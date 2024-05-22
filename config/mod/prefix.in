@@ -133,6 +133,7 @@ config FREETZ_TYPE_PREFIX_SERIES_SUBDIR
 
 config FREETZ_TYPE_PREFIX_ALIEN_HARDWARE
 	string
+       	default "W504V_"      	    if FREETZ_TYPE_W504V_7270_V3
 	default "W701V_"            if FREETZ_TYPE_W701V_7170
 	default "W900V_"            if FREETZ_TYPE_W900V_7170
 	default "W920V_"            if FREETZ_TYPE_W920V_7570

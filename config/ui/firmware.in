@@ -925,6 +925,7 @@ config FREETZ_TYPE_ALIEN_HARDWARE
 		FREETZ_TYPE_3490 || \
 		(FREETZ_TYPE_7170 && !FREETZ_TYPE_LANG_A_CH) || \
 		FREETZ_TYPE_7270 || \
+		(FREETZ_TYPE_7270_V3 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_05_5X) || \
 		(FREETZ_TYPE_7330 && FREETZ_TYPE_LANG_DE) || \
 		(FREETZ_TYPE_7390 && FREETZ_TYPE_LANG_EN && FREETZ_AVM_VERSION_06_0X_MAX) || \
 		(FREETZ_TYPE_7430 && FREETZ_TYPE_LANG_DE && FREETZ_AVM_VERSION_06_8X_MIN) || \
@@ -1080,6 +1081,12 @@ choice
 		help
 			Enable this to compile an alien image for FritzBox FON WLAN 7570 based
 			on a 7270 image.
+
+        config FREETZ_TYPE_W504V_7270_V3
+                bool "Speedport W504V MK"
+                depends on FREETZ_TYPE_7270_V3 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_05_5X
+                help
+                        Enable this to compile a mod image for the Macedonian Speedport W504V.
 
 	config FREETZ_TYPE_7312_7330_XL
 		bool "7312"
