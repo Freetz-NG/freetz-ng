@@ -3,10 +3,10 @@
 
 isFreetzType W504V_7270_V3 || return 0
 
-if [ -z "$FIRMWARE2" ]; then
-	echo "ERROR: no tk firmware" 1>&2
-	exit 1
-fi
+# if [ -z "$FIRMWARE2" ]; then
+# 	echo "ERROR: no tk firmware" 1>&2
+# 	exit 1
+# fi
 echo1 "adapt firmware for Macedonian W504V"
 
 echo2 "moving default config dir"
