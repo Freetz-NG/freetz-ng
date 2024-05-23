@@ -21,6 +21,7 @@ menu "Firmware packaging (fwmod) options"
 		bool "Verify signature of image file" if FREETZ_SHOW_EXPERT
 		depends on FREETZ_AVM_HAS_SIGNATURE && ! FREETZ_FWMOD_SKIP_UNPACK
 		depends on !FREETZ_TYPE_3170_7170 && !FREETZ_TYPE_7150_7170
+		depends on !FREETZ_TYPE_W504V_7270_V3
 		default y
 		help
 			Keep this enabled to check the signature of the image

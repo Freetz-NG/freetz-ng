@@ -845,5 +845,4 @@ config FREETZ_DL_SOURCE2_HASH
 	default "03b1cfb34153115d03beb2db664824786fbeeeca62dc70f165c3c6eebf66fa77"      if FREETZ_TYPE_3170_7170
 	default "e31d455299d2c7bda0b262d28fd02bb5f4b96f2d127b5ddb5a749d422fe330a9"      if FREETZ_TYPE_7150_7170
 	default "49807f1aa040a88402d5db48f7d745940eebea3006e7ba1dd7e22bdc488c346b"      if FREETZ_TYPE_W501V
-       	default "<hash>"      								if FREETZ_TYPE_W504V_7270_V3
 
