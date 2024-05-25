@@ -1085,7 +1085,7 @@ choice
         config FREETZ_TYPE_W504V_7270_V3
                 bool "Speedport W504V MK"
                 depends on FREETZ_TYPE_7270_V3 && FREETZ_TYPE_LANG_EN
-		select FREETZ_REPLACE_KERNEL
+		select FREETZ_REPLACE_KERNEL if FREETZ_TYPE_FIRMWARE_05_5X
                 help
                         Enable this to compile a mod image for the Macedonian Speedport W504V.
 
