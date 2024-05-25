@@ -1,6 +1,6 @@
 --- linux-2.6.32/drivers/net/avm_cpmac/cpmac_product_conf.c
 +++ linux-2.6.32/drivers/net/avm_cpmac/cpmac_product_conf.c
-@@ -43,6 +43,66 @@
+@@ -63,6 +63,66 @@
                  }
              }
          },
@@ -66,4 +66,31 @@
 +        },
          { /* Fritz_Box_7270_AnnexA */
              "141 ",
+             2,
+@@ -163,6 +223,26 @@
+                 }
+             }
+         },
++        { /* Fritz_Box_504avm */
++            "164 ",
++            2,
++            {
++                {
++                    CPMAC_PHY_TYPE_AR8216,
++                    CPMAC_PHY_MODE_AR8216,
++                    0x1f,
++                    26,
++                    0x0
++                },
++                {
++                    CPMAC_PHY_TYPE_NONE,
++                    CPMAC_PHY_MODE_DEFAULT,
++                    0x1,
++                    0xffff,
++                    0x0
++                }
++            }
++        },
+         { /* Fritz_Box_7270v4 */
+             "167 ",
              2,
