@@ -31,9 +31,10 @@ cp "${FILESYSTEM_TK_DIR}/lib/modules/bitfile_pots.bit" "${FILESYSTEM_MOD_DIR}/li
 echo2 "replacing S11-piglet"
 cp -pf "${FILESYSTEM_TK_DIR}/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_DIR}/etc/init.d"
 
-# LED patch
 echo2 "replacing led_module"
+# target path fits for 5.24 and 5.53
 cp -f "${FILESYSTEM_TK_DIR}/lib/modules/2.6.32.21/kernel/drivers/char/led_module.ko" "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.32.41/kernel/drivers/char"
+# patch the module version string
 modsed "s/2\.6\.32\.21/2.6.32.41/g" "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.32.41/kernel/drivers/char/led_module.ko"
 
 # patch install script to accept firmware for w504v

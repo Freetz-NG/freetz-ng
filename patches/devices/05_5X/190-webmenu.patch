@@ -1,3 +1,18 @@
+--- usr/www/all/templates/menu_page_end.html
++++ usr/www/all/templates/menu_page_end.html
+@@ -31,9 +31,10 @@
+ box.out([[<a href=']]..config.NEWSLETTER_URL..[[' target='_blank' style='margin-right:0px;'>{?22:606?}</a> | ]])
+ end
+ if (config.language=="de") then
+-box.out([[<a href='http://www.avm.de' target='_blank' style='margin-right:0px;'>avm.de</a> ]])
++box.out([[<a href='http://www.avm.de' target='_blank'>www.avm.de</a> | ]])
+ else
+-box.out([[<a href='http://www.avm.de/en' target='_blank' style='margin-right:0px;'>avm.de</a> ]])
++box.out([[<a href='http://www.avm.de/en' target='_blank'>www.avm.de</a> | ]])
+ end
++box.out([[<a href='https://freetz-ng.github.io' target='_blank' style='margin-right:0px;'>freetz-ng.github.io</a> ]])
+ ?>
+ </div>
 --- usr/www/all/menus/menu_freetz.lua
 +++ usr/www/all/menus/menu_freetz.lua
 @@ -0,0 +1,8 @@
