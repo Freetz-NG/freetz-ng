@@ -3,10 +3,10 @@
 
 isFreetzType W504V_7270_V3 || return 0
 
-# if [ -z "$FIRMWARE2" ]; then
-# 	echo "ERROR: no tk firmware" 1>&2
-# 	exit 1
-# fi
+if [ -z "$FIRMWARE2" ]; then
+	echo "ERROR: no tk firmware" 1>&2
+	exit 1
+fi
 echo1 "adapt firmware for Macedonian W504V"
 
 echo2 "moving default config dir"
@@ -31,10 +31,11 @@ cp "${FILESYSTEM_TK_DIR}/lib/modules/bitfile_pots.bit" "${FILESYSTEM_MOD_DIR}/li
 echo2 "replacing S11-piglet"
 cp -pf "${FILESYSTEM_TK_DIR}/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_DIR}/etc/init.d"
 
+# LED patch
+echo2 "replacing led_module"
+cp -f "${FILESYSTEM_TK_DIR}/lib/modules/2.6.32.21/kernel/drivers/char/led_module.ko" "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.32.41/kernel/drivers/char"
+modsed "s/2\.6\.32\.21/2.6.32.41/g" "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.32.41/kernel/drivers/char/led_module.ko"
+
 # patch install script to accept firmware for w504v
 echo2 "applying install patch"
 modsed "s/ur8_16MB_xilinx_4eth_2ab_isdn_nt_te_pots_wlan_usb_host_dect_plus_55266/ur8_16MB_xilinx_4eth_2ab_isdn_pots_wlan_usb_host_dect_504avm_07585/g" "${FIRMWARE_MOD_DIR}/var/install"
-
-# Check LEDs then remap if there is a need
-# echo2 "replacing led_module"
-# cp -f "${FILESYSTEM_TK_DIR}/lib/modules/2.6.32.21/kernel/drivers/char/led_module.ko" "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.32.41/kernel/drivers/char"
