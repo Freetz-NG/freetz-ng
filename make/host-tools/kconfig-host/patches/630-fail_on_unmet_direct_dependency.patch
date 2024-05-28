@@ -1,6 +1,6 @@
 --- scripts/kconfig/symbol.c
 +++ scripts/kconfig/symbol.c
-@@ -301,7 +301,7 @@
+@@ -305,7 +305,7 @@
  	struct gstr gs = str_new();
  
  	str_printf(&gs,
@@ -9,11 +9,11 @@
  		   sym->name);
  	str_printf(&gs,
  		   "  Depends on [%c]: ",
-@@ -316,6 +316,7 @@
+@@ -319,6 +319,7 @@
+ 			       "  Selected by [m]:\n");
  
  	fputs(str_get(&gs), stderr);
- 	sym_warnings++;
 +	exit(1);
  }
  
- bool sym_dep_errors(void)
+ void sym_calc_value(struct symbol *sym)
