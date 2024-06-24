@@ -25,11 +25,11 @@ cat fos-dwn fos-rel | sort -u > fos-xxx
 
 #lab
 echo -e '\n### FOS-Labor ##################################################'
-for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
+for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-100000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab
 #inh
 echo -e '\n### FOS-Inhaus #################################################'
-for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
+for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-100000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1000  Version=$m  -a; done | tee fos-inh
 #sub
 cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; done
