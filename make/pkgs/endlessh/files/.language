@@ -1,0 +1,8 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+        usr/lib/cgi-bin/endlessh.cgi
+}

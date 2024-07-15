@@ -88,6 +88,7 @@ Latest changes
    * CCID 1.5.5
    * dtach 0.9
    * Dropbear 2024.85
+   * endlessh 1.0
    * FFmpeg 5.1.4
    * Fontconfig 2.15.0
    * Git 2.45.2

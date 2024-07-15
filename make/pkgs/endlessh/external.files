@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_ENDLESSH" == "y" ] && EXTERNAL_FILES+=" /usr/bin/endlessh"
