@@ -11,30 +11,7 @@ config() {
 }
 
 start() {
-	# copied from modlibrc since we need to start the daemon in background (endlessh has no fork option)
-	echo -n "Starting ${DAEMON_LONG_NAME} ... "
-	config
-
-	if [ ! -x "$(which $DAEMON_BIN)" ]; then
-		echo "could not execute $DAEMON_BIN, failed."
-		exit 1
-	fi
-
-	startdaemon_pre
-	local rv_pre=$?
-	nohup $DAEMON_BIN -f $DAEMON_CONFIG >/dev/null 2>&1 &
-	local pid=$!
-	echo $pid > $PID_FILE
-	local rv=$?
-	startdaemon_post
-	local rv_post=$?
-
-	if [ $rv_pre -ne 0 -o $rv -ne 0 -o $rv_post -ne 0 ]; then
-		echo 'failed.'
-		exit $rv
-	fi
-
-	echo 'done.'
+	modlib_startdaemon start-stop-daemon -S -b -q -m -p $PID_FILE -n $DAEMON -a $DAEMON_BIN -- -f $DAEMON_CONFIG
 }
 
 case $1 in
@@ -50,14 +27,14 @@ case $1 in
 		modlib_stop
 		;;
 	start)
-		modlib_start &
+		modlib_start
 		;;
 	stop)
 		modlib_stop
 		rm -rf /tmp/$DAEMON
 		;;
 	restart)
-		modlib_restart &
+		modlib_restart
 		;;
 	status)
 		modlib_status

@@ -1,5 +1,6 @@
 config FREETZ_PACKAGE_ENDLESSH
-	bool "endlessh 1.0"
+        select FREETZ_BUSYBOX_START_STOP_DAEMON
+	bool "endlessh"
 	default n
 	help
 		Endlessh is an SSH tarpit that very slowly sends an endless, 
