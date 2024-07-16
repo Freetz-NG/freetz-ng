@@ -8,8 +8,6 @@ $(PKG)_SITE:=https://github.com/skeeto/$(pkg)/releases/download/$($(PKG)_VERSION
 $(PKG)_BINARY:=$($(PKG)_DIR)/endlessh
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/endlessh
 
-$(PKG)_CFLAGS := $(TARGET_CFLAGS)
-
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
