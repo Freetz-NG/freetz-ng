@@ -4,9 +4,11 @@ $(PKG)_HASH:=b3e03d7342f2b8f33644f66388f484cdfead45cabed7a9a93f8be50f8bc91a42
 $(PKG)_SITE:=https://github.com/skeeto/$(pkg)/releases/download/$($(PKG)_VERSION)
 ### CHANGES:=https://github.com/skeeto/endlessh/releases
 ### CVSREPO:=https://github.com/skeeto/endlessh.git
+### SUPPORT:=pfichtner
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/endlessh
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/endlessh
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
