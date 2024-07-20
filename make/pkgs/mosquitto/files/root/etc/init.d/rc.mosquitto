@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DAEMON=mosquitto
+DAEMON_LONG_NAME=Mosquitto
 MODPATH=/mod/etc
 CONF=$MODPATH/mosquitto.conf
 PID_FILE=/var/run/mosquitto.pid
@@ -21,7 +22,7 @@ case "$1" in
 		fi
 		mkdir -p /tmp/flash/mosquitto
 
-		modreg cgi 'mosquitto' 'mosquitto'
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
                 modreg file $DAEMON extra 'extra' 0 mosquitto_extra
 
