@@ -1,6 +1,6 @@
 --- lib/Makefile
 +++ lib/Makefile
-@@ -57,7 +57,7 @@
+@@ -58,7 +58,7 @@
  
  all : ${ALL_DEPS}
  ifeq ($(WITH_SHARED_LIBRARIES),yes)
@@ -9,7 +9,7 @@
  endif
  
  install : all
-@@ -76,7 +76,7 @@
+@@ -77,7 +77,7 @@
  	$(INSTALL) -m644 ../libmosquitto.pc.in "${DESTDIR}${libdir}/pkgconfig/libmosquitto.pc"
  	sed ${SEDINPLACE} -e "s#@CMAKE_INSTALL_PREFIX@#${prefix}#" -e "s#@VERSION@#${VERSION}#" "${DESTDIR}${libdir}/pkgconfig/libmosquitto.pc"
  ifeq ($(WITH_SHARED_LIBRARIES),yes)
@@ -18,7 +18,7 @@
  endif
  
  uninstall :
-@@ -89,7 +89,7 @@
+@@ -90,7 +90,7 @@
  
  clean :
  	-rm -f *.o libmosquitto.so.${SOVERSION} libmosquitto.so libmosquitto.a *.gcno *.gcda
