@@ -16,6 +16,9 @@ start() {
 
 case "$1" in
 	""|load)
+		if [ ! -d /var/run/mosquitto ]; then
+			mkdir -p /var/run/mosquitto && chown nobody:nobody /var/run/mosquitto
+		fi
 		mkdir -p /tmp/flash/mosquitto
 
 		modreg cgi 'mosquitto' 'mosquitto'

@@ -4,7 +4,7 @@
 
 cat << EOF
 user nobody
-pid_file /var/run/mosquitto.pid
+pid_file /var/run/mosquitto/mosquitto.pid
 allow_anonymous true
 listener $MOSQUITTO_PORT
 persistence false
