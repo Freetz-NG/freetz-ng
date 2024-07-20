@@ -5,7 +5,7 @@
 cat << EOF
 user nobody
 pid_file /var/run/mosquitto.pid
-port $MOSQUITTO_PORT
+listener $MOSQUITTO_PORT
 persistence false
 EOF
 
