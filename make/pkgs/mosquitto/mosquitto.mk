@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://mosquitto.org/files/source
 ### MANPAGE:=https://www.mosquitto.org/documentation/
 ### CHANGES:=https://mosquitto.org/blog/
 ### CVSREPO:=https://github.com/eclipse/mosquitto
+### SUPPORT:=pfichtner
 
 $(PKG)_BINARY_BROKER:=$($(PKG)_DIR)/src/mosquitto
 $(PKG)_BINARY_MOSQUITTO_PASSWD:=$($(PKG)_DIR)/src/mosquitto_passwd
