@@ -849,7 +849,7 @@ Latest changes
    * mbed TLS 2.7.19/2.27.0
    * mc (Midnight Commander) 4.8.27
    * minidlna 1.3.0
-   * Mosquitto 1.6.15
+   * Mosquitto 2.0.18
    * OpenSSH 8.7p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1l/3.0.0
    * OpenVPN 2.4.11/2.5.3
