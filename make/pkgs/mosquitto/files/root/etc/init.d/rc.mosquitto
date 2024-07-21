@@ -4,7 +4,7 @@ DAEMON=mosquitto
 DAEMON_LONG_NAME=Mosquitto
 MODPATH=/mod/etc
 CONF=$MODPATH/$DAEMON.conf
-PID_FILE=/var/run/$DAEMON.pid
+PID_FILE=/var/run/$DAEMON/$DAEMON.pid
 . /etc/init.d/modlibrc
 
 config() {

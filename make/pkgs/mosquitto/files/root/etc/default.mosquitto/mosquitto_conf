@@ -5,12 +5,16 @@
 cat << EOF
 user nobody
 pid_file /var/run/mosquitto/mosquitto.pid
-allow_anonymous true
 listener $MOSQUITTO_PORT
-persistence false
 EOF
 
-if [ "$MOSQUITTO_SYSLOG" = "yes" ]; then
-	echo "# Possible destinations are: stdout stderr syslog topic file"
-	echo "log_dest syslog"
+[ "$MOSQUITTO_ALLOW_ANONYMOUS" = "yes" ] && echo "allow_anonymous true"
+
+if [ -n "$MOSQUITTO_PERSISTENCE_PATH" ]; then
+	echo "persistence true" && echo "persistence_location $MOSQUITTO_PERSISTENCE_PATH"
+else
+	echo "persistence false"
 fi
+
+[ "$MOSQUITTO_SYSLOG" = "yes" ] && echo "log_dest syslog"
+

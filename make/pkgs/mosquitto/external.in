@@ -37,5 +37,13 @@ if EXTERNAL_FREETZ_PACKAGE_MOSQUITTO
 			externals the following file(s):
 			 /usr/bin/mosquitto_sub
 
+	config EXTERNAL_FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR
+		bool "Mosquitto request/response messaging client"
+		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/mosquitto_rr
+
 endif # EXTERNAL_FREETZ_PACKAGE_MOSQUITTO
 

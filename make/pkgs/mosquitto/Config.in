@@ -1,7 +1,7 @@
 config FREETZ_PACKAGE_MOSQUITTO
 	bool "Mosquitto 2.0.18"
 	default n
-	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB && !FREETZ_PACKAGE_MOSQUITTO_PASSWD)
+	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB && !FREETZ_PACKAGE_MOSQUITTO_PASSWD)
 	help
 		Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements
 		the MQTT protocol versions 5.0, 3.1.1 and 3.1. MQTT provides a lightweight method of
@@ -24,7 +24,7 @@ if FREETZ_PACKAGE_MOSQUITTO
 		bool # "libmosquitto"
 		select FREETZ_LIB_librt       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 		select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB || FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB
+		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB || FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB|| FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR
 		default y
 
 	config FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB
@@ -38,6 +38,12 @@ if FREETZ_PACKAGE_MOSQUITTO
 		default n
 		help
 			Adds the mosquitto subscribe client to the image
+
+	config FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR
+		bool "include request/response messaging client"
+		default n
+		help
+			Adds the mosquitto request/response messaging client to the image
 
 	comment "passwd binary not available, needs OpenSSL 1.0 or newer"
 		depends on !FREETZ_OPENSSL_VERSION_1_MIN
