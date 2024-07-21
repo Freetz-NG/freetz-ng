@@ -3,8 +3,8 @@
 DAEMON=mosquitto
 DAEMON_LONG_NAME=Mosquitto
 MODPATH=/mod/etc
-CONF=$MODPATH/mosquitto.conf
-PID_FILE=/var/run/mosquitto.pid
+CONF=$MODPATH/$DAEMON.conf
+PID_FILE=/var/run/$DAEMON.pid
 . /etc/init.d/modlibrc
 
 config() {
@@ -17,21 +17,21 @@ start() {
 
 case "$1" in
 	""|load)
-		if [ ! -d /var/run/mosquitto ]; then
-			mkdir -p /var/run/mosquitto && chown nobody:nobody /var/run/mosquitto
+		if [ ! -d /var/run/$DAEMON ]; then
+			mkdir -p /var/run/$DAEMON && chown nobody:nobody /var/run/$DAEMON
 		fi
-		mkdir -p /tmp/flash/mosquitto
+		mkdir -p /tmp/flash/$DAEMON
 
 		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
-                modreg file $DAEMON extra 'extra' 0 mosquitto_extra
+                modreg file $DAEMON extra 'extra' 0 $DAEMON_extra
 
 		modlib_start $MOSQUITTO_ENABLED
 		;;
 	unload)
-		modunreg file mosquitto
+		modunreg file $DAEMON
 		modunreg daemon $DAEMON
-		modunreg cgi mosquitto
+		modunreg cgi $DAEMON
 		modlib_stop
 		;;
 	start)
