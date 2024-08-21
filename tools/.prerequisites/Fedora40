@@ -57,4 +57,4 @@ unar
 util-linux
 wget
 xz
-zlib-devel
+zlib-ng-devel
