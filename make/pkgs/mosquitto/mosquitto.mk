@@ -9,7 +9,7 @@ $(PKG)_SITE:=https://mosquitto.org/files/source
 ### SUPPORT:=pfichtner
 
 $(PKG)_BINARY_BROKER:=$($(PKG)_DIR)/src/mosquitto
-$(PKG)_BINARY_MOSQUITTO_PASSWD:=$($(PKG)_DIR)/src/mosquitto_passwd
+$(PKG)_BINARY_MOSQUITTO_PASSWD:=$($(PKG)_DIR)/apps/mosquitto_passwd/mosquitto_passwd
 $(PKG)_BINARY_CLIENT_PUB:=$($(PKG)_DIR)/client/mosquitto_pub
 $(PKG)_BINARY_CLIENT_SUB:=$($(PKG)_DIR)/client/mosquitto_sub
 $(PKG)_BINARY_CLIENT_RR:=$($(PKG)_DIR)/client/mosquitto_rr
