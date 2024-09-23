@@ -1332,6 +1332,17 @@ if [ "$DO_MOD" -gt 0 ]; then
 		sizeinfo dir "${ADDON_DIR}/${pkg}"
 	done
 
+	#Copy Cargo binaries
+	CARGO_DIR=${PACKAGES_DIR}/cargo
+	CARGO_TARGET_DIR=${FILESYSTEM_MOD_DIR}/usr/bin
+	echo0 "copying cargo binaries"
+	if [ -d ${CARGO_DIR}/bin ]; then
+		for binary in ${CARGO_DIR}/bin/*; do
+			cp $binary ${CARGO_TARGET_DIR}/
+			echo1 "copied $binary"
+		done
+	fi	
+
 	if [ "$FREETZ_AVM_HAS_USB_HOST" == "y" ]; then
 		echo1 "checking blkid tools"
 		blkids=0

@@ -1,0 +1,6 @@
+config FREETZ_PACKAGE_RIPGREP
+	bool "Ripgrep 14.1.1 (rg)"
+	default n
+	help
+	  Ripgrep is a line-oriented search tool that recursively searches your current directory for a regex pattern.
+	  By default, ripgrep will respect your .gitignore and automatically skip hidden files/directories and binary files.

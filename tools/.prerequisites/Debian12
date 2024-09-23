@@ -47,6 +47,7 @@ perl
 pkg-config
 pv
 rsync
+rustup
 sharutils
 sqlite3
 subversion

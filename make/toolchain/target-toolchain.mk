@@ -11,10 +11,12 @@ include $(MAKE_DIR)/toolchain/target/gcc/gcc.mk
 include $(MAKE_DIR)/toolchain/target/uclibc/uclibc.mk
 include $(MAKE_DIR)/toolchain/target/ccache/ccache.mk
 include $(MAKE_DIR)/toolchain/target/libtool-staging/libtool-staging.mk
+include $(MAKE_DIR)/toolchain/target/rustup/rustup.mk
 
 TARGET_TOOLCHAIN := binutils gcc $(STDCXXLIB) $(if $(FREETZ_TOOLCHAIN_CCACHE),ccache)
 TARGET_TOOLCHAIN += $(if $(FREETZ_TARGET_TOOLCHAIN),binutils_target gcc_target uclibc_target)
 TARGET_TOOLCHAIN += libtool-staging $(if $(FREETZ_PACKAGE_GDB_HOST),gdbhost)
+TARGET_TOOLCHAIN += rustup
 
 $(TARGET_TOOLCHAIN_DIR):
 	@mkdir -p $@
