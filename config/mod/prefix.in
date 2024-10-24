@@ -142,6 +142,7 @@ config FREETZ_TYPE_PREFIX_ALIEN_HARDWARE
 	default "3270v3_"           if FREETZ_TYPE_3270_V3_7270_V3
 	default "3370_"             if FREETZ_TYPE_3370_3490
 	default "3390_"             if FREETZ_TYPE_3390_3490
+ 	default "3490_"             if FREETZ_TYPE_3490_7490
 	default "7112_"             if FREETZ_TYPE_7112_7170
 	default "7113_"             if FREETZ_TYPE_7113_7170
 	default "7140_"             if FREETZ_TYPE_7140_7170
