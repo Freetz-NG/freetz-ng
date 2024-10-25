@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.0.18)
+$(call PKG_INIT_BIN, 2.0.20)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=d665fe7d0032881b1371a47f34169ee4edab67903b2cd2b4c083822823f4448a
+$(PKG)_HASH:=ebd07d89d2a446a7f74100ad51272e4a8bf300b61634a7812e19f068f2759de8
 $(PKG)_SITE:=https://mosquitto.org/files/source
 ### WEBSITE:=https://www.mosquitto.org/
 ### MANPAGE:=https://www.mosquitto.org/documentation/
