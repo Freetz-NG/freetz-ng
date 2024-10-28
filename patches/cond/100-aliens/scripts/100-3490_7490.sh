@@ -41,8 +41,8 @@ modsed 's/CONFIG_PRODUKT=.*$/CONFIG_PRODUKT="Fritz_Box_HW212"/g' "${FILESYSTEM_M
 modsed 's/CONFIG_PRODUKT_NAME=.*$/CONFIG_PRODUKT_NAME="FRITZ!Box 3490"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_VERSION_MAJOR=.*$/CONFIG_VERSION_MAJOR="140"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 
-#echo2 "copying missing files"
-#cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_DIR}/etc/init.d"
+echo2 "copying missing files"
+cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_DIR}/etc/init.d"
 #if isFreetzType FIRMWARE_07_2X || isFreetzType FIRMWARE_07_5X; then
 #	cp -pd "${DIR}/.tk/original/filesystem/etc/boot.d/core/tffs" "${FILESYSTEM_MOD_DIR}/etc/boot.d/core/tffs"
 #	modsed 's/ifconfig lo 127.0.0.1/ifconfig lo 127.0.0.1\nip link set up dev vlan_master0\nip link set up dev eth2.2\nip link set up dev eth3.3\n/g' \
