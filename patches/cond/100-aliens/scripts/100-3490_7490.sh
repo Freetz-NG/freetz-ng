@@ -12,10 +12,10 @@ echo1 "adapt firmware for 3490"
 #	cp -p "${DIR}/.tk/original/kernel/kernel.raw" "${DIR}/modified/kernel/kernel.raw"
 #fi
 
-#echo2 "copying install script"
-#cp -p "${DIR}/.tk/original/firmware/var/install" "${DIR}/modified/firmware/var/install"
-#VERSION=`grep "newFWver=0" "${DIR}/original/firmware/var/install" | sed -n 's/newFWver=\(.*\)/\1/p'`
-#modsed "s/07\.12/${VERSION}/g" "${DIR}/modified/firmware/var/install"
+echo2 "copying install script"
+cp -p "${DIR}/.tk/original/firmware/var/install" "${DIR}/modified/firmware/var/install"
+VERSION=`grep "newFWver=0" "${DIR}/original/firmware/var/install" | sed -n 's/newFWver=\(.*\)/\1/p'`
+modsed "s/07\.12/${VERSION}/g" "${DIR}/modified/firmware/var/install"
 
 echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
@@ -26,13 +26,13 @@ mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
 #   ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212
 #cp -rpd "${DIR}/.tk/original/filesystem/etc/default.Fritz_Box_HW212" "${FILESYSTEM_MOD_DIR}/etc"
 
-#echo2 "creating missing oem symlinks"
-#if isFreetzType LANG_EN; then
-#	ln -sf avm "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212/avme"
-#	ln -sf all "${FILESYSTEM_MOD_DIR}/usr/www/avm"
-#else
-#	ln -sf all "${FILESYSTEM_MOD_DIR}/usr/www/avme"
-#fi
+echo2 "creating missing oem symlinks"
+if isFreetzType LANG_EN; then
+	ln -sf avm "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212/avme"
+	ln -sf all "${FILESYSTEM_MOD_DIR}/usr/www/avm"
+else
+	ln -sf all "${FILESYSTEM_MOD_DIR}/usr/www/avme"
+fi
 
 echo2 "patching rc.S and rc.conf"
 #modsed 's/CONFIG_USB_XHCI=.*$/CONFIG_USB_XHCI="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
@@ -56,16 +56,16 @@ cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_
 #	cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/E46-net" "${FILESYSTEM_MOD_DIR}/etc/init.d"
 #fi
 
-#echo2 "deleting obsolete files"
-#for i in \
-#  /lib/modules/bitfile_isdn.bit \
-#  /lib/modules/bitfile_pots.bit \
-#  /lib/modules/dectfw* \
-#  /etc/default.Fritz_Box_HW212/1und1 \
-#  /usr/www/1und1 \
-#  ; do
-#	rm_files "${FILESYSTEM_MOD_DIR}/$i"
-#done
+echo2 "deleting obsolete files"
+for i in \
+  /lib/modules/bitfile_isdn.bit \
+  /lib/modules/bitfile_pots.bit \
+  /lib/modules/dectfw* \
+  /etc/default.Fritz_Box_HW212/1und1 \
+  /usr/www/1und1 \
+  ; do
+	rm_files "${FILESYSTEM_MOD_DIR}/$i"
+done
 
 # patch install script to accept firmware from 7490
 echo2 "applying install patch"
