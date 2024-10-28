@@ -7,11 +7,6 @@ fi
 
 echo1 "adapt firmware for 3490"
 
-#if isFreetzType FIRMWARE_07_1X || isFreetzType FIRMWARE_07_2X || isFreetzType FIRMWARE_07_5X && [ "$FREETZ_REPLACE_KERNEL" != "y" ]; then
-#	echo2 "copying kernel"
-#	cp -p "${DIR}/.tk/original/kernel/kernel.raw" "${DIR}/modified/kernel/kernel.raw"
-#fi
-
 echo2 "copying install script"
 cp -p "${DIR}/.tk/original/firmware/var/install" "${DIR}/modified/firmware/var/install"
 VERSION=`grep "newFWver=0" "${DIR}/original/firmware/var/install" | sed -n 's/newFWver=\(.*\)/\1/p'`
@@ -20,11 +15,6 @@ modsed "s/^newFWver=.*$/newFWver=${VERSION}/g" "${DIR}/modified/firmware/var/ins
 echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
    ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212
-
-#echo2 "merging default config dir"
-#mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
-#   ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212
-#cp -rpd "${DIR}/.tk/original/filesystem/etc/default.Fritz_Box_HW212" "${FILESYSTEM_MOD_DIR}/etc"
 
 echo2 "creating missing oem symlinks"
 if isFreetzType LANG_EN; then
@@ -35,7 +25,6 @@ else
 fi
 
 echo2 "patching rc.S and rc.conf"
-#modsed 's/CONFIG_USB_XHCI=.*$/CONFIG_USB_XHCI="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_DECT=.*$/CONFIG_DECT="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_DECT_HOME=.*$/CONFIG_DECT_HOME="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_HOME_AUTO=.*$/CONFIG_HOME_AUTO="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
@@ -47,14 +36,6 @@ modsed 's/CONFIG_VERSION_MAJOR=.*$/CONFIG_VERSION_MAJOR="140"/g' "${FILESYSTEM_M
 
 echo2 "copying missing files"
 cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_DIR}/etc/init.d"
-#if isFreetzType FIRMWARE_07_2X || isFreetzType FIRMWARE_07_5X; then
-#	cp -pd "${DIR}/.tk/original/filesystem/etc/boot.d/core/tffs" "${FILESYSTEM_MOD_DIR}/etc/boot.d/core/tffs"
-#	modsed 's/ifconfig lo 127.0.0.1/ifconfig lo 127.0.0.1\nip link set up dev vlan_master0\nip link set up dev eth2.2\nip link set up dev eth3.3\n/g' \
-#		"${FILESYSTEM_MOD_DIR}/etc/boot.d/core/config"
-#else
-#	cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S08-tffs" "${FILESYSTEM_MOD_DIR}/etc/init.d"
-#	cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/E46-net" "${FILESYSTEM_MOD_DIR}/etc/init.d"
-#fi
 
 echo2 "deleting obsolete files"
 for i in \
