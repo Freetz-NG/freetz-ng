@@ -15,7 +15,7 @@ echo1 "adapt firmware for 3490"
 echo2 "copying install script"
 cp -p "${DIR}/.tk/original/firmware/var/install" "${DIR}/modified/firmware/var/install"
 VERSION=`grep "newFWver=0" "${DIR}/original/firmware/var/install" | sed -n 's/newFWver=\(.*\)/\1/p'`
-modsed "s/07\.12/${VERSION}/g" "${DIR}/modified/firmware/var/install"
+modsed "s/^newFWver=.*$/newFWver=${VERSION}/g" "${DIR}/modified/firmware/var/install"
 
 echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
