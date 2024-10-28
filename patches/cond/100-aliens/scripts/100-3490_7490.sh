@@ -36,6 +36,10 @@ mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
 
 echo2 "patching rc.S and rc.conf"
 #modsed 's/CONFIG_USB_XHCI=.*$/CONFIG_USB_XHCI="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
+modsed 's/CONFIG_DECT=.*$/CONFIG_DECT="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
+modsed 's/CONFIG_DECT_HOME=.*$/CONFIG_DECT_HOME="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
+modsed 's/CONFIG_HOME_AUTO=.*$/CONFIG_HOME_AUTO="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
+modsed 's/CONFIG_HOME_AUTO_NET=.*$/CONFIG_HOME_AUTO_NET="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_INSTALL_TYPE=.*$/CONFIG_INSTALL_TYPE="mips34_512MB_vdsl_4geth_2usb_host_offloadwlan11n_17525"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_PRODUKT=.*$/CONFIG_PRODUKT="Fritz_Box_HW212"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 modsed 's/CONFIG_PRODUKT_NAME=.*$/CONFIG_PRODUKT_NAME="FRITZ!Box 3490"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
