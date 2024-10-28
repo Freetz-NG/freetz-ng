@@ -17,6 +17,10 @@ cp -p "${DIR}/.tk/original/firmware/var/install" "${DIR}/modified/firmware/var/i
 VERSION=`grep "newFWver=0" "${DIR}/original/firmware/var/install" | sed -n 's/newFWver=\(.*\)/\1/p'`
 modsed "s/07\.12/${VERSION}/g" "${DIR}/modified/firmware/var/install"
 
+#echo2 "moving default config dir"
+#mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
+#   ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212
+
 echo2 "merging default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
    ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212
