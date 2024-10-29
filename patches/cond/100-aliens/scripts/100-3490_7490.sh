@@ -25,25 +25,8 @@ else
 fi
 
 echo2 "patching rc.S and rc.conf"
-modsed "s/\(CONFIG_.*MEDIA.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf" # Media
-modsed "s/\(CONFIG_.*MTD.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"   # MTD
 modsed "s/\(CONFIG_.*FAX.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"   # FAX
 modsed "s/\(CONFIG_.*DECT.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  # DECT
-
-# Other
-modsed 's/CONFIG_CONFIGSPACE_ONNAND=.*$/CONFIG_CONFIGSPACE_ONNAND="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_ONLINEPB=.*$/CONFIG_ONLINEPB="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_XILINX=.*$/CONFIG_XILINX="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-
-# Remote
-modsed 's/CONFIG_T38=.*$/CONFIG_T38="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_TR369=.*$/CONFIG_TR369="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-
-# Telephony
-modsed 's/CONFIG_AB_COUNT=.*$/CONFIG_AB_COUNT="0"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_CAPI_NT=.*$/CONFIG_CAPI_NT="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_CAPI_POTS=.*$/CONFIG_CAPI_POTS="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_CAPI_TE=.*$/CONFIG_CAPI_TE="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 
 # AHA
 modsed 's/CONFIG_DECT_HOME=.*$/CONFIG_DECT_HOME="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
