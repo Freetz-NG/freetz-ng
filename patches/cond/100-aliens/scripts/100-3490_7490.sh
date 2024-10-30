@@ -25,6 +25,11 @@ else
 fi
 
 echo2 "patching rc.S and rc.conf"
+# Telephony
+modsed 's/CONFIG_AB_COUNT=.*$/CONFIG_AB_COUNT="0"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
+modsed 's/CONFIG_T38=.*$/CONFIG_T38="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
+modsed "s/\(CONFIG_.*FON.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"   # FON
+modsed "s/\(CONFIG_.*CAPI.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  # CAPI
 modsed "s/\(CONFIG_.*FAX.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"   # FAX
 modsed "s/\(CONFIG_.*DECT.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  # DECT
 
