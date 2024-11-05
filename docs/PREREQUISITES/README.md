@@ -10,6 +10,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
  - [Debian](#debian)
  - [Devuan](#devuan)
  - [Ubuntu](#ubuntu)
+ - [Mint](#mint)
  - [Kali](#kali)
  - sonst keine
 
@@ -307,6 +308,9 @@ sudo apt-get -y install \
   libncurses5-dev libreadline-dev libstring-crc32-perl libtool libusb-dev make patch perl pkg-config \
   python realpath subversion texinfo tofrodos unzip xz-utils zlib1g-dev
 ```
+
+### Mint
+Mint wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
 
 ### Kali
 Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
