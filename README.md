@@ -21,7 +21,6 @@ More features - less bugs!
  * You need an up to date Linux System with some [prerequisites](docs/PREREQUISITES/README.md).
  * Or download a ready-to-use VM like Gismotro's [Freetz-Linux](https://freetz.digital-eliteboard.com/?dir=Teamserver/Freetz/Freetz-VM/VirtualBox/) (user & pass: `freetz`).
  * There are also Docker images available like [pfichtner-freetz](https://hub.docker.com/r/pfichtner/freetz) ([README](https://github.com/pfichtner/pfichtner-freetz#readme)).
- * Your linux user needs to have set `umask 0022` before checkout and during make.
 
 ### Clone the main branch:
 ```
