@@ -83,6 +83,58 @@ for i in \
 	rm_files "${FILESYSTEM_MOD_DIR}/$i"
 done
 
+echo2 "deleting obsolete webui files"
+for i in \
+  /usr/www/avm/assis/assi_fax_intern.lua \
+  /usr/www/avm/css/rd/arrow.css \
+  /usr/www/avm/css/rd/elements/elem_buttons_aus_blue.png \
+  /usr/www/avm/css/rd/elements/elem_buttons_ein_blue.png \
+  /usr/www/avm/css/rd/icons/ic_dect_* \
+  /usr/www/avm/css/rd/illustrations/illu_avmRepeater.png \
+  /usr/www/avm/css/rd/illustrations/illu_dect* \
+  /usr/www/avm/css/rd/images/img_dect_* \
+  /usr/www/avm/css/rd/selection_area.css \
+  /usr/www/avm/fon_devices* \
+  /usr/www/avm/html/moh_failed.html \
+  /usr/www/avm/html/moh_ok.html \
+  /usr/www/avm/html/phonebook_* \
+  /usr/www/avm/js/arrow.js \
+  /usr/www/avm/js/ha_draw.js \
+  /usr/www/avm/js/ha_sets.js \
+  /usr/www/avm/js/ha_switch_timer.js \
+  /usr/www/avm/js/selection_area.js \
+  /usr/www/avm/js/sffcoder.js \
+  /usr/www/avm/js/text2canvas.js \
+  /usr/www/avm/meter* \
+  /usr/www/avm/net/home_auto_* \
+  /usr/www/avm/webservices* \
+  /usr/www/avme/assis/assi_fax_intern.lua \
+  /usr/www/avme/css/rd/arrow.css \
+  /usr/www/avme/css/rd/elements/elem_buttons_aus_blue.png \
+  /usr/www/avme/css/rd/elements/elem_buttons_ein_blue.png \
+  /usr/www/avme/css/rd/icons/ic_dect_* \
+  /usr/www/avme/css/rd/illustrations/illu_avmeRepeater.png \
+  /usr/www/avme/css/rd/illustrations/illu_dect* \
+  /usr/www/avme/css/rd/images/img_dect_* \
+  /usr/www/avme/css/rd/selection_area.css \
+  /usr/www/avme/fon_devices* \
+  /usr/www/avme/html/moh_failed.html \
+  /usr/www/avme/html/moh_ok.html \
+  /usr/www/avme/html/phonebook_* \
+  /usr/www/avme/js/arrow.js \
+  /usr/www/avme/js/ha_draw.js \
+  /usr/www/avme/js/ha_sets.js \
+  /usr/www/avme/js/ha_switch_timer.js \
+  /usr/www/avme/js/selection_area.js \
+  /usr/www/avme/js/sffcoder.js \
+  /usr/www/avme/js/text2canvas.js \
+  /usr/www/avme/meter* \
+  /usr/www/avme/net/home_auto_* \
+  /usr/www/avme/webservices* \
+  ; do
+	rm_files "${FILESYSTEM_MOD_DIR}/$i"
+done
+
 # patch install script to accept firmware from 7490
 echo2 "applying install patch"
 modsed "s/mips34_512MB_xilinx_vdsl_dect446_4geth_2ab_isdn_nt_te_pots_2usb_host_wlan11n_27490/mips34_512MB_vdsl_4geth_2usb_host_offloadwlan11n_17525/g" "${FIRMWARE_MOD_DIR}/var/install"
