@@ -49,10 +49,35 @@ cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_
 
 echo2 "deleting obsolete files"
 for i in \
-  /lib/modules/bitfile_isdn.bit \
-  /lib/modules/bitfile_pots.bit \
-  /lib/modules/dectfw* \
+  /bin/supportdata.aha \
+  /bin/supportdata.dect \
+  /etc/avm_firmware_public_key3 \
+  /etc/default.049/fx_lcr.1und1 \
   /etc/default.Fritz_Box_HW212/1und1 \
+  /etc/init.d/S78-aha \
+  /etc/templates/fax_rcv_message* \
+  /etc/templates/fax_send_message* \
+  /lib/libfax*.so* \
+  /lib/libfbpbook.so \
+  /lib/libfoncclient.so \
+  /lib/modules/3.10.107/kernel/drivers/char/dect_io* \
+  /lib/modules/3.10.107/kernel/drivers/char/Piglet_noemif* \
+  /lib/modules/3.10.107/kernel/drivers/isdn/avm_dect* \
+  /lib/modules/bitfile*.bit \
+  /lib/modules/dectfw*.hex \
+  /lib/systemd/system/aha.service \
+  /sbin/carddavd \
+  /sbin/start_dect_update.sh \
+  /usr/bin/aha \
+  /usr/bin/ahamailer \
+  /usr/bin/dect_* \
+  /usr/bin/faxd \
+  /usr/share/aha* \
+  /usr/share/configd/dectmediadefault.xml \
+  /usr/share/ctlmgr/libdect.so \
+  /usr/share/telefon/fax-test.pdf \
+  /usr/www.myfritz/1und1 \
+  /usr/www.nas/1und1 \
   /usr/www/1und1 \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$i"
