@@ -1187,7 +1187,7 @@ choice
 			Enable this to compile an alien image for FritzBox 7412 based on a 7430 image.
 
 	config FREETZ_TYPE_3490_7490
-		bool "3490 - UNTESTED"
+		bool "3490 - LED Layout same as 7490!"
 		depends on FREETZ_TYPE_7490
 		help
 			Enable this to compile an alien image for FritzBox 3490 based
