@@ -23,12 +23,6 @@ modsed 's/CONFIG_T38=.*$/CONFIG_T38="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.
 modsed "s/\(CONFIG_.*FON.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"   # FON
 modsed "s/\(CONFIG_.*CAPI.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  # CAPI
 modsed "s/\(CONFIG_.*FAX.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"   # FAX
-modsed "s/\(CONFIG_.*DECT.*=\).*/\1\"n\"/" "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"  # DECT
-
-# AHA
-modsed 's/CONFIG_DECT_HOME=.*$/CONFIG_DECT_HOME="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_HOME_AUTO=.*$/CONFIG_HOME_AUTO="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
-modsed 's/CONFIG_HOME_AUTO_NET=.*$/CONFIG_HOME_AUTO_NET="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 
 # ProductInfo
 modsed 's/CONFIG_INSTALL_TYPE=.*$/CONFIG_INSTALL_TYPE="mips34_512MB_vdsl_4geth_2usb_host_offloadwlan11n_17525"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
@@ -41,30 +35,17 @@ cp -pd "${DIR}/.tk/original/filesystem/etc/init.d/S11-piglet" "${FILESYSTEM_MOD_
 
 echo2 "deleting obsolete files"
 for i in \
-  /bin/supportdata.aha \
   /bin/supportdata.dect \
-  /etc/avm_firmware_public_key3 \
-  /etc/init.d/S78-aha \
   /etc/templates/fax_rcv_message* \
   /etc/templates/fax_send_message* \
   /lib/libfax*.so* \
   /lib/libfbpbook.so \
   /lib/libfoncclient.so \
-  /lib/modules/3.10.107/kernel/drivers/char/dect_io* \
   /lib/modules/3.10.107/kernel/drivers/char/Piglet_noemif* \
-  /lib/modules/3.10.107/kernel/drivers/isdn/avm_dect* \
   /lib/modules/bitfile*.bit \
-  /lib/modules/dectfw*.hex \
-  /lib/systemd/system/aha.service \
   /sbin/carddavd \
-  /sbin/start_dect_update.sh \
-  /usr/bin/aha \
-  /usr/bin/ahamailer \
-  /usr/bin/dect_* \
   /usr/bin/faxd \
-  /usr/share/aha* \
   /usr/share/configd/dectmediadefault.xml \
-  /usr/share/ctlmgr/libdect.so \
   /usr/share/telefon/fax-test.pdf \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$i"
@@ -72,53 +53,26 @@ done
 
 echo2 "deleting obsolete webui files"
 for i in \
-  /usr/www/avm/assis/assi_fax_intern.lua \
-  /usr/www/avm/css/rd/arrow.css \
-  /usr/www/avm/css/rd/elements/elem_buttons_aus_blue.png \
-  /usr/www/avm/css/rd/elements/elem_buttons_ein_blue.png \
-  /usr/www/avm/css/rd/icons/ic_dect_* \
-  /usr/www/avm/css/rd/illustrations/illu_avmRepeater.png \
-  /usr/www/avm/css/rd/illustrations/illu_dect* \
-  /usr/www/avm/css/rd/images/img_dect_* \
-  /usr/www/avm/css/rd/selection_area.css \
-  /usr/www/avm/fon_devices* \
-  /usr/www/avm/html/moh_failed.html \
-  /usr/www/avm/html/moh_ok.html \
-  /usr/www/avm/html/phonebook_* \
-  /usr/www/avm/js/arrow.js \
-  /usr/www/avm/js/ha_draw.js \
-  /usr/www/avm/js/ha_sets.js \
-  /usr/www/avm/js/ha_switch_timer.js \
-  /usr/www/avm/js/selection_area.js \
-  /usr/www/avm/js/sffcoder.js \
-  /usr/www/avm/js/text2canvas.js \
-  /usr/www/avm/meter* \
-  /usr/www/avm/net/home_auto_* \
-  /usr/www/avm/webservices* \
-  /usr/www/avme/assis/assi_fax_intern.lua \
-  /usr/www/avme/css/rd/arrow.css \
-  /usr/www/avme/css/rd/elements/elem_buttons_aus_blue.png \
-  /usr/www/avme/css/rd/elements/elem_buttons_ein_blue.png \
-  /usr/www/avme/css/rd/icons/ic_dect_* \
-  /usr/www/avme/css/rd/illustrations/illu_avmeRepeater.png \
-  /usr/www/avme/css/rd/illustrations/illu_dect* \
-  /usr/www/avme/css/rd/images/img_dect_* \
-  /usr/www/avme/css/rd/selection_area.css \
-  /usr/www/avme/fon_devices* \
-  /usr/www/avme/html/moh_failed.html \
-  /usr/www/avme/html/moh_ok.html \
-  /usr/www/avme/html/phonebook_* \
-  /usr/www/avme/js/arrow.js \
-  /usr/www/avme/js/ha_draw.js \
-  /usr/www/avme/js/ha_sets.js \
-  /usr/www/avme/js/ha_switch_timer.js \
-  /usr/www/avme/js/selection_area.js \
-  /usr/www/avme/js/sffcoder.js \
-  /usr/www/avme/js/text2canvas.js \
-  /usr/www/avme/meter* \
-  /usr/www/avme/net/home_auto_* \
-  /usr/www/avme/webservices* \
-  ; do
+  /usr/www/all/assis/assi_fax_intern.lua \
+  /usr/www/all/css/rd/arrow.css \
+  /usr/www/all/css/rd/elements/elem_buttons_aus_blue.png \
+  /usr/www/all/css/rd/elements/elem_buttons_ein_blue.png \
+  /usr/www/all/css/rd/icons/ic_dect_* \
+  /usr/www/all/css/rd/illustrations/illu_avmRepeater.png \
+  /usr/www/all/css/rd/illustrations/illu_dect* \
+  /usr/www/all/css/rd/images/img_dect_* \
+  /usr/www/all/css/rd/selection_area.css \
+  /usr/www/all/fon_devices* \
+  /usr/www/all/html/moh_failed.html \
+  /usr/www/all/html/moh_ok.html \
+  /usr/www/all/html/phonebook_* \
+  /usr/www/all/js/arrow.js \
+  /usr/www/all/js/ha_sets.js \
+  /usr/www/all/js/ha_switch_timer.js \
+  /usr/www/all/js/selection_area.js \
+  /usr/www/all/js/sffcoder.js \
+  /usr/www/all/js/text2canvas.js \
+  ; do	
 	rm_files "${FILESYSTEM_MOD_DIR}/$i"
 done
 
