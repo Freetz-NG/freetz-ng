@@ -1,0 +1,11 @@
+config FREETZ_PACKAGE_VLMCSD
+	bool "VLMCSD 1113 (binary only)"
+        select FREETZ_PACKAGE_VLMCSDSETUP
+	default n
+	help
+		vlmcsd is a fully Microsoft compatible KMS server hat provides
+		product activation services to clients.
+		It is designed to run on POSIX compatible operating systens.
+		Only requirements are a basic C library with a BSD-style
+		sockets API and either fork(2) or pthreads(7). That allows it
+		to run on most embedded systems like routers, NASes, etc.

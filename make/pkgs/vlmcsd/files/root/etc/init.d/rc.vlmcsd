@@ -1,0 +1,44 @@
+#!/bin/sh
+
+DAEMON=vlmcsd
+. /etc/init.d/modlibrc
+if [ -r ../default.$DAEMON/$DAEMON.cfg ]; then
+     . ../default.$DAEMON/$DAEMON.cfg
+fi
+
+start() {
+	modlib_startdaemon $DAEMON -L $VLMCSD_IP -P $VLMCSD_PORT -R $VLMCSD_RENEW -A $VLMCSD_RETRY
+}
+
+case $1 in
+	""|load)
+		modreg cgi 'vlmcsd' 'Microsoft KMS-Server'
+		modreg daemon $DAEMON
+		modlib_start
+		;;
+	start)
+		modlib_start
+		;;
+
+	stop)
+		modlib_stop
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg cgi $DAEMON
+		modlib_stop
+		;;
+	restart)
+		modlib_stop
+		modlib_start
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0
