@@ -28,7 +28,7 @@ jobs:
       if: steps.cache-deps.outputs.cache-hit != 'true'
 
     - name: Get firmware
-      run: wget https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.00.image -P ${{ runner.home }}/.freetz-dl/fw
+      run: wget https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.00.image -P $HOME/.freetz-dl/fw
       
     - name: Configure
       run: |
