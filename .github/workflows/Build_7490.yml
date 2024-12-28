@@ -1,0 +1,91 @@
+name: Build 7490 image
+
+on: workflow_dispatch
+#  push:
+#    branches: [ "master" ]
+#    tags:
+#      - "v*"
+#  pull_request:
+#    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Cache dependencies
+      id: cache-deps
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/tools-prerequisites
+        key: ${{ runner.os }}-tools-prerequisites-${{ hashFiles('path/to/dependencies') }}
+        restore-keys: |
+          ${{ runner.os }}-tools-prerequisites-
+    - name: Install dependencies
+      run: tools/prerequisites install -y
+      if: steps.cache-deps.outputs.cache-hit != 'true'
+
+    - name: Copy addons
+      run:  tar xvfz addon/addons.tar.gz -C $HOME/
+      id: copy-addons
+      
+    - name: Configure
+      run: |
+        cat config7490 > .config
+        make oldconfig
+    - name: Cache build output
+      id: cache-build
+      uses: actions/cache@v3
+      with:
+        path: build
+        key: ${{ runner.os }}-build-${{ hashFiles('.config', 'Makefile') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+    - name: Build
+      run: make
+
+    - name: Create/Update TAG Name
+      id: update_tag
+      run: |
+        firmware_number=$(cat ${{ github.workspace }}/build/original/firmware/var/version | cut -d= -f2 | cut -d, -f1)
+        export FIRMWARE_NUMBER=$firmware_number
+        echo FIRMWARE_NUMBER=$firmware_number >> $GITHUB_ENV
+        current_date=$(date +'%d%m%Y_%H%M%S')
+        firmware_number_with_date="7490_${firmware_number}.${current_date}"
+        export TAG_NAME=$firmware_number_with_date
+        echo TAG_NAME=$firmware_number_with_date >> $GITHUB_ENV
+      shell: bash
+    
+    - name: Find IMAGE_PATH
+      id: find_image_path
+      run: |
+        image_path=`find ${{ github.workspace }}/images -name "*.image" -type f | grep 7490`
+        image_path=$(printf '%q' "$image_path")
+        export IMG_PATH=$image_path
+        echo "IMG_PATH=$image_path" >> $GITHUB_ENV
+        asset_path=$(basename "$image_path")
+        echo "ASSET_PATH=$asset_path" >> $GITHUB_ENV
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.TAG_NAME }}
+        release_name: Release 7490-${{ env.FIRMWARE_NUMBER }}
+        allowUpdates: true
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.IMG_PATH }}
+        asset_name: ${{ env.ASSET_PATH }}
+        asset_content_type: application/zip
