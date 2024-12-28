@@ -27,6 +27,9 @@ jobs:
       run: tools/prerequisites install -y
       if: steps.cache-deps.outputs.cache-hit != 'true'
 
+    - name: Get firmware
+      run: wget https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.00.image -P ${{ runner.home }}//.freetz-dl/fw
+      
     - name: Configure
       run: |
         cat config7590 > .config
