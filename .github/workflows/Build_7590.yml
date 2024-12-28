@@ -27,10 +27,6 @@ jobs:
       run: tools/prerequisites install -y
       if: steps.cache-deps.outputs.cache-hit != 'true'
 
-    - name: Copy addons
-      run:  tar xvfz addon/addons.tar.gz -C $HOME/
-      id: copy-addons
-      
     - name: Configure
       run: |
         cat config7590 > .config
