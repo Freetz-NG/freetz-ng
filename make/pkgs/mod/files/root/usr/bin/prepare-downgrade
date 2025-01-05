@@ -8,7 +8,7 @@ if [ -e /var/tmp/version ]; then
 	echo 'already done.'
 else
 	MAJOR="$(/etc/version -v | sed 's/^[0-9]*\.//;s/\.[0-9]*$//')"
-	[ "$MAJOR" -gt 6 ] 2>/dev/null && FAKEVER="06.90" || FAKEVER="01.01"
+	[ "$MAJOR" -gt 7 ] 2>/dev/null && FAKEVER="07.59" || { [ "$MAJOR" -gt 6 ] 2>/dev/null && FAKEVER="06.90" || FAKEVER="01.01"; }
 	sed "s/\({CONFIG_VERSION_MAJOR}\)[^\"]*\(.*\)/\1.$FAKEVER\2/" /etc/version > /var/tmp/version
 	chmod +x /var/tmp/version
 	mount -o bind /var/tmp/version /etc/version
