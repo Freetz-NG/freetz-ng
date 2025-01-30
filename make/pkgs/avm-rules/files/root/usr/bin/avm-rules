@@ -3,7 +3,7 @@
 
 [ -r /var/mod/etc/conf/avm-rules.cfg ] && . /var/mod/etc/conf/avm-rules.cfg
 
-dstip='169.254.1.1'
+dstip="$AVM_RULES_IP"
 stats='/proc/kdsld/dsliface/internet/ipmasq/pcp44'
 
 log() {
@@ -17,7 +17,7 @@ start() {
 	echo "Starting daemon script" | log
 	while true; do
 		[ -r /var/mod/etc/conf/avm-rules.cfg ] && . /var/mod/etc/conf/avm-rules.cfg
-		[ -z "$AVM_RULES_TCP" ] && [ -z "$AVM_RULES_UDP" ] && echo "Error, can not start without any configured ports." && exit 1
+		[ -z "$AVM_RULES_TCP" ] && [ -z "$AVM_RULES_UDP" ] && echo "$(lang de:"Fehler, kann ohne einen konfigurierten Port nicht starten" en:"Error, can not start without any configured ports.")" && exit 1
 		[ "$AVM_RULES_SECONDS" -le 120 ] 2>/dev/null || AVM_RULES_SECONDS="120"  # check input
 
 		for x in $AVM_RULES_TCP; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten tcp $dstip $x $AVM_RULES_SECONDS FREETZ-tcp-$x | log; done
@@ -42,7 +42,7 @@ start() {
 }
 
 stats() {
-	echo "Currently opened ports:"
+	echo "$(lang de:"Momentan freigegebene Ports:" en:"Currently opened ports:")"
 	grep "^MAP .* \[${dstip}\]" $stats | sort
 }
 usage() {

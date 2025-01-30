@@ -14,6 +14,8 @@ sec_end
 
 sec_begin "$(lang de:"Einstellungen" en:"Settings")"
 
+cgi_print_textline_p "ip" "$AVM_RULES_IP" 15/15 "IP$(lang de:"-Adresse" en:" address"): "
+
 cat << EOF
 $(lang de:"Freizugebende Ports, mehrere durch Leerzeichen getrennt" en:"Ports to open, multiple seperated by spaces").
 EOF

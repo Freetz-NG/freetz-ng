@@ -5,4 +5,5 @@ default
 files
 {
 	usr/lib/cgi-bin/avm-rules.cgi
+	usr/bin/avm-rules
 }
