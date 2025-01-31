@@ -408,7 +408,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_scrpn_7490-07.19.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_scrpn_7490-07.19.tar.gz)
    - [source-files-FRITZ.Box_scrpn_7490-07.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_scrpn_7490-07.21.tar.gz)
  * fritzbox-7510/
-   - [source-files-FRITZ.Box_7510-maple-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7510/source-files-FRITZ.Box_7510-maple-08.00.tar.gz)
+   - [source-files-FRITZ.Box_7510-maple-08.02.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7510/source-files-FRITZ.Box_7510-maple-08.02.tar.gz)
  * fritzbox-7520/
    - [source-files-FRITZ.Box_7520-cortexa9-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7520/source-files-FRITZ.Box_7520-cortexa9-08.00.tar.gz)
  * fritzbox-7520-B/

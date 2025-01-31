@@ -57,7 +57,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 243: [FRITZ.Box_5491-07.31.image](http://download.avm.de/fritzbox/fritzbox-5491/deutschland/fritz.os/FRITZ.Box_5491-07.31.image)
  - HWR 244: [FRITZ.Repeater_1200-07.58.image](http://download.avm.de/fritzwlan/fritzrepeater-1200/deutschland/fritz.os/FRITZ.Repeater_1200-07.58.image)
  - HWR 246: [FRITZ.Repeater_3000-07.58.image](http://download.avm.de/fritzwlan/fritzrepeater-3000/deutschland/fritz.os/FRITZ.Repeater_3000-07.58.image)
- - HWR 247: [FRITZ.Box_7520-08.00.image](http://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-08.00.image)
+ - HWR 247: [FRITZ.Box_7520-08.02.image](http://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-08.02.image)
  - HWR 249: [FRITZ.Powerline_1260.249.07.58.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260/deutschland/fritz.os/FRITZ.Powerline_1260.249.07.58.image)
  - HWR 252: [FRITZ.Box_6660_Cable-08.02.image](http://download.avm.de/fritzbox/fritzbox-6660-cable/deutschland/fritz.os/FRITZ.Box_6660_Cable-08.02.image)
  - HWR 253: [FRITZ.Repeater_6000-07.58.image](http://download.avm.de/fritzwlan/fritzrepeater-6000/deutschland/fritz.os/FRITZ.Repeater_6000-07.58.image)
@@ -76,7 +76,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 271: [FRITZ.Box_7510-08.02.image](http://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-08.02.image)
  - HWR 272: [FRITZ.Box_5590_Fiber-08.02.image](http://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-08.02.image)
  - HWR 275: [FRITZ.Powerline_1240_AX.275.07.58.image](http://download.avm.de/fritzpowerline/fritzpowerline-1240-ax/deutschland/fritz.os/FRITZ.Powerline_1240_AX.275.07.58.image)
- - HWR 276: [FRITZ.Box_7520_B-08.00.image](http://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-08.00.image)
+ - HWR 276: [FRITZ.Box_7520_B-08.02.image](http://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-08.02.image)
 
 ### FOS-Labor
  - HWR 227: [FRITZ.Box_4040-07.59.image](http://download.avm.de/firmware/4040/347831279831289213893218/FRITZ.Box_4040-07.59.image)

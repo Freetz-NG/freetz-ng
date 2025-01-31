@@ -406,12 +406,12 @@ Currently supported devices and firmwares
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
   - 175.07.29 rev92061 {ALL} [PSQ19P2NL4]
   - 175.07.59 rev113612 {ALL} [MOVE21NL2]
-  - 175.08.00 rev116313 {ALL} [Smart24 P1]
+  - 175.08.02 rev118102 {ALL} [Smart24 P1 NL1]
   - Alien 7530 {GER}
 * __Fritz!Box Fon WLAN 7520 B (UNTESTED)__
   - 276.07.31 rev98652 {ALL} [PSQ19P2NL4]
   - 276.07.59 rev113613 {ALL} [MOVE21NL2]
-  - 276.08.00 rev116314 {ALL} [Smart24 P1]
+  - 276.08.02 rev118103 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7530__
   - 164.07.02 rev62311 {GER}
   - 164.07.14 rev73183 {GER} [MESH18 NL4]

@@ -634,11 +634,11 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7520-07.14.image"                                                          if FREETZ_TYPE_7520_V1  && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_7520-07.29.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7520-07.59.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_7520-08.00.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_7520-08.02.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_7520_B-07.31.image"                                                        if FREETZ_TYPE_7520_V2                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7520_B-07.59.image"                                                        if FREETZ_TYPE_7520_V2                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_7520_B-08.00.image"                                                        if FREETZ_TYPE_7520_V2                         && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_7520_B-08.02.image"                                                        if FREETZ_TYPE_7520_V2                         && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_7530.en-de-es-it-fr-pl-nl.164.07.02.image"                                 if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Box_7530.07.13.int.image/FRITZ.Box_7530-07.13.image"                           if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_07_1X
@@ -851,7 +851,7 @@ config FREETZ_DL_SOURCE2
 	default "FRITZ.Box_7520-07.14.image"                                                          if FREETZ_TYPE_7520_V1_7530_W5 && (FREETZ_TYPE_FIRMWARE_07_1X || FREETZ_TYPE_FIRMWARE_07_0X)
 	default "FRITZ.Box_7520-07.29.image"                                                          if FREETZ_TYPE_7520_V1_7530_W5 &&  FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7520-07.59.image"                                                          if FREETZ_TYPE_7520_V1_7530_W5 &&  FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_7520-08.00.image"                                                          if FREETZ_TYPE_7520_V1_7530_W5 ##  FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_7520-08.02.image"                                                          if FREETZ_TYPE_7520_V1_7530_W5 ##  FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_Fon_WLAN_7570_vDSL.en-de-fr.75.04.92.image"                                if FREETZ_TYPE_7570_7270
 	#
