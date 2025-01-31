@@ -14,6 +14,8 @@ sec_end
 
 sec_begin "$(lang de:"Einstellungen" en:"Settings")"
 
+AVM_RULES_IP=${AVM_RULES_IP:-$(grep "fritz.box" /etc/hosts | awk '{print $1}')}
+
 cgi_print_textline_p "ip" "$AVM_RULES_IP" 15/15 "IP$(lang de:"-Adresse" en:" address"): "
 
 cat << EOF
