@@ -1,0 +1,8 @@
+CAPTION='UVNCREPEATER: uvncrepeater.ini'
+
+CONFIG_FILE='/tmp/flash/uvncrepeater/uvncrepeater.ini'
+CONFIG_SAVE='modsave flash; if pidof uvncrepeater > /dev/null; then /mod/etc/init.d/rc.uvncrepeater restart; fi'
+CONFIG_TYPE='text'
+
+TEXT_ROWS=60
+

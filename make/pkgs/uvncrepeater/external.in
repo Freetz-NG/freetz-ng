@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_PACKAGE_UVNCREPEATER
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_UVNCREPEATER
+	bool "uvncrepeater"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/uvncrepeater

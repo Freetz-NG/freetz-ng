@@ -1,0 +1,39 @@
+--- Makefile.orig	2010-03-02 10:52:48.000000000 +0100
++++ Makefile	2010-03-02 10:53:48.000000000 +0100
+@@ -1,27 +1,28 @@
++CC=g++
+ CFLAGS=-Wall
+ repeater: repeater.o repeaterproc.o openbsd_stringfuncs.o iniparser.o readini.o repeaterutil.o repeaterevents.o
+-	g++ $(CFLAGS) -o repeater repeater.o repeaterproc.o openbsd_stringfuncs.o iniparser.o readini.o repeaterutil.o repeaterevents.o
++	$(CC) $(CFLAGS) -o repeater repeater.o repeaterproc.o openbsd_stringfuncs.o iniparser.o readini.o repeaterutil.o repeaterevents.o
+ 
+ repeater.o: repeater.cpp
+-	g++ $(CFLAGS) -c repeater.cpp
++	$(CC) $(CFLAGS) -c repeater.cpp
+ 
+ repeaterproc.o: repeaterproc.cpp
+-	g++ $(CFLAGS) -c repeaterproc.cpp
++	$(CC) $(CFLAGS) -c repeaterproc.cpp
+ 
+ openbsd_stringfuncs.o: openbsd_stringfuncs.cpp
+-	g++ $(CFLAGS) -c openbsd_stringfuncs.cpp
++	$(CC) $(CFLAGS) -c openbsd_stringfuncs.cpp
+ 
+ iniparser.o: iniparser.cpp
+-	g++ $(CFLAGS) -c iniparser.cpp
++	$(CC) $(CFLAGS) -c iniparser.cpp
+ 
+ readini.o: readini.cpp
+-	g++ $(CFLAGS) -c readini.cpp
++	$(CC) $(CFLAGS) -c readini.cpp
+ 
+ repeaterutil.o: repeaterutil.cpp
+-	g++ $(CFLAGS) -c repeaterutil.cpp
++	$(CC) $(CFLAGS) -c repeaterutil.cpp
+ 
+ repeaterevents.o: repeaterevents.cpp
+-	g++ $(CFLAGS) -c repeaterevents.cpp
++	$(CC) $(CFLAGS) -c repeaterevents.cpp
+ 
+ clean:
+ 	rm -f *.o repeater

@@ -1,0 +1,2 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_UVNCREPEATER" == "y" ] && EXTERNAL_FILES+=" /usr/bin/uvncrepeater"
+

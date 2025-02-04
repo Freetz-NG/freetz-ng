@@ -1,0 +1,10 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	etc/default.vlmcsd/uvncrepeater*.def
+	etc/init.d/rc.uvncrepeater
+	usr/lib/cgi-bin/uvncrepeater.cgi
+}

@@ -1,0 +1,104 @@
+--- repeater.cpp	2025-02-03 12:16:17.705526421 +0100
++++ repeater.cpp.patched	2025-02-04 01:48:53.846832558 +0100
+@@ -1970,6 +1970,46 @@
+         fatal("dropRootPrivileges(): getpwnam() failed\n");    
+ }
+ 
++// Function to daemonize the process
++void daemonize() {
++    pid_t pid = fork();
++    if (pid < 0) {
++        exit(EXIT_FAILURE); // Fork failed
++    }
++    if (pid > 0) {
++        exit(EXIT_SUCCESS); // Parent exits, child continues
++    }
++
++    // Create a new session and become session leader
++    if (setsid() < 0) {
++        exit(EXIT_FAILURE);
++    }
++
++    // Fork again to ensure it's not a session leader
++    pid = fork();
++    if (pid < 0) {
++        exit(EXIT_FAILURE);
++    }
++    if (pid > 0) {
++        exit(EXIT_SUCCESS); // First child exits, second child continues
++    }
++
++    // Change working directory to root to avoid blocking unmounts
++    chdir("/");
++
++    // Set file permissions mask
++    umask(0);
++
++    // Close standard file descriptors
++    close(STDIN_FILENO);
++    close(STDOUT_FILENO);
++    close(STDERR_FILENO);
++
++    // Redirect standard file descriptors to /dev/null
++    open("/dev/null", O_RDONLY);  // stdin
++    open("/dev/null", O_WRONLY);  // stdout
++    open("/dev/null", O_WRONLY);  // stderr
++}
+ 
+ int main(int argc, char **argv)
+ {
+@@ -1982,9 +2022,9 @@
+     //ctrl+c signal handler
+     struct sigaction saInt;
+ 
+-    //ini file default
+-    char defaultIniFilePathAndName[] = "/etc/uvncrepeater.ini";
+-    char tmpBuf[MAX_PATH];
++    bool runAsDaemon = false;
++    char iniFilePath[MAX_PATH] = "/etc/uvncrepeater.ini";
++    char pidFilePath[MAX_PATH] = "";
+     bool memoryOk;
+ 
+     //Startup event
+@@ -1995,10 +2035,37 @@
+     
+     fprintf(stderr, "UltraVnc Linux Repeater version %s\n", REPEATER_VERSION);
+     
+-    //Read parameters from ini file
+-    strlcpy(tmpBuf, (argc >= 2) ? argv[1] : defaultIniFilePathAndName, MAX_PATH);
+-    if (false == readIniFile(tmpBuf)) {
+-        debug(LEVEL_1, "main(): ini file (%s) read error, using defaults\n", tmpBuf);
++    // Parse command-line arguments
++    for (int i = 1; i < argc; i++) {
++        if (strcmp(argv[i], "-i") == 0 && i + 1 < argc) {
++            strncpy(iniFilePath, argv[++i], MAX_PATH - 1);
++        } else if (strcmp(argv[i], "-p") == 0 && i + 1 < argc) {
++            strncpy(pidFilePath, argv[++i], MAX_PATH - 1);
++        } else if (strcmp(argv[i], "-d") == 0) {
++            runAsDaemon = true;  // Enable daemon mode
++        }
++    }
++
++    // Daemonize if requested
++    if (runAsDaemon) {
++        daemonize();
++    }
++
++    // Write PID to file if specified
++    if (strlen(pidFilePath) > 0) {
++        FILE *pidFile = fopen(pidFilePath, "w");
++        if (pidFile) {
++            fprintf(pidFile, "%d\n", getpid());
++            fclose(pidFile);
++        } else {
++            fprintf(stderr, "Error: Could not write PID file %s\n", pidFilePath);
++            return 1;
++        }
++    }
++
++    // Read parameters from ini file
++    if (false == readIniFile(iniFilePath)) {
++        debug(LEVEL_1, "main(): ini file (%s) read error, using defaults\n", iniFilePath);
+     }
+     listInitializationValues();
+ 

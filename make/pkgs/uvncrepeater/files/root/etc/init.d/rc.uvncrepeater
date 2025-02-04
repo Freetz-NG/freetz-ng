@@ -1,0 +1,47 @@
+#!/bin/sh
+
+DAEMON=uvncrepeater
+DAEMON_USER=uvncrep
+DAEMON_LONG_NAME="UVNC-Repeater"
+DAEMON_CFGFILE="/tmp/flash/$DAEMON/$DAEMON.ini"
+. /etc/init.d/modlibrc
+
+start() {
+	modlib_startdaemon $DAEMON_BIN -i $DAEMON_CFGFILE -p $PID_FILE $UVNCREPEATER_CMDLINE &
+}
+
+case $1 in
+	""|load)
+		modlib_defaults $DAEMON_CFGFILE
+		modlib_adduser $DAEMON_USER
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
+		modreg daemon $DAEMON
+		modreg file $DAEMON uvncrepeater_ini 'uvncrepeater.ini' 0 "uvncrepeater_ini"
+
+		modlib_start $UVNCREPEATER_ENABLED
+		;;
+	unload)
+		modunreg file $DAEMON
+		modunreg daemon $DAEMON
+		modunreg cgi $DAEMON
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

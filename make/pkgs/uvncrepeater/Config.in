@@ -1,0 +1,16 @@
+config FREETZ_PACKAGE_UVNCREPEATER
+	bool "UltraVNC repeater 014 (binary only)"
+	default n
+	help
+		A linux port of the UltraVNC Repeater.
+		The  UltraVNC  Repeater acts like a
+		proxy, sitting in the middle between
+		the UltraVNC Server and Viewer. All
+		data for the session is passed through
+		the UltraVNC Repeater meaning that the
+		UltraVNC Viewer and UltraVNC Server can
+		both be behind a NAT firewall, without
+		having to worry about forwarding ports
+		or anything else (providing the Repeater
+		is visible to both UltraVNC Viewer and
+		UltraVNC Server).
