@@ -1,9 +1,9 @@
 config FREETZ_PACKAGE_UVNCREPEATER
-	bool "UltraVNC repeater 014 (binary only)"
+	bool "UVNC IPv4 repeater 014 (binary only)"
 	default n
 	help
-		A linux port of the UltraVNC Repeater.
-		The  UltraVNC  Repeater acts like a
+		A IPv4 only linux port of the UltraVNC
+		Repeater. The Repeater acts like a
 		proxy, sitting in the middle between
 		the UltraVNC Server and Viewer. All
 		data for the session is passed through
