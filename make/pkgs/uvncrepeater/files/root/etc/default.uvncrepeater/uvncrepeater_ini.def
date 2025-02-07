@@ -1,8 +1,9 @@
 CAPTION='UltraVNC Repeater: uvncrepeater.ini'
+DESCRIPTION="$(lang de:"Dokumentation" en:"Documentation"): <a target=blank href=https://github.com/manfred-mueller/uvncrepeater/blob/main/uvncrepeater.ini>https://github.com/manfred-mueller/uvncrepeater/blob/main/uvncrepeater.ini</a>"
 
 CONFIG_FILE='/tmp/flash/uvncrepeater/uvncrepeater.ini'
 CONFIG_SAVE='modsave flash; if pidof uvncrepeater > /dev/null; then /mod/etc/init.d/rc.uvncrepeater restart; fi'
 CONFIG_TYPE='text'
 
-TEXT_ROWS=40
+TEXT_ROWS=25
 
