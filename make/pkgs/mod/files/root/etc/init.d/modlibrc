@@ -276,7 +276,7 @@ stop() {
 	case "$1" in
 		0)
 			local id=$(cat "$PID_FILE" 2>/dev/null)
-			local cnt=9
+			local cnt=${STOP_RETRY_COUNT:-9}
 			while [ $cnt -ge 0 ] && kill -0 $id 2>/dev/null; do
 				kill $id 2>/dev/null
 				local retval=$?
