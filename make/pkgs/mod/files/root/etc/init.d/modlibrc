@@ -18,7 +18,7 @@
 # DAEMON_CHECK          <empty>                                daemon(s) to check with pidof for running-status
 # PID_FILE              /var/run/${DAEMON_BIN}.pid             pid-file for DAEMON
 # DAEMON_CFGFILE        /tmp/flash/${DAEMON}/${DAEMON}.cfg     config file for the daemon (typically used by startdaemon)
-# STOP_RETRY_COUNT      10                                     seconds to maximum wait during stop() until SIGKILL is used
+# SIGTERM_WAIT_SECS     10                                     seconds to maximum wait during stop() until SIGKILL is used
 
 . /var/env.mod.daemon
 . /etc/init.d/loglibrc
@@ -31,7 +31,7 @@
 : ${DAEMON_SVC:=$DAEMON}
 : ${PID_FILE:=/var/run/${DAEMON_BIN}.pid}
 : ${DAEMON_CFGFILE:=/tmp/flash/${DAEMON}/${DAEMON}.cfg}
-: ${STOP_RETRY_COUNT:=10}
+: ${SIGTERM_WAIT_SECS:=10}
 
 # config:
 #   dummy function if "config" is not defined in parent-script
@@ -278,7 +278,7 @@ stop() {
 	case "$1" in
 		0)
 			local id=$(cat "$PID_FILE" 2>/dev/null)
-			local cnt="${STOP_RETRY_COUNT}"
+			local cnt="${SIGTERM_WAIT_SECS}"
 			while [ $cnt -gt 0 ] && kill -0 $id 2>/dev/null; do
 				kill $id 2>/dev/null
 				local retval=$?
