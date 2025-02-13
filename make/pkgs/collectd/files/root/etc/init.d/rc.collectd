@@ -6,7 +6,7 @@ DAEMON_LONG_NAME="Collectd daemon"
 # On long cache timeouts, the flush operation may take longer than 10 seconds.
 # To accommodate this, we increase the STOP_RETRY_COUNT to avoid premature termination.
 # see https://github.com/Freetz-NG/freetz-ng/pull/1108
-STOP_RETRY_COUNT=24
+STOP_RETRY_COUNT=25
 . /etc/init.d/modlibrc
 
 config() {
