@@ -123,7 +123,7 @@ config FREETZ_REMOVE_DSLD
 	select FREETZ_REMOVE_KIDS if FREETZ_AVM_HAS_KIDS
 	help
 		Remove DSL daemon (dsld), if you are planning to use your box as a simple
-		IP client ("Internet mitbenuten") without routing.
+		IP client ("Internet mitbenutzen") without routing.
 		ATA ("via Lan1") and DSL mode will not work anymore.
 
 		ATTENTION: You won't be able to use your box as a modem nor a router anymore.
