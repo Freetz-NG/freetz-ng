@@ -11,7 +11,7 @@ config FREETZ_PACKAGE_RRDSTATS
 if FREETZ_PACKAGE_RRDSTATS
 
 	config FREETZ_PACKAGE_RRDSTATS_CABLEMODEM
-		bool "Support for cabel modem logging"
+		bool "Support for cable modem logging"
 		default n
 		select FREETZ_WGET
 		help
