@@ -6,7 +6,7 @@ menuconfig EXTERNAL_ENABLED
 		an attached USB device or a mounted network share like SMB or NFS.
 
 		-------------------------- WARNING ----------------------------------
-		Move all the files from build/modified/external to your choosen
+		Move all the files from build/modified/external to your chosen
 		directory on the box BEFORE you flash the reduced image!
 
 		-------------------------- WARNING ----------------------------------

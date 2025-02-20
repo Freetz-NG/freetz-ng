@@ -2056,7 +2056,7 @@ config FREETZ_PATCH_W920V_LED_MODULE
 	default y
 	depends on FREETZ_TYPE_W920V_7570 && FREETZ_AVM_VERSION_04_XX
 	help
-		If Y is choosen, this changes the semantics of the LEDs on the front
+		If Y is chosen, this changes the semantics of the LEDs on the front
 		panel of your 7570/W920V box fitting the descriptions of the W920V.
 
 config FREETZ_DISABLE_SERIAL_CONSOLE

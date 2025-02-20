@@ -269,7 +269,7 @@ Here a list of troubleshooting commands.
     **ndas_sal**, **ndas_core**, **ndas_block**.
     
 3.  cat /proc/ndas/devs
-    The output should give the NDASName choosen, the ID, an indication
+    The output should give the chosen NDASName, the ID, an indication
     if the key is used for write access, serialnumber of the NetDisk,
     NDAS version which is 1, the status of the NetDisk, and the slot
     number that is assigned to the NetDisk.
