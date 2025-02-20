@@ -2,15 +2,16 @@ menuconfig EXTERNAL_ENABLED
 	bool "External processing"
 	default n
 	help
-		Enable this to move (big) files out of the firmware-image onto
-		an attached USB device or a mounted network share like SMB or NFS.
+		Enable this to offload (big) files from the limited space of the
+		firmware-image onto an attached USB device or a mounted network share
+		like SMB or NFS.
 
 		-------------------------- WARNING ----------------------------------
 		Move all the files from build/modified/external to your chosen
 		directory on the box BEFORE you flash the reduced image!
 
 		-------------------------- WARNING ----------------------------------
-		Do NOT external files needed to boot up Freetz!
+		Do NOT offload files needed to boot up Freetz!
 
 if EXTERNAL_ENABLED
 
