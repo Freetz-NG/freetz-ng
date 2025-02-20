@@ -606,7 +606,7 @@ config FREETZ_REMOVE_CAPIOVERTCP
 	help
 		Remove CAPIoverTCP (capiotcp_server). Use this if you don't want to use
 		Fritz!Fax or any other program that uses AVM's CAPIoverTCP. This is similar
-		to rcapid, but independant.
+		to rcapid, but independent.
 		This will save about 15kB uncompressed size.
 
 config FREETZ_REMOVE_CHRONYD

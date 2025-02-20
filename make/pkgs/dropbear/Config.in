@@ -92,7 +92,7 @@ if FREETZ_PACKAGE_DROPBEAR
 		bool "Link statically"
 		default n
 		help
-			With this option enabled, the resulting binary will be independ from libraries.
+			With this option enabled, the resulting binary will be independent from libraries.
 			Usually used to build a binary for boxes without "freetz".
 			Newer firmwares (using uClibc >= 0.9.30) should work with dynamically linked
 			binary, if "non-freetz" is selected.

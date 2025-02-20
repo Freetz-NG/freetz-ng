@@ -79,7 +79,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 ### C
 
   * **[Remove CAPIoverTCP](REMOVE_CAPIOVERTCP.md)<a id='remove-capiovertcp'></a>**<br>
-    Remove CAPIoverTCP (capiotcp_server). Use this if you don't want to use Fritz!Fax or any other program that uses AVM's CAPIoverTCP. This is similar to rcapid, but independant. This will save about 15kB uncompressed size.
+    Remove CAPIoverTCP (capiotcp_server). Use this if you don't want to use Fritz!Fax or any other program that uses AVM's CAPIoverTCP. This is similar to rcapid, but independent. This will save about 15kB uncompressed size.
 
   * **[REMOVE_CDROM_ISO: Remove cdrom.iso](REMOVE_CDROM_ISO.md)<a id='remove-cdrom-iso'></a>**<br>
     Removes the file /lib/modules/cdrom.iso to save 270kB uncompressed space.
