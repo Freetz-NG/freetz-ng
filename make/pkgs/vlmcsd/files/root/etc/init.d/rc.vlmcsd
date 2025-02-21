@@ -4,10 +4,9 @@ DAEMON=vlmcsd
 DAEMON_LONG_NAME="VLMCSD"
 DAEMON_CFGFILE="/tmp/flash/$DAEMON/$DAEMON.ini"
 . /etc/init.d/modlibrc
-[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 start() {
-        modlib_startdaemon $DAEMON_BIN -p $PID_FILE -i $DAEMON_CFGFILE $VLMCSD_OPTIONS
+        modlib_startdaemon $DAEMON_BIN -p $PID_FILE -i $DAEMON_CFGFILE $VLMCSD_CMDLINE
 }
 
 case $1 in
