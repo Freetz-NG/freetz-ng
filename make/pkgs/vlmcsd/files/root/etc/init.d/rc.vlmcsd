@@ -6,7 +6,7 @@ DAEMON_CFGFILE="/tmp/flash/$DAEMON/$DAEMON.ini"
 . /etc/init.d/modlibrc
 
 start() {
-        modlib_startdaemon $DAEMON_BIN -p $PID_FILE -i $DAEMON_CFGFILE $VLMCSD_CMDLINE
+	modlib_startdaemon $DAEMON_BIN -p $PID_FILE -i $DAEMON_CFGFILE $VLMCSD_CMDLINE
 }
 
 case $1 in
