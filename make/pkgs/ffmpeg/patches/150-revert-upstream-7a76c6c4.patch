@@ -1,0 +1,20 @@
+Drop diagnostics-color=auto from CFLAGS which was introduced in gcc 4.9.
+Models like the FritzBox 7360 v2 and most likely others still use an
+older compiler and there ffmpeg FTBFS with that switch turned on.
+
+This essentially reverts upstream commit 7a76c6c4 and will thus
+slightly regress the compilation experience for boxes using gcc4.9
+and newer.
+
+Author: Rolf Leggewie <foss@leggewie.org>
+
+--- configure.orig	2025-02-21 12:07:07.226893705 +0000
++++ configure	2025-02-21 12:07:11.450008768 +0000
+@@ -7176,7 +7176,6 @@
+     check_cflags -Werror=return-type
+     check_cflags -Werror=vla
+     check_cflags -Wformat
+-    check_cflags -fdiagnostics-color=auto
+     enabled extra_warnings || check_disable_warning -Wno-maybe-uninitialized
+     if enabled x86_32; then
+         case $target_os in
