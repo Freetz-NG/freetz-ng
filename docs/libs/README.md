@@ -221,7 +221,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libtool (libltdl.so) 1.5.26](libtool.md)<a id='libtool'></a>**<br>
     A generic dynamic object loading library
 
-  * **[liburcu (liburcu.so) 0.15.0](liburcu.md)<a id='liburcu'></a>**<br>
+  * **[liburcu (liburcu.so) 0.15.1](liburcu.md)<a id='liburcu'></a>**<br>
     liburcu is a LGPLv2.1 userspace RCU (read-copy-update) library. This data synchronization library provides read-side access which scales linearly with the number of cores.
 
   * **[libusb-0.1 (libusb-0.1.so) 0.1.8/0.1.12](libusb.md)<a id='libusb'></a>**<br>
@@ -236,7 +236,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libvorbis (libvorbis.so) 1.3.5](libvorbis.md)<a id='libvorbis'></a>**<br>
     Vorbis is the name of a specific audio compression scheme that's designed to be contained in Ogg. libvorbis is a BSD-style license software implementation of the Vorbis specification by the Xiph.Org Foundation.
 
-  * **[libxml2 (libxml2.so) 2.13.5](libxml2.md)<a id='libxml2'></a>**<br>
+  * **[libxml2 (libxml2.so) 2.13.6](libxml2.md)<a id='libxml2'></a>**<br>
     XML toolkit from the GNOME project
 
   * **[linux-atm (libatm.so) 2.5.2](linux-atm.md)<a id='linux-atm'></a>**<br>

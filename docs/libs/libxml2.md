@@ -1,4 +1,4 @@
-# libxml2 (libxml2.so) 2.13.5
+# libxml2 (libxml2.so) 2.13.6
  - Homepage: [http://www.xmlsoft.org](http://www.xmlsoft.org)
  - Manpage: [https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation)
  - Changelog: [https://gitlab.gnome.org/GNOME/libxml2/-/releases](https://gitlab.gnome.org/GNOME/libxml2/-/releases)

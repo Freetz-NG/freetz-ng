@@ -18,7 +18,7 @@
  RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
    distclean-recursive maintainer-clean-recursive
  am__recursive_targets = \
-@@ -668,7 +668,7 @@
+@@ -667,7 +667,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  ACLOCAL_AMFLAGS = -I m4
@@ -27,7 +27,7 @@
  DIST_SUBDIRS = include . doc example fuzz python xstc
  AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include -DSYSCONFDIR='"$(sysconfdir)"'
  bin_SCRIPTS = xml2-config
-@@ -1833,7 +1833,7 @@
+@@ -1832,7 +1832,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
  	$(MAKE) $(AM_MAKEFLAGS) check-local
  check: check-recursive
@@ -36,7 +36,7 @@
  		config.h
  install-binPROGRAMS: install-libLTLIBRARIES
  
-@@ -1958,14 +1958,14 @@
+@@ -1957,14 +1957,14 @@
  
  info-am:
  
