@@ -21,7 +21,7 @@
     - [www.gesetze-im-internet.de: Grundgesetz Artikel 10](https://www.gesetze-im-internet.de/gg/art_10.html)
     - [www.telekom.de: Informationsseite zur SMS-Sicherheit](https://www.telekom.de/hilfe/sms-sicherheit)
     - [www.telekom.de: Leistungsbeschreibung Mobilfunk](https://www.telekom.de/agb#/agbid/2787)
-    - [www.telekom.de: Leistungsbeschreibung Mobilfunk Version 2 vom 17. bzw 18.2.2025: Stand von morgen, 03.01.2025](https://www.telekom.de/agb/downloads/53982.pdf)
+    - [www.telekom.de: Leistungsbeschreibung Mobilfunk Version 2 vom 17. bzw 18.2.2025: Stand 03.01.2025](https://www.telekom.de/agb/downloads/53982.pdf)
     - [www.sueddeutsche.de: Schnüffeln ohne Halt](https://www.sueddeutsche.de/wirtschaft/deutsche-telekom-schnueffeln-ohne-halt-1.502406)
     - [www.berliner-zeitung.de: Neuer Spitzelskandal bei der Telekom](https://www.berliner-zeitung.de/archiv/staatskonzern-schnueffelt-140-000-daten-von-mitarbeitern-aus-bahn-bestaetigt-weitere-ueberpruefung-datenschutzbeauftragter-schaar-warnt-vor-firmenselbstjustiz-neuer-spitzelskandal-bei-der-telekom-li.1265688)
 
