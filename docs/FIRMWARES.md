@@ -93,7 +93,7 @@ Currently supported devices and firmwares
   - 140.07.01 rev61726 {INT}
   - 140.07.12 rev70430 {INT} [MESH18 NL2]
   - 140.07.31 rev107855 {ALL} [PSQ19P2NL4]
-  - Alien 7490 07.59 {ALL}
+  - Alien 7490 07.60 {ALL}
 
 ### Fritz!Box WAN (4xxx)
 
