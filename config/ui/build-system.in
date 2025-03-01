@@ -2,7 +2,7 @@ menu "Build system options"
 	visible if FREETZ_SHOW_EXPERT
 
 	config FREETZ_ANCIENT_SYSTEM
-		bool "My linux got not updates since many years"
+		bool "My linux got no updates since many years"
 		default n
 		help
 			Your linux system is older than your turtle? You like ancient
