@@ -145,7 +145,7 @@ Latest changes
    * FreeType 2.13.3
    * fribidi 1.0.16
    * glib2 2.32.4/2.81.2
-   * harfbuzz 10.3.0
+   * harfbuzz 10.4.0
    * libcap 2.49/2.73
    * libcap-ng 0.8.5
    * libdeflate 1.23

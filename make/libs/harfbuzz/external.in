@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libharfbuzz
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libharfbuzz.so.0.61030.0
+		 ${FREETZ_LIBRARY_DIR}/libharfbuzz.so.0.61040.0
 

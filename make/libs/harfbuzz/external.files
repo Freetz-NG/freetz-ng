@@ -1,1 +1,1 @@
-[ "$EXTERNAL_FREETZ_LIB_libharfbuzz" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libharfbuzz.so.0.61030.0"
+[ "$EXTERNAL_FREETZ_LIB_libharfbuzz" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libharfbuzz.so.0.61040.0"
