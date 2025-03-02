@@ -1,0 +1,42 @@
+#!/bin/sh
+
+DAEMON=choparp
+DAEMON_LONG_NAME="Choparp"
+. /etc/init.d/modlibrc
+
+start() {
+        modlib_startdaemon $DAEMON_BIN -p $PID_FILE $CHOPARP_CMDLINE
+}
+
+case $1 in
+	""|load)
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
+		modreg daemon $DAEMON
+
+		modlib_start $CHOPARP_ENABLED
+		;;
+	unload)
+		modunreg file $DAEMON
+		modunreg daemon $DAEMON
+		modunreg cgi $DAEMON
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

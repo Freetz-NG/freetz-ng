@@ -1,0 +1,9 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	etc/init.d/rc.choparp
+	usr/lib/cgi-bin/choparp.cgi
+}

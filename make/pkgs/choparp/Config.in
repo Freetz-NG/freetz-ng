@@ -1,0 +1,9 @@
+config FREETZ_PACKAGE_CHOPARP
+	bool "Choparp 20150613 - DEPRECATED"
+	default n
+	help
+		Choparp is an easy-to-use proxy arp daemon. It watches arp request
+		packets visible on the interface specified by the argument if_name
+		and sends proxy arp reply to the sender if the arp request queries
+		the MAC address (ethernet hardware address) for the network speci-
+		fied by net_addr and net_mask.

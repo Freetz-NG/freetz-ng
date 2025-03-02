@@ -1,0 +1,2 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_CHOPARP"  == "y" ] && EXTERNAL_FILES+=" /usr/bin/choparp"
+
