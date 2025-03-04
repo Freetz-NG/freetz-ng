@@ -34,7 +34,7 @@
      - Um die Datei ins Image zu kopieren, wähle sie mit ```make menuconfig``` aus oder falls nicht verfügbar, füge ihren Namen unter `Kernel-Module` -> `Eigene Module` hinzu.
   * Dateien auf Speichermedien ausführen?<br>
     Seit einiger Zeit von AVM standardmäßig deaktiviert. Um dies zu erlauben,
-    wähle den Patch "Drop noexec für (externe) Speichermedien".
+    wähle den Patch "Drop noexec for (external) storages".
     Für interne Speichermedien ist es in Freetz immer aktiviert!
   * Befehle beim Neustart ausführen?<br>
     Lege dein ausführbares Skript hier ab: ```/tmp/flash/mod/shutdown```
