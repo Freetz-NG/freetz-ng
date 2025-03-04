@@ -23,6 +23,7 @@
     * [NFS-Share mounten](integrate_own_files.md#nfs-share-mounten)
  - [Kernel konfigurieren und kompilieren](make_kernel.md)
  - [Targets of Freetz's "make" [EN]](make_targets.en.md)
+ - [Ziele von Freetz's "make" [DE]](make_targets.de.md)
  - [Entpacken und Packen von Firmware-Images](repack_fw.md)
     * [Tools und Syntax](repack_fw.md#tools-und-syntax)
     * [Vorgehensweise](repack_fw.md#vorgehensweise)

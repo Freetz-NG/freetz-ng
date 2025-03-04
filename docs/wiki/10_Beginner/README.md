@@ -5,6 +5,8 @@
     * [Erweiterung ab r15856 / 3dda64565e](addon.md#erweiterung-ab-r15856--3dda64565e)
  - [Basic questions [EN]](basic_questions.en.md)
     * [Good to know](basic_questions.en.md#good-to-know)
+ - [Einfache Fragen [DE]](basic_questions.de.md)
+    * [Gut zu wissen](basic_questions.de.md#gut-zu-wissen)
  - [Wie baue ich meinen ersten trunk?](first_trunk.md)
     * [Beschreibung für ein Trunk-Image inkl. Samba und VSFTP](first_trunk.md#beschreibung-für-ein-trunk-image-inkl-samba-und-vsftp)
     * [Trunk-Image bauen](first_trunk.md#trunk-image-bauen)
