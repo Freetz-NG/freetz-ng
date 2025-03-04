@@ -1,8 +1,8 @@
-# Ziele von Freetz's "make"
+# Targets von Freetz's "make"
 
 
 ```
-help                                    Zeigt die Dokumentation an: docs/wiki/20_Advanced/make_targets.de.md
+help                                    Zeigt die englische Dokumentation an: docs/wiki/20_Advanced/make_targets.en.md
 
 menuconfig                              Konfiguration mit Ncurses (benötigt ncurses-devel)
 menuconfig-single                       Konfiguration mit Ncurses (Einzelmenü)
