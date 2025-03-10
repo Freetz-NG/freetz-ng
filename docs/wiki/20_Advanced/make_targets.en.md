@@ -2,8 +2,7 @@
 
 
 ```
-help                                    Shows docs/wiki/20_Advanced/make_targets.en.md
-hilfe                                   Shows docs/wiki/20_Advanced/make_targets.de.md
+help                                    Shows docs/wiki/20_Advanced/make_targets.(en,de).md
 
 menuconfig                              Configuration with Ncurses (needs ncurses-devel)
 menuconfig-single                       Configuration with Ncurses (single-menu)
