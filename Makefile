@@ -705,10 +705,13 @@ check-dot-config-uptodateness: $(CONFIG_IN_CACHE)
 	fi
 
 help:
-	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.en.md
-
-hilfe:
-	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.de.md
+	@if [ "$(shell grep 'de_' /etc/locale.conf)" != "" ] || \
+	[ "$(shell grep 'de_' /etc/default/locale)" != "" ] || \
+	[ "$(shell grep 'de_' /etc/profile.d/*)" != "" ]; then \
+	    sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.de.md; \
+	else \
+	    sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.en.md; \
+	fi
 
 .PHONY: all world step $(KCONFIG_TARGETS) config-flush-invalid config-cache config-cache-clean config-cache-refresh tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
