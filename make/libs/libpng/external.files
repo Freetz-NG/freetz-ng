@@ -1,1 +1,1 @@
-[ "$EXTERNAL_FREETZ_LIB_libpng16" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpng16.so.16.46.0"
+[ "$EXTERNAL_FREETZ_LIB_libpng16" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpng16.so.16.47.0"
