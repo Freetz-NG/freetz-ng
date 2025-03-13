@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libcairo
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libcairo.so.2.11802.2
+		 ${FREETZ_LIBRARY_DIR}/libcairo.so.2.11804.4
 

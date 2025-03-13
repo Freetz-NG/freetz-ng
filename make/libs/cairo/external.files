@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_LIB_libcairo" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libcairo.so.2.11802.2"
+[ "$EXTERNAL_FREETZ_LIB_libcairo" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libcairo.so.2.11804.4"
 

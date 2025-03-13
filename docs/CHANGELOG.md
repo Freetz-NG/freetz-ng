@@ -79,6 +79,7 @@ Latest changes
    * UnRAR 6.1.7/7.1.5
 
  - Libraries:
+   * cairo 1.18.4
    * libpcap 1.1.1/1.10.5
    * libpng 1.6.47
 
