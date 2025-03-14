@@ -1,4 +1,4 @@
-ELIBVER="0.5600.1"
+ELIBVER="0.5600.2"
 [ "$EXTERNAL_FREETZ_LIB_libpango_1"      == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpango-1.0.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_libpangoft2_1"   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpangoft2-1.0.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_libpangocairo_1" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpangocairo-1.0.so.$ELIBVER"

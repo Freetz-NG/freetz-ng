@@ -4,7 +4,7 @@ config EXTERNAL_FREETZ_LIB_libpango_1
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpango-1.0.so.0.5600.1
+		 ${FREETZ_LIBRARY_DIR}/libpango-1.0.so.0.5600.2
 
 config EXTERNAL_FREETZ_LIB_libpangoft2_1
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpangoft2_1
@@ -12,7 +12,7 @@ config EXTERNAL_FREETZ_LIB_libpangoft2_1
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpangoft2-1.0.so.0.5600.1
+		 ${FREETZ_LIBRARY_DIR}/libpangoft2-1.0.so.0.5600.2
 
 config EXTERNAL_FREETZ_LIB_libpangocairo_1
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpangocairo_1
@@ -20,5 +20,5 @@ config EXTERNAL_FREETZ_LIB_libpangocairo_1
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpangocairo-1.0.so.0.5600.1
+		 ${FREETZ_LIBRARY_DIR}/libpangocairo-1.0.so.0.5600.2
 
