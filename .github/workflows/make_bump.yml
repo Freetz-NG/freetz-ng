@@ -7,7 +7,12 @@ on:
       - 'docs/CHANGELOG.md'
       - 'make/pkgs/'
       - 'make/libs/'
-# workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "FREETZ_PACKAGE - input in lowercase (e.g. dropbear)"
+        required: true
+        default: ""
 
 concurrency:
   group: ${{ github.workflow }}
@@ -146,8 +151,12 @@ jobs:
       - name: generate
         id: generate
         run: |
-          PKG="$(git log --format=%B -n1 ${{ github.sha }} | sed -nr 's/^(add|bump|fix|test) ([^ ,]*).*/\2/p')"
-          [ -z "$PKG" ] && echo "No add, bump, fix or test." && exit
+          if [ -n "${{ github.event.inputs.bump }}" ]; then
+            PKG="${{ github.event.inputs.bump }}"
+          else
+            PKG="$(git log --format=%B -n1 ${{ github.sha }} | sed -nr 's/^(add|bump|fix|test) ([^ ,]*).*/\2/p')"
+            [ -z "$PKG" ] && echo "No add, bump, fix or test." && exit
+          fi
           PKG="$(echo "$PKG" | tr '[:lower:]' '[:upper:]')"
           pkg="$(echo "$PKG" | tr '[:upper:]' '[:lower:]')"
           echo "pkg=$pkg" >> $GITHUB_OUTPUT
