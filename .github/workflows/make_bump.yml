@@ -60,7 +60,7 @@ jobs:
           "_6690        _FIRMWARE_07_5X",
           "_6670        _FIRMWARE_08_0X",
          ]
-    name: ${{ matrix.fritz }}${{ github.event.inputs.bump == '' && '' || ' - ${ github.event.inputs.bump }' }}
+    name: ${{ matrix.fritz }}${{ github.event.inputs.bump != '' && ' - ' }}${{ github.event.inputs.bump }}
     runs-on: ubuntu-latest
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
