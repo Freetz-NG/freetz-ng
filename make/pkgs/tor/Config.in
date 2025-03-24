@@ -33,6 +33,12 @@ if FREETZ_PACKAGE_TOR
 			This includes the GeoIP database for IPv6.
 			Needs about 180 KB (compressed).
 
+	config FREETZ_PACKAGE_TOR_RELAY
+		bool "With Relay module"
+		default n
+		help
+			Build tor binary with module relay and module dirauth.
+
 	config FREETZ_PACKAGE_TOR_STATIC
 		bool "Link statically"
 		default n

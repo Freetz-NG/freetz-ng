@@ -58,6 +58,8 @@ cat << EOF
 EOF
 
 sec_end
+
+if [ "$FREETZ_PACKAGE_TOR_RELAY" == "y" ]; then
 sec_begin "$(lang de:"Tor als Relay (Node) konfigurieren" en:"Relay (node) configuration")"
 
 cat << EOF
@@ -93,4 +95,5 @@ EOF
 fi
 
 sec_end
+fi
 fi

@@ -18,8 +18,7 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_TOR_GEOIP_V4),,$(if $(FREETZ_PACKAGE_TO
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_TOR_GEOIP_V6),,$(if $(FREETZ_PACKAGE_TOR_GEOIP_V4),/usr/share/tor/geoip6))
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_TOR_GEOIP_V4),,$(if $(FREETZ_PACKAGE_TOR_GEOIP_V6),,/usr/share/))
 
-
-$(PKG)_DEPENDS_ON += zlib openssl libevent
+$(PKG)_DEPENDS_ON += libevent openssl zlib
 
 $(PKG)_CONFIGURE_ENV += tor_cv_malloc_zero_works=no
 $(PKG)_CONFIGURE_ENV += tor_cv_null_is_zero=yes
@@ -40,14 +39,16 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-asciidoc
 $(PKG)_CONFIGURE_OPTIONS += --disable-manpage
 $(PKG)_CONFIGURE_OPTIONS += --disable-html-manual
 $(PKG)_CONFIGURE_OPTIONS += --disable-tool-name-check
+$(PKG)_CONFIGURE_OPTIONS += --disable-unittests
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
 $(PKG)_CONFIGURE_OPTIONS += --with-libevent-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
-$(PKG)_CONFIGURE_OPTIONS += --disable-unittests
+$(PKG)_CONFIGURE_OPTIONS += --with-zlib-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
 $(PKG)_CONFIGURE_OPTIONS += --disable-nss
 $(PKG)_CONFIGURE_OPTIONS += --disable-seccomp
 $(PKG)_CONFIGURE_OPTIONS += --disable-systemd
 $(PKG)_CONFIGURE_OPTIONS += --disable-lzma
 $(PKG)_CONFIGURE_OPTIONS += --disable-zstd
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_TOR_RELAY),,--disable-module-relay)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_TOR_STATIC
@@ -65,11 +66,9 @@ ifeq ($(strip $(FREETZ_PACKAGE_TOR_STATIC)),y)
 $(PKG)_EXTRA_LDFLAGS += -static
 endif
 
-
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
-
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(TOR_DIR) \
@@ -81,7 +80,6 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 
 $($(PKG)_TARGET_GEOIP): $($(PKG)_DEST_DIR)/usr/share/tor/%: $($(PKG)_DIR)/src/config/%
 	$(INSTALL_FILE)
-
 
 $(pkg):
 
