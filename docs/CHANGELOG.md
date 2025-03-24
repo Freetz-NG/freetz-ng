@@ -56,6 +56,7 @@ Latest changes
    * ca-bundle 2025-02-25
    * dtc 1.7.2
    * fakeroot 1.37.1
+   * kconfig 6.14
    * ncftp 3.2.8
 
  - AVM sources:
@@ -82,7 +83,7 @@ Latest changes
    * socat 1.8.0.3
    * tcpdump 4.1.1/4.99.4
    * Tor 0.4.8.15
-   * UnRAR 6.1.7/7.1.5
+   * UnRAR 6.1.7/7.1.6
    * xsltproc 1.1.43
 
  - Libraries:
@@ -93,6 +94,7 @@ Latest changes
    * libpcap 1.1.1/1.10.5
    * libusb1 1.0.23/1.0.28
    * libpng 1.6.47
+   * mbedTLS 2.7.19/2.28.10
    * pango 1.56.3
    * pixman 0.44.2
 

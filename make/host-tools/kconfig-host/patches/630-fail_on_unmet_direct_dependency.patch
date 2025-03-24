@@ -9,9 +9,9 @@
  		   sym->name);
  	str_printf(&gs,
  		   "  Depends on [%c]: ",
-@@ -389,6 +389,7 @@
- 
+@@ -390,6 +390,7 @@
  	fputs(str_get(&gs), stderr);
+ 	str_free(&gs);
  	sym_warnings++;
 +	exit(1);
  }

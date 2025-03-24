@@ -2,7 +2,7 @@ Use explicitly 'flex' as lexer - else openSuSE uses a call with 'flex -l' from a
  
 --- scripts/kconfig/Makefile
 +++ scripts/kconfig/Makefile
-@@ -162,6 +162,7 @@
+@@ -164,6 +164,7 @@
  # object files used by all kconfig flavours
  common-objs	:= confdata.o expr.o lexer.lex.o menu.o parser.tab.o \
  		   preprocess.o symbol.o util.o
