@@ -55,7 +55,7 @@ Latest changes
  - Host tools:
    * ca-bundle 2025-02-25
    * dtc 1.7.2
-   * fakeroot 1.37.1
+   * fakeroot 1.37.1.1
    * kconfig 6.14
    * meson 1.7.2
    * ncftp 3.2.9
