@@ -1,7 +1,7 @@
 sec_begin 'Swap'
 
 cgi_print_radiogroup_active \
-	"swap" "$MOD_SWAP" "$(lang de:"Starttyp von swap" en:"swap start type")" ""
+	"swap" "$MOD_SWAP" "$(lang de:"Swap-Starttyp" en:"swap start type")" ""
 
 cat << EOF
 <h2>$(lang de:"Swap-Datei" en:"Swap file")</h2>
