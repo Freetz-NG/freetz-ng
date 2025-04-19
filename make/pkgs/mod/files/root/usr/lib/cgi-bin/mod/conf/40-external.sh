@@ -26,7 +26,7 @@ $(lang de:"Folgende selbst definierte Dienste behandeln" en:"Manage these self d
 <textarea name="external_own_services" rows="5" cols="75" maxlength="255">$(html "$MOD_EXTERNAL_OWN_SERVICES")</textarea>
 <FONT SIZE=-2><br><br>
 $(lang de:"Hinweis: Namen der /mod/etc/init.d/rc.DAEMON Dateien ohne f&uuml;hrendes rc. und mit Leerzeichen getrennt angeben. " en:"Input the names of /mod/etc/init.d/rc.DAEMON files without rc., separated by space. ")
-$(lang de:"Dies' kann dazu genutzt werden um nicht externalisierte Dienste, die ein USB-Ger&auml;t zum Speichern der Daten ben&ouml;tigen (wie RRDstats, Tor, bip, Xmail oder vnstat-cgi), zu starten und stoppen." en:"This would be helpful if a service is not externalized, but needs your USB-device for storing data-files (like RRDstats, Tor, bip, Xmail or vnstat-cgi).")
+$(lang de:"Dies' kann dazu genutzt werden, nicht externalisierte Dienste, die ein USB-Ger&auml;t zum Speichern der Daten ben&ouml;tigen (wie RRDstats, Tor, bip, Xmail oder vnstat-cgi), zu starten und stoppen." en:"This would be helpful if a service is not externalized, but needs your USB-device for storing data-files (like RRDstats, Tor, bip, Xmail or vnstat-cgi).")
 </FONT>
 </p>
 
