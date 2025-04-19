@@ -3,7 +3,7 @@ sec_begin 'Shutdown'
 
 cat << EOF
 <h2>
-$(lang de:"Beenden von Packages beim herunterfahren" en:"Stop of packages at shutdown")
+$(lang de:"Beenden von Paketen beim Herunterfahren" en:"Stop of packages at shutdown")
 $(lang de:" (mit Leerzeichen trennen)" en:" (separate by spaces)").
 </h2>
 EOF
