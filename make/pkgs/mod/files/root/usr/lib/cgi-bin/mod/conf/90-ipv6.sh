@@ -11,6 +11,6 @@ $(lang de:"Beispiel" en:"Example"): lan fd21:23c2:dd2f::1/64<br>
 EOF
 
 cgi_print_checkbox_p "ipv6_forward" "$MOD_IPV6_FORWARD" \
-	"$(lang de:"Forwarding aktivieren." en:"Enable forwarding.")"
+	"$(lang de:"Weiterleitung aktivieren." en:"Enable forwarding.")"
 
 sec_end
