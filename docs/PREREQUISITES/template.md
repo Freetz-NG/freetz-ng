@@ -10,6 +10,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
  - [Ubuntu](#ubuntu)
  - [Mint](#mint)
  - [Kali](#kali)
+ - [Arch](#arch)
  - sonst keine
 
 ### Problematische Distributionen
@@ -227,4 +228,6 @@ Mint wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren,
 Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
 Das meiste wird bei Kali sowieso schon dabei installiert sein.
 
+### Arch
+Unter Arch wurde das Metapackage [freetz-ng-devel](https://aur.archlinux.org/packages/freetz-ng-devel)<sup>AUR</sup> erfolgreich zum Bauen benutzt.
 
