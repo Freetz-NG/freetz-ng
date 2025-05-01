@@ -1,5 +1,13 @@
 # NEWS
 
+ * __[2025-05-01](#2025-05-01)__<a id='2025-05-01'></a><br>
+   boxmatrix.info ist aktuell nicht erreichbar.<br>
+   Vermutlich ist dies schon seit April 2025 der Fall.<br>
+   Zum Glück gibt es die Wayback Machine, mit der man sich die letzte noch funktionierende Kopie von boxmatrix.info anschauen kann.<br>
+   Siehe<br>
+    - [BoxMatrix - Archivkopie (März 2025)](https://web.archive.org/web/20250310024601/https://boxmatrix.info/wiki/BoxMatrix)<br>
+    - [BoxMatrix - Originallink](https://boxmatrix.info/wiki/BoxMatrix)<br>
+
  * __[2025-04-21](#2025-04-21)__<a id='2025-04-21'></a><br>
    Warnung vor GCC 15! Damit kann momentan nicht alles funktionierend compiliert werden.<br>
    Obwohl diese Version noch nicht veröffentlich wurde ist sie in `Fedora 42` bereits Standard.<br>
