@@ -339,6 +339,7 @@ if FREETZ_PACKAGE_PYTHON
 		source "make/pkgs/python-pyrrd/Config.in"
 		source "make/pkgs/python-pyserial/Config.in"
 		source "make/pkgs/python-yenc/Config.in"
+		source "make/pkgs/python-pycryptodome/Config.in"
 	endmenu
 
 endif # FREETZ_PACKAGE_PYTHON
