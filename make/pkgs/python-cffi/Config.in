@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_PYTHON_CFFI
+    bool "Cffi"
+    depends on FREETZ_PACKAGE_PYTHON
+    default n
+    help
+		A Foreign Function Interface package for calling C libraries from Python.
+		http://cffi.readthedocs.io/
