@@ -14,20 +14,19 @@ Add **python-cffi**, a Foreign Function Interface package for calling C librarie
 
 Python shall be externalized on Freetz-NG.
 
-After the system build, before using *cffi*, you also need *curl*, *pip*, *pycparser*.
+After the system build, before using *cffi*, you also need *curl*, *pip*, *pycparser* (version 2.18).
 
 To install *pip* on Freetz-NG:
 
 ```
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
 python get-pip.py --user
-python -m pip install --user -r requirements.txt
 ```
 
-To install the *pycparser* Python module:
+To [install the *pycparser* Python module](https://github.com/python-cffi/cffi/blob/release-1.15/setup.py#L221):
 
 ```
-python -m pip install pycparser
+python -m pip install "pycparser<2.19"
 ```
 
 ## Usage notes
