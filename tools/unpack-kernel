@@ -85,9 +85,6 @@ fi
 declare -x CRC32
 CRC32="${CRC32:-$(dirname $SELF)/crc32}"
 
-declare -x SUM
-SUM="${SUM:-$(dirname $SELF)/sum}"
-
 source "$(dirname $SELF)/freetz_bin_functions"
 
 ###
@@ -297,7 +294,7 @@ findAndProcessTiRecord() {
 	local tiRecordPayloadOffset=$((tiRecordOffset+12))
 
 	# verify TI-record checksum
-	local tiRecordPayloadSum=$(tail -c "+$((tiRecordPayloadOffset + 1))" "$INPUT_FILE" 2>/dev/null | head -c $tiRecordLen 2>/dev/null | $SUM -p 2>/dev/null | cut -d ' ' -f 1)
+	local tiRecordPayloadSum=$(tail -c "+$((tiRecordPayloadOffset + 1))" "$INPUT_FILE" 2>/dev/null | head -c $tiRecordLen 2>/dev/null | od -An -tu1 | awk '{for(i=1;i<=NF;i++) sum+=$i} END {print sum+0}')
 	local tiRecordChecksumComputed=$(( (((tiRecordLen + tiRecordLoadAddr + tiRecordPayloadSum) ^ 0xFFFFFFFF) & 0xFFFFFFFF) + 1 ))
 	if [ $((tiRecordChecksumComputed)) -ne $((tiRecordChecksum)) ]; then
 		echo >&2 "WARNING: calculated TI-record checksum ($(print08X $tiRecordChecksumComputed)) does not match the saved one ($(print08X $tiRecordChecksum))"
