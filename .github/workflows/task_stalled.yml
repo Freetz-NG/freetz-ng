@@ -11,6 +11,7 @@ on:
 
 permissions:
   issues: write
+  pull-requests: write
 
 jobs:
   build:
@@ -22,15 +23,22 @@ jobs:
       - name: stalled
         uses: actions/stale@v9
         with:
-          stale-issue-message: 'stalled'
-          stale-pr-message: 'stalled'
-          close-issue-message: 'stalled'
-          close-pr-message: 'stalled'
+          stale-issue-message: 'This issue is stale because it has been open 7 days with no activity. Please comment or update this issue or it will be closed in 5 days.'
+          stale-pr-message: 'This pr is stale because it has been open 14 days with no activity. Please comment or update this pr or it will be closed in 5 days.'
+          close-issue-message: 'This issue was closed now because it is marked as stale.'
+          close-pr-message: 'This pr was closed now because it is marked as stale.'
           stale-issue-label: 'stalled'
           stale-pr-label: 'stalled'
           labels-to-remove-when-unstale: 'stalled'
           exempt-issue-labels: 'task'
+          exempt-all-issue-assignees: true
           days-before-stale: 7
+          days-before-close: 5
+          days-before-pr-stale: 14
+          days-before-pr-close: 5
+          close-issue-reason: 'not_planned'
+          operations-per-run: 300
+          repo-token: ${{ github.token }}
           remove-stale-when-updated: true
           enable-statistics: true
 
