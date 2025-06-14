@@ -23,10 +23,10 @@ jobs:
       - name: stalled
         uses: actions/stale@v9
         with:
-          stale-issue-message: 'stalled'
-          stale-pr-message: 'stalled'
-          close-issue-message: 'stalled'
-          close-pr-message: 'stalled'
+          stale-issue-message: 'This issue is stale because it has been open 7 days with no activity. Please comment or update this issue or it will be closed in 7 days.'
+          stale-pr-message: 'This pr is stale because it has been open 7 days with no activity. Please comment or update this pr or it will be closed in 7 days.'
+          close-issue-message: 'This issue was closed now because it is marked as stale.'
+          close-pr-message: 'This pr was closed now because it is marked as stale.'
           stale-issue-label: 'stalled'
           stale-pr-label: 'stalled'
           labels-to-remove-when-unstale: 'stalled'
