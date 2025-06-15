@@ -10,9 +10,25 @@ on:
   workflow_dispatch:
     inputs:
       fos:
-        description: "FOS: 04_XX,05_2X,05_5X,06_0X,06_2X,06_5X,06_8X,06_9X,07_0X,07_1X,07_2X,07_5X,08_0X,08_2X_LABOR"
+        description: "FOS Version to build"
         required: true
         default: "08_2X_LABOR"
+        type: choice
+        options:
+          - "04_XX"
+          - "05_2X"
+          - "05_5X"
+          - "06_0X"
+          - "06_2X"
+          - "06_5X"
+          - "06_8X"
+          - "06_9X"
+          - "07_0X"
+          - "07_1X"
+          - "07_2X"
+          - "07_5X"
+          - "08_0X"
+          - "08_2X_LABOR"
 
 concurrency:
   group: ${{ github.workflow }}
