@@ -57,8 +57,8 @@ jobs:
           git pull
           git add .
           git status
-          git config --local user.name github-actions
-          git config --local user.email github-actions@github.com
+          git config --local user.name github-actions[bot]
+          git config --local user.email github-actions[bot]@users.noreply.github.com
           git diff --cached --quiet && exit 0 || git commit -m "osp: automatic update"
           git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
           git push origin $GITHUB_REF_NAME
