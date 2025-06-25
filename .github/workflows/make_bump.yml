@@ -32,6 +32,8 @@ jobs:
 
     steps:
 
+      - uses: ahmadnassri/action-workflow-queue@v1
+
       - name: clone
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
