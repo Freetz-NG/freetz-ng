@@ -14,8 +14,8 @@ on:
         required: true
         default: "dropbear"
 
-concurrency:
-  group: ${{ github.workflow }}
+#concurrency:
+# group: ${{ github.workflow }}
 # cancel-in-progress: false
 
 jobs:
