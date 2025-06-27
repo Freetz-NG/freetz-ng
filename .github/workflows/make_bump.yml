@@ -33,6 +33,9 @@ jobs:
     steps:
 
       - uses: ahmadnassri/action-workflow-queue@v1
+        with:
+          timeout: "18000000"
+          delay: "10000"
 
       - name: clone
         env:
