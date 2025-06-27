@@ -1,16 +1,16 @@
-if FREETZ_TYPE_6850_V2 && FREETZ_AVM_VERSION_07_5X
+if FREETZ_TYPE_7510 && FREETZ_AVM_VERSION_08_2X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 6850 5G"
+	default "FRITZ!Box 7510"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "258"
+	default "271"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "258"
+	default "271"
 
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
@@ -19,6 +19,9 @@ config FREETZ_AVM_PROP_ALL_REGIONS
 	def_bool y
 
 config FREETZ_AVM_HAS_MULTIPLE_BRANDINGS
+	def_bool y
+
+config FREETZ_AVM_HAS_BRANDING_1und1
 	def_bool y
 
 config FREETZ_AVM_HAS_BRANDING_avm
@@ -55,13 +58,13 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	string
 	default "/dev/ttyMSM0"
 
-config FREETZ_AVM_HAS_REBOOT_SCRIPT
-	def_bool y
-
 config FREETZ_AVM_HAS_IP_BINARY
 	def_bool y
 
 config FREETZ_AVM_HAS_NOEXEC
+	def_bool y
+
+config FREETZ_AVM_HAS_ANNEX_SELECTION
 	def_bool y
 
 config FREETZ_AVM_HAS_AHA
@@ -74,9 +77,6 @@ config FREETZ_AVM_HAS_MYFRITZ
 	def_bool y
 
 config FREETZ_AVM_HAS_NAS
-	def_bool y
-
-config FREETZ_AVM_HAS_NTFS
 	def_bool y
 
 config FREETZ_AVM_HAS_AURA_USB
@@ -145,6 +145,9 @@ config FREETZ_AVM_HAS_SAMBA_NQCS
 config FREETZ_AVM_HAS_CTLMGR_CTL
 	def_bool y
 
+config FREETZ_AVM_HAS_DSL_CONTROL
+	def_bool y
+
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
 	def_bool y
 
@@ -158,6 +161,9 @@ config FREETZ_AVM_HAS_WIREGUARD
 	def_bool y
 
 config FREETZ_AVM_HAS_AVMCOUNTERD
+	def_bool y
+
+config FREETZ_AVM_HAS_RRDTOOL
 	def_bool y
 
 config FREETZ_AVM_HAS_DTRACE
@@ -193,7 +199,7 @@ config FREETZ_AVM_HAS_LIBFUSE
 config FREETZ_AVM_HAS_OPENSSL
 	def_bool y
 
-config FREETZ_AVM_HAS_OPENSSL_VERSION_11
+config FREETZ_AVM_HAS_OPENSSL_VERSION_30
 	def_bool y
 
 config FREETZ_AVM_HAS_KIDS
@@ -214,13 +220,13 @@ config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_LE
 config FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE
 	def_bool y
 
-config FREETZ_AVM_HAS_FWLAYOUT_2
+config FREETZ_AVM_HAS_FWLAYOUT_5
 	def_bool y
 
-config FREETZ_AVM_PROP_KERNEL_4_4_271
+config FREETZ_AVM_PROP_KERNEL_5_4_213
 	def_bool y
 
-config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
 
 config FREETZ_AVM_PROP_ARCH_LE
@@ -229,10 +235,10 @@ config FREETZ_AVM_PROP_ARCH_LE
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 
-config FREETZ_AVM_PROP_GCC_5_5
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 
-config FREETZ_AVM_PROP_LIBC_UCLIBC
+config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
 
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE

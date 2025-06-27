@@ -235,13 +235,16 @@ Currently supported devices and firmwares
   - 262.07.29 rev92911 {ALL} [PSQ19P2NL4]
   - 262.07.59 rev114651 {ALL} [MOVE21NL2]
   - 262.08.03 rev119186 {ALL} [Smart24 P1 NL1]
+  - 262.08.10 rev122255 {ALL} [Smart24 P2] (Labor)
 * __Fritz!Box 6850 5G__
   - 258.07.30 rev94600 {ALL} [PSQ19P2NL4]
   - 258.07.59 rev114650 {ALL} [MOVE21NL2]
   - 258.08.03 rev119185 {ALL} [Smart24 P1 NL1]
+  - 258.08.10 rev122254 {ALL} [Smart24 P2] (Labor)
 
 * __Fritz!Box 6860 5G (UNTESTED)__
   - 277.08.03 rev119187 {ALL} [Smart24 P1 FCS]
+  - 277.08.10 rev122256 {ALL} [Smart24 P2] (Labor)
 
 * __Fritz!Box 6890 LTE__
   - 162.06.87 rev59283 {ALL}
@@ -415,6 +418,7 @@ Currently supported devices and firmwares
   - 271.07.30 rev94120 {ALL} [PSQ19P2NL4]
   - 271.07.59 rev113715 {ALL} [MOVE21NL2]
   - 271.08.02 rev117988 {ALL} [Smart24 P1 NL1]
+  - 271.08.10 rev122257 {ALL} [Smart24 P2] (Labor)
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
   - 175.07.29 rev92061 {ALL} [PSQ19P2NL4]

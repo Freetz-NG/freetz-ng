@@ -1,4 +1,4 @@
-if FREETZ_TYPE_6850_V1 && FREETZ_AVM_VERSION_07_2X
+if FREETZ_TYPE_6850_4G && FREETZ_AVM_VERSION_08_2X
 
 config FREETZ_AVM_PROP_NAME
 	string
@@ -55,16 +55,10 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	string
 	default "/dev/ttyMSM0"
 
-config FREETZ_AVM_HAS_REBOOT_SCRIPT
-	def_bool y
-
 config FREETZ_AVM_HAS_IP_BINARY
 	def_bool y
 
 config FREETZ_AVM_HAS_NOEXEC
-	def_bool y
-
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 
 config FREETZ_AVM_HAS_AHA
@@ -77,9 +71,6 @@ config FREETZ_AVM_HAS_MYFRITZ
 	def_bool y
 
 config FREETZ_AVM_HAS_NAS
-	def_bool y
-
-config FREETZ_AVM_HAS_NTFS
 	def_bool y
 
 config FREETZ_AVM_HAS_AURA_USB
@@ -121,6 +112,9 @@ config FREETZ_AVM_HAS_LEDPAGE
 config FREETZ_AVM_HAS_DDNSD
 	def_bool y
 
+config FREETZ_AVM_HAS_KMOD
+	def_bool y
+
 config FREETZ_AVM_HAS_SVCTL
 	def_bool y
 
@@ -154,6 +148,15 @@ config FREETZ_AVM_HAS_DSLD
 config FREETZ_AVM_HAS_VPN
 	def_bool y
 
+config FREETZ_AVM_HAS_WIREGUARD
+	def_bool y
+
+config FREETZ_AVM_HAS_AVMCOUNTERD
+	def_bool y
+
+config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
+
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 
@@ -181,13 +184,13 @@ config FREETZ_AVM_HAS_MEDIASRV
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 
-config FREETZ_AVM_HAS_NSSWITCH
+config FREETZ_AVM_HAS_LIBFUSE
 	def_bool y
 
 config FREETZ_AVM_HAS_OPENSSL
 	def_bool y
 
-config FREETZ_AVM_HAS_OPENSSL_VERSION_11
+config FREETZ_AVM_HAS_OPENSSL_VERSION_30
 	def_bool y
 
 config FREETZ_AVM_HAS_KIDS
@@ -211,7 +214,7 @@ config FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE
 config FREETZ_AVM_HAS_FWLAYOUT_2
 	def_bool y
 
-config FREETZ_AVM_PROP_KERNEL_4_4_60
+config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
@@ -223,7 +226,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 
-config FREETZ_AVM_PROP_GCC_5_5
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 
 config FREETZ_AVM_PROP_LIBC_UCLIBC

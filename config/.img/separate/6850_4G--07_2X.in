@@ -1,16 +1,16 @@
-if FREETZ_TYPE_6850_V2 && FREETZ_AVM_VERSION_07_2X
+if FREETZ_TYPE_6850_4G && FREETZ_AVM_VERSION_07_2X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 6850 5G"
+	default "FRITZ!Box 6850 LTE"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "258"
+	default "262"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "258"
+	default "262"
 
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y

@@ -63,8 +63,8 @@ config FREETZ_TYPE_PREFIX
 	default "6820_v3"           if FREETZ_TYPE_6820_V3
 	default "6820_v4"           if FREETZ_TYPE_6820_V4
 	default "6840"              if FREETZ_TYPE_6840
-	default "6850_4G"           if FREETZ_TYPE_6850_V1
-	default "6850_5G"           if FREETZ_TYPE_6850_V2
+	default "6850_4G"           if FREETZ_TYPE_6850_4G
+	default "6850_5G"           if FREETZ_TYPE_6850_5G
 	default "6860"              if FREETZ_TYPE_6860
 	default "6842"              if FREETZ_TYPE_6842
 	default "6890"              if FREETZ_TYPE_6890

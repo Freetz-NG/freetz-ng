@@ -1,0 +1,209 @@
+if FREETZ_TYPE_6860 && FREETZ_AVM_VERSION_08_2X
+
+config FREETZ_AVM_PROP_NAME
+	string
+	default "FRITZ!Box 6860 5G"
+
+config FREETZ_AVM_PROP_MAJOR
+	string
+	default "277"
+
+config FREETZ_AVM_PROP_HWREV
+	string
+	default "277"
+
+config FREETZ_AVM_HAS_SIGNATURE
+	def_bool y
+
+config FREETZ_AVM_PROP_ALL_REGIONS
+	def_bool y
+
+config FREETZ_AVM_HAS_MULTIPLE_BRANDINGS
+	def_bool y
+
+config FREETZ_AVM_HAS_BRANDING_avm
+	def_bool y
+
+config FREETZ_AVM_HAS_BRANDING_avme
+	def_bool y
+
+config FREETZ_AVM_HAS_MULTIPLE_LANGUAGES
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_de
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_en
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_es
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_fr
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_it
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_nl
+	def_bool y
+
+config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+
+config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
+	string
+	default "/dev/ttyMSM0"
+
+config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+
+config FREETZ_AVM_HAS_AHA
+	def_bool y
+
+config FREETZ_AVM_HAS_DECT
+	def_bool y
+
+config FREETZ_AVM_HAS_MYFRITZ
+	def_bool y
+
+config FREETZ_AVM_HAS_WLAN
+	def_bool y
+
+config FREETZ_AVM_HAS_CHRONYD
+	def_bool y
+
+config FREETZ_AVM_HAS_INETD
+	def_bool y
+
+config FREETZ_AVM_HAS_TAM
+	def_bool y
+
+config FREETZ_AVM_HAS_PHONE
+	def_bool y
+
+config FREETZ_AVM_HAS_TR064
+	def_bool y
+
+config FREETZ_AVM_HAS_TR069
+	def_bool y
+
+config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+
+config FREETZ_AVM_HAS_LEDPAGE
+	def_bool y
+
+config FREETZ_AVM_HAS_DDNSD
+	def_bool y
+
+config FREETZ_AVM_HAS_KMOD
+	def_bool y
+
+config FREETZ_AVM_HAS_SVCTL
+	def_bool y
+
+config FREETZ_AVM_HAS_UMTS
+	def_bool y
+
+config FREETZ_AVM_HAS_FAX
+	def_bool y
+
+config FREETZ_AVM_HAS_DMESG_FILE
+	def_bool y
+
+config FREETZ_AVM_HAS_UDEV
+	def_bool y
+
+config FREETZ_AVM_HAS_TC
+	def_bool y
+
+config FREETZ_AVM_HAS_CTLMGR_CTL
+	def_bool y
+
+config FREETZ_AVM_HAS_SHOWDSLDSTAT
+	def_bool y
+
+config FREETZ_AVM_HAS_DSLD
+	def_bool y
+
+config FREETZ_AVM_HAS_VPN
+	def_bool y
+
+config FREETZ_AVM_HAS_WIREGUARD
+	def_bool y
+
+config FREETZ_AVM_HAS_AVMCOUNTERD
+	def_bool y
+
+config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
+
+config FREETZ_AVM_HAS_DTRACE
+	def_bool y
+
+config FREETZ_AVM_HAS_NEXUS
+	def_bool y
+
+config FREETZ_AVM_HAS_MESHD
+	def_bool y
+
+config FREETZ_AVM_HAS_PCPD
+	def_bool y
+
+config FREETZ_AVM_HAS_UNTRUSTEDD
+	def_bool y
+
+config FREETZ_AVM_HAS_PLCD
+	def_bool y
+
+config FREETZ_AVM_HAS_ETCSERVICES
+	def_bool y
+
+config FREETZ_AVM_HAS_OPENSSL
+	def_bool y
+
+config FREETZ_AVM_HAS_OPENSSL_VERSION_30
+	def_bool y
+
+config FREETZ_AVM_HAS_KIDS
+	def_bool y
+
+config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
+	def_bool y
+
+config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
+	def_bool y
+
+config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_LE
+	def_bool y
+
+config FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE
+	def_bool y
+
+config FREETZ_AVM_HAS_FWLAYOUT_5
+	def_bool y
+
+config FREETZ_AVM_PROP_KERNEL_5_4_213
+	def_bool y
+
+config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
+	def_bool y
+
+config FREETZ_AVM_PROP_ARCH_LE
+	def_bool y
+
+config FREETZ_AVM_PROP_ARCH_ARM
+	def_bool y
+
+config FREETZ_AVM_PROP_GCC_8_4
+	def_bool y
+
+config FREETZ_AVM_PROP_LIBC_MUSL
+	def_bool y
+
+config FREETZ_AVM_PROP_UCLIBC_SEPARATE
+	def_bool y
+
+endif
+

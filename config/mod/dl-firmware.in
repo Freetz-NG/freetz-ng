@@ -148,9 +148,9 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/{fritzbox-6842-lte/deutschland/fritz.os,fritzbox_6842_lte/firmware/deutsch}"                         if FREETZ_TYPE_6842
 	#
-	default "@AVM/fritzbox-6850-lte/{deutschland,other}/fritz.os,@AVM/6850LTE"                                         if FREETZ_TYPE_6850_V1
+	default "@AVM/fritzbox-6850-lte/{deutschland,other}/fritz.os,@AVM/6850LTE"                                         if FREETZ_TYPE_6850_4G
 	#
-	default "@AVM/fritzbox-6850-5g/{deutschland,other}/fritz.os,@AVM/68505G"                                           if FREETZ_TYPE_6850_V2
+	default "@AVM/fritzbox-6850-5g/{deutschland,other}/fritz.os,@AVM/68505G"                                           if FREETZ_TYPE_6850_5G
 	#
 	default "@AVM/fritzbox-6860-5g/{deutschland,other}/fritz.os,@AVM/68605G"                                           if FREETZ_TYPE_6860
 	#
@@ -507,15 +507,18 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_6842_LTE.123.06.35.image"                                                  if FREETZ_TYPE_6842                            && FREETZ_TYPE_FIRMWARE_06_2X
 	#
-	default "FRITZ.Box_6850_LTE-07.29.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6850_LTE-07.59.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_6850_LTE-08.03.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_6850_LTE-07.29.image"                                                      if FREETZ_TYPE_6850_4G                         && FREETZ_TYPE_FIRMWARE_07_2X
+	default "FRITZ.Box_6850_LTE-07.59.image"                                                      if FREETZ_TYPE_6850_4G                         && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_6850_LTE-08.03.image"                                                      if FREETZ_TYPE_6850_4G                         && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_6850_LTE-08.10-122255-LabBETA.image"                                       if FREETZ_TYPE_6850_4G                         && FREETZ_TYPE_FIRMWARE_08_2X_LABOR
 	#
-	default "FRITZ.Box_6850_5G-07.30.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6850_5G-07.59.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_6850_5G-08.03.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_6850_5G-07.30.image"                                                       if FREETZ_TYPE_6850_5G                         && FREETZ_TYPE_FIRMWARE_07_2X
+	default "FRITZ.Box_6850_5G-07.59.image"                                                       if FREETZ_TYPE_6850_5G                         && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_6850_5G-08.03.image"                                                       if FREETZ_TYPE_6850_5G                         && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_6850_5G-08.10-122254-LabBETA.image"                                        if FREETZ_TYPE_6850_5G                         && FREETZ_TYPE_FIRMWARE_08_2X_LABOR
 	#
 	default "FRITZ.Box_6860_5G-08.03.image"                                                       if FREETZ_TYPE_6860                            && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_6860_5G-08.10-122256-LabBETA.image"                                        if FREETZ_TYPE_6860                            && FREETZ_TYPE_FIRMWARE_08_2X_LABOR
 	#
 	default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.06.87.image"                             if FREETZ_TYPE_6890                            && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.07.03.image"                             if FREETZ_TYPE_6890                            && FREETZ_TYPE_FIRMWARE_07_0X
@@ -648,6 +651,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7510-07.30.image"                                                          if FREETZ_TYPE_7510                            && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7510-07.59.image"                                                          if FREETZ_TYPE_7510                            && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Box_7510-08.02.image"                                                          if FREETZ_TYPE_7510                            && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_7510-08.10-122257-LabBETA.image"                                           if FREETZ_TYPE_7510                            && FREETZ_TYPE_FIRMWARE_08_2X_LABOR
 	#
 	default "FRITZ.Box_7520-07.14.image"                                                          if FREETZ_TYPE_7520_V1  && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_7520-07.29.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_07_2X
@@ -775,6 +779,10 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritzbox-6591-labor-121796.zip"                                                      if FREETZ_TYPE_6591
 	default "fritzbox-6660-labor-121895.zip"                                                      if FREETZ_TYPE_6660
 	default "fritzbox-6690-labor-121896.zip"                                                      if FREETZ_TYPE_6690
+	default "fritzbox-6850_lte-labor-122255.zip"                                                  if FREETZ_TYPE_6850_4G
+	default "fritzbox-6850_5g-labor-122254.zip"                                                   if FREETZ_TYPE_6850_5G
+	default "fritzbox-6860_5g-labor-122256.zip"                                                   if FREETZ_TYPE_6860
+	default "fritzbox-7510-labor-122257.zip"                                                      if FREETZ_TYPE_7510
 	default "fritzbox-7530-labor-121911.zip"                                                      if FREETZ_TYPE_7530_W5
 	default "fritzbox-7530ax-labor-122082.zip"                                                    if FREETZ_TYPE_7530_W6_V1
 	default "fritzbox-7590-labor-121774.zip"                                                      if FREETZ_TYPE_7590_W5

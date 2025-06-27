@@ -1,16 +1,16 @@
-if FREETZ_TYPE_6850_V1 && FREETZ_AVM_VERSION_07_5X
+if FREETZ_TYPE_6850_5G && FREETZ_AVM_VERSION_08_0X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 6850 LTE"
+	default "FRITZ!Box 6850 5G"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "262"
+	default "258"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "262"
+	default "258"
 
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
@@ -55,9 +55,6 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	string
 	default "/dev/ttyMSM0"
 
-config FREETZ_AVM_HAS_REBOOT_SCRIPT
-	def_bool y
-
 config FREETZ_AVM_HAS_IP_BINARY
 	def_bool y
 
@@ -74,9 +71,6 @@ config FREETZ_AVM_HAS_MYFRITZ
 	def_bool y
 
 config FREETZ_AVM_HAS_NAS
-	def_bool y
-
-config FREETZ_AVM_HAS_NTFS
 	def_bool y
 
 config FREETZ_AVM_HAS_AURA_USB
@@ -160,6 +154,9 @@ config FREETZ_AVM_HAS_WIREGUARD
 config FREETZ_AVM_HAS_AVMCOUNTERD
 	def_bool y
 
+config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
+
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 
@@ -193,7 +190,7 @@ config FREETZ_AVM_HAS_LIBFUSE
 config FREETZ_AVM_HAS_OPENSSL
 	def_bool y
 
-config FREETZ_AVM_HAS_OPENSSL_VERSION_11
+config FREETZ_AVM_HAS_OPENSSL_VERSION_30
 	def_bool y
 
 config FREETZ_AVM_HAS_KIDS
@@ -229,7 +226,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 
-config FREETZ_AVM_PROP_GCC_5_5
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 
 config FREETZ_AVM_PROP_LIBC_UCLIBC
