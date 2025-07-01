@@ -123,6 +123,7 @@ Latest changes
    * socat 1.8.0.3
    * sslh 2.2.3
    * strace 4.9/5.0/6.15
+   * sudo 1.9.17p1
    * tcpdump 4.1.1/4.99.4
    * Tor 0.4.8.16
    * uMurmur 0.2.20/0.3.1
