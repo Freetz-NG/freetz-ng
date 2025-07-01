@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -35,7 +35,7 @@
+@@ -43,7 +43,7 @@
  all: 		atop atopsar atopacctd atopconvert atopcat atophide
  
  atop:		atop.o    $(ALLMODS) Makefile

@@ -1,4 +1,4 @@
-# jq 1.8.0 (binary only)
+# jq 1.8.1 (binary only)
  - Homepage: [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/)
  - Manpage: [https://jqlang.github.io/jq/manual/](https://jqlang.github.io/jq/manual/)
  - Changelog: [https://github.com/jqlang/jq/releases](https://github.com/jqlang/jq/releases)

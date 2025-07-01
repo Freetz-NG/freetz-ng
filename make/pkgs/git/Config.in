@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_GIT
-	bool "Git 2.26.2/2.49.0"
+	bool "Git 2.26.2/2.50.0"
 	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libcurl
@@ -24,7 +24,7 @@ if FREETZ_PACKAGE_GIT
 			depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 		config FREETZ_PACKAGE_GIT_VERSION_CURRENT
-			bool "2.49.0"
+			bool "2.50.0"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice

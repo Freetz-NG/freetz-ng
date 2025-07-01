@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_IMAGEMAGICK
-	bool "ImageMagick 7.1.0-62/7.1.1-46 (binary only)"
+	bool "ImageMagick 7.1.0-62/7.1.1-47 (binary only)"
 	depends on FREETZ_KERNEL_VERSION_2_6_28_MIN
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -26,7 +26,7 @@ if FREETZ_PACKAGE_IMAGEMAGICK
 			depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 		config FREETZ_PACKAGE_IMAGEMAGICK_VERSION_CURRENT
-			bool "7.1.1-46"
+			bool "7.1.1-47"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice

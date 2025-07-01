@@ -68,7 +68,7 @@ Latest changes
    * ninja 1.13.0
    * ncftp 3.3.0
    * ncurses 6.5-20250419
-   * openssl 3.5.0
+   * openssl 3.5.1
    * pkgconf 2.4.3
    * precompiled host-tools 2025-05-20
    * precompiled toolchains r25866
@@ -86,21 +86,21 @@ Latest changes
 
  - Packages:
    * ACME.sh 3.1.1
-   * Atop 2.11.1
-   * BIND 9.11.37/9.20.9
+   * Atop 2.12.0
+   * BIND 9.11.37/9.20.10
    * CA-bundle 2025-02-25
-   * Curl 8.14.0
+   * Curl 8.14.1
    * Dante 1.4.4
    * dehydrated 0.7.2
    * Dnsmasq 2.80/2.91
    * Dropbear 2025.88
    * dtc 1.7.2
-   * Git 2.49.0
+   * Git 2.50.0
    * HAProxy 2.6.22
    * htop 1.0.3/3.4.1
-   * ImageMagick 7.1.0-62/7.1.1-46
+   * ImageMagick 7.1.0-62/7.1.1-47
    * iptables 1.4.11.1/1.4.21/1.6.2/1.8.11
-   * jq 1.8.0
+   * jq 1.8.1
    * LCD4linux eadf4603
    * Lighttpd 1.4.79
    * Lua 5.1.5/5.4.8
@@ -111,7 +111,7 @@ Latest changes
    * NcFTP 3.3.0
    * Nmap 4.76/5.51/7.97
    * OpenSSH 9.3p2/10.0p1
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.16/3.5.0
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.17/3.5.1
    * OpenVPN 2.4.12/2.5.11/2.6.14
    * Privoxy 4.0.0
    * python-Cffi 1.15.1
@@ -123,9 +123,10 @@ Latest changes
    * socat 1.8.0.3
    * sslh 2.2.3
    * strace 4.9/5.0/6.15
+   * Stunnel 5.75
    * sudo 1.9.17p1
    * tcpdump 4.1.1/4.99.4
-   * Tor 0.4.8.16
+   * Tor 0.4.8.17
    * uMurmur 0.2.20/0.3.1
    * Unbound 1.23.0
    * UnRAR 6.1.7/7.1.6
@@ -148,7 +149,7 @@ Latest changes
    * libusb1 1.0.23/1.0.29
    * libuv 1.44.2/1.51.0
    * libpng 1.6.48
-   * mbedTLS 2.7.19/2.28.10/3.6.3.1
+   * mbedTLS 2.7.19/2.28.10/3.6.4
    * pango 1.56.3
    * pixman 0.44.2
    * readline 6.3-p8/8.2

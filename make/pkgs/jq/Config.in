@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_JQ
-	bool "jq 1.8.0 (binary only)"
+	bool "jq 1.8.1 (binary only)"
 	default n
 	select FREETZ_LIB_libm      if !FREETZ_PACKAGE_JQ_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libonig   if !FREETZ_PACKAGE_JQ_STATIC && FREETZ_PACKAGE_JQ_WITH_RE_SUPPORT

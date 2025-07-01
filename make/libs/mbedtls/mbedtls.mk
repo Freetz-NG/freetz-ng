@@ -1,14 +1,14 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_MBEDTLS_VERSION_207),2.7.19,$(if $(FREETZ_MBEDTLS_VERSION_228),2.28.10,3.6.3.1)))
+$(call PKG_INIT_LIB, $(if $(FREETZ_MBEDTLS_VERSION_207),2.7.19,$(if $(FREETZ_MBEDTLS_VERSION_228),2.28.10,3.6.4)))
 $(PKG)_SOURCE_2.7  :=mbedtls-$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE_2.28 :=mbedtls-$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE_3.6  :=mbedtls-$($(PKG)_VERSION).tar.bz2
 $(PKG)_SOURCE:=$($(PKG)_SOURCE_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
 $(PKG)_HASH_2.7  :=3da12b1cebe1a25da8365d5349f67db514aefcaa75e26082d7cb2fa3ce9608aa
 $(PKG)_HASH_2.28 :=c785ddf2ad66976ab429c36dffd4a021491e40f04fe493cfc39d6ed9153bc246
-$(PKG)_HASH_3.6  :=243ed496d5f88a5b3791021be2800aac821b9a4cc16e7134aa413c58b4c20e0c
+$(PKG)_HASH_3.6  :=ed0d2b8c01ae5c02d95322acf2e4bda65c859c0d28e866862bc30aa0bdba3dc9
 $(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
-$(PKG)_SITE:=https://github.com/Mbed-TLS/mbedtls/releases/download/v$($(PKG)_VERSION),https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
-### VERSION:=2.7.19/2.28.10/3.6.3.1
+$(PKG)_SITE:=https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-$($(PKG)_VERSION),https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
+### VERSION:=2.7.19/2.28.10/3.6.4
 ### WEBSITE:=https://www.trustedfirmware.org/projects/mbed-tls/
 ### MANPAGE:=https://mbed-tls.readthedocs.io/en/latest/
 ### CHANGES:=https://github.com/Mbed-TLS/mbedtls/releases

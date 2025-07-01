@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_OPENSSL
-	bool "OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.16/3.5.0 (binary only)"
+	bool "OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.17/3.5.1 (binary only)"
 	default n
 	select FREETZ_LIB_libdl              if !FREETZ_PACKAGE_OPENSSL_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpthread         if !FREETZ_PACKAGE_OPENSSL_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_11_MIN

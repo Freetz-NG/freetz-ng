@@ -1,6 +1,6 @@
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -398,7 +398,7 @@
+@@ -401,7 +401,7 @@
  # Red Hat "by design" bug #82369
  
  # Additional preprocessor definitions

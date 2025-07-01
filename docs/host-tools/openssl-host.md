@@ -1,4 +1,4 @@
-# openssl 3.5.0
+# openssl 3.5.1
  - Homepage: [https://www.openssl.org/source/](https://www.openssl.org/source/)
  - Manpage: [https://www.openssl.org/docs/](https://www.openssl.org/docs/)
  - Changelog: [https://www.openssl.org/news/changelog.html](https://www.openssl.org/news/changelog.html)

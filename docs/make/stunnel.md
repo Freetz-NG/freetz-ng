@@ -1,4 +1,4 @@
-# Stunnel 5.74
+# Stunnel 5.75
  - Homepage: [https://www.stunnel.org/](https://www.stunnel.org/)
  - Manpage: [https://www.stunnel.org/static/stunnel.html](https://www.stunnel.org/static/stunnel.html)
  - Changelog: [https://www.stunnel.org/NEWS.html](https://www.stunnel.org/NEWS.html)

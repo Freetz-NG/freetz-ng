@@ -1,6 +1,6 @@
---- configure.org	2024-09-09 19:25:24.000000000 +0200
-+++ configure	2024-12-16 18:44:50.000000000 +0100
-@@ -7218,7 +7218,7 @@
+--- configure
++++ configure
+@@ -7325,7 +7325,7 @@
  
  
  
@@ -9,7 +9,7 @@
    as_CACHEVAR=`printf "%s\n" "ax_cv_check_cflags__$flag" | sed "$as_sed_sh"`
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts $flag" >&5
  printf %s "checking whether C compiler accepts $flag... " >&6; }
-@@ -7556,7 +7556,7 @@
+@@ -7663,7 +7663,7 @@
  
  
  

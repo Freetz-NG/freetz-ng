@@ -13,7 +13,7 @@ Signed-off-by: Eneas U de Queiroz <cote2004-github@yahoo.com>
 
 --- Configure
 +++ Configure
-@@ -1810,7 +1810,9 @@
+@@ -1811,7 +1811,9 @@
  
  unless ($disabled{afalgeng}) {
      $config{afalgeng}="";

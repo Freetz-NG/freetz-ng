@@ -1,6 +1,6 @@
 --- Configure
 +++ Configure
-@@ -410,6 +410,7 @@
+@@ -411,6 +411,7 @@
  $config{libdir}="";
  my $auto_threads=1;    # enable threads automatically? true by default
  my $default_ranlib;
@@ -8,7 +8,7 @@
  
  # Known TLS and DTLS protocols
  my @tls = qw(ssl3 tls1 tls1_1 tls1_2 tls1_3);
-@@ -1152,6 +1153,10 @@
+@@ -1153,6 +1154,10 @@
                          {
                          push @{$useradd{CPPFLAGS}}, $1;
                          }

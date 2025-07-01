@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.11.1)
+$(call PKG_INIT_BIN, 2.12.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=77650f79f9e388b6f5666dc113849894575a29bb4de21b8cd58767bf8a905154
+$(PKG)_HASH:=0d09ecc90c14e6ef41c22e3c57c142c3e4fb9cf3c94379077a33c961d5343086
 $(PKG)_SITE:=https://www.atoptool.nl/download
 ### WEBSITE:=https://www.atoptool.nl/
 ### MANPAGE:=https://linux.die.net/man/1/atop
