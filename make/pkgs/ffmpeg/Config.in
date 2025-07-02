@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_FFMPEG
-	bool "FFmpeg 5.1.4 - DEPRECATED"
+	bool "FFmpeg 7.1.1"
 	default n
 	depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 	help
