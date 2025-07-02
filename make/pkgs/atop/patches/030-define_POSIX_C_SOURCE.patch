@@ -1,0 +1,154 @@
+--- atopacctd.c
++++ atopacctd.c
+@@ -36,7 +36,7 @@
+ ** it under the terms of the GNU General Public License version 2 as
+ ** published by the Free Software Foundation.
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- atop.c
++++ atop.c
+@@ -118,7 +118,7 @@
+ ** can be linked with 'atop'; the one to use can eventually be chosen
+ ** at runtime. 
+ */
+-#define _POSIX_C_SOURCE	
++#define _POSIX_C_SOURCE 1	
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- atopcat.c
++++ atopcat.c
+@@ -28,7 +28,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- atophide.c
++++ atophide.c
+@@ -31,7 +31,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- atopsar.c
++++ atopsar.c
+@@ -28,7 +28,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- cgroups.c
++++ cgroups.c
+@@ -27,7 +27,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- drawbar.c
++++ drawbar.c
+@@ -103,7 +103,7 @@
+ // horizontally scaled by the user, atop might switch from one model to
+ // the other.
+ /////////////////////////////////////////////////////////////////////////////
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- gpucom.c
++++ gpucom.c
+@@ -22,7 +22,7 @@
+ ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ ** See the GNU General Public License for more details.
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- netatopif.c
++++ netatopif.c
+@@ -22,7 +22,7 @@
+ ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ ** See the GNU General Public License for more details.
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- photoproc.c
++++ photoproc.c
+@@ -30,7 +30,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- photosyst.c
++++ photosyst.c
+@@ -29,7 +29,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- rawlog.c
++++ rawlog.c
+@@ -26,7 +26,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- showgeneric.c
++++ showgeneric.c
+@@ -29,7 +29,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
+--- various.c
++++ various.c
+@@ -29,7 +29,7 @@
+ ** Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ ** --------------------------------------------------------------------------
+ */
+-#define _POSIX_C_SOURCE
++#define _POSIX_C_SOURCE 1
+ #define _XOPEN_SOURCE
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE
