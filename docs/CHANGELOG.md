@@ -114,6 +114,7 @@ Latest changes
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.17/3.5.1
    * OpenVPN 2.4.12/2.5.11/2.6.14
    * Privoxy 4.0.0
+   * python 3.13.4
    * python-Cffi 1.15.1
    * python-PyCrypto 2.7a1
    * python-PyCryptodome 3.23.0

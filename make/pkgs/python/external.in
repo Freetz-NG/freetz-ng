@@ -4,8 +4,8 @@ config EXTERNAL_FREETZ_PACKAGE_PYTHON
 	default n
 	help
 		externals the following file(s):
-		 /usr/bin/python2.7.bin
-		 /usr/include/python2.7/
-		 /usr/lib/python27.zip (if exists)
-		 /usr/lib/python2.7/
+		 /usr/bin/python3.13.bin
+		 /usr/include/python3.13/
+		 /usr/lib/python313.zip (if exists)
+		 /usr/lib/python3.13/
 

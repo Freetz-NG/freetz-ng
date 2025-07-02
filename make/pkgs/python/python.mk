@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 2.7.18)
+$(call PKG_INIT_BIN, 3.13.4)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43
+$(PKG)_HASH:=27b15a797562a2971dce3ffe31bb216042ce0b995b39d768cf15f784cc757365
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.python.org/
 ### MANPAGE:=https://docs.python.org/2/
@@ -33,7 +33,7 @@ $(PKG)_EXCLUDED_FILES   := $(call newline2space,$(foreach mod,$($(PKG)_MODULES_E
 $(PKG)_UNNECESSARY_DIRS := $(if $(FREETZ_PACKAGE_PYTHON_COMPRESS_PYC),$(call newline2space,$(Python/unnecessary-if-compression-enabled/dirs)))
 $(PKG)_UNNECESSARY_DIRS += $(call newline2space,$(foreach mod,$($(PKG)_MODULES_EXCLUDED),$(PyMod/$(mod)/dirs)))
 
-$(PKG)_DEPENDS_ON += python2-host expat libffi zlib
+$(PKG)_DEPENDS_ON += python3-host expat libffi zlib
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_PYTHON_MOD_BSDDB),db)
 $(PKG)_DEPENDS_ON += $(if $(or $(FREETZ_PACKAGE_PYTHON_MOD_CURSES),$(FREETZ_PACKAGE_PYTHON_MOD_READLINE)),ncurses)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_PYTHON_MOD_READLINE),readline)
@@ -62,6 +62,7 @@ $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
 $(PKG)_CONFIGURE_OPTIONS += --with-system-expat
 $(PKG)_CONFIGURE_OPTIONS += --with-system-ffi
 $(PKG)_CONFIGURE_OPTIONS += --with-threads
+$(PKG)_CONFIGURE_OPTIONS += --with-build-python
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PYTHON_STATIC),--disable-shared,--enable-shared)
 
@@ -84,8 +85,8 @@ $(PKG)_MAKE_OPTIONS  := CROSS_TOOLCHAIN_SYSROOT="$(TARGET_TOOLCHAIN_STAGING_DIR)
 $(PKG)_MAKE_OPTIONS  += PYTHON_FOR_COMPILE="$(abspath $(HOST_TOOLS_DIR)/usr/bin/python)"
 $(PKG)_CONFIGURE_ENV += PYTHON_INTERPRETER_FOR_BUILD="$(abspath $($(PKG)_DIR)/hostpython)"
 
-ifneq ($(strip $(DL_DIR)/$(PYTHON_SOURCE)),$(strip $(DL_DIR)/$(PYTHON2_HOST_SOURCE)))
-$(PKG_SOURCE_DOWNLOAD)
+ifneq ($(strip $(DL_DIR)/$(PYTHON_SOURCE)),$(strip $(DL_DIR)/$(PYTHON3_HOST_SOURCE)))
+# $(PKG_SOURCE_DOWNLOAD)
 endif
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -130,7 +131,7 @@ $($(PKG)_STAGING_BINARY): $($(PKG)_DIR)/.installed
 $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.installed
 	@$(call COPY_USING_TAR,$(PYTHON_LOCAL_INSTALL_DIR),$(PYTHON_DEST_DIR),--exclude='libpython$(PYTHON_MAJOR_VERSION).so*' .) \
 	(cd $(PYTHON_DEST_DIR); \
-		echo -n > usr/lib/python$(PYTHON_MAJOR_VERSION)/config/Makefile; \
+		echo -n > usr/lib/python$(PYTHON_MAJOR_VERSION)/config-$(PYTHON_MAJOR_VERSION)/Makefile; \
 		find usr/include/python$(PYTHON_MAJOR_VERSION)/ -name "*.h" \! -name "pyconfig.h" \! -name "Python.h" -delete; \
 		$(RM) -r $(call newline2space,$(Python/development/files)); \
 	); \

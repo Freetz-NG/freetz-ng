@@ -1,6 +1,6 @@
 config FREETZ_PACKAGE_PYTHON
-	bool "Python 2.7.18 - DEPRECATED"
-	select FREETZ_LIB_libpython2  if !FREETZ_PACKAGE_PYTHON_STATIC
+	bool "Python 3.13.4"
+	select FREETZ_LIB_libpython3  if !FREETZ_PACKAGE_PYTHON_STATIC
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -41,10 +41,10 @@ if FREETZ_PACKAGE_PYTHON
 		depends on FREETZ_PACKAGE_PYTHON_PYC
 		default y
 		help
-			Causes all *.pyc files usually residing in /usr/lib/python2.7
-			to be compressed into one large file, /usr/lib/python27.zip.
+			Causes all *.pyc files usually residing in /usr/lib/python3.13
+			to be compressed into one large file, /usr/lib/python313.zip.
 			Thereafter, only *.so files and some small text data are left in
-			/usr/lib/python2.7, while Python will (efficiently) read all
+			/usr/lib/python3.13, while Python will (efficiently) read all
 			*.pyc files from the zip archive.
 			Leaving this option enabled saves you about 50% of space at
 			virtually no cost.
@@ -67,14 +67,14 @@ if FREETZ_PACKAGE_PYTHON
 				Note: Only useful, if you connect an audio-capable USB device
 				to your box. Most people may safely say N here.
 				For details, see:
-				http://docs.python.org/2/library/ossaudiodev.html
+				https://docs.python.org/3/library/ossaudiodev.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_AUDIOOP
 			bool "audioop"
 			default n
 			help
 				Manipulate raw audio data.
-				For details, see: http://docs.python.org/2/library/audioop.html
+				For details, see: https://docs.python.org/3/library/audioop.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_BSDDB
 			bool "bsddb"
@@ -82,7 +82,7 @@ if FREETZ_PACKAGE_PYTHON
 			default n
 			help
 				Interface to Berkeley DB library. Requires libdb.
-				For details, see: http://docs.python.org/2/library/bsddb.html
+				For details, see: https://docs.python.org/3/library/bsddb.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_CMATH
 			bool "cmath"
@@ -91,7 +91,7 @@ if FREETZ_PACKAGE_PYTHON
 				Mathematical functions for complex numbers.
 				Not particularly useful to most non-mathematicians. ;-)
 				If unsure say N.
-				For details, see: http://docs.python.org/2/library/cmath.html
+				For details, see: https://docs.python.org/3/library/cmath.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_CPROFILE
 			bool "lsprof"
@@ -102,21 +102,21 @@ if FREETZ_PACKAGE_PYTHON
 				of a program, providing a variety of statistics. If you don't
 				plan on debugging your Python scripts on the Fritz!Box, you can
 				safely say N here.
-				For details, see: http://docs.python.org/2/library/profile.html
+				For details, see: https://docs.python.org/3/library/profile.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_CRYPT
 			bool "crypt"
 			default n
 			help
 				Function to check Unix passwords.
-				For details, see: http://docs.python.org/2/library/crypt.html
+				For details, see: https://docs.python.org/3/library/crypt.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_CSV
 			bool "csv"
 			default n
 			help
 				CSV (Comma Separated Values) file reading and writing.
-				For details, see: http://docs.python.org/2/library/csv.html
+				For details, see: https://docs.python.org/3/library/csv.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_CTYPES
 			bool "ctypes"
@@ -126,7 +126,7 @@ if FREETZ_PACKAGE_PYTHON
 				Foreign function library for Python, that provides C compatible
 				data types and allows calling functions in DLLs or shared
 				libraries. Requires libffi.
-				For details, see: http://docs.python.org/2/library/ctypes.html
+				For details, see: https://docs.python.org/3/library/ctypes.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_CURSES
 			bool "curses and curses_panel"
@@ -137,7 +137,7 @@ if FREETZ_PACKAGE_PYTHON
 				Terminal handling for character-cell displays.
 				Requires libncurses and libpanel.
 				Most people won't need it, so it's safe to say N.
-				For details, see: http://docs.python.org/2/library/curses.html
+				For details, see: https://docs.python.org/3/library/curses.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_EASTERN_CODECS
 			bool "encodings for Eastern and Asian languages"
@@ -163,7 +163,7 @@ if FREETZ_PACKAGE_PYTHON
 				 * johab
 				 * shift_jis
 
-				For details, see: http://docs.python.org/2/library/codecs.html
+				For details, see: https://docs.python.org/3/library/codecs.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_ELEMENTTREE
 			bool "elementtree"
@@ -179,7 +179,7 @@ if FREETZ_PACKAGE_PYTHON
 				This module provides access to the Unix group database.
 				On the Fritz!Box, you most probably won't need it. If unsure
 				say N.
-				For details, see: http://docs.python.org/2/library/grp.html
+				For details, see: https://docs.python.org/3/library/grp.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_HOTSHOT
 			bool "hotshot"
@@ -188,7 +188,7 @@ if FREETZ_PACKAGE_PYTHON
 				High performance logging profiler.
 				If you don't plan on debugging your Python scripts on the
 				Fritz!Box, you can safely say N here.
-				For details, see: http://docs.python.org/2/library/hotshot.html
+				For details, see: https://docs.python.org/3/library/hotshot.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_JSON
 			bool "json"
@@ -197,7 +197,7 @@ if FREETZ_PACKAGE_PYTHON
 				JSON encoder and decoder.
 				JSON (JavaScript Object Notation) is a subset of JavaScript
 				syntax used as a lightweight data interchange format.
-				For details, see: http://docs.python.org/2/library/json.html
+				For details, see: https://docs.python.org/3/library/json.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_MULTIPROCESSING
 			bool "multiprocessing"
@@ -208,7 +208,7 @@ if FREETZ_PACKAGE_PYTHON
 				Multiprocessing is a package that supports spawning processes
 				using an API similar to the threading module. It's usually safe
 				to say N here. Requires "mmap" (s. below).
-				For details, see: http://docs.python.org/2/library/multiprocessing.html
+				For details, see: https://docs.python.org/3/library/multiprocessing.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_MMAP
 			bool "mmap"
@@ -217,7 +217,7 @@ if FREETZ_PACKAGE_PYTHON
 				Memory-mapped file support.
 				Memory-mapped file objects behave like both strings and like
 				file objects. Primarily used by "multiprocessing" (s. above).
-				For details, see: http://docs.python.org/2/library/mmap.html
+				For details, see: https://docs.python.org/3/library/mmap.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_READLINE
 			bool "readline"
@@ -229,7 +229,7 @@ if FREETZ_PACKAGE_PYTHON
 				The readline module defines a number of functions to facilitate
 				completion and reading/writing of history files from the Python
 				interpreter. Requires libncurses and libreadline.
-				For details, see: http://docs.python.org/2/library/readline.html
+				For details, see: https://docs.python.org/3/library/readline.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_SPWD
 			bool "spwd"
@@ -239,7 +239,7 @@ if FREETZ_PACKAGE_PYTHON
 				This module provides access to the Unix shadow password
 				database. On the Fritz!Box, you most probably won't need it.
 				If unsure say N.
-				For details, see: http://docs.python.org/2/library/spwd.html
+				For details, see: https://docs.python.org/3/library/spwd.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_SQLITE
 			bool "sqlite3"
@@ -250,7 +250,7 @@ if FREETZ_PACKAGE_PYTHON
 				This module provides a SQL interface compliant with the DB-API
 				2.0 specification described by PEP 249. On the Fritz!Box, you
 				most probably won't need it. If unsure say N.
-				For details, see: http://docs.python.org/2/library/sqlite3.html
+				For details, see: https://docs.python.org/3/library/sqlite3.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_SSL
 			bool "ssl"
@@ -259,7 +259,7 @@ if FREETZ_PACKAGE_PYTHON
 			default n
 			help
 				TLS/SSL wrapper for socket objects.
-				For details, see: http://docs.python.org/2/library/ssl.html
+				For details, see: https://docs.python.org/3/library/ssl.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_SYSLOG
 			bool "syslog"
@@ -268,7 +268,7 @@ if FREETZ_PACKAGE_PYTHON
 				Unix syslog library routines.
 				This module provides an interface to the Unix syslog library
 				routines.
-				For details, see: http://docs.python.org/2/library/syslog.html
+				For details, see: https://docs.python.org/3/library/syslog.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_TERMIOS
 			bool "termios"
@@ -277,7 +277,7 @@ if FREETZ_PACKAGE_PYTHON
 				POSIX style tty control.
 				This module provides an interface to the POSIX calls for tty I/O
 				control.
-				For details, see: http://docs.python.org/2/library/termios.html
+				For details, see: https://docs.python.org/3/library/termios.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_TEST
 			bool "test (useless for an end user)"
@@ -292,7 +292,7 @@ if FREETZ_PACKAGE_PYTHON
 				 It is absolutely useless for an end user. 99.99% of
 				 the users may say N here.
 
-				For details, see: http://docs.python.org/2/library/test.html
+				For details, see: https://docs.python.org/3/library/test.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_UNICODEDATA
 			bool "unicodedata"
@@ -303,7 +303,7 @@ if FREETZ_PACKAGE_PYTHON
 				which defines character properties for all Unicode characters.
 				Unless you need to examine those properties, you are safe to say
 				N here.
-				For details, see: http://docs.python.org/2/library/unicodedata.html
+				For details, see: https://docs.python.org/3/library/unicodedata.html
 
 		config FREETZ_PACKAGE_PYTHON_MOD_UNITTEST
 			bool "unittest"
@@ -314,7 +314,7 @@ if FREETZ_PACKAGE_PYTHON
 				of the tests from the reporting framework. The unittest module provides
 				classes that make it easy to support these qualities for a set of tests.
 
-				For details, see: http://docs.python.org/2/library/unittest.html
+				For details, see: https://docs.python.org/3/library/unittest.html
 
 
 		config FREETZ_PACKAGE_PYTHON_MOD_WSGIREF
@@ -323,7 +323,7 @@ if FREETZ_PACKAGE_PYTHON
 			help
 				This module provides a variety of utility functions for working
 				with WSGI environments.
-				For details, see: http://docs.python.org/2/library/wsgiref.html
+				For details, see: https://docs.python.org/3/library/wsgiref.html
 
 	endmenu
 
