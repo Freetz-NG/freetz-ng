@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Change the value of PYTHONHOME variable and comment LD_LIBRARY_PATH line in
+# if you want to use python on an unmodified box. Don't forget to copy all
+# libraries python and its modules depend on to ${PYTHONHOME}/lib/freetz.
+
+export PYTHONHOME="/var/media/ftp/external/usr"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${PYTHONHOME}/lib/freetz"
+exec "${PYTHONHOME}/bin/python3.13.bin" -B "$@"

@@ -1,0 +1,10 @@
+config FREETZ_LIB_libpython3
+	bool "libpython3 (libpython3.so)"
+	depends on FREETZ_PACKAGE_PYTHON3 && !FREETZ_PACKAGE_PYTHON3_STATIC
+	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libutil     if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libz
+	default n
+

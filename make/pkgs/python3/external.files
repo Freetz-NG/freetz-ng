@@ -1,0 +1,6 @@
+if [ "$EXTERNAL_FREETZ_PACKAGE_PYTHON3" == "y" ] ; then
+	EXTERNAL_FILES+=" /usr/bin/python3.13.bin /usr/include/python3.13 /usr/lib/python3.13"
+	[ "$FREETZ_PACKAGE_PYTHON3_COMPRESS_PYC" == "y" ] && EXTERNAL_FILES+=" /usr/lib/python313.zip"
+fi
+
+[ "$EXTERNAL_FREETZ_LIB_libpython3" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpython3.13.so.1.0"

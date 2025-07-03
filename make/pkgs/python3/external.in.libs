@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_LIB_libpython3
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpython3
+	bool "libpython3"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libpython3.13.so.1.0
+

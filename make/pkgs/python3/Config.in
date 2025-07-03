@@ -1,0 +1,347 @@
+config FREETZ_PACKAGE_PYTHON3
+	bool "Python 3.13.5"
+	select FREETZ_LIB_libpython3  if !FREETZ_PACKAGE_PYTHON3_STATIC
+	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libutil     if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libexpat
+	select FREETZ_LIB_libz
+	default n
+	help
+		Python is a remarkably powerful dynamic programming language
+		that is used in a wide variety of application domains.
+		CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on
+		your choice of modules) of uncompressed data to your image.
+		In most cases, it should therefore be externalized.
+
+if FREETZ_PACKAGE_PYTHON3
+
+	choice
+		prompt "File type"
+		default FREETZ_PACKAGE_PYTHON3_PYC
+
+		config FREETZ_PACKAGE_PYTHON3_PYC
+			bool "Use precompiled files (*.pyc)"
+			help
+				Precompiled files reduce start-up time of python programs.
+				Use this option if you don't plan to modify python and/or
+				its modules.
+
+		config FREETZ_PACKAGE_PYTHON3_PY
+			bool "Use human readable/modifiable files (*.py)"
+			help
+				Use this option if you want to be able to modify python and/or
+				its modules for development/testing or any other purposes.
+
+	endchoice
+
+	config FREETZ_PACKAGE_PYTHON3_COMPRESS_PYC
+		bool "Compress *.pyc files"
+		depends on FREETZ_PACKAGE_PYTHON3_PYC
+		default y
+		help
+			Causes all *.pyc files usually residing in /usr/lib/python3.13
+			to be compressed into one large file, /usr/lib/python313.zip.
+			Thereafter, only *.so files and some small text data are left in
+			/usr/lib/python3.13, while Python will (efficiently) read all
+			*.pyc files from the zip archive.
+			Leaving this option enabled saves you about 50% of space at
+			virtually no cost.
+
+	config FREETZ_PACKAGE_PYTHON3_STATIC
+		bool "Link libpython statically in"
+		default n
+		help
+			Don't create shared version of libpython, link it in statically
+			instead. All other libraries Python depends on are still linked
+			in dynamically.
+
+	menu "Python binary modules (extensions)"
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_AUDIODEV
+			bool "linuxaudiodev and ossaudiodev"
+			default n
+			help
+				Access to (OSS-compatible) Linux audio devices.
+				Note: Only useful, if you connect an audio-capable USB device
+				to your box. Most people may safely say N here.
+				For details, see:
+				https://docs.python.org/3/library/ossaudiodev.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_AUDIOOP
+			bool "audioop"
+			default n
+			help
+				Manipulate raw audio data.
+				For details, see: https://docs.python.org/3/library/audioop.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_BSDDB
+			bool "bsddb"
+			select FREETZ_LIB_libdb
+			default n
+			help
+				Interface to Berkeley DB library. Requires libdb.
+				For details, see: https://docs.python.org/3/library/bsddb.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_CMATH
+			bool "cmath"
+			default n
+			help
+				Mathematical functions for complex numbers.
+				Not particularly useful to most non-mathematicians. ;-)
+				If unsure say N.
+				For details, see: https://docs.python.org/3/library/cmath.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_CPROFILE
+			bool "lsprof"
+			default n
+			help
+				Python cProfiler.
+				A profiler is a program that describes the run time performance
+				of a program, providing a variety of statistics. If you don't
+				plan on debugging your Python scripts on the Fritz!Box, you can
+				safely say N here.
+				For details, see: https://docs.python.org/3/library/profile.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_CRYPT
+			bool "crypt"
+			default n
+			help
+				Function to check Unix passwords.
+				For details, see: https://docs.python.org/3/library/crypt.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_CSV
+			bool "csv"
+			default n
+			help
+				CSV (Comma Separated Values) file reading and writing.
+				For details, see: https://docs.python.org/3/library/csv.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_CTYPES
+			bool "ctypes"
+			select FREETZ_LIB_libffi
+			default n
+			help
+				Foreign function library for Python, that provides C compatible
+				data types and allows calling functions in DLLs or shared
+				libraries. Requires libffi.
+				For details, see: https://docs.python.org/3/library/ctypes.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_CURSES
+			bool "curses and curses_panel"
+			select FREETZ_LIB_libncurses
+			select FREETZ_LIB_libpanel
+			default n
+			help
+				Terminal handling for character-cell displays.
+				Requires libncurses and libpanel.
+				Most people won't need it, so it's safe to say N.
+				For details, see: https://docs.python.org/3/library/curses.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_EASTERN_CODECS
+			bool "encodings for Eastern and Asian languages"
+			default n
+			help
+				Provide codec registry and base classes for Asian and Eastern
+				languages, in particular:
+				 * big5
+				 * big5hkscs
+				 * cp932
+				 * cp949
+				 * cp950
+				 * euc_jis_2004
+				 * euc_jisx0213
+				 * euc_jp
+				 * euc_kr
+				 * gb18030
+				 * gb2312
+				 * gbk
+				 * hz
+				 * iso2022_jp*
+				 * iso2022_kr
+				 * johab
+				 * shift_jis
+
+				For details, see: https://docs.python.org/3/library/codecs.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_ELEMENTTREE
+			bool "elementtree"
+			default n
+			help
+				The ElementTree XML API. Enables xml.etree.ElementTree.
+				For details, see: http://effbot.org/zone/element-index.htm
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_GRP
+			bool "grp"
+			default n
+			help
+				This module provides access to the Unix group database.
+				On the Fritz!Box, you most probably won't need it. If unsure
+				say N.
+				For details, see: https://docs.python.org/3/library/grp.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_HOTSHOT
+			bool "hotshot"
+			default n
+			help
+				High performance logging profiler.
+				If you don't plan on debugging your Python scripts on the
+				Fritz!Box, you can safely say N here.
+				For details, see: https://docs.python.org/3/library/hotshot.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_JSON
+			bool "json"
+			default n
+			help
+				JSON encoder and decoder.
+				JSON (JavaScript Object Notation) is a subset of JavaScript
+				syntax used as a lightweight data interchange format.
+				For details, see: https://docs.python.org/3/library/json.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_MULTIPROCESSING
+			bool "multiprocessing"
+			select FREETZ_PACKAGE_PYTHON3_MOD_MMAP
+			default n
+			help
+				Process-based "threading" interface.
+				Multiprocessing is a package that supports spawning processes
+				using an API similar to the threading module. It's usually safe
+				to say N here. Requires "mmap" (s. below).
+				For details, see: https://docs.python.org/3/library/multiprocessing.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_MMAP
+			bool "mmap"
+			default n
+			help
+				Memory-mapped file support.
+				Memory-mapped file objects behave like both strings and like
+				file objects. Primarily used by "multiprocessing" (s. above).
+				For details, see: https://docs.python.org/3/library/mmap.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_READLINE
+			bool "readline"
+			select FREETZ_LIB_libncurses
+			select FREETZ_LIB_libreadline
+			default n
+			help
+				GNU readline interface.
+				The readline module defines a number of functions to facilitate
+				completion and reading/writing of history files from the Python
+				interpreter. Requires libncurses and libreadline.
+				For details, see: https://docs.python.org/3/library/readline.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_SPWD
+			bool "spwd"
+			default n
+			help
+				The shadow password database.
+				This module provides access to the Unix shadow password
+				database. On the Fritz!Box, you most probably won't need it.
+				If unsure say N.
+				For details, see: https://docs.python.org/3/library/spwd.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_SQLITE
+			bool "sqlite3"
+			select FREETZ_LIB_libsqlite3
+			default n
+			help
+				DB-API 2.0 interface for SQLite databases.
+				This module provides a SQL interface compliant with the DB-API
+				2.0 specification described by PEP 249. On the Fritz!Box, you
+				most probably won't need it. If unsure say N.
+				For details, see: https://docs.python.org/3/library/sqlite3.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_SSL
+			bool "ssl"
+			select FREETZ_LIB_libcrypto
+			select FREETZ_LIB_libssl
+			default n
+			help
+				TLS/SSL wrapper for socket objects.
+				For details, see: https://docs.python.org/3/library/ssl.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_SYSLOG
+			bool "syslog"
+			default n
+			help
+				Unix syslog library routines.
+				This module provides an interface to the Unix syslog library
+				routines.
+				For details, see: https://docs.python.org/3/library/syslog.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_TERMIOS
+			bool "termios"
+			default n
+			help
+				POSIX style tty control.
+				This module provides an interface to the POSIX calls for tty I/O
+				control.
+				For details, see: https://docs.python.org/3/library/termios.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_TEST
+			bool "test (useless for an end user)"
+			default n
+			help
+				Install test module and tests contained in various modules.
+
+				Note:
+				 The test package is meant for internal use by Python only.
+				 It is only useful if one wants to test Python itself, e.g.
+				 to ensure that it has been properly cross-compiled.
+				 It is absolutely useless for an end user. 99.99% of
+				 the users may say N here.
+
+				For details, see: https://docs.python.org/3/library/test.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_UNICODEDATA
+			bool "unicodedata"
+			default n
+			help
+				Unicode Database.
+				This module provides access to the Unicode Character Database
+				which defines character properties for all Unicode characters.
+				Unless you need to examine those properties, you are safe to say
+				N here.
+				For details, see: https://docs.python.org/3/library/unicodedata.html
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_UNITTEST
+			bool "unittest"
+			default n
+			help
+				unittest supports test automation, sharing of setup and shutdown
+				code for tests, aggregation of tests into collections, and independence
+				of the tests from the reporting framework. The unittest module provides
+				classes that make it easy to support these qualities for a set of tests.
+
+				For details, see: https://docs.python.org/3/library/unittest.html
+
+
+		config FREETZ_PACKAGE_PYTHON3_MOD_WSGIREF
+			bool "wsgiref"
+			default n
+			help
+				This module provides a variety of utility functions for working
+				with WSGI environments.
+				For details, see: https://docs.python.org/3/library/wsgiref.html
+
+	endmenu
+
+#	menu "3rd-party modules"
+#		source "make/pkgs/python-bjoern/Config.in"
+#		source "make/pkgs/python-cffi/Config.in"
+#		source "make/pkgs/python-cheetah/Config.in"
+#		source "make/pkgs/python-imaging-library/Config.in"
+#		source "make/pkgs/python-mechanize/Config.in"
+#		source "make/pkgs/python-mysql-connector/Config.in"
+#		source "make/pkgs/python-pycrypto/Config.in"
+#		source "make/pkgs/python-pycryptodome/Config.in"
+#		source "make/pkgs/python-pycurl/Config.in"
+#		source "make/pkgs/python-pyopenssl/Config.in"
+#		source "make/pkgs/python-pyrrd/Config.in"
+#		source "make/pkgs/python-pyserial/Config.in"
+#		source "make/pkgs/python-yenc/Config.in"
+#	endmenu
+
+endif # FREETZ_PACKAGE_PYTHON3
+

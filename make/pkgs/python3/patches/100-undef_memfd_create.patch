@@ -1,0 +1,11 @@
+--- configure
++++ configure
+@@ -19216,7 +19216,7 @@
+   if test "x$ac_cv_func_memfd_create" = xyes
+ then :
+ 
+-printf "%s\n" "#define HAVE_MEMFD_CREATE 1" >>confdefs.h
++# printf "%s\n" "#define HAVE_MEMFD_CREATE 1" >>confdefs.h
+ 
+ fi
+ 

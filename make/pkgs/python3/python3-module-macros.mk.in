@@ -1,0 +1,60 @@
+#
+# Copyright (C) 2007 OpenWrt.org
+#
+# Copyright (C) 2013 freetz_org
+#
+
+PYTHON3_STAGING_DIR:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr
+PYTHON3_STAGING_BIN_DIR:=$(PYTHON3_STAGING_DIR)/bin
+PYTHON3_STAGING_INC_DIR:=$(PYTHON3_STAGING_DIR)/include/python$(PYTHON3_MAJOR_VERSION)
+PYTHON3_STAGING_LIB_DIR:=$(PYTHON3_STAGING_DIR)/lib/python$(PYTHON3_MAJOR_VERSION)
+
+PYTHON3_SITE_PKG_DIR:=/usr/lib/python$(PYTHON3_MAJOR_VERSION)/site-packages
+
+PYTHON:=python$(PYTHON3_MAJOR_VERSION)
+
+HOST_PYTHON3_BIN:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/hostpython
+
+# $(1) => statements to be executed before calling host-python
+# $(2) => parameters to be passed to host-python
+define HostPython
+	( \
+		export PYTHONHOME="$(HOST_TOOLS_DIR)/usr"; \
+		export PYTHON3_INCDIR="$(PYTHON3_STAGING_INC_DIR)"; \
+		export PYTHON3_LIBDIR="$(PYTHON3_STAGING_LIB_DIR)"; \
+		export PYTHONPATH="$(PYTHON3_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/$(PYTHON3_SITE_PKG_DIR)"; \
+		export PYTHONOPTIMIZE=""; \
+		export PYTHONDONTWRITEBYTECODE="x"; \
+		$(1) \
+		$(HOST_PYTHON3_BIN) $(2); \
+	)
+endef
+
+# $(1) => build dir
+# $(2) => additional arguments to setup.py
+# $(3) => additional variables
+# $(4) => dir to look for .so files to be stripped
+define Build/PyMod/Generic
+	$(call HostPython, \
+		cd $(strip $(1)); \
+		$(TARGET_CONFIGURE_ENV) \
+		$(FREETZ_LD_RUN_PATH) \
+		$(3) \
+		, \
+		./setup.py $(2) \
+	)
+	$(if $(strip $(4)),find $(strip $(4)) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+)
+endef
+
+# $(1) => PKG value
+# $(2) => additional arguments to setup.py
+# $(3) => additional variables
+define Build/PyMod/PKG
+	$(call Build/PyMod/Generic, \
+		$($(strip $(1))_DIR), \
+		install --prefix=/usr --root=$(abspath $($(strip $(1))_DEST_DIR)) \
+		$(2), \
+		$(3), \
+		$($(strip $(1))_DEST_DIR)$(PYTHON3_SITE_PKG_DIR) \
+	)
+endef

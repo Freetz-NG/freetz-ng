@@ -1,0 +1,267 @@
+define Python/unnecessary/files
+usr/bin/2to3
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib2to3
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/future_builtins.so
+usr/bin/idle
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/idlelib
+usr/bin/pydoc
+usr/bin/smtpd.py
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/config.c*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/install-sh
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/libpython$(PYTHON3_MAJOR_VERSION).a
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/makesetup
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/python.o
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/Setup*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/macholib/fetch_macholib*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/macholib/README.ctypes
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/command/command_template
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/command/*.exe
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/README
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/tests/Setup.sample
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/tests/xxmodule.c
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/LICENSE.txt
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/pdb.doc
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/site-packages/README
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-old
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-tk
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/plat-linux2/regen
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/plat-linux3
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/wsgiref.egg-info
+usr/share
+endef
+
+define Python/development/files
+usr/bin/python*-config
+usr/lib/pkgconfig
+usr/lib/libpython$(PYTHON3_MAJOR_VERSION).a
+endef
+
+define Python/unnecessary-if-compression-enabled/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/compiler
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/command
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/email
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/email/mime
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/importlib
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/logging
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/plat-linux2
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/pydoc_data
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/xml
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/xml/dom
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/xml/parsers
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/xml/sax
+endef
+
+define PyMod/audiodev/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/linuxaudiodev.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/ossaudiodev.so
+endef
+
+define PyMod/audioop/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/audioop.so
+endef
+
+define PyMod/bsddb/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/bsddb
+endef
+define PyMod/bsddb/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/bsddb/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/dbhash.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/dbm.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_bsddb.so
+endef
+
+define PyMod/cmath/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/cmath.so
+endef
+
+define PyMod/cprofile/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_lsprof.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/cProfile.py*
+endef
+
+define PyMod/csv/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_csv.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/csv.py*
+endef
+
+define PyMod/crypt/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/crypt.so
+endef
+
+define PyMod/ctypes/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/macholib
+endef
+define PyMod/ctypes/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_ctypes.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/macholib/*.py*
+endef
+
+define PyMod/curses/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/curses
+endef
+define PyMod/curses/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/curses/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_curses.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_curses_panel.so
+endef
+
+define PyMod/eastern_codecs/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_codecs_*.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_multibytecodec.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/big5.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/big5hkscs.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/cp932.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/cp949.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/cp950.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/euc_jis_2004.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/euc_jisx0213.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/euc_jp.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/euc_kr.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/gb18030.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/gb2312.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/gbk.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/hz.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/iso2022_jp*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/iso2022_kr*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/johab.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/encodings/shift_jis*.py*
+endef
+
+define PyMod/elementtree/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/xml/etree
+endef
+define PyMod/elementtree/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_elementtree.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/xml/etree/*.py*
+endef
+
+define PyMod/ensurepip/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ensurepip
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ensurepip/_bundled
+endef
+define PyMod/ensurepip/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ensurepip/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ensurepip/_bundled/*.whl
+endef
+
+define PyMod/grp/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/grp.so
+endef
+
+define PyMod/hotshot/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/hotshot
+endef
+define PyMod/hotshot/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_hotshot.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/hotshot/*.py*
+endef
+
+define PyMod/json/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/json
+endef
+define PyMod/json/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_json.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/json/*.py*
+endef
+
+define PyMod/multiprocessing/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/multiprocessing
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/multiprocessing/dummy
+endef
+define PyMod/multiprocessing/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_multiprocessing.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/multiprocessing/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/multiprocessing/dummy/*.py*
+endef
+
+define PyMod/mmap/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/mmap.so
+endef
+
+define PyMod/readline/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/readline.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/rlcompleter.py*
+endef
+
+define PyMod/spwd/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/spwd.so
+endef
+
+define PyMod/sqlite/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/sqlite3
+endef
+define PyMod/sqlite/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_sqlite3.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/sqlite3/*.py*
+endef
+
+define PyMod/ssl/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_ssl.so
+endef
+
+define PyMod/syslog/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/syslog.so
+endef
+
+define PyMod/termios/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/termios.so
+endef
+
+define PyMod/test/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/cjkencodings
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/data
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/decimaltestdata
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/subprocessdata
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/tracedmodules
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/xmltestdata
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/unittest/test
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/bsddb/test
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/test
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/tests
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/email/test
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/email/test/data
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/json/tests
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/sqlite3/test
+endef
+define PyMod/test/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_ctypes_test.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/_testcapi.so
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/cjkencodings/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/data/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/decimaltestdata/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/subprocessdata/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/tracedmodules/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/test/xmltestdata/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/unittest/test/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/bsddb/test/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/ctypes/test/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/distutils/tests/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/email/test/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/email/test/data/*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/json/tests/*.py*
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/sqlite3/test/*.py*
+endef
+
+define PyMod/unicodedata/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/unicodedata.so
+endef
+
+define PyMod/unittest/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/unittest
+endef
+define PyMod/unittest/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/unittest/*.py*
+endef
+
+define PyMod/wsgiref/dirs
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/wsgiref
+endef
+define PyMod/wsgiref/files
+usr/lib/python$(PYTHON3_MAJOR_VERSION)/wsgiref/*.py*
+endef
