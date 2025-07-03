@@ -1,0 +1,41 @@
+
+  https://sourceforge.net/u/eclipseo/minidlna/ci/243cf2dd27ebcaf4ef1093c79b96077378d52018/
+
+From 243cf2dd27ebcaf4ef1093c79b96077378d52018 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Robert-Andr=C3=A9=20Mauchin?= <zebob.m@gmail.com>
+Date: Sat, 4 May 2024 18:36:58 +0200
+Subject: [PATCH] Add compatibility with FFMPEG 7.0
+
+channel_layout has been replaced with ch_layout
+---
+ libav.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/libav.h b/libav.h
+index b69752c..fae094b 100644
+--- a/libav.h
++++ b/libav.h
+@@ -117,6 +117,8 @@ typedef AVMetadataTag AVDictionaryEntry;
+ # endif
+ #endif
+ 
++#define HAVE_CH_LAYOUT (LIBAVUTIL_VERSION_INT >= ((57<<16)+(28<<8)+100))
++
+ static inline int
+ lav_open(AVFormatContext **ctx, const char *filename)
+ {
+@@ -174,7 +176,11 @@ lav_get_interlaced(AVStream *s)
+ #define lav_codec_tag(s) s->codecpar->codec_tag
+ #define lav_sample_rate(s) s->codecpar->sample_rate
+ #define lav_bit_rate(s) s->codecpar->bit_rate
++#if HAVE_CH_LAYOUT
++#define lav_channels(s) s->codecpar->ch_layout.nb_channels
++#else
+ #define lav_channels(s) s->codecpar->channels
++#endif
+ #define lav_width(s) s->codecpar->width
+ #define lav_height(s) s->codecpar->height
+ #define lav_profile(s) s->codecpar->profile
+-- 
+2.50.0
+
