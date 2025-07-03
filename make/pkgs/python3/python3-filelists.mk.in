@@ -4,7 +4,7 @@ usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib2to3
 usr/lib/python$(PYTHON3_MAJOR_VERSION)/lib-dynload/future_builtins.so
 usr/bin/idle
 usr/lib/python$(PYTHON3_MAJOR_VERSION)/idlelib
-usr/bin/pydoc
+usr/bin/pydoc3
 usr/bin/smtpd.py
 usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/config.c*
 usr/lib/python$(PYTHON3_MAJOR_VERSION)/config/install-sh
