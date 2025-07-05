@@ -63,6 +63,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-system-expat
 $(PKG)_CONFIGURE_OPTIONS += --with-system-ffi
 $(PKG)_CONFIGURE_OPTIONS += --with-threads
 $(PKG)_CONFIGURE_OPTIONS += --with-build-python=$(abspath $(TOOLS_DIR)/path/python3)
+$(PKG)_CONFIGURE_OPTIONS += --with-ensurepip=no
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PYTHON3_STATIC),--disable-shared,--enable-shared)
 
