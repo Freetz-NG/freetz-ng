@@ -60,10 +60,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_file__dev_ptc=no
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
 
 $(PKG)_CONFIGURE_OPTIONS += --with-system-expat
-$(PKG)_CONFIGURE_OPTIONS += --with-system-ffi
-$(PKG)_CONFIGURE_OPTIONS += --with-threads
 $(PKG)_CONFIGURE_OPTIONS += --with-build-python=$(abspath $(TOOLS_DIR)/path/python3)
-$(PKG)_CONFIGURE_OPTIONS += --with-ensurepip=no
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PYTHON3_STATIC),--disable-shared,--enable-shared)
 
@@ -74,18 +71,6 @@ $(PKG)_CONFIGURE_PRE_CMDS += $(RM) -r Modules/expat;
 # remove local copy of zlib, we use system one
 $(PKG)_CONFIGURE_PRE_CMDS += $(RM) -r Modules/zlib;
 
-# The python executable needs to stay in the root of the builddir
-# since its location is used to compute the path of the config files.
-$(PKG)_CONFIGURE_PRE_CMDS += cp $(HOST_TOOLS_DIR)/usr/bin/pgen hostpgen;
-$(PKG)_CONFIGURE_PRE_CMDS += cp $(HOST_TOOLS_DIR)/usr/bin/python$($(PKG)_MAJOR_VERSION) hostpython;
-# Create empty pybuilddir.txt to add the directory python is built in to the list of
-# directories PYTHON3_FOR_BUILD should look in for libpython while cross-compiling.
-$(PKG)_CONFIGURE_PRE_CMDS += touch pybuilddir.txt;
-
-$(PKG)_MAKE_OPTIONS  := CROSS_TOOLCHAIN_SYSROOT="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
-$(PKG)_MAKE_OPTIONS  += PYTHON3_FOR_COMPILE="$(abspath $(HOST_TOOLS_DIR)/usr/bin/python3)"
-$(PKG)_CONFIGURE_ENV += PYTHON3_INTERPRETER_FOR_BUILD="$(abspath $($(PKG)_DIR)/hostpython)"
-
 ifneq ($(strip $(DL_DIR)/$(PYTHON3_SOURCE)),$(strip $(DL_DIR)/$(PYTHON3_HOST_SOURCE)))
 $(PKG_SOURCE_DOWNLOAD)
 endif
@@ -94,13 +79,11 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(PYTHON3_DIR) \
-		$(PYTHON3_MAKE_OPTIONS) \
 		all
 	touch $@
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(SUBMAKE) -C $(PYTHON3_DIR) \
-		$(PYTHON3_MAKE_OPTIONS) \
 		DESTDIR="$(FREETZ_BASE_DIR)/$(PYTHON3_LOCAL_INSTALL_DIR)" \
 		install
 	(cd $(FREETZ_BASE_DIR)/$(PYTHON3_LOCAL_INSTALL_DIR); \
@@ -124,9 +107,6 @@ $($(PKG)_STAGING_BINARY): $($(PKG)_DIR)/.installed
 	@$(call COPY_USING_TAR,$(PYTHON3_LOCAL_INSTALL_DIR)/usr,$(TARGET_TOOLCHAIN_STAGING_DIR)/usr,--exclude='*.pyc' .) \
 	$(PKG_FIX_LIBTOOL_LA) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/python-$(PYTHON3_MAJOR_VERSION).pc; \
 	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/python$(PYTHON3_MAJOR_VERSION).bin ; \
-	cp $(HOST_TOOLS_DIR)/usr/bin/python$(PYTHON3_MAJOR_VERSION) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/hostpython; \
-	ln -sf hostpython $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/python$(PYTHON3_MAJOR_VERSION); \
-	$(SED) -ri -e 's,^#!.*,#!/usr/bin/env python$(PYTHON3_MAJOR_VERSION),g' $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/python$(PYTHON3_MAJOR_VERSION)-config; \
 	touch -c $@
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.installed
@@ -183,7 +163,7 @@ $(pkg)-clean:
 	$(RM) $(PYTHON3_TARGET_DIR)/py.lst $(PYTHON3_TARGET_DIR)/pyc.lst
 	$(RM) $(PYTHON3_TARGET_DIR)/excluded-module-files.lst $(PYTHON3_TARGET_DIR)/excluded-module-files-zip.lst $(PYTHON3_TARGET_DIR)/.exclude-extra
 	$(RM) -r $(PYTHON3_LOCAL_INSTALL_DIR)
-	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/python* $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/hostpython
+	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/python*
 	$(RM) -r $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/python$(PYTHON3_MAJOR_VERSION)
 	$(RM) -r $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/python$(PYTHON3_MAJOR_VERSION)
 	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpython$(PYTHON3_MAJOR_VERSION).*
