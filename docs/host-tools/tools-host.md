@@ -1,4 +1,4 @@
-# tools 2025-05-20
+# tools 2025-07-04
  - Host-Tool: [master/make/host-tools/tools-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/tools-host/)
  - Maintainer: [@fda77](https://github.com/fda77)
 

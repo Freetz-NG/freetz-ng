@@ -116,7 +116,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[python3-packaging 25.0](python3-packaging-host.md)<a id='python3-packaging-host'></a>**<br>
 
+  * **[python3-pip 25.1.1](python3-pip-host.md)<a id='python3-pip-host'></a>**<br>
+
   * **[python3-referencing 0.36.2](python3-referencing-host.md)<a id='python3-referencing-host'></a>**<br>
+
+  * **[python3-setuptools 80.9.0](python3-setuptools-host.md)<a id='python3-setuptools-host'></a>**<br>
 
 ### S
 
@@ -140,7 +144,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
-  * **[tools 2025-05-20](tools-host.md)<a id='tools-host'></a>**<br>
+  * **[tools 2025-07-04](tools-host.md)<a id='tools-host'></a>**<br>
 
 ### U
 

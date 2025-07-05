@@ -12,14 +12,13 @@ $(PKG)_SITE:=https://github.com/python-jsonschema/jsonschema/releases/download/v
 $(PKG)_DEPENDS_ON+=python3-host
 
 $(PKG)_DIRECTORY:=$($(PKG)_DIR)/jsonschema
-$(PKG)_TARGET_DIRECTORY:=$(HOST_TOOLS_DIR)/usr/lib/python$(call GET_MAJOR_VERSION,$(PYTHON3_HOST_VERSION))/site-packages
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.unpacked
-	cp -fa $(PYTHON3_JSONSCHEMA_HOST_DIRECTORY) $(PYTHON3_JSONSCHEMA_HOST_TARGET_DIRECTORY)/
+	cp -fa $(PYTHON3_JSONSCHEMA_HOST_DIRECTORY) $(PYTHON3_HOST_SITE_PACKAGES)/
 	@touch $@
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
@@ -31,6 +30,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(PYTHON3_JSONSCHEMA_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) -r $(PYTHON3_JSONSCHEMA_HOST_TARGET_DIRECTORY)/jsonschema/
+	$(RM) -r $(PYTHON3_HOST_SITE_PACKAGES)/jsonschema/
 
 $(TOOLS_FINISH)

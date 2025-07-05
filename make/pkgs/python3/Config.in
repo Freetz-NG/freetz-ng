@@ -1,5 +1,6 @@
 config FREETZ_PACKAGE_PYTHON3
 	bool "Python 3.13.5"
+	depends on FREETZ_SEPARATE_AVM_UCLIBC
 	select FREETZ_LIB_libpython3  if !FREETZ_PACKAGE_PYTHON3_STATIC
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
