@@ -255,6 +255,7 @@ if FREETZ_PACKAGE_PYTHON3
 
 		config FREETZ_PACKAGE_PYTHON3_MOD_SSL
 			bool "ssl"
+			depends on FREETZ_OPENSSL_VERSION_11_MIN
 			select FREETZ_LIB_libcrypto
 			select FREETZ_LIB_libssl
 			default n
