@@ -1,4 +1,4 @@
-[ "FREETZ_LIB_libreadline_VERSION_ABANDON" == "y" ] && ELIBVER="6.3" || ELIBVER="8.2"
+[ "FREETZ_LIB_libreadline_VERSION_ABANDON" == "y" ] && ELIBVER="6.3" || ELIBVER="8.3"
 
 [ "$EXTERNAL_FREETZ_LIB_libhistory" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libhistory.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_libreadline" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libreadline.so.$ELIBVER"

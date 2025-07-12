@@ -33,7 +33,7 @@ if FREETZ_LIB_libreadline
 			depends on FREETZ_KERNEL_VERSION_2_MAX
 
 		config FREETZ_LIB_libreadline_VERSION_CURRENT
-			bool "8.2"
+			bool "8.3"
 			depends on !FREETZ_KERNEL_VERSION_2_MAX
 
 	endchoice

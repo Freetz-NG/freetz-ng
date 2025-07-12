@@ -1,15 +1,16 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libreadline_VERSION_ABANDON),6.3,8.2))
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libreadline_VERSION_ABANDON),6.3,8.3))
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=56ba6071b9462f980c5a72ab0023893b65ba6debb4eeb475d7a563dc65cafd43
-$(PKG)_HASH_CURRENT:=3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35
+$(PKG)_HASH_CURRENT:=fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libreadline_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=@GNU/$(pkg)
-### VERSION:=6.3-p8/8.2
+### VERSION:=6.3-p8/8.3
 ### WEBSITE:=https://tiswww.case.edu/php/chet/readline/rltop.html
 ### MANPAGE:=https://tiswww.case.edu/php/chet/readline/readline.html
 ### CHANGES:=https://tiswww.case.edu/php/chet/readline/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/readline.git/
+### SUPPORT:=fda77
 
 $(PKG)_$(PKG)_BINARY:=$($(PKG)_DIR)/shlib/libreadline.so.$($(PKG)_LIB_VERSION)
 $(PKG)_HISTORY_BINARY:=$($(PKG)_DIR)/shlib/libhistory.so.$($(PKG)_LIB_VERSION)

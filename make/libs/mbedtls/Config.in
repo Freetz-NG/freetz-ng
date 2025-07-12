@@ -37,7 +37,8 @@ choice
 		depends on !FREETZ_TARGET_GCC_4_MAX ||  FREETZ_SYSTEM_TYPE_PUMA6
 
 	config FREETZ_MBEDTLS_VERSION_306
-		bool "3.6 - EXPERIMENTAL"
+		bool "3.6 - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
 		depends on !FREETZ_TARGET_GCC_4_MAX
 
 endchoice # "mbedTLS version"

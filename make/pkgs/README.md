@@ -308,7 +308,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Ghostscript fonts 8.11 (binary only) - DEPRECATED</u><a id='ghostscript-fonts'></a>**<br>
     This package provides the Ghostscript fonts.
 
-  * **[Git 2.26.2/2.50.0](../../docs/make/git.md)<a id='git'></a>**<br>
+  * **[Git 2.26.2/2.50.1](../../docs/make/git.md)<a id='git'></a>**<br>
     Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.
 
   * **<u>gntpsend 0.3.2-git (binary only) - DEPRECATED</u><a id='gntpsend'></a>**<br>
@@ -704,7 +704,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Python 2.7.18 - DEPRECATED](../../docs/make/python.md)<a id='python'></a>**<br>
     Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains. CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on your choice of modules) of uncompressed data to your image. In most cases, it should therefore be externalized.
 
-  * **[python3: Python 3.13.5](../../docs/make/python3.md)<a id='python3'></a>**<br>
+  * **[python3: Python 3.13.5 - DEVELOPER](../../docs/make/python3.md)<a id='python3'></a>**<br>
     Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains. CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on your choice of modules) of uncompressed data to your image. In most cases, it should therefore be externalized.
 
   * **<u>python-bjoern: bjoern 1.3.4 - DEPRECATED</u><a id='python-bjoern'></a>**<br>

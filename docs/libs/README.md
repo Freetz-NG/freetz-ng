@@ -321,7 +321,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### R
 
-  * **[readline: libreadline (libreadline.so) 6.3-p8/8.2](readline.md)<a id='readline'></a>**<br>
+  * **[readline: libreadline (libreadline.so) 6.3-p8/8.3](readline.md)<a id='readline'></a>**<br>
     The Readline library provides a set of functions for use by applications that allow users to edit command lines as they are typed in. Both Emacs and vi editing modes are available. The Readline library includes additional functions to maintain a list of previously-entered command lines, to recall and perhaps reedit those lines, and perform csh-like history expansion on previous commands.
 
 ### S
