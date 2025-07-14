@@ -87,3 +87,53 @@ More features - less bugs!
 ### Documentation:
 See [https://freetz-ng.github.io/](https://freetz-ng.github.io/) (or [docs/](docs/README.md)).
 
+
+<details>
+  <summary>Testing your Documentation changes localy</summary
+
+When working on this repo, it is advised that you review your changes locally before committing them. The `mkdocs serve` command can be used to live preview your changes (as you type) on your local machine.
+
+Please make sure you fork the repo and change the clone URL in the example below for your fork:
+
+- Linux Mint / Ubuntu 20.04 LTS / 23.10 and later:
+    - Preparations (only required once):
+
+    ```bash
+    git clone https://github.com/YOUR-USERNAME/freetz-ng
+    cd freetz-ng
+    sudo apt install python3-pip python3-venv
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip3 install -r .github/mkdocs/requirements.txt
+    ```
+
+    - Enter the virtual environment (if exited):
+
+    ```bash
+    source .venv/bin/activate
+    ```
+
+    - Running the docs server:
+
+    ```bash
+    mkdocs serve --dev-addr 0.0.0.0:8000
+    ```
+
+- Fedora Linux instructions (tested on Fedora Linux 28):
+    - Preparations (only required once):
+
+    ```bash
+    git clone https://github.com/YOUR-USERNAME/freetz-ng
+    cd freetz-ng
+    pip install --user -r .github/mkdocs/requirements.txt
+    ```
+
+    - Running the docs server:
+
+    ```bash
+    mkdocs serve --dev-addr 0.0.0.0:8000
+    ```
+
+After these commands, the current branch is accessible through your favorite browser at <http://localhost:8000>
+
+</details>

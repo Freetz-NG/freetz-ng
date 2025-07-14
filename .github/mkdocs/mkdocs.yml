@@ -1,0 +1,52 @@
+site_name: 'Freetz-NG Documentation'
+site_url: 'https://freetz-ng.github.io/'
+repo_url: 'https://github.com/freetz-ng/freetz-ng'
+edit_uri: '../freetz-ng/blob/master/docs/'
+copyright:
+remote_branch: gh-pages
+validation:
+  links:
+    anchors: warn
+theme:
+  name: 'material'
+  favicon: 'screenshots/000-TAG_freetz-ng.png'
+  logo: 'screenshots/000-TAG_freetz-ng.png'
+  language: 'en'
+  font:
+    text: 'Noto Sans Lisu'
+    code: 'Roboto Mono'
+  features:
+    - navigation.top
+    - navigation.instant
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.action.edit
+    - content.code.copy
+  palette:
+
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: blue grey
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: blue grey
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+
+extra_css:
+  - 'extra.css'
+
+plugins:
+  - search
+
