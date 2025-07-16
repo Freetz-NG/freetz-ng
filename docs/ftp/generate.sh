@@ -32,7 +32,7 @@ echo -e "$CATS" | grep -v ^$ | while read c cat; do
 		new="${line%%/*}"
 		[ "$old" != "$new" ] && echo " * $new/" && old="$new"
 		file="${line#$new/}" ; file="${file//\/fritz.os\//:}" ; file="${file//\/recover\//-recover:}" ; kind="${file%%:*}" ; file="${file##*:}"
-		echo "   - ${kind//%20/ }: [${file//%20/ }](https://$SERVER/$c/$line)"
+		echo "    - ${kind//%20/ }: [${file//%20/ }](https://$SERVER/$c/$line)"
 	done
 done
 ) | sed 's/_-/-/' > $PARENT/docs/ftp/README.md
