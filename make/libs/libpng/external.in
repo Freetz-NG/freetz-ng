@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libpng16
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpng16.so.16.48.0
+		 ${FREETZ_LIBRARY_DIR}/libpng16.so.16.50.0
 
