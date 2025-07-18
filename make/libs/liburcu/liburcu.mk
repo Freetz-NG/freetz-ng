@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 0.15.1)
+$(call PKG_INIT_LIB, 0.15.3)
 $(PKG)_SHLIB_VERSION:=8.1.0
 $(PKG)_SOURCE:=userspace-rcu-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=98d66cc12f2c5881879b976f0c55d10d311401513be254e3bd28cf3811fb50c8
+$(PKG)_HASH:=26687ec84e3e114759454c884a08abeaf79dec09b041895ddf4c45ec150acb6d
 $(PKG)_SITE:=https://lttng.org/files/urcu
 ### WEBSITE:=https://www.liburcu.org/
 ### CHANGES:=https://github.com/urcu/userspace-rcu/tags
