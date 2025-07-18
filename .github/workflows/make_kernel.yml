@@ -12,7 +12,7 @@ on:
       fos:
         description: "FOS Version to build"
         required: true
-        default: "08_2X_LABOR"
+        default: "08_2X"
         type: choice
         options:
           - "freetz_org"
@@ -36,6 +36,7 @@ on:
           - "07_5X"
           - "08_0X"
           - "08_2X_LABOR"
+          - "08_2X"
 
 concurrency:
   group: ${{ github.workflow }}

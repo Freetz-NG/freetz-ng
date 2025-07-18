@@ -1,6 +1,6 @@
 # Samba 3.0.37/3.6.25 - DEPRECATED
- - Package: [master/make/pkgs/samba/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/samba/)
- - Maintainer: -
+  - Package: [master/make/pkgs/samba/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/samba/)
+  - Maintainer: -
 
 [![Samba Webinterface](../screenshots/204_md.png)](../screenshots/204.png)
 

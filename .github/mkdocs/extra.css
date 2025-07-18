@@ -1,0 +1,49 @@
+/* Disable secondary navigation */
+.md-nav--secondary {
+    display: none;
+}
+.md-sidebar--secondary.md-sidebar {
+    display: none;
+}
+
+/* General styles for navigation and typeset */
+.md-nav {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.md-nav__link {
+    display: inline-flex;
+}
+
+.md-typeset {
+    font-size: .7rem;
+    line-height: 1.5;
+}
+
+.md-typeset code,
+.md-typeset pre {
+    color: var(--code-color);
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.md-typeset table:not([class]) th {
+    color: var(--table-foreground);
+    background-color: var(--table-background);
+}
+
+[data-md-color-scheme="default"] {
+    --code-color: #532ba8;
+    --table-foreground: var(--md-default-bg-color); /* table header backgrounds */
+    --table-background: var(--md-default-fg-color--light); /* table header (text) */
+}
+
+[data-md-color-scheme="slate"] {
+    --code-color: #a47df8;
+    --md-typeset-a-color: #7c90ff; /* links */
+    --table-foreground: #a3acdf; /* table header (text) */
+    --table-background: #272e53; /* table header backgrounds */
+}

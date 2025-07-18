@@ -1,6 +1,6 @@
 # Openntpd 3.9p1 - DEPRECATED
- - Package: [master/make/pkgs/openntpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openntpd/)
- - Maintainer: -
+  - Package: [master/make/pkgs/openntpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openntpd/)
+  - Maintainer: -
 
 *"OpenNTPD ist eine FREIE und einfach zu benutzende Implementierung des
 Network Time Protocol. OpenNTPD kann die lokale Uhr mit NTP-Servern

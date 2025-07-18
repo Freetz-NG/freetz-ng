@@ -1,10 +1,10 @@
 # BIND 9.11.37/9.20.10
- - Homepage: [https://www.isc.org/bind/](https://www.isc.org/bind/)
- - Manpage: [https://bind9.readthedocs.io/en/](https://bind9.readthedocs.io/en/)
- - Changelog: [https://downloads.isc.org/isc/bind9/cur/9.20/](https://downloads.isc.org/isc/bind9/cur/9.20/)
- - Repository: [https://gitlab.isc.org/isc-projects/bind9/](https://gitlab.isc.org/isc-projects/bind9/)
- - Package: [master/make/pkgs/bind/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bind/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://www.isc.org/bind/](https://www.isc.org/bind/)
+  - Manpage: [https://bind9.readthedocs.io/en/](https://bind9.readthedocs.io/en/)
+  - Changelog: [https://downloads.isc.org/isc/bind9/cur/9.20/](https://downloads.isc.org/isc/bind9/cur/9.20/)
+  - Repository: [https://gitlab.isc.org/isc-projects/bind9/](https://gitlab.isc.org/isc-projects/bind9/)
+  - Package: [master/make/pkgs/bind/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bind/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit [bind](http://isc.org/software/bind) (Berkeley
 Internet Name Daemon) kann ein DNS-Server zur IP- und Namensauflösung

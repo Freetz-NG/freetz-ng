@@ -1,10 +1,10 @@
 # E2fsprogs 1.42.13 (binary only) - DEPRECATED
- - Homepage: [https://e2fsprogs.sourceforge.net/](https://e2fsprogs.sourceforge.net/)
- - Manpage: [https://www.mankier.com/package/e2fsprogs](https://www.mankier.com/package/e2fsprogs)
- - Changelog: [https://e2fsprogs.sourceforge.net/e2fsprogs-release.html](https://e2fsprogs.sourceforge.net/e2fsprogs-release.html)
- - Repository: [https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git](https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git)
- - Package: [master/make/pkgs/e2fsprogs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/e2fsprogs/)
- - Maintainer: -
+  - Homepage: [https://e2fsprogs.sourceforge.net/](https://e2fsprogs.sourceforge.net/)
+  - Manpage: [https://www.mankier.com/package/e2fsprogs](https://www.mankier.com/package/e2fsprogs)
+  - Changelog: [https://e2fsprogs.sourceforge.net/e2fsprogs-release.html](https://e2fsprogs.sourceforge.net/e2fsprogs-release.html)
+  - Repository: [https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git](https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git)
+  - Package: [master/make/pkgs/e2fsprogs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/e2fsprogs/)
+  - Maintainer: -
 
 **e2fsprogs** ist eine Tool-Sammlung zur Wartung von *ext2* and *ext3*
 Dateisystemen. Diese Dateisysteme werden für gewöhnlich als Standard bei

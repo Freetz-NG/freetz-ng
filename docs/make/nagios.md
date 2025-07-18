@@ -1,6 +1,6 @@
 # nagios 2.11 (binary only) - DEPRECATED
- - Package: [master/make/pkgs/nagios/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nagios/)
- - Maintainer: -
+  - Package: [master/make/pkgs/nagios/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nagios/)
+  - Maintainer: -
 
 Die Software **[Nagios](http://www.nagios.org/)**
 (Network + Hagios, früher NetSaint) dient der Überwachung komplexer

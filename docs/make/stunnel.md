@@ -1,10 +1,10 @@
 # Stunnel 5.75
- - Homepage: [https://www.stunnel.org/](https://www.stunnel.org/)
- - Manpage: [https://www.stunnel.org/static/stunnel.html](https://www.stunnel.org/static/stunnel.html)
- - Changelog: [https://www.stunnel.org/NEWS.html](https://www.stunnel.org/NEWS.html)
- - Repository: [https://github.com/mtrojnar/stunnel](https://github.com/mtrojnar/stunnel)
- - Package: [master/make/pkgs/stunnel/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/stunnel/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://www.stunnel.org/](https://www.stunnel.org/)
+  - Manpage: [https://www.stunnel.org/static/stunnel.html](https://www.stunnel.org/static/stunnel.html)
+  - Changelog: [https://www.stunnel.org/NEWS.html](https://www.stunnel.org/NEWS.html)
+  - Repository: [https://github.com/mtrojnar/stunnel](https://github.com/mtrojnar/stunnel)
+  - Package: [master/make/pkgs/stunnel/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/stunnel/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 [![Stunnel Webinterface](../screenshots/202_md.png)](../screenshots/202.png)
 

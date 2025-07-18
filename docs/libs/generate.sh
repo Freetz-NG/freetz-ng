@@ -23,23 +23,23 @@ for dir in $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d | sort); do
 	while [ "0$(awk 'END{print NR}' "$MDPWD/$lib.md" 2>/dev/null)" -lt 2 ]; do echo >> "$MDPWD/$lib.md"; done
 	sed "1c# $itm" -i "$MDPWD/$lib.md"
 
-	sed "/^ - Maintainer: .*$/d" -i "$MDPWD/$lib.md"
+	sed "/^  - Maintainer: .*$/d" -i "$MDPWD/$lib.md"
 	lnk="$(sed -n "s/^### SUPPORT:= *//p" $dir/*.mk)"
 	case "$lnk" in
 		X)	lnk="" ;;
 		"")	lnk="-" ;;
 		*)	[ "$lnk" != "${lnk/:\/\//}" ] && lnk="\[$lnk\]($lnk)" || lnk="\[@$lnk\](https://github.com/$lnk)" ;; #"
 	esac
-	[ -n "$lnk" ] && sed "2i\ - Maintainer: $lnk" -i "$MDPWD/$lib.md"
+	[ -n "$lnk" ] && sed "2i\  - Maintainer: $lnk" -i "$MDPWD/$lib.md"
 
 	lnk="https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/$lib/"
-	sed "/^ - Library: \[.*)$/d" -i "$MDPWD/$lib.md"
-	sed "2i\ - Library: \[${lnk:44}\]($lnk)" -i "$MDPWD/$lib.md"
+	sed "/^  - Library: \[.*)$/d" -i "$MDPWD/$lib.md"
+	sed "2i\  - Library: \[${lnk:44}\]($lnk)" -i "$MDPWD/$lib.md"
 
 	for pair in CVSREPO°Repository CHANGES°Changelog MANPAGE°Manpage WEBSITE°Homepage; do
-		sed "/^ - ${pair#*°}: \[.*)$/d" -i "$MDPWD/$lib.md"
+		sed "/^  - ${pair#*°}: \[.*)$/d" -i "$MDPWD/$lib.md"
 		lnk="$(sed -n "s/^### ${pair%%°*}:= *//p" $INPWD/$lib/*.mk 2>/dev/null)"
-		[ -n "$lnk" ] && sed "2i\ - ${pair#*°}: \[$lnk\]($lnk)" -i "$MDPWD/$lib.md"
+		[ -n "$lnk" ] && sed "2i\  - ${pair#*°}: \[$lnk\]($lnk)" -i "$MDPWD/$lib.md"
 	done
 
 	L="$(grep -P '^[ \t]*help[ \t]*$' -nm1 "$INPWD/$lib/Config.in" 2>/dev/null | sed 's/:.*//')"

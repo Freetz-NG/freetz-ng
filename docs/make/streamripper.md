@@ -1,6 +1,6 @@
 # Streamripper 1.64.6 - DEPRECATED
- - Package: [master/make/pkgs/streamripper/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/streamripper/)
- - Maintainer: -
+  - Package: [master/make/pkgs/streamripper/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/streamripper/)
+  - Maintainer: -
 
 **[Streamripper](http://streamripper.sourceforge.net/)**
 ist eine freie, plattformunabhängige Software zum

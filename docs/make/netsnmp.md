@@ -1,10 +1,10 @@
 # Net-SNMP 5.9.4
- - Homepage: [http://www.net-snmp.org/](http://www.net-snmp.org/)
- - Manpage: [http://www.net-snmp.org/docs/man/](http://www.net-snmp.org/docs/man/)
- - Changelog: [http://www.net-snmp.org/download.html](http://www.net-snmp.org/download.html)
- - Repository: [https://github.com/net-snmp/net-snmp](https://github.com/net-snmp/net-snmp)
- - Package: [master/make/pkgs/netsnmp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/netsnmp/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [http://www.net-snmp.org/](http://www.net-snmp.org/)
+  - Manpage: [http://www.net-snmp.org/docs/man/](http://www.net-snmp.org/docs/man/)
+  - Changelog: [http://www.net-snmp.org/download.html](http://www.net-snmp.org/download.html)
+  - Repository: [https://github.com/net-snmp/net-snmp](https://github.com/net-snmp/net-snmp)
+  - Package: [master/make/pkgs/netsnmp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/netsnmp/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Net-SNMP (**S**imple **N**etwork **M**anagement **P**rotocol) includes
 an open source SNMPd agent to monitor and administer SNMP capable

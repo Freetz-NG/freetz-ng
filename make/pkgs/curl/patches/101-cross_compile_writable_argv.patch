@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -24990,7 +24990,9 @@
+@@ -24455,7 +24455,9 @@
    if test "$curl_cv_apple" = 'yes'; then
      if test "$cross_compiling" = yes
  then :

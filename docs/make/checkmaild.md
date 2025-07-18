@@ -1,6 +1,6 @@
 # Checkmaild 0.4.7 - DEPRECATED
- - Package: [master/make/pkgs/checkmaild/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/checkmaild/)
- - Maintainer: -
+  - Package: [master/make/pkgs/checkmaild/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/checkmaild/)
+  - Maintainer: -
 
 checkmaild ermöglicht es bis zu 3 Email-Konten (POP oder IMAP) in
 festgelegten Intervallen auf neue Mails zu überprüfen. Bei Erhalt einer

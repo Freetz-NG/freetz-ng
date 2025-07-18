@@ -1,6 +1,6 @@
 # bluez-utils 2.25 (binary only, incl. Pin-Change and NAP) - DEPRECATED
- - Package: [master/make/pkgs/bluez-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bluez-utils/)
- - Maintainer: -
+  - Package: [master/make/pkgs/bluez-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bluez-utils/)
+  - Maintainer: -
 
 Official Linux Bluetooth protocol stack
 

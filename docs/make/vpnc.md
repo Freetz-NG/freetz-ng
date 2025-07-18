@@ -1,6 +1,6 @@
 # Vpnc 0.5.3 - DEPRECATED
- - Package: [master/make/pkgs/vpnc/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vpnc/)
- - Maintainer: -
+  - Package: [master/make/pkgs/vpnc/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vpnc/)
+  - Maintainer: -
 
 Der **[VPNC-Client](http://www.vpnc.org/)** ist
 eine quelloffene Alternative zum Cisco-VPN-Client und dient zum

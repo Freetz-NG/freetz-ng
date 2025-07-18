@@ -1,10 +1,10 @@
 # Dropbear 2025.88
- - Homepage: [https://matt.ucc.asn.au/dropbear/dropbear.html](https://matt.ucc.asn.au/dropbear/dropbear.html)
- - Manpage: [https://linux.die.net/man/8/dropbear](https://linux.die.net/man/8/dropbear)
- - Changelog: [https://matt.ucc.asn.au/dropbear/CHANGES](https://matt.ucc.asn.au/dropbear/CHANGES)
- - Repository: [https://github.com/mkj/dropbear](https://github.com/mkj/dropbear)
- - Package: [master/make/pkgs/dropbear/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dropbear/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://matt.ucc.asn.au/dropbear/dropbear.html](https://matt.ucc.asn.au/dropbear/dropbear.html)
+  - Manpage: [https://linux.die.net/man/8/dropbear](https://linux.die.net/man/8/dropbear)
+  - Changelog: [https://matt.ucc.asn.au/dropbear/CHANGES](https://matt.ucc.asn.au/dropbear/CHANGES)
+  - Repository: [https://github.com/mkj/dropbear](https://github.com/mkj/dropbear)
+  - Package: [master/make/pkgs/dropbear/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dropbear/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 > "Dropbear is a relatively small SSH 2 server and client. [... ...]
 > Dropbear is particularly useful for "embedded"-type Linux (or other

@@ -1,10 +1,10 @@
 # RRDtool 1.2.30/1.9.0 (binary only)
- - Homepage: [https://www.rrdtool.org](https://www.rrdtool.org)
- - Manpage: [https://oss.oetiker.ch/rrdtool/doc](https://oss.oetiker.ch/rrdtool/doc)
- - Changelog: [https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES](https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES)
- - Repository: [https://github.com/oetiker/rrdtool-1.x](https://github.com/oetiker/rrdtool-1.x)
- - Package: [master/make/pkgs/rrdtool/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/rrdtool/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://www.rrdtool.org](https://www.rrdtool.org)
+  - Manpage: [https://oss.oetiker.ch/rrdtool/doc](https://oss.oetiker.ch/rrdtool/doc)
+  - Changelog: [https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES](https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES)
+  - Repository: [https://github.com/oetiker/rrdtool-1.x](https://github.com/oetiker/rrdtool-1.x)
+  - Package: [master/make/pkgs/rrdtool/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/rrdtool/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 ### Einleitung
 

@@ -1,6 +1,6 @@
 # ndas - DEPRECATED
- - Package: [master/make/pkgs/ndas/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ndas/)
- - Maintainer: -
+  - Package: [master/make/pkgs/ndas/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ndas/)
+  - Maintainer: -
 
 NDAS (**N**etwork **D**irect **A**ttached **S**torage) is Ximeta's
 patented technology which enables all digital storage devices (HDD, ODD,

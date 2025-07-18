@@ -1,10 +1,10 @@
 # Haserl 0.9.36 (binary only)
- - Homepage: [http://haserl.sourceforge.net/](http://haserl.sourceforge.net/)
- - Manpage: [http://haserl.sourceforge.net/manpage.html](http://haserl.sourceforge.net/manpage.html)
- - Changelog: [https://sourceforge.net/p/haserl/mailman/haserl-users/](https://sourceforge.net/p/haserl/mailman/haserl-users/)
- - Repository: [https://sourceforge.net/projects/haserl/files/](https://sourceforge.net/projects/haserl/files/)
- - Package: [master/make/pkgs/haserl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/haserl/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [http://haserl.sourceforge.net/](http://haserl.sourceforge.net/)
+  - Manpage: [http://haserl.sourceforge.net/manpage.html](http://haserl.sourceforge.net/manpage.html)
+  - Changelog: [https://sourceforge.net/p/haserl/mailman/haserl-users/](https://sourceforge.net/p/haserl/mailman/haserl-users/)
+  - Repository: [https://sourceforge.net/projects/haserl/files/](https://sourceforge.net/projects/haserl/files/)
+  - Package: [master/make/pkgs/haserl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/haserl/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 "*Haserl is a small program that uses shell or Lua script to create cgi
 web scripts. It is intended for environments where PHP or ruby are too

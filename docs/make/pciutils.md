@@ -1,6 +1,6 @@
 # pciutils 3.1.7 (binary only) - DEPRECATED
- - Package: [master/make/pkgs/pciutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pciutils/)
- - Maintainer: -
+  - Package: [master/make/pkgs/pciutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pciutils/)
+  - Maintainer: -
 
 Die **PCI Utilities** sind eine Tool-Sammlung zur Untersuchung und
 Manipulation von

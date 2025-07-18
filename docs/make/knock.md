@@ -1,10 +1,10 @@
 # Knock 0.8 - DEPRECATED
- - Homepage: [https://www.zeroflux.org/projects.html](https://www.zeroflux.org/projects.html)
- - Manpage: [https://linux.die.net/man/1/knockd](https://linux.die.net/man/1/knockd)
- - Changelog: [https://github.com/jvinet/knock/blob/master/ChangeLog](https://github.com/jvinet/knock/blob/master/ChangeLog)
- - Repository: [https://github.com/jvinet/knock](https://github.com/jvinet/knock)
- - Package: [master/make/pkgs/knock/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/knock/)
- - Maintainer: -
+  - Homepage: [https://www.zeroflux.org/projects.html](https://www.zeroflux.org/projects.html)
+  - Manpage: [https://linux.die.net/man/1/knockd](https://linux.die.net/man/1/knockd)
+  - Changelog: [https://github.com/jvinet/knock/blob/master/ChangeLog](https://github.com/jvinet/knock/blob/master/ChangeLog)
+  - Repository: [https://github.com/jvinet/knock](https://github.com/jvinet/knock)
+  - Package: [master/make/pkgs/knock/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/knock/)
+  - Maintainer: -
 
 *"Wer klopfet, dem wird aufgetan"* - so könnte man dieses Paket
 überschreiben. *knockd* bietet eine gute Möglichkeit, Dienste von Remote

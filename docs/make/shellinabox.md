@@ -1,9 +1,9 @@
 # shellinabox 2.21
- - Homepage: [https://code.google.com/archive/p/shellinabox/](https://code.google.com/archive/p/shellinabox/)
- - Changelog: [https://github.com/shellinabox/shellinabox/releases](https://github.com/shellinabox/shellinabox/releases)
- - Repository: [https://github.com/shellinabox/shellinabox](https://github.com/shellinabox/shellinabox)
- - Package: [master/make/pkgs/shellinabox/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/shellinabox/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://code.google.com/archive/p/shellinabox/](https://code.google.com/archive/p/shellinabox/)
+  - Changelog: [https://github.com/shellinabox/shellinabox/releases](https://github.com/shellinabox/shellinabox/releases)
+  - Repository: [https://github.com/shellinabox/shellinabox](https://github.com/shellinabox/shellinabox)
+  - Package: [master/make/pkgs/shellinabox/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/shellinabox/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 ### Anmerkungen (05.02.2024 - getestet mit FritzBox Firmware 154.07.57 und Shell-In-A-Box v2.21)
 Intern verwendet Shell-In-A-Box standardmässig das Programm `/bin/login` - und das kann nicht mit Passwörtern umgehen, die in `/etc/shadow` gespeichert sind.

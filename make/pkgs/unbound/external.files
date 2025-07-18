@@ -4,5 +4,5 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_UNBOUND_CONTROL"        == "y" ] && EXTERNAL_FILES+=" /usr/bin/unbound-control"
 [ "$EXTERNAL_FREETZ_PACKAGE_UNBOUND_CONTROL_SETUP"  == "y" ] && EXTERNAL_FILES+=" /usr/bin/unbound-control-setup"
 [ "$EXTERNAL_FREETZ_PACKAGE_UNBOUND_HOST"           == "y" ] && EXTERNAL_FILES+=" /usr/bin/unbound-host"
-[ "$EXTERNAL_FREETZ_LIB_libunbound"                 == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libunbound.so.8.1.31"
+[ "$EXTERNAL_FREETZ_LIB_libunbound"                 == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libunbound.so.8.1.32"
 

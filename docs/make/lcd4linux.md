@@ -1,16 +1,15 @@
 # LCD4linux eadf4603
- - Manpage: [https://wiki.vuplus-support.org/index.php?title=LCD4Linux](https://wiki.vuplus-support.org/index.php?title=LCD4Linux)
- - Changelog: [https://github.com/TangoCash/lcd4linux/commits/master/](https://github.com/TangoCash/lcd4linux/commits/master/)
- - Repository: [https://github.com/TangoCash/lcd4linux](https://github.com/TangoCash/lcd4linux)
- - Package: [master/make/pkgs/lcd4linux/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lcd4linux/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Manpage: [https://wiki.vuplus-support.org/index.php?title=LCD4Linux](https://wiki.vuplus-support.org/index.php?title=LCD4Linux)
+  - Changelog: [https://github.com/TangoCash/lcd4linux/commits/master/](https://github.com/TangoCash/lcd4linux/commits/master/)
+  - Repository: [https://github.com/TangoCash/lcd4linux](https://github.com/TangoCash/lcd4linux)
+  - Package: [master/make/pkgs/lcd4linux/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lcd4linux/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit LCD4linux kann ein an die Fritz!Box angeschlossenes Display angesteuert werden.<br>
-<br>
-<a href='../screenshots/000-PKG_lcd4linux.png'><img src='../screenshots/000-PKG_lcd4linux_md.png'></a>
+
+[![screenshot](../screenshots/000-PKG_lcd4linux_md.png)](../screenshots/000-PKG_lcd4linux.png)
 &emsp;
-<a href='../screenshots/000-PKG_lcd4linux_output.png'><img src='../screenshots/000-PKG_lcd4linux_output_md.png'></a>
-<br>
+[![screenshot](../screenshots/000-PKG_lcd4linux_output_md.png)](../screenshots/000-PKG_lcd4linux_output.png)
 
 Aktuell verfügbare Displays und Plugins:
 

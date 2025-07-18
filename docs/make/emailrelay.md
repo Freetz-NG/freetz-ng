@@ -1,10 +1,10 @@
 # E-MailRelay 1.9 - DEPRECATED
- - Homepage: [https://emailrelay.sourceforge.net/](https://emailrelay.sourceforge.net/)
- - Manpage: [https://emailrelay.sourceforge.net/index.html#userguide_md_User_Guide](https://emailrelay.sourceforge.net/index.html#userguide_md_User_Guide)
- - Changelog: [https://emailrelay.sourceforge.net/Change_Log.html](https://emailrelay.sourceforge.net/Change_Log.html)
- - Repository: [https://sourceforge.net/p/emailrelay/git/ci/master/tree/](https://sourceforge.net/p/emailrelay/git/ci/master/tree/)
- - Package: [master/make/pkgs/emailrelay/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/emailrelay/)
- - Maintainer: -
+  - Homepage: [https://emailrelay.sourceforge.net/](https://emailrelay.sourceforge.net/)
+  - Manpage: [https://emailrelay.sourceforge.net/index.html#userguide_md_User_Guide](https://emailrelay.sourceforge.net/index.html#userguide_md_User_Guide)
+  - Changelog: [https://emailrelay.sourceforge.net/Change_Log.html](https://emailrelay.sourceforge.net/Change_Log.html)
+  - Repository: [https://sourceforge.net/p/emailrelay/git/ci/master/tree/](https://sourceforge.net/p/emailrelay/git/ci/master/tree/)
+  - Package: [master/make/pkgs/emailrelay/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/emailrelay/)
+  - Maintainer: -
 
 [![E-MailRelay](../screenshots/274_md.jpg)](../screenshots/274.jpg)
 

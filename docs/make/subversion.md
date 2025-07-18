@@ -1,10 +1,10 @@
 # Subversion 1.9.12/1.14.5
- - Homepage: [https://subversion.apache.org/](https://subversion.apache.org/)
- - Manpage: [https://subversion.apache.org/quick-start](https://subversion.apache.org/quick-start)
- - Changelog: [https://subversion.apache.org/docs/release-notes/release-history.html](https://subversion.apache.org/docs/release-notes/release-history.html)
- - Repository: [https://svn.apache.org/viewvc/subversion/](https://svn.apache.org/viewvc/subversion/)
- - Package: [master/make/pkgs/subversion/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/subversion/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://subversion.apache.org/](https://subversion.apache.org/)
+  - Manpage: [https://subversion.apache.org/quick-start](https://subversion.apache.org/quick-start)
+  - Changelog: [https://subversion.apache.org/docs/release-notes/release-history.html](https://subversion.apache.org/docs/release-notes/release-history.html)
+  - Repository: [https://svn.apache.org/viewvc/subversion/](https://svn.apache.org/viewvc/subversion/)
+  - Package: [master/make/pkgs/subversion/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/subversion/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 [Subversion](http://subversion.tigris.org/) (SVN)
 ist eine Freie Software zur Versionsverwaltung von Dateien und

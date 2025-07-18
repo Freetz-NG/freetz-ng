@@ -1,10 +1,10 @@
 # OpenVPN 2.4.12/2.5.11/2.6.14
- - Homepage: [https://openvpn.net/community-downloads/](https://openvpn.net/community-downloads/)
- - Manpage: [https://community.openvpn.net/openvpn/wiki](https://community.openvpn.net/openvpn/wiki)
- - Changelog: [https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst](https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst)
- - Repository: [https://github.com/OpenVPN/openvpn](https://github.com/OpenVPN/openvpn)
- - Package: [master/make/pkgs/openvpn/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openvpn/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://openvpn.net/community-downloads/](https://openvpn.net/community-downloads/)
+  - Manpage: [https://community.openvpn.net/openvpn/wiki](https://community.openvpn.net/openvpn/wiki)
+  - Changelog: [https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst](https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst)
+  - Repository: [https://github.com/OpenVPN/openvpn](https://github.com/OpenVPN/openvpn)
+  - Package: [master/make/pkgs/openvpn/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openvpn/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 OpenVPN ist ein Programm zur Herstellung eines Virtuellen Privaten
 Netzwerkes (VPN) über eine verschlüsselte TLS-Verbindung.

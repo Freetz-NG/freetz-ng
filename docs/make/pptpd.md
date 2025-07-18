@@ -1,9 +1,9 @@
 # pptpd 1.4.0 - DEPRECATED
- - Homepage: [https://sourceforge.net/projects/poptop/](https://sourceforge.net/projects/poptop/)
- - Changelog: [https://sourceforge.net/projects/poptop/files/pptpd/](https://sourceforge.net/projects/poptop/files/pptpd/)
- - Repository: [https://sourceforge.net/p/poptop/git/ci/master/tree/](https://sourceforge.net/p/poptop/git/ci/master/tree/)
- - Package: [master/make/pkgs/pptpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pptpd/)
- - Maintainer: -
+  - Homepage: [https://sourceforge.net/projects/poptop/](https://sourceforge.net/projects/poptop/)
+  - Changelog: [https://sourceforge.net/projects/poptop/files/pptpd/](https://sourceforge.net/projects/poptop/files/pptpd/)
+  - Repository: [https://sourceforge.net/p/poptop/git/ci/master/tree/](https://sourceforge.net/p/poptop/git/ci/master/tree/)
+  - Package: [master/make/pkgs/pptpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pptpd/)
+  - Maintainer: -
 
 Das Interface an sich ist leicht überschaubar ;-).
 

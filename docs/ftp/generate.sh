@@ -24,15 +24,15 @@ echo -n "Content: "
 echo -e "$CATS" | grep -v ^$ | while read c cat; do echo -n "[$cat](#$(echo ${cat,,} | sed 's/ /-/g')) - "; done | sed 's/...$//'
 echo
 echo -e "# Temporär verfügbare Firmware-Dateien auf [$SERVER/](https://$SERVER/)"
-echo -e " - Das Unterverzeichnis [archive/](https://$SERVER/archive/) ist hier nicht enthalten."
-echo -e " - Diese Liste ist weder vollständig, korrekt noch aktuell."
+echo -e "  - Das Unterverzeichnis [archive/](https://$SERVER/archive/) ist hier nicht enthalten."
+echo -e "  - Diese Liste ist weder vollständig, korrekt noch aktuell."
 echo -e "$CATS" | grep -v ^$ | while read c cat; do
 	echo -e "\n### $cat"
 	sed -rn "s,^https://$SERVER/$c/,,p" ftp | while read -s line; do
 		new="${line%%/*}"
-		[ "$old" != "$new" ] && echo " * $new/" && old="$new"
+		[ "$old" != "$new" ] && echo "  * $new/" && old="$new"
 		file="${line#$new/}" ; file="${file//\/fritz.os\//:}" ; file="${file//\/recover\//-recover:}" ; kind="${file%%:*}" ; file="${file##*:}"
-		echo "   - ${kind//%20/ }: [${file//%20/ }](https://$SERVER/$c/$line)"
+		echo "    - ${kind//%20/ }: [${file//%20/ }](https://$SERVER/$c/$line)"
 	done
 done
 ) | sed 's/_-/-/' > $PARENT/docs/ftp/README.md

@@ -112,10 +112,10 @@ install_requisite() {
 	echo -e "\nPackages for '$OSV':\n$vals\n"
 	[ "${ARG:0:1}" == "s" ] && exit 0
 	case "$OSV" in
-		Fedora*)                                sudo dnf --refresh  install $DOY $vals || exit 1 ;;
-		Debian*|Devuan*) sudo apt-get update && sudo apt            install $DOY $vals || exit 1 ;;
-		Ubuntu*|Mint*)   sudo apt-get update && sudo apt-get        install $DOY $vals || exit 1 ;;
-		*)               echo 'No known installer'                                     && exit 1 ;;
+		Fedora*)                                      sudo dnf --refresh  install $DOY $vals || exit 1 ;;
+		Debian*|Devuan*|LMDE*) sudo apt-get update && sudo apt            install $DOY $vals || exit 1 ;;
+		Ubuntu*|Mint*)         sudo apt-get update && sudo apt-get        install $DOY $vals || exit 1 ;;
+		*)                     echo 'No known installer'                                     && exit 1 ;;
 	esac
 	exit 0
 }

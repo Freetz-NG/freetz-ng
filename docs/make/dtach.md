@@ -1,9 +1,9 @@
 # dtach 0.9 (binary only)
- - Homepage: [https://dtach.sourceforge.net/](https://dtach.sourceforge.net/)
- - Changelog: [https://github.com/crigler/dtach/tags](https://github.com/crigler/dtach/tags)
- - Repository: [https://github.com/crigler/dtach](https://github.com/crigler/dtach)
- - Package: [master/make/pkgs/dtach/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dtach/)
- - Maintainer: -
+  - Homepage: [https://dtach.sourceforge.net/](https://dtach.sourceforge.net/)
+  - Changelog: [https://github.com/crigler/dtach/tags](https://github.com/crigler/dtach/tags)
+  - Repository: [https://github.com/crigler/dtach](https://github.com/crigler/dtach)
+  - Package: [master/make/pkgs/dtach/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dtach/)
+  - Maintainer: -
 
 *"dtach is a free (GPL'ed) program for POSIX-compliant OSs intended to
 provide similar functionality to that of the GNU Project's Screen, but

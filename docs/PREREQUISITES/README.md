@@ -6,18 +6,19 @@ Eine einfache Möglichkeit die benötigten Pakete zu installieren besteht darin,
 Mit `tools/prerequisites` können die Pakete auch installiert werden.
 
 ### Getestete Distributionen
- - [Fedora](#fedora)
- - [Debian](#debian)
- - [Devuan](#devuan)
- - [Ubuntu](#ubuntu)
- - [Mint](#mint)
- - [Kali](#kali)
- - [Arch](#arch)
- - sonst keine
+  - [Fedora](#fedora)
+  - [Debian](#debian)
+  - [Devuan](#devuan)
+  - [LMDE](#lmde)
+  - [Ubuntu](#ubuntu)
+  - [Mint](#mint)
+  - [Kali](#kali)
+  - [Arch](#arch)
+  - sonst keine
 
 ### Problematische Distributionen
- - Gentoo
- - NixOS
+  - Gentoo
+  - NixOS
 
 ### Alle anderen Distributionen
 ... sind ungetestet und können funktionieren oder auch nicht. Dies hängt stark von den Fähigkeiten des Bedieners ab.
@@ -25,20 +26,20 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
 ### Distribution ermitteln
 Wenn man vergessen hat welche Linux Version installiert ist kann dies so prüfen:
 
- - Linux Distribution:
+  - Linux Distribution:
 ```
 $ hostnamectl status
   Operating System: Fedora 33 (Thirty Three)
 	    Kernel: Linux 5.10.15-200.fc33.x86_64
 ```
 
- - Ubuntu/Debian Version:
+  - Ubuntu/Debian Version:
 ```
 $ lsb_release -d
 Description:    Ubuntu 14.04.6 LTS
 ```
 
- - Maschinen Typ: `i686` bei 32-Bit x86 und `x86_64` bei 64-Bit x86:
+  - Maschinen Typ: `i686` bei 32-Bit x86 und `x86_64` bei 64-Bit x86:
 ```
 $ uname -m
 aarch64
@@ -46,13 +47,13 @@ aarch64
 
 ### Fedora
 
- - System aktualisieren:
+  - System aktualisieren:
 ```
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 42 64-Bit:
-   NOT recommended currently !!!
+  - Fedora 42 64-Bit:
+    NOT recommended currently !!!
 ```
 sudo dnf -y install \
   bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gcc gcc-c++ gettext \
@@ -64,7 +65,7 @@ sudo dnf -y install \
   subversion texinfo unar util-linux wget xz zlib-ng-devel
 ```
 
- - Fedora 41 64-Bit:
+  - Fedora 41 64-Bit:
 ```
 sudo dnf -y install \
   bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gcc gcc-c++ gettext \
@@ -76,7 +77,7 @@ sudo dnf -y install \
   util-linux wget xz zlib-ng-devel
 ```
 
- - Fedora 40 64-Bit:
+  - Fedora 40 64-Bit:
 ```
 sudo dnf -y install \
   bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gcc gcc-c++ gettext \
@@ -88,7 +89,7 @@ sudo dnf -y install \
   zlib-ng-devel
 ```
 
- - Fedora 37/38/39 64-Bit:
+  - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install \
   bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex ftp gcc gcc-c++ \
@@ -101,7 +102,7 @@ sudo dnf -y install \
   zlib-devel.i686
 ```
 
- - Fedora 36 64-Bit:
+  - Fedora 36 64-Bit:
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex \
@@ -114,7 +115,7 @@ sudo dnf -y install \
   zlib-devel.i686
 ```
 
- - Fedora 35 64-Bit:
+  - Fedora 35 64-Bit:
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex \
@@ -127,7 +128,7 @@ sudo dnf -y install \
   zlib-devel.i686
 ```
 
- - Fedora 33/34 64-Bit:
+  - Fedora 33/34 64-Bit:
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake ecj flex gcc gcc-c++ gettext git \
@@ -138,12 +139,12 @@ sudo dnf -y install \
   texinfo unar util-linux wget xz zlib-devel zlib-devel.i686
 ```
 
- - Falls auf dem folgenden System ein 64-Bit Linux installiert ist wird zusätzlich benötigt:
+  - Falls auf dem folgenden System ein 64-Bit Linux installiert ist wird zusätzlich benötigt:
 ```
 sudo yum -y install ncurses-devel.i686 glibc-devel.i686 libgcc.i686
 ```
 
- - Fedora ~20 32-Bit:
+  - Fedora ~20 32-Bit:
 ```
 sudo yum -y install \
   autoconf automake binutils bison bzip2 ecj flex gcc gcc-c++ gettext git glib2-devel \
@@ -153,14 +154,14 @@ sudo yum -y install \
 
 ### Debian
 
- - System aktualisieren:
+  - System aktualisieren:
 ```
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y dist-upgrade
 ```
 
- - Debian 13 64-Bit:
+  - Debian 13 64-Bit:
 ```
 sudo apt -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -172,7 +173,7 @@ sudo apt -y install \
   zlib1g-dev
 ```
 
- - Debian 12 64-Bit:
+  - Debian 12 64-Bit:
 ```
 sudo apt -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -184,7 +185,7 @@ sudo apt -y install \
   zlib1g-dev
 ```
 
- - Debian 11 64-Bit:
+  - Debian 11 64-Bit:
 ```
 sudo apt -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -200,15 +201,19 @@ sudo apt -y install \
 Devuan wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Debian vorgeschlagen werden.
 
 
+### LMDE
+LMDE (Linux Mint Debian Edition) wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Debian vorgeschlagen werden.
+
+
 ### Ubuntu
 
- - Deutsche Tastaturbelegung:<br>
+  - Deutsche Tastaturbelegung:<br>
 Siehe [ubuntu.com: LocaleConf](https://help.ubuntu.com/community/LocaleConf)
 ```
 sudo apt-get -y install console-data && sudo locale-gen de_DE && sudo dpkg-reconfigure console-data && exit
 ```
 
- - 32-Bit (Multiarch) aktivieren:<br>
+  - 32-Bit (Multiarch) aktivieren:<br>
 Siehe [debian.org: Multiarch HOWTO](https://wiki.debian.org/Multiarch/HOWTO) und [heise.de: Pakete für mehrere CPU-Architekturen in Linux installieren](http://heise.de/-2056403)
 ```
 # dpkg --print-foreign-architectures
@@ -216,14 +221,14 @@ sudo dpkg --add-architecture i386
 sudo apt-get -y update
 ```
 
- - System aktualisieren:
+  - System aktualisieren:
 ```
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 23/24/25 64-Bit:
+  - Ubuntu 23/24/25 64-Bit:
 ```
 sudo apt-get -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -235,7 +240,7 @@ sudo apt-get -y install \
   uuid-dev wget zip zlib1g-dev
 ```
 
- - Ubuntu 22 64-Bit:
+  - Ubuntu 22 64-Bit:
 ```
 sudo apt-get -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -247,7 +252,7 @@ sudo apt-get -y install \
   uuid-dev wget zip zlib1g-dev
 ```
 
- - Ubuntu 20/21 64-Bit:
+  - Ubuntu 20/21 64-Bit:
 ```
 sudo apt-get -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -262,7 +267,7 @@ sudo apt-get -y install \
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
 ```
 
- - Ubuntu 18/19 64-Bit:
+  - Ubuntu 18/19 64-Bit:
 ```
 sudo apt-get -y install \
   autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache cmake curl ecj flex \
@@ -273,7 +278,7 @@ sudo apt-get -y install \
   pkg-config pv rsync sqlite3 subversion sudo texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
 ```
 
- - Ubuntu 15/16/17 64-Bit:
+  - Ubuntu 15/16/17 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ecj flex g++ gawk gcc \
@@ -283,7 +288,7 @@ sudo apt-get -y install \
   tofrodos unar unzip wget zlib1g-dev
 ```
 
- - Ubuntu 14 64-Bit:
+  - Ubuntu 14 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake automake1.9 autopoint bc binutils bison bsdmainutils build-essential \
@@ -310,17 +315,17 @@ gcc min v6        https://ftp.gnu.org/gnu/gcc/gcc-6.5.0/gcc-6.5.0.tar.xz
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib:/usr/local/lib64:/usr/local/lib32"
 ```
 
- - Falls auf den folgenden Systemen ein 64-Bit Linux installiert ist wird zusätzlich benötigt:
+  - Falls auf den folgenden Systemen ein 64-Bit Linux installiert ist wird zusätzlich benötigt:
 ```
 sudo apt-get -y install libc6-dev-i386 lib32ncurses5-dev gcc-multilib lib32stdc++6
 ```
 
- - Ubuntu 15 32-Bit / Debian 8: Zusätzlich zu Ubuntu 13/14 32-Bit wird benötigt:
+  - Ubuntu 15 32-Bit / Debian 8: Zusätzlich zu Ubuntu 13/14 32-Bit wird benötigt:
 ```
 sudo apt-get -y install libtool-bin
 ```
 
- - Ubuntu 13/14 32-Bit:
+  - Ubuntu 13/14 32-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake automake1.9 binutils bison bzip2 ecj fastjar flex g++ gawk gcc gettext \
@@ -329,7 +334,7 @@ sudo apt-get -y install \
   zlib1g-dev
 ```
 
- - Ubuntu 10/11/12 32-Bit:
+  - Ubuntu 10/11/12 32-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake binutils bison bzip2 ecj fastjar flex g++ gawk gcc gettext git-core \
@@ -338,7 +343,7 @@ sudo apt-get -y install \
   subversion texinfo tofrodos unzip xz-utils zlib1g-dev
 ```
 
- - Ubuntu 9.04 32-Bit (kein automake 1.8, "ecj" statt "ecj-bootstrap"):
+  - Ubuntu 9.04 32-Bit (kein automake 1.8, "ecj" statt "ecj-bootstrap"):
 ```
 sudo apt-get -y install \
   autoconf automake automake1.9 binutils bison bzip2 ecj fastjar flex g++ gawk gcc gettext \

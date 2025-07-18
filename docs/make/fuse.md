@@ -1,10 +1,10 @@
 # FUSE 2.9.9 (binary only) - DEPRECATED
- - Homepage: [https://github.com/libfuse/libfuse](https://github.com/libfuse/libfuse)
- - Manpage: [https://github.com/libfuse/libfuse/wiki](https://github.com/libfuse/libfuse/wiki)
- - Changelog: [https://github.com/libfuse/libfuse/releases](https://github.com/libfuse/libfuse/releases)
- - Repository: [https://github.com/libfuse/libfuse/commits/master](https://github.com/libfuse/libfuse/commits/master)
- - Package: [master/make/pkgs/fuse/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fuse/)
- - Maintainer: -
+  - Homepage: [https://github.com/libfuse/libfuse](https://github.com/libfuse/libfuse)
+  - Manpage: [https://github.com/libfuse/libfuse/wiki](https://github.com/libfuse/libfuse/wiki)
+  - Changelog: [https://github.com/libfuse/libfuse/releases](https://github.com/libfuse/libfuse/releases)
+  - Repository: [https://github.com/libfuse/libfuse/commits/master](https://github.com/libfuse/libfuse/commits/master)
+  - Package: [master/make/pkgs/fuse/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fuse/)
+  - Maintainer: -
 
 **[FUSE](http://de.wikipedia.org/wiki/Filesystem_in_Userspace)**
 ([Filesystem](http://de.wikipedia.org/wiki/Dateisystem)

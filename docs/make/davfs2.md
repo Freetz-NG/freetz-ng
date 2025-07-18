@@ -1,10 +1,10 @@
 # davfs 1.5.2/1.7.0
- - Homepage: [https://savannah.nongnu.org/projects/davfs2](https://savannah.nongnu.org/projects/davfs2)
- - Manpage: [https://linux.die.net/man/5/davfs2.conf](https://linux.die.net/man/5/davfs2.conf)
- - Changelog: [https://git.savannah.nongnu.org/cgit/davfs2.git/refs/](https://git.savannah.nongnu.org/cgit/davfs2.git/refs/)
- - Repository: [https://git.savannah.nongnu.org/cgit/davfs2.git/](https://git.savannah.nongnu.org/cgit/davfs2.git/)
- - Package: [master/make/pkgs/davfs2/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/davfs2/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://savannah.nongnu.org/projects/davfs2](https://savannah.nongnu.org/projects/davfs2)
+  - Manpage: [https://linux.die.net/man/5/davfs2.conf](https://linux.die.net/man/5/davfs2.conf)
+  - Changelog: [https://git.savannah.nongnu.org/cgit/davfs2.git/refs/](https://git.savannah.nongnu.org/cgit/davfs2.git/refs/)
+  - Repository: [https://git.savannah.nongnu.org/cgit/davfs2.git/](https://git.savannah.nongnu.org/cgit/davfs2.git/)
+  - Package: [master/make/pkgs/davfs2/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/davfs2/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 [![WebDAV: Konfiguration](../screenshots/62_md.jpg)](../screenshots/62.jpg)
 

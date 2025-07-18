@@ -721,7 +721,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7590-07.29.image"                                                          if FREETZ_TYPE_7590_W5                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7590-07.59.image"                                                          if FREETZ_TYPE_7590_W5                         && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Box_7590-08.03.image"                                                          if FREETZ_TYPE_7590_W5                         && FREETZ_TYPE_FIRMWARE_08_0X
-	default "FRITZ.Box_7590-08.10-121774-LabBETA.image"                                           if FREETZ_TYPE_7590_W5                         && FREETZ_TYPE_FIRMWARE_08_2X_LABOR
+	default "FRITZ.Box_7590-08.20.image"                                                          if FREETZ_TYPE_7590_W5                         && FREETZ_TYPE_FIRMWARE_08_2X
 	#
 	default "FRITZ.Box_7590_AX-07.31.image"                                                       if FREETZ_TYPE_7590_W6                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7590_AX-07.57.image"                                                       if FREETZ_TYPE_7590_W6                         && FREETZ_TYPE_FIRMWARE_07_5X
@@ -785,7 +785,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritzbox-7510-labor-122257.zip"                                                      if FREETZ_TYPE_7510
 	default "fritzbox-7530-labor-121911.zip"                                                      if FREETZ_TYPE_7530_W5
 	default "fritzbox-7530ax-labor-122082.zip"                                                    if FREETZ_TYPE_7530_W6_V1
-	default "fritzbox-7590-labor-121774.zip"                                                      if FREETZ_TYPE_7590_W5
 	default "fritzbox-7590AX-labor-121777.zip"                                                    if FREETZ_TYPE_7590_W6
 	default "xxxxxxxxxxxxxxxxxxxxxxxxx.zip"                                                       if FREETZ_TYPE_xxxx
 	#

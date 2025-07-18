@@ -1,10 +1,10 @@
 # Nmap 4.76/5.51/7.97 (binary only)
- - Homepage: [https://nmap.org/](https://nmap.org/)
- - Manpage: [https://nmap.org/docs.html](https://nmap.org/docs.html)
- - Changelog: [https://nmap.org/changelog.html](https://nmap.org/changelog.html)
- - Repository: [https://github.com/nmap/nmap](https://github.com/nmap/nmap)
- - Package: [master/make/pkgs/nmap/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nmap/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://nmap.org/](https://nmap.org/)
+  - Manpage: [https://nmap.org/docs.html](https://nmap.org/docs.html)
+  - Changelog: [https://nmap.org/changelog.html](https://nmap.org/changelog.html)
+  - Repository: [https://github.com/nmap/nmap](https://github.com/nmap/nmap)
+  - Package: [master/make/pkgs/nmap/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nmap/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 "*Nmap ("Network Mapper") is a free and open source (license) utility
 for network exploration or security auditing. Many systems and network

@@ -1,10 +1,10 @@
 # AutoFS 5.0.5/5.1.9
- - Homepage: [https://docs.kernel.org/filesystems/autofs.html](https://docs.kernel.org/filesystems/autofs.html)
- - Manpage: [https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst](https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst)
- - Changelog: [https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/](https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/)
- - Repository: [https://github.com/torvalds/linux/tree/master/fs/autofs](https://github.com/torvalds/linux/tree/master/fs/autofs)
- - Package: [master/make/pkgs/autofs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/autofs/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://docs.kernel.org/filesystems/autofs.html](https://docs.kernel.org/filesystems/autofs.html)
+  - Manpage: [https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst](https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst)
+  - Changelog: [https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/](https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/)
+  - Repository: [https://github.com/torvalds/linux/tree/master/fs/autofs](https://github.com/torvalds/linux/tree/master/fs/autofs)
+  - Package: [master/make/pkgs/autofs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/autofs/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit diesem Paket können verschiedene Dateisysteme nach /var/media/autofs
 gemountet werden.

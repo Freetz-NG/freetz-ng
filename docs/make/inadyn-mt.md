@@ -1,6 +1,6 @@
 # Inadyn-mt 02.28.10 - DEPRECATED
- - Package: [master/make/pkgs/inadyn-mt/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inadyn-mt/)
- - Maintainer: -
+  - Package: [master/make/pkgs/inadyn-mt/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inadyn-mt/)
+  - Maintainer: -
 
 Inadyn is an update client that keeps your IP address up to date at your
 DNS name provider.

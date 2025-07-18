@@ -1,18 +1,18 @@
-name: generate_pages
+name: generate_ghpages
 
 on:
-  workflow_run:
-    workflows: [ generate_docs,avm_ftp,avm_osp,avm_juis,avm_juis-recache ]
-    types:
-      - completed
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/generate_pages.yml'
-      - 'docs/**/*.md'
-      - 'docs/**/*.jpg'
-      - 'docs/**/*.png'
-      - 'docs/**/*.gif'
+# workflow_run:
+#   workflows: [ generate_docs,avm_ftp,avm_osp,avm_juis,avm_juis-recache ]
+#   types:
+#     - completed
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/generate_ghpages.yml'
+#     - 'docs/**/*.md'
+#     - 'docs/**/*.jpg'
+#     - 'docs/**/*.png'
+#     - 'docs/**/*.gif'
   workflow_dispatch:
 
 concurrency:

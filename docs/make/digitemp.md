@@ -1,10 +1,10 @@
 # DigiTemp 3.7.2 (binary only)
- - Homepage: [https://github.com/bcl/digitemp](https://github.com/bcl/digitemp)
- - Manpage: [https://github.com/bcl/digitemp#readme](https://github.com/bcl/digitemp#readme)
- - Changelog: [https://github.com/bcl/digitemp/releases](https://github.com/bcl/digitemp/releases)
- - Repository: [https://github.com/bcl/digitemp/commits/master](https://github.com/bcl/digitemp/commits/master)
- - Package: [master/make/pkgs/digitemp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/digitemp/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://github.com/bcl/digitemp](https://github.com/bcl/digitemp)
+  - Manpage: [https://github.com/bcl/digitemp#readme](https://github.com/bcl/digitemp#readme)
+  - Changelog: [https://github.com/bcl/digitemp/releases](https://github.com/bcl/digitemp/releases)
+  - Repository: [https://github.com/bcl/digitemp/commits/master](https://github.com/bcl/digitemp/commits/master)
+  - Package: [master/make/pkgs/digitemp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/digitemp/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 ### **Was ist digitemp?**
 

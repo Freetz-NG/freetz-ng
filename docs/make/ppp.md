@@ -1,6 +1,6 @@
 # Point-to-Point
- - Package: [master/make/pkgs/ppp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ppp/)
- - Maintainer: -
+  - Package: [master/make/pkgs/ppp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ppp/)
+  - Maintainer: -
 
 [![ppp-cgi](../screenshots/121_md.jpg)](../screenshots/121.jpg)
 

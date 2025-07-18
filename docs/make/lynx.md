@@ -1,9 +1,9 @@
 # Lynx 2.9.2 (binary only)
- - Homepage: [https://lynx.invisible-island.net/](https://lynx.invisible-island.net/)
- - Manpage: [https://lynx.invisible-island.net/lynx_help/lynx_help_main.html](https://lynx.invisible-island.net/lynx_help/lynx_help_main.html)
- - Changelog: [https://lynx.invisible-island.net/current/CHANGES.html](https://lynx.invisible-island.net/current/CHANGES.html)
- - Package: [master/make/pkgs/lynx/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lynx/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://lynx.invisible-island.net/](https://lynx.invisible-island.net/)
+  - Manpage: [https://lynx.invisible-island.net/lynx_help/lynx_help_main.html](https://lynx.invisible-island.net/lynx_help/lynx_help_main.html)
+  - Changelog: [https://lynx.invisible-island.net/current/CHANGES.html](https://lynx.invisible-island.net/current/CHANGES.html)
+  - Package: [master/make/pkgs/lynx/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lynx/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 **[Lynx](http://lynx.isc.org/)** ist ein
 Web-Browser, der ohne grafische Oberfläche daherkommt - also von der

@@ -1,6 +1,6 @@
 # Sundtek DVB driver 130210.134617/170310.204343/210803.071224 - DEPRECATED
- - Package: [master/make/pkgs/sundtek/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sundtek/)
- - Maintainer: -
+  - Package: [master/make/pkgs/sundtek/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sundtek/)
+  - Maintainer: -
 
 [![Sundtek DVB driver](../screenshots/256_md.jpg)](../screenshots/256.jpg)
 

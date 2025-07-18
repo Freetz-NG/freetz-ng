@@ -1,10 +1,10 @@
 # Screen 4.9.1/5.0.1
- - Homepage: [https://www.gnu.org/software/screen/](https://www.gnu.org/software/screen/)
- - Manpage: [https://www.gnu.org/software/screen/manual/](https://www.gnu.org/software/screen/manual/)
- - Changelog: [https://git.savannah.gnu.org/cgit/screen.git/refs/](https://git.savannah.gnu.org/cgit/screen.git/refs/)
- - Repository: [https://git.savannah.gnu.org/cgit/screen.git](https://git.savannah.gnu.org/cgit/screen.git)
- - Package: [master/make/pkgs/screen/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/screen/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://www.gnu.org/software/screen/](https://www.gnu.org/software/screen/)
+  - Manpage: [https://www.gnu.org/software/screen/manual/](https://www.gnu.org/software/screen/manual/)
+  - Changelog: [https://git.savannah.gnu.org/cgit/screen.git/refs/](https://git.savannah.gnu.org/cgit/screen.git/refs/)
+  - Repository: [https://git.savannah.gnu.org/cgit/screen.git](https://git.savannah.gnu.org/cgit/screen.git)
+  - Package: [master/make/pkgs/screen/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/screen/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 *"Screen is a full-screen window manager that multiplexes a physical
 terminal between several processes, typically interactive shells."*

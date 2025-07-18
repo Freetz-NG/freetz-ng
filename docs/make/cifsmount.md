@@ -1,9 +1,9 @@
 # Cifsmount 7.0 - DEPRECATED
- - Homepage: [https://wiki.samba.org/index.php/LinuxCIFS_utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
- - Changelog: [https://wiki.samba.org/index.php/LinuxCIFS_utils#News](https://wiki.samba.org/index.php/LinuxCIFS_utils#News)
- - Repository: [https://git.samba.org/?p=cifs-utils.git;a=summary](https://git.samba.org/?p=cifs-utils.git;a=summary)
- - Package: [master/make/pkgs/cifsmount/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/cifsmount/)
- - Maintainer: -
+  - Homepage: [https://wiki.samba.org/index.php/LinuxCIFS_utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
+  - Changelog: [https://wiki.samba.org/index.php/LinuxCIFS_utils#News](https://wiki.samba.org/index.php/LinuxCIFS_utils#News)
+  - Repository: [https://git.samba.org/?p=cifs-utils.git;a=summary](https://git.samba.org/?p=cifs-utils.git;a=summary)
+  - Package: [master/make/pkgs/cifsmount/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/cifsmount/)
+  - Maintainer: -
 
 [![](../screenshots/146_md.jpg)](../screenshots/146.jpg)
 

@@ -1,6 +1,6 @@
 # Pingtunnel 0.72 - DEPRECATED
- - Package: [master/make/pkgs/pingtunnel/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pingtunnel/)
- - Maintainer: -
+  - Package: [master/make/pkgs/pingtunnel/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pingtunnel/)
+  - Maintainer: -
 
 **PTunnel** erlaubt das verlässliche Tunneln von TCP Verbindungen über
 [ICMP](http://de.wikipedia.org/wiki/Internet_Control_Message_Protocol)

@@ -1,6 +1,6 @@
 # eSpeak 1.48.04 (binary only) - DEPRECATED
- - Package: [master/make/pkgs/espeak/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/espeak/)
- - Maintainer: -
+  - Package: [master/make/pkgs/espeak/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/espeak/)
+  - Maintainer: -
 
 eSpeak ist ein "Text to Speech" Generator - oder, anders ausgedrückt,
 ein "Vorlese-Programm", welches ASCII Texte mit synthetischer Stimme

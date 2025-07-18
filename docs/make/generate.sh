@@ -31,23 +31,23 @@ echo "$PKGS" | sed 's/##.*//g' | uniq | while read cat; do
 			while [ "$(awk 'END{print NR}' "$MDPWD/$pkg.md")" -lt 2 ]; do echo >> "$MDPWD/$pkg.md"; done
 			sed "1c# $dsc" -i "$MDPWD/$pkg.md"
 
-			sed "/^ - Maintainer: .*$/d" -i "$MDPWD/$pkg.md"
+			sed "/^  - Maintainer: .*$/d" -i "$MDPWD/$pkg.md"
 			lnk="$(sed -n "s/^### SUPPORT:= *//p" "$INPWD/$pkg/$pkg.mk")"
 			case "$lnk" in
 				X)	lnk="" ;;
 				"")	lnk="-" ;;
 				*)	[ "$lnk" != "${lnk/:\/\//}" ] && lnk="\[$lnk\]($lnk)" || lnk="\[@$lnk\](https://github.com/$lnk)" ;; #"
 			esac
-			[ -n "$lnk" ] && sed "2i\ - Maintainer: $lnk" -i "$MDPWD/$pkg.md"
+			[ -n "$lnk" ] && sed "2i\  - Maintainer: $lnk" -i "$MDPWD/$pkg.md"
 
 			lnk="https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/$pkg/"
-			sed "/^ - Package: \[.*)$/d" -i "$MDPWD/$pkg.md"
-			sed "2i\ - Package: \[${lnk:44}\]($lnk)" -i "$MDPWD/$pkg.md"
+			sed "/^  - Package: \[.*)$/d" -i "$MDPWD/$pkg.md"
+			sed "2i\  - Package: \[${lnk:44}\]($lnk)" -i "$MDPWD/$pkg.md"
 
 			for pair in CVSREPO°Repository CHANGES°Changelog MANPAGE°Manpage WEBSITE°Homepage; do
-				sed "/^ - ${pair#*°}: \[.*)$/d" -i "$MDPWD/$pkg.md"
+				sed "/^  - ${pair#*°}: \[.*)$/d" -i "$MDPWD/$pkg.md"
 				lnk="$(sed -n "s/^### ${pair%%°*}:= *//p" "$INPWD/$pkg/$pkg.mk")"
-				[ -n "$lnk" ] && sed "2i\ - ${pair#*°}: \[$lnk\]($lnk)" -i "$MDPWD/$pkg.md"
+				[ -n "$lnk" ] && sed "2i\  - ${pair#*°}: \[$lnk\]($lnk)" -i "$MDPWD/$pkg.md"
 			done
 			itm="[$itm](../../docs/make/$pkg.md)"
 			lst="$(sed -n 's/^### //p' "$MDPWD/$pkg.md" | grep -v ' Links$')"

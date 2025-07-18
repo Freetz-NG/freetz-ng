@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libunbound
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libunbound.so.8.1.31
+		 ${FREETZ_LIBRARY_DIR}/libunbound.so.8.1.32
 

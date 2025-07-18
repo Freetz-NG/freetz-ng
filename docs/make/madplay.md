@@ -1,6 +1,6 @@
 # madplay 0.15.2b (binary only) - DEPRECATED
- - Package: [master/make/pkgs/madplay/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/madplay/)
- - Maintainer: -
+  - Package: [master/make/pkgs/madplay/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/madplay/)
+  - Maintainer: -
 
 **[MAD](http://www.underbit.com/products/mad/)**
 ist ein qualitativ hochwertiger

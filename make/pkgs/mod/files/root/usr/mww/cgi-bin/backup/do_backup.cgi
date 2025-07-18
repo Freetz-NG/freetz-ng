@@ -16,7 +16,8 @@ para() {
 }
 DOEXP="$(para 'do_export')"
 DOENC="$(para 'do_encrypt')"
-export SICPW="$(para 'password_backup')"
+SICPW="$(para 'password_backup')"
+export SICPW="$(httpd -d "$SICPW")"
 [ "$DOENC" == "on" -a -z "$SICPW" ] && fail "$(lang de:"Es wurde kein Passwort angegeben" en:"You have not provided a password")."
 
 [ -z "$CONFIG_LABOR_ID_NAME" ] && REV="" || REV="-$(sed -nr 's/.*[ ^]*CONFIG_BUILDNUMBER="?([^"]*).*/\1/p' /etc/init.d/rc.conf)"

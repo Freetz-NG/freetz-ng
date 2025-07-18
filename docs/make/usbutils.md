@@ -1,6 +1,6 @@
 # usbutils 007 (binary only) - DEPRECATED
- - Package: [master/make/pkgs/usbutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/usbutils/)
- - Maintainer: -
+  - Package: [master/make/pkgs/usbutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/usbutils/)
+  - Maintainer: -
 
 Das Paket **usbutils** enthält, was man zur Anzeige von USB
 Geräteinformationen benötigt: `lsusb-freetz` listet diese Informationen

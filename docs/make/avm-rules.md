@@ -1,11 +1,10 @@
 # AVM-rules
- - Package: [master/make/pkgs/avm-rules/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/avm-rules/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Package: [master/make/pkgs/avm-rules/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/avm-rules/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit AVM-rules können (ausschliesslich) Ports der Fritz!Box selbst für Zugriff aus dem Internet freigegeben werden.<br>
-<br>
-<a href='../screenshots/000-PKG_avm-rules.png'><img src='../screenshots/000-PKG_avm-rules_md.png'></a>
-<br>
+
+[![screenshot](../screenshots/000-PKG_avm-rules_md.png)](../screenshots/000-PKG_avm-rules.png)
 
 Dazu wird ```pcplisten``` verwendet, nur für IPv4-Freigaben. Zu finden im menuconfig unter ```packages > webif```.
 

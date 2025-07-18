@@ -1,6 +1,6 @@
 # Onlinechanged-CGI
- - Package: [master/make/pkgs/onlinechanged-cgi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/onlinechanged-cgi/)
- - Maintainer: -
+  - Package: [master/make/pkgs/onlinechanged-cgi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/onlinechanged-cgi/)
+  - Maintainer: -
 <br>
 
 AVM-Firmwares beinhalten einen Mechanismus, welcher dafür sorgt, daß

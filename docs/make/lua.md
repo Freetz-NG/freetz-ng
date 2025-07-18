@@ -1,10 +1,10 @@
 # Lua 5.1.5/5.4.8 (binary only)
- - Homepage: [https://www.lua.org](https://www.lua.org)
- - Manpage: [https://www.lua.org/docs.html](https://www.lua.org/docs.html)
- - Changelog: [https://www.lua.org/versions.html](https://www.lua.org/versions.html)
- - Repository: [https://github.com/lua/lua](https://github.com/lua/lua)
- - Package: [master/make/pkgs/lua/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lua/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://www.lua.org](https://www.lua.org)
+  - Manpage: [https://www.lua.org/docs.html](https://www.lua.org/docs.html)
+  - Changelog: [https://www.lua.org/versions.html](https://www.lua.org/versions.html)
+  - Repository: [https://github.com/lua/lua](https://github.com/lua/lua)
+  - Package: [master/make/pkgs/lua/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lua/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 **[Lua](http://www.lua.org/)** ist eine
 [Skriptsprache](http://de.wikipedia.org/wiki/Skriptsprache)

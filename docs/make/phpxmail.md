@@ -1,6 +1,6 @@
 # PHPXmail 1.5 - DEPRECATED
- - Package: [master/make/pkgs/phpxmail/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/phpxmail/)
- - Maintainer: -
+  - Package: [master/make/pkgs/phpxmail/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/phpxmail/)
+  - Maintainer: -
 
 The mail to/from my hosting provider got interrupted now and then and
 the support wasn't that good. Setting up a mail server using Freetz and

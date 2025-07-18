@@ -102,16 +102,16 @@ echo -e "FOS-Release\nFOS-Labor\nFOS-Inhaus\nDect-Release\nDect-Labor\nDect-Inha
   | while read cat; do echo -n "[$cat](#$(echo ${cat,,} | sed 's/ /-/g')) - "; done | sed 's/...$//'
 echo
 echo -e '# Links von AVM-Juis für FOS ab HWR 150 sowie Dect und BPjM'
-echo -e ' - AVM nutzt unsichere http:// Links, daher muss die Signatur der Dateien vor Verwendung geprüft werden.'
-echo -e ' - Sollten verschieden Links für ein Gerät angezeigt werden sind die Angaben von Juis inkonsistent.'
-echo -e ' - Diese Liste ist weder vollständig, korrekt noch aktuell.'
-echo -e '\n### FOS-Release'  ; cat fos-xxx  | while read -s x; do echo " - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
-echo -e '\n### FOS-Labor'    ; cat fos-lab  | while read -s x; do echo " - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
-echo -e '\n### FOS-Inhaus'   ; cat fos-inh  | while read -s x; do echo " - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
-echo -e '\n### Dect-Release' ; cat dect-rel | while read -s x; do echo " - MHW ${x%=*}: [${x##*/}](${x#*=})"; done
-echo -e '\n### Dect-Labor'   ; cat dect-lab | while read -s x; do echo " - MHW ${x%=*}: [${x##*/}](${x#*=})"; done
-echo -e '\n### Dect-Inhaus'  ; cat dect-inh | while read -s x; do echo " - MHW ${x%=*}: [${x##*/}](${x#*=})"; done
-echo -e '\n### BPjM'         ; cat bpjm     | while read -s x; do echo " - CRC ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '  - AVM nutzt unsichere http:// Links, daher muss die Signatur der Dateien vor Verwendung geprüft werden.'
+echo -e '  - Sollten verschieden Links für ein Gerät angezeigt werden sind die Angaben von Juis inkonsistent.'
+echo -e '  - Diese Liste ist weder vollständig, korrekt noch aktuell.'
+echo -e '\n### FOS-Release'  ; cat fos-xxx  | while read -s x; do echo "  - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '\n### FOS-Labor'    ; cat fos-lab  | while read -s x; do echo "  - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '\n### FOS-Inhaus'   ; cat fos-inh  | while read -s x; do echo "  - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '\n### Dect-Release' ; cat dect-rel | while read -s x; do echo "  - MHW ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '\n### Dect-Labor'   ; cat dect-lab | while read -s x; do echo "  - MHW ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '\n### Dect-Inhaus'  ; cat dect-inh | while read -s x; do echo "  - MHW ${x%=*}: [${x##*/}](${x#*=})"; done
+echo -e '\n### BPjM'         ; cat bpjm     | while read -s x; do echo "  - CRC ${x%=*}: [${x##*/}](${x#*=})"; done
 ) | sed 's/_-/-/' > $PARENT/docs/juis/README.md
 
 #tmp

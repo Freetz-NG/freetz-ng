@@ -1,6 +1,6 @@
 # fortune 1.2 - DEPRECATED
- - Package: [master/make/pkgs/fortune/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fortune/)
- - Maintainer: -
+  - Package: [master/make/pkgs/fortune/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fortune/)
+  - Maintainer: -
 
 Das Computerprogramm Fortune ist traditionell auf Computern mit Unix
 oder Linux als Betriebssystem zu finden. Es existieren aber auch für

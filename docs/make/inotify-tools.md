@@ -1,10 +1,10 @@
 # inotify-tools 3.14 (binary only) - DEPRECATED
- - Homepage: [https://github.com/inotify-tools/inotify-tools](https://github.com/inotify-tools/inotify-tools)
- - Manpage: [https://github.com/inotify-tools/inotify-tools/wiki](https://github.com/inotify-tools/inotify-tools/wiki)
- - Changelog: [https://github.com/inotify-tools/inotify-tools/releases](https://github.com/inotify-tools/inotify-tools/releases)
- - Repository: [https://github.com/inotify-tools/inotify-tools/commits/master](https://github.com/inotify-tools/inotify-tools/commits/master)
- - Package: [master/make/pkgs/inotify-tools/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inotify-tools/)
- - Maintainer: -
+  - Homepage: [https://github.com/inotify-tools/inotify-tools](https://github.com/inotify-tools/inotify-tools)
+  - Manpage: [https://github.com/inotify-tools/inotify-tools/wiki](https://github.com/inotify-tools/inotify-tools/wiki)
+  - Changelog: [https://github.com/inotify-tools/inotify-tools/releases](https://github.com/inotify-tools/inotify-tools/releases)
+  - Repository: [https://github.com/inotify-tools/inotify-tools/commits/master](https://github.com/inotify-tools/inotify-tools/commits/master)
+  - Package: [master/make/pkgs/inotify-tools/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inotify-tools/)
+  - Maintainer: -
 
 **Inotify** ist eine Kernel-Schnittstelle zur Überwachung von
 Dateizugriffen, verbunden mit einem Event-Mechanismus, von dem man sich

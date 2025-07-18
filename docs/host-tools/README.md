@@ -16,7 +16,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### C
 
-  * **[ca-bundle 2025-02-25](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
+  * **[ca-bundle 2025-07-15](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
 
   * **[cmake 4.0.3](cmake-host.md)<a id='cmake-host'></a>**<br>
 
@@ -86,7 +86,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[netkit-ftp 0.17-35](netkit-ftp-host.md)<a id='netkit-ftp-host'></a>**<br>
 
-  * **[ninja 1.13.0](ninja-host.md)<a id='ninja-host'></a>**<br>
+  * **[ninja 1.13.1](ninja-host.md)<a id='ninja-host'></a>**<br>
 
 ### O
 

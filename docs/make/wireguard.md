@@ -1,16 +1,14 @@
 # wireguard-tools 1.0.20250521
- - Homepage: [https://www.wireguard.com/](https://www.wireguard.com/)
- - Manpage: [https://www.wireguard.com/quickstart/](https://www.wireguard.com/quickstart/)
- - Changelog: [https://git.zx2c4.com/wireguard-tools/log/](https://git.zx2c4.com/wireguard-tools/log/)
- - Repository: [https://git.zx2c4.com/wireguard-tools/](https://git.zx2c4.com/wireguard-tools/)
- - Package: [master/make/pkgs/wireguard/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/wireguard/)
- - Maintainer: [@fda77](https://github.com/fda77)
+  - Homepage: [https://www.wireguard.com/](https://www.wireguard.com/)
+  - Manpage: [https://www.wireguard.com/quickstart/](https://www.wireguard.com/quickstart/)
+  - Changelog: [https://git.zx2c4.com/wireguard-tools/log/](https://git.zx2c4.com/wireguard-tools/log/)
+  - Repository: [https://git.zx2c4.com/wireguard-tools/](https://git.zx2c4.com/wireguard-tools/)
+  - Package: [master/make/pkgs/wireguard/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/wireguard/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit Wireguard kann ein VPN aufgebaut werden. Es ist schneller als [OpenVPN](openvpn.md) und einfach zu konfugurieren als IPsec.<br>
-<br>
-<a href='../screenshots/000-PKG_wireguard.png'><img src='../screenshots/000-PKG_wireguard_md.png'></a>
-<br>
 
+[![screenshot](../screenshots/000-PKG_wireguard_md.png)](../screenshots/000-PKG_wireguard.png)
 
 ### Hinweise
 

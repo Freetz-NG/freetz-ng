@@ -1,6 +1,6 @@
 # tcp_wrappers 7.6 (binary only) - DEPRECATED
- - Package: [master/make/pkgs/tcp_wrappers/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/tcp_wrappers/)
- - Maintainer: -
+  - Package: [master/make/pkgs/tcp_wrappers/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/tcp_wrappers/)
+  - Maintainer: -
 
 TCP-Wrapper stellen eine Sicherheitsmaßnahme für
 Service-[Daemons](http://de.wikipedia.org/wiki/Daemon)
