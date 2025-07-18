@@ -92,7 +92,7 @@ Latest changes
   - Packages:
     * ACME.sh 3.1.1
     * Atop 2.11.1
-    * BIND 9.11.37/9.20.10
+    * BIND 9.11.37/9.20.11
     * CA-bundle 2025-07-15
     * Curl 8.15.0
     * Dante 1.4.4
