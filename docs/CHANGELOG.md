@@ -102,6 +102,7 @@ Latest changes
     * Dropbear 2025.88
     * dtc 1.7.2
     * FFmpeg 5.1.4/7.1.1
+    * Fontconfig 2.17.1
     * Git 2.50.1
     * HAProxy 2.6.22
     * htop 1.0.3/3.4.1
