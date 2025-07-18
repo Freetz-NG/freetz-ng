@@ -1,4 +1,4 @@
-# FIRMWARES
+# Firmwares
 Currently supported devices and firmwares
 
   * [Not supported devices](#not-supported-devices)
@@ -616,3 +616,4 @@ Currently supported devices and firmwares
 
 Latest change of this file: $Id$
 ```
+

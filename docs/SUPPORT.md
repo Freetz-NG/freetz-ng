@@ -1,4 +1,4 @@
-# SUPPORT
+# Support
 Wie kann ich Freetz-NG unterstützen?
 
  * __[Sponsor](#sponsor)__<a id='sponsor'></a><br>

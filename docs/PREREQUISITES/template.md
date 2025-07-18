@@ -1,7 +1,9 @@
-# PREREQUISITES: Installation der benötigten Pakete
-Eine einfache Möglichkeit die benötigten Pakete zu installieren besteht darin, diesen Code per Copy and Paste auf der Konsole auszuführen, zB in PuTTY per Rechtsclick!
+# Installation der benötigten Pakete
 
-Mit `tools/prerequisites` können die Pakete auch installiert werden.
+Es gibt folgende Möglichkeiten die benötigten Pakete (prerequisites) zu installieren:
+
+  - Mit dem Befehl `tools/prerequisites` können die Pakete automatisch installiert werden.
+  - Den Code auf dieser Seite per Copy and Paste auf der Konsole auszuführen, zB in PuTTY per Rechtsclick.
 
 ### Getestete Distributionen
   - [Fedora](#fedora)

@@ -1,4 +1,4 @@
-# FAQ
+# FAQ (english)
 
 This page answers some **F**requently **A**sked **Q**uestions about
 *Freetz*. It is still under construction.

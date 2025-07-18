@@ -1,4 +1,4 @@
-# FAQ
+# FAQ (deutsch)
 
 ## Produktname und Historisches
 

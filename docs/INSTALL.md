@@ -1,4 +1,4 @@
-# INSTALL
+# Installation
 Was man tun muss um Freetz auf seine Fritzbox zu installieren/flashen.
 
 ### Installationswege

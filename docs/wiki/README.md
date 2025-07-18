@@ -3,8 +3,8 @@
 # Wiki
 
 ### [FAQ](00_FAQ/README.md)
-  - [FAQ [DE]](00_FAQ/FAQ.de.md)
-  - [FAQ [EN]](00_FAQ/FAQ.en.md)
+  - [FAQ (deutsch) [DE]](00_FAQ/FAQ.de.md)
+  - [FAQ (english) [EN]](00_FAQ/FAQ.en.md)
 
 ### [Beginner](10_Beginner/README.md)
   - [Addon Paket installieren](10_Beginner/addon.md)

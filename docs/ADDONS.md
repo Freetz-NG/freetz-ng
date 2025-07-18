@@ -1,4 +1,4 @@
-# ADDONS
+# Addons
 Addons der "Digitalen Elite" werden hier nicht supported!
 
 Diese Addons wurden augenscheinlich von Personen programmiert die wenig bis gar keine Ahnung von Freetz haben.<br>

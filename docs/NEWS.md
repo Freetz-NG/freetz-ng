@@ -1,4 +1,4 @@
-# NEWS
+# Neuigkeiten
 
   * __[2025-04-21](#2025-04-21)__<a id='2025-04-21'></a><br>
     Warnung vor GCC 15! Damit kann momentan nicht alles funktionierend compiliert werden.<br>

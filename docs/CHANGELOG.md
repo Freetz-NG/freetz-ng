@@ -1,5 +1,5 @@
 [//]: # ( Do not edit any section except DEVEL. )
-# CHANGELOG
+# Changelog
 Latest changes
 
   - Freetz-NG
@@ -3548,5 +3548,4 @@ See svn log for more details.
 
 Latest change of this file: $Id$
 ```
-
 
