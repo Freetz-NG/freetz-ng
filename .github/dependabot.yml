@@ -6,16 +6,3 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-
-  - package-ecosystem: pip
-    directories: 
-      - "/.github/mkdocs/"
-    schedule:
-      interval: "daily"
-    allow:
-      - dependency-type: direct
-      - dependency-type: indirect
-    groups:
-      mkdocs-pip-dependencies:
-        patterns:
-          - "/.github/mkdocs/*"
