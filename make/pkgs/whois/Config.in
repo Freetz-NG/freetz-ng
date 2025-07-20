@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_WHOIS
-	bool "Whois 5.6.2 (binary only)"
+	bool "Whois 5.6.3 (binary only)"
 	default n
 	help
 		Whois - client for the whois directory service.

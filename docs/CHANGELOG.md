@@ -141,7 +141,7 @@ Latest changes
     * UnRAR 6.1.7/7.1.8
     * usb.ids 635738b64e
     * Vim 9.1.1275
-    * Whois 5.6.2
+    * Whois 5.6.3
     * wireguard-tools 1.0.20250521
     * xsltproc 1.1.43
 
