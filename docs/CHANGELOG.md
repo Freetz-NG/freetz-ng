@@ -163,7 +163,7 @@ Latest changes
     * mbedTLS 2.7.19/2.28.10/3.6.4
     * nettle 3.10.2
     * pango 1.56.4
-    * pixman 0.44.2
+    * pixman 0.46.4
     * readline 6.3-p8/8.3
 
   - Firmware updates:
