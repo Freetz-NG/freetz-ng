@@ -45,7 +45,7 @@ EOF
 
 [ "$LIGHTTPD_IPV6_SUPPORT" == "yes" ] && echo 'server.use-ipv6 = "enable"'
 
-[ "$LIGHTTPD_HTTP2_ENABLED" == "yes" ] && echo 'server.feature-flags += ("server.h2proto" => "enable", "server.h2c" => "enable")'
+! [ "$LIGHTTPD_HTTP2_ENABLED" == "yes" ] && echo 'server.feature-flags += ("server.h2proto" => "disable")'
 
 out="connection.kbytes-per-second = $LIGHTTPD_LIMITCONN\nserver.kbytes-per-second = $LIGHTTPD_LIMITSRV"
 virthost_conf "$LIGHTTPD_LIMITVIRT" "$out"
