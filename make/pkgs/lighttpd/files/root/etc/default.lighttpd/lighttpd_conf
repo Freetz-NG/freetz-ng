@@ -64,34 +64,36 @@ out="dir-listing.activate = \"$LIGHTTPD_DIRLISTING\"\ndir-listing.encoding = \"$
 virthost_conf "$LIGHTTPD_DIRLISTINGVIRT" "$out"
 fi
 
-enable_ssl() {
-cat << EOF
-ssl.engine = "$LIGHTTPD_SSLENABLE"
-ssl.pemfile = "/tmp/flash/lighttpd/crt.pem"
-#ssl.use-compression = "disable"
-EOF
-if [ -n "$LIGHTTPD_SSLCIPHER" ]; then
-	echo 'ssl.honor-cipher-order = "enable"'
-	echo "ssl.cipher-list = \"$LIGHTTPD_SSLCIPHER\""
-fi
-if [ -r "/tmp/flash/lighttpd/dh.pem" -a "$FREETZ_LIB_libcrypto_WITH_EC" = "y" ]; then
-	if grep -q "BEGIN DH PARAMETERS" /tmp/flash/lighttpd/dh.pem; then
-		echo 'ssl.dh-file = "/tmp/flash/lighttpd/dh.pem"'
-		echo 'ssl.ec-curve = "secp384r1"'
-	fi
-fi
-if [ -r "/tmp/flash/lighttpd/ca.pem" ]; then
-	if grep -q "BEGIN CERTIFICATE" /tmp/flash/lighttpd/ca.pem; then
-cat << EOF
-ssl.ca-file = "/tmp/flash/lighttpd/ca.pem"
-EOF
-	fi
-fi
-}
-
 if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL" = "y" ]; then
+	echo 'server.modules += ( "mod_openssl" )'
+fi
+#if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_GNUTLS" = "y" ]; then
+#	echo 'server.modules += ( "mod_gnutls" )'
+#fi
+#if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_MBEDTLS" = "y" ]; then
+#	echo 'server.modules += ( "mod_mbedtls" )'
+#fi
 if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
-	[ "$LIGHTTPD_SSLENABLE" == "enable" ] && echo 'server.modules += ( "mod_openssl" )'
+	echo 'ssl.pemfile = "/tmp/flash/lighttpd/crt.pem"'
+	# (setting ssl.verifyclient.ca-file is for client certificate verification;
+	#  full certificate chain should be in crt.pem for server certificate)
+	if [ -r "/tmp/flash/lighttpd/ca.pem" ]; then
+		if grep -q "BEGIN CERTIFICATE" /tmp/flash/lighttpd/ca.pem; then
+			echo 'ssl.verifyclient.ca-file = "/tmp/flash/lighttpd/ca.pem"'
+		fi
+	fi
+	# (setting custom ciphers is not recommended; prefer lighttpd TLS defaults)
+	if [ -n "$LIGHTTPD_SSLCIPHER" ]; then
+		echo 'ssl.openssl.ssl-conf-cmd += ("Options" => "+ServerPreference")'
+		echo 'ssl.openssl.ssl-conf-cmd += ("CipherString" => "'"$LIGHTTPD_SSLCIPHER"'")'
+	fi
+	# (setting DHParameters no longer recommended in modern secure configs)
+	if [ -r "/tmp/flash/lighttpd/dh.pem" -a "$FREETZ_LIB_libcrypto_WITH_EC" = "y" ]; then
+		if grep -q "BEGIN DH PARAMETERS" /tmp/flash/lighttpd/dh.pem; then
+			echo 'ssl.openssl.ssl-conf-cmd += ("DHParameters" => "/tmp/flash/lighttpd/dh.pem")'
+			echo 'ssl.openssl.ssl-conf-cmd += ("Groups" => "secp384r1")'
+		fi
+	fi
 	if [ "$LIGHTTPD_SSLADDITIONAL" = "yes" ]; then
 		virtsrv=""
 		if [ "$LIGHTTPD_VIRTHOST" = "yes" ]; then
@@ -99,7 +101,7 @@ if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 		fi
 		echo "\$SERVER[\"socket\"] == \":$LIGHTTPD_SSLPORT\" {"
 		[ "$LIGHTTPD_IPV6_SUPPORT" == "yes" ] && echo 'server.use-ipv6 = "enable"'
-		enable_ssl
+		echo 'ssl.engine = "enable"'
 		[ -n "$virtsrv" ] && virthost_conf "$virtsrv" "url.access-deny = ( \"\" )" "!"
 		echo "}"
 		out=""
@@ -120,9 +122,8 @@ if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 			echo "}"
 		fi
 	else
-		enable_ssl
+		echo 'ssl.engine = "enable"'
 	fi
-fi
 fi
 
 gendir() {
