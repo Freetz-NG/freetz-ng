@@ -8,7 +8,7 @@ Copyright (C) 2009 Stephan Müller <sm@chronox.de>
 This is a package for Freetz: https://freetz.github.io/
 
 lighttpd sources are available here:
-http://www.lighttpd.net
+https://www.lighttpd.net/
 
 This package derives its ideas from the VSFTPD package.
 The makefile and configure files are from the patch posted at

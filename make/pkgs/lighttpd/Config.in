@@ -63,7 +63,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 			default FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL
 				help
 					This option adds the selected file to the image.
-					Please see https://redmine.lighttpd.net/wiki/1/Docs:SSL
+					Please see https://wiki.lighttpd.net/Docs:SSL
 					for more information on the module.
 
 			config FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL
@@ -115,7 +115,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_accesslog.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModAccessLog
+			Please see https://wiki.lighttpd.net/Docs:ModAccessLog
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_AJP13
@@ -123,7 +123,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_ajp13.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModAjp13
+			Please see https://wiki.lighttpd.net/Docs:ModAjp13
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTH
@@ -131,7 +131,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_auth.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModAuth
+			Please see https://wiki.lighttpd.net/Docs:ModAuth
 			for more information on this module.
 
 #	requires libDBI not available in freetz
@@ -158,7 +158,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_cgi.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModCGI
+			Please see https://wiki.lighttpd.net/Docs:ModCGI
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE
@@ -167,7 +167,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_deflate.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModDeflate
+			Please see https://wiki.lighttpd.net/Docs:ModDeflate
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_DIRLISTING
@@ -175,7 +175,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_dirlisting.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModDirListing
+			Please see https://wiki.lighttpd.net/Docs:ModDirListing
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_EXTFORWARD
@@ -183,7 +183,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_extforward.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModExtForward
+			Please see https://wiki.lighttpd.net/Docs:ModExtForward
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_H2
@@ -191,7 +191,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default n
 		help
 			This option adds mod_h2.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs
+			Please see https://wiki.lighttpd.net/
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
@@ -200,7 +200,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default n
 		help
 			This option adds mod_maxminddb.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModMaxMindDB
+			Please see https://wiki.lighttpd.net/Docs:ModMaxMindDB
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAGNET
@@ -209,7 +209,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default n
 		help
 			This option adds mod_magnet.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModMagnet
+			Please see https://wiki.lighttpd.net/Docs:ModMagnet
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_SOCKPROXY
@@ -217,7 +217,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_sockproxy.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModSockProxy
+			Please see https://wiki.lighttpd.net/Docs:ModSockProxy
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY
@@ -225,7 +225,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_proxy.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModProxy
+			Please see https://wiki.lighttpd.net/Docs:ModProxy
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_RRDTOOL
@@ -234,7 +234,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_rrdtool.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModRRDTool
+			Please see https://wiki.lighttpd.net/Docs:ModRRDTool
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_SSI
@@ -242,7 +242,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_ssi.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModSSI
+			Please see https://wiki.lighttpd.net/Docs:ModSSI
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_STATUS
@@ -250,7 +250,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_status.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModStatus
+			Please see https://wiki.lighttpd.net/Docs:ModStatus
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_USERDIR
@@ -258,7 +258,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_userdir.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModUserDir
+			Please see https://wiki.lighttpd.net/Docs:ModUserDir
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_VHOSTDB
@@ -266,7 +266,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_vhostdb.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModVhostDB
+			Please see https://wiki.lighttpd.net/Docs:ModVhostDB
 			for more information on this module.
 
 #	requires libDBI not available in freetz
@@ -284,7 +284,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_webdav.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModWebDav
+			Please see https://wiki.lighttpd.net/Docs:ModWebDav
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_PROPS
@@ -308,7 +308,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 		default y
 		help
 			This option adds mod_wstunnel.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModWStunnel
+			Please see https://wiki.lighttpd.net/Docs:ModWStunnel
 			for more information on this module.
 
 endif # FREETZ_PACKAGE_LIGHTTPD
