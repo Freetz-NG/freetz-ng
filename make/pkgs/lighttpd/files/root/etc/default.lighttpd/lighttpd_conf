@@ -258,9 +258,9 @@ genchroot() {
 # $2 rubyEnabled as true/false
 genFastcgiServer() {
 	echo "fastcgi.server = ("
-	$1 && echo "\t\".php\" => (( \"socket\" => \"$socketdir/php-fastcgi.socket\", \"bin-path\" => \"$LIGHTTPD_MODFASTCGIPHPPATH\", \"max-procs\" => $LIGHTTPD_MODFASTCGIPHPMAXPROC ))"
+	$1 && echo "\t\".php\" => (( \"socket\" => \"$socketdir/php-fastcgi.socket\", \"bin-path\" => \"$LIGHTTPD_MODFASTCGIPHPPATH\", \"min-procs\" => 0, \"max-procs\" => $LIGHTTPD_MODFASTCGIPHPMAXPROC ))"
 	$1 && $2 && echo "\t,"
-	$2 && echo "\t\".rb\" => (( \"socket\" => \"$socketdir/ruby-fastcgi.socket\", \"bin-path\" => \"$LIGHTTPD_MODFASTCGIRUBYPATH\", \"max-procs\" => $LIGHTTPD_MODFASTCGIRUBYMAXPROC ))"
+	$2 && echo "\t\".rb\" => (( \"socket\" => \"$socketdir/ruby-fastcgi.socket\", \"bin-path\" => \"$LIGHTTPD_MODFASTCGIRUBYPATH\", \"min-procs\" => 0, \"max-procs\" => $LIGHTTPD_MODFASTCGIRUBYMAXPROC ))"
 	echo ")"
 }
 
