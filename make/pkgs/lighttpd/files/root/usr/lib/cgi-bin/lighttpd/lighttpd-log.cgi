@@ -21,7 +21,7 @@ else
 fi
 
 if [ -r "$LOGE" ]; then
-	echo "<h1>lighttpd access log $(realpath $LOGE)</h1>"
+	echo "<h1>lighttpd error log $(realpath $LOGE)</h1>"
 	echo -n '<pre class="log">'
 	html < $LOGE
 	echo '</pre>'
