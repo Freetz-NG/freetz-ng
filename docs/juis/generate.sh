@@ -106,7 +106,7 @@ echo -e '  - AVM nutzt unsichere http:// Links, daher muss die Signatur der Date
 echo -e '  - Sollten verschieden Links für ein Gerät angezeigt werden sind die Angaben von Juis inkonsistent.'
 echo -e '  - Labor machen mit personenbezogenen Daten ganz tolle Dinge denen man zuerst elektronisch zustimmen muss.'
 echo -e '  - Inhaus sind dazu so etwas besonderes dass sie ausserhalb von AVM nicht verwendet werden sollten.'
-echo -e '  - Außerdem sind alle Links verstümmelt um von AVM die Privatsphäre und so zu wahren.'
+echo -e '  - Außerdem werden hier alle Links zu AVM verstümmelt um AVMs Privatsphäre und so zu wahren.'
 echo -e '  - Diese Liste ist weder vollständig, korrekt noch aktuell.'
 echo -e '\n### FOS-Release'  ; cat fos-xxx  | while read -s x; do echo "  - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
 echo -e '\n### FOS-Labor'    ; cat fos-lab  | while read -s x; do echo "  - HWR ${x%=*}: [${x##*/}](${x#*=})"; done
