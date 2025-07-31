@@ -21,7 +21,7 @@ jobs:
 #     image: freetzng/generate
       image: ghcr.io/freetz-ng/generate
     runs-on: ubuntu-latest
-    if: github.repository == 'freetz-ng/freetz-ng'
+#   if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
@@ -64,6 +64,10 @@ jobs:
           export LANG=en_US.utf8
           [ "${{ github.workflow }}" != "${{ steps.key.outputs.key }}" ] && c=5 || c=1
           seq $c | while read x; do docs/juis/generate.sh; done
+
+      - name: censorship
+        if: github.github.repository_owner == 'freetz-ng'
+        run: sed 's,\.avm\.de/,.example.com/,' -i docs/juis/README.md
 
       - name: commit
         env:
