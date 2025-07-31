@@ -3,6 +3,9 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 # Links von AVM-Juis für FOS ab HWR 150 sowie Dect und BPjM
   - AVM nutzt unsichere http:// Links, daher muss die Signatur der Dateien vor Verwendung geprüft werden.
   - Sollten verschieden Links für ein Gerät angezeigt werden sind die Angaben von Juis inkonsistent.
+  - Labor machen mit personenbezogenen Daten ganz tolle Dinge denen man zuerst elektronisch zustimmen muss.
+  - Inhaus sind dazu so etwas besonderes dass sie ausserhalb von AVM nicht verwendet werden sollten.
+  - Außerdem sind alle Links verstümmelt um von AVM die Privatsphäre und so zu wahren.
   - Diese Liste ist weder vollständig, korrekt noch aktuell.
 
 ### FOS-Release
@@ -47,7 +50,6 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 227: [FRITZ.Box_4040-08.02.image](http://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-08.02.image)
   - HWR 228: [FRITZ.Box_7582-07.18.image](http://download.avm.de/fritzbox/fritzbox-7582/other/fritz.os/FRITZ.Box_7582-07.18.image)
   - HWR 229: [FRITZ.Powerline_1260E.157.07.58.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260e/deutschland/fritz.os/FRITZ.Powerline_1260E.157.07.58.image)
-  - HWR 231: [FRITZ.Box_6430_Cable-07.30.image](http://download.avm.de/fritzbox/fritzbox-6430-cable/deutschland/fritz.os/FRITZ.Box_6430_Cable-07.30.image)
   - HWR 233: [FRITZ.Box_6591_Cable-08.03.image](http://download.avm.de/fritzbox/fritzbox-6591-cable/deutschland/fritz.os/FRITZ.Box_6591_Cable-08.03.image)
   - HWR 234: [FRITZ.Box_6890_LTE-07.57.image](http://download.avm.de/fritzbox/fritzbox-6890-lte/deutschland/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
   - HWR 236: [FRITZ.Box_7530-08.02.image](http://download.avm.de/fritzbox/fritzbox-7530/deutschland/fritz.os/FRITZ.Box_7530-08.02.image)
@@ -80,7 +82,6 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 
 ### FOS-Labor
   - HWR 226: [FRITZ.Box_7590-08.10-122720-LabBETA.image](http://download.avm.de/labor/Smart24P2/7590/FRITZ.Box_7590-08.10-122720-LabBETA.image)
-  - HWR 227: [FRITZ.Box_4040-07.59.image](http://download.avm.de/firmware/4040/347831279831289213893218/FRITZ.Box_4040-07.59.image)
   - HWR 233: [FRITZ.Box_6591_Cable-08.10-123013-LabBETA.image](http://download.avm.de/labor/Smart24P2/6591Cable/FRITZ.Box_6591_Cable-08.10-123013-LabBETA.image)
   - HWR 236: [FRITZ.Box_7530-08.10-122999-LabBETA.image](http://download.avm.de/labor/Smart24P2/7530/FRITZ.Box_7530-08.10-122999-LabBETA.image)
   - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
