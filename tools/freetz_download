@@ -310,7 +310,7 @@ enumerate_mirrors_official() {
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzpowerline/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzdect/$subpath
 				sites[(( num_sites++ ))]=https://avm.de/$subpath
-#				sites[(( num_sites++ ))]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
+				sites[(( num_sites++ ))]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P2/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1NL1/$subpath
