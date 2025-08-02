@@ -23,11 +23,20 @@ config() {
 	fi
 }
 
+validate_conf() {
+	$DAEMON -tt -f $DAEMON_CONFIG >/dev/null || {
+		echo 1>&2 "$DAEMON_CONFIG validation failed"
+		return 1
+	}
+}
+
 start() {
+	validate_conf || exit 1
 	modlib_startdaemon $DAEMON -f $DAEMON_CONFIG
 }
 
 reload() {
+	validate_conf || exit 1
 	killall -USR1 $DAEMON # HUP reopens the log !
 }
 
