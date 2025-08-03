@@ -46,6 +46,10 @@ theme:
 
 extra:
   generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/freetz-ng
+      name: GitHub
 
 extra_css:
   - 'extra.css'
