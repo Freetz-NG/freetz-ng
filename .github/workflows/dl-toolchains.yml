@@ -18,7 +18,7 @@ jobs:
 
   matrizifizieren:
     container:
-#     image: ubuntu:20.04
+#     image: ubuntu:22.04
 #     image: freetzng/generate
       image: ghcr.io/freetz-ng/generate
     runs-on: ubuntu-latest
@@ -53,7 +53,7 @@ jobs:
 
   build:
     container:
-#     image: ubuntu:20.04
+#     image: ubuntu:22.04
 #     image: freetzng/dl-packs
       image: ghcr.io/freetz-ng/dl-packs
     needs: matrizifizieren

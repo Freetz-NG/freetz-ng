@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build:
     container:
-#     image: ubuntu:20.04
+#     image: ubuntu:22.04
 #     image: freetzng/firmware
       image: ghcr.io/freetz-ng/firmware
 #   strategy:
