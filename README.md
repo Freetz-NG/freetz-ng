@@ -89,7 +89,7 @@ See [https://freetz-ng.github.io/](https://freetz-ng.github.io/) (or [docs/](doc
 
 
 <details>
-  <summary>Testing your Documentation changes localy</summary
+  <summary>Testing your Documentation changes localy</summary>
 
 When working on this repo, it is advised that you review your changes locally before committing them. The `mkdocs serve` command can be used to live preview your changes (as you type) on your local machine.
 
