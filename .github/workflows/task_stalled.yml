@@ -31,6 +31,7 @@ jobs:
           stale-pr-label: 'stalled'
           labels-to-remove-when-unstale: 'stalled'
           exempt-issue-labels: 'task'
+          exempt-pr-labels: 'task'
           days-before-stale: 7
           remove-stale-when-updated: true
           enable-statistics: true
