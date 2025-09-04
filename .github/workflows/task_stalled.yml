@@ -21,7 +21,7 @@ jobs:
     steps:
 
       - name: stalled
-        uses: actions/stale@v9
+        uses: actions/stale@v10
         with:
           stale-issue-message: 'This issue is stalled because it has been open 7 days with no activity. Please comment or update this issue or it will be closed in 7 days.'
           stale-pr-message: 'This pr is stalled because it has been open 7 days with no activity. Please comment or update this pr or it will be closed in 7 days.'
