@@ -1,0 +1,12 @@
+--- a/linux-3.10/drivers/usb/serial/ch341.c
++++ b/linux-3.10/drivers/usb/serial/ch341.c
+@@ -223,7 +223,8 @@
+ 	if (r < 0)
+ 		goto out;
+ 
+-	r = ch341_control_out(dev, 0x9a, 0x2518, 0x0050);
++	/* Set 8N1 + enable RX/TX: LCR = 0xC3 (see upstream CH341_LCR_* bits) */
++        r = ch341_control_out(dev, 0x9a, 0x2518, 0x00C3);
+ 	if (r < 0)
+ 		goto out;
+ 
