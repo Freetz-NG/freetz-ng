@@ -20,13 +20,13 @@ config() {
 	modlib_config
 	[ "$LIGHTTPD_VALIDATION" = "yes" ] && validate_conf
 	rm -f /var/log/${DAEMON}_*.log 2>/dev/null
-	modunreg status lighttpd lighttpd-log
+	modunreg status $DAEMON lighttpd-log
 	if [ "$LIGHTTPD_LOGGING" = "yes" ]; then
 		if [ "$LIGHTTPD_LOGGING_ERROR_FILE" = "yes" ] || [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_ACCESSLOG" = "y" -a "$LIGHTTPD_LOGGING_ACCESS_FILE" = "yes" ]; then
 			[ "$LIGHTTPD_CHROOT" = "yes" ] && local chroot_prefix="${LIGHTTPD_DOCROOT}/"
 			ln -sf $chroot_prefix$LIGHTTPD_LOGGING_ERROR /var/log/${DAEMON}_error.log
 			ln -sf $chroot_prefix$LIGHTTPD_LOGGING_ACCESS /var/log/${DAEMON}_access.log
-			modreg status lighttpd lighttpd lighttpd-log
+			modreg status $DAEMON "$DAEMON_LONG_NAME" lighttpd-log
 		fi
 	fi
 }
@@ -46,29 +46,29 @@ case $1 in
 
 		modlib_add_user_and_group wwwrun
 
-		modreg cgi 'lighttpd' 'lighttpd'
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
 
 		if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL" = "y" ]; then
-			modreg file lighttpd crt 'Cert/Key' 0 "lighttpd_crt"
-			modreg file lighttpd ca 'CA Cert' 0 "lighttpd_ca"
-			[ "$FREETZ_LIB_libcrypto_WITH_EC" = "y" ] && modreg file lighttpd dh 'DHparam' 0 "lighttpd_dh"
+			modreg file $DAEMON crt 'Cert/Key' 0 "lighttpd_crt"
+			modreg file $DAEMON ca 'CA Cert' 0 "lighttpd_ca"
+			[ "$FREETZ_LIB_libcrypto_WITH_EC" = "y" ] && modreg file $DAEMON dh 'DHparam' 0 "lighttpd_dh"
 		fi
 
 		if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_AUTH" = "y" ]; then
-			modreg file lighttpd user "$(lang de:"Benutzerkonten" en:"Accounts")" 0 "lighttpd_user"
-			modreg file lighttpd rights "$(lang de:"Zugriffsrechte" en:"Access rights")" 0 "lighttpd_rights"
+			modreg file $DAEMON user "$(lang de:"Benutzerkonten" en:"Accounts")" 0 "lighttpd_user"
+			modreg file $DAEMON rights "$(lang de:"Zugriffsrechte" en:"Access rights")" 0 "lighttpd_rights"
 		fi
 
-		modreg file lighttpd add "$(lang de:"Erweitert" en:"Additional")" 0 "lighttpd_add"
+		modreg file $DAEMON add "$(lang de:"Erweitert" en:"Additional")" 0 "lighttpd_add"
 
 		modlib_start $LIGHTTPD_ENABLED
 		;;
 	unload)
-		modunreg status lighttpd lighttpd-log
-		modunreg file lighttpd
+		modunreg status $DAEMON lighttpd-log
+		modunreg file $DAEMON
 		modunreg daemon $DAEMON
-		modunreg cgi lighttpd
+		modunreg cgi $DAEMON
 		modlib_stop
 		;;
 	start)

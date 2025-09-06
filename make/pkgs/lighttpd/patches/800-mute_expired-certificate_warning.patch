@@ -1,0 +1,40 @@
+--- src/mod_mbedtls.c
++++ src/mod_mbedtls.c
+@@ -1239,10 +1239,6 @@
+         mod_mbedtls_kp_free(kp);
+         return NULL;
+     }
+-    else if (!mod_mbedtls_cert_is_active(&kp->crt)) {
+-        log_error(srv->errh, __FILE__, __LINE__,
+-          "MTLS: inactive/expired X509 certificate '%s'", pemfile->ptr);
+-    }
+ 
+     kp->need_chain = (kp->crt.next == NULL
+                       && !mod_mbedtls_crt_is_self_issued(&kp->crt));
+--- src/mod_gnutls.c
++++ src/mod_gnutls.c
+@@ -625,11 +625,6 @@
+         mod_gnutls_free_config_crts(d);
+         return NULL;
+     }
+-    else if (
+-      !mod_gnutls_cert_is_active(((gnutls_x509_crt_t *)(void *)d->data)[0])) {
+-        log_error(errh, __FILE__, __LINE__,
+-          "GnuTLS: inactive/expired X509 certificate '%s'", fn);
+-    }
+ 
+     return d;
+ }
+--- src/mod_openssl.c
++++ src/mod_openssl.c
+@@ -2346,10 +2346,6 @@
+         X509_free(x);
+         x = NULL;
+     }
+-    else if (!mod_openssl_cert_is_active(x)) {
+-        log_error(errh, __FILE__, __LINE__,
+-          "SSL: inactive/expired X509 certificate '%s'", file);
+-    }
+ 
+     BIO_free(in);
+     if (dlen) ck_memzero(data, dlen);
