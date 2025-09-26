@@ -1,54 +1,57 @@
---- Makefile.in
-+++ Makefile.in
-@@ -92,7 +92,7 @@
+--- Makefile.in.org	2025-09-15 13:56:03.000000000 +0200
++++ Makefile.in	2025-09-26 07:31:20.468382300 +0200
+@@ -91,9 +91,9 @@
+ POST_UNINSTALL = :
  build_triplet = @build@
  host_triplet = @host@
- @WITH_PYTHON_TRUE@am__append_1 = python
--@WITH_GLOB_TRUE@am__append_2 = fuzz
-+@WITH_GLOB_TRUE@am__append_2 = 
+-@WITH_DOXYGEN_TRUE@am__append_1 = doc
++@WITH_DOXYGEN_TRUE@am__append_1 = 
+ @WITH_PYTHON_TRUE@am__append_2 = python
+-@WITH_GLOB_TRUE@am__append_3 = fuzz
++@WITH_GLOB_TRUE@am__append_3 = 
  check_PROGRAMS = runsuite$(EXEEXT) runtest$(EXEEXT) \
  	runxmlconf$(EXEEXT) testModule$(EXEEXT) testapi$(EXEEXT) \
  	testchar$(EXEEXT) testdict$(EXEEXT) testlimits$(EXEEXT) \
-@@ -368,7 +368,7 @@
+@@ -364,7 +364,7 @@
      n|no|NO) false;; \
      *) (install-info --version) >/dev/null 2>&1;; \
    esac
 -DATA = $(cmake_DATA) $(pkgconfig_DATA)
-+DATA =               $(pkgconfig_DATA)
++DATA = $(pkgconfig_DATA)
  RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
    distclean-recursive maintainer-clean-recursive
  am__recursive_targets = \
-@@ -640,7 +640,7 @@
+@@ -632,7 +632,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  ACLOCAL_AMFLAGS = -I m4
--SUBDIRS = include . doc example xstc $(am__append_1) $(am__append_2)
-+SUBDIRS = include .             xstc $(am__append_1) $(am__append_2)
- DIST_SUBDIRS = include . doc example fuzz python xstc
- AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include -DSYSCONFDIR='"$(sysconfdir)"'
- bin_SCRIPTS = xml2-config
-@@ -1775,7 +1775,7 @@
+-SUBDIRS = include . example $(am__append_1) $(am__append_2) \
++SUBDIRS = include . $(am__append_1) $(am__append_2) \
+ 	$(am__append_3)
+ DIST_SUBDIRS = include . doc example fuzz python
+ AM_CPPFLAGS = -I$(builddir)/include -I$(srcdir)/include
+@@ -1758,7 +1758,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS) $(check_LTLIBRARIES)
  	$(MAKE) $(AM_MAKEFLAGS) check-local
  check: check-recursive
 -all-am: Makefile $(PROGRAMS) $(LTLIBRARIES) $(SCRIPTS) $(DATA) \
-+all-am: Makefile             $(LTLIBRARIES)            $(DATA) \
++all-am: Makefile $(LTLIBRARIES) $(DATA) \
  		config.h
  install-binPROGRAMS: install-libLTLIBRARIES
  
-@@ -1900,13 +1900,13 @@
+@@ -1880,13 +1880,13 @@
  
  info-am:
  
 -install-data-am: install-cmakeDATA install-pkgconfigDATA
-+install-data-am:                   install-pkgconfigDATA
++install-data-am: install-pkgconfigDATA
  
  install-dvi: install-dvi-recursive
  
  install-dvi-am:
  
 -install-exec-am: install-binPROGRAMS install-binSCRIPTS \
-+install-exec-am:                     install-binSCRIPTS \
++install-exec-am: install-binSCRIPTS \
  	install-libLTLIBRARIES
  
  install-html: install-html-recursive
