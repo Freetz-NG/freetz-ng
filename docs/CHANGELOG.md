@@ -153,7 +153,7 @@ Latest changes
     * Tor tor-0.4.8.18
     * uMurmur 0.2.20/0.3.1
     * Unbound 1.24.0
-    * UnRAR 6.1.7/7.1.8
+    * UnRAR 6.1.7/7.1.10
     * usb.ids 635738b64e
     * Vim 9.1.1275
     * Whois 5.6.4
