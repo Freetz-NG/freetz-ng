@@ -163,6 +163,7 @@ Latest changes
   - Libraries:
     * cairo 1.18.4
     * expat 2.7.3
+    * FreeType 2.14.1
     * gettext 0.24
     * gmp 6.3.0
     * harfbuzz 11.5.0
