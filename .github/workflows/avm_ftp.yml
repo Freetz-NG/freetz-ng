@@ -36,13 +36,21 @@ jobs:
 #     - name: locale
 #       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
 
-      - name: clone
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: permission
         run: |
           umask 0022
-          git config --global --add safe.directory $GITHUB_WORKSPACE
-          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: clone
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
 
       - name: generate
         run: |
