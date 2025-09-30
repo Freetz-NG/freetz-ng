@@ -28,10 +28,6 @@ jobs:
 
     steps:
 
-      - name: permission
-        run: |
-          umask 0022
-
       - name: clone
         uses: actions/checkout@v5
         with:

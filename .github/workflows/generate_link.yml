@@ -33,10 +33,6 @@ jobs:
 #     - name: locale
 #       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
 
-      - name: permission
-        run: |
-          umask 0022
-
       - name: clone
         uses: actions/checkout@v5
         with:

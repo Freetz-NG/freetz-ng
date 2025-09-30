@@ -37,10 +37,6 @@ jobs:
           timeout: "18000000"
           delay: "10000"
 
-      - name: permission
-        run: |
-          umask 0022
-
       - name: clone
         uses: actions/checkout@v5
         with:
