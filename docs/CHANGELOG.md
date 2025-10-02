@@ -59,6 +59,7 @@ Latest changes
   - Patches:
 
   - Packages:
+    * BIND 9.11.37/9.20.13
 
   - Libraries:
 
