@@ -1,1 +1,1 @@
-[ "$EXTERNAL_FREETZ_LIB_libopenjp2" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libopenjp2.so.2.5.0"
+[ "$EXTERNAL_FREETZ_LIB_libopenjp2" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libopenjp2.so.2.5.4"

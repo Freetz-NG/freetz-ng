@@ -1,9 +1,9 @@
-$(call PKG_INIT_LIB, a5891555eb49ed7cc26b2901ea680acda136d811)
-$(PKG)_LIB_VERSION:=2.5.0
+$(call PKG_INIT_LIB, 1ad9bec2c12ee445ce23e660f5e4fe870b9d5e09)
+$(PKG)_LIB_VERSION:=2.5.4
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=eb777df08834b9d0293763077581709c8fb38ab0e253c74e9f9b33bc45ec324c
+$(PKG)_HASH:=85b12efd9846e700a692747a7613a1a4adee47c36567956168cc6f101a3f517a
 $(PKG)_SITE:=git@https://github.com/uclouvain/openjpeg.git
-### VERSION:=2.5.0
+### VERSION:=2.5.4
 ### WEBSITE:=https://www.openjpeg.org/
 ### MANPAGE:=https://github.com/uclouvain/openjpeg/wiki
 ### CHANGES:=https://github.com/uclouvain/openjpeg/blob/master/NEWS.md
@@ -35,8 +35,6 @@ $(PKG)_CONFIGURE_OPTIONS += -DLCMS_INCLUDE_DIR=""
 $(PKG)_CONFIGURE_OPTIONS += -DLCMS2_INCLUDE_DIR=""
 $(PKG)_CONFIGURE_OPTIONS += -DTIFF_INCLUDE_DIR=""
 $(PKG)_CONFIGURE_OPTIONS += -DZLIB_INCLUDE_DIR=""
-$(PKG)_CONFIGURE_OPTIONS += -DPNG_INCLUDE_DIR=""
-$(PKG)_CONFIGURE_OPTIONS += -DPNG_PNG_INCLUDE_DIR=""
 
 
 $(PKG_SOURCE_DOWNLOAD)
