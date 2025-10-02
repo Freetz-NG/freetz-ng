@@ -62,6 +62,7 @@ Latest changes
     * BIND 9.11.37/9.20.13
 
   - Libraries:
+    * harfbuzz 12.0.0
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
@@ -185,7 +186,7 @@ Latest changes
     * FreeType 2.14.1
     * gettext 0.24
     * gmp 6.3.0
-    * harfbuzz 12.0.0
+    * harfbuzz 11.5.0
     * libcap 2.49/2.75
     * libdeflate 1.24
     * libffi 3.5.2
