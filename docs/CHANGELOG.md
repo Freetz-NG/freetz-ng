@@ -62,7 +62,7 @@ Latest changes
     * BIND 9.11.37/9.20.13
 
   - Libraries:
-    * harfbuzz 12.0.0
+    * harfbuzz 12.1.0
     * openjp2 2.5.4
 
   - Firmware updates:
