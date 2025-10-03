@@ -25,6 +25,15 @@ define HostPython
 		export PYTHONPATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/$(PYTHON_SITE_PKG_DIR)"; \
 		export PYTHONOPTIMIZE=""; \
 		export PYTHONDONTWRITEBYTECODE="x"; \
+		export CC="$(TARGET_CC)"; \
+		export CXX="$(TARGET_CXX)"; \
+		export LD="$(TARGET_CC)"; \
+		export LDSHARED="$(TARGET_CC) -shared"; \
+		export BLDSHARED="$(TARGET_CC) -shared"; \
+		export AR="$(TARGET_AR)"; \
+		export RANLIB="$(TARGET_RANLIB)"; \
+		export CFLAGS="$(TARGET_CFLAGS) -I$(PYTHON_STAGING_INC_DIR)"; \
+		export LDFLAGS="$(TARGET_LDFLAGS) -L$(PYTHON_STAGING_LIB_DIR)"; \
 		$(1) \
 		$(HOST_PYTHON_BIN) $(2); \
 	)
@@ -41,7 +50,10 @@ define Build/PyMod/Generic
 		$(FREETZ_LD_RUN_PATH) \
 		$(3) \
 		, \
-		./setup.py $(2) \
+		./setup.py build_ext \
+			--include-dirs=$(PYTHON_STAGING_INC_DIR) \
+			--library-dirs=$(PYTHON_STAGING_LIB_DIR) \
+		&& ./setup.py $(2) \
 	)
 	$(if $(strip $(4)),find $(strip $(4)) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+)
 endef
@@ -58,3 +70,4 @@ define Build/PyMod/PKG
 		$($(strip $(1))_DEST_DIR)$(PYTHON_SITE_PKG_DIR) \
 	)
 endef
+
