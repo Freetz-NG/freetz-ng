@@ -1,0 +1,11 @@
+--- CMakeLists.txt_orig	2020-07-07 21:32:55.000000000 +0200
++++ CMakeLists.txt	2025-10-04 12:13:02.943143715 +0200
+@@ -12,7 +12,7 @@
+    set(CMAKE_BUILD_TYPE     RelWithDebInfo)
+ endif("${CMAKE_BUILD_TYPE}" STREQUAL "")
+ set(CMAKE_COLOR_MAKEFILE ON)
+-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+ 
+ add_definitions(-Wall)
+ 
