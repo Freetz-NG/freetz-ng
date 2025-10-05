@@ -1,0 +1,262 @@
+name: docker_freetz
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/docker_freetz.yml'
+# schedule:
+#   - cron: '00 15 * * 6'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  dockerfizieren:
+    runs-on: ubuntu-latest
+    outputs:
+      os: ${{ steps.parse.outputs.os }}
+    steps:
+      - name: list
+        id: list
+        run: |
+          OSLIST="
+          debian:11
+          debian:12
+          debian:13
+          fedora:33
+          fedora:34
+          fedora:35
+          fedora:36
+          fedora:37
+          fedora:38
+          fedora:39
+          fedora:40
+          fedora:41
+          fedora:42
+          ubuntu:14.04
+          ubuntu:16.04
+          ubuntu:18.04
+          ubuntu:20.04
+          ubuntu:22.04
+          ubuntu:24.04
+          "
+          echo "oslist<<EOF" >> $GITHUB_OUTPUT
+          echo "$OSLIST" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: parse
+        id: parse
+        run: |
+          OSLIST="${{ steps.list.outputs.oslist }}"
+          OSLIST_JSON=$(echo "$OSLIST" | awk 'NF {printf "\"%s\",", $0}' | sed 's/,$//')
+          echo "os=[$OSLIST_JSON]" >> $GITHUB_OUTPUT
+          echo "################################################################"
+          echo "OSLIST_JSON=[$OSLIST_JSON]"
+
+  build:
+#   container:
+#     image: ubuntu:20.04
+#     image: freetzng/firmware
+#     image: ghcr.io/freetz-ng/firmware
+#     options: --user 1001:1001
+    needs: dockerfizieren
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
+    name: "${{ matrix.docker }}"
+    runs-on: ubuntu-latest
+#   if: github.repository == 'freetz-ng/freetz-ng'
+
+    env:
+      CACHE_KEY: "${{ github.workflow }}--${{ matrix.docker }}"
+      docker_NAME: "${{ github.job }}"
+    steps:
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
+#           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
+#           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: sleep
+        run: |
+          SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 9))"
+          echo "Sleeping $SLEEP seconds ..."
+          sleep $SLEEP
+
+      - name: myips
+        run: |
+          echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+#         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+#         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+
+      - name: clone
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
+
+      - name: cache_load
+        uses: actions/cache/restore@v4
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/fw/*
+          key: ${{ env.CACHE_KEY }}
+
+      - name: config
+        run: |
+          truncate -s0 .config
+          echo 'FREETZ_MODULES_OWN=""'                                                                >> .config
+          for x in  UDEVMOUNT                               ; do echo "# FREETZ_PATCH_$x is not set"  >> .config; done
+          for x in  dummy loop usbserial                   ; do echo "# FREETZ_MODULE_$x is not set"  >> .config; done
+          for x in  DROPBEAR                              ; do echo "# FREETZ_PACKAGE_$x is not set"  >> .config; done
+          for x in  LDD                                              ; do echo "FREETZ_PACKAGE_$x=y"  >> .config; done
+          for x in  COMPRESSED  UNCOMPRESSED                        ; do echo "FREETZ_SIZEINFO_$x=y"  >> .config; done
+          echo '# FREETZ_TOOLCHAIN_CCACHE is not set'                                                 >> .config
+          echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
+          echo 'FREETZ_SERIES_ALL=y'                                                                  >> .config
+          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
+          echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
+          echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'                                               >> .config
+          echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
+          grep -q '^FREETZ_TYPE_' .config || echo 'FREETZ_TYPE_7530_W6_V1=y'                          >> .config
+          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo 'FREETZ_TYPE_FIRMWARE_08_0X=y'             >> .config
+          echo "################################################################" && du .config && wc -l .config
+
+      - name: addon
+        run: |
+          echo "################################################################"
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}add" -O - 2>/dev/null | tar xj 2>/dev/null && echo Done || echo Null
+
+      - name: signature
+        run: |
+          mkdir -p ~/.freetz-signature/
+          for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
+          echo "################################################################" && ls -l ~/.freetz-signature/
+
+      - name: docker_init
+        run: |
+          sudo docker run -d \
+            --name ${{ env.docker_NAME }} \
+            -e DEBIAN_FRONTEND=noninteractive \
+            -v ${GITHUB_WORKSPACE}:/mnt/freetz-ng \
+            ${{ matrix.docker }} \
+            sleep infinity
+          sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
+            cd /mnt/freetz-ng && /mnt/freetz-ng/tools/prerequisites install -y
+          '
+          sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
+               groupadd freetz -o -g 1001 \
+            && useradd freetz -o -s /bin/bash -d /mnt/freetz-ng -u 1001 -g 1001 \
+            && usermod freetz -a -G root \
+            && echo "freetz ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+            && chown -R freetz:freetz /mnt/freetz-ng \
+          '
+
+      - name: generate
+        run: |
+          sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
+          su freetz -c "cd /mnt/freetz-ng && \
+          make && rm -f images/latest.image"
+          '
+
+      - name: result
+        run: |
+          echo "################################################################"
+          ls -l images/
+          sha256sum images/*
+
+      - name: vars
+        id: vars
+        run: |
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          LAST="$(ls images/*.image | sed 's,.*/,,;s,\.image$,,')"
+          NAME="$(ls images/*.image | sed 's,.*/,,;s,_[0-9].*,,')"
+          [ -n "$LINK" ] && echo "link=$LINK" >> $GITHUB_OUTPUT
+          [ -n "$LAST" ] && echo "last=$LAST" >> $GITHUB_OUTPUT
+          [ -n "$NAME" ] && echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "################################################################"
+          echo "LINK=$LINK"
+          echo "LAST=$LAST"
+          echo "NAME=$NAME"
+          test -n "$NAME"
+
+#     - name: cleanup
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         ACTIONS_NAME: ${{ steps.vars.outputs.name }}
+#       run: |
+#         git config --global --add safe.directory $GITHUB_WORKSPACE
+#         git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
+#         git tag -d $ACTIONS_NAME && git push --delete origin $ACTIONS_NAME || true
+#     - name: release
+#       uses: ncipollo/release-action@v1
+#       with:
+#         tag: ${{ steps.vars.outputs.name }}
+#         name: ${{ steps.vars.outputs.name }}
+#         body: |
+#           ${{ steps.vars.outputs.last }}
+#           ${{ steps.vars.outputs.link }}
+#         prerelease: false
+#         allowUpdates: true
+#         removeArtifacts: false
+#         artifacts: "images/*"
+#         token: ${{ secrets.GITHUB_TOKEN }}
+#         replacesArtifacts: false
+#         artifactErrorsFailBuild: true
+#         draft: true
+
+      - name: cache_clear
+        if: github.repository == 'freetz-ng/freetz-ng'
+        env:
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          CACHE_KEY: ${{ env.CACHE_KEY }}
+        run: |
+          ASSETS="$(curl -s  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches")"
+          ASSID="$(echo "$ASSETS" | grep -B7 "\"key\": *\"${CACHE_KEY}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
+          curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches/$ASSID" && echo "Deleted ASSID=${ASSID:-null} ..." || true
+      - name: cache_save
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/tools-*.tar.xz
+            !dl/linux-*.tar.xz
+            !dl/fw/*.zip
+          key: ${{ env.CACHE_KEY }}
+
+      - name: docker_destroy
+        if: always()
+        run: |
+          sudo docker stop -t 10 ${{ env.docker_NAME }} || sudo docker stop -s SIGKILL -t 10 ${{ env.docker_NAME }} || true
+          sudo docker rm -f ${{ env.docker_NAME }}
