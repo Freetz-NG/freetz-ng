@@ -49,7 +49,8 @@ $(PKG)_CONFIGURE_OPTIONS += --with-push=yes		#PUSH parser interfaces
 $(PKG)_CONFIGURE_OPTIONS += --with-reader=yes		#xmlReader parsing interface
 $(PKG)_CONFIGURE_OPTIONS += --with-regexps=yes		#Regular Expressions support
 $(PKG)_CONFIGURE_OPTIONS += --with-sax1=yes		#old SAX1 interface
-$(PKG)_CONFIGURE_OPTIONS += --with-schemas=yes		#Relax-NG and Schemas support
+$(PKG)_CONFIGURE_OPTIONS += --with-schemas=yes		#Schemas support
+$(PKG)_CONFIGURE_OPTIONS += --with-relaxng=yes		#Relax-NG support
 $(PKG)_CONFIGURE_OPTIONS += --with-schematron=no	#Schematron support
 $(PKG)_CONFIGURE_OPTIONS += --with-valid=yes		#DTD validation support
 $(PKG)_CONFIGURE_OPTIONS += --with-writer=yes		#xmlWriter saving interface
