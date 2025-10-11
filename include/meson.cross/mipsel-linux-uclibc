@@ -8,3 +8,17 @@ cpu_family        = 'mips'
 cpu               = 'mipsel'
 endian            = 'little'
 
+[built-in options]
+prefix            = '/usr'
+
+[properties]
+needs_exe_wrapper = true
+longdouble_format = 'IEEE_DOUBLE_LE'
+
+[binaries]
+c                 = 'mipsel-linux-uclibc-gcc'
+cpp               = 'mipsel-linux-uclibc-g++-wrapper'
+ar                = 'mipsel-linux-uclibc-ar'
+strip             = 'mipsel-linux-uclibc-strip'
+pkgconfig         = 'pkg-config'
+

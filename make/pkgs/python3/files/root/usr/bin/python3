@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Change the value of PYTHONHOME variable and comment LD_LIBRARY_PATH line in
+# if you want to use python on an unmodified box. Don't forget to copy all
+# libraries python and its modules depend on to ${PYTHONHOME}/lib/freetz.
+
+# Check if externalized, otherwise use standard path
+if [ -f "/mod/external/usr/bin/python3.13.bin" ]; then
+    export PYTHONHOME="/mod/external/usr"  
+    # Include both external and freetz libs for external installation
+    export LD_LIBRARY_PATH="/mod/external/usr/lib:/usr/lib/freetz${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
+else
+    export PYTHONHOME="/usr"
+    # Standard LD_LIBRARY_PATH for internal installation
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}/usr/lib/freetz"
+fi
+
+exec "${PYTHONHOME}/bin/python3.13.bin" -B "$@"

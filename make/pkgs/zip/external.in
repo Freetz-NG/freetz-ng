@@ -1,0 +1,13 @@
+config EXTERNAL_FREETZ_PACKAGE_ZIP
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_ZIP && EXTERNAL_SUBDIRS
+	bool "zip"
+	default n
+	help
+		Externalize zip command to USB storage.
+		
+		Recommended for devices with limited flash memory.
+		The zip package can be stored on external storage
+		to save internal flash space.
+		
+		Files externalized:
+		- /usr/bin/zip

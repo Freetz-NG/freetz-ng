@@ -1,0 +1,3 @@
+if [ "$EXTERNAL_FREETZ_PACKAGE_ZIP" == "y" ] ; then
+	EXTERNAL_FILES+=" /usr/bin/zip"
+fi

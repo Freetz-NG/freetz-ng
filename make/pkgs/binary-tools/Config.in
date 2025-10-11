@@ -1,0 +1,25 @@
+config FREETZ_PACKAGE_BINARY_TOOLS
+	bool "binary-tools (readelf, patchelf, objdump, objcopy, nm, strings, ar, ranlib, strip, addr2line, size)"
+	default n
+	help
+		binary-tools - Complete binary analysis and manipulation toolkit
+		
+		Collection of essential tools for analyzing and manipulating ELF binaries:
+		- readelf: Display information about ELF files
+		- objdump: Display information from object files
+		- objcopy: Copy and translate object files
+		- nm: List symbols from object files  
+		- strings: Print the strings of printable characters in files
+		- ar: Create, modify, and extract from archives
+		- ranlib: Generate index to archive contents
+		- strip: Remove symbols from object files
+		- addr2line: Convert addresses to file names and line numbers
+		- size: Display the sizes of sections in binary files
+		- patchelf: Modify ELF executables and libraries (set interpreter, RPATH)
+		
+		Perfect for debugging cross-compiled binaries, analyzing
+		shared libraries, troubleshooting dynamic linking issues,
+		and complete binary analysis workflow.
+		
+		Total size: ~16MB
+		Can be externalized to save flash memory.

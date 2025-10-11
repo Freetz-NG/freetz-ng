@@ -26,6 +26,11 @@ ifeq ($(strip $(FREETZ_TARGET_GCC_5_MAX)),y)
 TOOLCHAIN_HOST_TARGET_CFLAGS+=--std=c++03
 endif
 
+# GCC 13+ stringop-overflow warning becomes error in some cases - only once!
+ifneq ($(strip $(FREETZ_TARGET_GCC_8_MAX)),y)
+TOOLCHAIN_HOST_TARGET_CFLAGS+=-Wno-error=stringop-overflow
+endif
+
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES:=
 ifeq ($(strip $(FREETZ_TARGET_ARCH_ARM)),y)
 ifeq ($(strip $(FREETZ_SYSTEM_TYPE_BCM63138)),y)

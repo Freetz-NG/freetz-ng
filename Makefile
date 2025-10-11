@@ -99,7 +99,7 @@ CHECK_PREREQ_TOOL:=$(TOOLS_DIR)/prerequisites
 GENERATE_IN_TOOL:=$(TOOLS_DIR)/genin
 TAR:=$(TOOLS_DIR)/tar-gnu
 SED:=sed
-PATCHELF:=patchelf
+PATCHELF:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/patchelf
 PYTHON3=python3
 MESON=meson
 CMAKE=cmake
@@ -205,7 +205,7 @@ endif
 # genin: (re)generate .in files if necessary
 ifneq ($(findstring clean,$(MAKECMDGOALS)),clean)
 # Note: the list of the packages to be treated specially (the 3rd argument of get-subdirs-containing) should match that used in genin
-ifneq ($(call genin-get-considered-packages,make/pkgs/Config.in.generated),$(call get-subdirs-containing,make/pkgs,Config.in,asterisk[-].* iptables-cgi nhipt python[-].* ruby-fcgi sg3_utils))
+ifneq ($(call genin-get-considered-packages,make/pkgs/Config.in.generated),$(call get-subdirs-containing,make/pkgs,Config.in,asterisk[-].* iptables-cgi nhipt python[-].* python3[-].* ruby-fcgi sg3_utils))
 ifneq ($(shell $(GENERATE_IN_TOOL) $(if $(findstring legacy,$(MAKECMDGOALS)),legacy) >&2 && echo OK),OK)
 $(error genin failed)
 endif

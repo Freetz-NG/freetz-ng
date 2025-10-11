@@ -1,0 +1,3 @@
+if [ "$EXTERNAL_FREETZ_PACKAGE_FILE" == "y" ] ; then
+	EXTERNAL_FILES+=" /usr/bin/file /usr/share/misc/magic.mgc"
+fi

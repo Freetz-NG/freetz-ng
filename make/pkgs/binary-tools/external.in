@@ -1,0 +1,22 @@
+config EXTERNAL_FREETZ_PACKAGE_BINARY_TOOLS
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_BINARY_TOOLS && EXTERNAL_SUBDIRS
+	bool "binary-tools (externalization recommended)"
+	default n
+	help
+		Externalize binary-tools binaries to USB storage.
+		
+		Recommended for devices with limited flash memory.
+		The binary-tools package (~15MB) can be stored on external storage
+		to save internal flash space.
+		
+		Files externalized:
+		- /usr/bin/readelf
+		- /usr/bin/objdump
+		- /usr/bin/objcopy
+		- /usr/bin/nm
+		- /usr/bin/strings
+		- /usr/bin/ar
+		- /usr/bin/ranlib
+		- /usr/bin/strip
+		- /usr/bin/addr2line
+		- /usr/bin/size

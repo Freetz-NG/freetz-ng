@@ -7,13 +7,21 @@ $(PKG)_SITE:=@KERNEL/linux/utils/$(pkg)/v$(call GET_MAJOR_VERSION,$($(PKG)_VERSI
 ### CHANGES:=https://mirrors.kernel.org/pub/linux/utils/util-linux/
 ### CVSREPO:=https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
 
-$(PKG)_BINARIES:=blkid
-# Suffix to add to util-linux binaries in order to distinguish them from e2fsprogs/busybox ones
-$(PKG)_BINARIES_SUFFIX:=-util-linux
-$(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
-$(PKG)_BINARIES_TARGET_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/sbin/%$($(PKG)_BINARIES_SUFFIX))
+# Binaries that conflict with busybox (need suffix)
+$(PKG)_BINARIES_WITH_SUFFIX:=blkid losetup mkswap swapon
+# Binaries unique to util-linux (no suffix needed)
+$(PKG)_BINARIES_NO_SUFFIX:=lsblk findmnt
+# All binaries to build
+$(PKG)_BINARIES:=$($(PKG)_BINARIES_WITH_SUFFIX) $($(PKG)_BINARIES_NO_SUFFIX)
 
-$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
+# Suffix to add to util-linux binaries that conflict with busybox
+$(PKG)_BINARIES_SUFFIX:=-util-linux
+
+$(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
+$(PKG)_BINARIES_WITH_SUFFIX_TARGET_DIR:=$($(PKG)_BINARIES_WITH_SUFFIX:%=$($(PKG)_DEST_DIR)/sbin/%$($(PKG)_BINARIES_SUFFIX))
+$(PKG)_BINARIES_NO_SUFFIX_TARGET_DIR:=$($(PKG)_BINARIES_NO_SUFFIX:%=$($(PKG)_DEST_DIR)/sbin/%)
+
+$(PKG)_CONFIGURE_PRE_CMDS += GTKDOCIZE=/bin/true $(AUTORECONF)
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 $(PKG)_CONFIGURE_ENV += scanf_cv_alloc_modifier=no
@@ -24,6 +32,7 @@ $(PKG)_CONFIGURE_ENV += scanf_cv_alloc_modifier=no
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared=no
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
+$(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc
 $(PKG)_CONFIGURE_OPTIONS += --without-libiconv-prefix
 $(PKG)_CONFIGURE_OPTIONS += --without-libintl-prefix
 $(PKG)_CONFIGURE_OPTIONS += --without-audit
@@ -59,11 +68,11 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-kill
 $(PKG)_CONFIGURE_OPTIONS += --disable-last
 $(PKG)_CONFIGURE_OPTIONS += --disable-libfdisk
 $(PKG)_CONFIGURE_OPTIONS += --enable-libmount
-$(PKG)_CONFIGURE_OPTIONS += --disable-libsmartcols
+$(PKG)_CONFIGURE_OPTIONS += --enable-libsmartcols
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-line
 $(PKG)_CONFIGURE_OPTIONS += --disable-login
-$(PKG)_CONFIGURE_OPTIONS += --disable-losetup
+$(PKG)_CONFIGURE_OPTIONS += --enable-losetup
 $(PKG)_CONFIGURE_OPTIONS += --disable-mesg
 $(PKG)_CONFIGURE_OPTIONS += --disable-minix
 $(PKG)_CONFIGURE_OPTIONS += --disable-more
@@ -109,12 +118,21 @@ $(PKG_CONFIGURED_CONFIGURE)
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(UTIL_LINUX_DIR) V=1 $(UTIL_LINUX_BINARIES)
 
-$($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DEST_DIR)/sbin/%$($(PKG)_BINARIES_SUFFIX): $($(PKG)_DIR)/%
+# Install binaries with suffix (those that conflict with busybox)
+$($(PKG)_BINARIES_WITH_SUFFIX_TARGET_DIR): $($(PKG)_DEST_DIR)/sbin/%$($(PKG)_BINARIES_SUFFIX): $($(PKG)_DIR)/%
 	$(INSTALL_BINARY_STRIP)
+
+# Install binaries without suffix (unique to util-linux)
+$($(PKG)_BINARIES_NO_SUFFIX_TARGET_DIR): $($(PKG)_DEST_DIR)/sbin/%: $($(PKG)_DIR)/%
+	$(INSTALL_BINARY_STRIP)
+
+# Create swapoff symlink to swapon
+$($(PKG)_DEST_DIR)/sbin/swapoff$($(PKG)_BINARIES_SUFFIX): $($(PKG)_DEST_DIR)/sbin/swapon$($(PKG)_BINARIES_SUFFIX)
+	ln -sf swapon$($(PKG)_BINARIES_SUFFIX) $@
 
 $(pkg):
 
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
+$(pkg)-precompiled: $($(PKG)_BINARIES_WITH_SUFFIX_TARGET_DIR) $($(PKG)_BINARIES_NO_SUFFIX_TARGET_DIR) $($(PKG)_DEST_DIR)/sbin/swapoff$($(PKG)_BINARIES_SUFFIX)
 
 
 $(pkg)-clean:
@@ -122,6 +140,7 @@ $(pkg)-clean:
 	$(RM) $(UTIL_LINUX_DIR)/.configured
 
 $(pkg)-uninstall:
-	$(RM) $(UTIL_LINUX_BINARIES_TARGET_DIR)
+	$(RM) $(UTIL_LINUX_BINARIES_WITH_SUFFIX_TARGET_DIR) $(UTIL_LINUX_BINARIES_NO_SUFFIX_TARGET_DIR)
+	$(RM) $(UTIL_LINUX_DEST_DIR)/sbin/swapoff$(UTIL_LINUX_BINARIES_SUFFIX)
 
 $(PKG_FINISH)

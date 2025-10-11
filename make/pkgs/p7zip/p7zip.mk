@@ -20,7 +20,17 @@ $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
-$($(PKG)_BINARY) $($(PKG)_LIB_DIR) $($(PKG)_CODECS_DIR): $($(PKG)_DIR)/.configured
+# Create missing wrapper symlink for ccache support
+$($(PKG)_DIR)/.wrapper-linked: $($(PKG)_DIR)/.configured
+	@CCACHE_BIN_DIR="$(REAL_GNU_TARGET_NAME)-ccache"; \
+	CCACHE_WRAPPER="$(REAL_GNU_TARGET_NAME)-g++-wrapper"; \
+	if command -v "$$CCACHE_BIN_DIR/$(REAL_GNU_TARGET_NAME)-g++" >/dev/null 2>&1 && [ ! -L "$$(dirname $$(command -v $$CCACHE_BIN_DIR/$(REAL_GNU_TARGET_NAME)-g++))/$$CCACHE_WRAPPER" ]; then \
+		echo "Creating missing g++-wrapper symlink for ccache..."; \
+		ln -sf "$(REAL_GNU_TARGET_NAME)-g++" "$$(dirname $$(command -v $$CCACHE_BIN_DIR/$(REAL_GNU_TARGET_NAME)-g++))/$$CCACHE_WRAPPER"; \
+	fi
+	@touch $@
+
+$($(PKG)_BINARY) $($(PKG)_LIB_DIR) $($(PKG)_CODECS_DIR): $($(PKG)_DIR)/.wrapper-linked
 	$(SUBMAKE) -C $(P7ZIP_DIR) DEST_HOME="$(abspath $($(PKG)_DEST_DIR))" \
 	CC="$(TARGET_CC)" \
 	CXX="$(TARGET_CXX)" \

@@ -1,7 +1,10 @@
-$(call PKG_INIT_BIN, 0.1)
+$(call PKG_INIT_BIN, 1.0.55)
 $(PKG)_SOURCE:=ldd-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=b0b2c4edee81ac65c9706f8982b15d3a798be7c2d3865d9a7abff1e493dfadb1
+$(PKG)_HASH:=109b02d8f5d07d2836955248979aeee826d993adce5f2e5a3654b67d4dd23952
 $(PKG)_SITE:=@MIRROR/
+### WEBSITE:=https://uclibc-ng.org/
+### CHANGES:=https://cgit.uclibc-ng.org/cgi/cgit/uclibc-ng.git/log/utils/ldd.c
+### CVSREPO:=https://cgit.uclibc-ng.org/cgi/cgit/uclibc-ng.git
 
 $(PKG)_SOURCE_FILE:=$($(PKG)_DIR)/ldd.c
 $(PKG)_BINARY:=$($(PKG)_DIR)/ldd

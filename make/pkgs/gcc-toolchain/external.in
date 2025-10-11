@@ -1,0 +1,31 @@
+config FREETZ_PACKAGE_GCC_TOOLCHAIN_EXTERNAL
+        depends on FREETZ_PACKAGE_GCC_TOOLCHAIN
+        bool "GCC Toolchain (externalization required)"
+        default y
+        help
+                Externalize GCC Toolchain files to USB storage.
+
+                WARNING: GCC Toolchain is ~200-250 MB and MUST be externalized.
+                The flash memory on Fritz!Box cannot store such large packages.
+
+                This option moves all GCC files to external storage (USB stick
+                or network share) and creates symlinks in /usr to access them.
+
+                Externalized path example:
+                  /var/media/ftp/uStor01/freetz-external/gcc-toolchain/
+
+                The files will be automatically mounted from external storage
+                during boot if the storage device is available.
+
+config EXTERNAL_FREETZ_PACKAGE_GCC_TOOLCHAIN
+        depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_GCC_TOOLCHAIN && FREETZ_PACKAGE_GCC_TOOLCHAIN_EXTERNAL && EXTERNAL_SUBDIRS
+        bool "gcc-toolchain"
+        default y
+        help
+                Externalizes the following directories and files:
+                 /usr/bin/gcc, g++, as, ld, ar, nm, objdump, etc.
+                 /usr/lib/gcc/
+                 /usr/libexec/gcc/
+                 /usr/include/
+                
+                Total size: ~230 MB

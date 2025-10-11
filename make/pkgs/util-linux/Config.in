@@ -1,9 +1,15 @@
 config FREETZ_PACKAGE_UTIL_LINUX
-	bool "util-linux 2.27.1 (binary only) - DEPRECATED"
-	depends on FREETZ_PATCH_FREETZMOUNT
+	bool "util-linux 2.27.1 (essential disk utilities)"
 	# TODO: util-linux' libsysfs requires fdopendir, which is missing in uClibc-0.9.28/0.9.29
 	depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 	default n
 	help
-		Provides blkid util from util-linux project
+		Provides essential utilities from util-linux project:
+		- blkid: identify block devices
+		- lsblk: list block devices
+		- findmnt: find mounted filesystems
+		- losetup: setup loop devices
+		- mkswap: setup swap area
+		- swapon: enable swap
+
 
