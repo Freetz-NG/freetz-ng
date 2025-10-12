@@ -22,7 +22,7 @@ inkscape
 intltool
 java-wrappers
 kmod
-lib32ncurses5-dev
+lib32ncurses-dev
 lib32stdc++6
 lib32z1-dev
 libacl1-dev
@@ -31,7 +31,7 @@ libcap-dev
 libelf-dev
 libglib2.0-dev
 libgnutls28-dev
-libncurses5-dev
+libncurses-dev
 libreadline-dev
 libsqlite3-dev
 libssl-dev
@@ -41,8 +41,11 @@ libusb-dev
 libxml2-dev
 libzstd-dev
 make
-netcat
+ncftp
+netcat-openbsd
+net-tools
 patch
+patchutils
 perl
 pkg-config
 pv
@@ -57,4 +60,5 @@ unar
 unzip
 uuid-dev
 wget
+zip
 zlib1g-dev
