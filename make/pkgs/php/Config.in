@@ -1,69 +1,40 @@
-config FREETZ_PACKAGE_PHP
-	bool "PHP 5.6.40 (binary only) - DEPRECATED"
-	select FREETZ_PACKAGE_PHP_cgi
+menuconfig FREETZ_PACKAGE_PHP
+	bool "PHP 8.4.1 (binary only)"
 	default n
+	select FREETZ_LIB_libxml2_WITH_HTML
 	help
-		PHP: Hypertext Preprocessor
-
+		PHP: Hypertext Preprocessor (version 8.4.1)
 		PHP is a widely-used general-purpose scripting language that is especially
-		suited for Web development and can be embedded into HTML. Much of its syntax
-		is borrowed from C, Java and Perl with a couple of unique PHP-specific features
-		thrown in. The goal of the language is to allow web developers to write
-		dynamically generated pages quickly.
+		suited for Web development and can be embedded into HTML.
 
-choice
-	depends on FREETZ_PACKAGE_PHP
-	prompt "version"
-	default FREETZ_PHP_VERSION_5_6
-
-	config FREETZ_PHP_VERSION_5_6
-		bool "php 5.6.40"
-endchoice
+if FREETZ_PACKAGE_PHP
 
 menu "Binaries"
-depends on FREETZ_PACKAGE_PHP
 
 config FREETZ_PACKAGE_PHP_cgi
 	bool "PHP CGI"
-	select FREETZ_LIB_libdl   if ! FREETZ_PACKAGE_PHP_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libpcre if ! FREETZ_PACKAGE_PHP_STATIC
 	default y
 
 config FREETZ_PACKAGE_PHP_cli
 	bool "PHP CLI"
-	select FREETZ_LIB_libdl   if ! FREETZ_PACKAGE_PHP_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libpcre if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
+	default y
 
-comment "Apache2 module needs OpenSSL 1.0 or older"
-	depends on !FREETZ_OPENSSL_VERSION_10_MAX
-
-config FREETZ_PACKAGE_PHP_apxs2
-	bool "Apache2 module"
-	depends on FREETZ_OPENSSL_VERSION_10_MAX
-	select FREETZ_LIB_libapr_WITH_DSO
-	select FREETZ_LIB_libpcre
-	select FREETZ_LIB_libcurl            if FREETZ_PACKAGE_PHP_WITH_CURL
-	select FREETZ_LIB_libgd              if FREETZ_PACKAGE_PHP_WITH_GD
-	select FREETZ_LIB_libiconv           if FREETZ_PACKAGE_PHP_WITH_LIBICONV
-	select FREETZ_LIB_libsqlite3         if FREETZ_PACKAGE_PHP_WITH_SQLITE3
-	select FREETZ_LIB_libcrypto          if FREETZ_PACKAGE_PHP_WITH_SSL
-	select FREETZ_LIB_libssl             if FREETZ_PACKAGE_PHP_WITH_SSL
-	select FREETZ_LIB_libxml2            if FREETZ_PACKAGE_PHP_WITH_LIBXML
-	select FREETZ_LIB_libz               if FREETZ_PACKAGE_PHP_WITH_ZLIB
+config FREETZ_PACKAGE_PHP_fpm
+	bool "PHP-FPM"
 	default n
+	help
+		Enable the FastCGI Process Manager (FPM) for PHP.
+		PHP-FPM is a FastCGI server implementation for high-traffic sites.
 
 endmenu
 
 menu "PHP features"
-depends on FREETZ_PACKAGE_PHP
 
 config FREETZ_PACKAGE_PHP_WITH_CURL
-	bool "build with CURL support"
-	select FREETZ_LIB_libcurl if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the CURL support for PHP
+       bool "build with CURL support"
+       default n
+       help
+	       This option enables the CURL support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_FILEINFO
 	bool "build with FILEINFO support"
@@ -78,58 +49,58 @@ config FREETZ_PACKAGE_PHP_WITH_FTP
 		This option enables the FTP support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_GD
-	bool "build with GD support"
-	select FREETZ_LIB_libgd if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the GD support for PHP
+       bool "build with GD support"
+       default n
+       help
+	       This option enables the GD support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_GETTEXT
-	bool "build with gettext support"
-	select FREETZ_LIB_libintl if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the gettext support for PHP
+       bool "build with gettext support"
+       default n
+       help
+	       This option enables the gettext support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_ICONV
 	bool "build with ICONV support"
-	select FREETZ_PACKAGE_PHP_WITH_LIBICONV if FREETZ_TARGET_UCLIBC_0_9_28
 	default n
 	help
 		This option enables the ICONV support for PHP
 
-if FREETZ_PACKAGE_PHP_WITH_ICONV
+config FREETZ_PACKAGE_PHP_WITH_LIBICONV
+       bool "Use libiconv instead of uClibc iconv"
+       default n
+       help
+	       Use libiconv library instead of uClibc's built-in iconv.
 
-	config FREETZ_PACKAGE_PHP_WITH_LIBICONV
-		bool "prefer libiconv to libc"
-		depends on FREETZ_TARGET_UCLIBC_0_9_28
-		select FREETZ_LIB_libiconv if ! FREETZ_PACKAGE_PHP_STATIC
-		default n
-		help
-			This option causes PHP to use libiconv implementation of iconv function
-			instead of the libc one. Select this option if you need more charsets
-			than supported by libc (ISO-8859-1 and UTF-8 only) or your application
-			relies on libiconv specific features like TRANSLIT, IGNORE, etc.
+config FREETZ_PACKAGE_PHP_WITH_LIBXML
+       bool "build with LIBXML support"
+       default n
+       help
+	       This option enables the LIBXML support for PHP
 
-endif # FREETZ_PACKAGE_PHP_WITH_ICONV
+config FREETZ_PACKAGE_PHP_WITH_MBSTRING
+	bool "build with MBSTRING support"
+	default y
+	help
+		This option enables the MBSTRING support for PHP
 
-config FREETZ_PACKAGE_PHP_WITH_JSON
-	bool "build with JSON support"
+config FREETZ_PACKAGE_PHP_WITH_MYSQLI
+	bool "build with MySQLi support"
 	default n
 	help
-		This option enables the JSON support for PHP
+		This option enables the MySQLi support for PHP
 
-config FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT
-	bool "build with MEMORY_LIMIT support"
-	default n
+config FREETZ_PACKAGE_PHP_WITH_OPCACHE
+	bool "build with OPcache support"
+	default y
 	help
-		This option enables the MEMORY_LIMIT support for PHP
+		This option enables the OPcache support for PHP
 
-config FREETZ_PACKAGE_PHP_WITH_MHASH
-	bool "build with MHASH support"
-	default n
-	help
-		This option enables the MHASH support for PHP
+config FREETZ_PACKAGE_PHP_WITH_OPENSSL
+       bool "build with OpenSSL support"
+       default n
+       help
+	       This option enables the OpenSSL support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_PCNTL
 	bool "build with PCNTL support"
@@ -137,11 +108,29 @@ config FREETZ_PACKAGE_PHP_WITH_PCNTL
 	help
 		This option enables the PCNTL support for PHP
 
+config FREETZ_PACKAGE_PHP_WITH_PDO
+	bool "build with PDO support"
+	default y
+	help
+		This option enables the PDO support for PHP
+
+config FREETZ_PACKAGE_PHP_WITH_PDO_SQLITE
+       bool "build with PDO SQLite support"
+       default n
+       help
+	       This option enables the PDO SQLite driver for PHP
+
 config FREETZ_PACKAGE_PHP_WITH_SESSION
 	bool "build with SESSION support"
-	default n
+	default y
 	help
 		This option enables the SESSION support for PHP
+
+config FREETZ_PACKAGE_PHP_WITH_SIMPLEXML
+       bool "build with SimpleXML support"
+       default n
+       help
+	       This option enables the SimpleXML support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_SOCKETS
 	bool "build with SOCKETS support"
@@ -150,47 +139,25 @@ config FREETZ_PACKAGE_PHP_WITH_SOCKETS
 		This option enables the SOCKETS support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_SQLITE3
-	bool "build with SQLite (v3) support"
-	select FREETZ_LIB_libsqlite3 if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the SQLite (v3) support for PHP
-
-comment "SSL support needs OpenSSL 1.0 or older"
-	depends on !FREETZ_OPENSSL_VERSION_10_MAX
-
-config FREETZ_PACKAGE_PHP_WITH_SSL
-	bool "build with SSL support"
-	depends on FREETZ_OPENSSL_VERSION_10_MAX
-	select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_PHP_STATIC
-	select FREETZ_LIB_libssl    if !FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the SSL support for PHP
+       bool "build with SQLite3 support"
+       default n
+       help
+	       This option enables the SQLite3 support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_SYSVIPC
-	bool "build with SYSVIPC support"
+	bool "build with System V IPC support"
 	default n
 	help
-		This option enables the SYSVIPC support for PHP
-
-config FREETZ_PACKAGE_PHP_WITH_LIBXML
-	bool "build with XML support"
-	select FREETZ_LIB_libxml2 if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the XML support for PHP
+		This option enables the System V IPC support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_ZLIB
-	bool "build with ZLIB support"
-	select FREETZ_LIB_libz if ! FREETZ_PACKAGE_PHP_STATIC
-	default n
-	help
-		This option enables the ZLIB support for PHP
+       bool "build with ZLIB support"
+       default n
+       help
+	       This option enables the ZLIB support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_ZIP
 	bool "build with ZIP support"
-	select FREETZ_PACKAGE_PHP_WITH_ZLIB
 	default n
 	help
 		This option enables the ZIP support for PHP
@@ -199,8 +166,8 @@ endmenu
 
 config FREETZ_PACKAGE_PHP_STATIC
 	bool "Link statically"
-	depends on FREETZ_PACKAGE_PHP
 	default n
 	help
-		Causes all libraries PHP depends on to be linked in statically.
+		Causes all libraries PHP depends on to be linked in statically
 
+endif

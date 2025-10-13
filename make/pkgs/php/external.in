@@ -7,7 +7,6 @@ menu "PHP"
 	depends on EXTERNAL_FREETZ_PACKAGE_PHP
 
 config EXTERNAL_FREETZ_PACKAGE_PHP_cgi
-	depends on FREETZ_PACKAGE_PHP_cgi
 	bool "PHP CGI"
 	default n
 	help
@@ -22,13 +21,13 @@ config EXTERNAL_FREETZ_PACKAGE_PHP_cli
 		externals the following file(s):
 		 /usr/bin/php
 
-config EXTERNAL_FREETZ_PACKAGE_PHP_apxs2
-	depends on FREETZ_PACKAGE_PHP_apxs2
-	bool "Apache2 module"
+config EXTERNAL_FREETZ_PACKAGE_PHP_fpm
+	depends on FREETZ_PACKAGE_PHP_fpm
+	bool "PHP-FPM"
 	default n
 	help
 		externals the following file(s):
-		 /usr/lib/apache2/libphp5.so
+		 /usr/sbin/php-fpm
 
 endmenu
 
