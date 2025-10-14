@@ -8,8 +8,8 @@ $(PKG)_SITE:=@GNU/lib$(pkg)
 ### CHANGES:=https://ftp.gnu.org/pub/gnu/libiconv/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=libiconv.git
 
-$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)$(LIBICONV_PREFIX)/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)
-$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
+$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libiconv/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)
+$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$(pkg).so.$($(PKG)_LIB_VERSION)
 
 # Depend on the iconv package which builds the library
 $(PKG)_DEPENDS_ON += iconv
