@@ -68,6 +68,7 @@ config FREETZ_PACKAGE_PHP_WITH_GETTEXT
 
 config FREETZ_PACKAGE_PHP_WITH_ICONV
 	bool "build with ICONV support"
+	select FREETZ_LIB_libiconv if !FREETZ_PACKAGE_PHP_STATIC
 	default n
 	help
 		This option enables the ICONV support for PHP

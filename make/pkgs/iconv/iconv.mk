@@ -1,8 +1,8 @@
-$(call PKG_INIT_BIN, 1.13.1)
-$(PKG)_LIB_VERSION:=2.5.0
+$(call PKG_INIT_BIN, 1.18)
+$(PKG)_LIB_VERSION := 2.7.0
 $(PKG)_SOURCE:=lib$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=55a36168306089009d054ccdd9d013041bfc3ab26be7033d107821f1c4949a49
-$(PKG)_SITE:=@GNU/$(pkg)
+$(PKG)_HASH:=3b08f5f4f9b4eb82f151a7040bfd6fe6c6fb922efe4b1659c66ea933276965e8
+$(PKG)_SITE:=@GNU/lib$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/libiconv/
 ### MANPAGE:=https://www.gnu.org/savannah-checkouts/gnu/libiconv/documentation/
 ### CHANGES:=https://ftp.gnu.org/pub/gnu/libiconv/
