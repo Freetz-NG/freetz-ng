@@ -1,38 +1,19 @@
---- configure
-+++ configure
-@@ -3284,6 +3284,24 @@
- fi
+--- Makefile.in
++++ Makefile.in
+@@ -55,7 +55,7 @@
+ ENABLE_LIB_STATIC = @ENABLE_LIB_STATIC@
+ HAVE_WASI_SDK = @HAVE_WASI_SDK@
  
- 
-+cppflags_to_add="-D_REENTRANT -D_GNU_SOURCE"
-+if test "x$CPPFLAGS" = "x"; then
-+	CPPFLAGS="$cppflags_to_add"
-+else
-+	for i in $cppflags_to_add; do
-+		flag_found="0"
-+		for j in $CPPFLAGS; do
-+			if test "x$i" = "x$j"; then
-+				flag_found="1"
-+				break
-+			fi
-+		done
-+		if test "$flag_found" = "0"; then
-+			CPPFLAGS="$CPPFLAGS $i"
-+		fi
-+	done
-+fi
-+
- ac_ext=c
- ac_cpp='$CPP $CPPFLAGS'
- ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
+-CFLAGS = @CFLAGS@ @CPPFLAGS@
++CFLAGS = @CFLAGS@ @CPPFLAGS@ -D_REENTRANT -D_GNU_SOURCE
+ #
+ # $(LDFLAGS.configure) represents any LDFLAGS=... the client passes to
+ # configure. See main.mk.
 --- sqlite3.pc.in
 +++ sqlite3.pc.in
-@@ -8,6 +8,5 @@
- Name: SQLite
- Description: SQL database engine
+@@ -10,4 +10,4 @@
  Version: @PACKAGE_VERSION@
--Libs: -L${libdir} -lsqlite3
--Libs.private: @LIBS@
+ Libs: -L${libdir} -lsqlite3
+ Libs.private: @LDFLAGS_MATH@ @LDFLAGS_ZLIB@ @LDFLAGS_DLOPEN@ @LDFLAGS_PTHREAD@ @LDFLAGS_ICU@
 -Cflags: -I${includedir}
-+Libs: -L${libdir} @LIBS@ -lsqlite3
 +Cflags: -I${includedir} -D_REENTRANT -D_GNU_SOURCE

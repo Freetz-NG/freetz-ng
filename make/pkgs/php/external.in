@@ -2,6 +2,12 @@ config EXTERNAL_FREETZ_PACKAGE_PHP
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_PHP
 	bool "PHP"
 	default n
+	select EXTERNAL_FREETZ_LIB_libxml2 if FREETZ_LIB_libxml2
+	select EXTERNAL_FREETZ_LIB_libpcre2 if FREETZ_LIB_libpcre2
+	select EXTERNAL_FREETZ_LIB_libonig if FREETZ_LIB_libonig
+	select EXTERNAL_FREETZ_LIB_libintl if FREETZ_LIB_libintl
+	select EXTERNAL_FREETZ_LIB_libz if FREETZ_LIB_libz
+	select EXTERNAL_FREETZ_LIB_libiconv if FREETZ_LIB_libiconv
 
 menu "PHP"
 	depends on EXTERNAL_FREETZ_PACKAGE_PHP

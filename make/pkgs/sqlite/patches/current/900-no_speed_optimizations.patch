@@ -1,13 +1,11 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -252,8 +252,8 @@
- BUILD_CFLAGS = @BUILD_CFLAGS@
- CC = @CC@
- CCDEPMODE = @CCDEPMODE@
--CFLAGS = @CFLAGS@
--CPPFLAGS = @CPPFLAGS@
-+CFLAGS = $(patsubst -Ofast,-O2, @CFLAGS@)
-+CPPFLAGS = $(patsubst -Ofast,-O2, @CPPFLAGS@)
- CSCOPE = @CSCOPE@
- CTAGS = @CTAGS@
- CYGPATH_W = @CYGPATH_W@
+@@ -55,7 +55,7 @@
+ ENABLE_LIB_STATIC = @ENABLE_LIB_STATIC@
+ HAVE_WASI_SDK = @HAVE_WASI_SDK@
+ 
+-CFLAGS = @CFLAGS@ @CPPFLAGS@ -D_REENTRANT -D_GNU_SOURCE
++CFLAGS = $(patsubst -Ofast,-O2,@CFLAGS@) $(patsubst -Ofast,-O2,@CPPFLAGS@) -D_REENTRANT -D_GNU_SOURCE
+ #
+ # $(LDFLAGS.configure) represents any LDFLAGS=... the client passes to
+ # configure. See main.mk.

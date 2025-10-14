@@ -1,8 +1,8 @@
 config EXTERNAL_FREETZ_LIB_libsqlite3
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libsqlite3
-	bool "libsqlite"
+	bool "libsqlite3"
 	default n
 	help
-		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libsqlite3.so.0.8.6
+		Esternalizza il seguente file:
+		 ${FREETZ_LIBRARY_DIR}/libsqlite3.so.0 (versione 3.50.4)
 

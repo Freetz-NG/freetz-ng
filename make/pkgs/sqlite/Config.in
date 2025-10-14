@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_SQLITE
-	bool "SQLite 3.40.1/3.47.1 (binary only) - DEPRECATED"
+	bool "SQLite 3.50.4 (binary only)"
 	select FREETZ_LIB_libsqlite3
 	default n
 	help
@@ -17,7 +17,7 @@ if FREETZ_PACKAGE_SQLITE
 			depends on FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON
 
 		config FREETZ_PACKAGE_SQLITE_VERSION_CURRENT
-			bool "3.47.1"
+			bool "3.50.4"
 			depends on FREETZ_LIB_libsqlite3_WITH_VERSION_CURRENT
 
 	endchoice

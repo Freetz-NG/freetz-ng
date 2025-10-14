@@ -2,6 +2,11 @@ menuconfig FREETZ_PACKAGE_PHP
 	bool "PHP 8.4.1 (binary only)"
 	default n
 	select FREETZ_LIB_libxml2_WITH_HTML
+	select FREETZ_LIB_libxml2 if !FREETZ_PACKAGE_PHP_STATIC
+	select FREETZ_LIB_libpcre2 if !FREETZ_PACKAGE_PHP_STATIC
+	select FREETZ_LIB_libonig if !FREETZ_PACKAGE_PHP_STATIC
+	select FREETZ_LIB_libintl if !FREETZ_PACKAGE_PHP_STATIC
+	select FREETZ_LIB_libz if !FREETZ_PACKAGE_PHP_STATIC
 	help
 		PHP: Hypertext Preprocessor (version 8.4.1)
 		PHP is a widely-used general-purpose scripting language that is especially
@@ -68,9 +73,12 @@ config FREETZ_PACKAGE_PHP_WITH_ICONV
 
 config FREETZ_PACKAGE_PHP_WITH_LIBICONV
        bool "Use libiconv instead of uClibc iconv"
+       depends on FREETZ_TARGET_UCLIBC_0_9_28
        default n
+       select FREETZ_LIB_libiconv if !FREETZ_PACKAGE_PHP_STATIC
        help
 	       Use libiconv library instead of uClibc's built-in iconv.
+	       Note: This option is only available with uClibc 0.9.28.
 
 config FREETZ_PACKAGE_PHP_WITH_LIBXML
        bool "build with LIBXML support"
@@ -86,6 +94,7 @@ config FREETZ_PACKAGE_PHP_WITH_MBSTRING
 
 config FREETZ_PACKAGE_PHP_WITH_MYSQLI
 	bool "build with MySQLi support"
+	depends on FREETZ_SHOW_DEVELOPER
 	default n
 	help
 		This option enables the MySQLi support for PHP

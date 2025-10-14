@@ -1,5 +1,5 @@
 config FREETZ_LIB_libsqlite3
-	bool "libsqlite (libsqlite3.so) - DEPRECATED"
+	bool "libsqlite (libsqlite3.so)"
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
@@ -19,7 +19,7 @@ if FREETZ_LIB_libsqlite3
 			depends on (FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 
 		config FREETZ_LIB_libsqlite3_WITH_VERSION_CURRENT
-			bool "3.47.1"
+			bool "3.50.4"
 			depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 
 	endchoice
