@@ -55,6 +55,7 @@ config FREETZ_PACKAGE_PHP_WITH_FTP
 
 config FREETZ_PACKAGE_PHP_WITH_GD
        bool "build with GD support"
+       select FREETZ_LIB_libgd
        default n
        help
 	       This option enables the GD support for PHP
