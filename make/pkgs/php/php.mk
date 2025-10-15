@@ -61,6 +61,7 @@ endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_ICONV)),y)
 $(PKG)_CONFIGURE_OPTIONS+=--with-iconv
+$(PKG)_CONFIGURE_ENV += PKG_CONFIG_PATH="$(TARGET_TOOLCHAIN_STAGING_DIR)/local/lib/pkgconfig:$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/lib/pkgconfig:$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig"
 $(PKG)_CONFIGURE_ENV+=ac_cv_func_iconv=$(if $(FREETZ_PACKAGE_PHP_WITH_LIBICONV),no,yes)
 $(PKG)_CONFIGURE_ENV+=ac_cv_func_libiconv=$(if $(FREETZ_PACKAGE_PHP_WITH_LIBICONV),yes,no)
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_LIBICONV)),y)
