@@ -24,6 +24,9 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_XSLTPROC_STATIC
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
+$(PKG)_CONFIGURE_OPTIONS += --host=mips-linux-uclibc
+$(PKG)_CONFIGURE_OPTIONS += --build=x86_64-pc-linux-gnu
+$(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --with-plugins=no
