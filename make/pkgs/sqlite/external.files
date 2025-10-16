@@ -1,2 +1,2 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_SQLITE" == "y" ] && EXTERNAL_FILES+=" /usr/bin/sqlite3"
-[ "$EXTERNAL_FREETZ_LIB_libsqlite3" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libsqlite3.so.0"
+[ "$EXTERNAL_FREETZ_LIB_libsqlite3" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libsqlite3.so.3.50.4"

@@ -22,27 +22,31 @@ $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),a
 $(PKG)_BINARY:=$($(PKG)_DIR)/sqlite3
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/sqlite3
 
-$(PKG)_LIB_BINARY:=$($(PKG)_DIR)/libsqlite3.so
-$(PKG)_LIB_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/lib/libsqlite3.so.$($(PKG)_LIB_VERSION)
+$(PKG)_LIB_BINARY:=$($(PKG)_DIR)/.libs/libsqlite3.so.$($(PKG)_LIB_VERSION)
+$(PKG)_LIB_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libsqlite3.so.$($(PKG)_LIB_VERSION)
 $(PKG)_LIB_TARGET_BINARY:=$($(PKG)_TARGET_LIBDIR)/libsqlite3.so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON
 
-$(PKG)_CONFIGURE_OPTIONS += --enable-shared
-$(PKG)_CONFIGURE_OPTIONS += --enable-static
-$(PKG)_CONFIGURE_OPTIONS += --disable-editline
-$(PKG)_CONFIGURE_OPTIONS += --disable-static-shell
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_SQLITE_WITH_READLINE),--enable-readline,--disable-readline)
-
-$(PKG)_CONFIGURE_ENV += ac_cv_header_zlib_h=no
-
-DISABLE_NLS :=
-TARGET_CONFIGURE_OPTIONS :=
-
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-$(PKG_CONFIGURED_CONFIGURE)
+
+# SQLite uses a non-standard configure script (jimtcl-based)
+# It doesn't support standard autoconf options like --target, --cache-file etc
+$($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.unpacked
+	( cd $(SQLITE_DIR); \
+		$(TARGET_CONFIGURE_ENV) \
+		ac_cv_header_zlib_h=no \
+		./configure \
+		--prefix=/usr \
+		--enable-shared \
+		--enable-static \
+		--disable-editline \
+		--disable-static-shell \
+		$(if $(FREETZ_PACKAGE_SQLITE_WITH_READLINE),--enable-readline,--disable-readline) \
+	)
+	touch $@
 
 $($(PKG)_LIB_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(SQLITE_DIR)
@@ -55,7 +59,7 @@ $($(PKG)_LIB_STAGING_BINARY): $($(PKG)_LIB_BINARY)
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		all install
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/lib/pkgconfig/sqlite3.pc
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/sqlite3.pc
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)
@@ -70,10 +74,11 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_LIB_TARGET_BINARY)
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(SQLITE_DIR) clean
-	$(RM) -r $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/lib/libsqlite3* \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/lib/pkgconfig/sqlite3.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/include/sqlite \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/local/bin/sqlite3*
+	$(RM) -r $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libsqlite3* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/sqlite3.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/sqlite3.h \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/sqlite3ext.h \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/sqlite3*
 
 $(pkg)-uninstall:
 	$(RM) $(SQLITE_TARGET_BINARY) $(SQLITE_TARGET_LIBDIR)/libsqlite3*.so*
