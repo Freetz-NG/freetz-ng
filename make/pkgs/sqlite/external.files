@@ -1,2 +1,7 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_SQLITE" == "y" ] && EXTERNAL_FILES+=" /usr/bin/sqlite3"
-[ "$EXTERNAL_FREETZ_LIB_libsqlite3" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libsqlite3.so.3.50.4"
+
+# Support both old (libsqlite3.so.0.*) and new (libsqlite3.so.3.*) SONAME versions
+if [ "$EXTERNAL_FREETZ_LIB_libsqlite3" == "y" ]; then
+	SQLITE_LIB=$(ls ${FREETZ_LIBRARY_DIR}/libsqlite3.so.* 2>/dev/null | grep -v "\.a$" | head -1)
+	[ -n "$SQLITE_LIB" ] && EXTERNAL_FILES+=" $SQLITE_LIB"
+fi

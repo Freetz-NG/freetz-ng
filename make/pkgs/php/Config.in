@@ -39,7 +39,7 @@ config FREETZ_PACKAGE_PHP_WITH_CURL
        bool "build with CURL support"
        default n
        help
-	       This option enables the CURL support for PHP
+	       Enables HTTP/HTTPS/FTP client functionality (libcurl.so.4)
 
 config FREETZ_PACKAGE_PHP_WITH_FILEINFO
 	bool "build with FILEINFO support"
@@ -58,20 +58,20 @@ config FREETZ_PACKAGE_PHP_WITH_GD
        select FREETZ_LIB_libgd
        default n
        help
-	       This option enables the GD support for PHP
+	       Enables image manipulation and creation (libgd.so.3, requires libpng, libjpeg, libfreetype)
 
 config FREETZ_PACKAGE_PHP_WITH_GETTEXT
        bool "build with gettext support"
        default n
        help
-	       This option enables the gettext support for PHP
+	       Enables internationalization and localization (libintl.so.8)
 
 config FREETZ_PACKAGE_PHP_WITH_ICONV
 	bool "build with ICONV support"
 	select FREETZ_LIB_libiconv if !FREETZ_PACKAGE_PHP_STATIC
 	default n
 	help
-		This option enables the ICONV support for PHP
+		Enables character set conversion (uses uClibc built-in or libiconv.so.2)
 
 config FREETZ_PACKAGE_PHP_WITH_LIBICONV
        bool "Use libiconv instead of uClibc iconv"
@@ -86,20 +86,20 @@ config FREETZ_PACKAGE_PHP_WITH_LIBXML
        bool "build with LIBXML support"
        default n
        help
-	       This option enables the LIBXML support for PHP
+	       Enables XML parsing and manipulation (libxml2.so.16)
 
 config FREETZ_PACKAGE_PHP_WITH_MBSTRING
 	bool "build with MBSTRING support"
 	default y
 	help
-		This option enables the MBSTRING support for PHP
+		Enables multi-byte string functions (libonig.so.5 for regex support)
 
 config FREETZ_PACKAGE_PHP_WITH_MYSQLI
 	bool "build with MySQLi support"
 	depends on FREETZ_SHOW_DEVELOPER
 	default n
 	help
-		This option enables the MySQLi support for PHP
+		Enables MySQL/MariaDB database access (libmysqlclient.so or libmariadb.so)
 
 config FREETZ_PACKAGE_PHP_WITH_OPCACHE
 	bool "build with OPcache support"
@@ -111,7 +111,7 @@ config FREETZ_PACKAGE_PHP_WITH_OPENSSL
        bool "build with OpenSSL support"
        default n
        help
-	       This option enables the OpenSSL support for PHP
+	       Enables cryptography and SSL/TLS (libssl.so.3, libcrypto.so.3)
 
 config FREETZ_PACKAGE_PHP_WITH_PCNTL
 	bool "build with PCNTL support"
@@ -129,7 +129,7 @@ config FREETZ_PACKAGE_PHP_WITH_PDO_SQLITE
        bool "build with PDO SQLite support"
        default n
        help
-	       This option enables the PDO SQLite driver for PHP
+	       Enables SQLite database access via PDO (libsqlite3.so.3)
 
 config FREETZ_PACKAGE_PHP_WITH_SESSION
 	bool "build with SESSION support"
@@ -141,7 +141,7 @@ config FREETZ_PACKAGE_PHP_WITH_SIMPLEXML
        bool "build with SimpleXML support"
        default n
        help
-	       This option enables the SimpleXML support for PHP
+	       Enables simplified XML parsing (requires libxml2.so.16)
 
 config FREETZ_PACKAGE_PHP_WITH_SOCKETS
 	bool "build with SOCKETS support"
@@ -153,7 +153,7 @@ config FREETZ_PACKAGE_PHP_WITH_SQLITE3
        bool "build with SQLite3 support"
        default n
        help
-	       This option enables the SQLite3 support for PHP
+	       Enables SQLite3 database access (libsqlite3.so.3)
 
 config FREETZ_PACKAGE_PHP_WITH_SYSVIPC
 	bool "build with System V IPC support"
@@ -165,13 +165,13 @@ config FREETZ_PACKAGE_PHP_WITH_ZLIB
        bool "build with ZLIB support"
        default n
        help
-	       This option enables the ZLIB support for PHP
+	       Enables zlib compression/decompression (libz.so.1)
 
 config FREETZ_PACKAGE_PHP_WITH_ZIP
 	bool "build with ZIP support"
 	default n
 	help
-		This option enables the ZIP support for PHP
+		Enables ZIP archive handling (built-in with zlib support)
 
 endmenu
 

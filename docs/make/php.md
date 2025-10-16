@@ -92,32 +92,55 @@ When building PHP, you can enable/disable the following options via `make menuco
 - **FPM** - FastCGI Process Manager (php-fpm)
 
 ### Extension Options
-- **CURL** - Enable cURL support
+- **CURL** - Enables HTTP/HTTPS/FTP client functionality (libcurl.so.4)
 - **EXIF** - Enable EXIF support
 - **FILEINFO** - Enable file information support
 - **FILTER** - Enable filter extension
 - **FTP** - Enable FTP support
-- **GD** - Enable GD image library (if available)
-- **GETTEXT** - Enable gettext support
-- **ICONV** - Enable iconv character conversion
+- **GD** - Enables image manipulation and creation (libgd.so.3, requires libpng, libjpeg, libfreetype)
+- **GETTEXT** - Enables internationalization and localization (libintl.so.8)
+- **ICONV** - Enables character set conversion (uses uClibc built-in or libiconv.so.2)
 - **LIBICONV** - Use GNU libiconv instead of uClibc iconv
-- **LIBXML** - Enable libXML support (required for DOM, SimpleXML, etc.)
-- **MBSTRING** - Enable multi-byte string support
-- **MYSQLI** - Enable MySQLi support (requires MySQL)
+- **LIBXML** - Enables XML parsing and manipulation (libxml2.so.16, required for DOM, SimpleXML, etc.)
+- **MBSTRING** - Enables multi-byte string functions (libonig.so.5 for regex support)
+- **MYSQLI** - Enables MySQL/MariaDB database access (libmysqlclient.so or libmariadb.so)
 - **OPCACHE** - Enable OPcache bytecode cache
-- **OPENSSL** - Enable OpenSSL support
+- **OPENSSL** - Enables cryptography and SSL/TLS (libssl.so.3, libcrypto.so.3)
 - **PCNTL** - Enable process control functions
 - **PDO** - Enable PHP Data Objects
-- **PDO_SQLITE** - Enable PDO SQLite driver
+- **PDO_SQLITE** - Enables SQLite database access via PDO (libsqlite3.so.3)
 - **SESSION** - Enable session handling
-- **SIMPLEXML** - Enable SimpleXML
+- **SIMPLEXML** - Enables simplified XML parsing (requires libxml2.so.16)
 - **SOCKETS** - Enable socket functions
-- **SQLITE3** - Enable SQLite3 support
+- **SQLITE3** - Enables SQLite3 database access (libsqlite3.so.3)
 - **SYSVIPC** - Enable System V IPC support (semaphores, shared memory, messages)
 - **TOKENIZER** - Enable tokenizer
-- **ZLIB** - Enable zlib compression
+- **ZLIB** - Enables zlib compression/decompression (libz.so.1)
+- **ZIP** - Enables ZIP archive handling (built-in with zlib support)
 
 ## Build Notes
+
+### Library Dependencies
+
+PHP 8.4.1 has the following library dependencies:
+
+**Core Libraries (always required):**
+- `libxml2.so.16` - XML parsing (with HTML5 support)
+- `libpcre2-8.so` - Perl Compatible Regular Expressions
+- `libonig.so.5` - Oniguruma regex library (for mbstring)
+- `libintl.so.8` - Gettext internationalization
+- `libz.so.1` - Zlib compression
+
+**Optional Libraries (enabled via menuconfig):**
+- `libcurl.so.4` - HTTP/HTTPS/FTP client (CURL extension)
+- `libgd.so.3` - Image manipulation (GD extension)
+  - Requires: `libpng.so`, `libjpeg.so`, `libfreetype.so`
+- `libiconv.so.2` - Character set conversion (ICONV extension, alternative to uClibc)
+- `libsqlite3.so.3` - SQLite database (SQLite3 and PDO_SQLITE extensions)
+- `libssl.so.3` & `libcrypto.so.3` - Cryptography and SSL/TLS (OpenSSL extension)
+- `libmysqlclient.so` or `libmariadb.so` - MySQL/MariaDB (MySQLi extension)
+
+All libraries can be externalized to save space in the main firmware image. See the "External processing" section in `make menuconfig`.
 
 ### libxml2 Dependency
 

@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libsqlite3
 	default n
 	help
 		Esternalizza il seguente file:
-		 ${FREETZ_LIBRARY_DIR}/libsqlite3.so.0 (versione 3.50.4)
+		 ${FREETZ_LIBRARY_DIR}/libsqlite3.so.x.x.x
 

@@ -4,4 +4,4 @@ config EXTERNAL_FREETZ_LIB_libatomic
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libatomic.so.1.2.0
+		 ${FREETZ_LIBRARY_DIR}/libatomic.so.x.x.x
