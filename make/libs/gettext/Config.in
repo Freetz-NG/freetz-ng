@@ -1,5 +1,5 @@
 config FREETZ_LIB_libintl
-	bool "gettext (libintl.so)"
+	bool "Intl (libintl.so)"
 	select FREETZ_LIB_libiconv if FREETZ_TARGET_UCLIBC_0_9_28
 	default n
 	help
