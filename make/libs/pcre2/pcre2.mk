@@ -25,6 +25,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-pcre2-8
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2-16
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2-32
 $(PKG)_CONFIGURE_OPTIONS += --enable-unicode
+$(PKG)_CONFIGURE_OPTIONS += --enable-jit
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2test-libreadline
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2test-libedit
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2grep-libz
