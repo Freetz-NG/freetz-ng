@@ -1,8 +1,23 @@
 config FREETZ_PACKAGE_ICONV
-	bool "iconv 1.13.1 (binary only) - DEPRECATED"
-	depends on FREETZ_TARGET_UCLIBC_0_9_28
+	bool "iconv 1.13.1/1.18 (binary only)"
 	select FREETZ_LIB_libiconv
 	default n
 	help
 		A program for converting text from one encoding to another.
+
+if FREETZ_PACKAGE_ICONV
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_ICONV_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_ICONV_VERSION_ABANDON
+			bool "1.13.1"
+
+		config FREETZ_PACKAGE_ICONV_VERSION_CURRENT
+			bool "1.18"
+
+	endchoice
+
+endif # FREETZ_PACKAGE_ICONV
 

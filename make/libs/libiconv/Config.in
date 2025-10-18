@@ -21,4 +21,3 @@ if FREETZ_LIB_libiconv
 	endchoice
 
 endif # FREETZ_LIB_libiconv
-

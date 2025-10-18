@@ -5,4 +5,3 @@ config EXTERNAL_FREETZ_LIB_libiconv
 	help
 		externals the following file(s):
 		 ${FREETZ_LIBRARY_DIR}/libiconv.so.2.7.0
-
