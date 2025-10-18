@@ -1,11 +1,25 @@
 config FREETZ_PACKAGE_STRACE
-	bool "strace 4.9/5.0/6.17 (binary only)"
+	bool "strace 4.9/5.0/6.17 - System call tracer"
 	default n
 	help
 		strace - trace system calls and signals
 
 		strace is a system call tracer, i.e. a debugging tool which prints out
-		a trace of all the system calls made by a another process/program.
+		a trace of all the system calls made by another process/program.
+		
+		Perfect for:
+		- Debugging application behavior
+		- Finding missing libraries or files
+		- Analyzing system call performance
+		- Troubleshooting permission issues
+		- Understanding program execution flow
+		
+		Size: ~1.3 MB (can be externalized to save flash memory)
+		
+		Example usage:
+		  strace ./myprogram
+		  strace -p <pid>
+		  strace -e open,read,write ./myprogram
 
 if FREETZ_PACKAGE_STRACE
 

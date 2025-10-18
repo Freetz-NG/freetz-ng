@@ -1,7 +1,10 @@
 config FREETZ_PACKAGE_LDD
-	bool "ldd 0.1 (binary only) - DEPRECATED"
+	bool "ldd 1.0.55 (from uClibc-ng)"
 	default n
 	help
 		ldd prints the shared libraries required by each program or shared
 		library specified on the command line.
+		
+		This version comes from uClibc-ng 1.0.55 and supports 28+ architectures
+		including modern ARM64, RISC-V, and improved MIPS support.
 

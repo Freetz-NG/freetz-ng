@@ -5,4 +5,10 @@ config EXTERNAL_FREETZ_PACKAGE_UTIL_LINUX
 	help
 		externals the following file(s):
 		 /sbin/blkid-util-linux
+		 /sbin/lsblk
+		 /sbin/findmnt
+		 /sbin/losetup-util-linux
+		 /sbin/mkswap-util-linux
+		 /sbin/swapon-util-linux
+		 /sbin/swapoff-util-linux
 

@@ -1,0 +1,14 @@
+config EXTERNAL_FREETZ_PACKAGE_FILE
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_FILE && EXTERNAL_SUBDIRS
+	bool "file (externalization recommended)"
+	default n
+	help
+		Externalize file command to USB storage.
+		
+		Recommended for devices with limited flash memory.
+		The file package includes magic database and can be stored
+		on external storage to save internal flash space.
+		
+		Files externalized:
+		- /usr/bin/file
+		- /usr/share/misc/magic.mgc (magic database)

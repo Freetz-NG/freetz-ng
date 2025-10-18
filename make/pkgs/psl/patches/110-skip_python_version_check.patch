@@ -1,0 +1,13 @@
+--- a/configure
++++ b/configure
+@@ -13394,7 +13394,9 @@
+ 
+ 
+ 
+-        if test -n "$PYTHON"; then
++        # Skip Python version check in cross-compilation
++        am_cv_python_version=3.12
++        if false; then
+       # If the user set $PYTHON, use it and don't search something else.
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $PYTHON version is >= 2.7" >&5
+ printf %s "checking whether $PYTHON version is >= 2.7... " >&6; }

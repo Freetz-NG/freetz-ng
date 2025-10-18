@@ -1,11 +1,24 @@
 config EXTERNAL_FREETZ_PACKAGE_PYTHON3
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_PYTHON3 && EXTERNAL_SUBDIRS
-	bool "python3"
-	default n
+	bool "Python 3 (binaries + libraries, externalization required)"
+	default y
 	help
-		externals the following file(s):
-		 /usr/bin/python3.13.bin
-		 /usr/include/python3.13/
-		 /usr/lib/python313.zip (if exists)
-		 /usr/lib/python3.13/
+		Externalize all Python 3 components to USB storage.
+		
+		WARNING: Python 3 is ~10-20 MB and MUST be externalized.
+		This option externalizes ALL Python 3 files including:
+		
+		Binaries:
+		 - /usr/bin/python3.13.bin
+		
+		Libraries:
+		 - ${FREETZ_LIBRARY_DIR}/libpython3.13.so.1.0
+		
+		Python modules and data:
+		 - /usr/include/python3.13/
+		 - /usr/lib/python313.zip (if exists)
+		 - /usr/lib/python3.13/
+		
+		This single checkbox externalizes everything to save
+		router's limited flash memory space.
 

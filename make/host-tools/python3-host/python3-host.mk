@@ -15,6 +15,9 @@ $(PKG)_SITE_PACKAGES:=$(HOST_TOOLS_DIR)/usr/lib/python$($(PKG)_MAJOR_VERSION)/si
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
 $(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$($(PKG)_MAJOR_VERSION)
 
+# Define HOST_PYTHON3_BIN for other packages to use
+HOST_PYTHON3_BIN:=$(HOST_TOOLS_DIR)/usr/bin/python3
+
 # python quirk: CFLAGS and OPT flags passed here are then used while cross-compiling -> use some target neutral flags
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
 
@@ -47,6 +50,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
 		$(TOOLS_SUBMAKE) -C $(PYTHON3_HOST_DIR) \
 		DESTDIR="$(HOST_TOOLS_DIR)" \
 		commoninstall bininstall maninstall )
+	ln -sf python$($(PKG)_MAJOR_VERSION) $(HOST_TOOLS_DIR)/usr/bin/python3
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 

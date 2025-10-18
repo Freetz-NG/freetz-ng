@@ -8,3 +8,16 @@ cpu_family        = 'mips'
 cpu               = 'mips'
 endian            = 'big'
 
+[built-in options]
+prefix            = '/usr'
+
+[properties]
+needs_exe_wrapper = true
+longdouble_format = 'IEEE_DOUBLE_BE'
+
+[binaries]
+c                 = 'mips-linux-uclibc-gcc'
+cpp               = 'mips-linux-uclibc-g++-wrapper'
+ar                = 'mips-linux-uclibc-ar'
+strip             = 'mips-linux-uclibc-strip'
+pkgconfig         = 'pkg-config'

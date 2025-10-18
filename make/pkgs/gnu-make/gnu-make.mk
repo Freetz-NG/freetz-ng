@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.2.1)
-$(PKG)_SOURCE:=make-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589
+$(call PKG_INIT_BIN, 4.4.1)
+$(PKG)_SOURCE:=make-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3
 $(PKG)_SITE:=@GNU/make
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/make
@@ -12,7 +12,10 @@ $(PKG)_CONFIGURE_ENV += make_cv_sys_gnu_glob=no
 $(PKG)_CONFIGURE_ENV += GLOBINC='-Iglob/'
 $(PKG)_CONFIGURE_ENV += GLOBLIB=glob/libglob.a
 
+# Only define download rules if make-host is not being built
+ifndef MAKE_HOST_VERSION
 $(PKG_SOURCE_DOWNLOAD)
+endif
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 

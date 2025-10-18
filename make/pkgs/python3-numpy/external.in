@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_PACKAGE_PYTHON3_NUMPY
+	depends on FREETZ_PACKAGE_PYTHON3_NUMPY
+	bool "NumPy (externalization required)"
+	default y
+	help
+		NumPy is large (~15-20 MB) and MUST be externalized to USB storage.
+		
+		This option is automatically selected when you enable NumPy.

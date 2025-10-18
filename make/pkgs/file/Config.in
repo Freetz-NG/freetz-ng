@@ -1,0 +1,15 @@
+config FREETZ_PACKAGE_FILE
+	bool "file 5.45 (binary only)"
+	default n
+	help
+		file - determine file type
+
+		The file command is used to identify a particular file according to the
+		type of data contained by the file. File can identify many different
+		file types, including ELF binaries, system libraries, RPM packages, and
+		many different graphics formats.
+
+		This utility is essential for analyzing binaries and file formats on the
+		target system, especially useful for debugging cross-compilation issues.
+		
+		Can be externalized to save flash memory.

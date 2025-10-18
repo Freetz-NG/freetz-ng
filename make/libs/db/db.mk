@@ -18,6 +18,7 @@ $(PKG)_MUTEX_i686:=*x86/gcc-assembly
 $(PKG)_MUTEX_mips:=MIPS/gcc-assembly
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
+$(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --with-mutex='$($(PKG)_MUTEX_$(call qstrip,$(FREETZ_TARGET_ARCH)))'
 $(PKG)_CONFIGURE_OPTIONS += --disable-cxx
 $(PKG)_CONFIGURE_OPTIONS += --disable-compat185

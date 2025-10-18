@@ -21,7 +21,12 @@ $(PKG)_LIBRARY_TARGET   := $($(PKG)_TARGET_LIBDIR)/$($(PKG)_LIBNAME)
 
 $(PKG)_DEPENDS_ON += python3-host
 
-$(PKG)_CONFIGURE_ENV += PYTHON=python3
+<<<<<<< Updated upstream
+$(PKG)_CONFIGURE_ENV += PYTHON=$(HOST_TOOLS_DIR)/usr/bin/python3
+=======
+$(PKG)_CONFIGURE_ENV += PYTHON=$(HOST_PYTHON3_BIN)
+$(PKG)_CONFIGURE_ENV += PYTHON3=$(HOST_PYTHON3_BIN)
+>>>>>>> Stashed changes
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
@@ -43,7 +48,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(PSL_DIR)
+	$(SUBMAKE) -C $(PSL_DIR) PYTHON=$(HOST_PYTHON3_BIN)
 	@touch $@
 
 $($(PKG)_LIST_BUILD) $($(PKG)_BINARY_BUILD) $($(PKG)_LIBRARY_BUILD): $($(PKG)_DIR)/.compiled

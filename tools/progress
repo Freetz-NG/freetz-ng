@@ -1,0 +1,528 @@
+#!/bin/bash
+# Determine script and project root directories
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+# Freetz-NG Build Progress Monitor
+# Monitor cross-compilation progress for Freetz-NG toolchain
+
+# Color definitions
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+# Default settings
+SHOW_LEGEND=true
+SHOW_HEADER=true
+SHOW_PACKAGES=true
+SHOW_SUMMARY=true
+SHOW_PROGRESS_BAR=true
+OUTPUT_FORMAT="terminal"
+
+# Parse command line options
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --markdown)
+            OUTPUT_FORMAT="markdown"
+            shift
+            ;;
+        --summary-only)
+            SHOW_PACKAGES=false
+            SHOW_LEGEND=false
+            SHOW_PROGRESS_BAR=false
+            shift
+            ;;
+        --no-legend)
+            SHOW_LEGEND=false
+            shift
+            ;;
+        --no-header)
+            SHOW_HEADER=false
+            shift
+            ;;
+        --no-summary)
+            SHOW_SUMMARY=false
+            SHOW_PROGRESS_BAR=false
+            shift
+            ;;
+        --compact)
+            SHOW_LEGEND=false
+            SHOW_HEADER=false
+            SHOW_PROGRESS_BAR=false
+            shift
+            ;;
+        --help|-h)
+            echo "Freetz-NG Build Progress Monitor"
+            echo ""
+            echo "Usage: $0 [OPTIONS]"
+            echo ""
+            echo "Options:"
+            echo "  --markdown        Output in Markdown table format"
+            echo "  --summary-only    Show only summary (no package list, no legend)"
+            echo "  --no-legend       Hide status legend"
+            echo "  --no-header       Hide column headers"
+            echo "  --no-summary      Hide summary section"
+            echo "  --compact         Equivalent to --no-legend --no-header"
+            echo "  --help, -h        Show this help message"
+            echo ""
+            echo "Default: Full output with colored terminal display"
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Use --help for usage information"
+            exit 1
+            ;;
+    esac
+done
+
+# Function to detect build architecture
+get_build_arch() {
+    local arch_dir=$(find "$ROOT_DIR/source" -maxdepth 1 -type d -name "target-*" | head -1)
+    if [ -n "$arch_dir" ]; then
+        basename "$arch_dir"
+    else
+        echo ""
+    fi
+}
+
+# Function to get package status from directory
+get_status_from_dir() {
+    local dir=$1
+    local pkg_name=$2
+    local build_arch=$3
+    
+    # Priority 1: Check packages directory first (most reliable for installed packages)
+    if [ -n "$build_arch" ]; then
+        local pkg_dir="$ROOT_DIR/packages/$build_arch"
+        if [ -d "$pkg_dir" ]; then
+            if ls "$pkg_dir"/.${pkg_name}_* >/dev/null 2>&1 || \
+               ls "$pkg_dir"/.${pkg_name}-* >/dev/null 2>&1 || \
+               find "$pkg_dir" -name "*${pkg_name}*" -type f | grep -q .; then
+                return 4  # Compiled and installed
+            fi
+            # Special case for libstdcxx -> libstdc++
+            if [ "$pkg_name" = "libstdcxx" ]; then
+                if find "$pkg_dir" -name "*libstdc++*" -type f | grep -q .; then
+                    return 4
+                fi
+            fi
+        fi
+    fi
+    
+    # Priority 2: Check source directory markers
+    if [ ! -d "$dir" ]; then
+        return 0  # Not started
+    fi
+    
+    # Handle placeholder directories
+    local file_count=$(find "$dir" -type f 2>/dev/null | wc -l)
+    if [ "$file_count" -lt 5 ]; then
+        case "$pkg_name" in
+            libstdcxx|libgcc_s|libatomic)
+                if ls "$ROOT_DIR/build/modified/filesystem/usr/lib/freetz/lib*.so*" >/dev/null 2>&1; then
+                    return 4
+                fi
+                ;;
+        esac
+    fi
+    
+    if [ -f "$dir/.compiled" ]; then
+        return 4  # Compiled
+    elif [ -f "$dir/.configured" ]; then
+        if find "$dir" -name "*.so" -o -name "*.a" 2>/dev/null | grep -q .; then
+            return 4  # Has compiled libraries
+        fi
+        return 2  # Configured
+    elif [ -f "$dir/.unpacked" ]; then
+        return 1  # Unpacked
+    elif [ -d "$dir" ] && [ "$(ls -A $dir 2>/dev/null)" ]; then
+        local file_count=$(find "$dir" -type f 2>/dev/null | wc -l)
+        if [ "$file_count" -gt 10 ]; then
+            return 1
+        fi
+    fi
+    
+    return 0  # Not started
+}
+
+# Function to get complexity (1-10 stars)
+get_complexity() {
+    local dir=$1
+    if [ ! -d "$dir" ]; then
+        echo "1"
+        return
+    fi
+    
+    local file_count=$(find "$dir" -type f 2>/dev/null | wc -l)
+    
+    if [ "$file_count" -lt 100 ]; then
+        echo "1"
+    elif [ "$file_count" -lt 300 ]; then
+        echo "2"
+    elif [ "$file_count" -lt 500 ]; then
+        echo "3"
+    elif [ "$file_count" -lt 1000 ]; then
+        echo "4"
+    elif [ "$file_count" -lt 2000 ]; then
+        echo "5"
+    elif [ "$file_count" -lt 3000 ]; then
+        echo "6"
+    elif [ "$file_count" -lt 5000 ]; then
+        echo "7"
+    elif [ "$file_count" -lt 7000 ]; then
+        echo "8"
+    elif [ "$file_count" -lt 10000 ]; then
+        echo "9"
+    else
+        echo "10"
+    fi
+}
+
+# Function to get timestamp
+get_timestamp() {
+    local dir=$1
+    if [ ! -d "$dir" ]; then
+        echo "0"
+        return
+    fi
+    
+    local newest=$(find "$dir" -type f -printf '%T@\n' 2>/dev/null | sort -n | tail -1)
+    if [ -z "$newest" ]; then
+        echo "0"
+    else
+        echo "$newest"
+    fi
+}
+
+BUILD_ARCH=$(get_build_arch)
+
+if [ -z "$BUILD_ARCH" ]; then
+    echo "Error: Could not detect build architecture"
+    exit 1
+fi
+
+# Scan actual packages in source directory instead of predefined list
+declare -a PKG_INFO
+COMPLETED=0
+IN_PROGRESS=0
+NOT_STARTED=0
+TOTAL=0
+
+# Find all package directories in source
+while IFS= read -r dir; do
+    [ -z "$dir" ] && continue
+    
+    pkg_full=$(basename "$dir")
+    
+    # Skip the parent directory itself
+    [ "$pkg_full" = "$BUILD_ARCH" ] && continue
+    
+    # Skip kernel references
+    [[ "$pkg_full" =~ ^ref- ]] && continue
+    
+    # Normalize package name (remove version suffix like -1.2.3, but keep python3, gtk2, etc.)
+    # Pattern: dash followed by digit and dot (version pattern)
+    pkg_base=$(echo "$pkg_full" | sed 's/-[0-9]\+\.[0-9].*//')
+    
+    # If no version was found (no dash-digit-dot pattern), use the full name
+    if [ "$pkg_base" = "$pkg_full" ]; then
+        # Try alternative pattern: dash followed by just version numbers at the end
+        pkg_base=$(echo "$pkg_full" | sed 's/-[0-9]\+$//')
+    fi
+    
+    # Get status
+    get_status_from_dir "$dir" "$pkg_base" "$BUILD_ARCH"
+    status=$?
+    
+    # Get complexity
+    complexity=$(get_complexity "$dir")
+    
+    # Get timestamp
+    timestamp=$(get_timestamp "$dir")
+    
+    case $status in
+        0) percentage=0 ;;
+        1) percentage=0 ;;
+        2) percentage=0 ;;
+        3) percentage=50 ;;
+        4) percentage=100 ;;
+    esac
+    
+    if [ $status -eq 4 ]; then
+        ((COMPLETED++))
+    elif [ $status -ge 1 ] && [ $status -le 3 ]; then
+        ((IN_PROGRESS++))
+    else
+        ((NOT_STARTED++))
+    fi
+    
+    ((TOTAL++))
+    
+    # Store info
+    PKG_INFO+=("$timestamp|$pkg_base|$status|$percentage|$complexity")
+    
+done < <(find "$ROOT_DIR/source/${BUILD_ARCH}" -maxdepth 1 -type d 2>/dev/null | sort)
+
+IFS=$'\n' SORTED_PKG_INFO=($(sort -t'|' -k1 -n <<<"${PKG_INFO[*]}"))
+unset IFS
+
+CURRENT_PKG=""
+CURRENT_TIMESTAMP=0
+for info in "${SORTED_PKG_INFO[@]}"; do
+    IFS='|' read -r timestamp pkg status percentage complexity <<< "$info"
+    if [ $status -ge 1 ] && [ $status -le 3 ]; then
+        if (( $(echo "$timestamp > $CURRENT_TIMESTAMP" | bc -l 2>/dev/null || echo "0") )); then
+            CURRENT_TIMESTAMP=$timestamp
+            CURRENT_PKG=$pkg
+        fi
+    fi
+done
+
+# Override CURRENT_PKG by detecting active 'make' processes in package dirs
+for m in $(pgrep -f "make"); do
+    cwd=$(readlink /proc/$m/cwd 2>/dev/null || true)
+    if [[ $cwd == "$ROOT_DIR/source/${BUILD_ARCH}/"* && "$cwd" != "$ROOT_DIR/source/${BUILD_ARCH}" ]]; then
+        CURRENT_PKG=$(basename "$cwd")
+        break
+    fi
+done
+
+# Firmware status
+FIRMWARE_STATUS="Not started"
+FIRMWARE_STATUS_TEXT="Not started"
+FIRMWARE_PERCENTAGE=0
+FIRMWARE_COLOR=$RED
+FIRMWARE_SYMBOL="✗"
+
+if [ -f "$ROOT_DIR/build/.unpacked" ]; then
+    FIRMWARE_STATUS="Unpacked"
+    FIRMWARE_STATUS_TEXT="Unpacked"
+    FIRMWARE_PERCENTAGE=33
+    FIRMWARE_COLOR=$YELLOW
+    FIRMWARE_SYMBOL="→"
+fi
+
+if [ -f "$ROOT_DIR/build/.modified" ]; then
+    FIRMWARE_STATUS="Modified"
+    FIRMWARE_STATUS_TEXT="Modified"
+    FIRMWARE_PERCENTAGE=66
+    FIRMWARE_COLOR=$YELLOW
+    FIRMWARE_SYMBOL="→"
+fi
+
+if [ -f "$ROOT_DIR/build/.image" ] || ls "$ROOT_DIR/images"/*.image >/dev/null 2>&1; then
+    FIRMWARE_STATUS="Complete"
+    FIRMWARE_STATUS_TEXT="Complete"
+    FIRMWARE_PERCENTAGE=100
+    FIRMWARE_COLOR=$GREEN
+    FIRMWARE_SYMBOL="✓"
+else
+    if pgrep -f "make.*freetz" >/dev/null || pgrep -f "make.*firmware" >/dev/null || pgrep -f "make.*image" >/dev/null; then
+        if [ "$FIRMWARE_STATUS" = "Modified" ]; then
+            FIRMWARE_STATUS="Packing"
+            FIRMWARE_STATUS_TEXT="Packing/Signing..."
+            FIRMWARE_PERCENTAGE=80
+            FIRMWARE_COLOR=$CYAN
+            FIRMWARE_SYMBOL="⚙"
+        elif [ "$FIRMWARE_STATUS" = "Unpacked" ]; then
+            FIRMWARE_STATUS="Modifying"
+            FIRMWARE_STATUS_TEXT="Modifying..."
+            FIRMWARE_PERCENTAGE=50
+            FIRMWARE_COLOR=$CYAN
+            FIRMWARE_SYMBOL="⚙"
+        else
+            FIRMWARE_STATUS="Unpacking"
+            FIRMWARE_STATUS_TEXT="Unpacking..."
+            FIRMWARE_PERCENTAGE=10
+            FIRMWARE_COLOR=$CYAN
+            FIRMWARE_SYMBOL="⚙"
+        fi
+    else
+        if [ "$FIRMWARE_STATUS" = "Modified" ]; then
+            FIRMWARE_STATUS="PACK_FAILED"
+            FIRMWARE_STATUS_TEXT="PACK FAILED"
+            FIRMWARE_COLOR=$RED
+            FIRMWARE_SYMBOL="✖"
+        elif [ "$FIRMWARE_STATUS" = "Unpacked" ]; then
+            FIRMWARE_STATUS="MODIFY_FAILED"
+            FIRMWARE_STATUS_TEXT="MODIFY FAILED"
+            FIRMWARE_PERCENTAGE=33
+            FIRMWARE_COLOR=$RED
+            FIRMWARE_SYMBOL="✖"
+        fi
+    fi
+fi
+
+TOTAL_ITEMS=$((TOTAL + 1))
+COMPLETED_ITEMS=$COMPLETED
+if [ "$FIRMWARE_STATUS" = "Complete" ]; then
+    ((COMPLETED_ITEMS++))
+elif [[ "$FIRMWARE_STATUS" =~ ^(Packing|Modifying|Unpacking)$ ]]; then
+    IN_PROGRESS=$((IN_PROGRESS + 1))
+fi
+OVERALL_PERCENTAGE=$(( (COMPLETED_ITEMS * 100) / TOTAL_ITEMS ))
+
+if [ "$OUTPUT_FORMAT" = "terminal" ]; then
+    if $SHOW_HEADER; then
+        echo -e "${BOLD}═══════════════════════════════════════════════════════════${NC}"
+        echo -e "${BOLD}       Freetz-NG Build Progress Monitor${NC}"
+        echo -e "${BOLD}═══════════════════════════════════════════════════════════${NC}"
+        echo ""
+        echo -e "Build Architecture: ${CYAN}$BUILD_ARCH${NC}"
+        echo ""
+        echo -e "Total packages: ${BOLD}$TOTAL${NC}"
+        echo ""
+    fi
+    
+    if $SHOW_PACKAGES; then
+        if $SHOW_HEADER; then
+            # Header with space for symbol column (2 chars: symbol + space)
+            printf "  %-37s %-15s %-10s %-13s\n" "Package" "Status" "Progress" "Complexity"
+            echo "────────────────────────────────────────────────────────────────────────────────"
+        fi
+        
+        for info in "${SORTED_PKG_INFO[@]}"; do
+            IFS='|' read -r timestamp pkg status percentage complexity <<< "$info"
+            
+            case $status in
+                0) color=$RED; status_text="Not started"; symbol="${RED}✗${NC}" ;;
+                1) color=$YELLOW; status_text="Unpacked"; symbol="${YELLOW}→${NC}" ;;
+                2) color=$YELLOW; status_text="Configured"; symbol="${YELLOW}→${NC}" ;;
+                3) color=$CYAN; status_text="Compiling..."; symbol="${CYAN}⚙${NC}" ;;
+                4) color=$GREEN; status_text="Compiled"; symbol="${GREEN}✓${NC}" ;;
+            esac
+            
+            stars=$(printf '★%.0s' $(seq 1 $complexity))
+            
+            if [ "$pkg" = "$CURRENT_PKG" ]; then
+                # Currently compiling - add markers around package name
+                printf "%b %-37s %b%-15s%b %-10s %-12s\n" \
+                    "${CYAN}⚙ ${MAGENTA}►${NC}" "${pkg}" \
+                    "$color" "$status_text" "${NC}" \
+                    "$percentage%" "$stars"
+            else
+                # Regular package - symbol already has color
+                printf "%b %-37s %b%-15s%b %-10s %-12s\n" \
+                    "$symbol" "$pkg" \
+                    "$color" "$status_text" "${NC}" \
+                    "$percentage%" "$stars"
+            fi
+        done
+        
+        echo ""
+        printf "%b %-37s %b%-15s%b %-10s\n" \
+            "${FIRMWARE_COLOR}${FIRMWARE_SYMBOL}${NC}" "Firmware Image" \
+            "${FIRMWARE_COLOR}" "$FIRMWARE_STATUS_TEXT" "${NC}" \
+            "$FIRMWARE_PERCENTAGE%"
+        echo ""
+        echo "────────────────────────────────────────────────────────────────────────────────"
+        echo ""
+    fi
+    
+    if $SHOW_SUMMARY; then
+        echo -e "${BOLD}Summary:${NC}"
+        echo -e "  Completed:         ${GREEN}$COMPLETED${NC} / $TOTAL_ITEMS"
+        echo -e "  In Progress:       ${CYAN}$IN_PROGRESS${NC}"
+        echo -e "  Not Started:       ${RED}$NOT_STARTED${NC}"
+        if [ -n "$CURRENT_PKG" ]; then
+            echo -e "  Currently Compiling: ${CYAN}⚙ $CURRENT_PKG${NC}"
+        fi
+        echo ""
+    fi
+    
+    if $SHOW_PROGRESS_BAR; then
+        echo -e "${BOLD}Overall Progress: $OVERALL_PERCENTAGE%${NC}"
+        
+        BAR_WIDTH=50
+        FILLED=$(( OVERALL_PERCENTAGE * BAR_WIDTH / 100 ))
+        EMPTY=$(( BAR_WIDTH - FILLED ))
+        
+        # Fix rounding for 100% - ensure bar is completely filled
+        if [ "$OVERALL_PERCENTAGE" -eq 100 ]; then
+            FILLED=$BAR_WIDTH
+            EMPTY=0
+        fi
+        
+        printf "["
+        printf "${GREEN}█%.0s${NC}" $(seq 1 $FILLED)
+        printf "░%.0s" $(seq 1 $EMPTY)
+        printf "] $OVERALL_PERCENTAGE%%\n"
+        echo ""
+        
+        if $SHOW_HEADER; then
+            echo -e "${BOLD}═══════════════════════════════════════════════════════════${NC}"
+            echo ""
+        fi
+    fi
+    
+    if $SHOW_LEGEND; then
+        STEP1_STATUS="✗ Not started"
+        STEP1_COLOR=$RED
+        STEP2_STATUS="✗ Not started"
+        STEP2_COLOR=$RED
+        STEP3_STATUS="✗ Not started"
+        STEP3_COLOR=$RED
+        
+    if [ -f "$ROOT_DIR/build/.unpacked" ]; then
+            STEP1_STATUS="✓ Completed"
+            STEP1_COLOR=$GREEN
+        fi
+        
+    if [ -f "$ROOT_DIR/build/.modified" ]; then
+            STEP2_STATUS="✓ Completed"
+            STEP2_COLOR=$GREEN
+        fi
+        
+    if [ -f "$ROOT_DIR/build/.image" ] || ls "$ROOT_DIR/images"/*.image >/dev/null 2>&1; then
+            STEP3_STATUS="✓ Completed"
+            STEP3_COLOR=$GREEN
+        elif [[ "$FIRMWARE_STATUS" == "PACK_FAILED" ]]; then
+            STEP3_STATUS="✖ FAILED"
+            STEP3_COLOR=$RED
+        elif [[ "$FIRMWARE_STATUS" == "Packing" ]]; then
+            STEP3_STATUS="⚙ In progress..."
+            STEP3_COLOR=$CYAN
+        fi
+        
+        if [[ "$FIRMWARE_STATUS" == "MODIFY_FAILED" ]]; then
+            STEP2_STATUS="✖ FAILED"
+            STEP2_COLOR=$RED
+        elif [[ "$FIRMWARE_STATUS" == "Modifying" ]]; then
+            STEP2_STATUS="⚙ In progress..."
+            STEP2_COLOR=$CYAN
+        fi
+        
+        if [[ "$FIRMWARE_STATUS" == "Unpacking" ]]; then
+            STEP1_STATUS="⚙ In progress..."
+            STEP1_COLOR=$CYAN
+        fi
+        
+        echo -e "${BOLD}Firmware Build Steps:${NC}"
+        echo -e "  STEP 1: UNPACK      - ${STEP1_COLOR}${STEP1_STATUS}${NC}"
+        echo -e "  STEP 2: MODIFY      - ${STEP2_COLOR}${STEP2_STATUS}${NC}"
+        echo -e "  STEP 3: PACK/SIGN   - ${STEP3_COLOR}${STEP3_STATUS}${NC}"
+        echo ""
+        
+        echo -e "${BOLD}Package Status:${NC}"
+        echo -e "  ${RED}✗${NC} Not started  - Package not yet downloaded/extracted (0%)"
+        echo -e "  ${YELLOW}→${NC} Unpacked     - Source code extracted (0%)"
+        echo -e "  ${YELLOW}→${NC} Configured   - ./configure completed, ready to compile (0%)"
+        echo -e "  ${CYAN}⚙${NC} Compiling... - Actively compiling source code (50%)"
+        echo -e "  ${GREEN}✓${NC} Compiled     - Build complete (100%)"
+        echo ""
+        echo -e "${BOLD}Firmware Image Status:${NC}"
+        echo -e "  ${RED}✗${NC} Not started        - Firmware build not initiated (0%)"
+        echo -e "  ${CYAN}⚙${NC} Unpacking...       - Extracting original firmware (10%)"
+        echo -e "  ${YELLOW}→${NC} Unpacked           - Firmware extracted, ready to modify (33%)"
+        echo -e "  ${CYAN}⚙${NC} Modifying...       - Applying patches and packages (50%)"
+        echo -e "  ${YELLOW}→${NC} Modified           - Modifications applied, ready to pack (66%)"
+        echo -e "  ${CYAN}⚙${NC} Packing/Signing... - Creating and signing image (80%)"
+        echo -e "  ${GREEN}✓${NC} Complete           - Image signed and ready (100%)"
+        echo -e "  ${RED}✖${NC} Failed             - Build step failed (check logs)"
+    fi
+fi
