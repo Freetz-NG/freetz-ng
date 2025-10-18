@@ -1,0 +1,15 @@
+--- configure
++++ configure
+@@ -66914,8 +66914,10 @@
+   if test "$cross_compiling" = yes
+ then :
+ 
+-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no, cannot detect working ttyname_r() when cross compiling. posix_ttyname() will be thread-unsafe" >&5
+-printf "%s\n" "no, cannot detect working ttyname_r() when cross compiling. posix_ttyname() will be thread-unsafe" >&6; }
++#evaluated by running test program on target platform
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++printf "%s\n" "yes" >&6; }
++printf "%s\n" "#define HAVE_TTYNAME_R 1" >>confdefs.h
+ 
+ else $as_nop
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext

@@ -1497,7 +1497,7 @@ Latest changes
     * OpenVPN 2.4.10/2.5.0
     * pcre 8.43
     * PCSC-lite (pcscd) 1.9.0
-    * php 5.6.40
+    * php 8.3.25
     * privoxy 3.0.28
     * polarssl 1.2.19/1.3.22
     * polipo 1.1.1

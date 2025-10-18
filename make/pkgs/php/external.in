@@ -28,7 +28,7 @@ config EXTERNAL_FREETZ_PACKAGE_PHP_apxs2
 	default n
 	help
 		externals the following file(s):
-		 /usr/lib/apache2/libphp5.so
+		 /usr/lib/apache2/libphp.so
 
 endmenu
 

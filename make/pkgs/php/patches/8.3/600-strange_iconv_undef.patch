@@ -1,6 +1,6 @@
 --- ext/iconv/iconv.c
 +++ ext/iconv/iconv.c
-@@ -52,7 +52,7 @@
+@@ -41,7 +41,7 @@
  #endif
  
  #ifdef HAVE_LIBICONV
@@ -8,4 +8,4 @@
 +/*#undef iconv*/
  #endif
  
- #include "ext/standard/php_smart_str.h"
+ #if defined(__NetBSD__)

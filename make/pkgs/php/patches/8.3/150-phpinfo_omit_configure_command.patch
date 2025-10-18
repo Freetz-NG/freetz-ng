@@ -1,8 +1,8 @@
 --- ext/standard/info.c
 +++ ext/standard/info.c
-@@ -949,7 +949,7 @@
- #ifdef ARCHITECTURE
- 		php_info_print_table_row(2, "Architecture", ARCHITECTURE);
+@@ -834,7 +834,7 @@
+ #ifdef PHP_BUILD_ARCH
+ 		php_info_print_table_row(2, "Architecture", PHP_BUILD_ARCH);
  #endif
 -#ifdef CONFIGURE_COMMAND
 +#if 0

@@ -1,6 +1,7 @@
 config FREETZ_PACKAGE_PHP
-	bool "PHP 5.6.40 (binary only) - DEPRECATED"
+	bool "PHP 8.3.25 (binary only)"
 	select FREETZ_PACKAGE_PHP_cgi
+	select FREETZ_LIB_libonig
 	default n
 	help
 		PHP: Hypertext Preprocessor
@@ -14,10 +15,10 @@ config FREETZ_PACKAGE_PHP
 choice
 	depends on FREETZ_PACKAGE_PHP
 	prompt "version"
-	default FREETZ_PHP_VERSION_5_6
+	default FREETZ_PHP_VERSION_8_3
 
-	config FREETZ_PHP_VERSION_5_6
-		bool "php 5.6.40"
+	config FREETZ_PHP_VERSION_8_3
+		bool "php 8.3.25"
 endchoice
 
 menu "Binaries"
@@ -40,7 +41,6 @@ comment "Apache2 module needs OpenSSL 1.0 or older"
 
 config FREETZ_PACKAGE_PHP_apxs2
 	bool "Apache2 module"
-	depends on FREETZ_OPENSSL_VERSION_10_MAX
 	select FREETZ_LIB_libapr_WITH_DSO
 	select FREETZ_LIB_libpcre
 	select FREETZ_LIB_libcurl            if FREETZ_PACKAGE_PHP_WITH_CURL
@@ -98,32 +98,16 @@ config FREETZ_PACKAGE_PHP_WITH_ICONV
 	help
 		This option enables the ICONV support for PHP
 
-if FREETZ_PACKAGE_PHP_WITH_ICONV
-
-	config FREETZ_PACKAGE_PHP_WITH_LIBICONV
-		bool "prefer libiconv to libc"
-		depends on FREETZ_TARGET_UCLIBC_0_9_28
-		select FREETZ_LIB_libiconv if ! FREETZ_PACKAGE_PHP_STATIC
-		default n
-		help
-			This option causes PHP to use libiconv implementation of iconv function
-			instead of the libc one. Select this option if you need more charsets
-			than supported by libc (ISO-8859-1 and UTF-8 only) or your application
-			relies on libiconv specific features like TRANSLIT, IGNORE, etc.
-
-endif # FREETZ_PACKAGE_PHP_WITH_ICONV
-
-config FREETZ_PACKAGE_PHP_WITH_JSON
-	bool "build with JSON support"
+config FREETZ_PACKAGE_PHP_WITH_LIBICONV
+	depends on FREETZ_PACKAGE_PHP_WITH_ICONV
+	bool "prefer libiconv to libc"
+	select FREETZ_LIB_libiconv if ! FREETZ_PACKAGE_PHP_STATIC
 	default n
 	help
-		This option enables the JSON support for PHP
-
-config FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT
-	bool "build with MEMORY_LIMIT support"
-	default n
-	help
-		This option enables the MEMORY_LIMIT support for PHP
+		This option causes PHP to use libiconv implementation of iconv function
+		instead of the libc one. Select this option if you need more charsets
+		than supported by libc (ISO-8859-1 and UTF-8 only) or your application
+		relies on libiconv specific features like TRANSLIT, IGNORE, etc.
 
 config FREETZ_PACKAGE_PHP_WITH_MHASH
 	bool "build with MHASH support"

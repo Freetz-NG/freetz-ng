@@ -1,3 +1,3 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_PHP_cgi" == "y" ]   && EXTERNAL_FILES+=" /usr/bin/php-cgi"
 [ "$EXTERNAL_FREETZ_PACKAGE_PHP_cli" == "y" ]   && EXTERNAL_FILES+=" /usr/bin/php"
-[ "$EXTERNAL_FREETZ_PACKAGE_PHP_apxs2" == "y" ] && EXTERNAL_FILES+=" /usr/lib/apache2/libphp5.so"
+[ "$EXTERNAL_FREETZ_PACKAGE_PHP_apxs2" == "y" ] && EXTERNAL_FILES+=" /usr/lib/apache2/libphp.so"

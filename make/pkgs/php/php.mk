@@ -1,12 +1,14 @@
-$(call PKG_INIT_BIN, 5.6.40)
+$(call PKG_INIT_BIN, 8.3.25)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH_5.6.40:=1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c
+$(PKG)_HASH_8.3.25:=187b61bb795015adacf53f8c55b44414a63777ec19a776b75fb88614506c0d37
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
-$(PKG)_SITE:=http://de.php.net/distributions,http://de2.php.net/distributions
+$(PKG)_SITE:=https://de.php.net/distributions,http://de2.php.net/distributions
 
 $(PKG)_CATEGORY:=Unstable
 
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+
+$(PKG)_VERSION_MAJOR := $(call GET_STRING_COMPONENT,$(PHP_VERSION),.,1)
 
 $(PKG)_BINARY              := $($(PKG)_DIR)/sapi/cgi/php-cgi
 $(PKG)_TARGET_BINARY       := $($(PKG)_DEST_DIR)/usr/bin/php-cgi
@@ -14,8 +16,8 @@ $(PKG)_TARGET_BINARY       := $($(PKG)_DEST_DIR)/usr/bin/php-cgi
 $(PKG)_CLI_BINARY          := $($(PKG)_DIR)/sapi/cli/php
 $(PKG)_CLI_TARGET_BINARY   := $($(PKG)_DEST_DIR)/usr/bin/php
 
-$(PKG)_APXS2_BINARY        := $($(PKG)_DIR)/libs/libphp5.so
-$(PKG)_APXS2_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/lib/apache2/libphp5.so
+$(PKG)_APXS2_BINARY        := $($(PKG)_DIR)/libs/libphp.so
+$(PKG)_APXS2_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/lib/apache2/libphp.so
 
 $(PKG)_STARTLEVEL=90 # before lighttpd
 
@@ -26,7 +28,6 @@ $(PKG)_EXTRA_LDFLAGS += -all-static
 endif
 
 $(PKG)_DEPENDS_ON += pcre
-$(PKG)_CONFIGURE_OPTIONS += --with-pcre-regex="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-cli
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_PHP_cli),,$($(PKG)_CLI_TARGET_BINARY))
@@ -58,51 +59,34 @@ $(PKG)_CONFIGURE_OPTIONS += --with-gettext="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_ICONV)),y)
-$(PKG)_CONFIGURE_OPTIONS += --with-iconv
-
-$(PKG)_CONFIGURE_ENV += ac_cv_func_iconv=$(if $(FREETZ_PACKAGE_PHP_WITH_LIBICONV),no,yes)
-$(PKG)_CONFIGURE_ENV += ac_cv_func_libiconv=$(if $(FREETZ_PACKAGE_PHP_WITH_LIBICONV),yes,no)
-
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_LIBICONV)),y)
 $(PKG)_DEPENDS_ON += iconv
 $(PKG)_CONFIGURE_ENV += iconv_impl_name=gnu_libiconv
-$(PKG)_CONFIGURE_OPTIONS += --with-iconv-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)$(LIBICONV_PREFIX)"
-$(PKG)_EXTRA_LDFLAGS += -L$(TARGET_TOOLCHAIN_STAGING_DIR)$(LIBICONV_PREFIX)/lib
-else
-$(PKG)_CONFIGURE_ENV += ICONV_IN_LIBC_DIR="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
-$(PKG)_CONFIGURE_OPTIONS += --with-iconv-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 endif
-
 else
 $(PKG)_CONFIGURE_OPTIONS += --without-iconv
 endif
 
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_JSON),--enable-json,--disable-json)
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_LIBXML)),y)
 $(PKG)_DEPENDS_ON += libxml2
-$(PKG)_CONFIGURE_OPTIONS += --with-libxml-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
+$(PKG)_CONFIGURE_ENV += PKG_CONFIG_PATH="$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/pkgconfig"
 endif
-$(PKG)_CONFIGURE_OPTIONS += --without-libexpat-dir #we only want libxml-based XML support to be enabled
 $(PKG)_XML_SUPPORT:=$(if $(FREETZ_PACKAGE_PHP_WITH_LIBXML),enable,disable)
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-xml
-$(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-libxml
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-dom
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-simplexml
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-xmlreader
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-xmlwriter
 
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MHASH),--with-mhash,--without-mhash)
 
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT),--enable-memory-limit,--disable-memory-limit)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MHASH),--with-mhash,--without-mhash)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_PCNTL),--enable-pcntl,--disable-pcntl)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_SESSION),--enable-session,--disable-session)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_SOCKETS),--enable-sockets,--disable-sockets)
-
-$(PKG)_CONFIGURE_OPTIONS += --without-sqlite
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_SQLITE3)),y)
 $(PKG)_DEPENDS_ON += sqlite
@@ -147,9 +131,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_FTP
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_GD
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_GETTEXT
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_ICONV FREETZ_PACKAGE_PHP_WITH_LIBICONV
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_JSON
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_LIBXML FREETZ_LIB_libxml2_WITH_HTML
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_MHASH
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_PCNTL
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PHP_WITH_SESSION

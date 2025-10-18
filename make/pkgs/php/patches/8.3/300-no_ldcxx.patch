@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -115375,7 +115375,7 @@
+@@ -99209,7 +99209,7 @@
  GCC=$lt_save_GCC
  with_gnu_ldcxx=$with_gnu_ld
  with_gnu_ld=$lt_save_with_gnu_ld
