@@ -72,6 +72,7 @@ Latest changes
   - Libraries:
     * harfbuzz 12.1.0
     * openjp2 2.5.4
+    * libyaml 0.2.5
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
