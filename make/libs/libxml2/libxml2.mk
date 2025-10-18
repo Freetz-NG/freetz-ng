@@ -36,7 +36,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-threads=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-zlib="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 $(PKG)_CONFIGURE_OPTIONS += --with-readline=no
 
-$(PKG)_CONFIGURE_OPTIONS += --with-minimum=yes
+$(PKG)_CONFIGURE_OPTIONS += --with-minimum=no
 $(PKG)_CONFIGURE_OPTIONS += --with-http=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-c14n=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-catalog=no
