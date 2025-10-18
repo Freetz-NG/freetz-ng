@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 ssh_firmware_update.py — Freetz-NG FRITZ!Box Update via SSH/SCP
-by Ircama, 2025
 
 Emulates the web interface update process with interactive/batch modes, 
 progress bars, dry-run, debug capabilities, and advanced UX.
@@ -138,6 +137,7 @@ def wait_router_boot(host, password, user=DEFAULT_USER, max_tries=BOOT_WAIT_MAX_
         print('.', end='', flush=True)
         time.sleep(2)
     else:
+        cprint("")
         cerror(f"Timeout waiting for FRITZ!Box to respond to ping ({max_tries * 2}s)")
         return False
     
@@ -164,7 +164,7 @@ def count_tar_files(tarfile):
     """Count total files in tar archive"""
     try:
         output = subprocess.getoutput(f"tar -tf '{tarfile}' 2>/dev/null")
-        return len([l for l in output.splitlines() if l.strip() and not l.endswith('/')])
+        return len([l for l in output.splitlines() if l.strip() and not l.endswith('/')])  # only count files
     except:
         return 0
 
@@ -883,7 +883,7 @@ def extract_archive_with_progress(host, user, password, archive_file, target_dir
         while not extract_done.is_set():
             try:
                 result = ssh_run(host, user, password,
-                                 f"wc -l < {log_file} 2>/dev/null || echo 0",
+                                 f"grep -v '/$' {log_file} 2>/dev/null | wc -l || echo 0",  # only count files
                                  debug=False, capture_output=True)
                 if result and result.strip().isdigit():
                     current_count = int(result.strip())
@@ -927,6 +927,7 @@ def extract_archive_with_progress(host, user, password, archive_file, target_dir
 def firmware_update_process(host, user, password, image_file,
                            stop_services='semistop_avm', no_reboot=False,
                            reboot_at_the_end=False,
+                           delete_jffs2=False, downgrade=False,
                            debug=False, dry_run=False):
     """Execute firmware update process (emulates do_update_handler.sh)"""
     cprint("\n" + "="*60, 'bold')
@@ -937,6 +938,14 @@ def firmware_update_process(host, user, password, image_file,
         cwarning("[DRY-RUN] Skipping firmware extraction and installation")
         cprint("")
         return True
+    
+    # Step 0: Prepare downgrade (if requested)
+    if downgrade:
+        cinfo("Step 0: Preparing downgrade...")
+        downgrade_output = ssh_run(host, user, password, "/usr/bin/prepare-downgrade", debug=debug, capture_output=True)
+        if downgrade_output:
+            cprint(downgrade_output)
+        cprint(f"{EMOJI['ok']} Downgrade preparation complete.", 'green')
     
     # Step 1: Stop AVM services (if requested)
     if stop_services == 'noaction':
@@ -976,12 +985,32 @@ def firmware_update_process(host, user, password, image_file,
         return False
 
     cinfo("Step 3: Flashing firmware, please wait... (see /tmp/var-install.out)")
+    # Emulate install() function from do_update_handler.sh
+    install_commands = [
+        "rm -f /var/post_install",  # Remove no-op original from var.tar
+    ]
+    
+    # Delete JFFS2 if requested
+    if delete_jffs2:
+        cwarning("Deleting JFFS2 partition (as requested)")
+        install_commands.extend([
+            # Set image size to max
+            "sed -i -e 's|kernel_update_len=$Kernel_without_jffs2_size|kernel_update_len=$kernel_mtd_size|' /var/install",
+            # Unset jffs2_size env var
+            "echo jffs2_size > /proc/sys/urlader/environment"
+        ])
+    
+    # Execute installation
+    install_commands.extend([
+        "cd /",
+        "( set -o pipefail ; . /bin/env.mod.rcconf avm ; /var/install 2>&1 ; echo $? >/tmp/var-install.code ) > /tmp/var-install.out",
+        "tail -n1 /tmp/var-install.code"
+    ])
     install_output = ssh_run(
         host, user, password,
-        "cd / && ( /var/install 2>&1 ; echo $? >/tmp/var-install.code ) | tee /tmp/var-install.out && tail -n1 /tmp/var-install.code",
+        " && ".join(install_commands),
         debug=debug
     )
-    cprint("")
     
     # Parse installation result
     exit_code = 6  # Default: OTHER_ERROR
@@ -1004,9 +1033,45 @@ def firmware_update_process(host, user, password, image_file,
     result_txt, color = result_codes.get(exit_code, ("UNKNOWN_ERROR", "red"))
     cprint(f"Installation result: {exit_code} ({result_txt})", color, 'info' if color == 'green' else 'warning')
     
-    # Step 4: Reboot if needed
+    # Step 4: Verify and execute post_install if exists
+    if exit_code == 1:
+        cinfo("Step 4: Verifying post-installation script...")
+        post_install_exists = ssh_run(
+            host, user, password, 
+            "test -f /var/post_install && echo exists || echo notfound",
+            debug=debug, capture_output=True
+        ).strip()
+        if post_install_exists == "exists":
+            cprint(f"{EMOJI['ok']} Post-installation script found: /var/post_install", 'green')
+            cinfo("Executing post-installation script...")
+            # Execute post_install and capture exit code
+            post_install_output = ssh_run(
+                host, user, password, 
+                "/var/post_install 2>&1; echo $?",
+                debug=debug, capture_output=True
+            )
+            if post_install_output:
+                lines = post_install_output.strip().splitlines()
+                post_exit_code = lines[-1] if lines else "1"
+                post_output = '\n'.join(lines[:-1]) if len(lines) > 1 else ""
+                
+                if post_exit_code == "0":
+                    cprint(f"{EMOJI['ok']} Post-installation script executed successfully", 'green')
+                else:
+                    cerror(f"Post-installation script failed with exit code {post_exit_code}")
+                    if post_output:
+                        cprint("Post-installation output and errors:", 'red', 'warning')
+                        print(post_output)
+                    return False
+            else:
+                cerror("Post-installation script executed but no output captured")
+                return False
+        else:
+            error("No post-installation script found")
+            return False
+    
+    # Step 5: Reboot if needed
     if exit_code == 1 and not no_reboot and reboot_at_the_end:
-        cprint("")
         cprint(f"{EMOJI['ok']} Firmware update complete.", 'green')
         cprint("Reboot is postponed after the installation of the external updates.", 'reboot', 'reboot')
         cprint("")
@@ -1016,7 +1081,8 @@ def firmware_update_process(host, user, password, image_file,
         cprint("\n" + "="*60, 'bold')
         cprint("REBOOTING FRITZ!Box", 'bold', 'reboot')
         cprint("="*60 + "\n", 'bold')
-        ssh_run(host, user, password, "/sbin/reboot; sleep 4", debug=debug)
+        reboot_cmd = "(sleep 1; /sbin/reboot -d 2 -f) >/dev/null 2>&1 < /dev/null & exit"
+        ssh_run(host, user, password, reboot_cmd, capture_output=False, debug=debug)
         return wait_router_boot(host, password, user, debug=debug)
     elif exit_code == 1 and no_reboot:
         cwarning("Reboot required but --no-reboot flag is set")
@@ -1033,6 +1099,7 @@ def firmware_update_process(host, user, password, image_file,
 
 def external_update_process(host, user, password, external_file, external_dir,
                             preserve_old=False, restart_services=True,
+                            reboot_at_the_end=False,
                             debug=False, dry_run=False):
     """Execute external update process (emulates do_external_handler.sh)"""
     cprint("\n" + "="*60, 'bold')
@@ -1069,7 +1136,8 @@ def external_update_process(host, user, password, external_file, external_dir,
         else:
             cinfo("External services not running")
     else:
-        cinfo("Step 1: External services not stopped as requested.")
+        if not reboot_at_the_end:
+            cinfo("Step 1: External services not stopped as requested.")
     
     # Step 2: Delete or preserve old directory
     if preserve_old:
@@ -1101,7 +1169,8 @@ def external_update_process(host, user, password, external_file, external_dir,
         cprint(ret)
         cprint(f"{EMOJI['ok']} External services started", 'green')
     else:
-        cinfo("Step 5: External not restarted as requested.")
+        if not reboot_at_the_end:
+            cinfo("Step 5: External not restarted as requested.")
     
     return True
 
@@ -1166,6 +1235,10 @@ Examples:
                              help='Do not reboot FRITZ!Box after firmware update')
     update_group.add_argument('--reboot-at-the-end', action='store_true',
                              help='Move the reboot at the end, after the external storage update')
+    update_group.add_argument('--delete-jffs2', action='store_true',
+                             help='Delete JFFS2 partition during firmware update')
+    update_group.add_argument('--downgrade', action='store_true',
+                             help='Prepare for firmware downgrade (run prepare-downgrade)')
     update_group.add_argument('--no-delete-external', action='store_true',
                              help='Delete old external files before extraction')
     update_group.add_argument('--no-external-restart', action='store_true',
@@ -1398,7 +1471,10 @@ Examples:
         cinfo("External Update Options:")
 
         if confirm("Delete any previously existing external directory after file upload and before extraction?", default=True):
+            args.no_delete_external = False
+        else:
             args.no_delete_external = True
+            cwarning("Warning: Not deleting old external files may cause issues!")
 
         if args.stop_services != 'nostop_avm' and args.reboot_at_the_end:
             cinfo("Note: external services will be stopped by the firmware update and restarted within the reboot.")
@@ -1430,17 +1506,17 @@ Examples:
         cprint(f"  Reboot at end:    {'Yes' if args.reboot_at_the_end else 'No'}", 'yellow')
     cprint("-"*70 + "\n", 'dim')
 
-    if not args.batch:
-        if not confirm("Proceed with firmware update?", default=False):
-            cinfo("Update cancelled by user.")
-            return 0
-
     # Execute firmware update
     if args.image and not args.skip_firmware:
+        if not args.batch:
+            if not confirm("Proceed with firmware update?", default=False):
+                cinfo("Update cancelled by user.")
+                return 0
         success = firmware_update_process(
             args.host, args.user, args.password, args.image,
             stop_services=args.stop_services, no_reboot=args.no_reboot,
             reboot_at_the_end=args.reboot_at_the_end,
+            delete_jffs2=args.delete_jffs2, downgrade=args.downgrade,
             debug=args.debug, dry_run=args.dry_run
         )
         if success and not args.skip_external:
@@ -1472,6 +1548,7 @@ Examples:
             args.host, args.user, args.password, args.external, args.external_dir,
             preserve_old=args.no_delete_external, 
             restart_services=not args.no_external_restart,
+            reboot_at_the_end=args.reboot_at_the_end,
             debug=args.debug, dry_run=args.dry_run
         )
         if not success:
@@ -1486,14 +1563,15 @@ Examples:
         if args.dry_run:
             cwarning("[DRY-RUN] Skipping reboot command")
         else:
-            ssh_run(args.host, args.user, args.password, "/sbin/reboot; sleep 4", debug=args.debug)
+            reboot_cmd = "(sleep 1; /sbin/reboot -d 2 -f) >/dev/null 2>&1 < /dev/null & exit"
+            ssh_run(args.host, args.user, args.password, reboot_cmd, capture_output=False, debug=args.debug)
             if not wait_router_boot(args.host, args.password, args.user, debug=args.debug):
                 cerror("Router did not come back online in time after reboot!")
                 return 1
 
     # Final success message
     cprint("\n" + "="*60, 'bold')
-    cprint("   UPDATE COMPLETED SUCCESSFULLY!", 'green', 'ok')
+    cprint("UPDATE COMPLETED SUCCESSFULLY!", 'green', 'ok')
     cprint("="*60 + "\n", 'bold')
     
     # Show log file location only in debug mode
