@@ -75,6 +75,7 @@ Latest changes
   - Libraries:
     * harfbuzz 12.1.0
     * openjp2 2.5.4
+    * libxml2 2.15.1
     * libyaml 0.2.5
 
   - Firmware updates:
