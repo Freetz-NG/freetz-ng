@@ -1,6 +1,6 @@
---- src/ctx.c
-+++ src/ctx.c
-@@ -922,16 +922,38 @@
+--- src/ctx.c.org	2025-10-18 16:38:03.000000000 +0200
++++ src/ctx.c	2025-10-18 23:28:16.586764400 +0200
+@@ -1052,19 +1052,42 @@
      return 0; /* OK */
  }
  
@@ -19,28 +19,31 @@
 +    return S_ISCHR(sb.st_mode);
 +}
 +
- NOEXPORT int load_key_file(SERVICE_OPTIONS *section) {
+ NOEXPORT int load_key_file(SERVICE_OPTIONS *section, const char *file, int *key_needed) {
 -    int i, success;
 +    int i, success, fritzbox_key;
-+
-+    fritzbox_key=is_fritzbox_key(section->key);
  
--    s_log(LOG_INFO, "Loading private key from file: %s", section->key);
--    if(file_permissions(section->key))
-+    s_log(LOG_INFO, "Loading private%s key from file: %s", (fritzbox_key ? " FRITZ!Box" : ""), section->key);
-+    if(!fritzbox_key && file_permissions(section->key))
+     if(!file || !key_needed || !*key_needed)
+         return 0; /* skip */
+ 
+-    s_log(LOG_INFO, "Loading private key from file: %s", file);
+-    if(file_permissions(file))
++	fritzbox_key=is_fritzbox_key(file);
++
++    s_log(LOG_INFO, "Loading private%s key from file: %s", (fritzbox_key ? " FRITZ!Box" : ""), file);
++    if(!fritzbox_key && file_permissions(file))
          return 1; /* FAILED */
  
 -    /* try the cached value first */
-     set_prompt(section->key);
--    SSL_CTX_set_default_passwd_cb(section->ctx, cache_passwd_get_cb);
+     set_prompt(file);
 +    if (fritzbox_key) {
 +      /* read the Fritz!Box key */
 +      SSL_CTX_set_default_passwd_cb(section->ctx, fritzbox_passwd_get_cb);
 +    } else {
 +      /* try the cached value first */
-+      SSL_CTX_set_default_passwd_cb(section->ctx, cache_passwd_get_cb);
+     SSL_CTX_set_default_passwd_cb(section->ctx, cache_passwd_get_cb);
 +    }
-     success=SSL_CTX_use_PrivateKey_file(section->ctx, section->key,
++
+     success=SSL_CTX_use_PrivateKey_file(section->ctx, file,
          SSL_FILETYPE_PEM);
      /* invoke the UI on subsequent calls */

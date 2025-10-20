@@ -20,8 +20,16 @@ log() {
 		shift
 	done
 	[ -z "$*" ] && return
-	echo $newl -e "$addl$*" | tee -a $LOG_FILE
-	[ "$*" == "." -o "$*" == " ." ] && return
+	
+	# everything to external.log
+	echo $newl -e "$addl$*" >> $LOG_FILE
+
+	# no duplicate console output
+	if [ "$(cat /proc/$PPID/comm)" != "udev-mount-sd" ]; then
+		echo $newl -e "$addl$*"
+	fi
+
+	# everything to system log
 	IFS='\n' echo "$*" | while read -r line; do
 		loglib_system "$DAEMON" "$line"
 	done

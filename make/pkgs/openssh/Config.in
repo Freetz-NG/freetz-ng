@@ -2,7 +2,7 @@ comment "OpenSSH (not available, needs OpenSSL 1.0 or newer)"
 	depends on !FREETZ_OPENSSL_VERSION_10_MIN
 
 config FREETZ_PACKAGE_OPENSSH
-	bool "OpenSSH 9.3p2/10.0p1"
+	bool "OpenSSH 9.3p2/10.2p1"
 	depends on FREETZ_OPENSSL_VERSION_10_MIN
 	select FREETZ_LIB_libcrypto_WITH_EC       if !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
 	select FREETZ_LIB_libcrypt                if !FREETZ_PACKAGE_OPENSSH_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -28,7 +28,7 @@ if FREETZ_PACKAGE_OPENSSH
 				Version 9.3p2 is the last with support for OpenSSL 1.0.2.
 
 		config FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
-			bool "10.0p1"
+			bool "10.2p1"
 			depends on !FREETZ_OPENSSL_VERSION_09 && !FREETZ_OPENSSL_VERSION_10
 
 	endchoice

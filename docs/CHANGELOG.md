@@ -56,16 +56,27 @@ Latest changes
     * python 3.13.8
 
   - AVM sources:
+    * 7510     8.20 - 5.4.213
+    * Gateway  8.20 - 5.4.213
+
+  - Scripts:
+    * ssh_firmware_update.py - utility for upgrading firmware and external over SSH
 
   - Patches:
 
   - Packages:
     * BIND 9.11.37/9.20.13
+    * OpenSSH 9.3p2/10.2p1
+    * procps-ng 4.0.5
+    * Stunnel 5.76
     * Tor 0.4.8.19
+    * Whois 5.6.5
 
   - Libraries:
     * harfbuzz 12.1.0
     * openjp2 2.5.4
+    * libxml2 2.15.1
+    * libyaml 0.2.5
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.

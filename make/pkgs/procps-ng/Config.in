@@ -1,0 +1,158 @@
+menuconfig FREETZ_PACKAGE_PROCPS_NG
+	bool "procps-ng 4.0.5 (binaries only)"
+	depends on FREETZ_KERNEL_VERSION_3_MIN && !FREETZ_KERNEL_VERSION_3_10_12 && !FREETZ_KERNEL_VERSION_3_10_73
+	default n
+	select FREETZ_PACKAGE_PROCPS_NG_W \
+		if !FREETZ_PACKAGE_PROCPS_NG_FREE \
+		&& !FREETZ_PACKAGE_PROCPS_NG_KILL \
+		&& !FREETZ_PACKAGE_PROCPS_NG_PGREP \
+		&& !FREETZ_PACKAGE_PROCPS_NG_PIDOF \
+		&& !FREETZ_PACKAGE_PROCPS_NG_PKILL \
+		&& !FREETZ_PACKAGE_PROCPS_NG_PMAP \
+		&& !FREETZ_PACKAGE_PROCPS_NG_PS \
+		&& !FREETZ_PACKAGE_PROCPS_NG_PWDX \
+		&& !FREETZ_PACKAGE_PROCPS_NG_SKILL \
+		&& !FREETZ_PACKAGE_PROCPS_NG_SLABTOP \
+		&& !FREETZ_PACKAGE_PROCPS_NG_SNICE \
+		&& !FREETZ_PACKAGE_PROCPS_NG_SYSCTL \
+		&& !FREETZ_PACKAGE_PROCPS_NG_TLOAD \
+		&& !FREETZ_PACKAGE_PROCPS_NG_TOP \
+		&& !FREETZ_PACKAGE_PROCPS_NG_UPTIME \
+		&& !FREETZ_PACKAGE_PROCPS_NG_VMSTAT \
+		&& !FREETZ_PACKAGE_PROCPS_NG_WATCH
+	help
+		procps-ng - /proc filesystem utilities
+		
+		This package provides the full versions of procps utilities with
+		the suffix "-ng" to avoid conflicts with BusyBox versions.
+
+if FREETZ_PACKAGE_PROCPS_NG
+
+	choice
+		prompt "Widget library"
+		default FREETZ_PACKAGE_PROCPS_NG_WITH_NONE
+
+		config FREETZ_PACKAGE_PROCPS_NG_WITH_NONE
+		bool "None"
+
+		config FREETZ_PACKAGE_PROCPS_NG_WITH_NCURSES
+		bool "Ncurses"
+		select FREETZ_LIB_libncurses
+
+		config FREETZ_PACKAGE_PROCPS_NG_WITH_NCURSESW
+		bool "Ncursesw"
+		select FREETZ_LIB_libncursesw
+	endchoice
+
+	config FREETZ_PACKAGE_PROCPS_NG_FREE
+		bool "free - display memory usage"
+		default y
+		help
+			Display amount of free and used memory in the system.
+
+	config FREETZ_PACKAGE_PROCPS_NG_KILL
+		bool "kill - terminate process"
+		default n
+		help
+			Terminate a process by PID.
+
+	config FREETZ_PACKAGE_PROCPS_NG_PGREP
+		bool "pgrep - lookup processes by name"
+		default n
+		help
+			Look up processes based on name and other attributes.
+
+	config FREETZ_PACKAGE_PROCPS_NG_PIDOF
+		bool "pidof - find process ID"
+		default n
+		help
+			Find the process ID of a running program.
+
+	config FREETZ_PACKAGE_PROCPS_NG_PKILL
+		bool "pkill - signal processes by name"
+		default n
+		help
+			Signal processes based on name and other attributes.
+
+	config FREETZ_PACKAGE_PROCPS_NG_PMAP
+		bool "pmap - process memory map"
+		default n
+		help
+			Report memory map of a process.
+
+	config FREETZ_PACKAGE_PROCPS_NG_PS
+		bool "ps - process status"
+		default y
+		help
+			Report a snapshot of the current processes.
+
+	config FREETZ_PACKAGE_PROCPS_NG_PWDX
+		bool "pwdx - current directory of process"
+		default n
+		help
+			Report current working directory of a process.
+
+	config FREETZ_PACKAGE_PROCPS_NG_SKILL
+		bool "skill - send signal to processes"
+		default n
+		help
+			Send a signal or report process status.
+
+	config FREETZ_PACKAGE_PROCPS_NG_SLABTOP
+		bool "slabtop - kernel slab cache info"
+		depends on !FREETZ_PACKAGE_PROCPS_NG_WITH_NONE
+		default n
+		help
+			Display kernel slab cache information in real time.
+
+	config FREETZ_PACKAGE_PROCPS_NG_SNICE
+		bool "snice - renice processes"
+		default n
+		help
+			Renice a process.
+
+	config FREETZ_PACKAGE_PROCPS_NG_SYSCTL
+		bool "sysctl - kernel parameters"
+		default n
+		help
+			Configure kernel parameters at runtime.
+
+	config FREETZ_PACKAGE_PROCPS_NG_TLOAD
+		bool "tload - graphical load average"
+		default n
+		help
+			Graphic representation of system load average.
+
+	config FREETZ_PACKAGE_PROCPS_NG_TOP
+		bool "top - display Linux processes"
+		depends on !FREETZ_PACKAGE_PROCPS_NG_WITH_NONE
+		default n
+		help
+			Display Linux processes in real-time.
+
+	config FREETZ_PACKAGE_PROCPS_NG_UPTIME
+		bool "uptime - system uptime"
+		default y
+		help
+			Tell how long the system has been running.
+
+	config FREETZ_PACKAGE_PROCPS_NG_VMSTAT
+		bool "vmstat - virtual memory statistics"
+		default y
+		help
+			Report virtual memory statistics.
+
+	config FREETZ_PACKAGE_PROCPS_NG_WATCH
+		bool "watch - execute program periodically"
+		depends on !FREETZ_PACKAGE_PROCPS_NG_WITH_NONE
+		default n
+		help
+			Execute a program periodically, showing output fullscreen.
+
+	config FREETZ_PACKAGE_PROCPS_NG_W
+		bool "w - show who is logged on"
+		default y
+		help
+			Show who is logged on and what they are doing.
+
+endif # FREETZ_PACKAGE_PROCPS_NG

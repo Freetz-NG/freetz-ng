@@ -1,4 +1,4 @@
-# OpenSSH 9.3p2/10.0p1
+# OpenSSH 9.3p2/10.2p1
   - Homepage: [https://www.openssh.com/](https://www.openssh.com/)
   - Manpage: [https://www.openssh.com/manual.html](https://www.openssh.com/manual.html)
   - Changelog: [https://www.openssh.com/releasenotes.html](https://www.openssh.com/releasenotes.html)

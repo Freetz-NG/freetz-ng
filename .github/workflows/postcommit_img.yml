@@ -9,10 +9,36 @@ on:
       - 'config/mod/dl-firmware.in'
       - 'docs/FIRMWARES.md'
   workflow_dispatch:
+    inputs:
+      fos:
+        description: "FOS Version to check"
+        required: true
+        default: "08_2X"
+        type: choice
+        options:
+          - "Fos04"
+          - "Fos05"
+          - "Fos06"
+          - "Fos07"
+          - "Fos08"
+          - "04_XX"
+          - "05_2X"
+          - "05_5X"
+          - "06_0X"
+          - "06_2X"
+          - "06_5X"
+          - "06_8X"
+          - "06_9X"
+          - "07_0X"
+          - "07_1X"
+          - "07_2X"
+          - "07_5X"
+          - "08_0X"
+          - "08_2X"
 
 concurrency:
   group: ${{ github.workflow }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -54,6 +80,26 @@ jobs:
           clean: false
           persist-credentials: true
 
+      - name: parse
+        id: parse
+        run: |
+          FOS="${{ github.event.inputs.fos }}"
+          [ -z "$FOS" ] && FOS="08_2X"
+          [ "$FOS" = "alles" ] && FOS="${FOS%es}"
+          [ "$FOS" = "freetz_org" ] && FOS="$(sed -rn "s/^config FREETZ_AVM_HAS_FIRMWARE_(0[456])/\1/p" config/avm/availability.in) 07_0X 07_1X"
+          [ "$FOS" = "freetz-ng" ] && FOS="07_2X 07_5X $(sed -rn "s/^config FREETZ_AVM_HAS_FIRMWARE_(0[89])/\1/p" config/avm/availability.in)"
+          [ "$FOS" != "${FOS#Fos}" ] && FOS="${FOS#Fos}"
+          for fos in $FOS; do \
+            [ "${#fos}" != "3" ] && echo -n "FREETZ_AVM_VERSION_"; \
+            echo -n "$fos "; \
+          done | \
+          sed 's/^/args="/;s/$/"/' >> $GITHUB_OUTPUT
+
+      - name: vars
+        run: |
+          echo "################################################################"
+          echo "args=${{ steps.parse.outputs.args }}" | sed 's/[= ]/&\n/g'
+
       - name: tools
         run: |
           echo 'FREETZ_USER_LEVEL_EXPERT=y\nFREETZ_HOSTTOOLS_DOWNLOAD=y\nFREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"' > .config
@@ -69,7 +115,7 @@ jobs:
           mkdir -p ~/.freetz-dl/fw/
           wget -q "${{ secrets.ACTIONS_CUSTOM }}img" -O - 2>/dev/null > props.sh
           [ -s props.sh ] || cp config/.img/generate.sh props.sh
-          FREETZ_ENABLEG=true bash props.sh
+          FREETZ_ENABLEG=true bash props.sh ${{ steps.parse.outputs.args }}
           rm -f props.sh ".wget-hsts" || true
 
       - name: commit

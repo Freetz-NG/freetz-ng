@@ -6,6 +6,7 @@ config FREETZ_TYPE_CABLE
 	bool
 	default y
 	depends on \
+		FREETZ_TYPE_6320 || \
 		FREETZ_TYPE_6430 || \
 		FREETZ_TYPE_6490 || \
 		FREETZ_TYPE_6590 || \
@@ -33,9 +34,14 @@ config FREETZ_TYPE_EXTENDER
 	default y
 	depends on \
 		FREETZ_TYPE_0300 || \
+		FREETZ_TYPE_0310_V1 || \
+		FREETZ_TYPE_0310_V2 || \
 		FREETZ_TYPE_0450 || \
 		FREETZ_TYPE_0540 || \
 		FREETZ_TYPE_0546 || \
+		FREETZ_TYPE_0600_V1 || \
+		FREETZ_TYPE_0600_V2 || \
+		FREETZ_TYPE_1160 || \
 		FREETZ_TYPE_1200_W5 || \
 		FREETZ_TYPE_1200_W6 || \
 		FREETZ_TYPE_1240_W5 || \

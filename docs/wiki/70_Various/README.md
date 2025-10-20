@@ -67,4 +67,6 @@
     * [Sonstiges](origin_and_history.md#sonstiges)
     * [Ändern der Arbeitsgruppe von "freetz-linux"](origin_and_history.md#ändern-der-arbeitsgruppe-von-freetz-linux)
     * [Wie finde ich die IP meiner Virtuellen Maschine](origin_and_history.md#wie-finde-ich-die-ip-meiner-virtuellen-maschine)
+  - [ssh_firmware_update.py [EN]](ssh_firmware_update.en.md)
+    * [Key Features](ssh_firmware_update.en.md#key-features)
 

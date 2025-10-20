@@ -607,7 +607,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Fehlerbehebung](../../docs/make/openntpd.md#fehlerbehebung)
      - [Alternative](../../docs/make/openntpd.md#alternative)
 
-  * **[OpenSSH 9.3p2/10.0p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 9.3p2/10.2p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
   * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.18/3.5.4 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
@@ -691,6 +691,23 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Werbefilter](../../docs/make/privoxy.md#werbefilter)
      - [Installation](../../docs/make/privoxy.md#installation)
      - [Diskussion](../../docs/make/privoxy.md#diskussion)
+
+  * **[procps-ng 4.0.5 (binaries only)](../../docs/make/procps-ng.md)<a id='procps-ng'></a>**<br>
+    procps-ng - /proc filesystem utilities This package provides the full versions of procps utilities with the suffix "-ng" to avoid conflicts with BusyBox versions.
+     - [Process Information](../../docs/make/procps-ng.md#process-information)
+     - [Memory and System Information](../../docs/make/procps-ng.md#memory-and-system-information)
+     - [Process Management](../../docs/make/procps-ng.md#process-management)
+     - [Process Inspection](../../docs/make/procps-ng.md#process-inspection)
+     - [System Utilities](../../docs/make/procps-ng.md#system-utilities)
+     - [Basic Process Monitoring](../../docs/make/procps-ng.md#basic-process-monitoring)
+     - [Memory and System Info](../../docs/make/procps-ng.md#memory-and-system-info)
+     - [Advanced Process Analysis](../../docs/make/procps-ng.md#advanced-process-analysis)
+     - [System Configuration](../../docs/make/procps-ng.md#system-configuration)
+     - [Build Configuration](../../docs/make/procps-ng.md#build-configuration)
+     - [Known Limitations](../../docs/make/procps-ng.md#known-limitations)
+     - [Command not found](../../docs/make/procps-ng.md#command-not-found)
+     - [Permission denied](../../docs/make/procps-ng.md#permission-denied)
+     - [Externalization not working](../../docs/make/procps-ng.md#externalization-not-working)
 
   * **[ProxyChains-NG 4.17](../../docs/make/proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
     A preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies, tor is also supported. Usage: proxychains4 telnet mail.example.com 25
@@ -876,7 +893,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Streamripper records mp3 and ogg streams. For shoutcast style streams it finds the "meta data" or track separation data, and uses that as a marker for where the track should be separated.
      - [Verwendete Bibliotheken](../../docs/make/streamripper.md#verwendete-bibliotheken)
 
-  * **[Stunnel 5.75](../../docs/make/stunnel.md)<a id='stunnel'></a>**<br>
+  * **[Stunnel 5.76](../../docs/make/stunnel.md)<a id='stunnel'></a>**<br>
     Stunnel universal SSL proxy
      - [Konfiguration](../../docs/make/stunnel.md#konfiguration)
 
@@ -1027,7 +1044,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Wget 1.25.0 (binary only)](../../docs/make/wget.md)<a id='wget'></a>**<br>
     GNU Wget is a free software package for retrieving files using HTTP, HTTPS and FTP, the most widely-used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals, etc.
 
-  * **[Whois 5.6.4 (binary only)](../../docs/make/whois.md)<a id='whois'></a>**<br>
+  * **[Whois 5.6.5 (binary only)](../../docs/make/whois.md)<a id='whois'></a>**<br>
     Whois - client for the whois directory service.
 
   * **[wireguard-tools 1.0.20250521](../../docs/make/wireguard.md)<a id='wireguard'></a>**<br>

@@ -1,6 +1,6 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -48,8 +48,8 @@
+@@ -49,8 +49,8 @@
  
  CC=@CC@
  LD=@LD@
@@ -8,10 +8,10 @@
 -CFLAGS_NOPIE=@CFLAGS_NOPIE@
 +CFLAGS=@CFLAGS@ $(EXTRA_CFLAGS)
 +CFLAGS_NOPIE=@CFLAGS_NOPIE@ $(EXTRA_CFLAGS)
- CPPFLAGS=-I. -I$(srcdir) @CPPFLAGS@ $(PATHS) @DEFS@
+ CPPFLAGS=-I. -I$(srcdir) -I$(COMPATINCLUDES) @CPPFLAGS@ $(PATHS) @DEFS@
  PICFLAG=@PICFLAG@
  LIBS=@LIBS@
-@@ -66,8 +66,8 @@
+@@ -67,8 +67,8 @@
  INSTALL=@INSTALL@
  SED=@SED@
  XAUTH_PATH=@XAUTH_PATH@
@@ -24,7 +24,7 @@
  MKDIR_P=@MKDIR_P@
 --- openbsd-compat/Makefile.in
 +++ openbsd-compat/Makefile.in
-@@ -6,16 +6,16 @@
+@@ -7,8 +7,8 @@
  VPATH=@srcdir@
  CC=@CC@
  LD=@LD@
@@ -32,9 +32,10 @@
 -CFLAGS_NOPIE=@CFLAGS_NOPIE@
 +CFLAGS=@CFLAGS@ $(EXTRA_CFLAGS)
 +CFLAGS_NOPIE=@CFLAGS_NOPIE@ $(EXTRA_CFLAGS)
- CPPFLAGS=-I. -I.. -I$(srcdir) -I$(srcdir)/.. @CPPFLAGS@ @DEFS@
+ COMPATINCLUDES="$(BUILDDIR)/@COMPATINCLUDES@"
+ CPPFLAGS=-I. -I.. -I$(srcdir) -I$(srcdir)/.. -I$(COMPATINCLUDES) @CPPFLAGS@ @DEFS@
  PICFLAG=@PICFLAG@
- LIBS=@LIBS@
+@@ -16,8 +16,8 @@
  AR=@AR@
  RANLIB=@RANLIB@
  INSTALL=@INSTALL@

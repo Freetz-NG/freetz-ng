@@ -345,8 +345,9 @@ endef
 # $1 - binary to be installed
 # $2 - directory binary to be installed in
 # $3 (optional) - DESTDIR binary to be installed in, defaults to $(PKG)_DEST_DIR if omitted
+# $4 (optional) - DESTBIN binary install name, defaults to $(notdir $(1)) if omitted
 define INSTALL_BINARY_STRIP_RULE
-$(if $(strip $(3)),$(strip $(3)),$($(PKG)_DEST_DIR))$(strip $(2))/$(notdir $(strip $(1))): $(strip $(1))
+$(if $(strip $(3)),$(strip $(3)),$($(PKG)_DEST_DIR))$(strip $(2))/$(if $(strip $(4)),$(notdir $(strip $(4))),$(notdir $(strip $(1)))): $(strip $(1))
 	$(value INSTALL_BINARY_STRIP)
 endef
 

@@ -1,0 +1,10 @@
+--- linux-5.4/.kernelvariables
++++ linux-5.4/.kernelvariables
+@@ -30,7 +30,6 @@
+ 
+ EXTRA_CFLAGS = 
+ 
+-export AVM_KCONFIG_CONFIG = avm/conf/linux-5.4.maple_lowmem
+ 
+ # Enable reproducibility by setting 'reproducibility' to any nonempty value;
+ # defaults of KBUILD_BUILD_* and SOURCE_DATE_EPOCH match the variables that

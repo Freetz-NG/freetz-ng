@@ -9,7 +9,7 @@ pre_config() {
 	mkdir -p /tmp/flash/dropbear
 
 	local alg do_save=false
-	for alg in rsa dss ecdsa ed25519; do
+	for alg in rsa  ecdsa ed25519; do
 		local key_file=/tmp/flash/dropbear/${alg}_host_key
 		if [ ! -e "${key_file}" ]; then
 			do_save=true

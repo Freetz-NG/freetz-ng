@@ -460,7 +460,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Openntpd 3.9p1 - DEPRECATED](openntpd.md)<a id='openntpd'></a>**<br>
     OpenNTPD is a FREE, easy to use implementation of the Network Time Protocol. This package automatically removes AVM'S chronyd if necessary.
 
-  * **[OpenSSH 9.3p2/10.0p1](openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 9.3p2/10.2p1](openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
   * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.18/3.5.4 (binary only)](openssl.md)<a id='openssl'></a>**<br>
@@ -509,6 +509,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[Privoxy 4.0.0](privoxy.md)<a id='privoxy'></a>**<br>
     Privoxy is a web proxy with advanced filtering capabilities for protecting privacy, modifying web page data, managing cookies, controlling access, and removing ads, banners, pop-ups and other obnoxious Internet junk. It can also be used together with Tor Proxy to forward HTTP traffic to Tor as described in the Tor documentation. Open http://config.privoxy.org/show-status for details.
+
+  * **[procps-ng 4.0.5 (binaries only)](procps-ng.md)<a id='procps-ng'></a>**<br>
+    procps-ng - /proc filesystem utilities This package provides the full versions of procps utilities with the suffix "-ng" to avoid conflicts with BusyBox versions.
 
   * **[ProxyChains-NG 4.17](proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
     A preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies, tor is also supported. Usage: proxychains4 telnet mail.example.com 25
@@ -664,7 +667,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Streamripper 1.64.6 - DEPRECATED](streamripper.md)<a id='streamripper'></a>**<br>
     Streamripper records mp3 and ogg streams. For shoutcast style streams it finds the "meta data" or track separation data, and uses that as a marker for where the track should be separated.
 
-  * **[Stunnel 5.75](stunnel.md)<a id='stunnel'></a>**<br>
+  * **[Stunnel 5.76](stunnel.md)<a id='stunnel'></a>**<br>
     Stunnel universal SSL proxy
 
   * **[Subversion 1.9.12/1.14.5](subversion.md)<a id='subversion'></a>**<br>
@@ -776,7 +779,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Wget 1.25.0 (binary only)](wget.md)<a id='wget'></a>**<br>
     GNU Wget is a free software package for retrieving files using HTTP, HTTPS and FTP, the most widely-used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals, etc.
 
-  * **[Whois 5.6.4 (binary only)](whois.md)<a id='whois'></a>**<br>
+  * **[Whois 5.6.5 (binary only)](whois.md)<a id='whois'></a>**<br>
     Whois - client for the whois directory service.
 
   * **[wireguard-tools 1.0.20250521](wireguard.md)<a id='wireguard'></a>**<br>

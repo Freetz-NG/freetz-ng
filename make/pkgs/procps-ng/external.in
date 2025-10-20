@@ -1,0 +1,25 @@
+config EXTERNAL_FREETZ_PACKAGE_PROCPS_NG
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_PROCPS_NG
+	bool "procps-ng"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/free-ng
+		 /usr/bin/kill-ng
+		 /usr/bin/pgrep-ng
+		 /usr/bin/pidof-ng
+		 /usr/bin/pkill-ng
+		 /usr/bin/pmap-ng
+		 /usr/bin/ps-ng
+		 /usr/bin/pwdx-ng
+		 /usr/bin/skill-ng
+		 /usr/bin/slabtop-ng
+		 /usr/bin/snice-ng
+		 /usr/bin/sysctl-ng
+		 /usr/bin/tload-ng
+		 /usr/bin/top-ng
+		 /usr/bin/uptime-ng
+		 /usr/bin/vmstat-ng
+		 /usr/bin/watch-ng
+		 /usr/bin/w-ng
+

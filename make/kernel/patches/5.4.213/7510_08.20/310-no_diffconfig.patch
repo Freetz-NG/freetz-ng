@@ -1,0 +1,22 @@
+--- linux-5.4/GNUmakefile
++++ linux-5.4/GNUmakefile
+@@ -220,19 +220,8 @@
+ 		@rm -f .kernelvariables .kernelvariables.old)
+ 	+@$(call __kbuild,$(and $(MAKECMDGOALS),$@))
+ 
+-ifeq ($(is-oot-kmod),)
+-  ifneq ($(kgw_enable_diffconfig_output),)
+-	@# Skip config diff for out-of-tree module builds and if requested
+-    ifeq ($(words $(wildcard $(sort $(AVM_KCONFIG_CONFIG) $(KCONFIG_CONFIG)))),2)
+-	$(if $(filter-out $(no-config-diff-targets),$@),\
+-		@scripts/diffconfig $(AVM_KCONFIG_CONFIG) $(KCONFIG_CONFIG) | \
+-			sed -re '1{s|^|Linux config has changed compared to $(AVM_KCONFIG_CONFIG):\n|}' >&2)
+-    endif
+-  endif
+-else
+ 	$(if $(filter modules_install,$@),\
+ 		@$(MAKE) --no-print-directory modules_install.post)
+-endif
+ 
+ 
+ ifeq ($(is-oot-kmod),)

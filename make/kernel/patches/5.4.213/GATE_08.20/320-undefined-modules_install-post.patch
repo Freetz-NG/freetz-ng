@@ -1,0 +1,14 @@
+--- linux-5.4/GNUmakefile
++++ linux-5.4/GNUmakefile
+@@ -178,10 +178,10 @@
+ _kernelrelease = $(shell cat $(addsuffix /,$(firstword $(O) $(KBUILD_OUTPUT)))include/config/kernel.release 2> /dev/null)
+ _modlib = $(INSTALL_MOD_PATH)/lib/modules/$(_kernelrelease)
+ 
+-ifneq ($(is-oot-kmod),)
+ non-default-targets += modules_install.post
+ .PHONY: modules_install.post
+ modules_install.post: FORCE modules_install
++ifneq ($(is-oot-kmod),)
+ ifneq ($(GU_PROJECT_NAME),)
+ 	# modules_install.post: Rename $(MODLIB)/modules.* only for GU-API2 projects
+ 	$(call kmod-move-files-to-dot-dir,\

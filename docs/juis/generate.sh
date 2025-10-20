@@ -42,19 +42,19 @@ cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; d
 
 #dect-rel
 echo -e '\n### Dect-Release ###############################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";
+for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x                             -a; done | tee dect-rel
 #dect-lab
 echo -e '\n### Dect-Labor #################################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
+for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
+for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab -a
 #dect-inh
 echo -e '\n### Dect-Inhaus ################################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
+for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
+for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh -a
 #dect-sub
 cat dect-rel | while read -s x; do sed "/\/${x##*/}$/d" -i dect-lab dect-inh; done

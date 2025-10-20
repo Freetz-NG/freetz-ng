@@ -69,7 +69,7 @@ Examples:
 	env - tools/juis_check                                                               HW=259                                 -i -s -d
 	for x in $(seq 150 300); do                            env - tools/juis_check        HW=$x                                  -a; done
 	for x in $(seq 200 300); do                            env - tools/juis_check        HW=$x   Buildtype=1001                 -a; done
-	for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; env - tools/juis_check --dect HW=259  DHW=${x::-1}.0${x:2}           -a; done
+	for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; env - tools/juis_check --dect HW=259  DHW=${x::-1}.0${x:2}           -a; done
 	Or just: tools/juis m  # f
 
 EOX

@@ -1,12 +1,18 @@
 # Logging functions for the shell-scripts
 
 
+loglib_freetz() {
+	local loglib_SVC="$(echo $1 | tr '[:lower:]' '[:upper:]')"
+	shift
+	while [ ${#loglib_SVC} -lt 13 ]; do loglib_SVC=" $loglib_SVC  "; done
+	echo "$(date '+%F %T') [ ${loglib_SVC:0:13} ] $*" >>/var/log/freetz.log
+}
+
 loglib_console() {
 	local loglib_SVC="$(echo $1 | tr '[:lower:]' '[:upper:]')"
 	shift
 	while [ ${#loglib_SVC} -lt 13 ]; do loglib_SVC=" $loglib_SVC  "; done
 	echo -e "\033[94m[FREETZ]\033[m \033[33m${loglib_SVC:0:13}\033[m $*" >/dev/console
-	echo "$(date '+%F %T') [ ${loglib_SVC:0:13} ] $*" >>/var/log/freetz.log
 }
 
 loglib_logger() {
@@ -16,6 +22,12 @@ loglib_logger() {
 }
 
 loglib_system() {
+	loglib_freetz "$@"
+
+	# no single dot lines
+	[ "$2" == "." ] && return
+	[ "$2" == " ." ] && return
+
 	loglib_console "$@"
 	loglib_logger "$@"
 }

@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 0.1.4)
-$(PKG)_LIB_VERSION:=2.0.2
+$(call PKG_INIT_LIB, 0.2.5)
+$(PKG)_LIB_VERSION:=2.0.9
 $(PKG)_SOURCE:=yaml-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=7bf81554ae5ab2d9b6977da398ea789722e0db75b86bffdaeb4e66d961de6a37
+$(PKG)_HASH:=c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
 $(PKG)_SITE:=http://pyyaml.org/download/libyaml/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/libyaml-0.so.$($(PKG)_LIB_VERSION)

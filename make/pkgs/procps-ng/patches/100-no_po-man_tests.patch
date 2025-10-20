@@ -1,0 +1,13 @@
+--- Makefile.am
++++ Makefile.am
+@@ -19,9 +19,7 @@
+ ACLOCAL_AMFLAGS = -I m4
+ SUBDIRS = \
+ 	local \
+-	po-man \
+-	po \
+-	testsuite
++	po
+ 
+ AM_CFLAGS = -Ilibrary/include
+ LDADD = ./library/libproc2.la $(CYGWINFLAGS)

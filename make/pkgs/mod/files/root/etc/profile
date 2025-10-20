@@ -1,7 +1,11 @@
 # /etc/profile
 
 . /bin/env.mod.rcconf
+if [ -e /var/env.mod.daemon ]; then
 . /var/env.mod.daemon
+else
+echo "ERROR: File /var/env.mod.daemon does not yet exist, please re-login later!"
+fi
 
 export CPU_NR=1
 

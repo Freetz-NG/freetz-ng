@@ -1,4 +1,4 @@
-# Whois 5.6.4 (binary only)
+# Whois 5.6.5 (binary only)
   - Homepage: [https://www.linux.it/~md/software/](https://www.linux.it/~md/software/)
   - Manpage: [https://manpages.debian.org/whois/whois.1.en.html](https://manpages.debian.org/whois/whois.1.en.html)
   - Changelog: [https://github.com/rfc1036/whois/tags](https://github.com/rfc1036/whois/tags)
