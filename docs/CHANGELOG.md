@@ -68,6 +68,7 @@ Latest changes
     * BIND 9.11.37/9.20.13
     * OpenSSH 9.3p2/10.2p1
     * procps-ng 4.0.5
+    * Stunnel 5.76
     * Tor 0.4.8.19
 
   - Libraries:
