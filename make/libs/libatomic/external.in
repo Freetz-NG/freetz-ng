@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libatomic
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libatomic
+	bool "libatomic"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libatomic.so.x.x.x
