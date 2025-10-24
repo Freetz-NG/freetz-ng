@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libbz2
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libbz2
+	bool "libbz2"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libbz2.so.1.0.8
