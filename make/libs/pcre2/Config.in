@@ -4,6 +4,24 @@ config FREETZ_LIB_libpcre2
 	help
 		A Perl Compatible Regular Expression library
 
+if FREETZ_LIB_libpcre2
+
+config FREETZ_LIB_libpcre2_WITH_JIT
+	bool "Enable JIT compilation support"
+	default n
+	help
+		Enable Just-In-Time (JIT) compilation support for faster regex execution.
+		
+		JIT compiles regular expressions to native machine code for better performance,
+		which is beneficial for applications like PHP that use regex extensively.
+		
+		Size impact: Adds approximately 100-150 KB to libpcre2-8.so
+		
+		Note: Automatically enabled by PHP if 'Enable PCRE2 JIT compilation' is selected.
+		Disabling may cause runtime warnings in PHP 8.x.
+
+endif # FREETZ_LIB_libpcre2
+
 config FREETZ_LIB_libpcre2_posix
 	bool "libpcre2-posix (libpcre2-posix.so)"
 	select FREETZ_LIB_libpcre2
