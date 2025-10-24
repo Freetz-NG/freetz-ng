@@ -8,3 +8,17 @@ cpu_family        = 'arm'
 cpu               = 'arm'
 endian            = 'little'
 
+[built-in options]
+prefix            = '/usr'
+
+[properties]
+needs_exe_wrapper = true
+longdouble_format = 'IEEE_DOUBLE_LE'
+
+[binaries]
+c                 = 'arm-linux-uclibcgnueabi-gcc'
+cpp               = 'arm-linux-uclibcgnueabi-g++-wrapper'
+ar                = 'arm-linux-uclibcgnueabi-ar'
+strip             = 'arm-linux-uclibcgnueabi-strip'
+pkgconfig         = 'pkg-config'
+

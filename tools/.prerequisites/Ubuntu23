@@ -45,6 +45,7 @@ ncftp
 netcat-openbsd
 net-tools
 patch
+patchelf
 patchutils
 perl
 pkg-config
