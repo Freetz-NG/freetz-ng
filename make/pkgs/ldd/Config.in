@@ -1,7 +1,36 @@
 config FREETZ_PACKAGE_LDD
-	bool "ldd 0.1 (binary only) - DEPRECATED"
+	bool "ldd (shared library dependencies lister)"
 	default n
 	help
 		ldd prints the shared libraries required by each program or shared
 		library specified on the command line.
+
+if FREETZ_PACKAGE_LDD
+
+choice
+	prompt "ldd version"
+	default FREETZ_LDD_VERSION_0_1 if FREETZ_AVM_UCLIBC_0_9_29 || FREETZ_AVM_UCLIBC_0_9_30
+	default FREETZ_LDD_VERSION_1_0_55
+
+	config FREETZ_LDD_VERSION_0_1
+		bool "0.1 (legacy - for old devices)"
+		help
+			Old version of ldd from uClibc 0.9.x era.
+			Use this for Fritz!Box 7170, 7270 v1/v2 and other old devices
+			with ancient uClibc (0.9.29, 0.9.30) or gcc < 4.x toolchains.
+			
+			This version includes compatibility patches for old systems.
+
+	config FREETZ_LDD_VERSION_1_0_55
+		bool "1.0.55 (modern - from uClibc-ng)"
+		help
+			Latest version from uClibc-ng 1.0.55 with support for 28+
+			architectures including modern ARM64, RISC-V, and improved MIPS.
+			
+			Requires uClibc >= 0.9.32 or uClibc-ng, and gcc >= 4.x.
+			All legacy patches are already applied upstream.
+
+endchoice
+
+endif # FREETZ_PACKAGE_LDD
 
