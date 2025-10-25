@@ -1,0 +1,15 @@
+if [ "$EXTERNAL_FREETZ_PACKAGE_BINARY_TOOLS" == "y" ] ; then
+	FILES=""
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_READELF" == "y" ] && FILES="$FILES /usr/bin/readelf"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_OBJDUMP" == "y" ] && FILES="$FILES /usr/bin/objdump"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_OBJCOPY" == "y" ] && FILES="$FILES /usr/bin/objcopy"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_NM" == "y" ] && FILES="$FILES /usr/bin/nm"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_STRINGS" == "y" ] && FILES="$FILES /usr/bin/strings"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_AR" == "y" ] && FILES="$FILES /usr/bin/ar"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_RANLIB" == "y" ] && FILES="$FILES /usr/bin/ranlib"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_STRIP" == "y" ] && FILES="$FILES /usr/bin/strip"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_ADDR2LINE" == "y" ] && FILES="$FILES /usr/bin/addr2line"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_SIZE" == "y" ] && FILES="$FILES /usr/bin/size"
+	[ "$FREETZ_PACKAGE_BINARY_TOOLS_PATCHELF" == "y" ] && FILES="$FILES /usr/bin/patchelf"
+	EXTERNAL_FILES+="$FILES"
+fi
