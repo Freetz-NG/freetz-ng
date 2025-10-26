@@ -1,8 +1,14 @@
 config EXTERNAL_FREETZ_LIB_libpython3
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpython3
-	bool "libpython3"
-	default n
+	bool "libpython3 (included in Python 3 externalization)"
+	default EXTERNAL_FREETZ_PACKAGE_PYTHON3
 	help
-		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpython3.13.so.1.0
+		Externalizes the Python 3 shared library.
+		
+		NOTE: If you enabled Python 3 package externalization,
+		this is automatically selected and externalized together
+		with other Python 3 files.
+		
+		File externalized:
+		 - ${FREETZ_LIBRARY_DIR}/libpython3.13.so.1.0
 
