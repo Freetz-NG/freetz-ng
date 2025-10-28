@@ -122,6 +122,10 @@ jobs:
         run: |
           make && rm -f images/latest.image
 
+      - name: progress
+        run: |
+          tools/make_progress_monitor.sh
+
       - name: result
         run: |
           echo "################################################################"
