@@ -151,6 +151,9 @@ config FREETZ_AVM_HAS_AVMCOUNTERD
 config FREETZ_AVM_HAS_RRDTOOL
 	def_bool y
 
+config FREETZ_AVM_HAS_HOSTAPD
+	def_bool y
+
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 

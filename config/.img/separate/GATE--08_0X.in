@@ -106,6 +106,9 @@ config FREETZ_AVM_HAS_CTLMGR_CTL
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
 	def_bool y
 
+config FREETZ_AVM_HAS_HOSTAPD
+	def_bool y
+
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 
