@@ -1,6 +1,9 @@
+comment "Python 3.13.7 requires external storage  (Enable 'External processing' in the main menu)"
+	depends on !EXTERNAL_ENABLED
+
 config FREETZ_PACKAGE_PYTHON3
-	bool "Python 3.13.7 - DEVELOPER"
-	depends on FREETZ_SHOW_DEVELOPER
+	bool "Python 3.13.7"
+	depends on EXTERNAL_ENABLED
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
 	select FREETZ_LIB_libpython3  if !FREETZ_PACKAGE_PYTHON3_STATIC
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -13,9 +16,11 @@ config FREETZ_PACKAGE_PYTHON3
 	help
 		Python is a remarkably powerful dynamic programming language
 		that is used in a wide variety of application domains.
-		CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on
-		your choice of modules) of uncompressed data to your image.
-		In most cases, it should therefore be externalized.
+		
+		CAUTION: Python 3 adds roughly 10-20 MB of uncompressed data
+		to your image. MUST be externalized to USB storage.
+		
+		Size: ~10-20 MB (depending on modules)
 
 if FREETZ_PACKAGE_PYTHON3
 
@@ -329,21 +334,19 @@ if FREETZ_PACKAGE_PYTHON3
 
 	endmenu
 
-#	menu "3rd-party modules"
-#		source "make/pkgs/python-bjoern/Config.in"
-#		source "make/pkgs/python-cffi/Config.in"
-#		source "make/pkgs/python-cheetah/Config.in"
-#		source "make/pkgs/python-imaging-library/Config.in"
-#		source "make/pkgs/python-mechanize/Config.in"
-#		source "make/pkgs/python-mysql-connector/Config.in"
-#		source "make/pkgs/python-pycrypto/Config.in"
-#		source "make/pkgs/python-pycryptodome/Config.in"
-#		source "make/pkgs/python-pycurl/Config.in"
-#		source "make/pkgs/python-pyopenssl/Config.in"
-#		source "make/pkgs/python-pyrrd/Config.in"
-#		source "make/pkgs/python-pyserial/Config.in"
-#		source "make/pkgs/python-yenc/Config.in"
-#	endmenu
+	menu "3rd-party modules"
+		source "make/pkgs/python3-cffi/Config.in"
+		source "make/pkgs/python3-cryptography/Config.in"
+		source "make/pkgs/python3-lxml/Config.in"
+		source "make/pkgs/python3-markupsafe/Config.in"
+		source "make/pkgs/python3-numpy/Config.in"
+		source "make/pkgs/python3-pandas/Config.in"
+		source "make/pkgs/python3-pillow/Config.in"
+		source "make/pkgs/python3-pip/Config.in"
+		source "make/pkgs/python3-pycryptodome/Config.in"
+		source "make/pkgs/python3-pyyaml/Config.in"
+		source "make/pkgs/python3-setuptools/Config.in"
+	endmenu
 
 endif # FREETZ_PACKAGE_PYTHON3
 

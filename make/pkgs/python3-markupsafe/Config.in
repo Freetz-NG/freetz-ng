@@ -1,0 +1,24 @@
+config FREETZ_PACKAGE_PYTHON3_MARKUPSAFE
+	bool "markupsafe 3.0.2"
+	depends on FREETZ_PACKAGE_PYTHON3
+	default n
+	help
+		MarkupSafe implements a text object that escapes characters
+		for safe use in HTML and XML.
+		
+		Provides:
+		- Fast C implementation of text escaping
+		- Safe string handling for web templates
+		- HTML/XML entity encoding
+		- Integration with Jinja2 and other template engines
+		
+		Common uses:
+		- Template rendering (Jinja2, Mako)
+		- Web frameworks (Flask, Django)
+		- HTML/XML generation
+		- XSS attack prevention
+		
+		This is a core dependency for many web frameworks.
+		
+		Website: https://palletsprojects.com/p/markupsafe/
+		Docs: https://markupsafe.palletsprojects.com/
