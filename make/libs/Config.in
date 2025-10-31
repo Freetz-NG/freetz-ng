@@ -8,7 +8,7 @@ menu "Avahi libraries"
 endmenu ### "Avahi libraries"
 
 menu "Charsets & Internationalization"
-	source "make/pkgs/iconv/Config.in.libs"
+	source "make/libs/libiconv/Config.in"
 	source "make/libs/gettext/Config.in"
 	source "make/libs/fribidi/Config.in"
 	source "make/libs/utf8proc/Config.in"
