@@ -1,0 +1,5 @@
+# Support different GCC versions (libatomic version depends on GCC version)
+if [ "$EXTERNAL_FREETZ_LIB_libatomic" == "y" ]; then
+	LIBATOMIC_LIB=$(ls ${FREETZ_LIBRARY_DIR}/libatomic.so.* 2>/dev/null | grep -v "\.a$" | head -1)
+	[ -n "$LIBATOMIC_LIB" ] && EXTERNAL_FILES+=" $LIBATOMIC_LIB"
+fi
