@@ -39,21 +39,21 @@ Verfügbare Scripte und Tools zum Flashen über den Bootloader:
     - [push_firmware](https://freetz.github.io) vom Ur-Freetz
     - [fritzflash.py](https://fritz-tools.readthedocs.io) von Freifunk/Gluon
     - [ruKernelTool](http://rukerneltool.rainerullrich.de) gibt es nicht mehr
-    - [DieFlashe](https://github.com/DieFlashe/dieflashe) von BoxenLuther
+    - [DieFlashe](https://dieflashe.github.io/dieflashe/) von BoxenLuther
  
   * Gen 2: __ram-boot__<a id='ram'></a> / NAND / inmemory<br>
     Fritzboxen nach 7390, wie 7490 & 7590
     - `tools/push_firmware` von Freetz-NG
     - [eva_tools](https://www.yourfritz.de/desc-eva) aus [YourFritz](https://github.com/PeterPawn/YourFritz/tree/main/eva_tools) für Windows/PowerShell<br>
       Vorsicht: Dieses Script kann kein Image flashen, sondern nur das soganannte <br>`inmemory`-Zwischenformat. Siehe dazu `tools/image2inmemory`
-    - [DieFlashe](https://github.com/DieFlashe/dieflashe) von BoxenLuther
+    - [DieFlashe](https://dieflashe.github.io/dieflashe/) von BoxenLuther
 
   * Gen 5: __fit-boot__<a id='fit'></a> / fitimg<br>
     Neueste Fritzboxen wie 7530 AX & 5530
     - `tools/push_firmware` von Freetz-NG
     - [fit_tools](https://github.com/PeterPawn/YourFritz/tree/main/fit_tools) von YourFritz,
       wird in Freetz-NG für den AVM spezifische Header bzw<br>Signatur genutzt. Danach können DTC und U-Boot verwenden werden.
-    - [DieFlashe](https://github.com/DieFlashe/dieflashe) von BoxenLuther
+    - [DieFlashe](https://dieflashe.github.io/dieflashe/) von BoxenLuther
 
   * Gen 3: __dual-boot__<a id='dual'></a><br>
     Alte Cable Fritzboxen mit Puma6, zb 6490 & 6590
