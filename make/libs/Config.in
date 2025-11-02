@@ -37,6 +37,7 @@ menu "Crypto & SSL"
 endmenu ### "Crypto & SSL"
 
 menu "Data compression"
+	source "make/libs/bzip2/Config.in"
 	source "make/libs/libdeflate/Config.in"
 	source "make/libs/lz4/Config.in"
 	source "make/libs/lzo/Config.in"
