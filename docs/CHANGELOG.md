@@ -3803,6 +3803,6 @@ Features:
 
 ```
 
-Latest change of this file: $Id: 8e25e0930a2f588280ea54b393df629452bc6f19 $
+Latest change of this file: $Id$
 ```
 
