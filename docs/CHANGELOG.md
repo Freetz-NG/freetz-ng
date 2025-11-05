@@ -3363,10 +3363,10 @@ See svn log for more details.
 - Ntfs3g: bump version to 1.417
 - Fix typo in make/avm-gpl/avm-gpl.mk
 - Minor menuconfig improvements:
-  * Don't show open source package selection, always usedefault (currently
-    04.30 for 7141, 04.29 for all other supported boxes)
-  * Rename "firmware type" to "hardware type"
-  * Rename "firmware version" to "firmware language"
+    * Don't show open source package selection, always usedefault (currently
+      04.30 for 7141, 04.29 for all other supported boxes)
+    * Rename "firmware type" to "hardware type"
+    * Rename "firmware version" to "firmware language"
 - Kernel build: do not use /sbin/depmod while cross-compiling
 - Integrate new AVM open source package (7141-04.30)
 - Bftpd: bump version to 1.8 and update download site
@@ -3374,14 +3374,14 @@ See svn log for more details.
   the precompiled uClibc, the manual build never got fired.
 - Update Speedport W701V to firmware version 33.04.26
 - Improved menuconfig tool adopted from buildroot2:
-  * Comprehensive online help
-  * Options' help texts also show dependency information:
-    + Which condition(s) does an option depend on?
-    + By which other option(s) was an option selected?
-    + Which other options does an option select?
-    + Where is an option defined (file name + line no.)?
-  * Seach mode: wildcard search for option names via "/" hotkey.
-    By the way: search mode also has online help.
+    * Comprehensive online help
+    * Options' help texts also show dependency information:
+        + Which condition(s) does an option depend on?
+        + By which other option(s) was an option selected?
+        + Which other options does an option select?
+        + Where is an option defined (file name + line no.)?
+    * Seach mode: wildcard search for option names via "/" hotkey.
+      By the way: search mode also has online help.
 - Added download mirror #3 to Config.in
 - tools/make/busybox-tools.mk: activate download target on demand to avoid
   collision with identical target for regular busybox on one hand and to
@@ -3393,34 +3393,34 @@ See svn log for more details.
 ### ds26-14.3
 
 - Cross-cutting changes in ds-mod-specific package download:
-  * New shell script tools/ds_download provides a uniform way to download
-    ds-mod-specific packages such as application and add-on packages as well
-    as precompiled toolchains. The script first checks a predefined list of
-    download servers (mirrors) and only uses an optionally provided "original"
-    server as fallback, which is important for new package versions not
-    available on mirrors yet.
-  * New variable DL_TOOL in Makefile points to tools/ds_download
-  * List of download sites (mirrors) can be edited in menuconfig (Advanced
-    options -> DS-Mod package download sites). Currently there are five slots
-    for download servers, two of which have default values. Two others are
-    reserved for later use and #5 is freely editable by users. This enables
-    users to set up their private mirrors on their own LAN or WAN servers.
-  * *.mk files loading mod-specific packages have all been made "mirror-aware",
-    i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
-    all former primary download sites have been preserved as fallback servers.
+   * New shell script tools/ds_download provides a uniform way to download
+     ds-mod-specific packages such as application and add-on packages as well
+     as precompiled toolchains. The script first checks a predefined list of
+     download servers (mirrors) and only uses an optionally provided "original"
+     server as fallback, which is important for new package versions not
+     available on mirrors yet.
+   * New variable DL_TOOL in Makefile points to tools/ds_download
+   * List of download sites (mirrors) can be edited in menuconfig (Advanced
+     options -> DS-Mod package download sites). Currently there are five slots
+     for download servers, two of which have default values. Two others are
+     reserved for later use and #5 is freely editable by users. This enables
+     users to set up their private mirrors on their own LAN or WAN servers.
+   * *.mk files loading mod-specific packages have all been made "mirror-aware",
+     i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
+     all former primary download sites have been preserved as fallback servers.
 - Major menuconfig restructuring. For example (there is more):
-  * Iptables' shared libs and kernel modules are dependent on a top level
-    setting and can be deselected as  whole groups.
-  * JamVM + classpath + ffi-sable can now be found in one place and are also
-    interdependent.
-  * Sub-menus in packages section
-  * Major case first letters in package names
-  * More and improved menu descriptions
-  * Removed redundant library descriptions for iptables and classpath stuff by
-    putting them in groups (see above).
-  * Some changes in include structure ('source' commands in Config.in files),
-    e.g. several libs' descriptions are now closer to their required top level
-    applications.
+   * Iptables' shared libs and kernel modules are dependent on a top level
+     setting and can be deselected as  whole groups.
+   * JamVM + classpath + ffi-sable can now be found in one place and are also
+     interdependent.
+   * Sub-menus in packages section
+   * Major case first letters in package names
+   * More and improved menu descriptions
+   * Removed redundant library descriptions for iptables and classpath stuff by
+     putting them in groups (see above).
+   * Some changes in include structure ('source' commands in Config.in files),
+     e.g. several libs' descriptions are now closer to their required top level
+     applications.
 - Fix firmware build: iptables binary was always included in image, even if not
   selected in menuconfig.
 - Fix syslogd ring buffer size parameter leading to "Starting syslogd...failed";
