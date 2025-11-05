@@ -3393,34 +3393,34 @@ See svn log for more details.
 ### ds26-14.3
 
 - Cross-cutting changes in ds-mod-specific package download:
-   * New shell script tools/ds_download provides a uniform way to download
-     ds-mod-specific packages such as application and add-on packages as well
-     as precompiled toolchains. The script first checks a predefined list of
-     download servers (mirrors) and only uses an optionally provided "original"
-     server as fallback, which is important for new package versions not
-     available on mirrors yet.
-   * New variable DL_TOOL in Makefile points to tools/ds_download
-   * List of download sites (mirrors) can be edited in menuconfig (Advanced
-     options -> DS-Mod package download sites). Currently there are five slots
-     for download servers, two of which have default values. Two others are
-     reserved for later use and #5 is freely editable by users. This enables
-     users to set up their private mirrors on their own LAN or WAN servers.
-   * *.mk files loading mod-specific packages have all been made "mirror-aware",
-     i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
-     all former primary download sites have been preserved as fallback servers.
+    * New shell script tools/ds_download provides a uniform way to download
+      ds-mod-specific packages such as application and add-on packages as well
+      as precompiled toolchains. The script first checks a predefined list of
+      download servers (mirrors) and only uses an optionally provided "original"
+      server as fallback, which is important for new package versions not
+      available on mirrors yet.
+    * New variable DL_TOOL in Makefile points to tools/ds_download
+    * List of download sites (mirrors) can be edited in menuconfig (Advanced
+      options -> DS-Mod package download sites). Currently there are five slots
+      for download servers, two of which have default values. Two others are
+      reserved for later use and #5 is freely editable by users. This enables
+      users to set up their private mirrors on their own LAN or WAN servers.
+    * *.mk files loading mod-specific packages have all been made "mirror-aware",
+      i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
+      all former primary download sites have been preserved as fallback servers.
 - Major menuconfig restructuring. For example (there is more):
-   * Iptables' shared libs and kernel modules are dependent on a top level
-     setting and can be deselected as  whole groups.
-   * JamVM + classpath + ffi-sable can now be found in one place and are also
-     interdependent.
-   * Sub-menus in packages section
-   * Major case first letters in package names
-   * More and improved menu descriptions
-   * Removed redundant library descriptions for iptables and classpath stuff by
-     putting them in groups (see above).
-   * Some changes in include structure ('source' commands in Config.in files),
-     e.g. several libs' descriptions are now closer to their required top level
-     applications.
+    * Iptables' shared libs and kernel modules are dependent on a top level
+      setting and can be deselected as  whole groups.
+    * JamVM + classpath + ffi-sable can now be found in one place and are also
+      interdependent.
+    * Sub-menus in packages section
+    * Major case first letters in package names
+    * More and improved menu descriptions
+    * Removed redundant library descriptions for iptables and classpath stuff by
+      putting them in groups (see above).
+    * Some changes in include structure ('source' commands in Config.in files),
+      e.g. several libs' descriptions are now closer to their required top level
+      applications.
 - Fix firmware build: iptables binary was always included in image, even if not
   selected in menuconfig.
 - Fix syslogd ring buffer size parameter leading to "Starting syslogd...failed";
