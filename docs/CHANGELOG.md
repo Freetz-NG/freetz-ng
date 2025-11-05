@@ -3662,6 +3662,7 @@ NOTE:
   upgrade anyways.
 
 Upgraded packages:
+
 - callmonitor 1.5
 
 ### ds-0.2.7
@@ -3672,12 +3673,14 @@ Upgraded packages:
   (thanks to Oliver!)
 
 Upgraded packages:
+
 - callmonitor 1.4
 - openvpn 2.1_beta14 ds0.2
 
 ### ds-0.2.6
 
 Upgraded packages:
+
 - callmonitor 1.1
 - firewall-cgi 0.5.1
 - openvpn 2.0.6 ds0.1
@@ -3688,6 +3691,7 @@ Now everything that should be fixed with ds-0.2.4 is
 really fixed.
 
 New features:
+
 - Speed up target toolchain using ccache
 - New motd screen with ds-mod logo
 - Removed bz2 from busybox for size reasons
@@ -3695,14 +3699,17 @@ New features:
   selected shared libraries
 
 New packages:
+
 - samba 2.0.10 ds0.1
 - screen 4.0.2 ds0.1
 
 New testing packages (binary only):
+
 - openvpn 2.0.6
 - transmission 0.5
 
 Upgraded packages:
+
 - callmonitor 1.0
 
 ### ds-0.2.4
@@ -3717,11 +3724,13 @@ de - deutsch & en - english) and supports the
 international versions of the original firmwares.
 
 New features:
+
 - Added a new HOWTOs
 - Support for 7140
 - ipp2p netfilter
 
 Upgraded packages:
+
 - bftpd 1.3 ds0.5
 - callmonitor 0.8
 - dnsmasq 2.26 ds0.5
@@ -3742,11 +3751,13 @@ Fixed cygwin support (failed to compile mconf)
 ### ds-0.2
 
 New make targets:
+
 - make toolchain        (build cross-compilers)
 - make tools            (build the tools)
 - make recover          (does not supported cygwin and 7170/3070)
 
 New features:
+
 - Support for cygwin
 - Support for hidden root boxes (e.g. Fon 5012, ...)
 - Support for 8mb boxes (e.g. Fon WLAN 7170)
@@ -3762,12 +3773,14 @@ New features:
 - dumpsquashfs-lzma
 
 New packages:
+
 - checkmaild ds0.2
 - firewall-cgi 0.3
 - vpnc 0.3.3 ds0.3
 - wol-cgi 0.1.3
 
 Upgraded packages:
+
 - bftpd 1.2 ds 0.1
 - callmonitor 0.7
 - dnsmasq 2.26 ds0.1
@@ -3793,10 +3806,12 @@ tar, but is avoided in the mod-scripts.
 First version which is somehow worth to call a release.
 
 Additional make targets:
+
 - make precompiled      - re-compile all target binaries
 - make sources          - download all source packages
 
 Features:
+
 - kernel (based on 883)
   * iptables
   * lzma support
