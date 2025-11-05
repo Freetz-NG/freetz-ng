@@ -32,7 +32,7 @@ Latest changes
     * [Freetz-1.0.1](#freetz-101)
     * [Freetz-1.0](#freetz-10)
 
-  - DS 2.6
+  - DS-Mod 2.6
     * [ds26-15.2](#ds26-152)
     * [ds26-15.1](#ds26-151)
     * [ds26-15.0](#ds26-150)
@@ -44,7 +44,7 @@ Latest changes
     * [ds26-14.1](#ds26-141)
     * [ds26-14.0](#ds26-140)
 
-  - DS 2.4
+  - DS-Mod 2.4
     * [ds-0.2.9](#ds-029)
     * [ds-0.2.8](#ds-028)
     * [ds-0.2.7](#ds-027)
