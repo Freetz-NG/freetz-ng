@@ -3639,11 +3639,13 @@ See svn log for more details.
 - initial checkin
 
 ### ds-0.2.9
+
 - fixed favicons
 - busybox upgraded to 1.2.1
   * added applets losetup and swaponoff
 
 ### ds-0.2.8
+
 - Connmark patches for better ipp2p handling
   (thank you Ghost for the hint
   -> new ds-mod kernel version iln6)
@@ -3663,6 +3665,7 @@ Upgraded packages:
 - callmonitor 1.5
 
 ### ds-0.2.7
+
 - New try for ip_conntrack fix ;) Early module loading
 - Updated Enrik's recover scripts
 - Replaced dumpsquashfs by unsquashfs from squashfs CVS
@@ -3673,12 +3676,14 @@ Upgraded packages:
 - openvpn 2.1_beta14 ds0.2
 
 ### ds-0.2.6
+
 Upgraded packages:
 - callmonitor 1.1
 - firewall-cgi 0.5.1
 - openvpn 2.0.6 ds0.1
 
 ### ds-0.2.5
+
 Now everything that should be fixed with ds-0.2.4 is
 really fixed.
 
@@ -3701,10 +3706,12 @@ Upgraded packages:
 - callmonitor 1.0
 
 ### ds-0.2.4
+
 Fixed modcgi to allow package names like bftpd-zlib and
 dropbear-sshd (update: still not completely fixed)
 
 ### ds-0.2.3
+
 ds-mod now supports multiple languages (currently
 de - deutsch & en - english) and supports the
 international versions of the original firmwares.
@@ -3723,14 +3730,17 @@ Upgraded packages:
 - wol-cgi 0.5
 
 ### ds-0.2.2
+
 Added support for current beta firmwares. BE AWARE
 that these modded betas are TOTALLY UNTESTED. They
 just compile ;)
 
 ### ds-0.2.1
+
 Fixed cygwin support (failed to compile mconf)
 
 ### ds-0.2
+
 New make targets:
 - make toolchain        (build cross-compilers)
 - make tools            (build the tools)
@@ -3772,12 +3782,14 @@ to `./root/foo.bar`. Documentation is proposed to be in
 A lot of minor changes.
 
 ### ds-0.1.1
+
 Fixed a bug which made the box freeze during boot
 when dsmod was not configured (clean installation or
 after moduninstall). The bug is still in the busybox
 tar, but is avoided in the mod-scripts.
 
 ### ds-0.1
+
 First version which is somehow worth to call a release.
 
 Additional make targets:
