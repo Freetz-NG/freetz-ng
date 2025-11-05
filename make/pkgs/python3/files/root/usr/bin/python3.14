@@ -6,4 +6,4 @@
 
 export PYTHONHOME="/var/media/ftp/external/usr"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}${PYTHONHOME}/lib/freetz"
-exec "${PYTHONHOME}/bin/python3.13.bin" -B "$@"
+exec "${PYTHONHOME}/bin/python3.14.bin" -B "$@"

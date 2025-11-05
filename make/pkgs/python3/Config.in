@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PYTHON3
-	bool "Python 3.13.7 - DEVELOPER"
+	bool "Python 3.14.0 - DEVELOPER"
 	depends on FREETZ_SHOW_DEVELOPER
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
 	select FREETZ_LIB_libpython3  if !FREETZ_PACKAGE_PYTHON3_STATIC
@@ -43,10 +43,10 @@ if FREETZ_PACKAGE_PYTHON3
 		depends on FREETZ_PACKAGE_PYTHON3_PYC
 		default y
 		help
-			Causes all *.pyc files usually residing in /usr/lib/python3.13
-			to be compressed into one large file, /usr/lib/python313.zip.
+			Causes all *.pyc files usually residing in /usr/lib/python3.14
+			to be compressed into one large file, /usr/lib/python314.zip.
 			Thereafter, only *.so files and some small text data are left in
-			/usr/lib/python3.13, while Python will (efficiently) read all
+			/usr/lib/python3.14, while Python will (efficiently) read all
 			*.pyc files from the zip archive.
 			Leaving this option enabled saves you about 50% of space at
 			virtually no cost.
