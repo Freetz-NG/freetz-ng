@@ -3642,7 +3642,7 @@ See svn log for more details.
 
 - fixed favicons
 - busybox upgraded to 1.2.1
-  * added applets losetup and swaponoff
+   * added applets losetup and swaponoff
 
 ### ds-0.2.8
 
@@ -3813,13 +3813,13 @@ Additional make targets:
 Features:
 
 - kernel (based on 883)
-  * iptables
-  * lzma support
-  * contiguous squashfs
+   * iptables
+   * lzma support
+   * contiguous squashfs
 - iptables 1.3.3
 - busybox 1.1.0-pre1
-  * crond
-  * ether-wake
+   * crond
+   * ether-wake
 - bftpd 1.0.24 ds0.1
 - callmonitor ds0.4
 - dnsmasq 2.24 ds0.1
