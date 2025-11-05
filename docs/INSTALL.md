@@ -32,6 +32,13 @@ die Aktive kann man via [quote GETENV linux_fs_start](https://github.com/PeterPa
 
 ### Methoden
 Verfügbare Scripte und Tools zum Flashen über den Bootloader:
+ 
+  * Gen 0: __kernel-boot__<a id='kernel'></a> / kernel24<br>
+    Die ersten Fritzboxen mit Linux Kernel 2.4
+    - `tools/recover-adam` von ds-mod<br>
+      Die Dateien werden getrennt nach mt1 (kernel) und mtd0 (filesystem) geschrieben.<br>
+      Nach einem Bootloader-Update ist das Partitions-Layout geändert und es können<br>
+      nur noch Images mit Linux Kernel 2.6 installiert werden.<br>
 
   * Gen 1: __single-boot__<a id='single'></a> / NOR<br>
     Die ersten Fritzboxen von 7050 bis 7390
