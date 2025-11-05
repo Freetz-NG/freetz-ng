@@ -24,10 +24,19 @@ import tty
 DEFAULT_USER = 'root'
 DEFAULT_TARGET_DIR = '/var/tmp'
 DEFAULT_EXTERNAL_BASE = '/var/media/ftp/external'
+FREETZ_PATH = '/mod/sbin:/mod/bin:/mod/usr/sbin:/mod/usr/bin:/mod/etc/init.d:/sbin:/bin:/usr/sbin:/usr/bin'
 PING_TIMEOUT = 1
 BOOT_WAIT_MAX_TRIES = 450  # one try every two seconds; 15 minutes
 SSH_TEST_CMD = 'pwd'
 SSH_LOG_FILE = '/tmp/ssh_firmware_update.log'
+REBOOT_CMD = (
+    "nohup sh -c 'prepare_fwupgrade end; "
+    "/etc/inittab.shutdown; "
+    "sync; "
+    "sleep 2; "
+    "sync; "
+    "reboot -d 2 -f' & >/dev/null 2>&1 < /dev/null"
+)
 
 # --- COLORS AND EMOJIS ---
 COLORS = {
@@ -129,7 +138,7 @@ def wait_router_boot(host, password, user=DEFAULT_USER, max_tries=BOOT_WAIT_MAX_
     start_time = time.time()
     
     # Phase 1: Wait for ping response
-    cprint("Phase 1: Waiting for network connectivity", 'blue', 'ping')
+    cprint("Phase 1: Waiting for network connectivity...", 'blue', 'ping')
     for i in range(max_tries):
         if ping_router(host):
             cprint("")
@@ -143,7 +152,7 @@ def wait_router_boot(host, password, user=DEFAULT_USER, max_tries=BOOT_WAIT_MAX_
         return False
     
     # Phase 2: Wait for SSH availability
-    cprint("Phase 2: Waiting for SSH service", 'blue', 'wait')
+    cprint("Phase 2: Waiting for SSH service...", 'blue', 'wait')
     time.sleep(5)  # Give SSH daemon time to start
     for i in range(max_tries):
         try:
@@ -446,7 +455,10 @@ def sshpass_exec(cmd, password, verbose=False, retries=2, capture_output=False, 
 
 def ssh_run(host, user, password, command, debug=False, capture_output=True, stdin_stream=None):
     """Execute command on remote host via SSH, optionally passing a file-like stdin_stream"""
-    cmd = ['ssh', '-o', 'StrictHostKeyChecking=no', f'{user}@{host}', command]
+    # Prepend PATH export to ensure Freetz-NG commands are found
+    # Use 'export PATH=...; command' to set PATH for the entire command execution
+    full_command = f"export PATH='{FREETZ_PATH}'; {command}"
+    cmd = ['ssh', '-o', 'StrictHostKeyChecking=no', f'{user}@{host}', full_command]
     cmd_str = ' '.join(cmd)
     cdebug(f"SSH: {cmd_str}", debug)
     output = sshpass_exec(cmd, password, verbose=debug, capture_output=capture_output, stdin_stream=stdin_stream)
@@ -565,120 +577,121 @@ def parse_df_output(df_text):
     
     return ubi_info, storage
 
-def read_router_config(host, user, password, debug=False):
+def read_device_config(host, user, password, debug=False, summary=False):
     """Read and parse FRITZ!Box configuration"""
     config = RouterConfig()
     
-    # Step 1: Read mod.cfg
-    cinfo("Step 1: Reading Freetz-NG configuration (/mod/etc/conf/mod.cfg)")
+    if not summary:
+        # Step 1: Read mod.cfg
+        cinfo("Step 1: Reading Freetz-NG configuration (/mod/etc/conf/mod.cfg)")
 
-    # Try to connect, retrying every 2 seconds if 'No route to host' is detected
-    start_time = time.time()
-    no_route_first = True
-    while True:
-        mod_cfg_output = ssh_run(host, user, password, 
-                                "cat /mod/etc/conf/mod.cfg 2>/dev/null",
-                                debug=debug, capture_output=True)
-        if (
-            mod_cfg_output and "Connection refused" in mod_cfg_output
-        ) or (
-            mod_cfg_output and "Connection reset by peer" in mod_cfg_output
-        ):
-            cerror("Freetz-NG may not be properly installed.")
-            return None
-        if (
-            mod_cfg_output and "ssh:" in mod_cfg_output and "No route to host" in mod_cfg_output
-        ) or (
-            mod_cfg_output and "Connection timed out" in mod_cfg_output
-        ):
-            elapsed = time.time() - start_time
-            if no_route_first:
-                cerror(f"No connection to {host} (port 22: No route to host)")
-                no_route_first = False
-            else:
-                print(".", end='', flush=True)
-            if elapsed > BOOT_WAIT_MAX_TRIES * 2:
-                cerror(f"Could not connect to {host} after {BOOT_WAIT_MAX_TRIES * 2 / 60} minutes. Aborting.")
+        # Try to connect, retrying every 2 seconds if 'No route to host' is detected
+        start_time = time.time()
+        no_route_first = True
+        while True:
+            mod_cfg_output = ssh_run(host, user, password, 
+                                    "cat /mod/etc/conf/mod.cfg 2>/dev/null",
+                                    debug=debug, capture_output=True)
+            if (
+                mod_cfg_output and "Connection refused" in mod_cfg_output
+            ) or (
+                mod_cfg_output and "Connection reset by peer" in mod_cfg_output
+            ):
+                cerror("Freetz-NG may not be properly installed.")
                 return None
-            time.sleep(2)
-            continue
-        if not mod_cfg_output or 'No such file' in mod_cfg_output:
-            cerror("Freetz-NG configuration file not found!")
-            cerror("File /mod/etc/conf/mod.cfg is missing. Freetz-NG may not be properly installed.")
-            return None
-        break
-    
-    # Parse /mod/etc/conf/mod.cfg
-    mod_config = parse_mod_config(mod_cfg_output)
-    
-    # Set external_dir with fallback
-    if 'MOD_EXTERNAL_DIRECTORY' in mod_config:
-        config.external_dir = mod_config['MOD_EXTERNAL_DIRECTORY']
-    else:
-        config.external_dir = '/var/media/ftp/external'
-        cwarning("MOD_EXTERNAL_DIRECTORY not found in config, using default: /var/media/ftp/external")
-    
-    config.external_freetz_services = 'no'
-    if 'MOD_EXTERNAL_FREETZ_SERVICES' in mod_config:
-        config.external_freetz_services = mod_config['MOD_EXTERNAL_FREETZ_SERVICES']
-    config.lang = 'en'
-    if 'MOD_LANG' in mod_config:
-        config.lang = mod_config['MOD_LANG']
-    config.port = '81'
-    if 'MOD_HTTPD_PORT' in mod_config:
-        config.port = mod_config['MOD_HTTPD_PORT']
-    config.user = 'unknown'
-    if 'MOD_HTTPD_USER' in mod_config:
-        config.user = mod_config['MOD_HTTPD_USER']
-    config.stor = 'unknown'
-    if 'MOD_STOR_PREFIX' in mod_config:
-        config.stor = mod_config['MOD_STOR_PREFIX']
-
-    cprint(f"{EMOJI['ok']} Configuration loaded successfully. Current settings:", 'green')
-    cprint(f"  External directory: {config.external_dir}", 'cyan')
-    cprint(f"  External services:  {config.external_freetz_services}", 'cyan')
-    cprint(f"  Language:           {config.lang}", 'cyan')
-    cprint(f"  HTTP port:          {config.port}", 'cyan')
-    cprint(f"  User:               {config.user}", 'cyan')
-    cprint(f"  Storage prefix:     {config.stor}", 'cyan')
-
-    # Step 2: Read storage information (df -h)
-    cprint("")
-    cinfo("Step 2: Detecting storage devices")
-    df_output = ssh_run(host, user, password, "df -h", debug=debug, capture_output=True)
-
-    if df_output:
-        ubi_info, storage_devices = parse_df_output(df_output)
+            if (
+                mod_cfg_output and "ssh:" in mod_cfg_output and "No route to host" in mod_cfg_output
+            ) or (
+                mod_cfg_output and "Connection timed out" in mod_cfg_output
+            ):
+                elapsed = time.time() - start_time
+                if no_route_first:
+                    cerror(f"No connection to {host} (port 22: No route to host)")
+                    no_route_first = False
+                else:
+                    print(".", end='', flush=True)
+                if elapsed > BOOT_WAIT_MAX_TRIES * 2:
+                    cerror(f"Could not connect to {host} after {BOOT_WAIT_MAX_TRIES * 2 / 60} minutes. Aborting.")
+                    return None
+                time.sleep(2)
+                continue
+            if not mod_cfg_output or 'No such file' in mod_cfg_output:
+                cerror("Freetz-NG configuration file not found!")
+                cerror("File /mod/etc/conf/mod.cfg is missing. Freetz-NG may not be properly installed.")
+                return None
+            break
         
-        # UBI information
-        if ubi_info:
-            config.has_ubi = True
-            config.ubi_size = ubi_info['size']
-            config.ubi_available = ubi_info['available']
-            cprint(f"\n{EMOJI['ok']} Internal UBI storage detected:", 'green')
-            cprint(f"  Device:     {ubi_info['filesystem']}", 'cyan')
-            cprint(f"  Size:       {ubi_info['size']}", 'cyan')
-            cprint(f"  Available:  {ubi_info['available']}", 'cyan')
-            cprint(f"  Mount:      {ubi_info['mountpoint']}", 'cyan')
-        else:
-            cwarning("No UBI storage detected (FRITZ!Box may have limited internal storage)")
+        # Parse /mod/etc/conf/mod.cfg
+        mod_config = parse_mod_config(mod_cfg_output)
         
-        # External storage devices
-        if storage_devices:
-            config.storage_devices = storage_devices
-            cprint(f"\n{EMOJI['ok']} External storage devices detected: {len(storage_devices)}", 'green')
-            for i, dev in enumerate(storage_devices, 1):
-                cprint(f"  Device {i}:  {dev['device']}", 'cyan')
-                cprint(f"    Size:       {dev['size']}", 'cyan')
-                cprint(f"    Available:  {dev['available']}", 'cyan')
-                cprint(f"    Used:       {dev['use_percent']}", 'cyan')
-                cprint(f"    Mount:      {dev['mountpoint']}", 'cyan')
+        # Set external_dir with fallback
+        if 'MOD_EXTERNAL_DIRECTORY' in mod_config:
+            config.external_dir = mod_config['MOD_EXTERNAL_DIRECTORY']
         else:
-            cwarning("No external storage devices detected")
+            config.external_dir = '/var/media/ftp/external'
+            cwarning("MOD_EXTERNAL_DIRECTORY not found in config, using default: /var/media/ftp/external")
+        
+        config.external_freetz_services = 'no'
+        if 'MOD_EXTERNAL_FREETZ_SERVICES' in mod_config:
+            config.external_freetz_services = mod_config['MOD_EXTERNAL_FREETZ_SERVICES']
+        config.lang = 'en'
+        if 'MOD_LANG' in mod_config:
+            config.lang = mod_config['MOD_LANG']
+        config.port = '81'
+        if 'MOD_HTTPD_PORT' in mod_config:
+            config.port = mod_config['MOD_HTTPD_PORT']
+        config.user = 'unknown'
+        if 'MOD_HTTPD_USER' in mod_config:
+            config.user = mod_config['MOD_HTTPD_USER']
+        config.stor = 'unknown'
+        if 'MOD_STOR_PREFIX' in mod_config:
+            config.stor = mod_config['MOD_STOR_PREFIX']
 
-    # Step 3: Additional FRITZ!Box information
-    cprint("")
-    cinfo("Step 3: Gathering additional current system information")
+        cprint(f"{EMOJI['ok']} Configuration loaded successfully. Current settings:", 'green')
+        cprint(f"  External directory: {config.external_dir}", 'cyan')
+        cprint(f"  External services:  {config.external_freetz_services}", 'cyan')
+        cprint(f"  Language:           {config.lang}", 'cyan')
+        cprint(f"  HTTP port:          {config.port}", 'cyan')
+        cprint(f"  User:               {config.user}", 'cyan')
+        cprint(f"  Storage prefix:     {config.stor}", 'cyan')
+
+        # Step 2: Read storage information (df -h)
+        cprint("")
+        cinfo("Step 2: Detecting storage devices")
+        df_output = ssh_run(host, user, password, "df -h", debug=debug, capture_output=True)
+
+        if df_output:
+            ubi_info, storage_devices = parse_df_output(df_output)
+            
+            # UBI information
+            if ubi_info:
+                config.has_ubi = True
+                config.ubi_size = ubi_info['size']
+                config.ubi_available = ubi_info['available']
+                cprint(f"\n{EMOJI['ok']} Internal UBI storage detected:", 'green')
+                cprint(f"  Device:     {ubi_info['filesystem']}", 'cyan')
+                cprint(f"  Size:       {ubi_info['size']}", 'cyan')
+                cprint(f"  Available:  {ubi_info['available']}", 'cyan')
+                cprint(f"  Mount:      {ubi_info['mountpoint']}", 'cyan')
+            else:
+                cwarning("No UBI storage detected (FRITZ!Box may have limited internal storage)")
+            
+            # External storage devices
+            if storage_devices:
+                config.storage_devices = storage_devices
+                cprint(f"\n{EMOJI['ok']} External storage devices detected: {len(storage_devices)}", 'green')
+                for i, dev in enumerate(storage_devices, 1):
+                    cprint(f"  Device {i}:  {dev['device']}", 'cyan')
+                    cprint(f"    Size:       {dev['size']}", 'cyan')
+                    cprint(f"    Available:  {dev['available']}", 'cyan')
+                    cprint(f"    Used:       {dev['use_percent']}", 'cyan')
+                    cprint(f"    Mount:      {dev['mountpoint']}", 'cyan')
+            else:
+                cwarning("No external storage devices detected")
+
+        # Step 3: Additional FRITZ!Box information
+        cprint("")
+        cinfo("Step 3: Gathering additional current system information (/etc/freetz_info.cfg):")
 
     # Get Freetz data
     freetz_data = ssh_run(host, user, password, 
@@ -686,41 +699,92 @@ def read_router_config(host, user, password, debug=False):
                             debug=debug, capture_output=True).strip()
 
     # Extract variables from freetz_data
-    freetz_info_boxtype = 'Unknown'
-    freetz_info_firmwareversion = 'Unknown'
-    freetz_info_version = 'Unknown'
-    freetz_info_makedate = 'Unknown'
-    freetz_info_image_name = 'Unknown'
+    config.freetz_info_boxtype = 'Unknown'
+    config.freetz_info_firmwareversion = 'Unknown'
+    config.freetz_info_version = 'Unknown'
+    config.freetz_info_makedate = 'Unknown'
+    config.freetz_info_image_name = 'Unknown'
     if freetz_data != 'Unknown':
         def extract_var(varname):
             match = re.search(rf"export {varname}='([^']*)'", freetz_data)
             return match.group(1) if match else 'Unknown'
-        freetz_info_boxtype = extract_var('FREETZ_INFO_BOXTYPE')
-        freetz_info_firmwareversion = extract_var('FREETZ_INFO_FIRMWAREVERSION')
-        freetz_info_version = extract_var('FREETZ_INFO_VERSION')
-        freetz_info_makedate = extract_var('FREETZ_INFO_MAKEDATE')
-        freetz_info_image_name = extract_var('FREETZ_INFO_IMAGE_NAME')
-        cprint(f"  Box type:     {freetz_info_boxtype}", 'cyan')
-        cprint(f"  AVM Firmware: {freetz_info_firmwareversion}", 'cyan')
-        cprint(f"  Make Version: {freetz_info_version}", 'cyan')
-        cprint(f"  Make date:    {freetz_info_makedate}", 'cyan')
-        cprint(f"  Image name:   {freetz_info_image_name}", 'cyan')
+        config.freetz_info_boxtype = extract_var('FREETZ_INFO_BOXTYPE')
+        config.freetz_info_firmwareversion = extract_var('FREETZ_INFO_FIRMWAREVERSION')
+        config.freetz_info_version = extract_var('FREETZ_INFO_VERSION')
+        config.freetz_info_makedate = extract_var('FREETZ_INFO_MAKEDATE')
+        config.freetz_info_image_name = extract_var('FREETZ_INFO_IMAGE_NAME')
+        cprint(f"  Box type:     {config.freetz_info_boxtype}", 'cyan')
+        cprint(f"  AVM Firmware: {config.freetz_info_firmwareversion}", 'cyan')
+        cprint(f"  Make Version: {config.freetz_info_version}", 'cyan')
+        cprint(f"  Make date:    {config.freetz_info_makedate}", 'cyan')
+        cprint(f"  Image name:   {config.freetz_info_image_name}", 'cyan')
 
     # Get Freetz version
-    # Get kernel version
     kernel_version = ssh_run(host, user, password, 
                             "uname -r 2>/dev/null || echo 'Unknown'",
                             debug=debug, capture_output=True).strip()
     
-    # Get box model
-    box_model = ssh_run(host, user, password,
-                       "cat /proc/sys/urlader/environment 2>/dev/null | grep 'HWRevision' | cut -d'=' -f2 || echo 'Unknown'",
-                       debug=debug, capture_output=True).strip()
+    # Get urlader environment variables
+    urlader_env = ssh_run(host, user, password,
+                         "cat /proc/sys/urlader/environment 2>/dev/null || echo 'Unknown'",
+                         debug=debug, capture_output=True).strip()
+    
+    # Parse urlader environment
+    if urlader_env != 'Unknown':
+        urlader_vars = {}
+        for line in urlader_env.splitlines():
+            line = line.strip()
+            if '\t' in line:
+                key, value = line.split('\t', 1)
+                urlader_vars[key.strip()] = value.strip()
+        
+        # Store variables in config
+        config.hw_revision = urlader_vars.get('HWRevision', 'Unknown')
+        config.hw_subrevision = urlader_vars.get('HWSubRevision', 'Unknown')
+        config.product_id = urlader_vars.get('ProductID', 'Unknown')
+        config.serial_number = urlader_vars.get('SerialNumber', 'Unknown')
+        config.annex = urlader_vars.get('annex', 'Unknown')
+        config.autoload = urlader_vars.get('autoload', 'Unknown')
+        config.bootloader_version = urlader_vars.get('bootloaderVersion', 'Unknown')
+        config.country = urlader_vars.get('country', 'Unknown')
+        config.firmware_info = urlader_vars.get('firmware_info', 'Unknown')
+        config.firmware_version = urlader_vars.get('firmware_version', 'Unknown')
+        config.flashsize = urlader_vars.get('flashsize', 'Unknown')
+        
+        # Display selected information
+        if config.hw_revision != 'Unknown':
+            cprint(f"  HW Revision:  {config.hw_revision}", 'cyan')
+        if config.hw_subrevision != 'Unknown':
+            cprint(f"  HW SubRev:    {config.hw_subrevision}", 'cyan')
+        if config.product_id != 'Unknown':
+            cprint(f"  Product ID:   {config.product_id}", 'cyan')
+        if config.serial_number != 'Unknown':
+            cprint(f"  Serial:       {config.serial_number}", 'cyan')
+        if config.annex != 'Unknown':
+            cprint(f"  Annex:        {config.annex}", 'cyan')
+        if config.bootloader_version != 'Unknown':
+            cprint(f"  Bootloader:   {config.bootloader_version}", 'cyan')
+        if config.country != 'Unknown':
+            cprint(f"  Country:      {config.country}", 'cyan')
+        if config.firmware_info != 'Unknown':
+            cprint(f"  FW Info:      {config.firmware_info}", 'cyan')
+        if config.flashsize != 'Unknown':
+            cprint(f"  Flash:        {config.flashsize}", 'cyan')
+    else:
+        config.hw_revision = 'Unknown'
+        config.hw_subrevision = 'Unknown'
+        config.product_id = 'Unknown'
+        config.serial_number = 'Unknown'
+        config.annex = 'Unknown'
+        config.autoload = 'Unknown'
+        config.bootloader_version = 'Unknown'
+        config.country = 'Unknown'
+        config.firmware_info = 'Unknown'
+        config.firmware_version = 'Unknown'
+        config.flashsize = 'Unknown'
     
     if kernel_version != 'Unknown':
         cprint(f"  Kernel:       {kernel_version}", 'cyan')
-    if box_model != 'Unknown':
-        cprint(f"  Model:        {box_model}", 'cyan')
 
     # Get RAM info
     ram_output = ssh_run(host, user, password, "free", debug=debug, capture_output=True)
@@ -918,7 +982,7 @@ def extract_archive_with_progress(host, user, password, archive_file, target_dir
         return False
 
     print(f"\r   Extraction progress: 100% | {tar_count}/{tar_count} files extracted in {elapsed}s     ")
-    cprint(f"{EMOJI['ok']} Extraction complete", 'green')
+    cprint(f"{EMOJI['ok']} Extraction complete.", 'green')
     if target_dir != '/':
         ext_size = ssh_run(host, user, password, f"du -sh '{target_dir}' 2>/dev/null | awk '{{print $1}}'", debug=debug, capture_output=True).strip()
         cprint(f"   Size of the external directory: {ext_size}", 'cyan')
@@ -1034,7 +1098,7 @@ def firmware_update_process(host, user, password, image_file,
     result_txt, color = result_codes.get(exit_code, ("UNKNOWN_ERROR", "red"))
     cprint(f"Installation result: {exit_code} ({result_txt})", color, 'info' if color == 'green' else 'warning')
     
-    # Step 4: Verify and execute post_install if exists
+    # Step 4: Verify post_install if exists
     if exit_code == 1:
         cinfo("Step 4: Verifying post-installation script...")
         post_install_exists = ssh_run(
@@ -1044,29 +1108,6 @@ def firmware_update_process(host, user, password, image_file,
         ).strip()
         if post_install_exists == "exists":
             cprint(f"{EMOJI['ok']} Post-installation script found: /var/post_install", 'green')
-            cinfo("Executing post-installation script...")
-            # Execute post_install and capture exit code
-            post_install_output = ssh_run(
-                host, user, password, 
-                "/var/post_install 2>&1; echo $?",
-                debug=debug, capture_output=True
-            )
-            if post_install_output:
-                lines = post_install_output.strip().splitlines()
-                post_exit_code = lines[-1] if lines else "1"
-                post_output = '\n'.join(lines[:-1]) if len(lines) > 1 else ""
-                
-                if post_exit_code == "0":
-                    cprint(f"{EMOJI['ok']} Post-installation script executed successfully", 'green')
-                else:
-                    cerror(f"Post-installation script failed with exit code {post_exit_code}")
-                    if post_output:
-                        cprint("Post-installation output and errors:", 'red', 'warning')
-                        print(post_output)
-                    return False
-            else:
-                cerror("Post-installation script executed but no output captured")
-                return False
         else:
             error("No post-installation script found")
             return False
@@ -1082,9 +1123,19 @@ def firmware_update_process(host, user, password, image_file,
         cprint("\n" + "="*60, 'bold')
         cprint("REBOOTING FRITZ!Box", 'bold', 'reboot')
         cprint("="*60 + "\n", 'bold')
-        reboot_cmd = "(sleep 1; /sbin/reboot -d 2 -f) >/dev/null 2>&1 < /dev/null & exit"
-        ssh_run(host, user, password, reboot_cmd, capture_output=False, debug=debug)
-        return wait_router_boot(host, password, user, debug=debug)
+        ssh_run(host, user, password, REBOOT_CMD, capture_output=False, debug=debug)
+
+        if not wait_router_boot(host, password, user, debug=debug):
+            cerror("Router did not come back online in time after reboot!")
+            return False
+
+        # Read again FRITZ!Box configuration
+        cinfo("Gathering system information after reboot:")
+        router_config = read_device_config(host, user, password, debug, summary=True)
+        if router_config is None:
+            cerror("Cannot read Freetz-NG configuration!")
+            return False
+        return True
     elif exit_code == 1 and no_reboot:
         cwarning("Reboot required but --no-reboot flag is set")
         return True
@@ -1165,10 +1216,13 @@ def external_update_process(host, user, password, external_file, external_dir,
     
     # Step 5: Restart external services
     if restart_services:
-        cinfo("Step 5: Starting external services...")
-        ret = ssh_run(host, user, password, "/mod/etc/init.d/rc.external start", debug=debug)
-        cprint(ret)
-        cprint(f"{EMOJI['ok']} External services started", 'green')
+        if reboot_at_the_end:
+            cerror("Cannot restart external services if reboot is needed.")
+        else:
+            cinfo("Step 5: Starting external services...")
+            ret = ssh_run(host, user, password, "/mod/etc/init.d/rc.external start", debug=debug)
+            cprint(ret)
+            cprint(f"{EMOJI['ok']} External services started", 'green')
     else:
         if not reboot_at_the_end:
             cinfo("Step 5: External not restarted as requested.")
@@ -1277,7 +1331,7 @@ Examples:
         cwarning("DRY-RUN MODE: No changes will be made to FRITZ!Box\n")
     
     # Read FRITZ!Box configuration (always read to show information and validate)
-    router_config = read_router_config(args.host, args.user, args.password, args.debug)
+    router_config = read_device_config(args.host, args.user, args.password, args.debug)
     if router_config is None:
         cerror("Cannot proceed without valid Freetz-NG configuration!")
         return 1
@@ -1296,13 +1350,15 @@ Examples:
     # File selection (interactive or batch)
     images, externals = find_images()
     
+    auto_selected_image = False
     if not args.skip_firmware and not args.image:
         if args.batch:
             if not images:
                 cerror("No firmware images found and --batch mode requires --image")
                 return 1
             args.image = images[0]
-            cinfo(f"Auto-selected latest image: {os.path.basename(args.image)}")
+            cprint(f"Auto-selected latest firmware image: {os.path.basename(args.image)}", 'yellow', 'info')
+            auto_selected_image = True
         else:
             # Interactive: ask if user wants to install firmware
             cprint("")
@@ -1314,12 +1370,17 @@ Examples:
             else:
                 cinfo("Skipping firmware update")
                 args.skip_firmware = True
-    
+
+    if not args.skip_firmware and args.image and os.path.islink(args.image):
+        cprint(f"Image is a symlink of {os.path.basename(os.path.realpath(args.image))}", 'yellow', 'info')
+
+    auto_selected_external = False
     if not args.skip_external and not args.external:
         if args.batch:
             if externals:
                 args.external = externals[0]
-                cinfo(f"Auto-selected latest external: {os.path.basename(args.external)}")
+                cprint(f"Auto-selected latest external: {os.path.basename(args.external)}", 'yellow', 'info')
+                auto_selected_external = True
             else:
                 cinfo("No external files found, skipping external update")
                 args.skip_external = True
@@ -1347,7 +1408,31 @@ Examples:
     if args.external and not os.path.exists(args.external):
         cerror(f"External package not found: {args.external}")
         return 1
-    
+    if not args.skip_external and not args.skip_firmware and args.image and args.external:
+        # Here add a number of checks on the archives
+        # If the firmware archive is a symlink, follow the link and get the file; compare this filename with external and check that the two filenames differ only in the suffix (image and external). If they differ, show a warning. Write everything in English.
+        firmware_real_path = os.path.realpath(args.image)
+        external_real_path = os.path.realpath(args.external)
+        firmware_base = os.path.splitext(os.path.basename(firmware_real_path))[0]
+        external_base = os.path.splitext(os.path.basename(external_real_path))[0]
+        if firmware_base != external_base:
+            if args.batch and (auto_selected_image or auto_selected_external):
+                cerror(f"Auto-selected firmware and external package have different paths:\n  Firmware: {firmware_real_path}\n  External: {external_real_path}\nIn --batch mode, these paths must match.")
+                return 1
+            else:
+                cwarning(f"Firmware and external package have different base names:\n  Firmware: {firmware_real_path}\n  External: {external_real_path}")
+                if (
+                    (auto_selected_image or auto_selected_external)
+                    and not confirm("The base names differ. Do you want to proceed anyway?", default=False)
+                ):
+                    cprint("Update cancelled by user due to path name mismatch.", 'red')
+                    return 1
+        else:
+            firmware_suffix = os.path.splitext(firmware_real_path)[1]
+            external_suffix = os.path.splitext(external_real_path)[1]
+            if firmware_suffix != '.image' or external_suffix != '.external':
+                cwarning(f"Non standard firmware or external suffix:\n  Firmware: {firmware_real_path}\n  External: {external_real_path}")
+
     # Show storage information first
     if router_config and args.external:
         cprint("\n" + "-"*70, 'dim')  # Begin directory configuration
@@ -1372,6 +1457,7 @@ Examples:
                 suggested_dir = DEFAULT_EXTERNAL_BASE
             if args.batch:
                 args.external_dir = suggested_dir
+                cprint(f"Using suggested external directory in batch mode: {suggested_dir}.", 'yellow', 'info')
             else:
                 cprint(f"  Suggested external directory: {suggested_dir}", 'cyan')
                 # Show storage recommendations
@@ -1396,7 +1482,7 @@ Examples:
         ext_exists = ssh_run(args.host, args.user, args.password, f"test -d '{args.external_dir}' && echo exists || echo notfound", debug=args.debug, capture_output=True).strip()
         if ext_exists == "exists":
             ext_size = ssh_run(args.host, args.user, args.password, f"du -sh '{args.external_dir}' 2>/dev/null | awk '{{print $1}}'", debug=args.debug, capture_output=True).strip()
-            cprint(f"   External directory already exists. Current size: {ext_size}", 'cyan')
+            cprint(f"   External directory '{args.external_dir}' already exists. Current size: {ext_size}", 'cyan')
         else:
             cwarning(f"Remote external directory '{args.external_dir}' does not exist.\n   It will be created during archive extraction.")
             ext_size = "0"
@@ -1433,14 +1519,104 @@ Examples:
     
     cprint("-"*70 + "\n", 'dim')  # End of directory configuration
     
-    # Interactive service management
+    # Process firmware image options
     if args.image and not args.skip_firmware:
+        # Extract firmware metadata from the image archive
         cprint("\n" + "-"*70, 'dim')
+        cinfo("Reading firmware archive metadata...")
+        
+        # Extract ./var/content
+        try:
+            fw_content_output = subprocess.getoutput(f"tar -xOf '{args.image}' ./var/content 2>/dev/null")
+        except Exception as e:
+            cerror(f"Could not extract ./var/content from firmware image: {e}")
+            return 1
+        
+        if not fw_content_output or len(fw_content_output.strip()) == 0:
+            cerror("Firmware image does not contain valid ./var/content metadata!")
+            return 1
+        
+        # Parse ./var/content
+        fw_content = {}
+        for line in fw_content_output.splitlines():
+            line = line.strip()
+            if '=' in line:
+                key, value = line.split('=', 1)
+                fw_content[key.strip()] = value.strip()
+        
+        # Extract Product field
+        fw_product = fw_content.get('Product', 'Unknown')
+        fw_type = fw_content.get('Type', 'Unknown')
+        fw_version = fw_content.get('Version', 'Unknown')
+        fw_build = fw_content.get('Build', 'Unknown')
+        fw_oems = fw_content.get('OEMs', 'Unknown')
+        fw_countries = fw_content.get('Countries', 'Unknown')
+        fw_languages = fw_content.get('Languages', 'Unknown')
+        
+        # Display firmware information
+        cprint(f"\n{EMOJI['info']} Firmware archive information:", 'cyan')
+        cprint(f"  Product:    {fw_product}", 'cyan')
+        cprint(f"  Version:    {fw_version}", 'cyan')
+        
+        # Verify product compatibility
+        if fw_product != 'Unknown' and hasattr(router_config, 'product_id') and router_config.product_id != 'Unknown':
+            # Extract product ID from fw_product (format: "Fritz_Box_HW285 (FRITZ!Box 7690)")
+            fw_product_id = fw_product.split()[0] if ' ' in fw_product else fw_product
+            
+            if router_config.product_id not in fw_product:
+                cprint("")
+                cwarning(f"COMPATIBILITY WARNING:")
+                cwarning(f"  FRITZ!Box Product ID: {router_config.product_id}")
+                cwarning(f"  Firmware Product:     {fw_product}")
+                cprint("")
+                
+                if args.batch:
+                    cerror("Product ID mismatch detected in batch mode! Cannot proceed.")
+                    cerror("The firmware image is not compatible with this FRITZ!Box model.")
+                    return 1
+                else:
+                    cwarning("The firmware image may not be compatible with this FRITZ!Box model!")
+                    if not confirm("Do you want to proceed anyway? (NOT RECOMMENDED)", default=False):
+                        cinfo("Update cancelled by user due to product mismatch.")
+                        return 0
+        else:
+            cdebug("Could not verify product compatibility (missing product ID)", args.debug)
+
+        # Extract ./var/.packages
+        try:
+            fw_packages = subprocess.getoutput(f"tar -xOf '{args.image}' ./var/.packages 2>/dev/null")
+            if fw_packages and fw_packages.strip():
+                package_lines = fw_packages.strip().splitlines()
+                if len(package_lines) == 1:
+                    cinfo(f"Packages:  {fw_packages.strip()}")
+                else:
+                    cprint("")
+                    cinfo(f"Packages:  {len(package_lines)} packages included. List:")
+                    # Show first few packages as preview
+                    # Show packages two per line
+                    for i in range(0, min(30, len(package_lines)), 2):
+                        if i + 1 < len(package_lines):
+                            cprint(f"              {package_lines[i]:<30} {package_lines[i+1]}", 'cyan')
+                        else:
+                            cprint(f"              {package_lines[i]}", 'cyan')
+                    if len(package_lines) > 30:
+                        cprint(f"              ... and {len(package_lines) - 30} more", 'cyan')
+                cprint("")
+            else:
+                cdebug("No packages information found in firmware", args.debug)
+        except Exception as e:
+            cdebug(f"Could not extract ./var/.packages: {e}", args.debug)
+            fw_packages = ""
+        
         cinfo("Firmware Update Options:")
         # Propose to perform the reboot at the end
         if not args.skip_firmware and not args.skip_external and not args.no_reboot and not args.reboot_at_the_end:
-            if confirm("Would you like to move the reboot at the end, after the external storage update?", default=False):
-                args.reboot_at_the_end = True
+            if args.batch:
+               args.reboot_at_the_end = True
+               cprint(f"In batch mode, reboot will be performed at the end of the update process.", 'yellow', 'info')
+            else:
+                if confirm("Would you like to move the reboot at the end, after the external storage update?", default=False):
+                    args.reboot_at_the_end = True
         # --- Compute default as in firmware.cgi ---
         ram_mb = router_config.ram_total // 1024 if router_config.ram_total else 0
         has_jffs2 = bool(router_config.jffs2_output.strip())
@@ -1449,41 +1625,52 @@ Examples:
         else:
             stop_default = 'semistop_avm'
         #cprint(f"Valid action for your device: {'Full stop (stop_avm)' if stop_default == 'stop_avm' else 'Semi-stop (semistop_avm)'}", 'yellow', 'lamp')
-        # Prompt con default corretto
         if args.stop_services != "noaction":
-            if confirm("Stop AVM services before firmware update (stop is needed)?", default=True):
-                pass
-                """
-                if confirm("Use full stop (stop_avm) instead of semi-stop (semistop_avm)?", default=(stop_default == 'stop_avm')):
-                    args.stop_services = 'stop_avm'
-                else:
-                    args.stop_services = 'semistop_avm'
-                """
+            if args.batch:
+                cprint(f"In batch mode, using stop services mode '{args.stop_services}'.", 'yellow', 'info')
             else:
-                args.stop_services = 'nostop_avm'
-                cwarning("Warning: Not stopping AVM services during firmware upgrade may cause issues!")
+                if confirm("Stop AVM services before firmware update (stop is needed)?", default=True):
+                    pass
+                    """
+                    if confirm("Use full stop (stop_avm) instead of semi-stop (semistop_avm)?", default=(stop_default == 'stop_avm')):
+                        args.stop_services = 'stop_avm'
+                    else:
+                        args.stop_services = 'semistop_avm'
+                    """
+                else:
+                    args.stop_services = 'nostop_avm'
+                    cwarning("Warning: Not stopping AVM services during firmware upgrade may cause issues!")
         
-        if not args.no_reboot and not args.reboot_at_the_end:
+        if not args.no_reboot and not args.reboot_at_the_end and not args.batch:
             args.no_reboot = not confirm("Reboot FRITZ!Box after firmware installation?", default=True)
         cprint("-"*70 + "\n", 'dim')
     
-    if args.external and not args.skip_external and not args.batch:
+    if args.external and not args.skip_external:
         cprint("\n" + "-"*70, 'dim')
-        cinfo("External Update Options:")
-
-        if confirm("Delete any previously existing external directory after file upload and before extraction?", default=True):
-            args.no_delete_external = False
-        else:
-            args.no_delete_external = True
-            cwarning("Warning: Not deleting old external files may cause issues!")
-
-        if args.stop_services != 'nostop_avm' and args.reboot_at_the_end:
-            cinfo("Note: external services will be stopped by the firmware update and restarted within the reboot.")
-            args.no_external_restart = True
-        else:
-            if not confirm("Stop/restart external services after the file extraction?", default=True):
+        if args.batch:
+            if args.no_delete_external:
+                cprint("Old external directory will be preserved", 'yellow', 'info')
+            else:
+                cprint("Old external directory will be deleted before extraction.", 'yellow', 'info')
+            if args.stop_services != 'nostop_avm' and args.reboot_at_the_end:
+                cinfo("External services will be stopped by the firmware update and restarted within the reboot.")
                 args.no_external_restart = True
-                cwarning("Warning: Not restarting services may cause issues!")
+        else:
+            cinfo("External Update Options:")
+
+            if confirm("Delete any previously existing external directory after file upload and before extraction?", default=True):
+                args.no_delete_external = False
+            else:
+                args.no_delete_external = True
+                cwarning("Warning: Not deleting old external files may cause issues!")
+
+            if args.stop_services != 'nostop_avm' and args.reboot_at_the_end:
+                cinfo("Note: external services will be stopped by the firmware update and restarted within the reboot.")
+                args.no_external_restart = True
+            else:
+                if not confirm("Stop/restart external services after the file extraction?", default=True):
+                    args.no_external_restart = True
+                    cwarning("Warning: Not restarting services may cause issues!")
 
         cprint("-"*70 + "\n", 'dim')
 
@@ -1564,11 +1751,17 @@ Examples:
         if args.dry_run:
             cwarning("[DRY-RUN] Skipping reboot command")
         else:
-            reboot_cmd = "(sleep 1; /sbin/reboot -d 2 -f) >/dev/null 2>&1 < /dev/null & exit"
-            ssh_run(args.host, args.user, args.password, reboot_cmd, capture_output=False, debug=args.debug)
+            ssh_run(args.host, args.user, args.password, REBOOT_CMD, capture_output=False, debug=args.debug)
             if not wait_router_boot(args.host, args.password, args.user, debug=args.debug):
                 cerror("Router did not come back online in time after reboot!")
                 return 1
+
+        # Read again FRITZ!Box configuration
+        cinfo("Gathering system information after reboot:")
+        router_config = read_device_config(args.host, args.user, args.password, args.debug, summary=True)
+        if router_config is None:
+            cerror("Cannot read Freetz-NG configuration!")
+            return 1
 
     # Final success message
     cprint("\n" + "="*60, 'bold')

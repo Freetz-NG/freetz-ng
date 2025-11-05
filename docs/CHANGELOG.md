@@ -32,19 +32,31 @@ Latest changes
     * [Freetz-1.0.1](#freetz-101)
     * [Freetz-1.0](#freetz-10)
 
-  - DS 2.6
+  - DS26-Mod
     * [ds26-15.2](#ds26-152)
     * [ds26-15.1](#ds26-151)
     * [ds26-15.0](#ds26-150)
     * [ds26-14.4](#ds26-144)
     * [ds26-14.3](#ds26-143)
+    * [ds26-14.2](#ds26-142)
+    * [ds26-14.1-p2](#ds26-141-p2)
+    * [ds26-14.1-p1](#ds26-141-p1)
+    * [ds26-14.1](#ds26-141)
+    * [ds26-14.0](#ds26-140)
 
-  - DS 2.4
-    * [ds-0.2.9_26-14.2](#ds-029_26-142)
-    * [ds-0.2.9_26-14.1-p2](#ds-029_26-141-p2)
-    * [ds-0.2.9_26-14.1-p1](#ds-029_26-141-p1)
-    * [ds-0.2.9_26-14.1](#ds-029_26-141)
-    * [ds-0.2.9_26-14.0](#ds-029_26-140)
+  - DS-Mod
+    * [ds-0.2.9](#ds-029)
+    * [ds-0.2.8](#ds-028)
+    * [ds-0.2.7](#ds-027)
+    * [ds-0.2.6](#ds-026)
+    * [ds-0.2.5](#ds-025)
+    * [ds-0.2.4](#ds-024)
+    * [ds-0.2.3](#ds-023)
+    * [ds-0.2.2](#ds-022)
+    * [ds-0.2.1](#ds-021)
+    * [ds-0.2](#ds-02)
+    * [ds-0.1.1](#ds-011)
+    * [ds-0.1](#ds-01)
 
 <br>
 
@@ -90,6 +102,7 @@ Latest changes
     * OpenSSH 9.3p2/10.2p1
     * PatchELF 0.18.0
     * procps-ng 4.0.5
+    * Python 3.14.0
     * Stunnel 5.76
     * Tor 0.4.8.19
     * Unbound 1.24.1
@@ -2859,7 +2872,6 @@ See svn log for more details.
     * OpenSSL: build with zlib-dynamic
     * tools/depmod.pl: dos2unix line feeds
 
-
 ### ds26-15.1
 
 - Build system:
@@ -3014,7 +3026,6 @@ See svn log for more details.
         + Put fstab patch in own file, should be the same for all boxes
     * Tor / libevent: disable epoll support in libevent due to unresolved
       problems. This fixes recently reported Tor segfaults.
-
 
 ### ds26-15.0
 
@@ -3330,7 +3341,6 @@ See svn log for more details.
       several package README files, but I do not care, because this is plain
       cosmetics. (kriegaex: And Daniel deserves credits anyway, anywhere.)
 
-
 ### ds26-14.4
 
 - Busybox patch for 'ash' shell: When a remote client (e.g. ssh) was killed,
@@ -3354,10 +3364,10 @@ See svn log for more details.
 - Ntfs3g: bump version to 1.417
 - Fix typo in make/avm-gpl/avm-gpl.mk
 - Minor menuconfig improvements:
-  * Don't show open source package selection, always usedefault (currently
-    04.30 for 7141, 04.29 for all other supported boxes)
-  * Rename "firmware type" to "hardware type"
-  * Rename "firmware version" to "firmware language"
+    * Don't show open source package selection, always usedefault (currently
+      04.30 for 7141, 04.29 for all other supported boxes)
+    * Rename "firmware type" to "hardware type"
+    * Rename "firmware version" to "firmware language"
 - Kernel build: do not use /sbin/depmod while cross-compiling
 - Integrate new AVM open source package (7141-04.30)
 - Bftpd: bump version to 1.8 and update download site
@@ -3365,14 +3375,14 @@ See svn log for more details.
   the precompiled uClibc, the manual build never got fired.
 - Update Speedport W701V to firmware version 33.04.26
 - Improved menuconfig tool adopted from buildroot2:
-  * Comprehensive online help
-  * Options' help texts also show dependency information:
-    + Which condition(s) does an option depend on?
-    + By which other option(s) was an option selected?
-    + Which other options does an option select?
-    + Where is an option defined (file name + line no.)?
-  * Seach mode: wildcard search for option names via "/" hotkey.
-    By the way: search mode also has online help.
+    * Comprehensive online help
+    * Options' help texts also show dependency information:
+        + Which condition(s) does an option depend on?
+        + By which other option(s) was an option selected?
+        + Which other options does an option select?
+        + Where is an option defined (file name + line no.)?
+    * Seach mode: wildcard search for option names via "/" hotkey.
+      By the way: search mode also has online help.
 - Added download mirror #3 to Config.in
 - tools/make/busybox-tools.mk: activate download target on demand to avoid
   collision with identical target for regular busybox on one hand and to
@@ -3384,34 +3394,34 @@ See svn log for more details.
 ### ds26-14.3
 
 - Cross-cutting changes in ds-mod-specific package download:
-  * New shell script tools/ds_download provides a uniform way to download
-    ds-mod-specific packages such as application and add-on packages as well
-    as precompiled toolchains. The script first checks a predefined list of
-    download servers (mirrors) and only uses an optionally provided "original"
-    server as fallback, which is important for new package versions not
-    available on mirrors yet.
-  * New variable DL_TOOL in Makefile points to tools/ds_download
-  * List of download sites (mirrors) can be edited in menuconfig (Advanced
-    options -> DS-Mod package download sites). Currently there are five slots
-    for download servers, two of which have default values. Two others are
-    reserved for later use and #5 is freely editable by users. This enables
-    users to set up their private mirrors on their own LAN or WAN servers.
-  * *.mk files loading mod-specific packages have all been made "mirror-aware",
-    i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
-    all former primary download sites have been preserved as fallback servers.
+    * New shell script tools/ds_download provides a uniform way to download
+      ds-mod-specific packages such as application and add-on packages as well
+      as precompiled toolchains. The script first checks a predefined list of
+      download servers (mirrors) and only uses an optionally provided "original"
+      server as fallback, which is important for new package versions not
+      available on mirrors yet.
+    * New variable DL_TOOL in Makefile points to tools/ds_download
+    * List of download sites (mirrors) can be edited in menuconfig (Advanced
+      options -> DS-Mod package download sites). Currently there are five slots
+      for download servers, two of which have default values. Two others are
+      reserved for later use and #5 is freely editable by users. This enables
+      users to set up their private mirrors on their own LAN or WAN servers.
+    * *.mk files loading mod-specific packages have all been made "mirror-aware",
+      i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
+      all former primary download sites have been preserved as fallback servers.
 - Major menuconfig restructuring. For example (there is more):
-  * Iptables' shared libs and kernel modules are dependent on a top level
-    setting and can be deselected as  whole groups.
-  * JamVM + classpath + ffi-sable can now be found in one place and are also
-    interdependent.
-  * Sub-menus in packages section
-  * Major case first letters in package names
-  * More and improved menu descriptions
-  * Removed redundant library descriptions for iptables and classpath stuff by
-    putting them in groups (see above).
-  * Some changes in include structure ('source' commands in Config.in files),
-    e.g. several libs' descriptions are now closer to their required top level
-    applications.
+    * Iptables' shared libs and kernel modules are dependent on a top level
+      setting and can be deselected as  whole groups.
+    * JamVM + classpath + ffi-sable can now be found in one place and are also
+      interdependent.
+    * Sub-menus in packages section
+    * Major case first letters in package names
+    * More and improved menu descriptions
+    * Removed redundant library descriptions for iptables and classpath stuff by
+      putting them in groups (see above).
+    * Some changes in include structure ('source' commands in Config.in files),
+      e.g. several libs' descriptions are now closer to their required top level
+      applications.
 - Fix firmware build: iptables binary was always included in image, even if not
   selected in menuconfig.
 - Fix syslogd ring buffer size parameter leading to "Starting syslogd...failed";
@@ -3438,7 +3448,7 @@ See svn log for more details.
 - Suppress tar "lone zero block" warning when unpacking certain firmware images
 - Don't be so restrictive on addon-names (e.g. openvpn-2.1.offline)
 
-### ds-0.2.9_26-14.2
+### ds26-14.2
 
 - Fix fakeroot problems with chown (operation not permitted) on systems with
   newer glibc + coreutils combinations using *at(). The version has been
@@ -3476,12 +3486,12 @@ See svn log for more details.
 - Delete some unnecessary files
 - Forgot to add patches for gdb 6.3 and 6.4
 
-### ds-0.2.9_26-14.1-p2
+### ds26-14.1-p2
 
 - add ubik2_boot_0, ubik2_boot_last to device.table (should fix 7050 Image)
 - chmod +x for 250-orangebox.sh
 
-### ds-0.2.9_26-14.1-p1
+### ds26-14.1-p1
 
 - hide depmod output
 - fixed gdb-dirclean target
@@ -3495,7 +3505,7 @@ See svn log for more details.
 - add printk.patch for labors
 - libraries are also having dependencies...
 
-### ds-0.2.9_26-14.1
+### ds26-14.1
 
 - fixed jamvm patch (100-fix-trace.patch)
 - fixed typo in deco.mk
@@ -3512,7 +3522,7 @@ See svn log for more details.
 - add/remove patches for (non-working) uClibc-0.9.28.3/1
 - fix 7170 Labor patches
 
-### ds-0.2.9_26-14.0
+### ds26-14.0
 
 - fix precompiled toolchain download URL in toolchain/make/download-toolchain.mk
 - add forgotten cpmaccfg in make/Config.in
@@ -3628,6 +3638,196 @@ See svn log for more details.
 - added unionfs
 - added libreadline
 - initial checkin
+
+### ds-0.2.9
+
+- fixed favicons
+- busybox upgraded to 1.2.1
+    * added applets losetup and swaponoff
+
+### ds-0.2.8
+
+- Connmark patches for better ipp2p handling
+  (thank you Ghost for the hint
+  -> new ds-mod kernel version iln6)
+- Integrated liblzo (thanks to knox)
+- Upgrade to openssl 0.9.8b
+- Third-phone-patch for 300ip is broken
+  (can somebody fix it?)
+
+NOTE:
+  a-ch and en firmwares for fon and fon_wlan are not
+  supported until they are upgraded to version *.04.12.
+  Supporting two versions of the fon firmware would add
+  to much complexity which has to be removed after
+  upgrade anyways.
+
+Upgraded packages:
+
+- callmonitor 1.5
+
+### ds-0.2.7
+
+- New try for ip_conntrack fix ;) Early module loading
+- Updated Enrik's recover scripts
+- Replaced dumpsquashfs by unsquashfs from squashfs CVS
+  (thanks to Oliver!)
+
+Upgraded packages:
+
+- callmonitor 1.4
+- openvpn 2.1_beta14 ds0.2
+
+### ds-0.2.6
+
+Upgraded packages:
+
+- callmonitor 1.1
+- firewall-cgi 0.5.1
+- openvpn 2.0.6 ds0.1
+
+### ds-0.2.5
+
+Now everything that should be fixed with ds-0.2.4 is
+really fixed.
+
+New features:
+
+- Speed up target toolchain using ccache
+- New motd screen with ds-mod logo
+- Removed bz2 from busybox for size reasons
+- Introduced new make target 'libs', that builds all
+  selected shared libraries
+
+New packages:
+
+- samba 2.0.10 ds0.1
+- screen 4.0.2 ds0.1
+
+New testing packages (binary only):
+
+- openvpn 2.0.6
+- transmission 0.5
+
+Upgraded packages:
+
+- callmonitor 1.0
+
+### ds-0.2.4
+
+Fixed modcgi to allow package names like bftpd-zlib and
+dropbear-sshd (update: still not completely fixed)
+
+### ds-0.2.3
+
+ds-mod now supports multiple languages (currently
+de - deutsch & en - english) and supports the
+international versions of the original firmwares.
+
+New features:
+
+- Added a new HOWTOs
+- Support for 7140
+- ipp2p netfilter
+
+Upgraded packages:
+
+- bftpd 1.3 ds0.5
+- callmonitor 0.8
+- dnsmasq 2.26 ds0.5
+- dropbear 0.48.1 ds0.5
+- firewall-cgi 0.5
+- wol-cgi 0.5
+
+### ds-0.2.2
+
+Added support for current beta firmwares. BE AWARE
+that these modded betas are TOTALLY UNTESTED. They
+just compile ;)
+
+### ds-0.2.1
+
+Fixed cygwin support (failed to compile mconf)
+
+### ds-0.2
+
+New make targets:
+
+- make toolchain        (build cross-compilers)
+- make tools            (build the tools)
+- make recover          (does not supported cygwin and 7170/3070)
+
+New features:
+
+- Support for cygwin
+- Support for hidden root boxes (e.g. Fon 5012, ...)
+- Support for 8mb boxes (e.g. Fon WLAN 7170)
+- Support for "300IP as Fon"
+- Individual config and patches per box type
+- Fixed find-squashfs (64-bit host)
+- Fixed DNS server bug in ATA mode without DHCP
+- Upgraded busybox to version 1.1.0 (fixes -z/-j issue)
+- Replacement for uClibc
+- Support for NFS mount
+- busybox now makes use of built-in echo to speed up things
+  (thanks to buehmann)
+- dumpsquashfs-lzma
+
+New packages:
+
+- checkmaild ds0.2
+- firewall-cgi 0.3
+- vpnc 0.3.3 ds0.3
+- wol-cgi 0.1.3
+
+Upgraded packages:
+
+- bftpd 1.2 ds 0.1
+- callmonitor 0.7
+- dnsmasq 2.26 ds0.1
+- dropbear 0.48.1 ds0.1
+- syslogd-cgi 0.2
+- telefon 0.3
+
+New package format: A package's file `./foo.bar` moved
+to `./root/foo.bar`. Documentation is proposed to be in
+`./docs/<lang>/`.
+
+A lot of minor changes.
+
+### ds-0.1.1
+
+Fixed a bug which made the box freeze during boot
+when dsmod was not configured (clean installation or
+after moduninstall). The bug is still in the busybox
+tar, but is avoided in the mod-scripts.
+
+### ds-0.1
+
+First version which is somehow worth to call a release.
+
+Additional make targets:
+
+- make precompiled      - re-compile all target binaries
+- make sources          - download all source packages
+
+Features:
+
+- kernel (based on 883)
+    * iptables
+    * lzma support
+    * contiguous squashfs
+- iptables 1.3.3
+- busybox 1.1.0-pre1
+    * crond
+    * ether-wake
+- bftpd 1.0.24 ds0.1
+- callmonitor ds0.4
+- dnsmasq 2.24 ds0.1
+- dropbear 0.47 ds0.1
+- syslogd-cgi 0.1
+- webinterface
+- downgrade mod
 
 ```
 
