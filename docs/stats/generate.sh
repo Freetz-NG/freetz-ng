@@ -8,7 +8,8 @@ rm -f "$TMPFILE"*
  
 
 empty_line() {
-	echo '| <!-- --> | <!-- --> |'
+#	echo '| <!-- --> | <!-- --> |'
+	echo '|  |  |'
 }
 
 table_head() {
