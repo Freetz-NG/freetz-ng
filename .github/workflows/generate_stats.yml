@@ -1,0 +1,70 @@
+name: generate_stats
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/generate_stats.yml'
+      - 'config/ui/firmware.in'
+      - 'docs/stats/generate.sh'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/generate
+      image: ghcr.io/freetz-ng/generate
+      options: --user 1001:1001
+    runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng'
+
+    steps:
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           git locales imagemagick
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: clone
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
+
+      - name: generate
+        run: |
+          export LANG=en_US.utf8
+          docs/stats/generate.sh
+
+      - name: commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git pull || exit
+          git add .
+          git status
+          git config --local user.name github-actions[bot]
+          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git diff --cached --quiet && exit 0 || git commit -m "stats: automatic update"
+          git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
+          git push origin $GITHUB_REF_NAME
+
+

@@ -9,7 +9,8 @@ For download and quickstart instructions go to [README](https://github.com/Freet
 These [PREREQUISITES](PREREQUISITES) are mandatory to build an image.<br>
 How to [INSTALL](INSTALL.md) a firmware image to the device.<br>
 Things you could do to [SUPPORT](SUPPORT.md) Freetz-NG.<br>
-Why the [ADDONS](ADDONS.md) of the "Digitale Elite" are not supported here.
+Why the [ADDONS](ADDONS.md) of the "Digitale Elite" are not supported here.<br>
+Show current [STATS](stats/README.md) of Freetz-NG.<br>
 
 ### Listings
 [Packages](make/README.md)<br>
