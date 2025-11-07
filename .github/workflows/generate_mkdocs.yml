@@ -2,7 +2,7 @@ name: generate_mkdocs
 
 on:
   workflow_run:
-    workflows: [ generate_docs,avm_ftp,avm_osp,avm_juis,avm_juis-recache ]
+    workflows: [ generate_docs,generate_stats,avm_ftp,avm_osp,avm_juis,avm_juis-recache ]
     types:
       - completed
   push:
