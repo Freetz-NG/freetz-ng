@@ -29,7 +29,6 @@
 <details>
   <summary>119 verschieden Geräte</summary>
 
-| <!-- --> | <!-- --> |
 |----------|----------|
 | <!-- --> | <!-- --> |
 | **T-Com hardware** |  |
