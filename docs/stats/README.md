@@ -1,6 +1,6 @@
 # Statistiken rund um Freetz-NG
 
-<br />
+<br>
 
 <details>
   <summary>17 verschieden FRITZ!OS</summary>
@@ -24,19 +24,19 @@
 
 </details>
 
-<br />
+<br>
 
 <details>
   <summary>119 verschieden Geräte</summary>
 
 | <!-- --> | <!-- --> |
 |----------|----------|
-| **T-Com hardware** |
+| **T-Com hardware** |  |
 | FREETZ_TYPE_300IP | Eumex 300IP as Fon |
 | FREETZ_TYPE_W501V | Speedport W501V |
-| **LAN** |
+| **LAN** |  |
 | FREETZ_TYPE_2170 | 2170 |
-| **WLAN** |
+| **WLAN** |  |
 | FREETZ_TYPE_3020 | 3020 SL |
 | FREETZ_TYPE_3030 | 3030 |
 | FREETZ_TYPE_3130 | 3130 |
@@ -48,26 +48,26 @@
 | FREETZ_TYPE_3370 | 3370 |
 | FREETZ_TYPE_3390 | 3390 |
 | FREETZ_TYPE_3490 | 3490 |
-| **WAN** |
+| **WAN** |  |
 | FREETZ_TYPE_4020 | 4020 |
 | FREETZ_TYPE_4040 | 4040 |
 | FREETZ_TYPE_4050 | 4050 |
 | FREETZ_TYPE_4060 | 4060 |
 | FREETZ_TYPE_4690 | 4690 |
-| **Fon** |
+| **Fon** |  |
 | FREETZ_TYPE_FON | Fon |
 | FREETZ_TYPE_5010 | 5010 |
 | FREETZ_TYPE_5050 | 5050 |
 | FREETZ_TYPE_5124 | 5124 |
 | FREETZ_TYPE_5140 | 5140 |
-| **Fiber** |
+| **Fiber** |  |
 | FREETZ_TYPE_5490 | 5490 |
 | FREETZ_TYPE_5491 | 5491 |
 | FREETZ_TYPE_5530 | 5530 fiber! |
 | FREETZ_TYPE_5590 | 5590 |
 | FREETZ_TYPE_5690_NIX | 5690 |
 | FREETZ_TYPE_5690_PRO | 5690 Pro |
-| **Cable** |
+| **Cable** |  |
 | FREETZ_TYPE_6320 | 6320 |
 | FREETZ_TYPE_6360 | 6360 |
 | FREETZ_TYPE_6430 | 6430 |
@@ -77,7 +77,7 @@
 | FREETZ_TYPE_6660 | 6660 |
 | FREETZ_TYPE_6670 | 6670 |
 | FREETZ_TYPE_6690 | 6690 |
-| **LTE** |
+| **LTE** |  |
 | FREETZ_TYPE_6810 | 6810 |
 | FREETZ_TYPE_6820_V1 | 6820 v1 |
 | FREETZ_TYPE_6820_V2 | 6820 v2 |
@@ -89,7 +89,7 @@
 | FREETZ_TYPE_6850_5G | 6850 5G |
 | FREETZ_TYPE_6860 | 6860 5G |
 | FREETZ_TYPE_6890 | 6890 |
-| **Fon WLAN** |
+| **Fon WLAN** |  |
 | FREETZ_TYPE_WLAN | Fon WLAN |
 | FREETZ_TYPE_7050 | 7050 |
 | FREETZ_TYPE_7112 | 7112 |
@@ -134,14 +134,14 @@
 | FREETZ_TYPE_7590_W6 | 7590 AX |
 | FREETZ_TYPE_7682 | 7682 |
 | FREETZ_TYPE_7690 | 7690 |
-| **Powerline** |
+| **Powerline** |  |
 | FREETZ_TYPE_0540 | 540E |
 | FREETZ_TYPE_0546 | 546E |
 | FREETZ_TYPE_1240_W5 | 1240E |
 | FREETZ_TYPE_1240_W6 | 1240 AX |
 | FREETZ_TYPE_1260_V1 | 1260E |
 | FREETZ_TYPE_1260_V2 | 1260 v2 |
-| **Repeater** |
+| **Repeater** |  |
 | FREETZ_TYPE_WRNG | N/G |
 | FREETZ_TYPE_0310_V1 | 310a |
 | FREETZ_TYPE_0310_V2 | 310b |
@@ -160,7 +160,7 @@
 | FREETZ_TYPE_3000_W5 | 3000 |
 | FREETZ_TYPE_3000_W6 | 3000 AX |
 | FREETZ_TYPE_6000 | 6000 |
-| **Smart** |
+| **Smart** |  |
 | FREETZ_TYPE_GATE | Gateway |
 
 </details>
