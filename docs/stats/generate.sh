@@ -31,7 +31,7 @@ spoiler_head() {
 spoiler_foot() {
 	cat "$1"
 	echo
-#	echo '</details>'
+	echo '</details>'
 	echo '</p>'
 	echo
 }
