@@ -54,7 +54,7 @@ get_hw() {
 	(
 		table_head
 		cat "$file" | grep "prompt \"${area}\"" -m1 -A9999 | grep "^endchoice" -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(comment|config|bool) " | while read -r line; do
-			[ "${line#comment}" != "$line" ] && empty_line && echo "$line" | sed "s/^[^\t ]*[ \t]*"/| **/g;s/"/** | $SPACE |/g"
+			[ "${line#comment}" != "$line" ] && empty_line && echo "$line" | sed "s/^[^\t ]*[ \t]*\"/| **/g;s/\"/** | $SPACE |/g"
 			[ "${line#config}"  != "$line" ] && echo "$line" | tr -d '\n'  | sed 's/^[^\t ]*[ \t]*/| /g;s/$/ | /g'
 			[ "${line#bool}"    != "$line" ] && echo "$line"               | sed 's/^[^\t ]*[ \t]*"//g;s/"/ |/g' && echo >> "$TMPFILE.hw.head"
 		done | sed 's/ - [^ ]*//g'
