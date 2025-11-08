@@ -5,7 +5,7 @@ PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 OUTFILE="$PARENT/docs/stats/README.md"
 TMPFILE="$PARENT/.stats"
 rm -f "$TMPFILE"*
- 
+
 
 empty_line() {
 	echo '| <!-- --> | <!-- --> |'
@@ -13,23 +13,23 @@ empty_line() {
 
 table_head() {
 	empty_line
-	echo '|----------|----------|'
+	echo '| -------- | -------- |'
 }
 
 spoiler_head() {
-	echo '<br>'
+#	echo '<br>'
 	echo
-#	echo '<details>'
-	echo -n '  <summary>'
-	echo -n "$(cat "$1" | wc -l | tr -d '\n') $2"
-	echo '</summary>'
+	echo '<p>'
+	echo '<details>'
+	echo "<summary>$(cat "$1" | wc -l | tr -d '\n') $2</summary>"
 	echo
 }
 
 spoiler_foot() {
 	cat "$1"
 	echo
-#	echo '</details>'
+	echo '</details>'
+	echo '</p>'
 	echo
 }
 
