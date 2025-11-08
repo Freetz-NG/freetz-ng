@@ -4,7 +4,7 @@ SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 OUTFILE="$PARENT/docs/stats/README.md"
 TMPFILE="$PARENT/.stats"
-rm -f "$TMPFILE"*
+rm -f "$TMPFILE".??.*
 
 
 SPACE='<!-- -->'
