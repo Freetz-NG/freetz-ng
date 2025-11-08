@@ -29,6 +29,7 @@
 <details>
   <summary>119 verschieden Geräte</summary>
 
+| &nbsp; | &nbsp; |
 |----------|----------|
 | &nbsp; | &nbsp; |
 | xxT-Com hardwarexx | &nbsp; |
