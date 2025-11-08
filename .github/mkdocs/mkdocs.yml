@@ -58,6 +58,9 @@ extra:
 extra_css:
   - 'extra.css'
 
+markdown_extensions:
+  - tables
+
 plugins:
   - search
 
