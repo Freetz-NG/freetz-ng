@@ -52,33 +52,32 @@ get_hw() {
 	(
 		table_head
 		cat "$file" | grep "prompt \"${area}\"" -m1 -A9999 | grep "^endchoice" -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(comment|config|bool) " | while read -r line; do
-			[ "${line#comment}" != "$line" ] && empty_line && echo "$line" | sed 's/^[^\t ]*[ \t]*"/| **/g;s/"/** | &nbsp; |/g'
+			[ "${line#comment}" != "$line" ] && empty_line && echo "$line" | sed 's/^[^\t ]*[ \t]*"/| xx/g;s/"/xx | &nbsp; |/g'
 			[ "${line#config}"  != "$line" ] && echo "$line" | tr -d '\n' | sed 's/^[^\t ]*[ \t]*/| /g;s/$/ | /g'
 			[ "${line#bool}"    != "$line" ] && echo "$line"              | sed 's/^[^\t ]*[ \t]*"//g;s/"/ |/g' && echo >> "$TMPFILE.hw.head"
 		done | sed 's/ - [^ ]*//g' | grep -Evi "(inhaus|labor|plus)"
 	) > "$TMPFILE.hw.body"
 }
 
-# head
-(
+main() {
+
+	# head
 	echo '# Statistiken rund um Freetz-NG'
 	echo
-) > "$OUTFILE"
 
-# firmware
-(
+	# firmware
 	get_fw
 	spoiler_head "$TMPFILE.fw.head" "verschieden FRITZ!OS"
 	spoiler_foot "$TMPFILE.fw.body"
-) >> "$OUTFILE"
-rm -f "$TMPFILE.fw."*
+	rm -f "$TMPFILE.fw."*
 
-# hardware
-(
+	# hardware
 	get_hw
 	spoiler_head "$TMPFILE.hw.head" "verschieden Geräte"
 	spoiler_foot "$TMPFILE.hw.body"
-) >> "$OUTFILE"
-rm -f "$TMPFILE.hw."*
+	rm -f "$TMPFILE.hw."*
+
+}
+main > "$OUTFILE"
 
 
