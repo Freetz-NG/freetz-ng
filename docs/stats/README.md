@@ -1,8 +1,6 @@
 # Statistiken rund um Freetz-NG
 
-
-??? tip "17 verschieden FRITZ!OS"
-
+??? tip "1 verschieden FRITZ!OS"
 
     | Version | Symbol |
     | --- | --- |
@@ -22,9 +20,7 @@
     | FRITZ!OS 08.00+ | FREETZ_TYPE_FIRMWARE_08_0X |
     | FRITZ!OS 08.20+ | FREETZ_TYPE_FIRMWARE_08_2X |
 
-
-??? tip "119 verschieden Geräte"
-
+??? tip "1 verschieden Geräte"
 
     | Name | Symbol |
     | --- | --- |
