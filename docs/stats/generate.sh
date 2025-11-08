@@ -62,7 +62,7 @@ get_dl() {
 	area='Firmware source'
 	file="config/mod/dl-firmware.in"
 	(
-		table_head "Symbole" "Image"
+		table_head "Symbole" "Datei(/AVM)"
 		empty_line
 		cat "$file" | grep "string \"${area}\"" -m1 -A9999 | grep "^config " -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(default) " | while read -r line; do
 			echo "$line" | tr -s ' ' | sed -r 's/.*"(.*)".* if (.*)/@ \2 @ \1 @/g' && echo >> "$TMPFILE.dl.head"

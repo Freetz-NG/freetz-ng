@@ -170,7 +170,7 @@
 
 ??? tip "374 verschieden Images"
 
-    | Image | Symbole |
+    | Datei(/AVM) | Symbole |
     | --- | --- |
     | <!-- --> | <!-- --> |
     | fritz.box_fon.06.04.33.image | (FREETZ_TYPE_300IP \|\| FREETZ_TYPE_FON) && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_04_XX |
