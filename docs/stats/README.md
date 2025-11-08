@@ -2,7 +2,6 @@
 
 <br>
 
-<details>
   <summary>17 verschieden FRITZ!OS</summary>
 
 | <!-- --> | <!-- --> |
@@ -22,11 +21,9 @@
 | FREETZ_TYPE_FIRMWARE_08_0X | FRITZ!OS 08.00+ |
 | FREETZ_TYPE_FIRMWARE_08_2X | FRITZ!OS 08.20+ |
 
-</details>
 
 <br>
 
-<details>
   <summary>119 verschieden Geräte</summary>
 
 | <!-- --> | <!-- --> |
@@ -175,5 +172,4 @@
 | **Smart** | <!-- --> |
 | FREETZ_TYPE_GATE | Gateway |
 
-</details>
 
