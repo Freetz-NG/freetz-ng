@@ -1,7 +1,6 @@
 # Statistiken rund um Freetz-NG
 
 
-<p>
 <details markdown>
   <summary>17 verschieden FRITZ!OS</summary>
 
@@ -23,10 +22,8 @@
   | FREETZ_TYPE_FIRMWARE_08_2X | FRITZ!OS 08.20+ |
 
 </details>
-</p>
 
 
-<p>
 <details markdown>
   <summary>119 verschieden Geräte</summary>
 
@@ -177,5 +174,4 @@
   | FREETZ_TYPE_GATE | Gateway |
 
 </details>
-</p>
 
