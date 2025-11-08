@@ -13,6 +13,7 @@ empty_line() {
 }
 
 table_head() {
+	empty_line
 	echo '|----------|----------|'
 }
 
@@ -37,7 +38,6 @@ get_fw() {
 	area='Firmware version'
 	file="config/ui/firmware.in"
 	(
-		empty_line
 		table_head
 		cat "$file" | grep "prompt \"${area}\"" -m1 -A9999 | grep "^endchoice" -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(config|bool) " | while read -r line; do
 			[ "${line#config}"  != "$line" ] && echo "$line" | tr -d '\n' | sed 's/^[^\t ]*[ \t]*/| /g;s/$/ | /g'
