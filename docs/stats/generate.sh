@@ -25,12 +25,12 @@ spoiler_head() {
 	echo '<p>'
 	echo '<details markdown>'
 	echo "  <summary>$(cat "$1" | wc -l | tr -d '\n') $2</summary>"
-#	echo
+	echo
 }
 
 spoiler_foot() {
 	cat "$1" | sed 's/^/  /g'
-#	echo
+	echo
 	echo '</details>'
 	echo '</p>'
 	echo
