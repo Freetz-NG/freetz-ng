@@ -1,12 +1,12 @@
 config FREETZ_PACKAGE_BZIP2
-	bool "Bzip2 (binary only)"
+	bool "bzip2 (executable renamed to bzip2-ng)"
 	select FREETZ_LIB_libbz2 if !FREETZ_PACKAGE_BZIP2_STATIC
 	default n
 	help
 		bzip2 is a freely available, patent free, high-quality data compressor.
-		It typically compresses files to within 10% to 15% of the best available
-		techniques (the PPM family of statistical compressors), whilst being around
-		twice as fast at compression and six times faster at decompression.
+		
+		This package provides the full-featured bzip2 utility (bzip2 1.0.8)
+		installed as "bzip2-ng" to avoid conflicts with BusyBox bzip2.
 
 if FREETZ_PACKAGE_BZIP2
 
@@ -14,7 +14,7 @@ if FREETZ_PACKAGE_BZIP2
 		bool "Link statically"
 		default n
 		help
-			Causes libbz2 to be linked in statically
+			Link bzip2-ng binary statically
 
 endif # FREETZ_PACKAGE_BZIP2
 

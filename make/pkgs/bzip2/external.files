@@ -1,3 +1,1 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_BZIP2" == "y" ] && EXTERNAL_FILES+=" /usr/bin/bzip2"
-
-[ "$EXTERNAL_FREETZ_LIB_libbz2" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libbz2.so.1.0.8"

@@ -1,3 +1,0 @@
-ifeq ($(strip $(FREETZ_LIB_libbz2)),y)
-LIBS+=bzip2
-endif
