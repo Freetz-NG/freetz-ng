@@ -1,11 +1,12 @@
 # Statistiken rund um Freetz-NG
 
-<br>
 
-  <summary>17 verschieden FRITZ!OS</summary>
+<p>
+<details>
+<summary>17 verschieden FRITZ!OS</summary>
 
 | <!-- --> | <!-- --> |
-|----------|----------|
+| -------- | -------- |
 | FREETZ_TYPE_FIRMWARE_04_XX | FRITZ!OS 04.00+ |
 | FREETZ_TYPE_FIRMWARE_05_2X | FRITZ!OS 05.20+ |
 | FREETZ_TYPE_FIRMWARE_05_5X | FRITZ!OS 05.50+ |
@@ -21,13 +22,16 @@
 | FREETZ_TYPE_FIRMWARE_08_0X | FRITZ!OS 08.00+ |
 | FREETZ_TYPE_FIRMWARE_08_2X | FRITZ!OS 08.20+ |
 
+</details>
+</p>
 
-<br>
 
-  <summary>119 verschieden Geräte</summary>
+<p>
+<details>
+<summary>119 verschieden Geräte</summary>
 
 | <!-- --> | <!-- --> |
-|----------|----------|
+| -------- | -------- |
 | <!-- --> | <!-- --> |
 | **T-Com hardware** | <!-- --> |
 | FREETZ_TYPE_300IP | Eumex 300IP as Fon |
@@ -172,4 +176,6 @@
 | **Smart** | <!-- --> |
 | FREETZ_TYPE_GATE | Gateway |
 
+</details>
+</p>
 
