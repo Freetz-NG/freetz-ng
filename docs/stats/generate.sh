@@ -34,7 +34,7 @@ get_fw() {
 	area='Firmware version'
 	file="config/ui/firmware.in"
 	(
-		table_head "Symbol" "Name"
+		table_head "Symbol" "Version"
 		empty_line
 		cat "$file" | grep "prompt \"${area}\"" -m1 -A9999 | grep "^endchoice" -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(config|bool) " | while read -r line; do
 			[ "${line#config}"  != "$line" ] && echo "$line" | tr -d '\n'  | sed 's/^[^\t ]*[ \t]*/| /g;s/$/ | /g'
@@ -47,7 +47,7 @@ get_hw() {
 	area='Hardware type'
 	file="config/ui/firmware.in"
 	(
-		table_head "Symbol" "Version"
+		table_head "Symbol" "Name"
 		cat "$file" | grep "prompt \"${area}\"" -m1 -A9999 | grep "^endchoice" -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(comment|config|bool) " | while read -r line; do
 			[ "${line#comment}" != "$line" ] && empty_line && echo "$line" | sed "s/^[^\t ]*[ \t]*\"/| $SPACE | **/g;s/\"/** |/g"
 			[ "${line#config}"  != "$line" ] && echo "$line" | tr -d '\n'  | sed 's/^[^\t ]*[ \t]*/| /g;s/$/ | /g'

@@ -4,7 +4,7 @@
 ??? tip "17 verschieden FRITZ!OS"
 
 
-    | Name | Symbol |
+    | Version | Symbol |
     | --- | --- |
     | <!-- --> | <!-- --> |
     | FRITZ!OS 04.00+ | FREETZ_TYPE_FIRMWARE_04_XX |
@@ -26,7 +26,7 @@
 ??? tip "119 verschieden Geräte"
 
 
-    | Version | Symbol |
+    | Name | Symbol |
     | --- | --- |
     | <!-- --> | <!-- --> |
     | **T-Com hardware** | <!-- --> |
