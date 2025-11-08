@@ -4,6 +4,7 @@
 <p>
 <details markdown>
   <summary>17 verschieden FRITZ!OS</summary>
+
   | <!-- --> | <!-- --> |
   | --- | --- |
   | FREETZ_TYPE_FIRMWARE_04_XX | FRITZ!OS 04.00+ |
@@ -20,6 +21,7 @@
   | FREETZ_TYPE_FIRMWARE_07_5X | FRITZ!OS 07.50+ |
   | FREETZ_TYPE_FIRMWARE_08_0X | FRITZ!OS 08.00+ |
   | FREETZ_TYPE_FIRMWARE_08_2X | FRITZ!OS 08.20+ |
+
 </details>
 </p>
 
@@ -27,6 +29,7 @@
 <p>
 <details markdown>
   <summary>119 verschieden Geräte</summary>
+
   | <!-- --> | <!-- --> |
   | --- | --- |
   | <!-- --> | <!-- --> |
@@ -160,6 +163,7 @@
   | FREETZ_TYPE_6000 | 6000 |
   | <!-- --> | <!-- --> |
   | FREETZ_TYPE_GATE | Gateway |
+
 </details>
 </p>
 
