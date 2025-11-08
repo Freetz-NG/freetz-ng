@@ -19,7 +19,7 @@ table_head() {
 spoiler_head() {
 	echo '<br>'
 	echo
-	echo '<details>'
+#	echo '<details>'
 	echo -n '  <summary>'
 	echo -n "$(cat "$1" | wc -l | tr -d '\n') $2"
 	echo '</summary>'
@@ -29,7 +29,7 @@ spoiler_head() {
 spoiler_foot() {
 	cat "$1"
 	echo
-	echo '</details>'
+#	echo '</details>'
 	echo
 }
 
