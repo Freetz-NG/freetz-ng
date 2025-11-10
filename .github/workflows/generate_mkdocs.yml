@@ -30,7 +30,6 @@ jobs:
     env:
       MKDOCS_REQUIREMENTS_FILE: .github/mkdocs/requirements.txt
       MKDOCS_CONFIG_FILE: .github/mkdocs/mkdocs.yml
-      INPUT_PATH: .github/mkdocs/site
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,6 +46,8 @@ jobs:
           path: 'site'
 
   deploy:
+    env:
+      INPUT_PATH: .github/mkdocs/site
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
