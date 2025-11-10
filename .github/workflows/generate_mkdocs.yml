@@ -27,16 +27,19 @@ permissions:
 
 jobs:
   build:
+    env:
+      MKDOCS_REQUIREMENTS_FILE: .github/mkdocs/requirements.txt
+      MKDOCS_CONFIG_FILE: .github/mkdocs/mkdocs.yml
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
       - name: Install dependencies
-        run: pip install -r .github/mkdocs/requirements.txt
+        run: pip install -r ${{ env.MKDOCS_REQUIREMENTS_FILE }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with MkDocs
-        run: mkdocs build
+        run: mkdocs build --config-file ${{ env.MKDOCS_CONFIG_FILE }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:

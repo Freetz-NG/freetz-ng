@@ -116,7 +116,7 @@ Please make sure you fork the repo and change the clone URL in the example below
     - Running the docs server:
 
     ```bash
-    mkdocs serve --dev-addr 0.0.0.0:8000
+    mkdocs serve --dev-addr 0.0.0.0:8000 --config-file .github/mkdocs/mkdocs.yml
     ```
 
 - Fedora Linux instructions (tested on Fedora Linux 28):
@@ -131,7 +131,7 @@ Please make sure you fork the repo and change the clone URL in the example below
     - Running the docs server:
 
     ```bash
-    mkdocs serve --dev-addr 0.0.0.0:8000
+    mkdocs serve --dev-addr 0.0.0.0:8000 --config-file .github/mkdocs/mkdocs.yml
     ```
 
 After these commands, the current branch is accessible through your favorite browser at <http://localhost:8000>
