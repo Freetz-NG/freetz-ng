@@ -30,24 +30,23 @@ jobs:
     env:
       MKDOCS_REQUIREMENTS_FILE: .github/mkdocs/requirements.txt
       MKDOCS_CONFIG_FILE: .github/mkdocs/mkdocs.yml
+      MKDOCS_INPUT_PATH: .github/mkdocs/site
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
       - name: Install dependencies
-        run: pip install -r ${{ env.MKDOCS_REQUIREMENTS_FILE }}
+        run: pip install -r "${{ env.MKDOCS_REQUIREMENTS_FILE }}"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with MkDocs
-        run: mkdocs build --config-file ${{ env.MKDOCS_CONFIG_FILE }}
+        run: mkdocs build --config-file "${{ env.MKDOCS_CONFIG_FILE }}"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: 'site'
+          path: "${{ env.MKDOCS_INPUT_PATH }}"
 
   deploy:
-    env:
-      INPUT_PATH: .github/mkdocs/site
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
