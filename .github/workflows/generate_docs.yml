@@ -34,7 +34,7 @@ jobs:
       image: ghcr.io/freetz-ng/generate
       options: --user 1001:1001
     runs-on: ubuntu-latest
-    if: github.repository == 'freetz-ng/freetz-ng'
+#   if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
