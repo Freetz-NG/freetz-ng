@@ -72,7 +72,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bvi 1.5.0 (binary only)](bvi.md)<a id='bvi'></a>**<br>
     A hex editor/viewer for binary files
 
-  * **[Bzip2 (binary only)](bzip2.md)<a id='bzip2'></a>**<br>
+  * **[Bzip2 (binary only) XuK](bzip2.md)<a id='bzip2'></a>**<br>
     bzip2 is a freely available, patent free, high-quality data compressor. It typically compresses files to within 10% to 15% of the best available techniques (the PPM family of statistical compressors), whilst being around twice as fast at compression and six times faster at decompression.
 
 ### C

@@ -1,4 +1,4 @@
-# Bzip2 (binary only)
+# Bzip2 (binary only) XuK
   - Homepage: [https://sourceware.org/bzip2/](https://sourceware.org/bzip2/)
   - Manpage: [https://sourceware.org/bzip2/docs.html](https://sourceware.org/bzip2/docs.html)
   - Changelog: [https://sourceware.org/bzip2/CHANGES](https://sourceware.org/bzip2/CHANGES)
