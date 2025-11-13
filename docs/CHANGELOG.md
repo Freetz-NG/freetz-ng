@@ -110,7 +110,7 @@ Latest changes
     * Whois 5.6.5
 
   - Libraries:
-    * harfbuzz 12.1.0
+    * harfbuzz 12.2.0
     * libdeflate 1.25
     * libxml2 2.15.1
     * libyaml 0.2.5
