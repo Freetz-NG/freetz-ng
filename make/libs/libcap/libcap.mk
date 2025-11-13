@@ -1,10 +1,10 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_5_MAX),2.49,2.75))
+$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_5_MAX),2.49,2.77))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=e98bc4d93645082ec787730b0fd1a712b38882465c505777de17c338831ee181
-$(PKG)_HASH_CURRENT:=de4e7e064c9ba451d5234dd46e897d7c71c96a9ebf9a0c445bc04f4742d83632
+$(PKG)_HASH_CURRENT:=897bc18b44afc26c70e78cead3dbb31e154acc24bee085a5a09079a88dbf6f52
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_TARGET_GCC_5_MAX),ABANDON,CURRENT))
 $(PKG)_SITE:=@KERNEL/linux/libs/security/linux-privs/libcap2
-### VERSION:=2.49/2.75
+### VERSION:=2.49/2.77
 ### WEBSITE:=https://sites.google.com/site/fullycapable/
 ### MANPAGE:=https://pkg.go.dev/kernel.org/pub/linux/libs/security/libcap/cap
 ### CHANGES:=https://sites.google.com/site/fullycapable/release-notes-for-libcap

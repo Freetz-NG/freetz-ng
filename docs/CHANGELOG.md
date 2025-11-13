@@ -115,6 +115,7 @@ Latest changes
 
   - Libraries:
     * harfbuzz 12.2.0
+    * libcap 2.49/2.77
     * libdeflate 1.25
     * liburcu 0.15.4
     * libxml2 2.15.1
