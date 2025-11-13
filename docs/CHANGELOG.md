@@ -113,6 +113,7 @@ Latest changes
   - Libraries:
     * harfbuzz 12.2.0
     * libdeflate 1.25
+    * liburcu 0.15.4
     * libxml2 2.15.1
     * libyaml 0.2.5
     * MbedTLS 2.7.19/2.28.10/3.6.5
