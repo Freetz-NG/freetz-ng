@@ -1,0 +1,57 @@
+config FREETZ_LIB_libiconv
+	bool "Iconv (libiconv.so)"
+	default n
+	help
+		This library provides an iconv() implementation, for use on systems
+		which don't have one, or whose implementation cannot convert from/to
+		Unicode.
+
+if FREETZ_LIB_libiconv
+
+	choice
+		prompt "Version"
+			default FREETZ_LIB_libiconv_WITH_VERSION_CURRENT
+
+		config FREETZ_LIB_libiconv_WITH_VERSION_ABANDON
+			bool "2.5.0 (from libiconv 1.13.1)"
+			help
+				Older version with charset-stripping patches.
+				Library size optimized for embedded systems (~300KB).
+				Includes only Western European + Unicode charsets.
+				
+				Note: If you select iconv package, its version will
+				override this selection.
+
+		config FREETZ_LIB_libiconv_WITH_VERSION_CURRENT
+			bool "2.7.0 (from libiconv 1.18)"
+			help
+				Modern version without charset-stripping patches (~933KB).
+				Library includes all charsets.
+				Use build options menu to reduce size.
+				
+				Note: If you select iconv package, its version will
+				override this selection.
+
+	endchoice
+
+menu "Build options (version 1.18 only)"
+	depends on FREETZ_LIB_libiconv_WITH_VERSION_CURRENT
+
+	config FREETZ_LIB_libiconv_DISABLE_NLS
+		bool "Disable Native Language Support (NLS)"
+		default y
+		help
+			Do not include translation files.
+			Saves approximately 200KB.
+
+	config FREETZ_LIB_libiconv_DISABLE_RELOCATABLE
+		bool "Disable relocatable installation"
+		default n
+		help
+			Remove runtime path relocation support.
+			Saves approximately 30KB.
+			Only disable if library location is fixed.
+
+endmenu
+
+endif # FREETZ_LIB_libiconv
