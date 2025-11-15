@@ -362,5 +362,5 @@ Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete insta
 Das meiste wird bei Kali sowieso schon dabei installiert sein.
 
 ### Arch
-Unter Arch wurde das Metapackage [freetz-ng-devel](https://aur.archlinux.org/packages/freetz-ng-devel)<sup>AUR</sup> erfolgreich zum Bauen benutzt.
+Unter Arch wurde das Metapackage [freetz-ng-tools](https://aur.archlinux.org/packages/freetz-ng-tools-git)<sup>AUR</sup> erfolgreich zum Bauen benutzt.
 
