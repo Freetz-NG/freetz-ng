@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN, 9.58)
+$(PKG)_CATEGORY:=Disk Tools
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=9ae78e883f3ce071d32ee0f1b9a2845a634fc4dd94a434e653fdbef551c5e10f
 $(PKG)_SITE:=@SF/$(pkg)
