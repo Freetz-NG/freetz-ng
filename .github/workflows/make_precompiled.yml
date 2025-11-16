@@ -20,9 +20,9 @@ on:
         required: true
         default: "dropbear"
 
-concurrency:
-  group: ${{ (github.event_name == 'pull_request') && github.workflow && '-' && github.event.pull_request.number || github.run_id }}
-  cancel-in-progress: ${{ (github.event_name == 'pull_request') && true || false }}
+#concurrency:
+# group: ${{ (github.event_name == 'pull_request') && github.workflow && '-' && github.event.pull_request.number || github.run_id }}
+# cancel-in-progress: ${{ (github.event_name == 'pull_request') && true || false }}
 
 jobs:
 
@@ -42,7 +42,6 @@ jobs:
     steps:
 
       - uses: ahmadnassri/action-workflow-queue@v1
-        if: github.event_name != 'pull_request'
         with:
           timeout: "18000000"
           delay: "10000"
@@ -94,7 +93,7 @@ jobs:
       options: --user 1001:1001
     needs: matrizifizieren
     strategy:
-      max-parallel: ${{ github.event_name == 'pull_request' && 2 || 17 }}
+      max-parallel: 17
       fail-fast: false
       matrix:
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
