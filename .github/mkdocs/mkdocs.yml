@@ -1,10 +1,16 @@
 site_name: 'Freetz-NG Documentation'
+site_description: 'Firmware modification for AVM FRITZ!Box devices'
+site_author: 'Freetz-NG'
 site_url: 'https://freetz-ng.github.io/'
 repo_url: 'https://github.com/freetz-ng/freetz-ng'
 edit_uri: '../freetz-ng/blob/master/docs/'
 docs_dir: '../../docs/'
 copyright: |
-  Copyright Freetz-NG. Licensed under <a href="https://github.com/Freetz-NG/freetz-ng/raw/refs/heads/master/COPYING" target="_blank" rel="noopener noreferrer">GPL-2.0</a>
+  <p>
+  &copy <span>Freetz-NG.</span><br/>
+  <span>Licensed under <a href="https://github.com/Freetz-NG/freetz-ng/raw/refs/heads/master/COPYING" target="_blank" rel="noopener noreferrer">GPL-2.0</a></span><br/>
+  <span>This project is not affiliated, associated, authorized, endorsed by, or in any way officially connected with AVM FRITZ!</span><br/>
+  </p>
 remote_branch: gh-pages
 validation:
   links:
