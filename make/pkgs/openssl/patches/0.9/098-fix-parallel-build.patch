@@ -1,0 +1,12 @@
+--- Makefile.org.orig
++++ Makefile.org
+@@ -1,6 +1,9 @@
+ ##
+ ## Makefile for OpenSSL
+ ##
++
++# Prevent parallel execution of top-level targets to avoid race conditions
++.NOTPARALLEL:
+ 
+ VERSION=
+ MAJOR=

@@ -96,7 +96,7 @@ $($(PKG)_BINARY_BUILD_DIR) $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
 #	Remove installed libs also from freetz' packages dir to ensure
 #	that it doesn't contain files from previous builds (0.9.8 to/from 1.0.x switch).
 	$(MAKE) openssl-clean-staging openssl-uninstall $(SILENT)
-	$(SUBMAKE1) $(OPENSSL_MAKE_FLAGS) depend
+	$(SUBMAKE) $(OPENSSL_MAKE_FLAGS) depend
 	$(SUBMAKE) $(OPENSSL_MAKE_FLAGS) all
 
 $($(PKG)_LIBS_STAGING_DIR): $($(PKG)_LIBS_BUILD_DIR)
