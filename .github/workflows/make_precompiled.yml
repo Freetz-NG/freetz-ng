@@ -20,9 +20,9 @@ on:
         required: true
         default: "dropbear"
 
-concurrency:
-  group: ${{ (github.event_name == 'pull_request') && github.workflow && '-' && github.event.pull_request.number || github.run_id }}
-  cancel-in-progress: ${{ (github.event_name == 'pull_request') && true || false }}
+#concurrency:
+# group: ${{ (github.event_name == 'pull_request') && github.workflow && '-' && github.event.pull_request.number || github.run_id }}
+# cancel-in-progress: ${{ (github.event_name == 'pull_request') && true || false }}
 
 jobs:
 
@@ -42,7 +42,6 @@ jobs:
     steps:
 
       - uses: ahmadnassri/action-workflow-queue@v1
-        if: github.event_name != 'pull_request'
         with:
           timeout: "18000000"
           delay: "10000"
@@ -69,7 +68,7 @@ jobs:
           [ -z "$HEAD_SHA" ] && HEAD_SHA="$(git rev-parse HEAD)"
           git cat-file -e "$BASE_SHA"^{commit} 2>/dev/null || BASE_SHA="$(git rev-parse HEAD~1)"
           git cat-file -e "$HEAD_SHA"^{commit} 2>/dev/null || HEAD_SHA="$(git rev-parse HEAD)"
-          [ -z "$pkg" ] && pkg="$(git log --format=%B "$BASE_SHA..$HEAD_SHA" | sed -nr 's/^(add|bump|fix|test) ([^ ,:]*).*/\2/pI' | head -n1)"
+          [ -z "$pkg" ] && pkg="$(git log --format=%s "$BASE_SHA..$HEAD_SHA" | sed -nr 's/^(add|bump|fix|test) ([^ ,:]*).*/\2/pI' | head -n1)"
           [ -z "$pkg" ] && pkg="$(git diff --name-only "$BASE_SHA..$HEAD_SHA" | sed -nr 's#^make/(pkgs|libs)/([^/]+)/.*#\2#p' | head -n1)"
           [ -z "$pkg" ] && echo "No add, bump, fix or test." && echo 'matrix=["skip"]' >> $GITHUB_OUTPUT && exit
           sed -rn 's/.* && dltc "(.*)".*/\1/p' tools/dl-toolchains_make | \
@@ -94,7 +93,7 @@ jobs:
       options: --user 1001:1001
     needs: matrizifizieren
     strategy:
-      max-parallel: ${{ github.event_name == 'pull_request' && 2 || 17 }}
+      max-parallel: 17
       fail-fast: false
       matrix:
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}

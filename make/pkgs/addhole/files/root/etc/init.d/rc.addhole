@@ -30,7 +30,7 @@ download() {
 
 	[ -z "$STF" ] && echo
 	[ -z "$STF" ] && echo -n "Old count of blocked domains: " && status
-	cat $TMP | dos2unix | grep -vE "^[ \t]*$|localhost|‐|ק|ɢ|é" | grep "\." | sort -u | grep -vE "^($ACK)$" | sed "s/^/$ADDHOLE_SINK /g" > "$HOSTS" 
+	cat $TMP | dos2unix | grep -vE "^[ \t]*$|localhost|‐|ק|ɢ|é" | grep "\." | sort -u | grep -vE "^($ACK)$" | sed "s/.*/$ADDHOLE_SINK &\n$ADDHOLE_SINK6 &/g" > "$HOSTS"
 	[ -s "$ADDHOLE_FILE" ] || echo '#' > "$HOSTS"
 	[ -z "$STF" ] && echo -n "New count of blocked domains: " && status
 	[ -z "$STF" ] && echo
@@ -40,7 +40,7 @@ download() {
 }
 
 clear_hosts() {
-	cat "$DAEMON_CFGFILE" | grep -vE "^[ \t]*#|^[ \t]*$|localhost" | sed 's/#.*//g' | grep "\." | sort -u | sed "s/^/$ADDHOLE_SINK /g" > $HOSTS 2>/dev/null
+	cat "$DAEMON_CFGFILE" | grep -vE "^[ \t]*#|^[ \t]*$|localhost" | sed 's/#.*//g' | grep "\." | sort -u | sed "s/.*/$ADDHOLE_SINK &\n$ADDHOLE_SINK6 &/g" > $HOSTS 2>/dev/null
 	[ -s "$ADDHOLE_FILE" ] || echo '#' > "$HOSTS"
 	reload
 }
