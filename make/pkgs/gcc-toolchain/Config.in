@@ -1,0 +1,44 @@
+comment "GCC Toolchain requires external storage (Enable 'External processing' in the main menu)"
+	depends on !EXTERNAL_ENABLED
+
+config FREETZ_PACKAGE_GCC_TOOLCHAIN
+	bool "GCC (Native Compiler for On-Device Compilation)"
+	depends on EXTERNAL_ENABLED
+	select FREETZ_TARGET_TOOLCHAIN
+	select FREETZ_LIB_libgcc_s
+	select FREETZ_PACKAGE_BINUTILS if !FREETZ_PACKAGE_GCC_TOOLCHAIN_MINIMAL
+	default n
+	help
+		Install the GCC compiler on Fritz!Box for native compilation.
+		
+		WARNING: Size ~200-250 MB. MUST be externalized to USB storage.
+
+if FREETZ_PACKAGE_GCC_TOOLCHAIN
+
+	config FREETZ_PACKAGE_GCC_TOOLCHAIN_MINIMAL
+		bool "Minimal installation (GCC + essential tools only)"
+		default n
+		help
+			Install only GCC compiler and essential compilation tools.
+			Saves ~50 MB but may lack some development utilities.
+			
+			Minimal includes:
+			- gcc, g++
+			- ld, as (linker and assembler)
+			- ar, ranlib (archive tools)
+			
+			Full installation additionally includes:
+			- objdump, objcopy, nm
+			- strings, readelf, addr2line
+			- gcov, gprof
+
+	config FREETZ_PACKAGE_GCC_TOOLCHAIN_HEADERS
+		bool "Include development headers"
+		default y
+		help
+			Include C/C++ standard library headers for compilation.
+			Required for compiling most programs.
+			
+			Size: ~20 MB
+
+endif # FREETZ_PACKAGE_GCC_TOOLCHAIN
