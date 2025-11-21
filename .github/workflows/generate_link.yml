@@ -37,7 +37,7 @@ jobs:
 #       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
 
       - name: clone
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           set-safe-directory: true

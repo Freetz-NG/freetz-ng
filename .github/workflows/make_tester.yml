@@ -64,7 +64,7 @@ jobs:
 ##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
       - name: clone
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           set-safe-directory: true
