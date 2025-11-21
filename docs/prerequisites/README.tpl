@@ -147,6 +147,16 @@ sudo dpkg --add-architecture i386
 sudo apt-get -y update
 ```
 
+  - Coreutils(pseudo)-Problem:<br>
+Ab Ubuntu 25.10 hat Canonical Ltd. die GNU-Coreutils durch Rust-Coreutils ersetzt, was möglicherweise Probleme mit `pseudo-host` verursacht.<br>
+Siehe [Carefully But Purposefully Oxidising Ubuntu](https://discourse.ubuntu.com/t/carefully-but-purposefully-oxidising-ubuntu/56995) und [Der Wechsel von Ubuntu 25.10 zu Rust Coreutils verursacht bei einigen ausführbaren Dateien erhebliche Probleme.](https://www.reddit.com/r/linux/comments/1nr1bas/ubuntu_2510s_move_to_rust_coreutils_is_causing/?tl=de)<br>
+Die Fehlermeldung ist `couldn't allocate absolute path for 'null'.`<br>
+    - Workaround:
+```
+# Deinstallation von Rust-Coreutils und gleichzeitige Installation von GNU-Coreutils
+sudo apt-get remove --allow-remove-essential coreutils-from-uutils
+```
+
   - System aktualisieren:
 ```
 sudo apt-get -y update
