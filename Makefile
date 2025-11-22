@@ -239,7 +239,8 @@ endif
 ifeq ($(shell ls --version | grep -q uutils && echo y),y)
 DLCHG:=y
 $(warning You have buggy uutils-coreutils installed. Please remove it!)
-$(warning To uninstall run: apt remove --allow-remove-essential coreutils-from-uutils)
+$(warning To uninstall under Ubuntu from version 25.10 onwards, run:)
+$(warning sudo apt-get remove --allow-remove-essential coreutils-from-uutils)
 endif
 # check cpu for x86_64
 ifneq ($(shell uname -m),x86_64)
