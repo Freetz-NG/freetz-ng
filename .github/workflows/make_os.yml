@@ -9,6 +9,17 @@ on:
 #   - cron: '00 15 * * 6'
   workflow_dispatch:
     inputs:
+      os:
+        description: "Distro to build"
+        required: true
+        default: "_all"
+        type: choice
+        options:
+          - "_all"
+          - "fedora:43"
+          - "debian:13"
+          - "ubuntu:22.04"
+          - "ubuntu:24.04"
       fos:
         description: "FOS Version to build"
         required: true
@@ -42,6 +53,14 @@ on:
         options:
           - "yes"
           - "no"
+      toolchains:
+        description: "Compile Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
       rootemu:
         description: "Use Rootemu?"
         required: true
@@ -64,11 +83,18 @@ jobs:
       - name: list
         id: list
         run: |
-          OSLIST="
-          fedora:43
-          ubuntu:22.04
-          ubuntu:24.04
-          "
+          if [ "${{ github.event.inputs.os }}" != "_all" ]; then \
+            OSLIST="
+            ${{ github.event.inputs.os }}
+            "
+          else
+            OSLIST="
+            fedora:43
+            debian:13
+            ubuntu:22.04
+            ubuntu:24.04
+            "
+          fi
           echo "oslist<<EOF" >> $GITHUB_OUTPUT
           echo "$OSLIST" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -82,13 +108,52 @@ jobs:
           echo "################################################################"
           echo "OSLIST_JSON=[$OSLIST_JSON]"
 
-  build:
-#   container:
+  matrizifizieren:
+    if: ${{ github.event.inputs.toolchains != 'no' }}
+    permissions:
+      contents: read
+    container:
 #     image: ubuntu:20.04
-#     image: freetzng/firmware
-#     image: ghcr.io/freetz-ng/firmware
-#     options: --user 1001:1001
-    needs: dockerfizieren
+#     image: freetzng/generate
+      image: ghcr.io/freetz-ng/generate
+      options: --user 1001:1001
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.parse.outputs.matrix }}
+
+    steps:
+
+      - name: clone
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
+
+      - name: parse
+        id: parse
+        run: |
+          sed -rn 's/.* && dltc "(.*)".*/\1/p' tools/dl-toolchains_make | \
+          while read -r line; do \
+          name="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*).*/\1 - \2/g')"; \
+          tcs="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*)(.*)/_\1 _FIRMWARE_\2\3/g')"; \
+          echo -n "$matrix{name:\"$name\",tcs:\"$tcs\"},"; done | \
+          sed 's/^/matrix=\[/;s/$/\]/' >> $GITHUB_OUTPUT
+
+      - name: vars
+        run: |
+          echo "################################################################"
+          echo "matrix=${{ steps.parse.outputs.matrix }}" | sed 's/\[{/\[\n{/;s/},{/},\n{/g;s/},\]/},\n\]/'
+
+  build:
+    if: ${{ github.event.inputs.toolchains != 'yes' }}
+    needs: [ dockerfizieren ]
     strategy:
       fail-fast: false
       max-parallel: 10
@@ -103,22 +168,6 @@ jobs:
       docker_NAME: "${{ github.job }}"
     steps:
 
-#     - name: update
-#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
-#
-#     - name: install
-#       run: |
-#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
-#           locales \
-#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
-#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
-#           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
-#           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
-#           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
-#
-#     - name: locale
-#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
-
       - name: sleep
         run: |
           SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 9))"
@@ -131,7 +180,8 @@ jobs:
 #         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
 #         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
-      - name: clone
+      - &clone
+        name: clone
         uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -199,7 +249,8 @@ jobs:
           for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
           echo "################################################################" && ls -l ~/.freetz-signature/
 
-      - name: docker_init
+      - &docker_init
+        name: docker_init
         run: |
           sudo docker run -d \
             --name ${{ env.docker_NAME }} \
@@ -246,31 +297,6 @@ jobs:
           echo "NAME=$NAME"
           test -n "$NAME"
 
-#     - name: cleanup
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         ACTIONS_NAME: ${{ steps.vars.outputs.name }}
-#       run: |
-#         git config --global --add safe.directory $GITHUB_WORKSPACE
-#         git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
-#         git tag -d $ACTIONS_NAME && git push --delete origin $ACTIONS_NAME || true
-#     - name: release
-#       uses: ncipollo/release-action@v1
-#       with:
-#         tag: ${{ steps.vars.outputs.name }}
-#         name: ${{ steps.vars.outputs.name }}
-#         body: |
-#           ${{ steps.vars.outputs.last }}
-#           ${{ steps.vars.outputs.link }}
-#         prerelease: false
-#         allowUpdates: true
-#         removeArtifacts: false
-#         artifacts: "images/*"
-#         token: ${{ secrets.GITHUB_TOKEN }}
-#         replacesArtifacts: false
-#         artifactErrorsFailBuild: true
-#         draft: true
-
       - name: cache_clear
         if: github.repository == 'freetz-ng/freetz-ng'
         env:
@@ -291,8 +317,93 @@ jobs:
             !dl/fw/*.zip
           key: ${{ env.CACHE_KEY }}
 
-      - name: docker_destroy
+      - &docker_destroy
+        name: docker_destroy
         if: always()
         run: |
           sudo docker stop -t 10 ${{ env.docker_NAME }} || sudo docker stop -s SIGKILL -t 10 ${{ env.docker_NAME }} || true
           sudo docker rm -f ${{ env.docker_NAME }}
+
+  dl-toolchains:
+    if: ${{ github.event.inputs.toolchains != 'no' }}
+    needs: [ dockerfizieren, matrizifizieren ]
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
+        fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
+    name: "${{ matrix.docker }}-${{ matrix.fritz.name }}-${{ matrix.fritz.tcs }}"
+    runs-on: ubuntu-latest
+#   if: github.repository == 'freetz-ng/freetz-ng'
+
+    env:
+      CACHE_KEY: "${{ github.workflow }}--${{ matrix.docker }}"
+      docker_NAME: "${{ github.job }}"
+    steps:
+
+      - name: args
+        id: args
+        run: |
+          export ARGS="$(for x in ${{ matrix.fritz.tcs }}; do echo -n "$x " | sed 's/^_/FREETZ_TYPE_/'; done)"
+          echo "args='$ARGS'" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo ARGS='$ARGS'"
+      
+      - *clone
+
+      - name: cache_load
+        uses: actions/cache/restore@v4
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/linux-*.tar.xz
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: ${{ env.CACHE_KEY }}_toolchains
+          restore-keys: ${{ env.CACHE_KEY }}_toolchains
+
+      - name: version
+        id: version
+        run: |
+          export VERSION="r$(tools/freetz_revision short)"
+          [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo VERSION=$VERSION"
+
+      - *docker_init
+
+      - name: generate
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          sudo docker exec -i ${{ env.docker_NAME }} bash -c "\
+          su freetz -c 'cd /mnt/freetz-ng && \
+          tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}'
+          "
+
+      - name: result
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          echo "################################################################"
+          sudo docker exec -i ${{ env.docker_NAME }} bash -c "\
+          su freetz -c 'cd /mnt/freetz-ng && \
+          tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
+          "
+          ls -al dl/*-shared-glibc.tar.lzma && du -sh dl/*-shared-glibc.tar.lzma
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: dl-toolchains_${{ steps.version.outputs.version }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}
+          body: These files are internally used!
+          prerelease: true
+          allowUpdates: true
+          removeArtifacts: false
+          artifacts: "dl/*-freetz-${{ steps.version.outputs.version }}-shared-glibc.tar.lzma"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          draft: true
+
+      - *docker_destroy
