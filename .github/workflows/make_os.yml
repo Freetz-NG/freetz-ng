@@ -164,7 +164,6 @@ jobs:
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
     env:
-      CACHE_KEY: "${{ github.workflow }}--${{ matrix.docker }}"
       docker_NAME: "${{ github.job }}"
     steps:
 
@@ -193,14 +192,17 @@ jobs:
           clean: false
           persist-credentials: true
 
-      - name: cache_load
+      - &cache_load
+        name: cache_load
         uses: actions/cache/restore@v4
         if: always()
         with:
           path: |
             dl/*
-            !dl/fw/*
-          key: ${{ env.CACHE_KEY }}
+            !dl/linux-*.tar.xz
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: make_cache
+          restore-keys: make_cache
 
       - name: config
         run: |
@@ -255,11 +257,23 @@ jobs:
           sudo docker run -d \
             --name ${{ env.docker_NAME }} \
             -e DEBIAN_FRONTEND=noninteractive \
+            -e LANG=C.UTF-8 \
             -v ${GITHUB_WORKSPACE}:/mnt/freetz-ng \
             ${{ matrix.docker }} \
             sleep infinity
           sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
+            if [ -e /bin/apt ]; then 
+              sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
+            fi
             cd /mnt/freetz-ng && /mnt/freetz-ng/tools/prerequisites install -y
+            #if [ -e /bin/apt ]; then 
+            #  apt-get update && apt-get install -y locales; 
+            #  locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+            #fi
+            #if [ -e /bin/dnf ]; then
+            #  dnf install -y gzip glibc-locale-source glibc-langpack-en glibc-langpack-de; 
+            #  localedef --verbose --force -i en_US -f UTF-8 en_US.UTF-8 && localedef --verbose --force -i de_DE -f UTF-8 de_DE.UTF-8;
+            #fi
           '
           sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
                groupadd freetz -o -g 1001 \
@@ -297,26 +311,6 @@ jobs:
           echo "NAME=$NAME"
           test -n "$NAME"
 
-      - name: cache_clear
-        if: github.repository == 'freetz-ng/freetz-ng'
-        env:
-          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
-          CACHE_KEY: ${{ env.CACHE_KEY }}
-        run: |
-          ASSETS="$(curl -s  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches")"
-          ASSID="$(echo "$ASSETS" | grep -B7 "\"key\": *\"${CACHE_KEY}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
-          curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches/$ASSID" && echo "Deleted ASSID=${ASSID:-null} ..." || true
-      - name: cache_save
-        uses: actions/cache/save@v4
-        if: always()
-        with:
-          path: |
-            dl/*
-            !dl/tools-*.tar.xz
-            !dl/linux-*.tar.xz
-            !dl/fw/*.zip
-          key: ${{ env.CACHE_KEY }}
-
       - &docker_destroy
         name: docker_destroy
         if: always()
@@ -338,7 +332,6 @@ jobs:
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
     env:
-      CACHE_KEY: "${{ github.workflow }}--${{ matrix.docker }}"
       docker_NAME: "${{ github.job }}"
     steps:
 
@@ -351,16 +344,7 @@ jobs:
       
       - *clone
 
-      - name: cache_load
-        uses: actions/cache/restore@v4
-        if: always()
-        with:
-          path: |
-            dl/*
-            !dl/linux-*.tar.xz
-            !dl/*-freetz-*-shared-glibc.tar.lzma
-          key: ${{ env.CACHE_KEY }}_toolchains
-          restore-keys: ${{ env.CACHE_KEY }}_toolchains
+      - *cache_load
 
       - name: version
         id: version
