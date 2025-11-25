@@ -55,6 +55,28 @@ Homepage](http://www.stunnel.org/examples/).
     */tmp/flash/stunnel/key.pem* verwendet, welche vom Webinterface aus
     verwaltet werden (Punkt 2).
 
+    Die Standardeinstellungen von Freetz können mit der Zeile `#EXCLUSIVE#` deaktiviert werden.
+    Dies ermöglicht, globale Einstellungen außerhalb der `[<section>]` vorzunehmen.
+    Zum Beispiel:
+    ```
+    #EXCLUSIVE#
+    
+    TIMEOUTclose = 0
+    verifyChain = yes
+    CAfile = /tmp/flash/stunnel/certs.pem
+    cert = /tmp/flash/stunnel/key.pem
+    options = SINGLE_ECDH_USE
+    options = SINGLE_DH_USE
+
+    [freetz https Web-Interface]
+    accept = 4433
+    connect = 81
+
+    [avm https Web-Interface]
+    accept = 4434
+    connect = 80
+    ```
+
 <!-- -->
 
 4.  Zugriff (intern) über
