@@ -225,3 +225,4 @@ jobs:
           echo "##########################################################"
           [ -z "$p$l" ] && echo "No binary output found." && exit
           [ -n "$p$l" ] && ls -al $p $l
+
