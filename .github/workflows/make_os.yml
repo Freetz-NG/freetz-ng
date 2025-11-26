@@ -264,23 +264,30 @@ jobs:
             -v ${GITHUB_WORKSPACE}:/mnt/freetz-ng \
             ${{ matrix.docker }} \
             sleep infinity
+            
           sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
             if [ -e /bin/apt ]; then 
               sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
             fi
+            if [ -e /bin/dnf ]; then 
+              dnf -y install which; 
+            fi
+
             cd /mnt/freetz-ng && /mnt/freetz-ng/tools/prerequisites install -y
-            #if [ -e /bin/apt ]; then 
-            #  apt-get update && apt-get install -y locales; 
-            #  locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
-            #fi
-            #if [ -e /bin/dnf ]; then
-            #  dnf install -y gzip glibc-locale-source glibc-langpack-en glibc-langpack-de; 
-            #  localedef --verbose --force -i en_US -f UTF-8 en_US.UTF-8 && localedef --verbose --force -i de_DE -f UTF-8 de_DE.UTF-8;
-            #fi
+
+            if [ -e /bin/apt ]; then 
+              apt-get update && apt-get install -y locales; 
+              locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+            fi
+            if [ -e /bin/dnf ]; then
+              dnf -y install glibc-locale-source && \
+              localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
+            fi
           '
+
           sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
                groupadd freetz -o -g 1001 \
-            && useradd freetz -o -s /bin/bash -d /mnt/freetz-ng -u 1001 -g 1001 \
+            && useradd freetz -o -s /bin/bash -d /mnt/freetz-ng -M -u 1001 -g 1001 \
             && usermod freetz -a -G root \
             && echo "freetz ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
             && chown -R freetz:freetz /mnt/freetz-ng \
