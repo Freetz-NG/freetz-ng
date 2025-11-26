@@ -63,9 +63,16 @@ jobs:
         id: parse
         run: |
           pkg="$(echo "${{ github.event.inputs.bump }}" | sed 's/ //g')"
-          HEAD_SHA="${{ github.event.pull_request.head.sha || github.sha }}"
-          [ "${{ github.event_name }}" == "pull_request" ] && BASE_SHA="${{ github.event.pull_request.base.sha }}" || BASE_SHA="${{ github.sha }}~1"
-          git cat-file -e "$HEAD_SHA"^{commit} 2>/dev/null || HEAD_SHA="$(git rev-parse $HEAD_SHA~1)"
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          if [ "${{ github.event_name }}" == "pull_request" ]; then \
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"; \
+            HEAD_SHA="${{ github.event.pull_request.head.sha }}~1"; \
+          else \
+            BASE_SHA="${{ github.sha }}~1"; \
+            HEAD_SHA="${{ github.sha }}"; \
+          fi
+          BASE_SHA="$(git rev-parse $BASE_SHA)"
+          HEAD_SHA="$(git rev-parse $HEAD_SHA)"
           [ -z "$pkg" ] && pkg="$(git log --format=%s "$BASE_SHA..$HEAD_SHA" | head -n1 | sed -nr 's/^(add|bump|fix|test) ([^ ,:]*).*/\2/pI')"
           [ -z "$pkg" ] && pkg="$(git diff --name-only "$BASE_SHA..$HEAD_SHA" | sed -nr 's#^make/(pkgs|libs)/([^/]+)/.*#\2#p' | head -n1)"
           [ -z "$pkg" ] && echo "No add, bump, fix or test." && echo 'matrix=["skip"]' >> $GITHUB_OUTPUT && exit
@@ -218,5 +225,3 @@ jobs:
           echo "##########################################################"
           [ -z "$p$l" ] && echo "No binary output found." && exit
           [ -n "$p$l" ] && ls -al $p $l
-
-
