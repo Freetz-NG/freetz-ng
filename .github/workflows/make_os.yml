@@ -257,6 +257,7 @@ jobs:
           sudo docker run -d \
             --name ${{ env.docker_NAME }} \
             -e DEBIAN_FRONTEND=noninteractive \
+            -e FREETZ_DLTOKEN=${{ secrets.FREETZ_DLTOKEN }} \
             -e LANG=C.UTF-8 \
             -v ${GITHUB_WORKSPACE}:/mnt/freetz-ng \
             ${{ matrix.docker }} \
