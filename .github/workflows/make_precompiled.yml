@@ -64,7 +64,7 @@ jobs:
         run: |
           pkg="$(echo "${{ github.event.inputs.bump }}" | sed 's/ //g')"
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          if [ '${{ github.event_name }}' == 'pull_request' ]; then \
+          if [ '${{ github.event_name }}' = 'pull_request' ]; then \
             BASE_SHA="${{ github.event.pull_request.base.sha }}"; \
             HEAD_SHA="${{ github.event.pull_request.head.sha }}~1"; \
           else \
