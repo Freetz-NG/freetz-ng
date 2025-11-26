@@ -71,10 +71,12 @@ jobs:
             BASE_SHA="${{ github.sha }}~1"; \
             HEAD_SHA="${{ github.sha }}"; \
           fi
+          BASE_SHA="$(git rev-parse $BASE_SHA)"
+          HEAD_SHA="$(git rev-parse $HEAD_SHA)"
           [ -z "$pkg" ] && pkg="$(git log --format=%s "$BASE_SHA..$HEAD_SHA" | head -n1 | sed -nr 's/^(add|bump|fix|test) ([^ ,:]*).*/\2/pI')"
           [ -z "$pkg" ] && pkg="$(git diff --name-only "$BASE_SHA..$HEAD_SHA" | sed -nr 's#^make/(pkgs|libs)/([^/]+)/.*#\2#p' | head -n1)"
           [ -z "$pkg" ] && echo "No add, bump, fix or test." && echo 'matrix=["skip"]' >> $GITHUB_OUTPUT && exit
-          echo "gitsha=\"$(git rev-parse $HEAD_SHA)\"" >> $GITHUB_OUTPUT
+          echo "gitsha=\"$HEAD_SHA\"" >> $GITHUB_OUTPUT
           sed -rn 's/.* && dltc "(.*)".*/\1/p' tools/dl-toolchains_make | \
           while read -r line; do \
             name="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*).*/\1 - \2/g')"; \
