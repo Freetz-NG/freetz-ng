@@ -1,13 +1,11 @@
 --- linux-5.4/arch/arm/Makefile
 +++ linux-5.4/arch/arm/Makefile
-@@ -317,6 +317,11 @@
+@@ -317,6 +317,9 @@
  KBUILD_IMAGE := $(boot)/zImage
  endif
-
+ 
 +vmlinux.eva_pad: vmlinux FORCE
-+	$(CROSS_COMPILE)objcopy -O binary $< $<.bin
-+	lzma -f $<.bin
-+	cp $<.bin.lzma $(boot)/$@
++	cp $< $(boot)/$@
 +
  ifeq ($(CONFIG_STACKPROTECTOR_PER_TASK),y)
  prepare: stack_protector_prepare
