@@ -4,7 +4,8 @@
 
 config FREETZ_REPLACE_KERNEL_AVAILABLE
 	bool
-	depends on \
+#	depends on \
+	depends on (FREETZ_SYSTEM_TYPE_ALDER) || ( \
 		! (FREETZ_TYPE_FON && FREETZ_TYPE_LANG_EN) && \
 		! (FREETZ_SYSTEM_TYPE_ALDER) && \
 		! (FREETZ_SYSTEM_TYPE_AR10 && FREETZ_TYPE_FIRMWARE_06_5X) && \
@@ -23,7 +24,8 @@ config FREETZ_REPLACE_KERNEL_AVAILABLE
 		! (FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0) && \
 		! (FREETZ_TYPE_FIRMWARE_07_1X_MIN && !FREETZ_SYSTEM_TYPE_VR9 && !FREETZ_SYSTEM_TYPE_PUMA6) && \
 		! (FREETZ_TYPE_EXTENDER) && \
-		! (FREETZ_TYPE_FIRMWARE_UNTESTED)
+		! (FREETZ_TYPE_FIRMWARE_UNTESTED) )
+#		! (FREETZ_TYPE_FIRMWARE_UNTESTED)
 	default y
 	help
 		Select this if source code exactly matching the firmware version used is available for your box.
