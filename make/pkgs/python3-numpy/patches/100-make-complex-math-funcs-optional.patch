@@ -1,0 +1,17 @@
+--- numpy/_core/meson.build.orig
++++ numpy/_core/meson.build
+@@ -217,11 +217,8 @@
+ endforeach
+ 
+ mandatory_complex_math_funcs = [
+-  'csin', 'csinh', 'ccos', 'ccosh', 'ctan', 'ctanh', 'creal', 'cimag', 'conj'
++  # uClibc doesn't implement complex math functions - make them optional
+ ]
+-foreach func: mandatory_complex_math_funcs
+-  if not cc.has_function(func, prefix: '#include <complex.h>', dependencies: m_dep)
+-    error(f'Function `@func@` not found')
+-  endif
+-endforeach
++# Skip mandatory complex math check for embedded systems
++# The c99_complex_funcs list below will detect available functions
+ 

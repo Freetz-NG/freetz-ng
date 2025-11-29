@@ -1,0 +1,35 @@
+comment "NumPy requires external storage  (Enable 'External processing' in the main menu)"
+	depends on FREETZ_PACKAGE_PYTHON3 && !EXTERNAL_ENABLED && FREETZ_SHOW_DEVELOPER
+
+config FREETZ_PACKAGE_PYTHON3_NUMPY
+	bool "NumPy 2.3.3 (for Python 3) - DEVELOPER ONLY"
+	depends on FREETZ_PACKAGE_PYTHON3
+	depends on EXTERNAL_ENABLED
+	depends on FREETZ_SHOW_DEVELOPER
+	default n
+	help
+		NumPy is the fundamental package for scientific computing in Python.
+		
+		NEW: NumPy 2.3.3 with Meson build system (compatible with Python 3.14).
+		Cross-compilation tested but may have edge cases.
+		
+		Provides:
+		- Powerful N-dimensional array object (ndarray)
+		- Sophisticated broadcasting functions
+		- Linear algebra, Fourier transform, random number capabilities
+		- Tools for integrating C/C++ and Fortran code
+		
+		Common uses:
+		- Data analysis and machine learning
+		- Scientific and engineering computations
+		- Image and signal processing
+		- Statistical operations
+		
+		WARNING: NumPy is large (~15-20 MB) and MUST be externalized.
+		Ensure sufficient USB storage is available.
+		
+		This build uses reference BLAS (slower but no extra dependencies).
+		For performance-critical applications, consider optimized libraries.
+		
+		Website: https://numpy.org/
+		Docs: https://numpy.org/doc/stable/
