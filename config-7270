@@ -1,0 +1,3153 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# Freetz Configuration
+#
+FREETZ_HAVE_DOT_CONFIG=y
+
+#
+# Freetz revision  -----------------------------------------
+#
+
+#
+#
+
+#
+# User competence ------------------------------------------
+#
+# FREETZ_USER_LEVEL_BEGINNER is not set
+FREETZ_USER_LEVEL_EXPERT=y
+# FREETZ_USER_LEVEL_DEVELOPER is not set
+FREETZ_SHOW_EXPERT=y
+
+#
+# Hardware/Firmware ----------------------------------------
+#
+
+#
+# Hardware series
+#
+# FREETZ_SERIES_X is not set
+# FREETZ_SERIES_6 is not set
+# FREETZ_SERIES_5 is not set
+FREETZ_SERIES_4=y
+# FREETZ_SERIES_3 is not set
+FREETZ_SERIES_2=y
+# FREETZ_SERIES_1 is not set
+# FREETZ_SERIES_0 is not set
+
+#
+# 
+#
+# FREETZ_SERIES_ALL is not set
+# end of Hardware series
+
+#
+# WLAN
+#
+# FREETZ_TYPE_3270_V2 is not set
+# FREETZ_TYPE_3270_V3 is not set
+# FREETZ_TYPE_3272 is not set
+# FREETZ_TYPE_3490 is not set
+
+#
+# WAN
+#
+# FREETZ_TYPE_4020 is not set
+
+#
+# Fiber
+#
+# FREETZ_TYPE_5490 is not set
+# FREETZ_TYPE_5491 is not set
+
+#
+# Cable
+#
+# FREETZ_TYPE_6430 is not set
+# FREETZ_TYPE_6490 is not set
+
+#
+# LTE
+#
+# FREETZ_TYPE_6820_V1 is not set
+# FREETZ_TYPE_6820_V2 is not set
+# FREETZ_TYPE_6820_V3 is not set
+# FREETZ_TYPE_6820_V4 is not set
+
+#
+# Fon WLAN
+#
+# FREETZ_TYPE_7240 is not set
+# FREETZ_TYPE_7270_V1 is not set
+# FREETZ_TYPE_7270_V2 is not set
+FREETZ_TYPE_7270_V3=y
+# FREETZ_TYPE_7272 is not set
+# FREETZ_TYPE_7412 is not set
+# FREETZ_TYPE_7430 is not set
+# FREETZ_TYPE_7490 is not set
+# FREETZ_TYPE_7570 is not set
+FREETZ_TYPE_LANG_DE=y
+# FREETZ_TYPE_LANG_EN is not set
+FREETZ_TYPE_LANGUAGE="de"
+# FREETZ_TYPE_FIRMWARE_05_2X is not set
+# FREETZ_TYPE_FIRMWARE_05_5X is not set
+FREETZ_TYPE_FIRMWARE_06_0X=y
+FREETZ_AVM_VERSION_LATEST_MAJOR=y
+# FREETZ_TYPE_FIRMWARE_DETECT_LATEST is not set
+FREETZ_TYPE_FIRMWARE_FINAL=y
+
+#
+# WARNINGS -------------------------------------------------
+#
+
+#
+#  - replace-kernel might not work at all
+#
+
+#
+#    or cause stability issues
+#
+# FREETZ_TYPE_ALIEN_HARDWARE is not set
+FREETZ_TYPE_7270=y
+FREETZ_TYPE_7270_16=y
+
+#
+# Original components --------------------------------------
+#
+FREETZ_TARGET_IPV6_SUPPORT=y
+FREETZ_REPLACE_KERNEL=y
+
+#
+# Removal patches
+#
+# FREETZ_SELECT_HARDENING is not set
+
+#
+# Removal patches ------------------------------------------
+#
+FREETZ_REMOVE_LEFTOVER=y
+FREETZ_REMOVE_MODULE_BINS=y
+# FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_DIFFS is not set
+# FREETZ_REMOVE_DSLD is not set
+# FREETZ_REMOVE_SHOWDSLDSTAT is not set
+FREETZ_REMOVE_ASSISTANT=y
+FREETZ_REMOVE_ASSISTANT_SIP=y
+FREETZ_REMOVE_AHA=y
+FREETZ_REMOVE_AURA_USB=y
+FREETZ_REMOVE_WEBDAV=y
+FREETZ_REMOVE_MEDIASRV=y
+FREETZ_REMOVE_NAS=y
+FREETZ_REMOVE_MYFRITZ=y
+# FREETZ_REMOVE_DDNSD is not set
+FREETZ_REMOVE_AVM_VPN=y
+FREETZ_REMOVE_TELNETD=y
+# FREETZ_REMOVE_BRANDING is not set
+FREETZ_REMOVE_CAPIOVERTCP=y
+# FREETZ_REMOVE_CHRONYD is not set
+# FREETZ_REMOVE_DECT is not set
+FREETZ_REMOVE_DTRACE=y
+# FREETZ_REMOVE_FTPD is not set
+FREETZ_REMOVE_HELP=y
+# FREETZ_REMOVE_JFFS2 is not set
+# FREETZ_REMOVE_RAMZSWAP is not set
+# FREETZ_REMOVE_LSOF is not set
+# FREETZ_REMOVE_NTFS is not set
+# FREETZ_REMOVE_USBHOST is not set
+FREETZ_REMOVE_PRINTSERV=y
+FREETZ_REMOVE_PRINTSERV_MODULE=y
+# FREETZ_REMOVE_RUNCLOCK is not set
+# FREETZ_REMOVE_SAMBA is not set
+FREETZ_REMOVE_SUPPORT=y
+FREETZ_REMOVE_SUPPORT_EVENTSDUMP=y
+# FREETZ_REMOVE_PUBKEY is not set
+FREETZ_REMOVE_TR069=y
+# FREETZ_REMOVE_TR064 is not set
+# FREETZ_REMOVE_TR069_FWUPDATE is not set
+# FREETZ_REMOVE_TR069_PROVIDERS is not set
+# FREETZ_REMOVE_UMTSD is not set
+# FREETZ_REMOVE_UPNP is not set
+FREETZ_REMOVE_KIDS=y
+# FREETZ_REMOVE_QOS is not set
+FREETZ_REMOVE_AVM_E2FSPROGS=y
+# FREETZ_REMOVE_VOIPD is not set
+# FREETZ_REMOVE_TELEPHONY is not set
+# FREETZ_REMOVE_WLAN is not set
+# end of Removal patches
+
+#
+# Other patches
+#
+
+#
+# Web menu patches -----------------------------------------
+#
+# FREETZ_PATCH_ATA is not set
+# FREETZ_PATCH_GUEST is not set
+# FREETZ_PATCH_FAXPAGES is not set
+# FREETZ_PATCH_GSMVOICE is not set
+FREETZ_PATCH_WEBIF_FEATURES=y
+# FREETZ_PATCH_SIGNED is not set
+# FREETZ_ENABLE_LED_DEACTIVATION is not set
+# FREETZ_PATCH_MODFS_ANNEX_SELECTION is not set
+
+#
+# USB patches ----------------------------------------------
+#
+FREETZ_PATCH_FREETZMOUNT=y
+FREETZ_USBSTORAGE_AUTOMOUNT=y
+FREETZ_AUTOMOUNT_EXT2=y
+# FREETZ_AUTOMOUNT_EXT3 is not set
+# FREETZ_AUTOMOUNT_EXT4 is not set
+# FREETZ_AUTOMOUNT_FAT is not set
+# FREETZ_AUTOMOUNT_HFS is not set
+# FREETZ_AUTOMOUNT_HFS_PLUS is not set
+# FREETZ_AUTOMOUNT_LUKS is not set
+# FREETZ_AUTOMOUNT_NTFS is not set
+# FREETZ_AUTOMOUNT_REISER_FS is not set
+# FREETZ_AUTOMOUNT_LINUXSWAP is not set
+# FREETZ_PATCH_MAXDEVCOUNT is not set
+# FREETZ_MODIFY_UMTSD is not set
+# FREETZ_CUSTOM_UDEV_RULES is not set
+
+#
+# Replacement patches --------------------------------------
+#
+
+#
+# Replace OpenSSL libraries (not available, requires openssl-0.9.8)
+#
+FREETZ_REPLACE_DTRACE=y
+FREETZ_REPLACE_ONLINECHANGED=y
+
+#
+# Additional patches ---------------------------------------
+#
+FREETZ_ADD_SWAPOPTIONS=y
+# FREETZ_ADD_ETCNETCONFIG is not set
+FREETZ_ADD_ETCSERVICES=y
+FREETZ_CUSTOM_ETCSERVICES=y
+# FREETZ_ENFORCE_URLADER_SETTINGS is not set
+
+#
+# Misc patches ---------------------------------------------
+#
+# FREETZ_DISABLE_SERIAL_CONSOLE is not set
+# FREETZ_RESTORE_DEBUG_CFG_SUPPORT is not set
+
+#
+# AVM daemons ----------------------------------------------
+#
+# FREETZ_AVMDAEMON_DISABLE_IGD is not set
+# FREETZ_AVMDAEMON_DISABLE_IGM is not set
+FREETZ_AVMDAEMON_DISABLE_TR069=y
+# FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS is not set
+# end of Other patches
+
+#
+# Additional components ------------------------------------
+#
+
+#
+# Packages
+#
+
+#
+# A
+#
+# FREETZ_PACKAGE_APACHE2 is not set
+# FREETZ_PACKAGE_AUTOFS is not set
+# FREETZ_PACKAGE_AUTOSSH is not set
+# FREETZ_PACKAGE_AVAHI is not set
+# end of A
+
+#
+# B
+#
+# FREETZ_PACKAGE_BASH is not set
+# FREETZ_PACKAGE_BFTPD is not set
+# FREETZ_PACKAGE_BFUSB is not set
+# FREETZ_PACKAGE_BIND is not set
+# FREETZ_PACKAGE_BIP is not set
+# FREETZ_PACKAGE_BIRD is not set
+# FREETZ_PACKAGE_BITTWIST is not set
+# FREETZ_PACKAGE_BLUEZ_UTILS is not set
+# FREETZ_PACKAGE_BRIDGE_UTILS is not set
+# FREETZ_PACKAGE_BVI is not set
+# FREETZ_PACKAGE_BZIP2 is not set
+# end of B
+
+#
+# C
+#
+FREETZ_PACKAGE_CA_BUNDLE=y
+# FREETZ_PACKAGE_CALLMONITOR is not set
+# FREETZ_PACKAGE_CCID is not set
+# FREETZ_PACKAGE_CHECKMAILD is not set
+# FREETZ_PACKAGE_CHOPARP is not set
+# FREETZ_PACKAGE_CIFSMOUNT is not set
+# FREETZ_PACKAGE_CLASSPATH is not set
+# FREETZ_PACKAGE_CNTLM is not set
+# FREETZ_PACKAGE_COMGT is not set
+# FREETZ_PACKAGE_CRYPTSETUP is not set
+# FREETZ_PACKAGE_CTORRENT is not set
+# FREETZ_PACKAGE_CURL is not set
+# FREETZ_PACKAGE_CURLFTPFS is not set
+# end of C
+
+#
+# D
+#
+# FREETZ_PACKAGE_DANTE is not set
+# FREETZ_PACKAGE_DAVFS2 is not set
+# FREETZ_PACKAGE_DBUS is not set
+# FREETZ_PACKAGE_DEBOOTSTRAP is not set
+# FREETZ_PACKAGE_DECO is not set
+# FREETZ_PACKAGE_DECRYPT_FRITZOS_CFG is not set
+# FREETZ_PACKAGE_DEHYDRATED is not set
+# FREETZ_PACKAGE_DEJAVU_FONTS_TTF is not set
+# FREETZ_PACKAGE_DIGITEMP is not set
+# FREETZ_PACKAGE_DNS2TCP is not set
+# FREETZ_PACKAGE_DNSMASQ is not set
+# FREETZ_PACKAGE_DOSFSTOOLS is not set
+# FREETZ_PACKAGE_DROPBEAR is not set
+# FREETZ_PACKAGE_DTACH is not set
+# FREETZ_PACKAGE_DTC is not set
+# FREETZ_PACKAGE_DVBSNOOP is not set
+# FREETZ_PACKAGE_DVBSTREAM is not set
+# FREETZ_PACKAGE_DVBTUNE is not set
+# end of D
+
+#
+# E
+#
+# FREETZ_PACKAGE_E2FSPROGS is not set
+# FREETZ_PACKAGE_EMAILRELAY is not set
+# FREETZ_PACKAGE_EMPTY is not set
+# FREETZ_PACKAGE_ENDLESSH is not set
+# FREETZ_PACKAGE_ESPEAK is not set
+# end of E
+
+#
+# F
+#
+# FREETZ_PACKAGE_FFMPEG is not set
+# FREETZ_PACKAGE_FORTUNE is not set
+# FREETZ_PACKAGE_FOWSR is not set
+# FREETZ_PACKAGE_FSTYP is not set
+# FREETZ_PACKAGE_FTDI1 is not set
+# FREETZ_PACKAGE_FUSE is not set
+# end of F
+
+#
+# G
+#
+# FREETZ_PACKAGE_GETDNS is not set
+# FREETZ_PACKAGE_GHOSTSCRIPT_FONTS is not set
+FREETZ_PACKAGE_GIT=y
+FREETZ_PACKAGE_GIT_VERSION_ABANDON=y
+FREETZ_PACKAGE_GIT_REMOVE_WEBIF=y
+# FREETZ_PACKAGE_GIT_WITH_PCRE is not set
+# FREETZ_PACKAGE_GNTPSEND is not set
+# FREETZ_PACKAGE_GNU_MAKE is not set
+# FREETZ_PACKAGE_GNUTLS is not set
+# FREETZ_PACKAGE_GOCR is not set
+# FREETZ_PACKAGE_GW6 is not set
+# end of G
+
+#
+# H
+#
+FREETZ_PACKAGE_HASERL=y
+# FREETZ_PACKAGE_HASERL_WITH_LUA is not set
+# FREETZ_PACKAGE_HD_IDLE is not set
+# FREETZ_PACKAGE_HDPARM is not set
+# FREETZ_PACKAGE_HOL is not set
+# FREETZ_PACKAGE_HTML2TEXT is not set
+# FREETZ_PACKAGE_HTOP is not set
+# FREETZ_PACKAGE_HTPDATE is not set
+# FREETZ_PACKAGE_HTTPRY is not set
+# FREETZ_PACKAGE_HTTPTUNNEL is not set
+# end of H
+
+#
+# I
+#
+# FREETZ_PACKAGE_IFSTAT is not set
+# FREETZ_PACKAGE_IFTOP is not set
+# FREETZ_PACKAGE_IGMPPROXY is not set
+# FREETZ_PACKAGE_IMAGEMAGICK is not set
+# FREETZ_PACKAGE_INADYN_MT is not set
+# FREETZ_PACKAGE_INADYN_OPENDNS is not set
+FREETZ_PACKAGE_INETD=y
+# FREETZ_PACKAGE_INETD_TIME is not set
+# FREETZ_PACKAGE_INFOZIP is not set
+# FREETZ_PACKAGE_IODINE is not set
+# FREETZ_PACKAGE_IPERF is not set
+# FREETZ_PACKAGE_IPSEC_TOOLS is not set
+# FREETZ_PACKAGE_IPTRAF is not set
+# FREETZ_PACKAGE_IPUTILS is not set
+# FREETZ_PACKAGE_IRSSI is not set
+# FREETZ_PACKAGE_ISC_DHCP is not set
+# end of I
+
+#
+# J
+#
+# FREETZ_PACKAGE_JAMVM is not set
+# FREETZ_PACKAGE_JQ is not set
+# FREETZ_PACKAGE_JS is not set
+FREETZ_PACKAGE_JUIS_CHECK=y
+# end of J
+
+#
+# K
+#
+# FREETZ_PACKAGE_KNOCK is not set
+# end of K
+
+#
+# L
+#
+# FREETZ_PACKAGE_LCD4LINUX is not set
+# FREETZ_PACKAGE_LFTP is not set
+# FREETZ_PACKAGE_LIGHTTPD is not set
+# FREETZ_PACKAGE_LUA is not set
+# FREETZ_PACKAGE_LYNX is not set
+# end of L
+
+#
+# M
+#
+# FREETZ_PACKAGE_MADPLAY is not set
+# FREETZ_PACKAGE_MC is not set
+# FREETZ_PACKAGE_MCABBER is not set
+# FREETZ_PACKAGE_MICROPERL is not set
+# FREETZ_PACKAGE_MINI_SNMPD is not set
+# FREETZ_PACKAGE_MINICOM is not set
+# FREETZ_PACKAGE_MINIDLNA is not set
+# FREETZ_PACKAGE_MINISATIP is not set
+FREETZ_PACKAGE_MOD=y
+FREETZ_PACKAGE_MOD_SWAPOPTIONS=y
+FREETZ_PACKAGE_MODCGI=y
+# FREETZ_PACKAGE_MODULE_INIT_TOOLS is not set
+# FREETZ_PACKAGE_MOSQUITTO is not set
+# FREETZ_PACKAGE_MTR is not set
+# end of M
+
+#
+# N
+#
+# FREETZ_PACKAGE_NAGIOS is not set
+FREETZ_PACKAGE_NANO=y
+FREETZ_PACKAGE_NANO_UTF8=y
+FREETZ_PACKAGE_NANO_TINY=y
+# FREETZ_PACKAGE_NANO_MULTIBUFFER is not set
+# FREETZ_PACKAGE_NANO_MOUSE_CONTROL is not set
+FREETZ_PACKAGE_NANO_NANORC=y
+FREETZ_PACKAGE_NANO_COLOR_SYNTAX=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_SH=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_NANORC=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_C=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_CSS=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_HTML=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_PHP=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_TEX=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_PATCH=y
+FREETZ_PACKAGE_NANO_SYNTAX_FILE_XML=y
+# FREETZ_PACKAGE_NC6 is not set
+# FREETZ_PACKAGE_NCFTP is not set
+# FREETZ_PACKAGE_NDAS is not set
+# FREETZ_PACKAGE_NETATALK is not set
+# FREETZ_PACKAGE_NETCAT is not set
+# FREETZ_PACKAGE_NETPBM is not set
+# FREETZ_PACKAGE_NETSNMP is not set
+# FREETZ_PACKAGE_NFS_UTILS is not set
+# FREETZ_PACKAGE_NFSROOT is not set
+# FREETZ_PACKAGE_NGIRCD is not set
+# FREETZ_PACKAGE_NMAP is not set
+# FREETZ_PACKAGE_NOIP is not set
+# end of N
+
+#
+# O
+#
+# FREETZ_PACKAGE_OBEXFTP is not set
+# FREETZ_PACKAGE_OIDENTD is not set
+# FREETZ_PACKAGE_OPENCONNECT is not set
+# FREETZ_PACKAGE_OPENDD is not set
+# FREETZ_PACKAGE_OPENNTPD is not set
+FREETZ_PACKAGE_OPENSSH=y
+FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT=y
+FREETZ_PACKAGE_OPENSSH_AUTHORIZED_KEYS=y
+FREETZ_PACKAGE_OPENSSH_sshd=y
+FREETZ_PACKAGE_OPENSSH_sshd_auth=y
+FREETZ_PACKAGE_OPENSSH_sshd_session=y
+FREETZ_PACKAGE_OPENSSH_ssh=y
+FREETZ_PACKAGE_OPENSSH_scp=y
+# FREETZ_PACKAGE_OPENSSH_CLIENTUTILS is not set
+FREETZ_PACKAGE_OPENSSH_KEYUTILS=y
+FREETZ_PACKAGE_OPENSSH_ssh_keygen=y
+FREETZ_PACKAGE_OPENSSH_ssh_keysign=y
+FREETZ_PACKAGE_OPENSSH_ssh_keyscan=y
+# FREETZ_PACKAGE_OPENSSH_sftp is not set
+FREETZ_PACKAGE_OPENSSH_sftp_server=y
+
+#
+# Configuration ---
+#
+FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO=y
+# FREETZ_PACKAGE_OPENSSH_STATIC is not set
+FREETZ_PACKAGE_OPENSSL=y
+FREETZ_PACKAGE_OPENSSL_VERSION_11=y
+# FREETZ_PACKAGE_OPENSSL_TRACE is not set
+# FREETZ_PACKAGE_OPENSSL_STATIC is not set
+# FREETZ_PACKAGE_OPENVPN is not set
+# FREETZ_PACKAGE_OWFS is not set
+# end of O
+
+#
+# P
+#
+# FREETZ_PACKAGE_P7ZIP is not set
+# FREETZ_PACKAGE_PCP is not set
+# FREETZ_PACKAGE_PCSC_LITE is not set
+# FREETZ_PACKAGE_PHONEBOOK_TOOLS is not set
+# FREETZ_PACKAGE_PINGTUNNEL is not set
+# FREETZ_PACKAGE_POLIPO is not set
+# FREETZ_PACKAGE_PORTMAP is not set
+FREETZ_BOX_CERTIFICATE_SUPPORT_AVAILABLE=y
+FREETZ_PACKAGE_PRIVATEKEYPASSWORD=y
+# FREETZ_PACKAGE_PRIVOXY is not set
+# FREETZ_PACKAGE_PROXYCHAINS_NG is not set
+# FREETZ_PACKAGE_PSL is not set
+# FREETZ_PACKAGE_PYLOAD is not set
+FREETZ_PACKAGE_PYTHON=y
+# FREETZ_PACKAGE_PYTHON_PYC is not set
+FREETZ_PACKAGE_PYTHON_PY=y
+# FREETZ_PACKAGE_PYTHON_STATIC is not set
+
+#
+# Python binary modules (extensions)
+#
+# FREETZ_PACKAGE_PYTHON_MOD_AUDIODEV is not set
+# FREETZ_PACKAGE_PYTHON_MOD_AUDIOOP is not set
+# FREETZ_PACKAGE_PYTHON_MOD_BSDDB is not set
+# FREETZ_PACKAGE_PYTHON_MOD_CMATH is not set
+# FREETZ_PACKAGE_PYTHON_MOD_CPROFILE is not set
+# FREETZ_PACKAGE_PYTHON_MOD_CRYPT is not set
+# FREETZ_PACKAGE_PYTHON_MOD_CSV is not set
+FREETZ_PACKAGE_PYTHON_MOD_CTYPES=y
+# FREETZ_PACKAGE_PYTHON_MOD_CURSES is not set
+# FREETZ_PACKAGE_PYTHON_MOD_EASTERN_CODECS is not set
+FREETZ_PACKAGE_PYTHON_MOD_ELEMENTTREE=y
+# FREETZ_PACKAGE_PYTHON_MOD_GRP is not set
+# FREETZ_PACKAGE_PYTHON_MOD_HOTSHOT is not set
+FREETZ_PACKAGE_PYTHON_MOD_JSON=y
+# FREETZ_PACKAGE_PYTHON_MOD_MULTIPROCESSING is not set
+# FREETZ_PACKAGE_PYTHON_MOD_MMAP is not set
+FREETZ_PACKAGE_PYTHON_MOD_READLINE=y
+# FREETZ_PACKAGE_PYTHON_MOD_SPWD is not set
+# FREETZ_PACKAGE_PYTHON_MOD_SQLITE is not set
+FREETZ_PACKAGE_PYTHON_MOD_SSL=y
+# FREETZ_PACKAGE_PYTHON_MOD_SYSLOG is not set
+# FREETZ_PACKAGE_PYTHON_MOD_TERMIOS is not set
+# FREETZ_PACKAGE_PYTHON_MOD_TEST is not set
+FREETZ_PACKAGE_PYTHON_MOD_UNICODEDATA=y
+# FREETZ_PACKAGE_PYTHON_MOD_UNITTEST is not set
+# FREETZ_PACKAGE_PYTHON_MOD_WSGIREF is not set
+# end of Python binary modules (extensions)
+
+#
+# 3rd-party modules
+#
+# FREETZ_PACKAGE_PYTHON_BJOERN is not set
+# FREETZ_PACKAGE_PYTHON_CFFI is not set
+# FREETZ_PACKAGE_PYTHON_CHEETAH is not set
+# FREETZ_PACKAGE_PYTHON_IMAGING_LIBRARY is not set
+# FREETZ_PACKAGE_PYTHON_MECHANIZE is not set
+# FREETZ_PACKAGE_PYTHON_MYSQL_CONNECTOR is not set
+# FREETZ_PACKAGE_PYTHON_PYCRYPTO is not set
+# FREETZ_PACKAGE_PYTHON_PYCRYPTODOME is not set
+# FREETZ_PACKAGE_PYTHON_PYCURL is not set
+
+#
+# pyopenssl (not available, needs OpenSSL 1.0 or older)
+#
+# FREETZ_PACKAGE_PYTHON_PYRRD is not set
+# FREETZ_PACKAGE_PYTHON_PYSERIAL is not set
+# FREETZ_PACKAGE_PYTHON_YENC is not set
+# end of 3rd-party modules
+# end of P
+
+#
+# Q
+#
+# FREETZ_PACKAGE_QUAGGA is not set
+# end of Q
+
+#
+# R
+#
+# FREETZ_PACKAGE_RADVD is not set
+# FREETZ_PACKAGE_RCAPID is not set
+# FREETZ_PACKAGE_RIPMIME is not set
+# FREETZ_PACKAGE_RRDTOOL is not set
+# FREETZ_PACKAGE_RSYNC is not set
+# FREETZ_PACKAGE_RTMPDUMP is not set
+# FREETZ_PACKAGE_RUSH is not set
+# end of R
+
+#
+# S
+#
+# FREETZ_PACKAGE_SABLEVM_SDK is not set
+# FREETZ_PACKAGE_SAMBA is not set
+FREETZ_PACKAGE_SCREEN=y
+FREETZ_PACKAGE_SCREEN_VERSION_ABANDON=y
+# FREETZ_PACKAGE_SER2NET is not set
+# FREETZ_PACKAGE_SFK is not set
+# FREETZ_PACKAGE_SHELLINABOX is not set
+# FREETZ_PACKAGE_SIPROXD is not set
+# FREETZ_PACKAGE_SISPMCTL is not set
+# FREETZ_PACKAGE_SLANG is not set
+# FREETZ_PACKAGE_SLURM is not set
+# FREETZ_PACKAGE_SMARTMONTOOLS is not set
+# FREETZ_PACKAGE_SMSTOOLS3 is not set
+# FREETZ_PACKAGE_SMUSBUTIL is not set
+# FREETZ_PACKAGE_SOCAT is not set
+# FREETZ_PACKAGE_SPAWN_FCGI is not set
+# FREETZ_PACKAGE_SQLITE is not set
+# FREETZ_PACKAGE_SQUASHFS3 is not set
+# FREETZ_PACKAGE_SQUASHFS4_BE is not set
+# FREETZ_PACKAGE_SQUASHFS4_LE is not set
+# FREETZ_PACKAGE_SSHFS_FUSE is not set
+# FREETZ_PACKAGE_SSLH is not set
+# FREETZ_PACKAGE_STREAMRIPPER is not set
+FREETZ_PACKAGE_STUNNEL=y
+# FREETZ_PACKAGE_STUNNEL_BOXCERT is not set
+# FREETZ_PACKAGE_STUNNEL_STATIC is not set
+# FREETZ_PACKAGE_SUBVERSION is not set
+# FREETZ_PACKAGE_SUDO is not set
+# FREETZ_PACKAGE_SUNDTEK is not set
+# FREETZ_PACKAGE_SYNCE_DCCM is not set
+
+#
+# SynCE serial (not available, needs replace kernel)
+#
+# end of S
+
+#
+# T
+#
+# FREETZ_PACKAGE_TCP_WRAPPERS is not set
+# FREETZ_PACKAGE_TCPDUMP is not set
+# FREETZ_PACKAGE_TCPPROXY is not set
+# FREETZ_PACKAGE_TESSERACT is not set
+# FREETZ_PACKAGE_TICHKSUM is not set
+# FREETZ_PACKAGE_TIFF is not set
+# FREETZ_PACKAGE_TINC is not set
+# FREETZ_PACKAGE_TINYPROXY is not set
+# FREETZ_PACKAGE_TMUX is not set
+# FREETZ_PACKAGE_TOR is not set
+# FREETZ_PACKAGE_TRANSMISSION is not set
+# FREETZ_PACKAGE_TREE is not set
+# FREETZ_PACKAGE_TRICKLE is not set
+# end of T
+
+#
+# U
+#
+# FREETZ_PACKAGE_UDPXY is not set
+# FREETZ_PACKAGE_UMURMUR is not set
+# FREETZ_PACKAGE_UNFS3 is not set
+# FREETZ_PACKAGE_UNRAR is not set
+# FREETZ_PACKAGE_USBIDS is not set
+# FREETZ_PACKAGE_UTIL_LINUX is not set
+# FREETZ_PACKAGE_UVNCREPEATER is not set
+# end of U
+
+#
+# V
+#
+# FREETZ_PACKAGE_VIM is not set
+# FREETZ_PACKAGE_VLMCSD is not set
+# FREETZ_PACKAGE_VNSTAT is not set
+# FREETZ_PACKAGE_VPNC is not set
+# FREETZ_PACKAGE_VSFTPD is not set
+# FREETZ_PACKAGE_VTUN is not set
+# end of V
+
+#
+# W
+#
+FREETZ_PACKAGE_WGET=y
+FREETZ_PACKAGE_WGET_WITH_SSL=y
+FREETZ_PACKAGE_WGET_OPENSSL=y
+# FREETZ_PACKAGE_WGET_GNUTLS is not set
+FREETZ_PACKAGE_WGET_CA_BUNDLE=y
+# FREETZ_PACKAGE_WGET_STATIC is not set
+FREETZ_WGET=y
+# FREETZ_PACKAGE_WHOIS is not set
+
+#
+# wireguard-tools (not available, needs at least kernel v3)
+#
+# FREETZ_PACKAGE_WOL is not set
+# FREETZ_PACKAGE_WPUT is not set
+# end of W
+
+#
+# X
+#
+# FREETZ_PACKAGE_XMAIL is not set
+# FREETZ_PACKAGE_XPDF is not set
+# FREETZ_PACKAGE_XRELAYD is not set
+# FREETZ_PACKAGE_XSLTPROC is not set
+# FREETZ_PACKAGE_XZ is not set
+# end of X
+
+#
+# ----------------------------------------
+#
+
+#
+# Debug helpers
+#
+# FREETZ_PACKAGE_BINUTILS_TOOLS is not set
+# FREETZ_PACKAGE_FILE is not set
+# FREETZ_PACKAGE_GDB is not set
+# FREETZ_PACKAGE_INOTIFY_TOOLS is not set
+FREETZ_PACKAGE_LDD=y
+FREETZ_PACKAGE_LDD_VERSION_ABANDON=y
+# FREETZ_PACKAGE_LSOF is not set
+# FREETZ_PACKAGE_NANO_SHELL is not set
+# FREETZ_PACKAGE_PCIUTILS is not set
+# FREETZ_PACKAGE_STRACE is not set
+# FREETZ_PACKAGE_USBUTILS is not set
+# FREETZ_PACKAGE_VERMAGIC is not set
+# end of Debug helpers
+
+#
+# Unstable
+#
+# FREETZ_PACKAGE_ASTERISK is not set
+# FREETZ_PACKAGE_COLLECTD is not set
+# FREETZ_PACKAGE_GPTFDISK is not set
+# FREETZ_PACKAGE_HP_UTILS is not set
+# FREETZ_PACKAGE_HPLIP is not set
+FREETZ_PACKAGE_IPTABLES_IS_SELECTABLE=y
+FREETZ_PACKAGE_IPTABLES_STATE_AVAILABLE=y
+# FREETZ_PACKAGE_IPTABLES is not set
+# FREETZ_PACKAGE_MINI_FO is not set
+# FREETZ_PACKAGE_MYSQL is not set
+# FREETZ_PACKAGE_PHP is not set
+# FREETZ_PACKAGE_SANE_BACKENDS is not set
+# FREETZ_PACKAGE_SCANBUTTOND is not set
+# FREETZ_PACKAGE_SQUID is not set
+# FREETZ_PACKAGE_USBIP is not set
+# FREETZ_PACKAGE_USBROOT is not set
+# FREETZ_PACKAGE_VIRTUALIP_CGI is not set
+# FREETZ_PACKAGE_ZABBIX is not set
+# end of Unstable
+
+#
+# Web interfaces
+#
+
+#
+# Addhole (needs dnsmasq)
+#
+FREETZ_PACKAGE_AUTHORIZED_KEYS=y
+# FREETZ_PACKAGE_AVM_FORWARDING is not set
+# FREETZ_PACKAGE_DNSD_CGI is not set
+# FREETZ_PACKAGE_DOWNLOADER is not set
+# FREETZ_PACKAGE_NFSD_CGI is not set
+FREETZ_PACKAGE_ONLINECHANGED_CGI=y
+# FREETZ_PACKAGE_PHPXMAIL is not set
+# FREETZ_PACKAGE_PPP is not set
+# FREETZ_PACKAGE_PPP_CGI is not set
+# FREETZ_PACKAGE_RRDSTATS is not set
+# FREETZ_PACKAGE_SPINDOWN_CGI is not set
+FREETZ_PACKAGE_SYSLOGD_CGI=y
+# FREETZ_PACKAGE_VNSTAT_CGI is not set
+# FREETZ_PACKAGE_WOL_CGI is not set
+# end of Web interfaces
+# end of Packages
+
+#
+# Shared libraries
+#
+
+#
+# Apache Portable Runtime libs
+#
+# FREETZ_LIB_libapr is not set
+# FREETZ_LIB_libaprutil is not set
+# end of Apache Portable Runtime libs
+
+#
+# Avahi libraries
+#
+# FREETZ_LIB_libavahi_common is not set
+# FREETZ_LIB_libavahi_core is not set
+# FREETZ_LIB_libavahi_client is not set
+# end of Avahi libraries
+
+#
+# Charsets & Internationalization
+#
+# FREETZ_LIB_libintl is not set
+# FREETZ_LIB_libfribidi is not set
+# FREETZ_LIB_libutf8proc is not set
+# end of Charsets & Internationalization
+
+#
+# Crypto & SSL
+#
+
+#
+# GnuPG ----------------------------------
+#
+# FREETZ_LIB_libgpg_error is not set
+# FREETZ_LIB_libgcrypt is not set
+
+#
+# GnuTLS ---------------------------------
+#
+# FREETZ_LIB_libgnutls is not set
+# FREETZ_LIB_libtasn1 is not set
+
+#
+# mbed TLS -------------------------------
+#
+FREETZ_LIB_libmbedcrypto=y
+# FREETZ_LIB_libmbedcrypto_WITH_BLOWFISH is not set
+# FREETZ_LIB_libmbedcrypto_WITH_GENRSA is not set
+FREETZ_LIB_libmbedtls=y
+FREETZ_LIB_libmbedx509=y
+FREETZ_MBEDTLS_VERSION_207=y
+FREETZ_MBEDTLS_SHORT_VERSION="2.7"
+FREETZ_MBEDTLS_VERSION_207_MIN=y
+FREETZ_MBEDTLS_VERSION_207_MAX=y
+FREETZ_MBEDTLS_VERSION_228_MAX=y
+FREETZ_MBEDTLS_VERSION_306_MAX=y
+
+#
+# Nettle ---------------------------------
+#
+# FREETZ_LIB_libnettle is not set
+# FREETZ_LIB_libhogweed is not set
+
+#
+# OpenSSL --------------------------------
+#
+FREETZ_LIB_libcrypto=y
+FREETZ_LIB_libssl=y
+# FREETZ_OPENSSL_VERSION_09 is not set
+# FREETZ_OPENSSL_VERSION_10 is not set
+FREETZ_OPENSSL_VERSION_11=y
+
+#
+# OpenSSL configuration
+#
+FREETZ_OPENSSL_SHORT_VERSION="1.1"
+FREETZ_OPENSSL_SHLIB_VERSION="1.1"
+FREETZ_OPENSSL_LIBCRYPTO_EXTRA_LIBS="-ldl -pthread"
+FREETZ_LIB_libcrypto_WITH_EC=y
+# FREETZ_LIB_libcrypto_WITH_RC4 is not set
+# FREETZ_LIB_libcrypto_WITH_ZLIB is not set
+FREETZ_OPENSSL_SMALL_FOOTPRINT=y
+FREETZ_OPENSSL_CONFIG_DIR="/mod/etc/ssl"
+# end of OpenSSL configuration
+
+FREETZ_OPENSSL_VERSION_10_MIN=y
+FREETZ_OPENSSL_VERSION_11_MIN=y
+FREETZ_OPENSSL_VERSION_11_MAX=y
+FREETZ_OPENSSL_VERSION_30_MAX=y
+FREETZ_OPENSSL_VERSION_35_MAX=y
+
+#
+# PolarSSL -------------------------------
+#
+# FREETZ_LIB_libpolarssl12 is not set
+# FREETZ_LIB_libpolarssl13 is not set
+
+#
+# Misc -----------------------------------
+#
+# FREETZ_LIB_libgsasl is not set
+# FREETZ_LIB_libssh2 is not set
+# end of Crypto & SSL
+
+#
+# Data compression
+#
+# FREETZ_LIB_libbz2 is not set
+# FREETZ_LIB_liblz4 is not set
+# FREETZ_LIB_liblzo2 is not set
+FREETZ_LIB_liblzma=y
+FREETZ_LIB_libz=y
+# end of Data compression
+
+#
+# Database
+#
+# FREETZ_LIB_libdb is not set
+# FREETZ_LIB_libmaxminddb is not set
+# FREETZ_LIB_libsqlite3 is not set
+# end of Database
+
+#
+# File systems
+#
+
+#
+# E2fsprogs libraries
+#
+# FREETZ_LIB_libblkid is not set
+# FREETZ_LIB_libcom_err is not set
+# FREETZ_LIB_libe2p is not set
+# FREETZ_LIB_libext2fs is not set
+# FREETZ_LIB_libss is not set
+# FREETZ_LIB_libuuid is not set
+# end of E2fsprogs libraries
+
+# FREETZ_LIB_libfuse is not set
+# FREETZ_LIB_libntfs is not set
+# end of File systems
+
+#
+# Freetz
+#
+FREETZ_LIB_libctlmgr=y
+FREETZ_LIB_libctlmgr_WITH_RENAME=y
+# FREETZ_LIB_libmultid is not set
+# end of Freetz
+
+#
+# GCC
+#
+FREETZ_LIB_libgcc_s=y
+# FREETZ_LIB_libstdcxx is not set
+# end of GCC
+
+#
+# GLib
+#
+# FREETZ_LIB_libglib_2 is not set
+# FREETZ_LIB_libgio_2 is not set
+# FREETZ_LIB_libgobject_2 is not set
+# FREETZ_LIB_libgmodule_2 is not set
+# FREETZ_LIB_libgthread_2 is not set
+# end of GLib
+
+#
+# Graphics & fonts
+#
+# FREETZ_LIB_libcairo is not set
+# FREETZ_LIB_libfontconfig is not set
+# FREETZ_LIB_libfreetype is not set
+# FREETZ_LIB_libart_lgpl_2 is not set
+# FREETZ_LIB_libexif is not set
+# FREETZ_LIB_libjpeg is not set
+# FREETZ_LIB_liblept is not set
+# FREETZ_LIB_libpng16 is not set
+# FREETZ_LIB_libgd is not set
+# FREETZ_LIB_libopenjpeg is not set
+# FREETZ_LIB_libopenjp2 is not set
+# FREETZ_LIB_libpixman_1 is not set
+# FREETZ_LIB_libtesseract is not set
+# FREETZ_LIB_libtiff is not set
+# FREETZ_LIB_libtiffxx is not set
+# FREETZ_LIB_libnetpbm is not set
+# end of Graphics & fonts
+
+#
+# Multi precision arithmetic libs
+#
+# FREETZ_LIB_libgmp is not set
+# FREETZ_LIB_libmpfr is not set
+# FREETZ_LIB_libmpc is not set
+# end of Multi precision arithmetic libs
+
+#
+# Multimedia
+#
+# FREETZ_LIB_libdvbcsa is not set
+
+#
+# Audio and video codecs
+#
+
+#
+# Audio codecs
+#
+# FREETZ_LIB_libFLAC is not set
+# FREETZ_LIB_libmad is not set
+# FREETZ_LIB_libogg is not set
+# FREETZ_LIB_libopus is not set
+# FREETZ_LIB_libspeex is not set
+# FREETZ_LIB_libspeexdsp is not set
+# end of Audio codecs
+
+#
+# FFmpeg libraries
+#
+# FREETZ_LIB_libavcodec is not set
+# FREETZ_LIB_libavdevice is not set
+# FREETZ_LIB_libavfilter is not set
+# FREETZ_LIB_libavformat is not set
+# FREETZ_LIB_libavutil is not set
+# FREETZ_LIB_libpostproc is not set
+# FREETZ_LIB_libswresample is not set
+# FREETZ_LIB_libswscale is not set
+# end of FFmpeg libraries
+
+#
+# Video codecs
+#
+
+#
+# Vorbis video codec ---------------------
+#
+# FREETZ_LIB_libvorbis is not set
+# FREETZ_LIB_libvorbisenc is not set
+# FREETZ_LIB_libvorbisfile is not set
+# end of Video codecs
+# end of Audio and video codecs
+
+#
+# ID3 tag reading libs
+#
+# FREETZ_LIB_libid3tag is not set
+# FREETZ_LIB_libtag is not set
+# end of ID3 tag reading libs
+# end of Multimedia
+
+#
+# ncurses
+#
+FREETZ_SHARE_terminfo=y
+FREETZ_SHARE_terminfo_ansi=y
+FREETZ_SHARE_terminfo_gnome=y
+FREETZ_SHARE_terminfo_konsole=y
+FREETZ_SHARE_terminfo_linux=y
+FREETZ_SHARE_terminfo_putty=y
+FREETZ_SHARE_terminfo_rxvt=y
+FREETZ_SHARE_terminfo_screen=y
+FREETZ_SHARE_terminfo_screenMINUSw=y
+FREETZ_SHARE_terminfo_sun=y
+FREETZ_SHARE_terminfo_vt100=y
+FREETZ_SHARE_terminfo_vt102=y
+FREETZ_SHARE_terminfo_vt102MINUSnsgr=y
+FREETZ_SHARE_terminfo_vt102MINUSw=y
+FREETZ_SHARE_terminfo_vt200=y
+FREETZ_SHARE_terminfo_vt220=y
+FREETZ_SHARE_terminfo_vt52=y
+FREETZ_SHARE_terminfo_xterm=y
+FREETZ_SHARE_terminfo_xtermMINUS256color=y
+FREETZ_SHARE_terminfo_xtermMINUScolor=y
+FREETZ_SHARE_terminfo_xtermMINUSxfree86=y
+# FREETZ_SHARE_terminfo_showall is not set
+FREETZ_LIB_libncurses=y
+# FREETZ_LIB_libform is not set
+# FREETZ_LIB_libmenu is not set
+# FREETZ_LIB_libpanel is not set
+FREETZ_LIB_libncursesw=y
+# FREETZ_LIB_libformw is not set
+# FREETZ_LIB_libmenuw is not set
+# FREETZ_LIB_libpanelw is not set
+# end of ncurses
+
+#
+# Networking
+#
+
+#
+# ATM ------------------------------------
+#
+# FREETZ_LIB_libatm is not set
+
+#
+# Bluetooth ------------------------------
+#
+# FREETZ_LIB_libbluetooth is not set
+# FREETZ_LIB_libopenobex is not set
+
+#
+# ISDN & CAPI ----------------------------
+#
+# FREETZ_LIB_libcapi20 is not set
+
+#
+# Misc networking ------------------------
+#
+# FREETZ_LIB_libdnet is not set
+# FREETZ_LIB_libgsm is not set
+# FREETZ_LIB_libiksemel is not set
+# FREETZ_LIB_libldns is not set
+# FREETZ_LIB_libmnl is not set
+# FREETZ_LIB_libnet is not set
+# FREETZ_LIB_liboping is not set
+# FREETZ_LIB_libosip2 is not set
+# FREETZ_LIB_libosipparser2 is not set
+# FREETZ_LIB_libpcap is not set
+# FREETZ_LIB_libspandsp is not set
+# FREETZ_LIB_libsrtp is not set
+# FREETZ_LIB_libudns is not set
+# end of Networking
+
+#
+# PJ Project
+#
+# FREETZ_LIB_libpj is not set
+# FREETZ_LIB_libpjlib_util is not set
+# FREETZ_LIB_libpjmedia is not set
+# FREETZ_LIB_libpjmedia_audiodev is not set
+# FREETZ_LIB_libpjmedia_codec is not set
+# FREETZ_LIB_libpjmedia_videodev is not set
+# FREETZ_LIB_libpjnath is not set
+# FREETZ_LIB_libpjsip is not set
+# FREETZ_LIB_libpjsip_simple is not set
+# FREETZ_LIB_libpjsip_ua is not set
+# FREETZ_LIB_libpjsua is not set
+
+#
+# 3rdparty libraries
+#
+# FREETZ_LIB_libg7221codec is not set
+# FREETZ_LIB_libilbccodec is not set
+# FREETZ_LIB_libmilenage is not set
+# end of PJ Project
+
+#
+# Readline
+#
+FREETZ_LIB_libreadline=y
+# FREETZ_LIB_libhistory is not set
+FREETZ_LIB_libreadline_VERSION_ABANDON=y
+# end of Readline
+
+#
+# Regular expressions
+#
+# FREETZ_LIB_libonig is not set
+# FREETZ_LIB_libpcre is not set
+# FREETZ_LIB_libpcreposix is not set
+# FREETZ_LIB_libpcre2 is not set
+# FREETZ_LIB_libpcre2_posix is not set
+# end of Regular expressions
+
+#
+# uClibc
+#
+FREETZ_LIB_ld_uClibc=y
+FREETZ_LIB_libcrypt=y
+FREETZ_LIB_libdl=y
+FREETZ_LIB_libm=y
+FREETZ_LIB_libpthread=y
+FREETZ_LIB_librt=y
+# FREETZ_LIB_libthread_db is not set
+FREETZ_LIB_libuClibc=y
+FREETZ_LIB_libutil=y
+# FREETZ_LIB_libuClibcxx is not set
+# end of uClibc
+
+#
+# USB & related
+#
+# FREETZ_LIB_libftdi is not set
+# FREETZ_LIB_libftdi1 is not set
+# FREETZ_LIB_libpcsclite is not set
+# FREETZ_LIB_libusb_0 is not set
+# FREETZ_LIB_libusb_1 is not set
+# end of USB & related
+
+#
+# Web and WebDAV
+#
+FREETZ_LIB_libcurl=y
+FREETZ_LIB_libcurl_WITH_VERSION_ABANDON=y
+FREETZ_LIB_libcurl_WITH_SSL=y
+FREETZ_LIB_libcurl_WITH_OPENSSL=y
+# FREETZ_LIB_libcurl_WITH_MBEDTLS is not set
+# FREETZ_LIB_libcurl_WITH_SFTP is not set
+# FREETZ_LIB_libcurl_WITH_ZLIB is not set
+# FREETZ_LIB_libidn is not set
+# FREETZ_LIB_libjansson is not set
+# FREETZ_LIB_libjs is not set
+# FREETZ_LIB_libneon is not set
+# FREETZ_LIB_libpsl is not set
+# FREETZ_LIB_libserf is not set
+# end of Web and WebDAV
+
+#
+# XML & XSLT
+#
+FREETZ_LIB_libexpat=y
+# FREETZ_LIB_libxml2 is not set
+# FREETZ_LIB_libxslt is not set
+# FREETZ_LIB_libexslt is not set
+# end of XML & XSLT
+
+#
+#  ---
+#
+
+#
+# Other
+#
+# FREETZ_LIB_libattr is not set
+# FREETZ_LIB_libcap is not set
+# FREETZ_LIB_libcap_ng is not set
+# FREETZ_LIB_libconfig is not set
+# FREETZ_LIB_libconfuse is not set
+# FREETZ_LIB_libdaemon is not set
+# FREETZ_LIB_libdbus is not set
+# FREETZ_LIB_libdevmapper is not set
+# FREETZ_LIB_libelf is not set
+# FREETZ_LIB_libev is not set
+# FREETZ_LIB_libevent is not set
+FREETZ_LIB_libffi=y
+# FREETZ_LIB_liblua is not set
+# FREETZ_LIB_libnfsidmap is not set
+# FREETZ_LIB_libpopt is not set
+FREETZ_LIB_libprivatekeypassword=y
+# FREETZ_LIB_libprotobuf_c is not set
+FREETZ_LIB_libpython2=y
+# FREETZ_LIB_librrd is not set
+# FREETZ_LIB_libslang is not set
+# FREETZ_LIB_libsynce is not set
+# FREETZ_LIB_libsysfs is not set
+# FREETZ_LIB_libltdl is not set
+# FREETZ_LIB_libyaml is not set
+# end of Other
+# end of Shared libraries
+
+#
+# Kernel modules
+#
+# FREETZ_MODULES_KOON is not set
+FREETZ_MODULES_OWN=""
+# FREETZ_MODULES_ALL is not set
+
+#
+# block
+#
+# FREETZ_MODULE_block2mtd is not set
+# end of block
+
+#
+# crypto
+#
+# FREETZ_MODULE_aead is not set
+# FREETZ_MODULE_arc4 is not set
+# FREETZ_MODULE_cbc is not set
+# FREETZ_MODULE_crypto_blkcipher is not set
+# FREETZ_MODULE_crypto_hash is not set
+# FREETZ_MODULE_crypto_wq is not set
+# FREETZ_MODULE_cryptomgr is not set
+# FREETZ_MODULE_rng is not set
+# FREETZ_MODULE_sha1_generic is not set
+# FREETZ_MODULE_sha256_generic is not set
+# end of crypto
+
+#
+# drivers
+#
+# FREETZ_MODULE_bfusb is not set
+# FREETZ_MODULE_btusb is not set
+# FREETZ_MODULE_capiconn is not set
+# FREETZ_MODULE_cdrom is not set
+# FREETZ_MODULE_dummy is not set
+# FREETZ_MODULE_dm_mod is not set
+# FREETZ_MODULE_dm_crypt is not set
+# FREETZ_MODULE_firmware_class is not set
+# FREETZ_MODULE_loop is not set
+# FREETZ_MODULE_nand is not set
+# FREETZ_MODULE_nbd is not set
+# FREETZ_MODULE_scsi_mod is not set
+# FREETZ_MODULE_slhc is not set
+# FREETZ_MODULE_sr_mod is not set
+# FREETZ_MODULE_usbip is not set
+# FREETZ_MODULE_usblp is not set
+# FREETZ_MODULE_usbmon is not set
+
+#
+#  ppp
+#
+# FREETZ_MODULE_ppp_async is not set
+# FREETZ_MODULE_ppp_deflate is not set
+# FREETZ_MODULE_ppp_generic is not set
+# FREETZ_MODULE_ppp_mppe_mppc is not set
+# FREETZ_MODULE_pppoe is not set
+
+#
+#  serial
+#
+# FREETZ_MODULE_ch341 is not set
+# FREETZ_MODULE_cp2101 is not set
+# FREETZ_MODULE_cp210x is not set
+# FREETZ_MODULE_ftdi_sio is not set
+# FREETZ_MODULE_ipaq is not set
+# FREETZ_MODULE_option is not set
+# FREETZ_MODULE_pl2303 is not set
+# FREETZ_MODULE_usbserial is not set
+# end of drivers
+
+#
+# fs
+#
+# FREETZ_MODULE_ext4 is not set
+FREETZ_MODULE_fat=y
+FREETZ_MODULE_vfat=y
+# FREETZ_MODULE_hfs is not set
+# FREETZ_MODULE_hfsplus is not set
+# FREETZ_MODULE_iso9660 is not set
+FREETZ_MODULE_jffs2=y
+# FREETZ_MODULE_mini_fo is not set
+# FREETZ_MODULE_minix is not set
+FREETZ_MODULE_msdos=y
+# FREETZ_MODULE_reiserfs is not set
+# FREETZ_MODULE_udf is not set
+# FREETZ_MODULE_unionfs is not set
+
+#
+#  net
+#
+# FREETZ_MODULE_autofs4 is not set
+# FREETZ_MODULE_cifs is not set
+# FREETZ_MODULE_coda is not set
+
+#
+#  nfs
+#
+# FREETZ_MODULE_nfs is not set
+# FREETZ_MODULE_nfsd is not set
+
+#
+#  nls
+#
+# FREETZ_MODULE_nls_cp850 is not set
+# end of fs
+
+#
+# lib
+#
+# FREETZ_MODULE_crc_ccitt is not set
+# FREETZ_MODULE_lzo_compress is not set
+# FREETZ_MODULE_lzo_decompress is not set
+# end of lib
+
+#
+# net
+#
+
+#
+#  bt
+#
+# FREETZ_MODULE_bluetooth is not set
+# FREETZ_MODULE_bnep is not set
+# FREETZ_MODULE_l2cap is not set
+# FREETZ_MODULE_rfcomm is not set
+
+#
+#  qos
+#
+# FREETZ_MODULE_cls_u32 is not set
+# FREETZ_MODULE_sch_cbq is not set
+# FREETZ_MODULE_sch_htb is not set
+# FREETZ_MODULE_sch_llq is not set
+# FREETZ_MODULE_sch_sfq is not set
+# FREETZ_MODULE_sch_tbf is not set
+# end of net
+# end of Kernel modules
+
+#
+# Busybox applets
+#
+FREETZ_BUSYBOX__VERSION_V127=y
+FREETZ_BUSYBOX__VERSION_STRING="1.27.2"
+FREETZ_BUSYBOX__RECOMMENDED=y
+FREETZ_BUSYBOX__MANDATORY=y
+FREETZ_BUSYBOX__MANDATORY_05_2X=y
+FREETZ_BUSYBOX__BUILD_TIMESTAMP=y
+FREETZ_BUSYBOX__KEEP_BINARIES=y
+FREETZ_BUSYBOX__IPV6_UTILS=y
+# FREETZ_BUSYBOX__PACKER is not set
+# FREETZ_BUSYBOX__NETWORK is not set
+# FREETZ_BUSYBOX__TERMINAL is not set
+# FREETZ_BUSYBOX__DEVELOPER is not set
+
+#
+# 
+#
+FREETZ_BUSYBOX_ADDGROUP=y
+FREETZ_BUSYBOX_ADDUSER=y
+FREETZ_BUSYBOX_ARP=y
+FREETZ_BUSYBOX_ARPING=y
+FREETZ_BUSYBOX_ASH=y
+FREETZ_BUSYBOX_ASH_ALIAS=y
+FREETZ_BUSYBOX_ASH_BASH_COMPAT=y
+FREETZ_BUSYBOX_ASH_CMDCMD=y
+FREETZ_BUSYBOX_ASH_ECHO=y
+FREETZ_BUSYBOX_ASH_EXPAND_PRMT=y
+FREETZ_BUSYBOX_ASH_GETOPTS=y
+FREETZ_BUSYBOX_ASH_INTERNAL_GLOB=y
+FREETZ_BUSYBOX_ASH_JOB_CONTROL=y
+FREETZ_BUSYBOX_ASH_OPTIMIZE_FOR_SIZE=y
+FREETZ_BUSYBOX_ASH_PRINTF=y
+FREETZ_BUSYBOX_ASH_RANDOM_SUPPORT=y
+FREETZ_BUSYBOX_ASH_TEST=y
+FREETZ_BUSYBOX_AWK=y
+FREETZ_BUSYBOX_BASE64=y
+FREETZ_BUSYBOX_BASENAME=y
+FREETZ_BUSYBOX_BB_SYSCTL=y
+FREETZ_BUSYBOX_BEEP=y
+FREETZ_BUSYBOX_BLKID=y
+FREETZ_BUSYBOX_BRCTL=y
+FREETZ_BUSYBOX_BUNZIP2=y
+FREETZ_BUSYBOX_BUSYBOX=y
+FREETZ_BUSYBOX_BZCAT=y
+FREETZ_BUSYBOX_BZIP2=y
+FREETZ_BUSYBOX_CAT=y
+FREETZ_BUSYBOX_CHGRP=y
+FREETZ_BUSYBOX_CHMOD=y
+FREETZ_BUSYBOX_CHOWN=y
+FREETZ_BUSYBOX_CHROOT=y
+FREETZ_BUSYBOX_CMP=y
+FREETZ_BUSYBOX_CP=y
+FREETZ_BUSYBOX_CROND=y
+FREETZ_BUSYBOX_CRONTAB=y
+FREETZ_BUSYBOX_CRYPTPW=y
+FREETZ_BUSYBOX_CUT=y
+FREETZ_BUSYBOX_DATE=y
+FREETZ_BUSYBOX_DD=y
+FREETZ_BUSYBOX_DELGROUP=y
+FREETZ_BUSYBOX_DELUSER=y
+FREETZ_BUSYBOX_DF=y
+FREETZ_BUSYBOX_DIRNAME=y
+FREETZ_BUSYBOX_DNSDOMAINNAME=y
+FREETZ_BUSYBOX_DU=y
+FREETZ_BUSYBOX_ECHO=y
+FREETZ_BUSYBOX_EGREP=y
+FREETZ_BUSYBOX_ENV=y
+FREETZ_BUSYBOX_ETHER_WAKE=y
+FREETZ_BUSYBOX_EXPR=y
+FREETZ_BUSYBOX_EXPR_MATH_SUPPORT_64=y
+FREETZ_BUSYBOX_FALSE=y
+FREETZ_BUSYBOX_FEATURE_ADDUSER_TO_GROUP=y
+FREETZ_BUSYBOX_FEATURE_ALLOW_EXEC=y
+FREETZ_BUSYBOX_FEATURE_BLKID_TYPE=y
+FREETZ_BUSYBOX_FEATURE_BRCTL_FANCY=y
+FREETZ_BUSYBOX_FEATURE_BRCTL_SHOW=y
+FREETZ_BUSYBOX_FEATURE_CHECK_TAINTED_MODULE=y
+FREETZ_BUSYBOX_FEATURE_CMDLINE_MODULE_OPTIONS=y
+FREETZ_BUSYBOX_FEATURE_COMPRESS_USAGE=y
+FREETZ_BUSYBOX_FEATURE_DATE_COMPAT=y
+FREETZ_BUSYBOX_FEATURE_DATE_ISOFMT=y
+FREETZ_BUSYBOX_FEATURE_DD_IBS_OBS=y
+FREETZ_BUSYBOX_FEATURE_DD_SIGNAL_HANDLING=y
+FREETZ_BUSYBOX_FEATURE_DEL_USER_FROM_GROUP=y
+FREETZ_BUSYBOX_FEATURE_DEVPTS=y
+FREETZ_BUSYBOX_FEATURE_DU_DEFAULT_BLOCKSIZE_1K=y
+FREETZ_BUSYBOX_FEATURE_EDITING=y
+FREETZ_BUSYBOX_FEATURE_EDITING_FANCY_PROMPT=y
+FREETZ_BUSYBOX_FEATURE_FANCY_ECHO=y
+FREETZ_BUSYBOX_FEATURE_FANCY_HEAD=y
+FREETZ_BUSYBOX_FEATURE_FANCY_PING=y
+FREETZ_BUSYBOX_FEATURE_FANCY_SLEEP=y
+FREETZ_BUSYBOX_FEATURE_FANCY_TAIL=y
+FREETZ_BUSYBOX_FEATURE_FAST_TOP=y
+FREETZ_BUSYBOX_FEATURE_FIND_DEPTH=y
+FREETZ_BUSYBOX_FEATURE_FIND_EXEC=y
+FREETZ_BUSYBOX_FEATURE_FIND_GROUP=y
+FREETZ_BUSYBOX_FEATURE_FIND_INUM=y
+FREETZ_BUSYBOX_FEATURE_FIND_MAXDEPTH=y
+FREETZ_BUSYBOX_FEATURE_FIND_MMIN=y
+FREETZ_BUSYBOX_FEATURE_FIND_MTIME=y
+FREETZ_BUSYBOX_FEATURE_FIND_NEWER=y
+FREETZ_BUSYBOX_FEATURE_FIND_NOT=y
+FREETZ_BUSYBOX_FEATURE_FIND_PAREN=y
+FREETZ_BUSYBOX_FEATURE_FIND_PATH=y
+FREETZ_BUSYBOX_FEATURE_FIND_PERM=y
+FREETZ_BUSYBOX_FEATURE_FIND_PRINT0=y
+FREETZ_BUSYBOX_FEATURE_FIND_PRUNE=y
+FREETZ_BUSYBOX_FEATURE_FIND_REGEX=y
+FREETZ_BUSYBOX_FEATURE_FIND_SIZE=y
+FREETZ_BUSYBOX_FEATURE_FIND_TYPE=y
+FREETZ_BUSYBOX_FEATURE_FIND_USER=y
+FREETZ_BUSYBOX_FEATURE_FIND_XDEV=y
+FREETZ_BUSYBOX_FEATURE_FTPGETPUT_LONG_OPTIONS=y
+FREETZ_BUSYBOX_FEATURE_GETOPT_LONG=y
+FREETZ_BUSYBOX_FEATURE_GREP_CONTEXT=y
+FREETZ_BUSYBOX_FEATURE_HTTPD_AUTH_MD5=y
+FREETZ_BUSYBOX_FEATURE_HTTPD_BASIC_AUTH=y
+FREETZ_BUSYBOX_FEATURE_HTTPD_CGI=y
+FREETZ_BUSYBOX_FEATURE_HTTPD_CONFIG_WITH_SCRIPT_INTERPR=y
+FREETZ_BUSYBOX_FEATURE_HTTPD_ENCODE_URL_STR=y
+FREETZ_BUSYBOX_FEATURE_HUMAN_READABLE=y
+FREETZ_BUSYBOX_FEATURE_HWIB=y
+FREETZ_BUSYBOX_FEATURE_IFCONFIG_BROADCAST_PLUS=y
+FREETZ_BUSYBOX_FEATURE_IFCONFIG_HW=y
+FREETZ_BUSYBOX_FEATURE_IFCONFIG_MEMSTART_IOADDR_IRQ=y
+FREETZ_BUSYBOX_FEATURE_IFCONFIG_SLIP=y
+FREETZ_BUSYBOX_FEATURE_IFCONFIG_STATUS=y
+FREETZ_BUSYBOX_FEATURE_IFUPDOWN_IP=y
+FREETZ_BUSYBOX_FEATURE_IFUPDOWN_IPV4=y
+FREETZ_BUSYBOX_FEATURE_IFUPDOWN_IPV6=y
+FREETZ_BUSYBOX_FEATURE_IFUPDOWN_MAPPING=y
+FREETZ_BUSYBOX_FEATURE_INIT_SYSLOG=y
+FREETZ_BUSYBOX_FEATURE_IP_ADDRESS=y
+FREETZ_BUSYBOX_FEATURE_IPC_SYSLOG=y
+FREETZ_BUSYBOX_FEATURE_IP_LINK=y
+FREETZ_BUSYBOX_FEATURE_IP_NEIGH=y
+FREETZ_BUSYBOX_FEATURE_IP_ROUTE=y
+FREETZ_BUSYBOX_FEATURE_IP_RULE=y
+FREETZ_BUSYBOX_FEATURE_IP_TUNNEL=y
+FREETZ_BUSYBOX_FEATURE_IPV6=y
+FREETZ_BUSYBOX_FEATURE_KILL_REMOVED=y
+FREETZ_BUSYBOX_FEATURE_KLOGD_KLOGCTL=y
+FREETZ_BUSYBOX_FEATURE_LOGREAD_REDUCED_LOCKING=y
+FREETZ_BUSYBOX_FEATURE_LS_FILETYPES=y
+FREETZ_BUSYBOX_FEATURE_LS_FOLLOWLINKS=y
+FREETZ_BUSYBOX_FEATURE_LSMOD_PRETTY_2_6_OUTPUT=y
+FREETZ_BUSYBOX_FEATURE_LS_RECURSIVE=y
+FREETZ_BUSYBOX_FEATURE_LS_SORTFILES=y
+FREETZ_BUSYBOX_FEATURE_LS_TIMESTAMPS=y
+FREETZ_BUSYBOX_FEATURE_LS_USERNAME=y
+FREETZ_BUSYBOX_FEATURE_MAKEDEVS_TABLE=y
+FREETZ_BUSYBOX_FEATURE_MD5_SHA1_SUM_CHECK=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_CIFS=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_FAKE=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_FLAGS=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_FSTAB=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_HELPERS=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_LABEL=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_LOOP=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_LOOP_CREATE=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_OTHERTAB=y
+FREETZ_BUSYBOX_FEATURE_MOUNT_VERBOSE=y
+FREETZ_BUSYBOX_FEATURE_MTAB_SUPPORT=y
+FREETZ_BUSYBOX_FEATURE_NETSTAT_PRG=y
+FREETZ_BUSYBOX_FEATURE_NETSTAT_WIDE=y
+FREETZ_BUSYBOX_FEATURE_NOLOGIN=y
+FREETZ_BUSYBOX_FEATURE_NON_POSIX_CP=y
+FREETZ_BUSYBOX_FEATURE_PASSWD_WEAK_CHECK=y
+FREETZ_BUSYBOX_FEATURE_PIDFILE=y
+FREETZ_BUSYBOX_FEATURE_PIDOF_OMIT=y
+FREETZ_BUSYBOX_FEATURE_PIDOF_SINGLE=y
+FREETZ_BUSYBOX_FEATURE_PREFER_IPV4_ADDRESS=y
+FREETZ_BUSYBOX_FEATURE_PRESERVE_HARDLINKS=y
+FREETZ_BUSYBOX_FEATURE_PS_LONG=y
+FREETZ_BUSYBOX_FEATURE_READLINK_FOLLOW=y
+FREETZ_BUSYBOX_FEATURE_REMOTE_LOG=y
+FREETZ_BUSYBOX_FEATURE_ROTATE_LOGFILE=y
+FREETZ_BUSYBOX_FEATURE_SEAMLESS_GZ=y
+FREETZ_BUSYBOX_FEATURE_SECURETTY=y
+FREETZ_BUSYBOX_FEATURE_SHADOWPASSWDS=y
+FREETZ_BUSYBOX_FEATURE_SH_MATH=y
+FREETZ_BUSYBOX_FEATURE_SH_MATH_64=y
+FREETZ_BUSYBOX_FEATURE_SKIP_ROOTFS=y
+FREETZ_BUSYBOX_FEATURE_SORT_BIG=y
+FREETZ_BUSYBOX_FEATURE_SPLIT_FANCY=y
+FREETZ_BUSYBOX_FEATURE_START_STOP_DAEMON_FANCY=y
+FREETZ_BUSYBOX_FEATURE_STAT_FILESYSTEM=y
+FREETZ_BUSYBOX_FEATURE_STAT_FORMAT=y
+FREETZ_BUSYBOX_FEATURE_SUID=y
+FREETZ_BUSYBOX_FEATURE_SWAPON_PRI=y
+FREETZ_BUSYBOX_FEATURE_SYSLOG=y
+FREETZ_BUSYBOX_FEATURE_SYSLOGD_DUP=y
+FREETZ_BUSYBOX_FEATURE_TAB_COMPLETION=y
+FREETZ_BUSYBOX_FEATURE_TAR_CREATE=y
+FREETZ_BUSYBOX_FEATURE_TAR_FROM=y
+FREETZ_BUSYBOX_FEATURE_TAR_GNU_EXTENSIONS=y
+FREETZ_BUSYBOX_FEATURE_TAR_LONG_OPTIONS=y
+FREETZ_BUSYBOX_FEATURE_TAR_OLDGNU_COMPATIBILITY=y
+FREETZ_BUSYBOX_FEATURE_TEE_USE_BLOCK_IO=y
+FREETZ_BUSYBOX_FEATURE_TEST_64=y
+FREETZ_BUSYBOX_FEATURE_TFTP_GET=y
+FREETZ_BUSYBOX_FEATURE_TFTP_PUT=y
+FREETZ_BUSYBOX_FEATURE_TOP_CPU_GLOBAL_PERCENTS=y
+FREETZ_BUSYBOX_FEATURE_TOP_CPU_USAGE_PERCENTAGE=y
+FREETZ_BUSYBOX_FEATURE_TOP_DECIMALS=y
+FREETZ_BUSYBOX_FEATURE_TOP_INTERACTIVE=y
+FREETZ_BUSYBOX_FEATURE_TOPMEM=y
+FREETZ_BUSYBOX_FEATURE_TOP_SMP_CPU=y
+FREETZ_BUSYBOX_FEATURE_TOP_SMP_PROCESS=y
+FREETZ_BUSYBOX_FEATURE_TOUCH_SUSV3=y
+FREETZ_BUSYBOX_FEATURE_TRACEROUTE_USE_ICMP=y
+FREETZ_BUSYBOX_FEATURE_TRACEROUTE_VERBOSE=y
+FREETZ_BUSYBOX_FEATURE_TR_CLASSES=y
+FREETZ_BUSYBOX_FEATURE_TR_EQUIV=y
+FREETZ_BUSYBOX_FEATURE_UMOUNT_ALL=y
+FREETZ_BUSYBOX_FEATURE_USE_INITTAB=y
+FREETZ_BUSYBOX_FEATURE_VI_8BIT=y
+FREETZ_BUSYBOX_FEATURE_VI_ASK_TERMINAL=y
+FREETZ_BUSYBOX_FEATURE_VI_COLON=y
+FREETZ_BUSYBOX_FEATURE_VI_DOT_CMD=y
+FREETZ_BUSYBOX_FEATURE_VI_READONLY=y
+FREETZ_BUSYBOX_FEATURE_VI_SEARCH=y
+FREETZ_BUSYBOX_FEATURE_VI_SET=y
+FREETZ_BUSYBOX_FEATURE_VI_SETOPTS=y
+FREETZ_BUSYBOX_FEATURE_VI_USE_SIGNALS=y
+FREETZ_BUSYBOX_FEATURE_VI_WIN_RESIZE=y
+FREETZ_BUSYBOX_FEATURE_VI_YANKMARK=y
+FREETZ_BUSYBOX_FEATURE_VOLUMEID_EXT=y
+FREETZ_BUSYBOX_FEATURE_WC_LARGE=y
+FREETZ_BUSYBOX_FEATURE_XARGS_SUPPORT_CONFIRMATION=y
+FREETZ_BUSYBOX_FEATURE_XARGS_SUPPORT_QUOTES=y
+FREETZ_BUSYBOX_FEATURE_XARGS_SUPPORT_TERMOPT=y
+FREETZ_BUSYBOX_FEATURE_XARGS_SUPPORT_ZERO_TERM=y
+FREETZ_BUSYBOX_FGCONSOLE=y
+FREETZ_BUSYBOX_FGREP=y
+FREETZ_BUSYBOX_FIND=y
+FREETZ_BUSYBOX_FLOCK=y
+FREETZ_BUSYBOX_FREE=y
+FREETZ_BUSYBOX_FTPGET=y
+FREETZ_BUSYBOX_FTPPUT=y
+FREETZ_BUSYBOX_GETOPT=y
+FREETZ_BUSYBOX_GREP=y
+FREETZ_BUSYBOX_GROUPS=y
+FREETZ_BUSYBOX_GUNZIP=y
+FREETZ_BUSYBOX_GZIP=y
+FREETZ_BUSYBOX_HALT=y
+FREETZ_BUSYBOX_HAVE_DOT_CONFIG=y
+FREETZ_BUSYBOX_HEAD=y
+FREETZ_BUSYBOX_HEXDUMP=y
+FREETZ_BUSYBOX_HOSTNAME=y
+FREETZ_BUSYBOX_HTTPD=y
+FREETZ_BUSYBOX_ID=y
+FREETZ_BUSYBOX_IFCONFIG=y
+FREETZ_BUSYBOX_IFDOWN=y
+FREETZ_BUSYBOX_IFUP=y
+FREETZ_BUSYBOX_INETD=y
+FREETZ_BUSYBOX_INIT=y
+FREETZ_BUSYBOX_INSMOD=y
+FREETZ_BUSYBOX_INSTALL_APPLET_SYMLINKS=y
+FREETZ_BUSYBOX_IOCTL_HEX2STR_ERROR=y
+FREETZ_BUSYBOX_IOSTAT=y
+FREETZ_BUSYBOX_IP=y
+FREETZ_BUSYBOX_IPADDR=y
+FREETZ_BUSYBOX_IPLINK=y
+FREETZ_BUSYBOX_IPNEIGH=y
+FREETZ_BUSYBOX_IPROUTE=y
+FREETZ_BUSYBOX_IPRULE=y
+FREETZ_BUSYBOX_IPTUNNEL=y
+FREETZ_BUSYBOX_KILL=y
+FREETZ_BUSYBOX_KILLALL=y
+FREETZ_BUSYBOX_KILLALL5=y
+FREETZ_BUSYBOX_KLOGD=y
+FREETZ_BUSYBOX_LFS=y
+FREETZ_BUSYBOX_LN=y
+FREETZ_BUSYBOX_LOGGER=y
+FREETZ_BUSYBOX_LOGIN=y
+FREETZ_BUSYBOX_LOGNAME=y
+FREETZ_BUSYBOX_LOGREAD=y
+FREETZ_BUSYBOX_LONG_OPTS=y
+FREETZ_BUSYBOX_LS=y
+FREETZ_BUSYBOX_LSMOD=y
+FREETZ_BUSYBOX_MAKEDEVS=y
+FREETZ_BUSYBOX_MD5SUM=y
+FREETZ_BUSYBOX_MKDIR=y
+FREETZ_BUSYBOX_MKFIFO=y
+FREETZ_BUSYBOX_MKNOD=y
+FREETZ_BUSYBOX_MKPASSWD=y
+FREETZ_BUSYBOX_MKSWAP=y
+FREETZ_BUSYBOX_MODPROBE=y
+FREETZ_BUSYBOX_MONOTONIC_SYSCALL=y
+FREETZ_BUSYBOX_MORE=y
+FREETZ_BUSYBOX_MOUNT=y
+FREETZ_BUSYBOX_MPSTAT=y
+FREETZ_BUSYBOX_MV=y
+FREETZ_BUSYBOX_NBDCLIENT=y
+FREETZ_BUSYBOX_NC=y
+FREETZ_BUSYBOX_NC_110_COMPAT=y
+FREETZ_BUSYBOX_NC_EXTRA=y
+FREETZ_BUSYBOX_NETSTAT=y
+FREETZ_BUSYBOX_NICE=y
+FREETZ_BUSYBOX_NO_DEBUG_LIB=y
+FREETZ_BUSYBOX_NOHUP=y
+FREETZ_BUSYBOX_NSLOOKUP=y
+FREETZ_BUSYBOX_PASSWD=y
+FREETZ_BUSYBOX_PIDOF=y
+FREETZ_BUSYBOX_PING=y
+FREETZ_BUSYBOX_PING6=y
+FREETZ_BUSYBOX_PIVOT_ROOT=y
+FREETZ_BUSYBOX_PLATFORM_LINUX=y
+FREETZ_BUSYBOX_PMAP=y
+FREETZ_BUSYBOX_POWEROFF=y
+FREETZ_BUSYBOX_PRINTENV=y
+FREETZ_BUSYBOX_PRINTF=y
+FREETZ_BUSYBOX_PS=y
+FREETZ_BUSYBOX_PSTREE=y
+FREETZ_BUSYBOX_PWD=y
+FREETZ_BUSYBOX_PWDX=y
+FREETZ_BUSYBOX_READLINK=y
+FREETZ_BUSYBOX_REALPATH=y
+FREETZ_BUSYBOX_REBOOT=y
+FREETZ_BUSYBOX_RENICE=y
+FREETZ_BUSYBOX_RESET=y
+FREETZ_BUSYBOX_RM=y
+FREETZ_BUSYBOX_RMDIR=y
+FREETZ_BUSYBOX_RMMOD=y
+FREETZ_BUSYBOX_ROUTE=y
+FREETZ_BUSYBOX_SED=y
+FREETZ_BUSYBOX_SEQ=y
+FREETZ_BUSYBOX_SETCONSOLE=y
+FREETZ_BUSYBOX_SETSERIAL=y
+FREETZ_BUSYBOX_SHOW_USAGE=y
+FREETZ_BUSYBOX_SHUF=y
+FREETZ_BUSYBOX_SLEEP=y
+FREETZ_BUSYBOX_SMEMCAP=y
+FREETZ_BUSYBOX_SORT=y
+FREETZ_BUSYBOX_SPLIT=y
+FREETZ_BUSYBOX_START_STOP_DAEMON=y
+FREETZ_BUSYBOX_STAT=y
+FREETZ_BUSYBOX_STTY=y
+FREETZ_BUSYBOX_STUN_IP=y
+FREETZ_BUSYBOX_SWAPOFF=y
+FREETZ_BUSYBOX_SWAPON=y
+FREETZ_BUSYBOX_SWITCH_ROOT=y
+FREETZ_BUSYBOX_SYNC=y
+FREETZ_BUSYBOX_SYSLOGD=y
+FREETZ_BUSYBOX_TAIL=y
+FREETZ_BUSYBOX_TAR=y
+FREETZ_BUSYBOX_TEE=y
+FREETZ_BUSYBOX_TEST=y
+FREETZ_BUSYBOX_TEST1=y
+FREETZ_BUSYBOX_TEST2=y
+FREETZ_BUSYBOX_TFTP=y
+FREETZ_BUSYBOX_TIME=y
+FREETZ_BUSYBOX_TOP=y
+FREETZ_BUSYBOX_TOUCH=y
+FREETZ_BUSYBOX_TR=y
+FREETZ_BUSYBOX_TRACEROUTE=y
+FREETZ_BUSYBOX_TRACEROUTE6=y
+FREETZ_BUSYBOX_TRUE=y
+FREETZ_BUSYBOX_TTY=y
+FREETZ_BUSYBOX_UMOUNT=y
+FREETZ_BUSYBOX_UNAME=y
+FREETZ_BUSYBOX_UNIQ=y
+FREETZ_BUSYBOX_UNXZ=y
+FREETZ_BUSYBOX_UNZIP=y
+FREETZ_BUSYBOX_UPTIME=y
+FREETZ_BUSYBOX_USE_BB_CRYPT=y
+FREETZ_BUSYBOX_UUDECODE=y
+FREETZ_BUSYBOX_VCONFIG=y
+FREETZ_BUSYBOX_VI=y
+FREETZ_BUSYBOX_VOLUMEID=y
+FREETZ_BUSYBOX_WC=y
+FREETZ_BUSYBOX_WHICH=y
+FREETZ_BUSYBOX_WHOIS=y
+FREETZ_BUSYBOX_XARGS=y
+FREETZ_BUSYBOX_XZ=y
+FREETZ_BUSYBOX_XZCAT=y
+FREETZ_BUSYBOX_YES=y
+FREETZ_BUSYBOX_ZCAT=y
+FREETZ_BUSYBOX___V127_HAVE_DOT_CONFIG=y
+
+#
+# Busybox Settings
+#
+# FREETZ_BUSYBOX___V127_EXTRA_COMPAT is not set
+# FREETZ_BUSYBOX___V127_INCLUDE_SUSv2 is not set
+# FREETZ_BUSYBOX___V127_USE_PORTABLE_CODE is not set
+FREETZ_BUSYBOX___V127_SHOW_USAGE=y
+# FREETZ_BUSYBOX___V127_FEATURE_VERBOSE_USAGE is not set
+FREETZ_BUSYBOX___V127_FEATURE_COMPRESS_USAGE=y
+FREETZ_BUSYBOX___V127_BUSYBOX=y
+# FREETZ_BUSYBOX___V127_FEATURE_INSTALLER is not set
+# FREETZ_BUSYBOX___V127_INSTALL_NO_USR is not set
+# FREETZ_BUSYBOX___V127_PAM is not set
+FREETZ_BUSYBOX___V127_LONG_OPTS=y
+FREETZ_BUSYBOX___V127_FEATURE_DEVPTS=y
+# FREETZ_BUSYBOX___V127_FEATURE_CLEAN_UP is not set
+# FREETZ_BUSYBOX___V127_FEATURE_UTMP is not set
+FREETZ_BUSYBOX___V127_FEATURE_PIDFILE=y
+FREETZ_BUSYBOX___V127_PID_FILE_PATH="/var/run"
+FREETZ_BUSYBOX___V127_FEATURE_SUID=y
+# FREETZ_BUSYBOX___V127_FEATURE_SUID_CONFIG is not set
+# FREETZ_BUSYBOX___V127_SELINUX is not set
+FREETZ_BUSYBOX___V127_BUSYBOX_EXEC_PATH="/proc/self/exe"
+FREETZ_BUSYBOX___V127_FEATURE_SYSLOG=y
+FREETZ_BUSYBOX___V127_PLATFORM_LINUX=y
+
+#
+# Build Options
+#
+# FREETZ_BUSYBOX___V127_STATIC is not set
+# FREETZ_BUSYBOX___V127_PIE is not set
+FREETZ_BUSYBOX___V127_LFS=y
+FREETZ_BUSYBOX___V127_CROSS_COMPILER_PREFIX=""
+FREETZ_BUSYBOX___V127_SYSROOT=""
+FREETZ_BUSYBOX___V127_EXTRA_CFLAGS=""
+FREETZ_BUSYBOX___V127_EXTRA_LDFLAGS=""
+FREETZ_BUSYBOX___V127_EXTRA_LDLIBS=""
+
+#
+# Installation Options ("make install" behavior)
+#
+FREETZ_BUSYBOX___V127_INSTALL_APPLET_SYMLINKS=y
+# FREETZ_BUSYBOX___V127_INSTALL_APPLET_HARDLINKS is not set
+# FREETZ_BUSYBOX___V127_INSTALL_APPLET_SCRIPT_WRAPPERS is not set
+# FREETZ_BUSYBOX___V127_INSTALL_APPLET_DONT is not set
+FREETZ_BUSYBOX___V127_PREFIX="./_install"
+
+#
+# Debugging Options
+#
+# FREETZ_BUSYBOX___V127_DEBUG is not set
+# FREETZ_BUSYBOX___V127_DEBUG_SANITIZE is not set
+# FREETZ_BUSYBOX___V127_UNIT_TEST is not set
+# FREETZ_BUSYBOX___V127_WERROR is not set
+FREETZ_BUSYBOX___V127_NO_DEBUG_LIB=y
+# FREETZ_BUSYBOX___V127_DMALLOC is not set
+# FREETZ_BUSYBOX___V127_EFENCE is not set
+# end of Busybox Settings
+
+#
+# Busybox Library Tuning
+#
+# FREETZ_BUSYBOX___V127_FEATURE_RTMINMAX is not set
+FREETZ_BUSYBOX___V127_FEATURE_BUFFERS_USE_MALLOC=y
+# FREETZ_BUSYBOX___V127_FEATURE_BUFFERS_GO_ON_STACK is not set
+# FREETZ_BUSYBOX___V127_FEATURE_BUFFERS_GO_IN_BSS is not set
+FREETZ_BUSYBOX___V127_PASSWORD_MINLEN=6
+FREETZ_BUSYBOX___V127_MD5_SMALL=1
+FREETZ_BUSYBOX___V127_SHA3_SMALL=1
+FREETZ_BUSYBOX___V127_FEATURE_FAST_TOP=y
+# FREETZ_BUSYBOX___V127_FEATURE_ETC_NETWORKS is not set
+FREETZ_BUSYBOX___V127_FEATURE_EDITING=y
+FREETZ_BUSYBOX___V127_FEATURE_EDITING_MAX_LEN=1024
+# FREETZ_BUSYBOX___V127_FEATURE_EDITING_VI is not set
+FREETZ_BUSYBOX___V127_FEATURE_EDITING_HISTORY=255
+FREETZ_BUSYBOX___V127_FEATURE_EDITING_SAVEHISTORY=y
+FREETZ_BUSYBOX___V127_FEATURE_EDITING_SAVE_ON_EXIT=y
+FREETZ_BUSYBOX___V127_FEATURE_REVERSE_SEARCH=y
+FREETZ_BUSYBOX___V127_FEATURE_TAB_COMPLETION=y
+# FREETZ_BUSYBOX___V127_FEATURE_USERNAME_COMPLETION is not set
+FREETZ_BUSYBOX___V127_FEATURE_EDITING_FANCY_PROMPT=y
+# FREETZ_BUSYBOX___V127_FEATURE_EDITING_ASK_TERMINAL is not set
+# FREETZ_BUSYBOX___V127_LOCALE_SUPPORT is not set
+# FREETZ_BUSYBOX___V127_UNICODE_SUPPORT is not set
+FREETZ_BUSYBOX___V127_FEATURE_NON_POSIX_CP=y
+# FREETZ_BUSYBOX___V127_FEATURE_VERBOSE_CP_MESSAGE is not set
+FREETZ_BUSYBOX___V127_FEATURE_COPYBUF_KB=4
+FREETZ_BUSYBOX___V127_FEATURE_SKIP_ROOTFS=y
+FREETZ_BUSYBOX___V127_MONOTONIC_SYSCALL=y
+FREETZ_BUSYBOX___V127_IOCTL_HEX2STR_ERROR=y
+FREETZ_BUSYBOX___V127_FEATURE_HWIB=y
+# end of Busybox Library Tuning
+
+#
+# Applets
+#
+
+#
+# Archival Utilities
+#
+# FREETZ_BUSYBOX___V127_FEATURE_SEAMLESS_XZ is not set
+# FREETZ_BUSYBOX___V127_FEATURE_SEAMLESS_LZMA is not set
+# FREETZ_BUSYBOX___V127_FEATURE_SEAMLESS_BZ2 is not set
+FREETZ_BUSYBOX___V127_FEATURE_SEAMLESS_GZ=y
+# FREETZ_BUSYBOX___V127_FEATURE_SEAMLESS_LZ is not set
+# FREETZ_BUSYBOX___V127_FEATURE_SEAMLESS_Z is not set
+# FREETZ_BUSYBOX___V127_AR is not set
+# FREETZ_BUSYBOX___V127_UNCOMPRESS is not set
+FREETZ_BUSYBOX___V127_GUNZIP=y
+FREETZ_BUSYBOX___V127_ZCAT=y
+# FREETZ_BUSYBOX___V127_FEATURE_GUNZIP_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_BUNZIP2=y
+FREETZ_BUSYBOX___V127_BZCAT=y
+# FREETZ_BUSYBOX___V127_LUNZIP is not set
+# FREETZ_BUSYBOX___V127_UNLZMA is not set
+# FREETZ_BUSYBOX___V127_LZCAT is not set
+# FREETZ_BUSYBOX___V127_LZMA is not set
+FREETZ_BUSYBOX___V127_UNXZ=y
+FREETZ_BUSYBOX___V127_XZCAT=y
+FREETZ_BUSYBOX___V127_XZ=y
+FREETZ_BUSYBOX___V127_BZIP2=y
+FREETZ_BUSYBOX___V127_FEATURE_BZIP2_DECOMPRESS=y
+# FREETZ_BUSYBOX___V127_CPIO is not set
+# FREETZ_BUSYBOX___V127_DPKG is not set
+# FREETZ_BUSYBOX___V127_DPKG_DEB is not set
+FREETZ_BUSYBOX___V127_GZIP=y
+# FREETZ_BUSYBOX___V127_FEATURE_GZIP_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_GZIP_FAST=0
+# FREETZ_BUSYBOX___V127_FEATURE_GZIP_LEVELS is not set
+FREETZ_BUSYBOX___V127_FEATURE_GZIP_DECOMPRESS=y
+# FREETZ_BUSYBOX___V127_LZIP is not set
+# FREETZ_BUSYBOX___V127_LZOP is not set
+# FREETZ_BUSYBOX___V127_UNLZOP is not set
+# FREETZ_BUSYBOX___V127_LZOPCAT is not set
+# FREETZ_BUSYBOX___V127_RPM2CPIO is not set
+# FREETZ_BUSYBOX___V127_RPM is not set
+FREETZ_BUSYBOX___V127_TAR=y
+FREETZ_BUSYBOX___V127_FEATURE_TAR_LONG_OPTIONS=y
+FREETZ_BUSYBOX___V127_FEATURE_TAR_CREATE=y
+# FREETZ_BUSYBOX___V127_FEATURE_TAR_AUTODETECT is not set
+FREETZ_BUSYBOX___V127_FEATURE_TAR_FROM=y
+FREETZ_BUSYBOX___V127_FEATURE_TAR_OLDGNU_COMPATIBILITY=y
+# FREETZ_BUSYBOX___V127_FEATURE_TAR_OLDSUN_COMPATIBILITY is not set
+FREETZ_BUSYBOX___V127_FEATURE_TAR_GNU_EXTENSIONS=y
+# FREETZ_BUSYBOX___V127_FEATURE_TAR_TO_COMMAND is not set
+# FREETZ_BUSYBOX___V127_FEATURE_TAR_UNAME_GNAME is not set
+# FREETZ_BUSYBOX___V127_FEATURE_TAR_NOPRESERVE_TIME is not set
+FREETZ_BUSYBOX___V127_UNZIP=y
+# FREETZ_BUSYBOX___V127_FEATURE_UNZIP_CDF is not set
+# FREETZ_BUSYBOX___V127_FEATURE_UNZIP_J_NUM is not set
+# end of Archival Utilities
+
+#
+# Coreutils
+#
+FREETZ_BUSYBOX___V127_BASENAME=y
+FREETZ_BUSYBOX___V127_CAT=y
+# FREETZ_BUSYBOX___V127_FEATURE_CATV is not set
+FREETZ_BUSYBOX___V127_CHGRP=y
+FREETZ_BUSYBOX___V127_CHMOD=y
+FREETZ_BUSYBOX___V127_CHOWN=y
+# FREETZ_BUSYBOX___V127_FEATURE_CHOWN_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_CHROOT=y
+# FREETZ_BUSYBOX___V127_CKSUM is not set
+# FREETZ_BUSYBOX___V127_COMM is not set
+FREETZ_BUSYBOX___V127_CP=y
+# FREETZ_BUSYBOX___V127_FEATURE_CP_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_CUT=y
+FREETZ_BUSYBOX___V127_DATE=y
+FREETZ_BUSYBOX___V127_FEATURE_DATE_ISOFMT=y
+# FREETZ_BUSYBOX___V127_FEATURE_DATE_NANO is not set
+FREETZ_BUSYBOX___V127_FEATURE_DATE_COMPAT=y
+FREETZ_BUSYBOX___V127_DD=y
+FREETZ_BUSYBOX___V127_FEATURE_DD_SIGNAL_HANDLING=y
+# FREETZ_BUSYBOX___V127_FEATURE_DD_THIRD_STATUS_LINE is not set
+FREETZ_BUSYBOX___V127_FEATURE_DD_IBS_OBS=y
+# FREETZ_BUSYBOX___V127_FEATURE_DD_STATUS is not set
+FREETZ_BUSYBOX___V127_DF=y
+# FREETZ_BUSYBOX___V127_FEATURE_DF_FANCY is not set
+FREETZ_BUSYBOX___V127_DIRNAME=y
+# FREETZ_BUSYBOX___V127_DOS2UNIX is not set
+# FREETZ_BUSYBOX___V127_UNIX2DOS is not set
+FREETZ_BUSYBOX___V127_DU=y
+FREETZ_BUSYBOX___V127_FEATURE_DU_DEFAULT_BLOCKSIZE_1K=y
+FREETZ_BUSYBOX___V127_ECHO=y
+FREETZ_BUSYBOX___V127_FEATURE_FANCY_ECHO=y
+FREETZ_BUSYBOX___V127_ENV=y
+# FREETZ_BUSYBOX___V127_FEATURE_ENV_LONG_OPTIONS is not set
+# FREETZ_BUSYBOX___V127_EXPAND is not set
+# FREETZ_BUSYBOX___V127_UNEXPAND is not set
+FREETZ_BUSYBOX___V127_EXPR=y
+FREETZ_BUSYBOX___V127_EXPR_MATH_SUPPORT_64=y
+# FREETZ_BUSYBOX___V127_FACTOR is not set
+FREETZ_BUSYBOX___V127_FALSE=y
+# FREETZ_BUSYBOX___V127_FOLD is not set
+# FREETZ_BUSYBOX___V127_FSYNC is not set
+FREETZ_BUSYBOX___V127_HEAD=y
+FREETZ_BUSYBOX___V127_FEATURE_FANCY_HEAD=y
+# FREETZ_BUSYBOX___V127_HOSTID is not set
+FREETZ_BUSYBOX___V127_ID=y
+FREETZ_BUSYBOX___V127_GROUPS=y
+# FREETZ_BUSYBOX___V127_INSTALL is not set
+# FREETZ_BUSYBOX___V127_LINK is not set
+FREETZ_BUSYBOX___V127_LN=y
+FREETZ_BUSYBOX___V127_LOGNAME=y
+FREETZ_BUSYBOX___V127_LS=y
+FREETZ_BUSYBOX___V127_FEATURE_LS_FILETYPES=y
+FREETZ_BUSYBOX___V127_FEATURE_LS_FOLLOWLINKS=y
+FREETZ_BUSYBOX___V127_FEATURE_LS_RECURSIVE=y
+# FREETZ_BUSYBOX___V127_FEATURE_LS_WIDTH is not set
+FREETZ_BUSYBOX___V127_FEATURE_LS_SORTFILES=y
+FREETZ_BUSYBOX___V127_FEATURE_LS_TIMESTAMPS=y
+FREETZ_BUSYBOX___V127_FEATURE_LS_USERNAME=y
+# FREETZ_BUSYBOX___V127_FEATURE_LS_COLOR is not set
+FREETZ_BUSYBOX___V127_MD5SUM=y
+# FREETZ_BUSYBOX___V127_SHA1SUM is not set
+# FREETZ_BUSYBOX___V127_SHA256SUM is not set
+# FREETZ_BUSYBOX___V127_SHA512SUM is not set
+# FREETZ_BUSYBOX___V127_SHA3SUM is not set
+
+#
+# Common options for md5sum, sha1sum, sha256sum, sha512sum, sha3sum
+#
+FREETZ_BUSYBOX___V127_FEATURE_MD5_SHA1_SUM_CHECK=y
+FREETZ_BUSYBOX___V127_MKDIR=y
+# FREETZ_BUSYBOX___V127_FEATURE_MKDIR_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_MKFIFO=y
+FREETZ_BUSYBOX___V127_MKNOD=y
+# FREETZ_BUSYBOX___V127_MKTEMP is not set
+FREETZ_BUSYBOX___V127_MV=y
+# FREETZ_BUSYBOX___V127_FEATURE_MV_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_NICE=y
+FREETZ_BUSYBOX___V127_NL=y
+FREETZ_BUSYBOX___V127_NOHUP=y
+# FREETZ_BUSYBOX___V127_NPROC is not set
+# FREETZ_BUSYBOX___V127_OD is not set
+# FREETZ_BUSYBOX___V127_PASTE is not set
+FREETZ_BUSYBOX___V127_PRINTENV=y
+FREETZ_BUSYBOX___V127_PRINTF=y
+FREETZ_BUSYBOX___V127_PWD=y
+FREETZ_BUSYBOX___V127_READLINK=y
+FREETZ_BUSYBOX___V127_FEATURE_READLINK_FOLLOW=y
+FREETZ_BUSYBOX___V127_REALPATH=y
+FREETZ_BUSYBOX___V127_RM=y
+FREETZ_BUSYBOX___V127_RMDIR=y
+# FREETZ_BUSYBOX___V127_FEATURE_RMDIR_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_SEQ=y
+# FREETZ_BUSYBOX___V127_SHRED is not set
+FREETZ_BUSYBOX___V127_SHUF=y
+FREETZ_BUSYBOX___V127_SLEEP=y
+FREETZ_BUSYBOX___V127_FEATURE_FANCY_SLEEP=y
+# FREETZ_BUSYBOX___V127_FEATURE_FLOAT_SLEEP is not set
+FREETZ_BUSYBOX___V127_SORT=y
+FREETZ_BUSYBOX___V127_FEATURE_SORT_BIG=y
+FREETZ_BUSYBOX___V127_SPLIT=y
+FREETZ_BUSYBOX___V127_FEATURE_SPLIT_FANCY=y
+FREETZ_BUSYBOX___V127_STAT=y
+FREETZ_BUSYBOX___V127_FEATURE_STAT_FORMAT=y
+FREETZ_BUSYBOX___V127_FEATURE_STAT_FILESYSTEM=y
+FREETZ_BUSYBOX___V127_STTY=y
+# FREETZ_BUSYBOX___V127_SUM is not set
+FREETZ_BUSYBOX___V127_SYNC=y
+# FREETZ_BUSYBOX___V127_FEATURE_SYNC_FANCY is not set
+# FREETZ_BUSYBOX___V127_TAC is not set
+FREETZ_BUSYBOX___V127_TAIL=y
+FREETZ_BUSYBOX___V127_FEATURE_FANCY_TAIL=y
+FREETZ_BUSYBOX___V127_TEE=y
+FREETZ_BUSYBOX___V127_FEATURE_TEE_USE_BLOCK_IO=y
+FREETZ_BUSYBOX___V127_TEST=y
+FREETZ_BUSYBOX___V127_TEST1=y
+FREETZ_BUSYBOX___V127_TEST2=y
+FREETZ_BUSYBOX___V127_FEATURE_TEST_64=y
+# FREETZ_BUSYBOX___V127_TIMEOUT is not set
+FREETZ_BUSYBOX___V127_TOUCH=y
+# FREETZ_BUSYBOX___V127_FEATURE_TOUCH_NODEREF is not set
+FREETZ_BUSYBOX___V127_FEATURE_TOUCH_SUSV3=y
+FREETZ_BUSYBOX___V127_TR=y
+FREETZ_BUSYBOX___V127_FEATURE_TR_CLASSES=y
+FREETZ_BUSYBOX___V127_FEATURE_TR_EQUIV=y
+FREETZ_BUSYBOX___V127_TRUE=y
+# FREETZ_BUSYBOX___V127_TRUNCATE is not set
+FREETZ_BUSYBOX___V127_TTY=y
+FREETZ_BUSYBOX___V127_UNAME=y
+FREETZ_BUSYBOX___V127_UNAME_OSNAME="GNU/Linux"
+FREETZ_BUSYBOX___V127_UNIQ=y
+# FREETZ_BUSYBOX___V127_UNLINK is not set
+FREETZ_BUSYBOX___V127_USLEEP=y
+FREETZ_BUSYBOX___V127_UUDECODE=y
+FREETZ_BUSYBOX___V127_BASE64=y
+FREETZ_BUSYBOX___V127_UUENCODE=y
+FREETZ_BUSYBOX___V127_WC=y
+FREETZ_BUSYBOX___V127_FEATURE_WC_LARGE=y
+# FREETZ_BUSYBOX___V127_WHOAMI is not set
+FREETZ_BUSYBOX___V127_YES=y
+
+#
+# Common options
+#
+# FREETZ_BUSYBOX___V127_FEATURE_VERBOSE is not set
+
+#
+# Common options for cp and mv
+#
+FREETZ_BUSYBOX___V127_FEATURE_PRESERVE_HARDLINKS=y
+
+#
+# Common options for df, du, ls
+#
+FREETZ_BUSYBOX___V127_FEATURE_HUMAN_READABLE=y
+# end of Coreutils
+
+#
+# Console Utilities
+#
+# FREETZ_BUSYBOX___V127_CHVT is not set
+# FREETZ_BUSYBOX___V127_CLEAR is not set
+# FREETZ_BUSYBOX___V127_DEALLOCVT is not set
+# FREETZ_BUSYBOX___V127_DUMPKMAP is not set
+FREETZ_BUSYBOX___V127_FGCONSOLE=y
+# FREETZ_BUSYBOX___V127_KBD_MODE is not set
+# FREETZ_BUSYBOX___V127_LOADFONT is not set
+# FREETZ_BUSYBOX___V127_SETFONT is not set
+# FREETZ_BUSYBOX___V127_LOADKMAP is not set
+# FREETZ_BUSYBOX___V127_OPENVT is not set
+FREETZ_BUSYBOX___V127_RESET=y
+# FREETZ_BUSYBOX___V127_RESIZE is not set
+FREETZ_BUSYBOX___V127_SETCONSOLE=y
+# FREETZ_BUSYBOX___V127_FEATURE_SETCONSOLE_LONG_OPTIONS is not set
+# FREETZ_BUSYBOX___V127_SETKEYCODES is not set
+# FREETZ_BUSYBOX___V127_SETLOGCONS is not set
+# FREETZ_BUSYBOX___V127_SHOWKEY is not set
+# end of Console Utilities
+
+#
+# Debian Utilities
+#
+# FREETZ_BUSYBOX___V127_PIPE_PROGRESS is not set
+# FREETZ_BUSYBOX___V127_RUN_PARTS is not set
+FREETZ_BUSYBOX___V127_START_STOP_DAEMON=y
+# FREETZ_BUSYBOX___V127_FEATURE_START_STOP_DAEMON_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_FEATURE_START_STOP_DAEMON_FANCY=y
+FREETZ_BUSYBOX___V127_WHICH=y
+# end of Debian Utilities
+
+#
+# Editors
+#
+FREETZ_BUSYBOX___V127_AWK=y
+# FREETZ_BUSYBOX___V127_FEATURE_AWK_LIBM is not set
+# FREETZ_BUSYBOX___V127_FEATURE_AWK_GNU_EXTENSIONS is not set
+FREETZ_BUSYBOX___V127_CMP=y
+# FREETZ_BUSYBOX___V127_DIFF is not set
+# FREETZ_BUSYBOX___V127_ED is not set
+# FREETZ_BUSYBOX___V127_PATCH is not set
+FREETZ_BUSYBOX___V127_SED=y
+FREETZ_BUSYBOX___V127_VI=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_MAX_LEN=4096
+FREETZ_BUSYBOX___V127_FEATURE_VI_8BIT=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_COLON=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_YANKMARK=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_SEARCH=y
+# FREETZ_BUSYBOX___V127_FEATURE_VI_REGEX_SEARCH is not set
+FREETZ_BUSYBOX___V127_FEATURE_VI_USE_SIGNALS=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_DOT_CMD=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_READONLY=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_SETOPTS=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_SET=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_WIN_RESIZE=y
+FREETZ_BUSYBOX___V127_FEATURE_VI_ASK_TERMINAL=y
+# FREETZ_BUSYBOX___V127_FEATURE_VI_UNDO is not set
+FREETZ_BUSYBOX___V127_FEATURE_ALLOW_EXEC=y
+# end of Editors
+
+#
+# Finding Utilities
+#
+FREETZ_BUSYBOX___V127_FIND=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_PRINT0=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_MTIME=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_MMIN=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_PERM=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_TYPE=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_XDEV=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_MAXDEPTH=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_NEWER=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_INUM=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_EXEC=y
+# FREETZ_BUSYBOX___V127_FEATURE_FIND_EXEC_PLUS is not set
+FREETZ_BUSYBOX___V127_FEATURE_FIND_USER=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_GROUP=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_NOT=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_DEPTH=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_PAREN=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_SIZE=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_PRUNE=y
+# FREETZ_BUSYBOX___V127_FEATURE_FIND_DELETE is not set
+FREETZ_BUSYBOX___V127_FEATURE_FIND_PATH=y
+FREETZ_BUSYBOX___V127_FEATURE_FIND_REGEX=y
+# FREETZ_BUSYBOX___V127_FEATURE_FIND_LINKS is not set
+FREETZ_BUSYBOX___V127_GREP=y
+FREETZ_BUSYBOX___V127_EGREP=y
+FREETZ_BUSYBOX___V127_FGREP=y
+FREETZ_BUSYBOX___V127_FEATURE_GREP_CONTEXT=y
+FREETZ_BUSYBOX___V127_XARGS=y
+FREETZ_BUSYBOX___V127_FEATURE_XARGS_SUPPORT_CONFIRMATION=y
+FREETZ_BUSYBOX___V127_FEATURE_XARGS_SUPPORT_QUOTES=y
+FREETZ_BUSYBOX___V127_FEATURE_XARGS_SUPPORT_TERMOPT=y
+FREETZ_BUSYBOX___V127_FEATURE_XARGS_SUPPORT_ZERO_TERM=y
+# FREETZ_BUSYBOX___V127_FEATURE_XARGS_SUPPORT_REPL_STR is not set
+# end of Finding Utilities
+
+#
+# Init Utilities
+#
+# FREETZ_BUSYBOX___V127_BOOTCHARTD is not set
+FREETZ_BUSYBOX___V127_HALT=y
+FREETZ_BUSYBOX___V127_POWEROFF=y
+FREETZ_BUSYBOX___V127_REBOOT=y
+FREETZ_BUSYBOX___V127_INIT=y
+# FREETZ_BUSYBOX___V127_LINUXRC is not set
+FREETZ_BUSYBOX___V127_FEATURE_USE_INITTAB=y
+FREETZ_BUSYBOX___V127_FEATURE_KILL_REMOVED=y
+FREETZ_BUSYBOX___V127_FEATURE_KILL_DELAY=0
+# FREETZ_BUSYBOX___V127_FEATURE_INIT_SCTTY is not set
+FREETZ_BUSYBOX___V127_FEATURE_INIT_SYSLOG=y
+# FREETZ_BUSYBOX___V127_FEATURE_INIT_QUIET is not set
+# FREETZ_BUSYBOX___V127_FEATURE_INIT_COREDUMPS is not set
+FREETZ_BUSYBOX___V127_INIT_TERMINAL_TYPE="linux"
+# FREETZ_BUSYBOX___V127_FEATURE_INIT_MODIFY_CMDLINE is not set
+# end of Init Utilities
+
+#
+# Login/Password Management Utilities
+#
+FREETZ_BUSYBOX___V127_FEATURE_SHADOWPASSWDS=y
+FREETZ_BUSYBOX___V127_USE_BB_CRYPT=y
+# FREETZ_BUSYBOX___V127_USE_BB_CRYPT_SHA is not set
+FREETZ_BUSYBOX___V127_ADDGROUP=y
+# FREETZ_BUSYBOX___V127_FEATURE_ADDGROUP_LONG_OPTIONS is not set
+FREETZ_BUSYBOX___V127_FEATURE_ADDUSER_TO_GROUP=y
+# FREETZ_BUSYBOX___V127_ADD_SHELL is not set
+# FREETZ_BUSYBOX___V127_REMOVE_SHELL is not set
+FREETZ_BUSYBOX___V127_ADDUSER=y
+# FREETZ_BUSYBOX___V127_FEATURE_ADDUSER_LONG_OPTIONS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_CHECK_NAMES is not set
+FREETZ_BUSYBOX___V127_LAST_ID=60000
+FREETZ_BUSYBOX___V127_FIRST_SYSTEM_ID=100
+FREETZ_BUSYBOX___V127_LAST_SYSTEM_ID=899
+# FREETZ_BUSYBOX___V127_CHPASSWD is not set
+FREETZ_BUSYBOX___V127_FEATURE_DEFAULT_PASSWD_ALGO="md5"
+FREETZ_BUSYBOX___V127_CRYPTPW=y
+FREETZ_BUSYBOX___V127_MKPASSWD=y
+FREETZ_BUSYBOX___V127_DELUSER=y
+FREETZ_BUSYBOX___V127_DELGROUP=y
+FREETZ_BUSYBOX___V127_FEATURE_DEL_USER_FROM_GROUP=y
+# FREETZ_BUSYBOX___V127_GETTY is not set
+FREETZ_BUSYBOX___V127_LOGIN=y
+# FREETZ_BUSYBOX___V127_LOGIN_SESSION_AS_CHILD is not set
+# FREETZ_BUSYBOX___V127_LOGIN_SCRIPTS is not set
+FREETZ_BUSYBOX___V127_FEATURE_NOLOGIN=y
+FREETZ_BUSYBOX___V127_FEATURE_SECURETTY=y
+FREETZ_BUSYBOX___V127_PASSWD=y
+FREETZ_BUSYBOX___V127_FEATURE_PASSWD_WEAK_CHECK=y
+# FREETZ_BUSYBOX___V127_SU is not set
+# FREETZ_BUSYBOX___V127_SULOGIN is not set
+# FREETZ_BUSYBOX___V127_VLOCK is not set
+# end of Login/Password Management Utilities
+
+#
+# Linux Ext2 FS Progs
+#
+# FREETZ_BUSYBOX___V127_CHATTR is not set
+FREETZ_BUSYBOX___V127_FSCK=y
+# FREETZ_BUSYBOX___V127_LSATTR is not set
+FREETZ_BUSYBOX___V127_TUNE2FS=y
+# end of Linux Ext2 FS Progs
+
+#
+# Linux Module Utilities
+#
+# FREETZ_BUSYBOX___V127_DEPMOD is not set
+FREETZ_BUSYBOX___V127_INSMOD=y
+FREETZ_BUSYBOX___V127_LSMOD=y
+FREETZ_BUSYBOX___V127_FEATURE_LSMOD_PRETTY_2_6_OUTPUT=y
+# FREETZ_BUSYBOX___V127_MODINFO is not set
+FREETZ_BUSYBOX___V127_MODPROBE=y
+# FREETZ_BUSYBOX___V127_FEATURE_MODPROBE_BLACKLIST is not set
+FREETZ_BUSYBOX___V127_RMMOD=y
+
+#
+# Options common to multiple modutils
+#
+FREETZ_BUSYBOX___V127_FEATURE_CMDLINE_MODULE_OPTIONS=y
+# FREETZ_BUSYBOX___V127_FEATURE_2_4_MODULES is not set
+FREETZ_BUSYBOX___V127_FEATURE_CHECK_TAINTED_MODULE=y
+# FREETZ_BUSYBOX___V127_FEATURE_INSMOD_TRY_MMAP is not set
+# FREETZ_BUSYBOX___V127_FEATURE_MODUTILS_ALIAS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_MODUTILS_SYMBOLS is not set
+FREETZ_BUSYBOX___V127_DEFAULT_MODULES_DIR="/lib/modules"
+FREETZ_BUSYBOX___V127_DEFAULT_DEPMOD_FILE="modules.dep"
+# end of Linux Module Utilities
+
+#
+# Linux System Utilities
+#
+# FREETZ_BUSYBOX___V127_ACPID is not set
+# FREETZ_BUSYBOX___V127_BLKDISCARD is not set
+FREETZ_BUSYBOX___V127_BLKID=y
+FREETZ_BUSYBOX___V127_FEATURE_BLKID_TYPE=y
+# FREETZ_BUSYBOX___V127_BLOCKDEV is not set
+# FREETZ_BUSYBOX___V127_CAL is not set
+# FREETZ_BUSYBOX___V127_CHRT is not set
+# FREETZ_BUSYBOX___V127_EJECT is not set
+# FREETZ_BUSYBOX___V127_FATATTR is not set
+# FREETZ_BUSYBOX___V127_FBSET is not set
+# FREETZ_BUSYBOX___V127_FDFORMAT is not set
+FREETZ_BUSYBOX___V127_FDISK=y
+FREETZ_BUSYBOX___V127_FEATURE_FDISK_WRITABLE=y
+FREETZ_BUSYBOX___V127_FEATURE_AIX_LABEL=y
+FREETZ_BUSYBOX___V127_FEATURE_SGI_LABEL=y
+FREETZ_BUSYBOX___V127_FEATURE_SUN_LABEL=y
+FREETZ_BUSYBOX___V127_FEATURE_OSF_LABEL=y
+FREETZ_BUSYBOX___V127_FEATURE_GPT_LABEL=y
+FREETZ_BUSYBOX___V127_FEATURE_FDISK_ADVANCED=y
+# FREETZ_BUSYBOX___V127_FINDFS is not set
+FREETZ_BUSYBOX___V127_FLOCK=y
+# FREETZ_BUSYBOX___V127_FDFLUSH is not set
+# FREETZ_BUSYBOX___V127_FREERAMDISK is not set
+# FREETZ_BUSYBOX___V127_FSCK_MINIX is not set
+# FREETZ_BUSYBOX___V127_FSFREEZE is not set
+# FREETZ_BUSYBOX___V127_FSTRIM is not set
+FREETZ_BUSYBOX___V127_GETOPT=y
+FREETZ_BUSYBOX___V127_FEATURE_GETOPT_LONG=y
+FREETZ_BUSYBOX___V127_HEXDUMP=y
+# FREETZ_BUSYBOX___V127_FEATURE_HEXDUMP_REVERSE is not set
+# FREETZ_BUSYBOX___V127_HD is not set
+FREETZ_BUSYBOX___V127_XXD=y
+# FREETZ_BUSYBOX___V127_HWCLOCK is not set
+# FREETZ_BUSYBOX___V127_IONICE is not set
+# FREETZ_BUSYBOX___V127_IPCRM is not set
+# FREETZ_BUSYBOX___V127_IPCS is not set
+# FREETZ_BUSYBOX___V127_LOSETUP is not set
+# FREETZ_BUSYBOX___V127_LSPCI is not set
+# FREETZ_BUSYBOX___V127_LSUSB is not set
+# FREETZ_BUSYBOX___V127_MDEV is not set
+# FREETZ_BUSYBOX___V127_MESG is not set
+FREETZ_BUSYBOX___V127_MKE2FS=y
+FREETZ_BUSYBOX___V127_MKFS_EXT2=y
+# FREETZ_BUSYBOX___V127_MKFS_MINIX is not set
+FREETZ_BUSYBOX___V127_MKFS_REISER=y
+FREETZ_BUSYBOX___V127_MKDOSFS=y
+FREETZ_BUSYBOX___V127_MKFS_VFAT=y
+FREETZ_BUSYBOX___V127_MKSWAP=y
+# FREETZ_BUSYBOX___V127_FEATURE_MKSWAP_UUID is not set
+FREETZ_BUSYBOX___V127_MORE=y
+FREETZ_BUSYBOX___V127_MOUNT=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_FAKE=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_VERBOSE=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_HELPERS=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_LABEL=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_CIFS=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_FLAGS=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_FSTAB=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_OTHERTAB=y
+# FREETZ_BUSYBOX___V127_MOUNTPOINT is not set
+FREETZ_BUSYBOX___V127_PIVOT_ROOT=y
+# FREETZ_BUSYBOX___V127_RDATE is not set
+# FREETZ_BUSYBOX___V127_RDEV is not set
+# FREETZ_BUSYBOX___V127_READPROFILE is not set
+FREETZ_BUSYBOX___V127_RENICE=y
+# FREETZ_BUSYBOX___V127_REV is not set
+# FREETZ_BUSYBOX___V127_RTCWAKE is not set
+# FREETZ_BUSYBOX___V127_SCRIPT is not set
+# FREETZ_BUSYBOX___V127_SCRIPTREPLAY is not set
+# FREETZ_BUSYBOX___V127_SETARCH is not set
+# FREETZ_BUSYBOX___V127_LINUX32 is not set
+# FREETZ_BUSYBOX___V127_LINUX64 is not set
+# FREETZ_BUSYBOX___V127_SETPRIV is not set
+# FREETZ_BUSYBOX___V127_SETSID is not set
+FREETZ_BUSYBOX___V127_SWAPON=y
+# FREETZ_BUSYBOX___V127_FEATURE_SWAPON_DISCARD is not set
+FREETZ_BUSYBOX___V127_FEATURE_SWAPON_PRI=y
+FREETZ_BUSYBOX___V127_SWAPOFF=y
+FREETZ_BUSYBOX___V127_SWITCH_ROOT=y
+# FREETZ_BUSYBOX___V127_TASKSET is not set
+# FREETZ_BUSYBOX___V127_UEVENT is not set
+FREETZ_BUSYBOX___V127_UMOUNT=y
+FREETZ_BUSYBOX___V127_FEATURE_UMOUNT_ALL=y
+# FREETZ_BUSYBOX___V127_UNSHARE is not set
+
+#
+# Common options for mount/umount
+#
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_LOOP=y
+FREETZ_BUSYBOX___V127_FEATURE_MOUNT_LOOP_CREATE=y
+FREETZ_BUSYBOX___V127_FEATURE_MTAB_SUPPORT=y
+FREETZ_BUSYBOX___V127_VOLUMEID=y
+
+#
+# Filesystem/Volume identification
+#
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_BCACHE is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_BTRFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_CRAMFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_EXFAT is not set
+FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_EXT=y
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_F2FS is not set
+FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_FAT=y
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_HFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_ISO9660 is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_JFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_LINUXRAID is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_LINUXSWAP is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_LUKS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_NILFS is not set
+FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_NTFS=y
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_OCFS2 is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_REISERFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_ROMFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_SQUASHFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_SYSV is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_UBIFS is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_UDF is not set
+# FREETZ_BUSYBOX___V127_FEATURE_VOLUMEID_XFS is not set
+# end of Filesystem/Volume identification
+# end of Linux System Utilities
+
+#
+# Miscellaneous Utilities
+#
+# FREETZ_BUSYBOX___V127_ADJTIMEX is not set
+# FREETZ_BUSYBOX___V127_BBCONFIG is not set
+FREETZ_BUSYBOX___V127_BEEP=y
+FREETZ_BUSYBOX___V127_FEATURE_BEEP_FREQ=4000
+FREETZ_BUSYBOX___V127_FEATURE_BEEP_LENGTH_MS=30
+# FREETZ_BUSYBOX___V127_CHAT is not set
+# FREETZ_BUSYBOX___V127_CONSPY is not set
+FREETZ_BUSYBOX___V127_CROND=y
+# FREETZ_BUSYBOX___V127_FEATURE_CROND_D is not set
+# FREETZ_BUSYBOX___V127_FEATURE_CROND_CALL_SENDMAIL is not set
+# FREETZ_BUSYBOX___V127_FEATURE_CROND_ROOT_NOLOG is not set
+FREETZ_BUSYBOX___V127_FEATURE_CROND_DIR="/mod/var/spool/cron"
+FREETZ_BUSYBOX___V127_CRONTAB=y
+# FREETZ_BUSYBOX___V127_DC is not set
+# FREETZ_BUSYBOX___V127_DEVFSD is not set
+# FREETZ_BUSYBOX___V127_FEATURE_DEVFS is not set
+# FREETZ_BUSYBOX___V127_DEVMEM is not set
+# FREETZ_BUSYBOX___V127_FBSPLASH is not set
+# FREETZ_BUSYBOX___V127_FLASHCP is not set
+# FREETZ_BUSYBOX___V127_FLASH_ERASEALL is not set
+# FREETZ_BUSYBOX___V127_FLASH_LOCK is not set
+# FREETZ_BUSYBOX___V127_FLASH_UNLOCK is not set
+# FREETZ_BUSYBOX___V127_HDPARM is not set
+# FREETZ_BUSYBOX___V127_I2CGET is not set
+# FREETZ_BUSYBOX___V127_I2CSET is not set
+# FREETZ_BUSYBOX___V127_I2CDUMP is not set
+# FREETZ_BUSYBOX___V127_I2CDETECT is not set
+# FREETZ_BUSYBOX___V127_INOTIFYD is not set
+# FREETZ_BUSYBOX___V127_LESS is not set
+# FREETZ_BUSYBOX___V127_LSSCSI is not set
+FREETZ_BUSYBOX___V127_MAKEDEVS=y
+# FREETZ_BUSYBOX___V127_FEATURE_MAKEDEVS_LEAF is not set
+FREETZ_BUSYBOX___V127_FEATURE_MAKEDEVS_TABLE=y
+# FREETZ_BUSYBOX___V127_MAN is not set
+# FREETZ_BUSYBOX___V127_MICROCOM is not set
+# FREETZ_BUSYBOX___V127_MT is not set
+# FREETZ_BUSYBOX___V127_NANDWRITE is not set
+# FREETZ_BUSYBOX___V127_PARTPROBE is not set
+# FREETZ_BUSYBOX___V127_RAIDAUTORUN is not set
+# FREETZ_BUSYBOX___V127_READAHEAD is not set
+# FREETZ_BUSYBOX___V127_RFKILL is not set
+# FREETZ_BUSYBOX___V127_RX is not set
+FREETZ_BUSYBOX___V127_SETSERIAL=y
+# FREETZ_BUSYBOX___V127_STRINGS is not set
+FREETZ_BUSYBOX___V127_TIME=y
+# FREETZ_BUSYBOX___V127_TTYSIZE is not set
+# FREETZ_BUSYBOX___V127_VOLNAME is not set
+# FREETZ_BUSYBOX___V127_WATCHDOG is not set
+# end of Miscellaneous Utilities
+
+#
+# Networking Utilities
+#
+FREETZ_BUSYBOX___V127_FEATURE_IPV6=y
+# FREETZ_BUSYBOX___V127_FEATURE_UNIX_LOCAL is not set
+FREETZ_BUSYBOX___V127_FEATURE_PREFER_IPV4_ADDRESS=y
+# FREETZ_BUSYBOX___V127_VERBOSE_RESOLUTION_ERRORS is not set
+FREETZ_BUSYBOX___V127_ARP=y
+FREETZ_BUSYBOX___V127_ARPING=y
+FREETZ_BUSYBOX___V127_BRCTL=y
+FREETZ_BUSYBOX___V127_FEATURE_BRCTL_FANCY=y
+FREETZ_BUSYBOX___V127_FEATURE_BRCTL_SHOW=y
+# FREETZ_BUSYBOX___V127_DNSD is not set
+FREETZ_BUSYBOX___V127_ETHER_WAKE=y
+# FREETZ_BUSYBOX___V127_FTPD is not set
+FREETZ_BUSYBOX___V127_FTPGET=y
+FREETZ_BUSYBOX___V127_FTPPUT=y
+FREETZ_BUSYBOX___V127_FEATURE_FTPGETPUT_LONG_OPTIONS=y
+FREETZ_BUSYBOX___V127_HOSTNAME=y
+FREETZ_BUSYBOX___V127_DNSDOMAINNAME=y
+FREETZ_BUSYBOX___V127_HTTPD=y
+# FREETZ_BUSYBOX___V127_FEATURE_HTTPD_RANGES is not set
+# FREETZ_BUSYBOX___V127_FEATURE_HTTPD_SETUID is not set
+FREETZ_BUSYBOX___V127_FEATURE_HTTPD_BASIC_AUTH=y
+FREETZ_BUSYBOX___V127_FEATURE_HTTPD_AUTH_MD5=y
+FREETZ_BUSYBOX___V127_FEATURE_HTTPD_CGI=y
+FREETZ_BUSYBOX___V127_FEATURE_HTTPD_CONFIG_WITH_SCRIPT_INTERPR=y
+# FREETZ_BUSYBOX___V127_FEATURE_HTTPD_SET_REMOTE_PORT_TO_ENV is not set
+FREETZ_BUSYBOX___V127_FEATURE_HTTPD_ENCODE_URL_STR=y
+# FREETZ_BUSYBOX___V127_FEATURE_HTTPD_ERROR_PAGES is not set
+# FREETZ_BUSYBOX___V127_FEATURE_HTTPD_PROXY is not set
+# FREETZ_BUSYBOX___V127_FEATURE_HTTPD_GZIP is not set
+FREETZ_BUSYBOX___V127_IFCONFIG=y
+FREETZ_BUSYBOX___V127_FEATURE_IFCONFIG_STATUS=y
+FREETZ_BUSYBOX___V127_FEATURE_IFCONFIG_SLIP=y
+FREETZ_BUSYBOX___V127_FEATURE_IFCONFIG_MEMSTART_IOADDR_IRQ=y
+FREETZ_BUSYBOX___V127_FEATURE_IFCONFIG_HW=y
+FREETZ_BUSYBOX___V127_FEATURE_IFCONFIG_BROADCAST_PLUS=y
+# FREETZ_BUSYBOX___V127_IFENSLAVE is not set
+# FREETZ_BUSYBOX___V127_IFPLUGD is not set
+FREETZ_BUSYBOX___V127_IFUP=y
+FREETZ_BUSYBOX___V127_IFDOWN=y
+FREETZ_BUSYBOX___V127_IFUPDOWN_IFSTATE_PATH="/var/run/ifstate"
+FREETZ_BUSYBOX___V127_FEATURE_IFUPDOWN_IP=y
+FREETZ_BUSYBOX___V127_FEATURE_IFUPDOWN_IPV4=y
+FREETZ_BUSYBOX___V127_FEATURE_IFUPDOWN_IPV6=y
+FREETZ_BUSYBOX___V127_FEATURE_IFUPDOWN_MAPPING=y
+# FREETZ_BUSYBOX___V127_FEATURE_IFUPDOWN_EXTERNAL_DHCP is not set
+FREETZ_BUSYBOX___V127_INETD=y
+# FREETZ_BUSYBOX___V127_FEATURE_INETD_SUPPORT_BUILTIN_ECHO is not set
+# FREETZ_BUSYBOX___V127_FEATURE_INETD_SUPPORT_BUILTIN_DISCARD is not set
+# FREETZ_BUSYBOX___V127_FEATURE_INETD_SUPPORT_BUILTIN_TIME is not set
+# FREETZ_BUSYBOX___V127_FEATURE_INETD_SUPPORT_BUILTIN_DAYTIME is not set
+# FREETZ_BUSYBOX___V127_FEATURE_INETD_SUPPORT_BUILTIN_CHARGEN is not set
+# FREETZ_BUSYBOX___V127_FEATURE_INETD_RPC is not set
+FREETZ_BUSYBOX___V127_IP=y
+FREETZ_BUSYBOX___V127_IPADDR=y
+FREETZ_BUSYBOX___V127_IPLINK=y
+FREETZ_BUSYBOX___V127_IPROUTE=y
+FREETZ_BUSYBOX___V127_IPTUNNEL=y
+FREETZ_BUSYBOX___V127_IPRULE=y
+FREETZ_BUSYBOX___V127_IPNEIGH=y
+FREETZ_BUSYBOX___V127_FEATURE_IP_ADDRESS=y
+FREETZ_BUSYBOX___V127_FEATURE_IP_LINK=y
+FREETZ_BUSYBOX___V127_FEATURE_IP_ROUTE=y
+FREETZ_BUSYBOX___V127_FEATURE_IP_ROUTE_DIR="/etc/iproute2"
+FREETZ_BUSYBOX___V127_FEATURE_IP_TUNNEL=y
+FREETZ_BUSYBOX___V127_FEATURE_IP_RULE=y
+FREETZ_BUSYBOX___V127_FEATURE_IP_NEIGH=y
+# FREETZ_BUSYBOX___V127_FEATURE_IP_RARE_PROTOCOLS is not set
+# FREETZ_BUSYBOX___V127_IPCALC is not set
+# FREETZ_BUSYBOX___V127_FAKEIDENTD is not set
+# FREETZ_BUSYBOX___V127_NAMEIF is not set
+FREETZ_BUSYBOX___V127_NBDCLIENT=y
+FREETZ_BUSYBOX___V127_NC=y
+FREETZ_BUSYBOX___V127_NC_SERVER=y
+FREETZ_BUSYBOX___V127_NC_EXTRA=y
+FREETZ_BUSYBOX___V127_NC_110_COMPAT=y
+FREETZ_BUSYBOX___V127_NETSTAT=y
+FREETZ_BUSYBOX___V127_FEATURE_NETSTAT_WIDE=y
+FREETZ_BUSYBOX___V127_FEATURE_NETSTAT_PRG=y
+FREETZ_BUSYBOX___V127_NSLOOKUP=y
+# FREETZ_BUSYBOX___V127_NTPD is not set
+FREETZ_BUSYBOX___V127_PING=y
+FREETZ_BUSYBOX___V127_PING6=y
+FREETZ_BUSYBOX___V127_FEATURE_FANCY_PING=y
+# FREETZ_BUSYBOX___V127_PSCAN is not set
+FREETZ_BUSYBOX___V127_ROUTE=y
+# FREETZ_BUSYBOX___V127_SLATTACH is not set
+# FREETZ_BUSYBOX___V127_SSL_CLIENT is not set
+FREETZ_BUSYBOX___V127_STUN_IP=y
+# FREETZ_BUSYBOX___V127_TCPSVD is not set
+# FREETZ_BUSYBOX___V127_UDPSVD is not set
+# FREETZ_BUSYBOX___V127_TELNET is not set
+FREETZ_BUSYBOX___V127_TFTP=y
+# FREETZ_BUSYBOX___V127_TFTPD is not set
+
+#
+# Common options for tftp/tftpd
+#
+FREETZ_BUSYBOX___V127_FEATURE_TFTP_GET=y
+FREETZ_BUSYBOX___V127_FEATURE_TFTP_PUT=y
+# FREETZ_BUSYBOX___V127_FEATURE_TFTP_BLOCKSIZE is not set
+# FREETZ_BUSYBOX___V127_TFTP_DEBUG is not set
+FREETZ_BUSYBOX___V127_TRACEROUTE=y
+FREETZ_BUSYBOX___V127_TRACEROUTE6=y
+FREETZ_BUSYBOX___V127_FEATURE_TRACEROUTE_VERBOSE=y
+FREETZ_BUSYBOX___V127_FEATURE_TRACEROUTE_USE_ICMP=y
+# FREETZ_BUSYBOX___V127_TUNCTL is not set
+FREETZ_BUSYBOX___V127_VCONFIG=y
+FREETZ_BUSYBOX___V127_WHOIS=y
+# FREETZ_BUSYBOX___V127_ZCIP is not set
+# FREETZ_BUSYBOX___V127_UDHCPC6 is not set
+# FREETZ_BUSYBOX___V127_UDHCPD is not set
+# FREETZ_BUSYBOX___V127_DUMPLEASES is not set
+# FREETZ_BUSYBOX___V127_DHCPRELAY is not set
+# FREETZ_BUSYBOX___V127_UDHCPC is not set
+FREETZ_BUSYBOX___V127_IFUPDOWN_UDHCPC_CMD_OPTIONS="-R -n"
+# end of Networking Utilities
+
+#
+# Print Utilities
+#
+# FREETZ_BUSYBOX___V127_LPD is not set
+# FREETZ_BUSYBOX___V127_LPR is not set
+# FREETZ_BUSYBOX___V127_LPQ is not set
+# end of Print Utilities
+
+#
+# Mail Utilities
+#
+# FREETZ_BUSYBOX___V127_MAKEMIME is not set
+# FREETZ_BUSYBOX___V127_POPMAILDIR is not set
+# FREETZ_BUSYBOX___V127_REFORMIME is not set
+# FREETZ_BUSYBOX___V127_SENDMAIL is not set
+# end of Mail Utilities
+
+#
+# Process Utilities
+#
+FREETZ_BUSYBOX___V127_FREE=y
+# FREETZ_BUSYBOX___V127_FUSER is not set
+FREETZ_BUSYBOX___V127_IOSTAT=y
+FREETZ_BUSYBOX___V127_KILL=y
+FREETZ_BUSYBOX___V127_KILLALL=y
+FREETZ_BUSYBOX___V127_KILLALL5=y
+# FREETZ_BUSYBOX___V127_LSOF is not set
+FREETZ_BUSYBOX___V127_MPSTAT=y
+# FREETZ_BUSYBOX___V127_NMETER is not set
+# FREETZ_BUSYBOX___V127_PGREP is not set
+# FREETZ_BUSYBOX___V127_PKILL is not set
+FREETZ_BUSYBOX___V127_PIDOF=y
+FREETZ_BUSYBOX___V127_FEATURE_PIDOF_SINGLE=y
+FREETZ_BUSYBOX___V127_FEATURE_PIDOF_OMIT=y
+FREETZ_BUSYBOX___V127_PMAP=y
+# FREETZ_BUSYBOX___V127_POWERTOP is not set
+FREETZ_BUSYBOX___V127_PS=y
+FREETZ_BUSYBOX___V127_FEATURE_PS_WIDE=y
+FREETZ_BUSYBOX___V127_FEATURE_PS_LONG=y
+FREETZ_BUSYBOX___V127_PSTREE=y
+FREETZ_BUSYBOX___V127_PWDX=y
+FREETZ_BUSYBOX___V127_SMEMCAP=y
+FREETZ_BUSYBOX___V127_BB_SYSCTL=y
+FREETZ_BUSYBOX___V127_TOP=y
+FREETZ_BUSYBOX___V127_FEATURE_TOP_INTERACTIVE=y
+FREETZ_BUSYBOX___V127_FEATURE_TOP_CPU_USAGE_PERCENTAGE=y
+FREETZ_BUSYBOX___V127_FEATURE_TOP_CPU_GLOBAL_PERCENTS=y
+FREETZ_BUSYBOX___V127_FEATURE_TOP_SMP_CPU=y
+FREETZ_BUSYBOX___V127_FEATURE_TOP_DECIMALS=y
+FREETZ_BUSYBOX___V127_FEATURE_TOP_SMP_PROCESS=y
+FREETZ_BUSYBOX___V127_FEATURE_TOPMEM=y
+FREETZ_BUSYBOX___V127_UPTIME=y
+# FREETZ_BUSYBOX___V127_WATCH is not set
+# FREETZ_BUSYBOX___V127_FEATURE_SHOW_THREADS is not set
+# end of Process Utilities
+
+#
+# Runit Utilities
+#
+# FREETZ_BUSYBOX___V127_CHPST is not set
+# FREETZ_BUSYBOX___V127_SETUIDGID is not set
+# FREETZ_BUSYBOX___V127_ENVUIDGID is not set
+# FREETZ_BUSYBOX___V127_ENVDIR is not set
+# FREETZ_BUSYBOX___V127_SOFTLIMIT is not set
+# FREETZ_BUSYBOX___V127_RUNSV is not set
+# FREETZ_BUSYBOX___V127_RUNSVDIR is not set
+# FREETZ_BUSYBOX___V127_SV is not set
+# FREETZ_BUSYBOX___V127_SVC is not set
+# FREETZ_BUSYBOX___V127_SVLOGD is not set
+# end of Runit Utilities
+
+#
+# Shells
+#
+FREETZ_BUSYBOX___V127_SH_IS_ASH=y
+FREETZ_BUSYBOX___V127_BASH_IS_ASH=y
+FREETZ_BUSYBOX___V127_ASH=y
+FREETZ_BUSYBOX___V127_ASH_OPTIMIZE_FOR_SIZE=y
+FREETZ_BUSYBOX___V127_ASH_INTERNAL_GLOB=y
+FREETZ_BUSYBOX___V127_ASH_BASH_COMPAT=y
+FREETZ_BUSYBOX___V127_ASH_JOB_CONTROL=y
+FREETZ_BUSYBOX___V127_ASH_ALIAS=y
+FREETZ_BUSYBOX___V127_ASH_RANDOM_SUPPORT=y
+FREETZ_BUSYBOX___V127_ASH_EXPAND_PRMT=y
+# FREETZ_BUSYBOX___V127_ASH_IDLE_TIMEOUT is not set
+# FREETZ_BUSYBOX___V127_ASH_MAIL is not set
+FREETZ_BUSYBOX___V127_ASH_ECHO=y
+FREETZ_BUSYBOX___V127_ASH_PRINTF=y
+FREETZ_BUSYBOX___V127_ASH_TEST=y
+# FREETZ_BUSYBOX___V127_ASH_HELP is not set
+FREETZ_BUSYBOX___V127_ASH_GETOPTS=y
+FREETZ_BUSYBOX___V127_ASH_CMDCMD=y
+# FREETZ_BUSYBOX___V127_CTTYHACK is not set
+# FREETZ_BUSYBOX___V127_HUSH is not set
+# FREETZ_BUSYBOX___V127_MSH is not set
+
+#
+# Options common to all shells
+#
+FREETZ_BUSYBOX___V127_FEATURE_SH_MATH=y
+FREETZ_BUSYBOX___V127_FEATURE_SH_MATH_64=y
+# FREETZ_BUSYBOX___V127_FEATURE_SH_EXTRA_QUIET is not set
+# FREETZ_BUSYBOX___V127_FEATURE_SH_HISTFILESIZE is not set
+# end of Shells
+
+#
+# System Logging Utilities
+#
+FREETZ_BUSYBOX___V127_KLOGD=y
+FREETZ_BUSYBOX___V127_FEATURE_KLOGD_KLOGCTL=y
+FREETZ_BUSYBOX___V127_LOGGER=y
+FREETZ_BUSYBOX___V127_LOGREAD=y
+FREETZ_BUSYBOX___V127_FEATURE_LOGREAD_REDUCED_LOCKING=y
+FREETZ_BUSYBOX___V127_SYSLOGD=y
+FREETZ_BUSYBOX___V127_FEATURE_ROTATE_LOGFILE=y
+FREETZ_BUSYBOX___V127_FEATURE_REMOTE_LOG=y
+FREETZ_BUSYBOX___V127_FEATURE_SYSLOGD_DUP=y
+# FREETZ_BUSYBOX___V127_FEATURE_SYSLOGD_CFG is not set
+FREETZ_BUSYBOX___V127_FEATURE_SYSLOGD_READ_BUFFER_SIZE=256
+FREETZ_BUSYBOX___V127_FEATURE_IPC_SYSLOG=y
+FREETZ_BUSYBOX___V127_FEATURE_IPC_SYSLOG_BUFFER_SIZE=16
+# FREETZ_BUSYBOX___V127_FEATURE_KMSG_SYSLOG is not set
+# end of System Logging Utilities
+# end of Busybox applets
+
+EXTERNAL_ENABLED=y
+EXTERNAL_SUBDIRS=y
+EXTERNAL_LINKS=y
+EXTERNAL_DYNAMIC=y
+EXTERNAL_DYNAMIC_SCRIPTS=y
+EXTERNAL_CREATEPAK=y
+EXTERNAL_CREATEPAK_DYNAMIC=y
+EXTERNAL_OWN_FILES=""
+
+#
+# packages
+#
+# EXTERNAL_FREETZ_PACKAGE_CA_BUNDLE is not set
+EXTERNAL_FREETZ_PACKAGE_GIT=y
+# EXTERNAL_FREETZ_PACKAGE_NANO is not set
+# EXTERNAL_FREETZ_PACKAGE_OPENSSH is not set
+EXTERNAL_FREETZ_PACKAGE_OPENSSL=y
+EXTERNAL_FREETZ_PACKAGE_PYTHON=y
+# EXTERNAL_FREETZ_PACKAGE_SCREEN is not set
+# EXTERNAL_FREETZ_PACKAGE_STUNNEL is not set
+EXTERNAL_FREETZ_PACKAGE_WGET=y
+# FREETZ_WGET_ALWAYS_AVAILABLE is not set
+# EXTERNAL_FREETZ_PACKAGE_LDD is not set
+
+#
+# libraries
+#
+# EXTERNAL_FREETZ_LIB_libcrypto is not set
+# EXTERNAL_FREETZ_LIB_libssl is not set
+# EXTERNAL_FREETZ_LIB_libcurl is not set
+# EXTERNAL_FREETZ_LIB_libexpat is not set
+# EXTERNAL_FREETZ_LIB_libffi is not set
+# EXTERNAL_FREETZ_LIB_libncurses is not set
+# EXTERNAL_FREETZ_LIB_libncursesw is not set
+# EXTERNAL_FREETZ_LIB_libreadline is not set
+# EXTERNAL_FREETZ_LIB_liblzma is not set
+# EXTERNAL_FREETZ_LIB_libmbedcrypto is not set
+# EXTERNAL_FREETZ_LIB_libmbedtls is not set
+# EXTERNAL_FREETZ_LIB_libmbedx509 is not set
+EXTERNAL_FREETZ_LIB_libpython2=y
+# EXTERNAL_FREETZ_LIB_libz is not set
+
+#
+# modules
+#
+EXTERNAL_OWN_MODULES=""
+
+#
+# Mod customizations ---------------------------------------
+#
+
+#
+# Web Interface
+#
+# FREETZ_BACKUP_ENCRYPTION is not set
+# FREETZ_BACKUP_DECODING is not set
+# FREETZ_BACKUP_EXPORT is not set
+FREETZ_LANG_DE=y
+# FREETZ_LANG_EN is not set
+FREETZ_LANG_STRING="de"
+FREETZ_SECURITY_LEVEL=0
+FREETZ_STYLE_GREY=y
+FREETZ_STYLE="grey"
+
+#
+# Freetz skins
+#
+FREETZ_SKIN_cuma=y
+FREETZ_SKIN_legacy=y
+# FREETZ_SKIN_newfreetz is not set
+# FREETZ_SKIN_phoenix is not set
+# end of Freetz skins
+
+# FREETZ_FAVICON_NONE is not set
+# FREETZ_FAVICON_ATOMPHIL is not set
+FREETZ_FAVICON_CUMA=y
+# FREETZ_FAVICON_DSL123 is not set
+# FREETZ_FAVICON_HANSOLO is not set
+# FREETZ_FAVICON_PRISRAK is not set
+FREETZ_FAVICON_STRING="cuma"
+FREETZ_TAGGING_NONE=y
+# FREETZ_TAGGING_CUMA is not set
+# FREETZ_TAGGING_NG is not set
+# FREETZ_TAGGING_PIMPED is not set
+# end of Web Interface
+
+#
+# Additional informations
+#
+FREETZ_ADD_JUIS_CHECK=y
+# FREETZ_ADD_JUIS_CHECK__SSL is not set
+FREETZ_ADD_UIMODS=y
+# FREETZ_REMOVE_BOX_INFO is not set
+# FREETZ_REMOVE_FLASH_INFO is not set
+# FREETZ_REMOVE_FREETZ_INFO is not set
+FREETZ_USER_DEFINED_COMMENT=""
+# FREETZ_IMAGE_NAME_CUSTOM is not set
+FREETZ_CREATE_SEPARATE_OPTIONS_CFG=y
+# FREETZ_DOT_CONFIG_DONOTADD is not set
+FREETZ_DOT_CONFIG_STRIPPED=y
+# FREETZ_DOT_CONFIG_COMPLETE is not set
+# end of Additional informations
+
+#
+# Build system ---------------------------------------------
+#
+
+#
+# Toolchain options
+#
+FREETZ_BUILD_TOOLCHAIN=y
+# FREETZ_TOOLCHAIN_CCACHE is not set
+FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION=y
+
+#
+# Kernel toolchain options ----------------------------------------
+#
+FREETZ_KERNEL_VERSION_2_6_32_60=y
+FREETZ_KERNEL_BINUTILS_2_22_DEFAULT=y
+FREETZ_KERNEL_BINUTILS_2_22=y
+# FREETZ_KERNEL_BINUTILS_2_23 is not set
+# FREETZ_KERNEL_BINUTILS_2_24 is not set
+FREETZ_KERNEL_GCC_4_6=y
+FREETZ_KERNEL_GCC_4=y
+FREETZ_KERNEL_GCC_3_MIN=y
+FREETZ_KERNEL_GCC_4_MIN=y
+FREETZ_KERNEL_GCC_4_MAX=y
+FREETZ_KERNEL_GCC_5_MAX=y
+FREETZ_KERNEL_GCC_8_MAX=y
+FREETZ_KERNEL_GCC_9_MAX=y
+FREETZ_KERNEL_GCC_10_MAX=y
+FREETZ_KERNEL_BINUTILS_VERSION="2.22"
+FREETZ_KERNEL_GCC_VERSION="4.6.4"
+
+#
+# Target toolchain options ----------------------------------------
+#
+# FREETZ_TARGET_UNSUPPORTED_VERSIONS is not set
+FREETZ_TARGET_UCLIBC_0_9_32=y
+FREETZ_TARGET_UCLIBC_HAS_multiple_libs=y
+FREETZ_TARGET_UCLIBC_SUPPORTS_rpc=y
+FREETZ_TARGET_BINUTILS_2_22_DEFAULT=y
+FREETZ_TARGET_BINUTILS_2_22=y
+FREETZ_TARGET_GCC_4_6=y
+FREETZ_TARGET_GCC_4_6_MIN=y
+FREETZ_TARGET_GCC_4=y
+FREETZ_TARGET_GCC_4_MIN=y
+FREETZ_TARGET_GCC_4_6_MAX=y
+FREETZ_TARGET_GCC_4_7_MAX=y
+FREETZ_TARGET_GCC_4_8_MAX=y
+FREETZ_TARGET_GCC_4_9_MAX=y
+FREETZ_TARGET_GCC_5_1_MAX=y
+FREETZ_TARGET_GCC_5_4_MAX=y
+FREETZ_TARGET_GCC_5_5_MAX=y
+FREETZ_TARGET_GCC_8_3_MAX=y
+FREETZ_TARGET_GCC_8_4_MAX=y
+FREETZ_TARGET_GCC_9_3_MAX=y
+FREETZ_TARGET_GCC_9_4_MAX=y
+FREETZ_TARGET_GCC_13_4_MAX=y
+FREETZ_TARGET_GCC_14_3_MAX=y
+FREETZ_TARGET_GCC_15_2_MAX=y
+FREETZ_TARGET_GCC_4_MAX=y
+FREETZ_TARGET_GCC_5_MAX=y
+FREETZ_TARGET_GCC_8_MAX=y
+FREETZ_TARGET_GCC_9_MAX=y
+FREETZ_TARGET_GCC_13_MAX=y
+FREETZ_TARGET_GCC_14_MAX=y
+FREETZ_TARGET_GCC_15_MAX=y
+FREETZ_TARGET_GCC_DEFAULT_AS_NEEDED=y
+# FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX is not set
+FREETZ_STDCXXLIB_USE_UCLIBCXX=y
+FREETZ_STDCXXLIB_USE_UCLIBCXX_CHOICE=y
+# FREETZ_STDCXXLIB_USE_GNULIBSTDCXX_CHOICE is not set
+FREETZ_TARGET_UCLIBC_0=y
+FREETZ_TARGET_UCLIBC_VERSION="0.9.32.1"
+FREETZ_TARGET_UCLIBC_MAJOR_VERSION="0"
+FREETZ_TARGET_BINUTILS_VERSION="2.22"
+FREETZ_TARGET_GCC_VERSION="4.6.4"
+FREETZ_GNULIBATOMIC_VERSION="0.0.0"
+FREETZ_GNULIBSTDCXX_VERSION="6.0.16"
+FREETZ_STDCXXLIB="uclibcxx"
+FREETZ_TARGET_CFLAGS="-Os -pipe"
+FREETZ_RPATH="/usr/lib/freetz"
+# FREETZ_TARGET_UCLIBC_DODEBUG is not set
+FREETZ_TARGET_UCLIBC_REDUCED_LOCALE_SET=y
+
+#
+# Host-tools options ----------------------------------
+#
+# FREETZ_HOSTTOOLS_DOWNLOAD is not set
+FREETZ_HOSTTOOLS_BUILD=y
+# FREETZ_ROOTEMU_FAKEROOT is not set
+FREETZ_ROOTEMU_PSEUDO=y
+# FREETZ_TOOLS_KCONFIG_OLDSCHOOL is not set
+FREETZ_TOOLS_PATCHELF_VERSION_CURRENT=y
+# end of Toolchain options
+
+#
+# Build system options
+#
+# FREETZ_ANCIENT_SYSTEM is not set
+FREETZ_MENUCONFIG_REVISION=y
+# FREETZ_VERBOSITY_FWMOD_0 is not set
+# FREETZ_VERBOSITY_FWMOD_1 is not set
+FREETZ_VERBOSITY_FWMOD_2=y
+FREETZ_VERBOSITY_FWMOD=2
+# FREETZ_VERBOSITY_LEVEL_0 is not set
+# FREETZ_VERBOSITY_LEVEL_1 is not set
+FREETZ_VERBOSITY_LEVEL_2=y
+FREETZ_VERBOSITY_LEVEL=2
+FREETZ_SIZEINFO_COMPRESSED=y
+# FREETZ_SIZEINFO_UNCOMPRESSED is not set
+FREETZ_JLEVEL=0
+FREETZ_CHECK_CHANGED=y
+# end of Build system options
+
+#
+# Firmware packaging (fwmod) options
+#
+# FREETZ_FWMOD_SKIP_UNPACK is not set
+FREETZ_FWMOD_VALIDATE=y
+# FREETZ_FWMOD_SKIP_MODIFY is not set
+# FREETZ_FWMOD_SKIP_PACK is not set
+# FREETZ_FWMOD_SIGN is not set
+# FREETZ_FWMOD_FORCE_PACK is not set
+# FREETZ_FWMOD_USBROOT is not set
+# FREETZ_FWMOD_NFSROOT is not set
+# end of Firmware packaging (fwmod) options
+
+#
+# SquashFS options
+#
+# FREETZ_SQUASHFS_BLOCKSIZE_ORIG is not set
+FREETZ_SQUASHFS_BLOCKSIZE_65536=y
+FREETZ_SQUASHFS_BLOCKSIZE=65536
+# end of SquashFS options
+
+#
+# Strip options
+#
+FREETZ_STRIP_UCLIBC=y
+FREETZ_STRIP_BINARIES=y
+# FREETZ_STRIP_LIBRARIES is not set
+# FREETZ_STRIP_MODULES_NONE is not set
+FREETZ_STRIP_MODULES_FREETZ=y
+# FREETZ_STRIP_MODULES_ALL is not set
+# FREETZ_STRIP_SCRIPTS is not set
+# end of Strip options
+
+#
+# Download options
+#
+FREETZ_DL_SITE_USER=""
+# FREETZ_DL_IMAGE_AT_LAST is not set
+FREETZ_DL_VCS_REPO_FIRST=y
+FREETZ_DL_VCS_FROM_MIRRORS=y
+FREETZ_DL_KERNEL_TOOLCHAIN_VERSION="r26741"
+FREETZ_DL_KERNEL_TOOLCHAIN_HASH="4e7e5cbe91bc83e8af5ee3b60219ee4d945ed37cf206b38fa0121caf7e9ab9b3"
+FREETZ_DL_TARGET_TOOLCHAIN_VERSION="r26741"
+FREETZ_DL_TARGET_TOOLCHAIN_HASH="efb16dff3d4a4586f88fe3fec64ee305afe0c4f5efcc50dd64fc3cecc8ecf201"
+# FREETZ_DL_KERNEL_OVERRIDE is not set
+FREETZ_DL_KERNEL_SOURCE_ID="7270_06.05"
+FREETZ_DL_KERNEL_VANILLA_SOURCE="linux-${FREETZ_KERNEL_VANILLA_VERSION}.tar.xz"
+FREETZ_DL_KERNEL_VANILLA_HASH="96c20c370ed440db61624d93f34721a09a69b12bb81b1b03bb735041983fb1bd"
+FREETZ_DL_KERNEL_AVMDIFF_VERSION="ADv1"
+FREETZ_DL_KERNEL_AVMDIFF_SOURCE="kernel_${FREETZ_KERNEL_VERSION}-${FREETZ_DL_KERNEL_SOURCE_ID}${FREETZ_SYSTEM_TYPE_CORE_SUFFIX}-${FREETZ_DL_KERNEL_AVMDIFF_VERSION}.patch.xz"
+FREETZ_DL_KERNEL_AVMDIFF_HASH="14faac576bc6a55c7779fecba23c33f8a2d13a4c3619bc6cde5211d23658614b"
+# FREETZ_DL_OVERRIDE is not set
+FREETZ_DL_SITE="@AVM/fritzbox.fon_wlan_7270_v3/firmware/deutsch,@1&1/7270v3"
+FREETZ_DL_SOURCE="FRITZ.Box_Fon_WLAN_7270_v3.74.06.06.image"
+FREETZ_REAL_DEVELOPER_ONLY__DLIMG=""
+# end of Download options
+
+FREETZ_AVM_HAS_FIRMWARE_05_2X=y
+FREETZ_AVM_HAS_FIRMWARE_05_5X=y
+FREETZ_AVM_HAS_FIRMWARE_06_0X=y
+FREETZ_AVM_HAS_LANG_DE=y
+FREETZ_AVM_HAS_LANG_EN=y
+FREETZ_TYPE_DSL=y
+FREETZ_AVM_HAS_TEMPERATURE_SENSOR=y
+FREETZ_AVM_HAS_MULTI_ANNEX=y
+FREETZ_AVM_HAS_IPV6=y
+FREETZ_AVM_HAS_PTY_SUPPORT=y
+FREETZ_AVM_HAS_PRINTK=y
+FREETZ_AVM_HAS_JUIS_SUPPORT=y
+FREETZ_AVM_HAS_MULTID_LEASES_FORMAT_V2=y
+FREETZ_AVM_HAS_LIBC_FILE="libc.so.0"
+FREETZ_AVM_HAS_AVMMULTID_PRELOAD=y
+FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD=y
+FREETZ_AVM_SQUASHFS_VERSION=3
+FREETZ_SQUASHFS_VERSION=3
+FREETZ_AVM_SQUASHFS_ENDIANNESS="le"
+FREETZ_AVM_SQUASHFS_COMPRESSION="lzma"
+FREETZ_AVM_IMAGES_SUBDIR="var/tmp"
+FREETZ_AVM_SIGNATURE_KEY="010001x00f08188899fd2ef64c982801ed315dbec44a6243447ca804a5fe7d74b5754744ff06cccbb56a8c355c830e04d91a193b394c698eb2e67a36f5646719e7bde5240a08b7b40b0a80c81c9cc5b3f2838f5635de4af3e459298bb21a245b6651c3770ca481805b27f07ebd6cd003c397e0fc4f440bcb9e78832fa72a830be11a067ff"
+FREETZ_AVM_PROP_NAME="FRITZ!Box Fon WLAN 7270 v3"
+FREETZ_AVM_PROP_MAJOR="74"
+FREETZ_AVM_PROP_HWREV="145"
+FREETZ_AVM_HAS_SIGNATURE=y
+FREETZ_AVM_HAS_BRANDING_avm=y
+FREETZ_AVM_SERIAL_CONSOLE_DEVICE="/dev/ttyS0"
+FREETZ_AVM_HAS_WLAN=y
+FREETZ_AVM_HAS_INETD=y
+FREETZ_AVM_HAS_TR064=y
+FREETZ_AVM_HAS_TR069=y
+FREETZ_AVM_HAS_TR069_FWUPDATE=y
+FREETZ_AVM_HAS_LEDPAGE=y
+FREETZ_AVM_HAS_DMESG_FILE=y
+FREETZ_AVM_HAS_UDEV=y
+FREETZ_AVM_HAS_CTLMGR_CTL=y
+FREETZ_AVM_HAS_SHOWDSLDSTAT=y
+FREETZ_AVM_HAS_HOSTAPD=y
+FREETZ_AVM_HAS_OPENSSL=y
+FREETZ_AVM_PROP_SQUASHFS_VERSION_3=y
+FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_LZMA=y
+FREETZ_AVM_HAS_FWLAYOUT_1=y
+FREETZ_AVM_PROP_ARCH_MIPS=y
+FREETZ_AVM_PROP_LIBC_UCLIBC=y
+FREETZ_AVM_HAS_MULTIPLE_BRANDINGS=y
+FREETZ_AVM_HAS_TC=y
+FREETZ_AVM_HAS_RAMZSWAP_MODULE=y
+FREETZ_AVM_HAS_AHA=y
+FREETZ_AVM_PROP_SQUASHFS_ENDIANN_LE=y
+FREETZ_AVM_PROP_ARCH_LE=y
+FREETZ_AVM_HAS_MYFRITZ=y
+FREETZ_AVM_HAS_CHRONYD=y
+FREETZ_AVM_HAS_DDNSD=y
+FREETZ_AVM_HAS_DSLD=y
+FREETZ_AVM_HAS_VPN=y
+FREETZ_AVM_HAS_KIDS=y
+FREETZ_AVM_HAS_AURA_USB=y
+FREETZ_AVM_HAS_USB_HOST=y
+FREETZ_AVM_HAS_SAMBA_SMBD=y
+FREETZ_AVM_HAS_PRINTSERV=y
+FREETZ_AVM_HAS_MEDIASRV=y
+FREETZ_AVM_HAS_OPENSSL_VERSION_09=y
+FREETZ_AVM_HAS_BRANDING_1und1=y
+FREETZ_AVM_HAS_TELNETD=y
+FREETZ_AVM_HAS_ANNEX_SELECTION=y
+FREETZ_AVM_HAS_NAS=y
+FREETZ_AVM_HAS_NTFS=y
+FREETZ_AVM_HAS_WEBDAV=y
+FREETZ_AVM_HAS_TAM=y
+FREETZ_AVM_HAS_PHONE=y
+FREETZ_AVM_HAS_UMTS=y
+FREETZ_AVM_HAS_LSOF=y
+FREETZ_AVM_HAS_HOSTAPD_VERSION_0_5_9=y
+FREETZ_AVM_HAS_DTRACE=y
+FREETZ_AVM_HAS_E2FSPROGS=y
+FREETZ_AVM_HAS_JFFS2_MODULE=y
+FREETZ_AVM_PROP_GCC_4_6=y
+FREETZ_AVM_PROP_UCLIBC_0_9_32=y
+FREETZ_AVM_HAS_DECT=y
+FREETZ_AVM_HAS_FAX=y
+FREETZ_AVM_HAS_BRANDING_otwo=y
+FREETZ_AVM_PROP_KERNEL_2_6_32_60=y
+FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN=y
+FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN=y
+FREETZ_AVM_HAS_EXT3_FS_BUILTIN=y
+FREETZ_AVM_HAS_FAT_FS_BUILTIN=y
+FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN=y
+FREETZ_AVM_HAS_FUSE_FS_BUILTIN=y
+FREETZ_AVM_HAS_MSDOS_FS_BUILTIN=y
+FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN=y
+FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN=y
+FREETZ_AVM_HAS_NLS_UTF8_BUILTIN=y
+FREETZ_AVM_HAS_TUN_BUILTIN=y
+FREETZ_AVM_HAS_USB_BUILTIN=y
+FREETZ_AVM_HAS_VFAT_FS_BUILTIN=y
+FREETZ_AVM_HAS_EXT2_FS_BUILTIN=y
+FREETZ_AVM_HAS_JBD_BUILTIN=y
+FREETZ_AVM_HAS_SWAP_BUILTIN=y
+FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN=y
+FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN=y
+FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN=y
+FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN=y
+FREETZ_AVM_HAS_USB_STORAGE_BUILTIN=y
+FREETZ_AVM_HAS_USB_MUSB_HDRC_BUILTIN=y
+FREETZ_AVM_VERSION_06_0X=y
+FREETZ_AVM_VERSION_04_XX_MIN=y
+FREETZ_AVM_VERSION_05_2X_MIN=y
+FREETZ_AVM_VERSION_05_5X_MIN=y
+FREETZ_AVM_VERSION_06_0X_MIN=y
+FREETZ_AVM_VERSION_06_0X_MAX=y
+FREETZ_AVM_VERSION_06_2X_MAX=y
+FREETZ_AVM_VERSION_06_5X_MAX=y
+FREETZ_AVM_VERSION_06_8X_MAX=y
+FREETZ_AVM_VERSION_06_9X_MAX=y
+FREETZ_AVM_VERSION_07_0X_MAX=y
+FREETZ_AVM_VERSION_07_1X_MAX=y
+FREETZ_AVM_VERSION_07_2X_MAX=y
+FREETZ_AVM_VERSION_07_5X_MAX=y
+FREETZ_AVM_VERSION_08_0X_MAX=y
+FREETZ_AVM_VERSION_08_2X_MAX=y
+FREETZ_SYSTEM_TYPE_UR8=y
+FREETZ_SYSTEM_TYPE="ur8"
+FREETZ_CPU_MODEL_MIPS_4KEc=y
+FREETZ_TARGET_ARCH_LE=y
+FREETZ_TARGET_BITS_32=y
+FREETZ_TARGET_BITS="32"
+FREETZ_TARGET_ARCH_MIPS=y
+FREETZ_KERNEL_ARCH="mips"
+FREETZ_TARGET_ARCH="mips"
+FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT="mipsel"
+FREETZ_TARGET_TRIPLET_VENDOR="unknown"
+FREETZ_TARGET_GNU_TRIPLET="${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}-${FREETZ_TARGET_TRIPLET_VENDOR}-linux-gnu${FREETZ_TARGET_TRIPLET_GNU_ABI}"
+FREETZ_TARGET_UCLIBC_TRIPLET="${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}-linux-uclibc${FREETZ_TARGET_TRIPLET_UCLIBC_ABI}"
+FREETZ_TARGET_CROSS="${FREETZ_TARGET_UCLIBC_TRIPLET}-"
+FREETZ_TARGET_MAKE_PATH="toolchain/target/bin"
+FREETZ_KERNEL_CROSS="${FREETZ_TARGET_GNU_TRIPLET}-"
+FREETZ_KERNEL_MAKE_PATH="toolchain/kernel/bin"
+FREETZ_AVM_GCC_4_6=y
+FREETZ_AVM_GCC_4=y
+FREETZ_AVM_GCC_3_4_MIN=y
+FREETZ_AVM_GCC_4_6_MIN=y
+FREETZ_AVM_GCC_4_MIN=y
+FREETZ_AVM_GCC_4_6_MAX=y
+FREETZ_AVM_GCC_4_7_MAX=y
+FREETZ_AVM_GCC_4_8_MAX=y
+FREETZ_AVM_GCC_4_9_MAX=y
+FREETZ_AVM_GCC_5_1_MAX=y
+FREETZ_AVM_GCC_5_4_MAX=y
+FREETZ_AVM_GCC_5_5_MAX=y
+FREETZ_AVM_GCC_8_3_MAX=y
+FREETZ_AVM_GCC_8_4_MAX=y
+FREETZ_AVM_GCC_9_3_MAX=y
+FREETZ_AVM_GCC_9_4_MAX=y
+FREETZ_AVM_GCC_10_5_MAX=y
+FREETZ_AVM_GCC_13_3_MAX=y
+FREETZ_AVM_GCC_4_MAX=y
+FREETZ_AVM_GCC_5_MAX=y
+FREETZ_AVM_GCC_8_MAX=y
+FREETZ_AVM_GCC_9_MAX=y
+FREETZ_AVM_GCC_10_MAX=y
+FREETZ_AVM_GCC_13_MAX=y
+FREETZ_GCC_ABI="32"
+FREETZ_GCC_ARCH="mips32"
+FREETZ_GCC_CPU="4kc"
+FREETZ_GCC_FLOAT_ABI="soft"
+FREETZ_KERNEL_VERSION_2_6_32=y
+FREETZ_KERNEL_VERSION="2.6.32.60"
+FREETZ_KERNEL_VERSION_MAJOR="2.6.32"
+FREETZ_KERNEL_VANILLA_DLDIR="2.6"
+FREETZ_KERNEL_VANILLA_VERSION="2.6.32.27"
+FREETZ_KERNEL_VERSION_MODULES_SUBDIR="2.6.32.60"
+FREETZ_KERNEL_VERSION_2_6_13_MIN=y
+FREETZ_KERNEL_VERSION_2_6_19_MIN=y
+FREETZ_KERNEL_VERSION_2_6_28_MIN=y
+FREETZ_KERNEL_VERSION_2_6_32_MIN=y
+FREETZ_KERNEL_VERSION_2_6_32_MAX=y
+FREETZ_KERNEL_VERSION_2_6_39_MAX=y
+FREETZ_KERNEL_VERSION_2_MAX=y
+FREETZ_KERNEL_VERSION_3_10_MAX=y
+FREETZ_KERNEL_VERSION_3_12_MAX=y
+FREETZ_KERNEL_VERSION_3_MAX=y
+FREETZ_KERNEL_VERSION_4_1_MAX=y
+FREETZ_KERNEL_VERSION_4_4_MAX=y
+FREETZ_KERNEL_VERSION_4_9_MAX=y
+FREETZ_KERNEL_VERSION_4_19_MAX=y
+FREETZ_KERNEL_VERSION_4_MAX=y
+FREETZ_KERNEL_VERSION_5_4_MAX=y
+FREETZ_KERNEL_VERSION_5_15_MAX=y
+FREETZ_KERNEL_VERSION_5_MAX=y
+FREETZ_KERNEL_VERSION_2=y
+FREETZ_AVM_UCLIBC_0_9_32=y
+FREETZ_AVM_SOURCE_7270_06_05=y
+FREETZ_AVM_SOURCE_ID="7270_06.05"
+FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_UR8=y
+FREETZ_REPLACE_KERNEL_AVAILABLE=y
+FREETZ_REPLACE_MODULE_AVAILABLE=y
+FREETZ_KERNEL_AVMDIFF_AVAILABLE=y
+FREETZ_TYPE_PREFIX="7270_v3"
+FREETZ_TYPE_PREFIX_SERIES_SUBDIR="06_0X"
+FREETZ_TARGET_MESON_FAMILY="mips"
+FREETZ_TARGET_MESON_CPU="mipsel"
+FREETZ_TARGET_MESON_ENDIAN="little"
+FREETZ_TARGET_MESON_ENDIAN_UPPER="LE"
+FREETZ_INSTALL_BASE=y
+FREETZ_REPLACE_BUSYBOX=y
