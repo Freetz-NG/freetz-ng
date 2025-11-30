@@ -37,7 +37,7 @@ endef
 # $(2) => additional arguments to setup.py
 # $(3) => additional variables
 # $(4) => dir to look for .so files to be stripped
-define Build/PyMod/Generic
+define Build/PyMod2/Generic
 	$(call HostPython, \
 		cd $(strip $(1)); \
 		$(TARGET_CONFIGURE_ENV) \
@@ -53,8 +53,8 @@ endef
 # $(1) => PKG value
 # $(2) => additional arguments to setup.py
 # $(3) => additional variables
-define Build/PyMod/PKG
-	$(call Build/PyMod/Generic, \
+define Build/PyMod2/PKG
+	$(call Build/PyMod2/Generic, \
 		$($(strip $(1))_DIR), \
 		install --prefix=/usr --root=$(abspath $($(strip $(1))_DEST_DIR)) \
 		$(2), \
