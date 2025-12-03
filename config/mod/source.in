@@ -3,51 +3,52 @@
 ###
 
 config FREETZ_REPLACE_KERNEL_AVAILABLE
-	bool
-#	depends on \
-	depends on (FREETZ_SYSTEM_TYPE_ALDER) || ( \
-		! (FREETZ_TYPE_FON && FREETZ_TYPE_LANG_EN) && \
-		! (FREETZ_SYSTEM_TYPE_ALDER) && \
-		! (FREETZ_SYSTEM_TYPE_AR10 && FREETZ_TYPE_FIRMWARE_06_5X) && \
-		! (FREETZ_SYSTEM_TYPE_AR934x && (FREETZ_TYPE_FIRMWARE_06_5X || FREETZ_TYPE_FIRMWARE_06_8X)) && \
-		! (FREETZ_SYSTEM_TYPE_BCM63138) && \
-		! (FREETZ_SYSTEM_TYPE_GRX5) && \
-		! (FREETZ_SYSTEM_TYPE_IKS_VX185) && \
-		! (FREETZ_SYSTEM_TYPE_IPQ40xx) && \
-		! (FREETZ_SYSTEM_TYPE_MAPLE) && \
-		! (FREETZ_SYSTEM_TYPE_PUMA5) && \
-		! (FREETZ_SYSTEM_TYPE_PUMA6 && FREETZ_TYPE_6430) && \
-		! (FREETZ_SYSTEM_TYPE_PUMA7) && \
-		! (FREETZ_SYSTEM_TYPE_QCA955x) && \
-		! (FREETZ_SYSTEM_TYPE_QCA956x) && \
-		! (FREETZ_SYSTEM_TYPE_VR9 && FREETZ_TYPE_6840) && \
-		! (FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0) && \
-		! (FREETZ_TYPE_FIRMWARE_07_1X_MIN && !FREETZ_SYSTEM_TYPE_VR9 && !FREETZ_SYSTEM_TYPE_PUMA6) && \
-		! (FREETZ_TYPE_EXTENDER) && \
-		! (FREETZ_TYPE_FIRMWARE_UNTESTED) )
-#		! (FREETZ_TYPE_FIRMWARE_UNTESTED)
-	default y
+	def_bool y
+	depends on !FREETZ_REPLACE_KERNEL_DISABLED
+	depends on !FREETZ_REPLACE_KERNEL_DISABLED || \
+		(FREETZ_SYSTEM_TYPE_ALDER && FREETZ_TYPE_FIRMWARE_08_0X && FREETZ_SHOW_DEVELOPER)
+
+config FREETZ_REPLACE_KERNEL_DISABLED
+	def_bool y
+	depends on \
+		(FREETZ_TYPE_FON && FREETZ_TYPE_LANG_EN) || \
+		(FREETZ_SYSTEM_TYPE_ALDER) || \
+		(FREETZ_SYSTEM_TYPE_AR10 && FREETZ_TYPE_FIRMWARE_06_5X) || \
+		(FREETZ_SYSTEM_TYPE_AR934x && (FREETZ_TYPE_FIRMWARE_06_5X || FREETZ_TYPE_FIRMWARE_06_8X)) || \
+		(FREETZ_SYSTEM_TYPE_BCM63138) || \
+		(FREETZ_SYSTEM_TYPE_GRX5) || \
+		(FREETZ_SYSTEM_TYPE_IKS_VX185) || \
+		(FREETZ_SYSTEM_TYPE_IPQ40xx) || \
+		(FREETZ_SYSTEM_TYPE_MAPLE) || \
+		(FREETZ_SYSTEM_TYPE_PUMA5) || \
+		(FREETZ_SYSTEM_TYPE_PUMA6 && FREETZ_TYPE_6430) || \
+		(FREETZ_SYSTEM_TYPE_PUMA7) || \
+		(FREETZ_SYSTEM_TYPE_QCA955x) || \
+		(FREETZ_SYSTEM_TYPE_QCA956x) || \
+		(FREETZ_SYSTEM_TYPE_VR9 && FREETZ_TYPE_6840) || \
+		(FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0) || \
+		(FREETZ_TYPE_FIRMWARE_07_1X_MIN && !FREETZ_SYSTEM_TYPE_VR9 && !FREETZ_SYSTEM_TYPE_PUMA6) || \
+		(FREETZ_TYPE_EXTENDER) || \
+		(FREETZ_TYPE_FIRMWARE_UNTESTED)
 	help
 		Select this if source code exactly matching the firmware version used is available for your box.
 
 # at the moment enabled for all configurations fulfilling the condition
 # "kernel version used by Freetz" == "kernel version used by AVM"
 config FREETZ_REPLACE_MODULE_AVAILABLE
-	bool
+	def_bool y
 	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	depends on !FREETZ_TYPE_FIRMWARE_UNTESTED # nobody ever used this device
 	depends on !FREETZ_AVM_SOURCE_6360_05_29  # 05.2X-final 6360 (needs to be fixed, hardcoded paths, svn, ...)
 	depends on !FREETZ_AVM_SOURCE_7539_07_57  # 07_5X-final 7539 (corrupt)
-	default y
 	help
 		Disable modules here if avm sources for a kernel version are outdated and incompatible for a newer fos or new device.
 
 config FREETZ_KERNEL_AVMDIFF_AVAILABLE
-	bool
+	def_bool y
 	depends on !(FREETZ_KERNEL_VERSION_4_1_38   && FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_BCM63138)                   # 07_1X-final 7581+7582 (07.18)
 	depends on !(FREETZ_KERNEL_VERSION_4_4_60   && FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MAPLE)                      # 07_2X-final 7510+1209 (07.30)
 	depends on !(                                  FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AIROHA)                     # 07_1X-inhaus 5690XGS  (07.10)
-	default y
 	help
 		There are corrupt or no avm sources at all of this kernel version and thus no avmdiff, so unpatched vanilla is used.
 

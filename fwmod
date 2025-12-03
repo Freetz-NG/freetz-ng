@@ -1469,7 +1469,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"
 	kofilecnt="$(find "$MODULES_DIR" -type f -name '*.ko' | wc -l)"
 	echo1 "kernel modules installed: $kolinecnt entries in modules.dep and $kofilecnt .ko-files found."
-	if [ "$FREETZ_KERNEL_VERSION_2_6_28" == "y" ]; then
+	if [ "$FREETZ_KERNEL_VERSION_2_6_28" == "y" -a "$FREETZ_TARGET_ARCH_MIPS" == "y" ]; then
 		if [ "$FREETZ_REPLACE_KERNEL" != "y" ];then
 			koreplacek=", try 'replace kernel'"
 			komaxcount=50

@@ -1,6 +1,6 @@
 --- scripts/kconfig/mconf.c
 +++ scripts/kconfig/mconf.c
-@@ -881,7 +881,7 @@
+@@ -882,7 +882,7 @@
  	if (conf_get_changed())
  		res = dialog_yesno(NULL,
  				   "Do you wish to save your new configuration?\n"

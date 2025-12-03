@@ -1,6 +1,6 @@
 --- scripts/kconfig/mconf.c
 +++ scripts/kconfig/mconf.c
-@@ -185,9 +185,9 @@
+@@ -186,9 +186,9 @@
  	"Arrow keys navigate the menu.  "
  	"<Enter> selects submenus ---> (or empty submenus ----).  "
  	"Highlighted letters are hotkeys.  "

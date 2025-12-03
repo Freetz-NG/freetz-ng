@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, v6.17)
+$(call TOOLS_INIT, v6.18)
 ## patches/100-main_makefile.patch contains also the version
 $(PKG)_SOURCE:=kconfig-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=0aeb9eb058b058fec948168135adb579c2494e1e6161415568c5b8ee06e07ae5
+$(PKG)_HASH:=cd9adf0a6154d954e174707012006f2c225c7b8149693aa908f6663273410c51
 $(PKG)_SITE:=git_archive@git://repo.or.cz/linux.git,scripts/basic,scripts/include,scripts/kconfig,scripts/Kbuild.include,scripts/Makefile.compiler,scripts/Makefile.build,scripts/Makefile.host,scripts/Makefile.lib,Documentation/kbuild/kconfig-language.rst,Documentation/kbuild/kconfig-macro-language.rst,Documentation/kbuild/kconfig.rst
 ### MANPAGE:=https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html
 ### CHANGES:=https://github.com/torvalds/linux/tags

@@ -1,16 +1,16 @@
-if FREETZ_TYPE_6320 && FREETZ_AVM_VERSION_06_0X
+if FREETZ_TYPE_6340 && FREETZ_AVM_VERSION_05_2X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 6320 Cable"
+	default "FRITZ!Box 6340 Cable"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "104"
+	default "115"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "176"
+	default "187"
 
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
@@ -27,14 +27,14 @@ config FREETZ_AVM_HAS_BRANDING_kabelbw
 config FREETZ_AVM_HAS_BRANDING_kdg
 	def_bool y
 
+config FREETZ_AVM_HAS_BRANDING_unity
+	def_bool y
+
 config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	string
 	default "/dev/ttyS0"
 
-config FREETZ_AVM_HAS_AHA
-	def_bool y
-
-config FREETZ_AVM_HAS_DECT
+config FREETZ_AVM_HAS_CVE_2014_9727
 	def_bool y
 
 config FREETZ_AVM_HAS_MYFRITZ
@@ -64,16 +64,7 @@ config FREETZ_AVM_HAS_TR069
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 
-config FREETZ_AVM_HAS_LEDPAGE
-	def_bool y
-
-config FREETZ_AVM_HAS_DDNSD
-	def_bool y
-
-config FREETZ_AVM_HAS_FAX
-	def_bool y
-
-config FREETZ_AVM_HAS_DMESG_FILE
+config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 
 config FREETZ_AVM_HAS_UDEV
@@ -118,9 +109,6 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_09
 config FREETZ_AVM_HAS_KIDS
 	def_bool y
 
-config FREETZ_AVM_HAS_E2FSPROGS
-	def_bool y
-
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 
@@ -145,13 +133,13 @@ config FREETZ_AVM_PROP_ARCH_BE
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 
-config FREETZ_AVM_PROP_GCC_4_7
+config FREETZ_AVM_PROP_GCC_4_4
 	def_bool y
 
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
 
-config FREETZ_AVM_PROP_UCLIBC_0_9_32
+config FREETZ_AVM_PROP_UCLIBC_0_9_30
 	def_bool y
 
 endif

@@ -1,6 +1,6 @@
 --- scripts/kconfig/mconf.c
 +++ scripts/kconfig/mconf.c
-@@ -626,9 +626,9 @@
+@@ -627,9 +627,9 @@
  		dialog_clear();
  		res = dialog_checklist(prompt ? prompt : "Main Menu",
  					radiolist_instructions,

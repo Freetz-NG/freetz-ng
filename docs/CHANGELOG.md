@@ -77,6 +77,7 @@ Latest changes
     * dos2unix 7.5.3
     * file 5.46
     * gperf 3.3
+    * kconfig 6.18
     * ninja 1.13.2
     * patchelf 0.14.5/0.18.0-b49de1b33
     * patchelf-target 0.14.5/0.15.0
@@ -102,6 +103,7 @@ Latest changes
   - Patches:
 
   - Packages:
+    * ACME.sh 3.1.2
     * BIND 9.11.37/9.20.15
     * Binutils 2.45.1
     * Bzip2 1.0.8
@@ -116,7 +118,7 @@ Latest changes
     * MTR 0.80/0.96
     * Nmap 4.76/5.51/7.98
     * OpenSSH 9.3p2/10.2p1
-    * OpenVPN 2.4.12/2.5.11/2.6.16
+    * OpenVPN 2.4.12/2.5.11/2.6.17
     * PatchELF 0.18.0
     * procps-ng 4.0.5
     * Python 3.14.0

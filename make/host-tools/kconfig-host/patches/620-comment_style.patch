@@ -1,6 +1,6 @@
 --- scripts/kconfig/mconf.c
 +++ scripts/kconfig/mconf.c
-@@ -495,7 +495,7 @@
+@@ -496,7 +496,7 @@
  			case P_COMMENT:
  				if (prompt) {
  					child_count++;

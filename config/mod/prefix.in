@@ -60,7 +60,9 @@ config FREETZ_TYPE_PREFIX
 	default "5690_Pro"          if FREETZ_TYPE_5690_PRO
 	default "5690_XGS"          if FREETZ_TYPE_5690_XGS
 	default "6000"              if FREETZ_TYPE_6000
-	default "6320"              if FREETZ_TYPE_6320
+	default "6320_v1"           if FREETZ_TYPE_6320_V1
+	default "6320_v2"           if FREETZ_TYPE_6320_V2
+	default "6340"              if FREETZ_TYPE_6340
 	default "6360"              if FREETZ_TYPE_6360
 	default "6430"              if FREETZ_TYPE_6430
 	default "6490"              if FREETZ_TYPE_6490

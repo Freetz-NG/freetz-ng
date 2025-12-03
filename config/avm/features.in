@@ -6,7 +6,9 @@ config FREETZ_TYPE_CABLE
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_6320 || \
+		FREETZ_TYPE_6320_V1 || \
+		FREETZ_TYPE_6320_V2 || \
+		FREETZ_TYPE_6340 || \
 		FREETZ_TYPE_6360 || \
 		FREETZ_TYPE_6430 || \
 		FREETZ_TYPE_6490 || \

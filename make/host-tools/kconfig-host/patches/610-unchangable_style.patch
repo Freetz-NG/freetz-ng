@@ -1,6 +1,6 @@
 --- scripts/kconfig/mconf.c
 +++ scripts/kconfig/mconf.c
-@@ -546,7 +546,7 @@
+@@ -547,7 +547,7 @@
  			if (sym_is_changeable(sym))
  				item_make("[%c]", val == no ? ' ' : '*');
  			else
@@ -9,7 +9,7 @@
  			item_set_tag('t');
  			item_set_data(menu);
  			break;
-@@ -562,7 +562,7 @@
+@@ -563,7 +563,7 @@
  				else
  					item_make("<%c>", ch);
  			} else

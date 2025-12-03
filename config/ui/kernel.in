@@ -32,5 +32,8 @@ config FREETZ_REPLACE_KERNEL
 		This option is always experimental as the
 		kernel is never exactly like by avm!
 
+comment " DEVELOPER  DEVELOPER  DEVELOPER  DEVELOPER  DEVELOPER"
+	depends on FREETZ_REPLACE_KERNEL_DISABLED && FREETZ_REPLACE_KERNEL
+
 endif # FREETZ_SHOW_EXPERT #
 

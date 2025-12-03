@@ -876,7 +876,7 @@ image_details() {
 	[ "$FREETZ_TYPE_LANG_IT" == "y" ]                                                            && AVM_FM_REGION='ITA'
 	[ "$FREETZ_TYPE_LANG_A_CH" == "y" ]                                                          && AVM_FM_REGION='ACH'
 	#
-	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT/ /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE}${AVM_FW_TYPE} <${AVM_FW_DATE}>"
+	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT// /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE}${AVM_FW_TYPE} <${AVM_FW_DATE}>"
 }
 
 #

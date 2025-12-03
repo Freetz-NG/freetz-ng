@@ -1,4 +1,4 @@
-# ACME.sh 3.1.1
+# ACME.sh 3.1.2
   - Homepage: [https://www.acme.sh](https://www.acme.sh)
   - Manpage: [https://github.com/acmesh-official/acme.sh/wiki](https://github.com/acmesh-official/acme.sh/wiki)
   - Changelog: [https://github.com/acmesh-official/acme.sh/releases](https://github.com/acmesh-official/acme.sh/releases)
