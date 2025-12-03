@@ -8,7 +8,7 @@
 +	$(CROSS_COMPILE)objcopy --remove-section .note.gnu.build-id -S -O binary $< $@
 +
 +vmlinux.lzma: vmlinux.bin
-+	$$FREETZ_BASE_DIR/tools/lzma e -lc1 -lp2 -pb2 $< $@
++	$$FREETZ_BASE_DIR/tools/lzma e -lc3 -lp0 -pb2 $< $@
 +
  bzImage: vmlinux
  ifeq ($(CONFIG_X86_DECODER_SELFTEST),y)
