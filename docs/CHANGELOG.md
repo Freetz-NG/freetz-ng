@@ -71,7 +71,7 @@ Latest changes
     * new architecture: armeb
 
   - Host tools:
-    * ca-bundle 2025-11-04
+    * ca-bundle 2025-12-02
     * config a2287c3
     * cmake 4.1.3
     * dos2unix 7.5.3
@@ -107,7 +107,7 @@ Latest changes
     * BIND 9.11.37/9.20.15
     * Binutils 2.45.1
     * Bzip2 1.0.8
-    * CA-bundle 2025-11-04
+    * CA-bundle 2025-12-02
     * Curl 8.12.1/8.17.0
     * file 5.46
     * GNU Make 4.2.1/4.4.1
