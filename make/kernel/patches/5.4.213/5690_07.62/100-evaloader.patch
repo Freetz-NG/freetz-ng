@@ -1,11 +1,14 @@
 --- linux-5.4/arch/arm/Makefile
 +++ linux-5.4/arch/arm/Makefile
-@@ -317,6 +317,9 @@
+@@ -317,6 +317,12 @@
  KBUILD_IMAGE := $(boot)/zImage
  endif
  
-+vmlinux.eva_pad: vmlinux FORCE
-+	cp $< $(boot)/$@
++vmlinux.bin: vmlinux
++	$(CROSS_COMPILE)objcopy --remove-section .note.gnu.build-id -S -O binary $< $@
++
++vmlinux.lzma: vmlinux.bin
++	$$FREETZ_BASE_DIR/tools/lzma e -lc1 -lp2 -pb2 $< $@
 +
  ifeq ($(CONFIG_STACKPROTECTOR_PER_TASK),y)
  prepare: stack_protector_prepare
