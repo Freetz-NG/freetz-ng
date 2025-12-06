@@ -1,0 +1,16 @@
+--- Modules/socketmodule.h
++++ Modules/socketmodule.h
+@@ -1,6 +1,13 @@
+ /* Socket module header file */
+ 
+ /* Includes needed for the sockaddr_* symbols below */
++
++#ifdef __UCLIBC__
++/* Prevent duplicate IPPROTO_* enums: uClibc already defines them. */
++#define _LINUX_IN_H
++#define _LINUX_IN6_H
++#endif
++
+ #ifndef MS_WINDOWS
+ #ifdef __VMS
+ #   include <socket.h>
