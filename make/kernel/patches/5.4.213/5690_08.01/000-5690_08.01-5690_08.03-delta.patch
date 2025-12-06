@@ -1,0 +1,131 @@
+This patch has been created from AVM's opensrc packages:
+
+    diff -durN --no-dereference 5690_Pro-alder-08.01 5690_Pro-alder-08.03  > this.patch
+
+--- linux-5.4/.kernelvariables	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/.kernelvariables	2025-01-29 12:29:01.000000000 +0100
+@@ -34,10 +34,10 @@
+ #reproducibility = yes
+ 
+ ifneq ($(reproducibility),)
+-export SOURCE_DATE_EPOCH = 1733407420
++export SOURCE_DATE_EPOCH = 1734012870
+ export KBUILD_BUILD_USER = kbuild-team
+ export KBUILD_BUILD_HOST = core.avm.de
+-export KBUILD_BUILD_TIMESTAMP = 2024-12-05
++export KBUILD_BUILD_TIMESTAMP = 2024-12-12
+ endif
+ # No variables exported via $(kernelvariables_extra)
+ 
+--- linux-5.4/arch/arm/boot/dts/Fritz_Box_HW279-0.dts	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm/boot/dts/Fritz_Box_HW279-0.dts	2025-01-29 12:29:03.000000000 +0100
+@@ -34,7 +34,7 @@
+ 			compatible = "avm,hui-generic-led-pwm";
+ 			led-type = "default-on";
+ 			/* GPIO 46 is channel 20 */
+-			pwms = <&pwm 2 100000>;
++			pwms = <&pwm 2 1000000>;
+ 			dimmable;
+ 		};
+ 
+--- linux-5.4/arch/arm/boot/dts/Fritz_Box_HW279-2.dts	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm/boot/dts/Fritz_Box_HW279-2.dts	2025-01-29 12:29:03.000000000 +0100
+@@ -37,7 +37,7 @@
+ 			compatible = "avm,hui-generic-led-pwm";
+ 			led-type = "default-on";
+ 			/* GPIO 47 is channel 30 */
+-			pwms = <&pwm 3 100000>;
++			pwms = <&pwm 3 1000000>;
+ 			dimmable;
+ 		};
+ 
+--- linux-5.4/arch/arm64/boot/dts/qcom/Fritz_Box_HW286.dts	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/Fritz_Box_HW286.dts	2025-01-29 12:29:03.000000000 +0100
+@@ -189,7 +189,7 @@
+ 			compatible = "avm,hui-generic-led-pwm";
+ 			led-type = "default-on";
+ 			/* GPIO 47 is channel 30 */
+-			pwms = <&pwm 3 100000>;
++			pwms = <&pwm 3 1000000>;
+ 			dimmable;
+ 		};
+ 
+--- linux-5.4/arch/arm64/boot/dts/qcom/Fritz_Box_HW291_HW300.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/Fritz_Box_HW291_HW300.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -40,7 +40,7 @@
+ 			compatible = "avm,hui-generic-led-pwm";
+ 			led-type = "default-on";
+ 			/* GPIO 47 is channel 30 */
+-			pwms = <&pwm 3 100000>;
++			pwms = <&pwm 3 1000000>;
+ 			dimmable;
+ 		};
+ 
+--- linux-5.4/arch/arm64/boot/dts/qcom/ipq5018-memory.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/ipq5018-memory.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -87,6 +87,7 @@
+ 			reg = <0x0 0x4a500000 0x0 0x20000>;
+ 			record-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ 
+ 		nss@40000000 {
+@@ -186,6 +187,7 @@
+ 			console-size = <0x20000>;
+ 			pmsg-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ 
+ 		nss@40000000 {
+--- linux-5.4/arch/arm64/boot/dts/qcom/ipq5332-512MB-memory.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/ipq5332-512MB-memory.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -124,6 +124,7 @@
+ 			console-size = <0x20000>;
+ 			pmsg-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ 
+ 		tzlog@0x0x53700000 {
+--- linux-5.4/arch/arm64/boot/dts/qcom/ipq5332-default-memory.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/ipq5332-default-memory.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -124,6 +124,7 @@
+ 			console-size = <0x20000>;
+ 			pmsg-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ 
+ 		tzlog@0x60100000 {
+--- linux-5.4/arch/arm64/boot/dts/qcom/ipq8074-memory.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/ipq8074-memory.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -336,6 +336,7 @@
+ 			record-size = <0x20000>;
+ 			pmsg-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ #if 0
+ 		tzapp_data: tzapp_data@4a300000 {  /* TZAPP_DATA */
+--- linux-5.4/arch/arm64/boot/dts/qcom/ipq9574-default-memory.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/ipq9574-default-memory.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -93,6 +93,7 @@
+ 			console-size = <0x20000>;
+ 			pmsg-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ 
+ 		nss@40000000 {
+--- linux-5.4/arch/arm64/boot/dts/qcom/ipq9574-wkk-default-memory.dtsi	2024-12-11 16:20:10.000000000 +0100
++++ linux-5.4/arch/arm64/boot/dts/qcom/ipq9574-wkk-default-memory.dtsi	2025-01-29 12:29:03.000000000 +0100
+@@ -220,6 +220,7 @@
+ 			console-size = <0x20000>;
+ 			pmsg-size = <0x20000>;
+ 			no-dump-oops;
++			ecc-size = <0x10>;
+ 		};
+ 
+ 		mhi_region0: dma_pool0@0 {
