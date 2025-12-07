@@ -166,8 +166,9 @@ jobs:
     container:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
-      image: ghcr.io/freetz-ng/firmware
-      options: --user 1001:1001
+#     image: ghcr.io/freetz-ng/firmware
+      image: ${{ matrix.docker }}
+#     options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -179,8 +180,6 @@ jobs:
     if: ${{ github.event.inputs.toolchains != 'yes' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
-    env:
-      docker_NAME: "${{ github.job }}"
     steps:
 
       - name: sleep
@@ -194,6 +193,40 @@ jobs:
           echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
 #         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
 #         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+
+      - &preclone
+        name: preclone
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+          path: ${{ github.workspace }}
+          sparse-checkout: |
+            tools/prerequisites
+          sparse-checkout-cone-mode: false
+
+      - &install
+        name: install
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          if   [ -x "$(command -v apt)" ]; then 
+            sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
+          fi
+          ./tools/prerequisites install -y
+      - &locale
+        name: locale
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          if   [ -x "$(command -v apt)" ]; then 
+            apt-get update && apt-get install -y locales; 
+            locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+          elif [ -x "$(command -v dnf)" ]; then
+            dnf -y install glibc-locale-source && \
+            localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
+          fi  
 
       - &clone
         name: clone
@@ -224,8 +257,6 @@ jobs:
         run: |
           FOS="${{ github.event.inputs.fos }}"
           BOX="${{ github.event.inputs.box }}"
-          COMPILE_TOOLS="${{ github.event.inputs.tools }}"
-          USE_ROOTEMU="${{ github.event.inputs.rootemu }}"
           truncate -s0 .config
           echo 'FREETZ_MODULES_OWN=""'                                                                >> .config
           for x in  UDEVMOUNT                               ; do echo "# FREETZ_PATCH_$x is not set"  >> .config; done
@@ -243,6 +274,16 @@ jobs:
           echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
+          grep -q '^FREETZ_TYPE_' .config || echo "FREETZ_TYPE_$BOX=y"                                >> .config
+          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo "FREETZ_TYPE_FIRMWARE_$FOS=y"              >> .config
+          echo "################################################################" && du .config && wc -l .config
+
+      - name: extra_config
+        shell: bash
+        run: |
+          COMPILE_TOOLS="${{ github.event.inputs.tools }}"
+          USE_ROOTEMU="${{ github.event.inputs.rootemu }}"
           [[ "$COMPILE_TOOLS" == "yes" ]] && echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'            >> .config
           [[ "$COMPILE_TOOLS" != "yes" ]] && echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                       >> .config
           [[ "$COMPILE_TOOLS" == "yes" ]] && echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'            >> .config
@@ -251,9 +292,6 @@ jobs:
           [[ "$USE_ROOTEMU" != "pseudo"   ]] && echo 'FREETZ_ROOTEMU_FAKEROOT=y'                      >> .config
           [[ "$USE_ROOTEMU" == "fakeroot" ]] && echo '# FREETZ_ROOTEMU_PSEUDO is not set'             >> .config
           [[ "$USE_ROOTEMU" != "fakeroot" ]] && echo 'FREETZ_ROOTEMU_PSEUDO=y'                        >> .config
-          wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
-          grep -q '^FREETZ_TYPE_' .config || echo "FREETZ_TYPE_$BOX=y"                                >> .config
-          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo "FREETZ_TYPE_FIRMWARE_$FOS=y"              >> .config
           echo "################################################################" && du .config && wc -l .config
 
       - name: addon
@@ -267,50 +305,19 @@ jobs:
           for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
           echo "################################################################" && ls -l ~/.freetz-signature/
 
-      - &docker_init
-        name: docker_init
+      - &useradd
+        name: useradd
         run: |
-          sudo docker run -d \
-            --name ${{ env.docker_NAME }} \
-            -e DEBIAN_FRONTEND=noninteractive \
-            -e FREETZ_DLTOKEN=${{ secrets.FREETZ_DLTOKEN }} \
-            -e LANG=C.UTF-8 \
-            -v ${GITHUB_WORKSPACE}:/mnt/freetz-ng \
-            ${{ matrix.docker }} \
-            sleep infinity
-            
-          sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
-            if [ -x "$(command -v apt)" ]; then 
-              sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
-            fi
-
-            cd /mnt/freetz-ng && /mnt/freetz-ng/tools/prerequisites install -y
-
-            if [ -x "$(command -v apt)" ]; then 
-              apt-get update && apt-get install -y locales; 
-              locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
-            fi
-            if [ -x "$(command -v dnf)" ]; then
-              dnf -y install glibc-locale-source && \
-              localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
-            fi
-          '
-
-          sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
-               groupadd freetz -o -g 1001 \
-            && useradd freetz -o -s /bin/bash -d /mnt/freetz-ng -M -u 1001 -g 1001 \
-            && usermod freetz -a -G root \
-            && echo "freetz ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
-            && chown -R freetz:freetz /mnt/freetz-ng \
-          '
+          groupadd freetz -o -g 1001
+          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
+          chown -R freetz:freetz $(pwd)
 
       - name: generate
+        env:
+          FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
-          sudo docker exec -i ${{ env.docker_NAME }} bash -c '\
-          su freetz -c "cd /mnt/freetz-ng && \
-          make && rm -f images/latest.image"
-          '
-
+          su freetz -c "make && rm -f images/latest.image"
+          
       - name: result
         run: |
           echo "################################################################"
@@ -332,21 +339,15 @@ jobs:
           echo "NAME=$NAME"
           test -n "$NAME"
 
-      - &docker_destroy
-        name: docker_destroy
-        if: always()
-        run: |
-          sudo docker stop -t 10 ${{ env.docker_NAME }} || sudo docker stop -s SIGKILL -t 10 ${{ env.docker_NAME }} || true
-          sudo docker rm -f ${{ env.docker_NAME }}
-
   dl-toolchains:
     permissions:
       contents: read
     container:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
-      image: ghcr.io/freetz-ng/firmware
-      options: --user 1001:1001
+#     image: ghcr.io/freetz-ng/firmware
+      image: ${{ matrix.docker }}
+#     options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -359,8 +360,6 @@ jobs:
     if: ${{ github.event.inputs.toolchains != 'no' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
-    env:
-      docker_NAME: "${{ github.job }}"
     steps:
 
       - name: args
@@ -370,6 +369,11 @@ jobs:
           echo "args='$ARGS'" >> $GITHUB_OUTPUT
           echo "################################################################" && bash -c "echo ARGS='$ARGS'"
       
+      - *preclone
+
+      - *install
+      - *locale
+
       - *clone
 
       - *cache_load
@@ -381,26 +385,20 @@ jobs:
           [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
           echo "################################################################" && bash -c "echo VERSION=$VERSION"
 
-      - *docker_init
+      - *useradd
 
       - name: generate
         env:
           ACTIONS_VERSION: ${{ steps.version.outputs.version }}
         run: |
-          sudo docker exec -i ${{ env.docker_NAME }} bash -c "\
-          su freetz -c 'cd /mnt/freetz-ng && \
-          tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}'
-          "
+          su freetz -c "tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}"
 
       - name: result
         env:
           ACTIONS_VERSION: ${{ steps.version.outputs.version }}
         run: |
           echo "################################################################"
-          sudo docker exec -i ${{ env.docker_NAME }} bash -c "\
-          su freetz -c 'cd /mnt/freetz-ng && \
-          tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
-          "
+          su freetz -c 'tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
           ls -al dl/*-shared-glibc.tar.lzma && du -sh dl/*-shared-glibc.tar.lzma
 
       - name: release
@@ -417,6 +415,4 @@ jobs:
           replacesArtifacts: true
           artifactErrorsFailBuild: true
           draft: true
-
-      - *docker_destroy
 
