@@ -76,6 +76,13 @@ concurrency:
 
 jobs:
   dockerfizieren:
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/generate
+      image: ghcr.io/freetz-ng/generate
+      options: --user 1001:1001
     runs-on: ubuntu-latest
     outputs:
       os: ${{ steps.parse.outputs.os }}
@@ -154,7 +161,13 @@ jobs:
           echo "matrix=${{ steps.parse.outputs.matrix }}" | sed 's/\[{/\[\n{/;s/},{/},\n{/g;s/},\]/},\n\]/'
 
   build:
-    if: ${{ github.event.inputs.toolchains != 'yes' }}
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/firmware
+      image: ghcr.io/freetz-ng/firmware
+      options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -163,6 +176,7 @@ jobs:
         docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
     name: "${{ matrix.docker }}"
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.toolchains != 'yes' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
     env:
@@ -326,7 +340,13 @@ jobs:
           sudo docker rm -f ${{ env.docker_NAME }}
 
   dl-toolchains:
-    if: ${{ github.event.inputs.toolchains != 'no' }}
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/firmware
+      image: ghcr.io/freetz-ng/firmware
+      options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -336,6 +356,7 @@ jobs:
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
     name: "${{ matrix.docker }}-${{ matrix.fritz.name }}-${{ matrix.fritz.tcs }}"
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.toolchains != 'no' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
     env:
