@@ -196,7 +196,7 @@ jobs:
 
       - &preclone
         name: preclone
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -230,7 +230,7 @@ jobs:
 
       - &clone
         name: clone
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           set-safe-directory: true
