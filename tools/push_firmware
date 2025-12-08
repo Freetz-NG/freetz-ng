@@ -170,15 +170,15 @@ function push_fw() {
 	fi
 
 	if [ ! $ISSINGLE ]; then
-		if [ ! $LFS ] || [ -n "$ISDUAL$ISUIMG" -a "$LFS" == "9" ]; then
-			[ "$env_linux_fs_start" != "0" -a "$env_linux_fs_start" != "1" -a "$env_linux_fs_start" != "" ] && echo "Invalid value for linux_fs_start." && exit 1
-			echo " * Detected linux_fs_start: '${env_linux_fs_start:-<unset>}'"
-			[ -z "$env_linux_fs_start" ] && env_linux_fs_start=0 #factory
-			[ -z "$LFS" ]     && LFS="$(( ($env_linux_fs_start + 1) % 2))" #other
-			[ "$LFS" == "9" ] && LFS="$env_linux_fs_start" #current
-			echo " * Designated linux_fs_start: $LFS"
-			echo
-		fi
+
+		[ "$env_linux_fs_start" != "0" -a "$env_linux_fs_start" != "1" -a "$env_linux_fs_start" != "" ] && echo "Invalid value for linux_fs_start." && exit 1
+		echo " * Detected linux_fs_start: '${env_linux_fs_start:-<unset>}'"
+		[ -z "$env_linux_fs_start" ] && env_linux_fs_start=0 #factory
+		[ -z "$LFS" ]     && LFS="$(( ($env_linux_fs_start + 1) % 2))" #other
+		[ "$LFS" == "9" ] && LFS="$env_linux_fs_start" #current
+		echo " * Designated linux_fs_start: $LFS"
+		echo
+
 		if [ -n "$ISRAM$ISFIT" ]; then
 			[ "$LFS" == "9" ] && LFS=
 		elif [ $ISDUAL ]; then
