@@ -708,15 +708,9 @@ elif [ "$(uname -o)" == "Cygwin" ]; then
 fi
 [ -x "$(command -v ncftpput)" ] && FOUND_NCFTP=true
 [ "$(uname -s)" == "Linux" -a -x "$(command -v ftp)" ] && FOUND_FTP=true
-if [ -z "$FOUND_NCFTP" -a -z "$FOUND_FTP" ]; then
-	echo "You have to install 'ncftp' or 'ftp' in order to use this script. Run 'make netkit-ftp-host' first."
-	exit 1
-fi
 if [ -z "$FOUND_FTP" ]; then
-	[ -n "$ISRAM$ISFIT" ] && [ "${FULLSIZE//0/}" == "x" ] && echo "Parameter '-mem' has to be bigger than 0 if you have no 'ftp' installed."  && exit 1
-	[ ! $ISSINGLE ]       && [ -z "$LFS" ]                && echo "Parameter '-lfs' is mandatory if you have no 'ftp' installed."             && exit 1
-	[ $ISDUAL ]           && [ "$LFS" == "9" ]            && echo "Parameter '-lfs' with 0 or 1 is mandatory if you have no 'ftp' installed." && exit 1
-	[ $ISUIMG ]           && [ "$LFS" == "9" ]            && echo "Parameter '-lfs' with 0 or 1 is mandatory if you have no 'ftp' installed." && exit 1
+	[ -z "$ISSINGLE" ] && echo "You have to install 'ftp' in order to use this script. Run 'make netkit-ftp-host' first." && exit 1
+	[ -z "$FOUND_NCFTP" ] && "You have to install 'ncftp' or 'ftp' in order to use this script. Run 'make netkit-ftp-host' first." && exit 1
 fi
 if [ -n "$CMD" ]; then
 	[ "$CMD" == "ftp" ] && FOUND_NCFTP=""
