@@ -172,7 +172,7 @@ function push_fw() {
 	if [ ! $ISSINGLE ]; then
 
 		[ "$env_linux_fs_start" != "0" -a "$env_linux_fs_start" != "1" -a "$env_linux_fs_start" != "" ] && echo "Invalid value for linux_fs_start." && exit 1
-		echo " * Detected linux_fs_start: '${env_linux_fs_start:-<unset>}'"
+		echo " * Detected linux_fs_start: ${env_linux_fs_start:-<unset>}"
 		[ -z "$env_linux_fs_start" ] && env_linux_fs_start=0 #factory
 		[ -z "$LFS" ]     && LFS="$(( ($env_linux_fs_start + 1) % 2))" #other
 		[ "$LFS" == "9" ] && LFS="$env_linux_fs_start" #current
