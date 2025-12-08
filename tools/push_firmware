@@ -182,11 +182,11 @@ function push_fw() {
 		if [ -n "$ISRAM$ISFIT" ]; then
 			[ "$LFS" == "9" ] && LFS=
 		elif [ $ISDUAL ]; then
-			[ $LFS -ne 1 ] && ARMsysMTD='0'  && ARMkrnMTD='1'  && X86sysMTD='6'  && X86krnMTD='7'
-			[ $LFS -eq 1 ] && ARMsysMTD='11' && ARMkrnMTD='12' && X86sysMTD='13' && X86krnMTD='14'
+			[ "$LFS" == "$env_linux_fs_start" ] && ARMsysMTD='0'  && ARMkrnMTD='1'  && X86sysMTD='6'  && X86krnMTD='7'
+			[ "$LFS" != "$env_linux_fs_start" ] && ARMsysMTD='11' && ARMkrnMTD='12' && X86sysMTD='13' && X86krnMTD='14'
 		elif [ $ISUIMG ]; then
-			[ $LFS -ne 1 ] && ARMsysMTD='6'  && ARMkrnMTD='7'  && X86sysMTD='0'  && X86krnMTD='1'  && ALLgwtMTD='TODO'
-			[ $LFS -eq 1 ] && ARMsysMTD='='  && ARMkrnMTD='>'  && X86sysMTD=';'  && X86krnMTD='<'  && ALLgwtMTD='TODO'
+			[ "$LFS" == "$env_linux_fs_start" ] && ARMsysMTD='6'  && ARMkrnMTD='7'  && X86sysMTD='0'  && X86krnMTD='1'  && ALLgwtMTD='TODO'
+			[ "$LFS" != "$env_linux_fs_start" ] && ARMsysMTD='='  && ARMkrnMTD='>'  && X86sysMTD=';'  && X86krnMTD='<'  && ALLgwtMTD='TODO'
 			[ -e $ALLgwt ] && echo " * GWFS (tar) mtd: $ALLgwtMTD"
 		fi
 		if [ -n "$ISDUAL$ISUIMG" ]; then
