@@ -174,6 +174,7 @@ config FREETZ_TYPE_PREFIX_ALIEN_HARDWARE
 	default "7270v2_"           if FREETZ_TYPE_7270_V2_V1
 	default "7312_"             if FREETZ_TYPE_7312_7330
 	default "7320_"             if FREETZ_TYPE_7320_7330
+	default "7340_"             if FREETZ_TYPE_7340_7390
 	default "7412_"             if FREETZ_TYPE_7412_7430
 	default "7520_"             if FREETZ_TYPE_7520_V1_7530_W5
 	default "7570_"             if FREETZ_TYPE_7570_7270

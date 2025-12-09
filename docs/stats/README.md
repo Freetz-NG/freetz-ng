@@ -540,7 +540,7 @@
 <tr><td>FRITZ.Box_7530-07.29.image</td><td>(FREETZ_TYPE_7530_W5 &vert;&vert;<br> FREETZ_TYPE_7520_V1_7530_W5) &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_2X</td></tr>
 <tr><td>FRITZ.Box_7530-07.59.image</td><td>(FREETZ_TYPE_7530_W5 &vert;&vert;<br> FREETZ_TYPE_7520_V1_7530_W5) &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_5X</td></tr>
 <tr><td>FRITZ.Box_7530-08.02.image</td><td>(FREETZ_TYPE_7530_W5 &vert;&vert;<br> FREETZ_TYPE_7520_V1_7530_W5) &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_0X</td></tr>
-<tr><td>FRITZ.Box_7530-08.20.image</td><td>(FREETZ_TYPE_7530_W5 &vert;&vert;<br> FREETZ_TYPE_7520_V1_7530_W5) &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
+<tr><td>FRITZ.Box_7530-08.21.image</td><td>(FREETZ_TYPE_7530_W5 &vert;&vert;<br> FREETZ_TYPE_7520_V1_7530_W5) &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
 <tr><td>FRITZ.Box_7530_AX-07.31.image</td><td>FREETZ_TYPE_7530_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_2X</td></tr>
 <tr><td>FRITZ.Box_7530_AX-07.57-V2.image/FRITZ.Box_7530_AX-07.57.image</td><td>FREETZ_TYPE_7530_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_5X</td></tr>
 <tr><td>FRITZ.Box_7530_AX-08.02.image</td><td>FREETZ_TYPE_7530_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_0X</td></tr>
@@ -602,7 +602,7 @@
 <details><summary>5 verschiedene Layouts</summary>
 
 <table>
-<caption style='background-color:gray'>Gen1: single-boot (57)</caption>
+<caption style='background-color:gray'>Gen1: single-boot (58)</caption>
 <thead><tr><th style='width:450px'>Name</th><th style='width:300px'>Symbol</th></tr></thead>
 <tbody>
 <tr><td>FRITZ!Box 2170</td><td>FREETZ_TYPE_2170</td></tr>
@@ -610,6 +610,7 @@
 <tr><td>FRITZ!Box 4040</td><td>FREETZ_TYPE_4040</td></tr>
 <tr><td>FRITZ!Box 6320 Cable</td><td>FREETZ_TYPE_6320_V1</td></tr>
 <tr><td>FRITZ!Box 6320 v2 Cable</td><td>FREETZ_TYPE_6320_V2</td></tr>
+<tr><td>FRITZ!Box 6340 Cable</td><td>FREETZ_TYPE_6340</td></tr>
 <tr><td>FRITZ!Box 6360 Cable</td><td>FREETZ_TYPE_6360</td></tr>
 <tr><td>FRITZ!Box 6810 LTE</td><td>FREETZ_TYPE_6810</td></tr>
 <tr><td>FRITZ!Box 6842 LTE</td><td>FREETZ_TYPE_6842</td></tr>

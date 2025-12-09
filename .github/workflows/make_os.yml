@@ -1,0 +1,418 @@
+name: make_os
+
+on:
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/make_os.yml'
+# schedule:
+#   - cron: '00 15 * * 6'
+  workflow_dispatch:
+    inputs:
+      os:
+        description: "Distro to build"
+        required: true
+        default: "_all"
+        type: choice
+        options:
+          - "_all"
+          - "fedora:43"
+          - "debian:13"
+          - "ubuntu:22.04"
+          - "ubuntu:24.04"
+      fos:
+        description: "FOS Version to build"
+        required: true
+        default: "08_0X"
+        type: choice
+        options:
+          - "04_XX"
+          - "05_2X"
+          - "05_5X"
+          - "06_0X"
+          - "06_2X"
+          - "06_5X"
+          - "06_8X"
+          - "06_9X"
+          - "07_0X"
+          - "07_1X"
+          - "07_2X"
+          - "07_5X"
+          - "08_0X"
+          - "08_2X"
+      box:
+        description: "BOX Type to build"
+        required: true
+        default: "7530_W5"
+        type: string
+      tools:
+        description: "Compile Tools?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+      toolchains:
+        description: "Compile Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+      rootemu:
+        description: "Use Rootemu?"
+        required: true
+        default: "pseudo"
+        type: choice
+        options:
+          - "fakeroot"
+          - "pseudo"
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  dockerfizieren:
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/generate
+      image: ghcr.io/freetz-ng/generate
+      options: --user 1001:1001
+    runs-on: ubuntu-latest
+    outputs:
+      os: ${{ steps.parse.outputs.os }}
+    steps:
+      - name: list
+        id: list
+        run: |
+          if [ "${{ github.event.inputs.os }}" != "_all" ]; then \
+            OSLIST="
+            ${{ github.event.inputs.os }}
+            "
+          else
+            OSLIST="
+            fedora:43
+            debian:13
+            ubuntu:22.04
+            ubuntu:24.04
+            "
+          fi
+          echo "oslist<<EOF" >> $GITHUB_OUTPUT
+          echo "$OSLIST" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: parse
+        id: parse
+        run: |
+          OSLIST="${{ steps.list.outputs.oslist }}"
+          OSLIST_JSON=$(echo "$OSLIST" | awk 'NF {printf "\"%s\",", $0}' | sed 's/,$//')
+          echo "os=[$OSLIST_JSON]" >> $GITHUB_OUTPUT
+          echo "################################################################"
+          echo "OSLIST_JSON=[$OSLIST_JSON]"
+
+  matrizifizieren:
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/generate
+      image: ghcr.io/freetz-ng/generate
+      options: --user 1001:1001
+    runs-on: ubuntu-latest
+
+    outputs:
+      gitsha: ${{ steps.parse.outputs.gitsha }}
+      matrix: ${{ steps.parse.outputs.matrix }}
+
+    steps:
+
+      - name: clone
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref_name }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
+
+      - name: parse
+        id: parse
+        run: |
+          echo "gitsha=\"${{ github.sha }}\"" >> $GITHUB_OUTPUT
+          sed -rn 's/.* && dltc "(.*)".*/\1/p' tools/dl-toolchains_make | \
+          while read -r line; do \
+          name="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*).*/\1 - \2/g')"; \
+          tcs="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*)(.*)/_\1 _FIRMWARE_\2\3/g')"; \
+          echo -n "$matrix{name:\"$name\",tcs:\"$tcs\"},"; done | \
+          sed 's/^/matrix=\[/;s/$/\]/' >> $GITHUB_OUTPUT
+
+      - name: vars
+        run: |
+          echo "################################################################"
+          echo "gitsha=${{ steps.parse.outputs.gitsha }}"
+          echo "matrix=${{ steps.parse.outputs.matrix }}" | sed 's/\[{/\[\n{/;s/},{/},\n{/g;s/},\]/},\n\]/'
+
+  build:
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/firmware
+#     image: ghcr.io/freetz-ng/firmware
+      image: ${{ matrix.docker }}
+#     options: --user 1001:1001
+    needs: [ dockerfizieren, matrizifizieren ]
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
+    name: "${{ matrix.docker }}"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.toolchains != 'yes' }}
+#   if: github.repository == 'freetz-ng/freetz-ng'
+
+    steps:
+
+      - name: sleep
+        run: |
+          SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 9))"
+          echo "Sleeping $SLEEP seconds ..."
+          sleep $SLEEP
+
+      - name: myips
+        run: |
+          echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+#         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+#         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+
+      - &preclone
+        name: preclone
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+          path: ${{ github.workspace }}
+          sparse-checkout: |
+            tools/prerequisites
+          sparse-checkout-cone-mode: false
+
+      - &install
+        name: install
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          if   [ -x "$(command -v apt)" ]; then 
+            sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
+          fi
+          ./tools/prerequisites install -y
+      - &locale
+        name: locale
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          if   [ -x "$(command -v apt)" ]; then 
+            apt-get update && apt-get install -y locales; 
+            locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+          elif [ -x "$(command -v dnf)" ]; then
+            dnf -y install glibc-locale-source && \
+            localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
+          fi  
+
+      - &clone
+        name: clone
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
+
+      - &cache_load
+        name: cache_load
+        uses: actions/cache/restore@v4
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/linux-*.tar.xz
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: make_cache
+          restore-keys: make_cache
+
+      - name: config
+        run: |
+          FOS="${{ github.event.inputs.fos }}"
+          BOX="${{ github.event.inputs.box }}"
+          truncate -s0 .config
+          echo 'FREETZ_MODULES_OWN=""'                                                                >> .config
+          for x in  UDEVMOUNT                               ; do echo "# FREETZ_PATCH_$x is not set"  >> .config; done
+          for x in  dummy loop usbserial                   ; do echo "# FREETZ_MODULE_$x is not set"  >> .config; done
+          for x in  DROPBEAR                              ; do echo "# FREETZ_PACKAGE_$x is not set"  >> .config; done
+          for x in  LDD                                              ; do echo "FREETZ_PACKAGE_$x=y"  >> .config; done
+          for x in  COMPRESSED  UNCOMPRESSED                        ; do echo "FREETZ_SIZEINFO_$x=y"  >> .config; done
+          echo '# FREETZ_TOOLCHAIN_CCACHE is not set'                                                 >> .config
+          echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
+          echo 'FREETZ_SERIES_ALL=y'                                                                  >> .config
+          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
+          echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
+          grep -q '^FREETZ_TYPE_' .config || echo "FREETZ_TYPE_$BOX=y"                                >> .config
+          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo "FREETZ_TYPE_FIRMWARE_$FOS=y"              >> .config
+          echo "################################################################" && du .config && wc -l .config
+
+      - name: extra_config
+        shell: bash
+        run: |
+          COMPILE_TOOLS="${{ github.event.inputs.tools }}"
+          USE_ROOTEMU="${{ github.event.inputs.rootemu }}"
+          [[ "$COMPILE_TOOLS" == "yes" ]] && echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'            >> .config
+          [[ "$COMPILE_TOOLS" != "yes" ]] && echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                       >> .config
+          [[ "$COMPILE_TOOLS" == "yes" ]] && echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'            >> .config
+          [[ "$COMPILE_TOOLS" != "yes" ]] && echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                       >> .config
+          [[ "$USE_ROOTEMU" == "pseudo"   ]] && echo '# FREETZ_ROOTEMU_FAKEROOT is not set'           >> .config
+          [[ "$USE_ROOTEMU" != "pseudo"   ]] && echo 'FREETZ_ROOTEMU_FAKEROOT=y'                      >> .config
+          [[ "$USE_ROOTEMU" == "fakeroot" ]] && echo '# FREETZ_ROOTEMU_PSEUDO is not set'             >> .config
+          [[ "$USE_ROOTEMU" != "fakeroot" ]] && echo 'FREETZ_ROOTEMU_PSEUDO=y'                        >> .config
+          echo "################################################################" && du .config && wc -l .config
+
+      - name: addon
+        run: |
+          echo "################################################################"
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}add" -O - 2>/dev/null | tar xj 2>/dev/null && echo Done || echo Null
+
+      - name: signature
+        run: |
+          mkdir -p ~/.freetz-signature/
+          for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
+          echo "################################################################" && ls -l ~/.freetz-signature/
+
+      - &useradd
+        name: useradd
+        run: |
+          groupadd freetz -o -g 1001
+          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
+          chown -R freetz:freetz $(pwd)
+
+      - name: generate
+        env:
+          FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
+        run: |
+          su freetz -c "make && rm -f images/latest.image"
+          
+      - name: result
+        run: |
+          echo "################################################################"
+          ls -l images/
+          sha256sum images/*
+
+      - name: vars
+        id: vars
+        run: |
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          LAST="$(ls images/*.image | sed 's,.*/,,;s,\.image$,,')"
+          NAME="$(ls images/*.image | sed 's,.*/,,;s,_[0-9].*,,')"
+          [ -n "$LINK" ] && echo "link=$LINK" >> $GITHUB_OUTPUT
+          [ -n "$LAST" ] && echo "last=$LAST" >> $GITHUB_OUTPUT
+          [ -n "$NAME" ] && echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "################################################################"
+          echo "LINK=$LINK"
+          echo "LAST=$LAST"
+          echo "NAME=$NAME"
+          test -n "$NAME"
+
+  dl-toolchains:
+    permissions:
+      contents: read
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/firmware
+#     image: ghcr.io/freetz-ng/firmware
+      image: ${{ matrix.docker }}
+#     options: --user 1001:1001
+    needs: [ dockerfizieren, matrizifizieren ]
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
+        fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
+    name: "${{ matrix.docker }}-${{ matrix.fritz.name }}-${{ matrix.fritz.tcs }}"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.toolchains != 'no' }}
+#   if: github.repository == 'freetz-ng/freetz-ng'
+
+    steps:
+
+      - name: args
+        id: args
+        run: |
+          export ARGS="$(for x in ${{ matrix.fritz.tcs }}; do echo -n "$x " | sed 's/^_/FREETZ_TYPE_/'; done)"
+          echo "args='$ARGS'" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo ARGS='$ARGS'"
+      
+      - *preclone
+
+      - *install
+      - *locale
+
+      - *clone
+
+      - *cache_load
+
+      - name: version
+        id: version
+        run: |
+          export VERSION="r$(tools/freetz_revision short)"
+          [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo VERSION=$VERSION"
+
+      - *useradd
+
+      - name: generate
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          su freetz -c "tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}"
+
+      - name: result
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          echo "################################################################"
+          su freetz -c 'tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
+          ls -al dl/*-shared-glibc.tar.lzma && du -sh dl/*-shared-glibc.tar.lzma
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: dl-toolchains_${{ steps.version.outputs.version }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}
+          body: These files are internally used!
+          prerelease: true
+          allowUpdates: true
+          removeArtifacts: false
+          artifacts: "dl/*-freetz-${{ steps.version.outputs.version }}-shared-glibc.tar.lzma"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          draft: true
+

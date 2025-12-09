@@ -731,7 +731,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7530-07.29.image"                                                          if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5)                        && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7530-07.59.image"                                                          if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5)                        && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Box_7530-08.02.image"                                                          if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5)                        && FREETZ_TYPE_FIRMWARE_08_0X
-	default "FRITZ.Box_7530-08.20.image"                                                          if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5)                        && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Box_7530-08.21.image"                                                          if (FREETZ_TYPE_7530_W5 || FREETZ_TYPE_7520_V1_7530_W5)                        && FREETZ_TYPE_FIRMWARE_08_2X
 	#
 	default "FRITZ.Box_7530_AX-07.31.image"                                                       if FREETZ_TYPE_7530_W6_V1                        && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7530_AX-07.57-V2.image/FRITZ.Box_7530_AX-07.57.image"                      if FREETZ_TYPE_7530_W6_V1                        && FREETZ_TYPE_FIRMWARE_07_5X
