@@ -65,6 +65,7 @@ Verfügbare Scripte und Tools zum Flashen über den Bootloader:
   * Gen 3: __dual-boot__<a id='dual'></a><br>
     Alte Cable Fritzboxen mit Puma6, zb 6490 & 6590
     - `tools/push_firmware` von Freetz-NG
+    - [DieFlashe](https://dieflashe.github.io/dieflashe/) von BoxenLuther
 
   * Gen 4: __uimg-boot__<a id='uimg'></a><br>
    Neue Cable Fritzboxen mit Puma7, zb 6591 & 6660
