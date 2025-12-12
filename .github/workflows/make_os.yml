@@ -243,7 +243,7 @@ jobs:
 
       - &cache_load
         name: cache_load
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         if: always()
         with:
           path: |
