@@ -1,0 +1,14 @@
+--- autosetup/sqlite-config.tcl.orig	2025-10-20 02:30:54.258198365 +0200
++++ autosetup/sqlite-config.tcl	2025-10-20 02:31:03.450962326 +0200
+@@ -1180,7 +1180,10 @@
+   set rlInc [opt-val with-readline-cflags auto]
+   if {"auto" eq $rlInc} {
+     set rlInc ""
+-    if {$::sqliteConfig(is-cross-compiling)} {
++    # Force empty CFLAGS for readline when cross-compiling or when
++    # CC contains a cross-compiler prefix (freetz-ng fix)
++    set ccVal [get-define CC]
++    if {$::sqliteConfig(is-cross-compiling) || [string match "*-linux-*" $ccVal]} {
+       # ^^^ this check is derived from the legacy configure script.
+       proj-warn "Skipping check for readline.h because we're cross-compiling."
+     } else {
