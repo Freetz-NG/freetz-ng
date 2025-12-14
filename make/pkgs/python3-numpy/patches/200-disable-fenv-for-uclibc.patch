@@ -1,0 +1,20 @@
+--- numpy/_core/src/common/float_status.hpp.orig
++++ numpy/_core/src/common/float_status.hpp
+@@ -3,7 +3,17 @@
+ 
+ #include "npstd.hpp"
+ 
++// uClibc doesn't implement fenv functions, only provides the header
++#if defined(__UCLIBC__)
++#define NPY_HAVE_FENV_FUNCS 0
++// Provide dummy implementations
++#define fetestexcept(x) 0
++#define feclearexcept(x) ((void)0)
++#define feraiseexcept(x) ((void)0)
++#else
++#define NPY_HAVE_FENV_FUNCS 1
+ #include <fenv.h>
++#endif
+ 
+ namespace np {
+ 
