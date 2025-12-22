@@ -1,0 +1,3 @@
+if [ "$EXTERNAL_FREETZ_PACKAGE_NGINX" == "y" ] ; then
+	EXTERNAL_FILES+=" /usr/sbin/nginx"
+fi
