@@ -1,0 +1,66 @@
+--- a/xioopts.c
++++ b/xioopts.c
+@@ -3313,5 +3313,5 @@
+ #if WITH_IP4 || WITH_IP6 || WITH_VSOCK
+    case AF_UNSPEC:
+-#if WITH_VSOCK
++#if WITH_VSOCK && defined(AF_VSOCK)
+    case AF_VSOCK:
+ #endif
+--- a/xio-ip.c
++++ b/xio-ip.c
+@@ -473,5 +473,5 @@
+ #if LATER
+-#ifdef WITH_VSOCK
++#if defined(WITH_VSOCK) && defined(AF_VSOCK)
+    if (family == AF_VSOCK) {
+       error_num = sockaddr_vm_parse(&sau->vm, node, service);
+       if (error_num < 0) {
+--- a/sysutils.c
++++ b/sysutils.c
+@@ -249,5 +249,5 @@
+ #endif
+-#if WITH_VSOCK
++#if WITH_VSOCK && defined(AF_VSOCK)
+    case AF_VSOCK: sockaddr_vm_info(&sau->vm, cp, blen);
+       break;
+ #endif
+--- a/xio-socket.c
++++ b/xio-socket.c
+@@ -2072,5 +2072,5 @@
+       } while (result > 0);
+      break;
+ #endif /* WITH_IP6 */
+-#if WITH_VSOCK
++#if WITH_VSOCK && defined(PF_VSOCK)
+    case PF_VSOCK:
+      strcpy(namebuff, lr);
+      do {
+--- a/xio-vsock.c
++++ b/xio-vsock.c
+@@ -7,7 +7,7 @@
+ /* This file contains the source for opening addresses of VSOCK soc
+ ket type */                                                        
+ #include "xiosysincludes.h"
+ 
+-#ifdef WITH_VSOCK
++#if defined(WITH_VSOCK) && defined(PF_VSOCK)
+ #include "xioopen.h"
+ #include "xio-listen.h"
+ #include "xio-socket.h"
+--- a/xioopen.c
++++ b/xioopen.c
+@@ -406,11 +406,11 @@
+    { "UNIX-SEND",      &xioaddr_unix_sendto },
+    { "UNIX-SENDTO",    &xioaddr_unix_sendto },
+ #endif
+-#if WITH_VSOCK
++#if WITH_VSOCK && defined(PF_VSOCK)
+    { "VSOCK",			&xioaddr_vsock_connect },
+    { "VSOCK-CONNECT",		&xioaddr_vsock_connect },
+ #endif
+-#if WITH_VSOCK && WITH_LISTEN
++#if WITH_VSOCK && defined(PF_VSOCK) && WITH_LISTEN
+    { "VSOCK-L",			&xioaddr_vsock_listen },
+    { "VSOCK-LISTEN",		&xioaddr_vsock_listen },
+ #endif

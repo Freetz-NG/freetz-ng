@@ -1,0 +1,27 @@
+--- a/sycls.c
++++ b/sycls.c
+@@ -5,6 +5,7 @@
+ /* explicit system call and C library trace function, for those who miss strace
+  */
+ 
++#include <malloc.h>
+ #include "config.h"
+ #include "xioconfig.h"	/* what features are enabled */
+ 
+@@ -29,6 +30,11 @@ int Posix_memalign(void **memptr, size_t alignment, size_t size) {
+-   int result;
+-   Debug3("posix_memalign(%p, "F_Zu", "F_Zu")", memptr, alignment, size);
+-   result = posix_memalign(memptr, alignment, size);
+-   Debug1("posix_memalign(...) -> %d", result);
+-   return result;
++   void *ptr;
++   Debug3("memalign(%p, "F_Zu", "F_Zu")", memptr, alignment, size);
++   ptr = memalign(alignment, size);
++   if (ptr == NULL) {
++      Debug1("memalign(...) -> %d", ENOMEM);
++      return ENOMEM;
++   } else {
++      *memptr = ptr;
++      return 0;
++   }
+ }
