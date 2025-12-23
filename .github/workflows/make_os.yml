@@ -16,10 +16,10 @@ on:
         type: choice
         options:
           - "_all"
-          - "fedora:43"
-          - "debian:13"
-          - "ubuntu:22.04"
-          - "ubuntu:24.04"
+          - "fedora-43-latest"
+          - "debian-13-latest"
+          - "ubuntu-22.04-latest"
+          - "ubuntu-24.04-latest"
       fos:
         description: "FOS Version to build"
         required: true
@@ -96,14 +96,14 @@ jobs:
             "
           else
             OSLIST="
-            fedora:43
-            debian:13
-            ubuntu:22.04
-            ubuntu:24.04
+            fedora-43-latest
+            debian-13-latest
+            ubuntu-22.04-latest
+            ubuntu-24.04-latest
             "
           fi
           echo "oslist<<EOF" >> $GITHUB_OUTPUT
-          echo "$OSLIST" >> $GITHUB_OUTPUT
+          echo "$OSLIST" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: parse
@@ -167,7 +167,7 @@ jobs:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
 #     image: ghcr.io/freetz-ng/firmware
-      image: ${{ matrix.docker }}
+      image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
 #     options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
@@ -194,39 +194,39 @@ jobs:
 #         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
 #         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
-      - &preclone
-        name: preclone
-        uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
-          path: ${{ github.workspace }}
-          sparse-checkout: |
-            tools/prerequisites
-          sparse-checkout-cone-mode: false
+#     - &preclone
+#       name: preclone
+#       uses: actions/checkout@v6
+#       with:
+#         token: ${{ secrets.GITHUB_TOKEN }}
+#         repository: ${{ github.repository }}
+#         ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+#         path: ${{ github.workspace }}
+#         sparse-checkout: |
+#           tools/prerequisites
+#         sparse-checkout-cone-mode: false
 
-      - &install
-        name: install
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          if   [ -x "$(command -v apt)" ]; then 
-            sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
-          fi
-          ./tools/prerequisites install -y
-      - &locale
-        name: locale
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          if   [ -x "$(command -v apt)" ]; then 
-            apt-get update && apt-get install -y locales; 
-            locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
-          elif [ -x "$(command -v dnf)" ]; then
-            dnf -y install glibc-locale-source && \
-            localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
-          fi  
+#     - &install
+#       name: install
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
+#       run: |
+#         if   [ -x "$(command -v apt)" ]; then 
+#           sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
+#         fi
+#         ./tools/prerequisites install -y
+#     - &locale
+#       name: locale
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
+#       run: |
+#         if   [ -x "$(command -v apt)" ]; then 
+#           apt-get update && apt-get install -y locales; 
+#           locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+#         elif [ -x "$(command -v dnf)" ]; then
+#           dnf -y install glibc-locale-source && \
+#           localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
+#         fi  
 
       - &clone
         name: clone
@@ -369,10 +369,10 @@ jobs:
           echo "args='$ARGS'" >> $GITHUB_OUTPUT
           echo "################################################################" && bash -c "echo ARGS='$ARGS'"
       
-      - *preclone
+#     - *preclone
 
-      - *install
-      - *locale
+#     - *install
+#     - *locale
 
       - *clone
 
