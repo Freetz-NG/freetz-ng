@@ -169,7 +169,7 @@ jobs:
 #     image: ghcr.io/freetz-ng/firmware
 #     image: docker.io/${{ matrix.docker }}
       image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
-#     options: --user 1001:1001
+      options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -306,18 +306,18 @@ jobs:
           for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
           echo "################################################################" && ls -l ~/.freetz-signature/
 
-      - &useradd
-        name: useradd
-        run: |
-          groupadd freetz -o -g 1001
-          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
-          chown -R freetz:freetz $(pwd)
+#     - &useradd
+#        name: useradd
+#        run: |
+#          groupadd freetz -o -g 1001
+#          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
+#          chown -R freetz:freetz $(pwd)
 
       - name: generate
         env:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
-          su freetz -c "make && rm -f images/latest.image"
+          make && rm -f images/latest.image
           
       - name: result
         run: |
@@ -349,7 +349,7 @@ jobs:
 #     image: ghcr.io/freetz-ng/firmware
 #     image: docker.io/${{ matrix.docker }}
       image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
-#     options: --user 1001:1001
+      options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -387,20 +387,20 @@ jobs:
           [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
           echo "################################################################" && bash -c "echo VERSION=$VERSION"
 
-      - *useradd
+#     - *useradd
 
       - name: generate
         env:
           ACTIONS_VERSION: ${{ steps.version.outputs.version }}
         run: |
-          su freetz -c "tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}"
+          tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}
 
       - name: result
         env:
           ACTIONS_VERSION: ${{ steps.version.outputs.version }}
         run: |
           echo "################################################################"
-          su freetz -c 'tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
+          tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
           ls -al dl/*-shared-glibc.tar.lzma && du -sh dl/*-shared-glibc.tar.lzma
 
       - name: release
