@@ -374,6 +374,9 @@ jobs:
           export ARGS="$(for x in ${{ matrix.fritz.tcs }}; do echo -n "$x " | sed 's/^_/FREETZ_TYPE_/'; done)"
           echo "args='$ARGS'" >> $GITHUB_OUTPUT
           echo "################################################################" && bash -c "echo ARGS='$ARGS'"
+          export FRITZ_NAME="$(echo "${{ matrix.fritz.name }}" | tr ' ' '_' | tr -cd '[:alnum:]_')"
+          echo "fritz_name=$FRITZ_NAME" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo FRITZ_NAME=$FRITZ_NAME"
       
       - *preclone
 
@@ -409,10 +412,10 @@ jobs:
 
       - name: release
         uses: ncipollo/release-action@v1
-        if: ${{ github.event.inputs.release-toolchains == 'yes' }}
+        if: ${{ github.event.inputs.release-toolchains == 'yes' && steps.args.outputs.fritz_name != '' }}
         with:
-          tag: dl-toolchains_${{ steps.version.outputs.version }}
-          name: dl-toolchains-${{ steps.version.outputs.version }}
+          tag: dl-toolchains_${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
           body: These files are internally used!
           prerelease: true
           allowUpdates: true
