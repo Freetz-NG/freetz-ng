@@ -53,14 +53,6 @@ on:
         options:
           - "yes"
           - "no"
-      toolchains:
-        description: "Compile Toolchains?"
-        required: true
-        default: "no"
-        type: choice
-        options:
-          - "yes"
-          - "no"
       rootemu:
         description: "Use Rootemu?"
         required: true
@@ -69,6 +61,22 @@ on:
         options:
           - "fakeroot"
           - "pseudo"
+      toolchains:
+        description: "Compile Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+      release-toolchains:
+        description: "Release Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
 
 concurrency:
   group: ${{ github.workflow }}
@@ -401,6 +409,7 @@ jobs:
 
       - name: release
         uses: ncipollo/release-action@v1
+        if: ${{ github.event.inputs.release-toolchains == 'yes' }}
         with:
           tag: dl-toolchains_${{ steps.version.outputs.version }}
           name: dl-toolchains-${{ steps.version.outputs.version }}
