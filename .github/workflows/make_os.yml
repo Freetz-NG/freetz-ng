@@ -76,8 +76,6 @@ concurrency:
 
 jobs:
   dockerfizieren:
-    permissions:
-      contents: read
     container:
 #     image: ubuntu:20.04
 #     image: freetzng/generate
