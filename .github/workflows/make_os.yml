@@ -355,7 +355,7 @@ jobs:
       matrix:
         docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
-    name: "${{ matrix.docker }}-${{ matrix.fritz.name }}-${{ matrix.fritz.tcs }}"
+    name: "${{ matrix.docker }} -- ${{ matrix.fritz.name }}"
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.toolchains != 'no' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
