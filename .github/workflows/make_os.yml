@@ -346,7 +346,7 @@ jobs:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
 #     image: ghcr.io/freetz-ng/firmware
-      image: ${{ matrix.docker }}
+      image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
 #     options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
