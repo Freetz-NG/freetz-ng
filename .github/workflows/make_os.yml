@@ -16,10 +16,10 @@ on:
         type: choice
         options:
           - "_all"
-          - "fedora-43-latest"
-          - "debian-13-latest"
-          - "ubuntu-22.04-latest"
-          - "ubuntu-24.04-latest"
+          - "fedora-43-latest" #fedora:43
+          - "debian-13-latest" #debian:13
+          - "ubuntu-22.04-latest" #ubuntu:22.04
+          - "ubuntu-24.04-latest" #ubuntu:24.04
       fos:
         description: "FOS Version to build"
         required: true
@@ -167,6 +167,7 @@ jobs:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
 #     image: ghcr.io/freetz-ng/firmware
+#     image: docker.io/${{ matrix.docker }}
       image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
 #     options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
@@ -346,6 +347,7 @@ jobs:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
 #     image: ghcr.io/freetz-ng/firmware
+#     image: docker.io/${{ matrix.docker }}
       image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
 #     options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
