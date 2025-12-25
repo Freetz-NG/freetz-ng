@@ -80,6 +80,7 @@ Latest changes
     * gperf 3.3
     * kconfig 6.18
     * meson 1.10.0
+    * ncurses 6.6
     * ninja 1.13.2
     * patchelf 0.14.5/0.18.0-b49de1b33
     * patchelf-target 0.14.5/0.15.0
