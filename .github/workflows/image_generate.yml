@@ -22,6 +22,8 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
     if: github.repository == 'freetz-ng/freetz-ng'
+    outputs:
+      image: ${{ steps.prepare.outputs.image }}
 
     steps:
 
@@ -54,4 +56,24 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ghcr.io/${{ steps.prepare.outputs.owner }}/${{ steps.prepare.outputs.image }}:latest
 
+  cleanup:
+    needs: build
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng'
 
+    steps:
+
+      - name: cleanup
+        if: github.event_name != 'pull_request'
+        uses: Chizkiyahu/delete-untagged-ghcr-action@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository_owner: ${{ github.repository_owner }}
+          repository: ${{ github.repository }}
+          package_name: ${{ needs.build.outputs.image }}
+          untagged_only: true
+          owner_type: org # or user
+          except_untagged_multiplatform: true
