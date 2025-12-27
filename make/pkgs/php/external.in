@@ -2,12 +2,20 @@ config EXTERNAL_FREETZ_PACKAGE_PHP
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_PHP
 	bool "PHP"
 	default n
+	help
+		Externalize PHP and optionally its dependency libraries.
+		
+		By default, PHP binaries are externalized but libraries remain
+		in firmware (/usr/lib/freetz/). You can optionally externalize
+		libraries to save flash space (~2-3 MB).
+		
+		Note: Externalizing libraries means they won't be available
+		until external storage is mounted during boot.
 
 menu "PHP"
 	depends on EXTERNAL_FREETZ_PACKAGE_PHP
 
 config EXTERNAL_FREETZ_PACKAGE_PHP_cgi
-	depends on FREETZ_PACKAGE_PHP_cgi
 	bool "PHP CGI"
 	default n
 	help
@@ -22,13 +30,102 @@ config EXTERNAL_FREETZ_PACKAGE_PHP_cli
 		externals the following file(s):
 		 /usr/bin/php
 
-config EXTERNAL_FREETZ_PACKAGE_PHP_apxs2
-	depends on FREETZ_PACKAGE_PHP_apxs2
-	bool "Apache2 module"
+config EXTERNAL_FREETZ_PACKAGE_PHP_fpm
+	depends on FREETZ_PACKAGE_PHP_fpm
+	bool "PHP-FPM"
 	default n
 	help
 		externals the following file(s):
-		 /usr/lib/apache2/libphp5.so
+		 /usr/sbin/php-fpm
 
-endmenu
+menu "PHP dependency libraries"
+	depends on EXTERNAL_FREETZ_PACKAGE_PHP
+
+comment "PHP Libraries (optional externalization)"
+
+config EXTERNAL_FREETZ_PACKAGE_PHP_LIBS
+	bool "Externalize all PHP dependency libraries"
+	default n
+	select EXTERNAL_FREETZ_LIB_libxml2 if FREETZ_LIB_libxml2
+	select EXTERNAL_FREETZ_LIB_libpcre2 if FREETZ_LIB_libpcre2
+	select EXTERNAL_FREETZ_LIB_libonig if FREETZ_LIB_libonig
+	select EXTERNAL_FREETZ_LIB_libintl if FREETZ_LIB_libintl
+	select EXTERNAL_FREETZ_LIB_libz if FREETZ_LIB_libz
+	select EXTERNAL_FREETZ_LIB_libbz2 if FREETZ_LIB_libbz2
+	select EXTERNAL_FREETZ_LIB_libiconv if FREETZ_LIB_libiconv
+	help
+		Externalize all PHP dependency libraries to save flash space.
+		
+		WARNING: Libraries will only be available after external storage
+		is mounted. Services depending on these libraries must be started
+		via /mod/etc/external.pkg to ensure proper boot order.
+		
+		Saves approximately 2-3 MB of flash space.
+
+if !EXTERNAL_FREETZ_PACKAGE_PHP_LIBS
+
+config EXTERNAL_FREETZ_LIB_libxml2
+	depends on FREETZ_LIB_libxml2
+	bool "libxml2 (~1.5 MB)"
+	default n
+	help
+		XML processing library required by PHP.
+		externals: ${FREETZ_LIBRARY_DIR}/libxml2.so.16.1.0
+
+config EXTERNAL_FREETZ_LIB_libpcre2
+	depends on FREETZ_LIB_libpcre2
+	bool "libpcre2 (~600 KB)"
+	default n
+	help
+		Perl-compatible regular expressions library.
+		externals: ${FREETZ_LIBRARY_DIR}/libpcre2-8.so.0.14.0
+
+config EXTERNAL_FREETZ_LIB_libonig
+	depends on FREETZ_LIB_libonig
+	bool "libonig (~600 KB)"
+	default n
+	help
+		Oniguruma regular expression library.
+		externals: ${FREETZ_LIBRARY_DIR}/libonig.so.5.4.0
+
+config EXTERNAL_FREETZ_LIB_libintl
+	depends on FREETZ_LIB_libintl
+	bool "libintl (~110 KB)"
+	default n
+	help
+		GNU gettext internationalization library.
+		externals: ${FREETZ_LIBRARY_DIR}/libintl.so.8.4.3
+
+config EXTERNAL_FREETZ_LIB_libz
+	depends on FREETZ_LIB_libz
+	bool "libz (~80 KB, required internal by Dropbear SSH)"
+	default n
+	help
+		Compression library (zlib).
+		externals: ${FREETZ_LIBRARY_DIR}/libz.so.1.3.1
+		
+		NOTE: Required by dropbear SSH. If externalized, add
+		dropbear to /mod/etc/external.pkg to prevent boot issues.
+
+config EXTERNAL_FREETZ_LIB_libbz2
+	depends on FREETZ_LIB_libbz2
+	bool "libbz2 (~60 KB)"
+	default n
+	help
+		Bzip2 compression library.
+		externals: ${FREETZ_LIBRARY_DIR}/libbz2.so.1.0.8
+
+config EXTERNAL_FREETZ_LIB_libiconv
+	depends on FREETZ_LIB_libiconv
+	bool "libiconv (~1.2 MB)"
+	default n
+	help
+		Character encoding conversion library.
+		externals: ${FREETZ_LIBRARY_DIR}/libiconv.so.2.7.0
+
+endif # !EXTERNAL_FREETZ_PACKAGE_PHP_LIBS
+
+endmenu # PHP dependency libraries
+
+endmenu # PHP
 
