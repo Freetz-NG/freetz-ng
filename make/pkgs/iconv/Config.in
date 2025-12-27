@@ -1,8 +1,15 @@
 config FREETZ_PACKAGE_ICONV
-	bool "iconv 1.13.1 (binary only) - DEPRECATED"
-	depends on FREETZ_TARGET_UCLIBC_0_9_28
+	bool "iconv 1.13.1/1.18 (binary only) - see library for version"
 	select FREETZ_LIB_libiconv
 	default n
 	help
 		A program for converting text from one encoding to another.
+		
+		Version follows the selected libiconv library version:
+		  - libiconv 2.5.0 (1.13.1) → iconv 1.13.1
+		  - libiconv 2.7.0 (1.18)   → iconv 1.18
+		
+		Select the library version in:
+		Packages → Shared libraries → Charsets & Internationalization → Iconv
+
 
