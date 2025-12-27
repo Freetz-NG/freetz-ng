@@ -22,13 +22,31 @@ define HostPython2
 		export PYTHONHOME="$(HOST_TOOLS_DIR)/usr"; \
 		export PYTHON_INCDIR="$(PYTHON_STAGING_INC_DIR)"; \
 		export PYTHON_LIBDIR="$(PYTHON_STAGING_LIB_DIR)"; \
-		export PYTHONPATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/$(PYTHON_SITE_PKG_DIR)"; \
+		export PYTHONPATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)$(PYTHON_SITE_PKG_DIR)"; \
 		export PYTHONOPTIMIZE=""; \
 		export PYTHONDONTWRITEBYTECODE="x"; \
-		export CFLAGS="$(TARGET_CFLAGS) -I$(PYTHON_STAGING_INC_DIR)"; \
-		export CPPFLAGS="$(TARGET_CFLAGS) -I$(PYTHON_STAGING_INC_DIR)"; \
-		export LDFLAGS="$(TARGET_LDFLAGS) -L$(PYTHON_STAGING_LIB_DIR)"; \
+		export PYTHONNOUSERSITE="1"; \
+		export DISTUTILS_USE_SDK="1"; \
+		export _python_sysroot="$(TARGET_TOOLCHAIN_STAGING_DIR)"; \
+		export _PYTHON_SYSROOT="$(TARGET_TOOLCHAIN_STAGING_DIR)"; \
+		export CC="$(TARGET_CC)"; \
+		export CXX="$(TARGET_CXX)"; \
+		export LD="$(TARGET_CC)"; \
+		export LDSHARED="$(TARGET_CC) -shared"; \
+		export BLDSHARED="$(TARGET_CC) -shared"; \
+		export AR="$(TARGET_AR)"; \
+		export RANLIB="$(TARGET_RANLIB)"; \
+		export STRIP="$(TARGET_STRIP)"; \
+		export CPPFLAGS="-I$(PYTHON_STAGING_INC_DIR)"; \
+		export CFLAGS="$(TARGET_CFLAGS) -I$(PYTHON_STAGING_INC_DIR) -D_Py_LONG_BIT=32"; \
+		export GIT_PAGER="cat"; \
+		export _PYTHON_HOST_PLATFORM="$(GNU_TARGET_NAME)"; \
+		export _PYTHON_SYSCONFIGDATA_NAME="_sysconfigdata"; \
+		export LIBRARY_PATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"; \
+		export LD_RUN_PATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"; \
+		export LD_LIBRARY_PATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"; \
 		$(1) \
+		export LDFLAGS="-L$(PYTHON_STAGING_LIB_DIR) -L$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib -Wl,--rpath-link=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib -Wl,-rpath=/usr/lib/freetz"; \
 		$(HOST_PYTHON_BIN) $(2); \
 	)
 endef
@@ -44,8 +62,11 @@ define Build/PyMod2/Generic
 		$(FREETZ_LD_RUN_PATH) \
 		$(3) \
 		, \
-		./setup.py $(2) \
-		$(SILENT) \
+		./setup.py build_ext \
+			--include-dirs=$(PYTHON_STAGING_INC_DIR) \
+			--library-dirs=$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib \
+			--rpath=/usr/lib/freetz \
+		$(2) \
 	)
 	$(if $(strip $(4)),find $(strip $(4)) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+)
 endef
