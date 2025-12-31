@@ -53,14 +53,6 @@ on:
         options:
           - "yes"
           - "no"
-      toolchains:
-        description: "Compile Toolchains?"
-        required: true
-        default: "no"
-        type: choice
-        options:
-          - "yes"
-          - "no"
       rootemu:
         description: "Use Rootemu?"
         required: true
@@ -69,6 +61,22 @@ on:
         options:
           - "fakeroot"
           - "pseudo"
+      toolchains:
+        description: "Compile Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+      release-toolchains:
+        description: "Release Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
 
 concurrency:
   group: ${{ github.workflow }}
@@ -76,8 +84,6 @@ concurrency:
 
 jobs:
   dockerfizieren:
-    permissions:
-      contents: read
     container:
 #     image: ubuntu:20.04
 #     image: freetzng/generate
@@ -355,7 +361,7 @@ jobs:
       matrix:
         docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
-    name: "${{ matrix.docker }}-${{ matrix.fritz.name }}-${{ matrix.fritz.tcs }}"
+    name: "${{ matrix.docker }} -- ${{ matrix.fritz.name }}"
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.toolchains != 'no' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
@@ -368,6 +374,9 @@ jobs:
           export ARGS="$(for x in ${{ matrix.fritz.tcs }}; do echo -n "$x " | sed 's/^_/FREETZ_TYPE_/'; done)"
           echo "args='$ARGS'" >> $GITHUB_OUTPUT
           echo "################################################################" && bash -c "echo ARGS='$ARGS'"
+          export FRITZ_NAME="$(echo "${{ matrix.fritz.name }}" | tr ' ' '_' | tr -cd '[:alnum:]_')"
+          echo "fritz_name=$FRITZ_NAME" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo FRITZ_NAME=$FRITZ_NAME"
       
       - *preclone
 
@@ -403,9 +412,10 @@ jobs:
 
       - name: release
         uses: ncipollo/release-action@v1
+        if: ${{ github.event.inputs.release-toolchains == 'yes' && steps.args.outputs.fritz_name != '' }}
         with:
-          tag: dl-toolchains_${{ steps.version.outputs.version }}
-          name: dl-toolchains-${{ steps.version.outputs.version }}
+          tag: dl-toolchains_${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
           body: These files are internally used!
           prerelease: true
           allowUpdates: true
