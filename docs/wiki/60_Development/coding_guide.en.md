@@ -295,7 +295,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(call Build/Py3Mod/Pip, PYTHON3_MODULENAME, , )
+	$(call Build/PyMod3/Pip, PYTHON3_MODULENAME, , )
 	@touch $@
 
 $(pkg):

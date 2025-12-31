@@ -1,0 +1,34 @@
+--- a/Python/remote_debug.h
++++ b/Python/remote_debug.h
+@@ -555,7 +555,9 @@
+ 
+ #endif // (__APPLE__ && defined(TARGET_OS_OSX) && TARGET_OS_OSX)
+ 
+-#if defined(__linux__) && HAVE_PROCESS_VM_READV
++#if defined(__linux__)
++
++#if HAVE_PROCESS_VM_READV
+ static uintptr_t
+ search_elf_file_for_section(
+         proc_handle_t *handle,
+@@ -654,6 +656,8 @@ search_elf_file_for_section(
+     return result;
+ }
+ 
++#endif // HAVE_PROCESS_VM_READV
++
+ static uintptr_t
+ search_linux_map_for_section(proc_handle_t *handle, const char* secname, const char* substr)
+ {
+@@ -729,7 +733,11 @@ search_linux_map_for_section(proc_handle_t *handle, const char* secname, const
+         }
+ 
+         if (strstr(filename, substr)) {
++#if HAVE_PROCESS_VM_READV
+             retval = search_elf_file_for_section(handle, secname, start, path);
++#else
++            retval = 0;
++#endif
+             if (retval) {
+                 break;
+             }
