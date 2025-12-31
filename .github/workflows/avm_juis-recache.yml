@@ -74,7 +74,7 @@ jobs:
 
       - name: censorship
         if: github.repository_owner == 'freetz-ng'
-        run: sed -re 's,\.avm.\de/(.*(inhaus|labor).*),.example.com/\1,' -i docs/juis/README.md
+        run: sed -re 's,\.avm.\de/(.*(inhaus|labor).*),.example.invalid/\1,' -i docs/juis/README.md
 
       - name: commit
         env:
