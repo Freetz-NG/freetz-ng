@@ -6,6 +6,28 @@ TOOLS="$PARENT/tools"
 CACHE="/tmp/.freetz-juis"
 CRAP_FILTER="5382169925"
 
+# firmware versions
+LAB_FW_VERSION=""
+LAB_FW_VERSION+=("07.50-100000")
+LAB_FW_VERSION+=("07.90-111000")
+LAB_FW_VERSION+=("08.00-115000")
+
+INH_FW_VERSION=""
+INH_FW_VERSION+=("07.50-100000")
+
+DEC_FW_VERSION=""
+DEC_FW_VERSION+=("07.50-100000")
+DEC_FW_VERSION+=("08.00-115000")
+
+# hw ranges
+REL_HW_RANGE_RUN=150
+REL_HW_RANGE_END=333
+
+LAB_HW_RANGE_RUN=222
+LAB_HW_RANGE_END=$REL_HW_RANGE_END
+
+INH_HW_RANGE_RUN=$LAB_HW_RANGE_RUN
+INH_HW_RANGE_END=$LAB_HW_RANGE_END
 
 #crc32
 [ -e "$TOOLS/crc32" ] && CRC32="$TOOLS/crc32" || CRC32="$(which crc32)"
@@ -14,10 +36,10 @@ CRAP_FILTER="5382169925"
 
 #rel
 echo -e '\n### FOS-Release ################################################'
-for x in $(seq 150 333); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
+for x in $(seq $REL_HW_RANGE_RUN $REL_HW_RANGE_END); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
 #dwn
 echo -e '\n### FOS-Downgrade ##############################################'
-for x in $(seq 150 333); do  env - $TOOLS/juis_check --down HW=$x                                     -a; done | tee fos-dwn
+for x in $(seq $REL_HW_RANGE_RUN $REL_HW_RANGE_END); do  env - $TOOLS/juis_check --down HW=$x                                     -a; done | tee fos-dwn
 #add
 cat fos-dwn fos-rel | sort -u > fos-xxx
 #( cat fos-rel ; cat fos-dwn | while read -s x; do grep -q "^${x%=*}=" fos-rel || echo $x; done ) | sort -u > fos-xxx
@@ -25,16 +47,14 @@ cat fos-dwn fos-rel | sort -u > fos-xxx
 
 #lab
 echo -e '\n### FOS-Labor ##################################################'
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
-                             env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-111000"
-                             env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab -a
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.08.00-115000"
-                             env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab -a
+for a in ${LAB_FW_VERSION[@]}; do
+for x in $(seq $LAB_HW_RANGE_RUN $LAB_HW_RANGE_END); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.$a"
+                             env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done; done | tee fos-lab
 #inh
 echo -e '\n### FOS-Inhaus #################################################'
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
-                             env - $TOOLS/juis_check        HW=$x         Buildtype=1000  Version=$m  -a; done | tee fos-inh
+for a in ${INH_FW_VERSION[@]}; do
+for x in $(seq $INH_HW_RANGE_RUN $INH_HW_RANGE_END); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.$a"
+                             env - $TOOLS/juis_check        HW=$x         Buildtype=1000  Version=$m  -a; done; done | tee fos-inh
 #sub
 cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; done
 #cat fos-xxx | while read -s x; do sed "/\/${x##*/}$/d" -i fos-lab fos-inh; done
@@ -49,16 +69,14 @@ for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x                             -a; done | tee dect-rel
 #dect-lab
 echo -e '\n### Dect-Labor #################################################'
-for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.08.00-115000"
-                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab
-for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.07.50-100000"
-                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab -a
+for a in ${DEC_FW_VERSION[@]}; do
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.$a"
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done; done | tee dect-lab
 #dect-inh
 echo -e '\n### Dect-Inhaus ################################################'
-for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.08.00-115000"
-                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh
-for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.07.50-100000"
-                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh -a
+for a in ${DEC_FW_VERSION[@]}; do
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.$a"
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done; done | tee dect-inh
 #dect-sub
 cat dect-rel | while read -s x; do sed "/\/${x##*/}$/d" -i dect-lab dect-inh; done
 cat dect-lab | while read -s x; do sed "/\/${x##*/}$/d" -i          dect-inh; done
