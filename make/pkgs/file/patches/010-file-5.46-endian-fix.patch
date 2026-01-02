@@ -1,0 +1,11 @@
+--- src/apprentice.c.orig	2024-11-27 17:37:00.000000000 +0200
++++ src/apprentice.c	2025-05-10 15:19:16.866699397 +0300
+@@ -3644,7 +3644,7 @@
+ file_private void
+ bs1(struct magic *m)
+ {
+-	m->cont_level = swap2(m->cont_level);
++	m->flag = swap2(m->flag);
+ 	m->offset = swap4(CAST(uint32_t, m->offset));
+ 	m->in_offset = swap4(CAST(uint32_t, m->in_offset));
+ 	m->lineno = swap4(CAST(uint32_t, m->lineno));
