@@ -1407,13 +1407,13 @@ if [ "$DO_MOD" -gt 0 ]; then
 					x=$(echo $x | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zero12'/')
 				else
 					for s in $(modprobe --dump-modversions $f | sed -r 's/\t//')
-	        			do
+						do
 						((t++))
 						h=$(echo $s | sed -rn 's/0x(.{8})(.*)/\1/p')
 						n=$(echo $s | sed -rn 's/0x(.{8})(.*)/\2/p')
-	                			u=$(grep -w $n $k | sed -rn 's/0x(.{8}).*/\1/p')
+						u=$(grep -w $n $k | sed -rn 's/0x(.{8}).*/\1/p')
 						if [ $u ] && [ $h != $u ]
-	                			then
+						then
 							((p++))
 							H=$(echo -n $h | tac -rs ..)
 							U=$(echo -n $u | tac -rs ..)
