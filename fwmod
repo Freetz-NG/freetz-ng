@@ -1388,6 +1388,50 @@ if [ "$DO_MOD" -gt 0 ]; then
 	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
 		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
 		echo0 "installing$strip_output modules"
+		if [ "$FREETZ_KERNEL_VERSION_5" = "y" ]
+		then
+			vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
+			modversions=$(echo -n 'modversions ' | xxd -p -c0)
+			zero12=$(printf '%024x' 0)
+			k=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
+			for f in $(cd $MODULES_DIR && find . -name *.ko)
+			do
+				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $f | sed 's/\/kernel\//\//') ] && continue
+				f=$MODULES_DIR/$f
+				p=0
+				t=0
+				x=$(xxd -p -c0 $f)
+				if [ $(($(head -c10 $k))) -eq 0 ]
+				then
+					((t--))
+					x=$(echo $x | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zero12'/')
+				else
+					for s in $(modprobe --dump-modversions $f | sed -r 's/\t//')
+	        			do
+						((t++))
+						h=$(echo $s | sed -rn 's/0x(.{8})(.*)/\1/p')
+						n=$(echo $s | sed -rn 's/0x(.{8})(.*)/\2/p')
+	                			u=$(grep -w $n $k | sed -rn 's/0x(.{8}).*/\1/p')
+						if [ $u ] && [ $h != $u ]
+	                			then
+							((p++))
+							H=$(echo -n $h | tac -rs ..)
+							U=$(echo -n $u | tac -rs ..)
+							N=$(echo -n $n | xxd -p -c0)
+							x=$(echo $x | sed 's/'$H$N'/'$U$N'/')
+						fi
+					done
+				fi
+				if [ $t -ne 0 ]
+				then
+					echo $x | xxd -r -p > $f
+					bn="$(basename "$f")"
+					sizeinfo "$bn"
+					[ $t -gt 0 ] && printf '%5d of %5d symbols updated' $p $t || echo -n ' vermagic updated'
+					sizeinfo mod $f
+				fi
+			done
+		fi
 		for i in \
 		$( \
 			cd "${KERNEL_REP_DIR}/modules-${KERNEL_ID}" && \
@@ -1397,7 +1441,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 			ko_symbol="$(echo "${bn%\.ko}" | tr '\-+' '_x')"
 			ko_install="$(eval "echo \"\$FREETZ_MODULE_$ko_symbol\"")"
 			echo " $FREETZ_MODULES_OWN " | grep -q " $ko_symbol " && ko_install="y"
-			[ "$FREETZ_MODULES_ALL" = "y" -o "$ko_install" == "y" ] || continue
+			ko_file_ori="${MODULES_DIR}/kernel/${i}"
+			[ "$FREETZ_KERNEL_VERSION_5" = "y" -a -f "$ko_file_ori" -o "$FREETZ_MODULES_ALL" = "y" -o "$ko_install" == "y" ] || continue
 			sizeinfo "$bn"
 			ko_file_src="${KERNEL_REP_DIR}/modules-${KERNEL_ID}/${i}"
 			ko_path_dst="${MODULES_DIR}/kernel/$(dirname "$i")"
