@@ -1429,7 +1429,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					echo $hexmodule | xxd -r -p > $module
 					bn="$(basename "$module")"
 					sizeinfo "$bn"
-					[ $firsthash -eq 0 ]
+					if [ $firsthash -eq 0 ]
 					then
 						echo -n ' vermagic'
 					else
