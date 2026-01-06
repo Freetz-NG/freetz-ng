@@ -1392,7 +1392,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 		then
 			vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
 			modversions=$(echo -n 'modversions ' | xxd -p -c0)
-			zeropadding=$(printf '%024x' 0)
+			zeropadding=$(echo $modversions | sed 's/./0/g')
 			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
 			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
