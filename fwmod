@@ -1393,42 +1393,42 @@ if [ "$DO_MOD" -gt 0 ]; then
 			vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
 			modversions=$(echo -n 'modversions ' | xxd -p -c0)
 			zero12=$(printf '%024x' 0)
-			k=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
-			for f in $(cd $MODULES_DIR && find . -name *.ko)
+			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
+			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
-				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $f | sed 's/\/kernel\//\//') ] && continue
-				f=$MODULES_DIR/$f
-				p=0
-				t=0
-				x=$(xxd -p -c0 $f)
-				if [ $(($(head -c10 $k))) -eq 0 ]
+				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's/\/kernel\//\//') ] && continue
+				module=$MODULES_DIR/$module
+				updated=0
+				total=0
+				hexmodule=$(xxd -p -c0 $module)
+				if [ $(($(head -c10 $symvers))) -eq 0 ]
 				then
-					((t--))
-					x=$(echo $x | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zero12'/')
+					((total--))
+					hexmodule=$(echo $hexmodule | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zero12'/')
 				else
-					for s in $(modprobe --dump-modversions $f | sed -r 's/\t//')
+					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t//')
 						do
-						((t++))
-						h=$(echo $s | sed -rn 's/0x(.{8})(.*)/\1/p')
-						n=$(echo $s | sed -rn 's/0x(.{8})(.*)/\2/p')
-						u=$(grep -w $n $k | sed -rn 's/0x(.{8}).*/\1/p')
-						if [ $u ] && [ $h != $u ]
+						((total++))
+						hash=$(echo $symbol | sed -rn 's/0x(.{8})(.*)/\1/p')
+						name=$(echo $symbol | sed -rn 's/0x(.{8})(.*)/\2/p')
+						newhash=$(grep -w $name $symvers | sed -rn 's/0x(.{8}).*/\1/p')
+						if [ $newhash ] && [ $newhash != $hash ]
 						then
-							((p++))
-							H=$(echo -n $h | tac -rs ..)
-							U=$(echo -n $u | tac -rs ..)
-							N=$(echo -n $n | xxd -p -c0)
-							x=$(echo $x | sed 's/'$H$N'/'$U$N'/')
+							((updated++))
+							littlehash=$(echo -n $hash | tac -rs ..)
+							newlittlehash=$(echo -n $newhash | tac -rs ..)
+							hexname=$(echo -n $name | xxd -p -c0)
+							hexmodule=$(echo $hexmodule | sed 's/'$littlehash$hexname'/'$newlittlehash$hexname'/')
 						fi
 					done
 				fi
-				if [ $t -ne 0 ]
+				if [ $total -ne 0 ]
 				then
-					echo $x | xxd -r -p > $f
-					bn="$(basename "$f")"
+					echo $hexmodule | xxd -r -p > $module
+					bn="$(basename "$module")"
 					sizeinfo "$bn"
-					[ $t -gt 0 ] && printf '%5d of %5d symbols updated' $p $t || echo -n ' vermagic updated'
-					sizeinfo mod $f
+					[ $total -gt 0 ] && printf '%5d of %5d symbols updated' $updated $total || echo -n ' vermagic updated'
+					sizeinfo mod $module
 				fi
 			done
 		fi
