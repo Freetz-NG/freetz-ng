@@ -1392,22 +1392,24 @@ if [ "$DO_MOD" -gt 0 ]; then
 		then
 			vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
 			modversions=$(echo -n 'modversions ' | xxd -p -c0)
-			zero12=$(printf '%024x' 0)
+			zeropadding=$(printf '%024x' 0)
 			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
 			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
 				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's/\/kernel\//\//') ] && continue
 				module=$MODULES_DIR/$module
+				hexmodule=$(xxd -p -c0 $module)
 				updated=0
 				total=0
-				hexmodule=$(xxd -p -c0 $module)
-				if [ $(($(head -c10 $symvers))) -eq 0 ]
+				firsthash=$(($(head -c10 $symvers)))
+				if [ $firsthash -eq 0 ]
 				then
-					((total--))
-					hexmodule=$(echo $hexmodule | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zero12'/')
+					((total++))
+					((updated++))
+					hexmodule=$(echo $hexmodule | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zeropadding'/')
 				else
 					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t//')
-						do
+					do
 						((total++))
 						hash=$(echo $symbol | sed -rn 's/0x(.{8})(.*)/\1/p')
 						name=$(echo $symbol | sed -rn 's/0x(.{8})(.*)/\2/p')
@@ -1422,12 +1424,18 @@ if [ "$DO_MOD" -gt 0 ]; then
 						fi
 					done
 				fi
-				if [ $total -ne 0 ]
+				if [ $updated -gt 0 ]
 				then
 					echo $hexmodule | xxd -r -p > $module
 					bn="$(basename "$module")"
 					sizeinfo "$bn"
-					[ $total -gt 0 ] && printf '%5d of %5d symbols updated' $updated $total || echo -n ' vermagic updated'
+					[ $firsthash -eq 0 ]
+					then
+						echo -n ' vermagic'
+					else
+						printf '%5d of %5d symbols' $updated $total
+					fi
+					echo -n ' updated'
 					sizeinfo mod $module
 				fi
 			done
