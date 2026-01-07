@@ -1394,6 +1394,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			modversions=$(echo -n 'modversions ' | xxd -p -c0)
 			zeropadding=$(echo $modversions | sed 's/./0/g')
 			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
+			firsthash=$(($(head -c10 $symvers)))
 			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
 				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's/\/kernel\//\//') ] && continue
@@ -1401,7 +1402,6 @@ if [ "$DO_MOD" -gt 0 ]; then
 				hexmodule=$(xxd -p -c0 $module)
 				updated=0
 				total=0
-				firsthash=$(($(head -c10 $symvers)))
 				if [ $firsthash -eq 0 ]
 				then
 					((total++))
