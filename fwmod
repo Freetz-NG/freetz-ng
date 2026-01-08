@@ -1420,7 +1420,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 							((updated++))
 							littlehash=$(echo -n $hash | tac -rs ..)
 							newlittlehash=$(echo -n $newhash | tac -rs ..)
-							hexname=$(echo -n $name | xxd -p -c0)
+							hexname=$(echo -n $name | xxd -p -c0)'00'
 							hexmodule=$(echo $hexmodule | sed 's/'$littlehash$hexname'/'$newlittlehash$hexname'/')
 						fi
 					done
