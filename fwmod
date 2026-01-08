@@ -1395,7 +1395,6 @@ if [ "$DO_MOD" -gt 0 ]; then
 			zeropadding=$(echo $modversions | sed 's/./0/g')
 			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
 			firsthash=$(($(head -c10 $symvers)))
-			starttime=$(date +%s)
 			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
 				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's/\/kernel\//\//') ] && continue
@@ -1414,7 +1413,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 						((total++))
 						hash=$(echo $symbol | sed -rn 's/0x(.{8});(.*)/\1/p')
 						name=$(echo $symbol | sed -rn 's/0x(.{8});(.*)/\2/p')
-						#newhash=$(grep -w $name $symvers | sed -rn 's/0x(.{8}).*/\1/p')
+						newhash=$(grep -w $name $symvers | sed -rn 's/0x(.{8}).*/\1/p')
 						if [ $newhash ] && [ $newhash != $hash ]
 						then
 							((updated++))
@@ -1440,7 +1439,6 @@ if [ "$DO_MOD" -gt 0 ]; then
 					sizeinfo mod $module
 				fi
 			done
-			echo $(($(date +%s) - starttime))
 		fi
 		for i in \
 		$( \
