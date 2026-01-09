@@ -1390,12 +1390,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 		echo0 "installing$strip_output modules"
 		if [ "$FREETZ_KERNEL_VERSION_5" = "y" ]
 		then
-			vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
-			modversions=$(echo -n 'modversions ' | xxd -p -c0)
-			zeropadding=$(echo $modversions | sed 's/./0/g')
 			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
 			firsthash=$(($(head -c10 $symvers)))
-			starttime=$(date +%s)
 			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
 				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's,/kernel/,/,') ] && continue
@@ -1406,6 +1402,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 				then
 					((total++))
 					((updated++))
+					vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
+					modversions=$(echo -n 'modversions ' | xxd -p -c0)
+					zeropadding=$(echo $modversions | sed 's/./0/g')
 					pattern='s/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zeropadding'/'
 				else
 					pattern=''
@@ -1441,7 +1440,6 @@ if [ "$DO_MOD" -gt 0 ]; then
 					sizeinfo mod $module
 				fi
 			done
-			echo '  took '$(date +%M:%S -d@$(($(date +%s) - starttime)))
 		fi
 		for i in \
 		$( \
