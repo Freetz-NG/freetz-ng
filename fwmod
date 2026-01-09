@@ -1411,8 +1411,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/;/')
 					do
 						((total++))
-						hash=$(echo $symbol | sed -rn 's/0x(.{8});(.*)/\1/p')
-						name=$(echo $symbol | sed -rn 's/0x(.{8});(.*)/\2/p')
+						declare $(echo $symbol | sed -rn 's/0x(.{8});(.*)/hash=\1 name=\2/p')
 						newhash=$(grep -w $name $symvers | sed -rn 's/0x(.{8}).*/\1/p')
 						if [ $newhash ] && [ $newhash != $hash ]
 						then
