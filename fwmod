@@ -1400,16 +1400,15 @@ if [ "$DO_MOD" -gt 0 ]; then
 			do
 				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's,/kernel/,/,') ] && continue
 				module=$MODULES_DIR/$module
-				hexmodule=$(xxd -p -c0 $module)
 				updated=0
 				total=0
-				pattern=''
 				if [ $firsthash -eq 0 ]
 				then
 					((total++))
 					((updated++))
-					hexmodule=$(echo $hexmodule | sed -r 's/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zeropadding'/')
+					pattern='s/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zeropadding'/'
 				else
+					pattern=''
 					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/;/')
 					do
 						((total++))
@@ -1422,15 +1421,14 @@ if [ "$DO_MOD" -gt 0 ]; then
 							littlehash=$(echo -n $hash | tac -rs ..)
 							newlittlehash=$(echo -n $newhash | tac -rs ..)
 							hexname=$(echo -n $name | xxd -p -c0)'00'
-							#hexmodule=$(echo $hexmodule | sed 's/'$littlehash$hexname'/'$newlittlehash$hexname'/')
 							pattern=$pattern's/'$littlehash$hexname'/'$newlittlehash$hexname'/;'
 						fi
 					done
 				fi
 				if [ $updated -gt 0 ]
 				then
-					[ $pattern ] && hexmodule=$(echo $hexmodule | sed $pattern)
-					echo $hexmodule | xxd -r -p > $module
+					xxd -p -c0 $module | sed -r $pattern | xxd -r -p > tmp
+					mv tmp $module
 					bn="$(basename "$module")"
 					sizeinfo "$bn"
 					if [ $firsthash -eq 0 ]
