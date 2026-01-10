@@ -1423,8 +1423,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 				fi
 				if [ $updated -gt 0 ]
 				then
-					xxd -p -c0 $module | sed -r $pattern | xxd -r -p > tmp
-					mv tmp $module
+					xxd -p -c0 $module | sed -r $pattern | xxd -r -p > tmp && mv tmp $module
 					bn="$(basename "$module")"
 					sizeinfo "$bn"
 					if [ $firsthash -eq 0 ]
