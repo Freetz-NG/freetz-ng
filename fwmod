@@ -1411,15 +1411,13 @@ if [ "$DO_MOD" -gt 0 ]; then
 					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/;/')
 					do
 						((total++))
-						declare $(echo $symbol | sed -rn 's/0x(.{8});(.*)/hash=\1 name=\2/p')
-						newhash=$(grep -w $name $symvers | sed -rn 's/0x(.{8}).*/\1/p')
+						declare $(echo $symbol | sed -rn 's/0x(..)(..)(..)(..);(.*)/hash=\4\3\2\1 name=\5/p')
+						newhash=$(grep -w $name $symvers | sed -rn 's/0x(..)(..)(..)(..).*/\4\3\2\1/p')
 						if [ $newhash ] && [ $newhash != $hash ]
 						then
 							((updated++))
-							littlehash=$(echo -n $hash | tac -rs ..)
-							newlittlehash=$(echo -n $newhash | tac -rs ..)
 							hexname=$(echo -n $name | xxd -p -c0)'00'
-							pattern=$pattern's/'$littlehash$hexname'/'$newlittlehash$hexname'/;'
+							pattern=$pattern's/'$hash$hexname'/'$newhash$hexname'/;'
 						fi
 					done
 				fi
