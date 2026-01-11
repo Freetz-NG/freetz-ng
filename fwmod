@@ -1405,7 +1405,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 					vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
 					modversions=$(echo -n 'modversions ' | xxd -p -c0)
 					zeropadding=$(echo $modversions | sed 's/./0/g')
-					pattern='s/('$vermagic'.*)'$modversions'(([^0].)*)/\1\2'$zeropadding'/'
+					pattern='s/('$vermagic'.*)'$modversions'(([^0].)*00)/\1\2'$zeropadding'/'
 				else
 					pattern=''
 					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/;/')
