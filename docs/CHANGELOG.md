@@ -66,6 +66,7 @@ Latest changes
     * binutils (kernel) 2.18/2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.42/2.45.1
     * binutils (target) 2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.43.1/2.45.1
     * ccache 4.12.2
+    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.56
     * new architecture: aarch64
     * new architecture: aarch64_eb
     * new architecture: armeb
