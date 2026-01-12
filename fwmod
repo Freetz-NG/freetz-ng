@@ -1408,10 +1408,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 					pattern='s/('$vermagic'.*)'$modversions'(([^0].)*00)/\1\2'$zeropadding'/'
 				else
 					pattern=''
-					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/;/')
+					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/,/')
 					do
 						((total++))
-						declare $(echo $symbol | sed -rn 's/0x(..)(..)(..)(..);(.*)/hash=\4\3\2\1 name=\5/p')
+						declare $(echo $symbol | sed -rn 's/0x(..)(..)(..)(..),(.*)/hash=\4\3\2\1 name=\5/p')
 						newhash=$(grep -w $name $symvers | sed -rn 's/0x(..)(..)(..)(..).*/\4\3\2\1/p')
 						if [ $newhash ] && [ $newhash != $hash ]
 						then
