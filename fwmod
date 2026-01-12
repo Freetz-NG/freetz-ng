@@ -1386,12 +1386,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
-		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
-		echo0 "installing$strip_output modules"
 		if [ "$FREETZ_KERNEL_VERSION_5" = "y" ]
 		then
 			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
 			firsthash=$(($(head -c10 $symvers)))
+			[ $firsthash -eq 0 ] && echo0 "update modules vermagic" || echo0 "update modules symvers"
 			for module in $(cd $MODULES_DIR && find . -name *.ko)
 			do
 				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's,/kernel/,/,') ] && continue
@@ -1426,17 +1425,13 @@ if [ "$DO_MOD" -gt 0 ]; then
 					xxd -p -c0 $module | sed -r $pattern | xxd -r -p > tmp && mv tmp $module
 					bn="$(basename "$module")"
 					sizeinfo "$bn"
-					if [ $firsthash -eq 0 ]
-					then
-						echo -n ' vermagic'
-					else
-						printf '%5d of %5d symbols' $updated $total
-					fi
-					echo -n ' updated'
+					[ $firsthash -ne 0 ] && printf '%5d of %5d .......' $updated $total
 					sizeinfo mod $module
 				fi
 			done
 		fi
+		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
+		echo0 "installing$strip_output modules"
 		for i in \
 		$( \
 			cd "${KERNEL_REP_DIR}/modules-${KERNEL_ID}" && \
