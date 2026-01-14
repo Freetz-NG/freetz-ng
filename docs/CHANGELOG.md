@@ -146,6 +146,7 @@ Latest changes
     * harfbuzz 12.2.0
     * libcap 2.49/2.77
     * libdeflate 1.25
+    * libpng 1.6.54
     * liburcu 0.15.4
     * libxml2 2.15.1
     * libyaml 0.2.5
@@ -486,7 +487,7 @@ Latest changes
     * OpenSSH 9.3p2/9.8p1
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.14
     * OpenVPN 2.4.12/2.5.11/2.6.13
-    * PCP client 1c783fb 
+    * PCP client 1c783fb
     * PCSC-lite 1.9.5/2.1.0
     * psl 0.21.5
     * socat 1.8.0.0
@@ -3869,4 +3870,3 @@ Features:
 
 Latest change of this file: $Id$
 ```
-
