@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_NGINX" == "y" ] && EXTERNAL_SERVICES+=" nginx"
