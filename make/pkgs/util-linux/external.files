@@ -1,1 +1,9 @@
-[ "$EXTERNAL_FREETZ_PACKAGE_UTIL_LINUX" == "y" ] && EXTERNAL_FILES+=" /sbin/blkid-util-linux"
+if [ "$EXTERNAL_FREETZ_PACKAGE_UTIL_LINUX" == "y" ]; then
+	EXTERNAL_FILES+=" /sbin/blkid-util-linux"
+	EXTERNAL_FILES+=" /sbin/losetup-util-linux"
+	EXTERNAL_FILES+=" /sbin/mkswap-util-linux"
+	EXTERNAL_FILES+=" /sbin/swapon-util-linux"
+	EXTERNAL_FILES+=" /sbin/swapoff-util-linux"
+	EXTERNAL_FILES+=" /sbin/lsblk"
+	EXTERNAL_FILES+=" /sbin/findmnt"
+fi
