@@ -117,6 +117,7 @@ Latest changes
     * Bzip2 1.0.8
     * CA-bundle 2025-12-02
     * Curl 8.12.1/8.17.0
+    * Dnsmasq 2.80/2.92
     * Dropbear 2025.89
     * file 5.46
     * GNU Make 4.2.1/4.4.1
