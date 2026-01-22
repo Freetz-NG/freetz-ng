@@ -4,5 +4,16 @@ config EXTERNAL_FREETZ_PACKAGE_UTIL_LINUX
 	default n
 	help
 		externals the following file(s):
+		
+		Version 2.27.1 (legacy):
 		 /sbin/blkid-util-linux
+		
+		Version 2.41 (modern):
+		 /sbin/blkid-util-linux
+		 /sbin/lsblk
+		 /sbin/findmnt
+		 /sbin/losetup-util-linux
+		 /sbin/mkswap-util-linux
+		 /sbin/swapon-util-linux
+		 /sbin/swapoff-util-linux
 
