@@ -12,14 +12,16 @@ if FREETZ_PACKAGE_DNSMASQ
 
 		config FREETZ_PACKAGE_DNSMASQ_VERSION_ABANDON
 			bool "2.80"
-			depends on !FREETZ_TARGET_IPV6_SUPPORT
+			depends on (!FREETZ_TARGET_IPV6_SUPPORT || FREETZ_AVM_VERSION_05_5X_MAX)
 			help
 				Version 2.80 is the last with IPv4-only support. If
 				you want to use a newer version, enable IPv6 support.
+				Additional the multid-leases.patch for up to FOS 5.5 is
+				not adapted for newer dnsmasq versions. Feel free...
 
 		config FREETZ_PACKAGE_DNSMASQ_VERSION_CURRENT
 			bool "2.92"
-			depends on FREETZ_TARGET_IPV6_SUPPORT
+			depends on !(!FREETZ_TARGET_IPV6_SUPPORT || FREETZ_AVM_VERSION_05_5X_MAX)
 
 	endchoice
 

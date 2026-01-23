@@ -210,7 +210,7 @@
 </tbody></table>
 </details>
 
-<details><summary>388 verschiedene Images</summary>
+<details><summary>387 verschiedene Images</summary>
 
 <table>
 <caption style='background-color:gray'>&nbsp;</caption>
