@@ -1,4 +1,4 @@
-# Privoxy 4.0.0
+# Privoxy 4.1.0
   - Homepage: [https://www.privoxy.org](https://www.privoxy.org)
   - Manpage: [https://www.privoxy.org/user-manual/](https://www.privoxy.org/user-manual/)
   - Changelog: [https://www.privoxy.org/gitweb/?p=privoxy.git;a=blob;f=ChangeLog](https://www.privoxy.org/gitweb/?p=privoxy.git;a=blob;f=ChangeLog)

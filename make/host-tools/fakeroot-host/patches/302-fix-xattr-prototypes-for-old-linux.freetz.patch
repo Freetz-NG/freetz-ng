@@ -1,6 +1,6 @@
 --- wrapdef.h
 +++ wrapdef.h
-@@ -146,22 +146,22 @@
+@@ -149,22 +149,22 @@
  ssize_t (*next_fgetxattr)(int fd, const char *name, void *value, size_t size)=tmp_fgetxattr;
  #endif /* HAVE_FGETXATTR */
  #ifdef HAVE_SETXATTR

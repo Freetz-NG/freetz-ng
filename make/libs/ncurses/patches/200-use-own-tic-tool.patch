@@ -1,7 +1,7 @@
 --- misc/run_tic.in
 +++ misc/run_tic.in
-@@ -88,6 +88,7 @@
- 		exit 1
+@@ -97,6 +97,7 @@
+ 		failed "no tic program found"
  	fi
  else
 +	TIC_PATH="$FREETZ_BASE_DIR/tools/tic"

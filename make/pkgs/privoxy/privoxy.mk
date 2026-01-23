@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.0.0)
+$(call PKG_INIT_BIN, 4.1.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION)-stable-src.tar.gz
-$(PKG)_HASH:=c08e2ba0049307017bf9d8a63dd2a0dfb96aa0cdeb34ae007776e63eba62a26f
+$(PKG)_HASH:=23e4686e5848c74cb680c09c2811f0357739ecfe641f9c4072ee42399092c97b
 $(PKG)_SITE:=@SF/ijbswa
 ### WEBSITE:=https://www.privoxy.org
 ### MANPAGE:=https://www.privoxy.org/user-manual/

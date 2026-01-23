@@ -16,10 +16,10 @@ on:
         type: choice
         options:
           - "_all"
-          - "fedora:43"
-          - "debian:13"
-          - "ubuntu:22.04"
-          - "ubuntu:24.04"
+          - "fedora-43-latest" #fedora:43
+          - "debian-13-latest" #debian:13
+          - "ubuntu-22.04-latest" #ubuntu:22.04
+          - "ubuntu-24.04-latest" #ubuntu:24.04
       fos:
         description: "FOS Version to build"
         required: true
@@ -53,14 +53,6 @@ on:
         options:
           - "yes"
           - "no"
-      toolchains:
-        description: "Compile Toolchains?"
-        required: true
-        default: "no"
-        type: choice
-        options:
-          - "yes"
-          - "no"
       rootemu:
         description: "Use Rootemu?"
         required: true
@@ -69,6 +61,22 @@ on:
         options:
           - "fakeroot"
           - "pseudo"
+      toolchains:
+        description: "Compile Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
+      release-toolchains:
+        description: "Release Toolchains?"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
 
 concurrency:
   group: ${{ github.workflow }}
@@ -76,8 +84,6 @@ concurrency:
 
 jobs:
   dockerfizieren:
-    permissions:
-      contents: read
     container:
 #     image: ubuntu:20.04
 #     image: freetzng/generate
@@ -96,14 +102,14 @@ jobs:
             "
           else
             OSLIST="
-            fedora:43
-            debian:13
-            ubuntu:22.04
-            ubuntu:24.04
+            fedora-43-latest
+            debian-13-latest
+            ubuntu-22.04-latest
+            ubuntu-24.04-latest
             "
           fi
           echo "oslist<<EOF" >> $GITHUB_OUTPUT
-          echo "$OSLIST" >> $GITHUB_OUTPUT
+          echo "$OSLIST" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: parse
@@ -167,8 +173,9 @@ jobs:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
 #     image: ghcr.io/freetz-ng/firmware
-      image: ${{ matrix.docker }}
-#     options: --user 1001:1001
+#     image: docker.io/${{ matrix.docker }}
+      image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
+      options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -194,39 +201,39 @@ jobs:
 #         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
 #         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
-      - &preclone
-        name: preclone
-        uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
-          path: ${{ github.workspace }}
-          sparse-checkout: |
-            tools/prerequisites
-          sparse-checkout-cone-mode: false
+#     - &preclone
+#       name: preclone
+#       uses: actions/checkout@v6
+#       with:
+#         token: ${{ secrets.GITHUB_TOKEN }}
+#         repository: ${{ github.repository }}
+#         ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+#         path: ${{ github.workspace }}
+#         sparse-checkout: |
+#           tools/prerequisites
+#         sparse-checkout-cone-mode: false
 
-      - &install
-        name: install
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          if   [ -x "$(command -v apt)" ]; then 
-            sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
-          fi
-          ./tools/prerequisites install -y
-      - &locale
-        name: locale
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: |
-          if   [ -x "$(command -v apt)" ]; then 
-            apt-get update && apt-get install -y locales; 
-            locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
-          elif [ -x "$(command -v dnf)" ]; then
-            dnf -y install glibc-locale-source && \
-            localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
-          fi  
+#     - &install
+#       name: install
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
+#       run: |
+#         if   [ -x "$(command -v apt)" ]; then 
+#           sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
+#         fi
+#         ./tools/prerequisites install -y
+#     - &locale
+#       name: locale
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
+#       run: |
+#         if   [ -x "$(command -v apt)" ]; then 
+#           apt-get update && apt-get install -y locales; 
+#           locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+#         elif [ -x "$(command -v dnf)" ]; then
+#           dnf -y install glibc-locale-source && \
+#           localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
+#         fi  
 
       - &clone
         name: clone
@@ -305,18 +312,18 @@ jobs:
           for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
           echo "################################################################" && ls -l ~/.freetz-signature/
 
-      - &useradd
-        name: useradd
-        run: |
-          groupadd freetz -o -g 1001
-          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
-          chown -R freetz:freetz $(pwd)
+#     - &useradd
+#        name: useradd
+#        run: |
+#          groupadd freetz -o -g 1001
+#          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
+#          chown -R freetz:freetz $(pwd)
 
       - name: generate
         env:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
-          su freetz -c "make && rm -f images/latest.image"
+          make && rm -f images/latest.image
           
       - name: result
         run: |
@@ -346,8 +353,9 @@ jobs:
 #     image: ubuntu:20.04
 #     image: freetzng/firmware
 #     image: ghcr.io/freetz-ng/firmware
-      image: ${{ matrix.docker }}
-#     options: --user 1001:1001
+#     image: docker.io/${{ matrix.docker }}
+      image: ghcr.io/pfichtner/pfichtner-freetz:${{ matrix.docker }}
+      options: --user 1001:1001
     needs: [ dockerfizieren, matrizifizieren ]
     strategy:
       fail-fast: false
@@ -355,7 +363,7 @@ jobs:
       matrix:
         docker: ${{ fromJson(needs.dockerfizieren.outputs.os) }}
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
-    name: "${{ matrix.docker }}-${{ matrix.fritz.name }}-${{ matrix.fritz.tcs }}"
+    name: "${{ matrix.docker }} -- ${{ matrix.fritz.name }}"
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.toolchains != 'no' }}
 #   if: github.repository == 'freetz-ng/freetz-ng'
@@ -368,11 +376,14 @@ jobs:
           export ARGS="$(for x in ${{ matrix.fritz.tcs }}; do echo -n "$x " | sed 's/^_/FREETZ_TYPE_/'; done)"
           echo "args='$ARGS'" >> $GITHUB_OUTPUT
           echo "################################################################" && bash -c "echo ARGS='$ARGS'"
+          export FRITZ_NAME="$(echo "${{ matrix.fritz.name }}" | tr ' ' '_' | tr -cd '[:alnum:]_')"
+          echo "fritz_name=$FRITZ_NAME" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo FRITZ_NAME=$FRITZ_NAME"
       
-      - *preclone
+#     - *preclone
 
-      - *install
-      - *locale
+#     - *install
+#     - *locale
 
       - *clone
 
@@ -385,27 +396,28 @@ jobs:
           [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
           echo "################################################################" && bash -c "echo VERSION=$VERSION"
 
-      - *useradd
+#     - *useradd
 
       - name: generate
         env:
           ACTIONS_VERSION: ${{ steps.version.outputs.version }}
         run: |
-          su freetz -c "tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}"
+          tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}
 
       - name: result
         env:
           ACTIONS_VERSION: ${{ steps.version.outputs.version }}
         run: |
           echo "################################################################"
-          su freetz -c 'tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'
+          tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
           ls -al dl/*-shared-glibc.tar.lzma && du -sh dl/*-shared-glibc.tar.lzma
 
       - name: release
         uses: ncipollo/release-action@v1
+        if: ${{ github.event.inputs.release-toolchains == 'yes' && steps.args.outputs.fritz_name != '' }}
         with:
-          tag: dl-toolchains_${{ steps.version.outputs.version }}
-          name: dl-toolchains-${{ steps.version.outputs.version }}
+          tag: dl-toolchains_${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
           body: These files are internally used!
           prerelease: true
           allowUpdates: true

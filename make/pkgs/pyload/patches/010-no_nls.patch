@@ -1,0 +1,11 @@
+--- module/config/default.conf
++++ module/config/default.conf
+@@ -27,7 +27,7 @@
+     int log_size : "Size in kb" = 100
+     bool log_rotate : "Log rotate" = True
+ general - "General":
+-    en;de;fr;it;es;el_GR;nl;sv;ru;pl;cs;sr;pt_BR language : "Language" = en
++    en language : "Language" = en
+     folder download_folder : "Download folder" = Downloads
+     bool debug_mode : "Debug mode" = False
+     bool checksum : "Use checksum" = False

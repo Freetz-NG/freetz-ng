@@ -1,6 +1,6 @@
 --- misc/terminfo.src
 +++ misc/terminfo.src
-@@ -6880,6 +6880,201 @@
+@@ -7006,6 +7006,201 @@
  rxvt-16color|rxvt with 16 colors like aixterm,
  	ncv#32, use=ibm+16color, use=rxvt,
  

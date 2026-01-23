@@ -1,5 +1,5 @@
-[ "$EXTERNAL_FREETZ_LIB_libform"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libform.so.6.5"
-[ "$EXTERNAL_FREETZ_LIB_libmenu"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmenu.so.6.5"
-[ "$EXTERNAL_FREETZ_LIB_libncurses"  == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libncurses.so.6.5"
-[ "$EXTERNAL_FREETZ_LIB_libpanel"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpanel.so.6.5"
+[ "$EXTERNAL_FREETZ_LIB_libform"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libform.so.6.6"
+[ "$EXTERNAL_FREETZ_LIB_libmenu"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmenu.so.6.6"
+[ "$EXTERNAL_FREETZ_LIB_libncurses"  == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libncurses.so.6.6"
+[ "$EXTERNAL_FREETZ_LIB_libpanel"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpanel.so.6.6"
 

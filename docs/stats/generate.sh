@@ -70,9 +70,9 @@ get_dl() {
 	file="config/mod/dl-firmware.in"
 	(
 		table_head "Datei(/AVM)" "Symbole"
-		cat "$file" | grep "string \"${area}\"" -m1 -A9999 | grep "^config " -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(default) " | while read -r line; do
+		cat "$file" | grep "string \"${area}\"" -m1 -A9999 | grep "^config " -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(default) " | grep -v "DETECT_IMAGE_NAME" | while read -r line; do
 			echo "$line" | tr -s ' ' | sed -r 's/.*"(.*)".* if (.*)/@ \2 @ \1 @/g' && echo >> "$TMPFILE.dl.head"
-		done | sed -r 's/_(inhaus|labor|plus)//gI' | grep -v "DETECT_IMAGE_NAME" | sed 's/&&/\&amp;\&amp;<br>/g;s/||/\&vert;\&vert;<br>/g'
+		done | sed -r 's/_(inhaus|labor|plus)//gI' | sed 's/&&/\&amp;\&amp;<br>/g;s/||/\&vert;\&vert;<br>/g'
 	) > "$TMPFILE.dl.body"
 }
 

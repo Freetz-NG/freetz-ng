@@ -1,6 +1,6 @@
 --- misc/terminfo.src
 +++ misc/terminfo.src
-@@ -6518,12 +6518,11 @@
+@@ -6645,12 +6645,11 @@
  # The value for kbs (see konsole-vt100) reflects local customization rather
  # than the settings used for XFree86 xterm.
  konsole-xf4x|KDE console window with keyboard for XFree86 4.x xterm,

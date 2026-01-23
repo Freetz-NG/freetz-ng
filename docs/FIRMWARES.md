@@ -418,7 +418,7 @@ Currently supported devices and firmwares
     - 113.07.01 rev61484 {INT}
     - 113.07.12 rev70401 {INT} [MESH18 NL2]
     - 113.07.29 rev92201 {ALL} [PSQ19P2NL4]
-    - 113.07.61 rev124973 {ALL} [MOVE21NL2]
+    - 113.07.62 rev127819 {ALL} [MOVE21 NL3 WU25]
 
 ### Fritz!Box Fon WLAN (75xx)
 
@@ -586,14 +586,14 @@ Currently supported devices and firmwares
   * __Fritz!Repeater 1200 AX v2 (UNTESTED)__
     - 296.08.03 rev120165 {ALL} [Smart24 P1 FCS]
   * __Fritz!Repeater 1700 (UNTESTED)__
-    - 290.08.06 rev123889 {ALL} [Smart24 P1 FCS]
+    - 290.08.07 rev128069 {ALL} [Smart24 P1 FCS]
   * __Fritz!Repeater 2400__
     - 169.07.12 rev71975 {ALL} [MESH18 NL2]
     - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
     - 169.07.58 rev111615 {ALL} [MOVE21NL1]
     - 169.08.20 rev125176 {ALL} [Smart24 P2]
   * __Fritz!Repeater 2700 (UNTESTED)__
-    - 301.08.06 rev123890 {ALL} [Smart24 P1 FCS]
+    - 301.08.07 rev128070 {ALL} [Smart24 P1 FCS]
   * __Fritz!Repeater 3000__
     - 174.07.04 rev66458 {ALL}
     - 174.07.14 rev73940 {ALL} [MESH18 NL4]

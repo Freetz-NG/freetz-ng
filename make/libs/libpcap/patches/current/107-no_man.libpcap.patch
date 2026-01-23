@@ -1,6 +1,6 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -619,14 +619,6 @@
+@@ -613,14 +613,6 @@
  	    (mkdir -p $(DESTDIR)$(includedir); chmod 755 $(DESTDIR)$(includedir))
  	[ -d $(DESTDIR)$(includedir)/pcap ] || \
  	    (mkdir -p $(DESTDIR)$(includedir)/pcap; chmod 755 $(DESTDIR)$(includedir)/pcap)
@@ -15,7 +15,7 @@
  	for i in $(PUBHDR); do \
  		$(INSTALL_DATA) $(srcdir)/$$i \
  		    $(DESTDIR)$(includedir)/$$i; done
-@@ -636,59 +628,6 @@
+@@ -630,59 +622,6 @@
  	[ -d $(DESTDIR)$(libdir)/pkgconfig ] || \
  	    (mkdir -p $(DESTDIR)$(libdir)/pkgconfig; chmod 755 $(DESTDIR)$(libdir)/pkgconfig)
  	$(INSTALL_DATA) libpcap.pc $(DESTDIR)$(libdir)/pkgconfig/libpcap.pc

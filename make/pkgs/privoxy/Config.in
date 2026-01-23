@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PRIVOXY
-	bool "Privoxy 4.0.0"
+	bool "Privoxy 4.1.0"
 	default n
 	help
 		Privoxy is a web proxy with advanced filtering capabilities for protecting privacy, modifying web page

@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 6.5-20250419)
-$(PKG)_SOURCE:=ncurses-$($(PKG)_VERSION).tgz
-$(PKG)_HASH:=a1dcc10899d5bdb78b3cca0848e5f1d6aeed78992f495d84d449587fe36c7cf4
+$(call TOOLS_INIT, 6.6)
+$(PKG)_SOURCE:=ncurses-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11
 $(PKG)_SITE:=@GNU/ncurses,https://invisible-island.net/archives/ncurses
 ### WEBSITE:=https://invisible-island.net/ncurses/
 ### MANPAGE:=https://invisible-island.net/ncurses/announce.html

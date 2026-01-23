@@ -1,5 +1,6 @@
 config FREETZ_PACKAGE_SOCAT
-	bool "socat 1.8.0.3 (binary only)"
+	bool "socat 1.8.1.0 (binary only)"
+	depends on !FREETZ_TARGET_UCLIBC_0_9_28
 	select FREETZ_REMOVE_SOCAT if FREETZ_AVM_HAS_SOCAT
 	select FREETZ_LIB_libcrypto_WITH_EC
 	select FREETZ_LIB_libcrypto

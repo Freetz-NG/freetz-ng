@@ -4,7 +4,7 @@ config EXTERNAL_FREETZ_LIB_libformw
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libformw.so.6.5
+		 ${FREETZ_LIBRARY_DIR}/libformw.so.6.6
 
 config EXTERNAL_FREETZ_LIB_libmenuw
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libmenuw
@@ -12,7 +12,7 @@ config EXTERNAL_FREETZ_LIB_libmenuw
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libmenuw.so.6.5
+		 ${FREETZ_LIBRARY_DIR}/libmenuw.so.6.6
 
 config EXTERNAL_FREETZ_LIB_libncursesw
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libncursesw && (!FREETZ_PACKAGE_BASH_READLINE || EXTERNAL_FREETZ_PACKAGE_BASH)
@@ -20,7 +20,7 @@ config EXTERNAL_FREETZ_LIB_libncursesw
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libncursesw.so.6.5
+		 ${FREETZ_LIBRARY_DIR}/libncursesw.so.6.6
 
 config EXTERNAL_FREETZ_LIB_libpanelw
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpanelw
@@ -28,5 +28,5 @@ config EXTERNAL_FREETZ_LIB_libpanelw
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpanelw.so.6.5
+		 ${FREETZ_LIBRARY_DIR}/libpanelw.so.6.6
 

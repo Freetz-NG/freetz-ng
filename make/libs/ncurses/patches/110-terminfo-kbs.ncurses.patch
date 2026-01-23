@@ -1,6 +1,6 @@
 --- misc/terminfo.src
 +++ misc/terminfo.src
-@@ -4946,6 +4946,7 @@
+@@ -5072,6 +5072,7 @@
  
  xterm+nofkeys|building block for xterm fkey-variants,
  	npc,
@@ -8,34 +8,34 @@
  	kcbt=\E[Z, nel=\EE, use=ecma+index, use=ansi+rep,
  	use=ecma+strikeout, use=vt420+lrmm, use=xterm+focus,
  	use=xterm+sm+1006, use=xterm+tmux, use=ecma+italics,
-@@ -6695,7 +6696,7 @@
+@@ -6821,7 +6822,7 @@
  	cup=\E[%i%p1%d;%p2%dH, ed=\E[J, el=\E[K, el1=\E[1K,
  	flash=\E[?5h$<100/>\E[?5l, ich=\E[%p1%d@,
  	is1=\E[?47l\E=\E[?1l,
 -	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l,
 +	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l, kbs=\177,
  	kcbt=\E[Z, kmous=\E[M, rev=\E[7m, ri=\EM, rmir=\E[4l,
- 	rmkx=\E>, rmso=\E[27m, rmul=\E[24m,
+ 	rmkx=\E>,
  	rs1=\E>\E[1;3;4;5;6l\E[?7h\E[m\E[r\E[2J\E[H,
-@@ -6934,7 +6935,7 @@
+@@ -7059,7 +7060,7 @@
  	ech=\E[%p1%dX, ed=\E[J, el=\E[K, el1=\E[1K, enacs=\E)0,
- 	hpa=\E[%i%p1%dG, ich=\E[%p1%d@, is1=\E[?47l\E>\E[?1l,
+ 	ich=\E[%p1%d@, is1=\E[?47l\E>\E[?1l,
  	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l, kNXT@,
 -	kPRV@, ka1=\E[7~, ka3=\E[5~, kb2=\EOu, kbeg=\EOu, kc1=\E[8~,
 +	kPRV@, ka1=\E[7~, ka3=\E[5~, kb2=\EOu, kbeg=\EOu, kbs=\177, kc1=\E[8~,
  	kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M, mc4=\E[4i,
  	mc5=\E[5i, rev=\E[7m, ri=\EM, rmam=\E[?7l, rmir=\E[4l, rmkx=,
- 	rmso=\E[27m, rmul=\E[24m,
-@@ -8254,7 +8255,7 @@
+ 	rs1=\E>\E[1;3;4;5;6l\E[?7h\E[m\E[r\E[2J\E[H,
+@@ -8716,7 +8717,7 @@
+ 	blink=\E[5m, bold=\E[1m, cub1=^H, cud1=\n,
  	cup=\E[%i%p1%d;%p2%dH, cuu1=\EM, cvvis=\E[34l,
  	dch=\E[%p1%dP, dch1=\E[P, dim=\E[2m, el1=\E[1K, flash=\Eg,
- 	hpa=\E[%i%p1%dG, ich=\E[%p1%d@, indn=\E[%p1%dS, is2=\E)0,
--	kbs=^?, kcbt=\E[Z, kf1=\EOP, kf10=\E[21~, kf11=\E[23~,
-+	kbs=\177, kcbt=\E[Z, kf1=\EOP, kf10=\E[21~, kf11=\E[23~,
- 	kf12=\E[24~, kf2=\EOQ, kf3=\EOR, kf4=\EOS, kf5=\E[15~,
- 	kf6=\E[17~, kf7=\E[18~, kf8=\E[19~, kf9=\E[20~,
+-	ich=\E[%p1%d@, indn=\E[%p1%dS, is2=\E)0, kbs=^?, kcbt=\E[Z,
++	ich=\E[%p1%d@, indn=\E[%p1%dS, is2=\E)0, kbs=\177, kcbt=\E[Z,
  	khome=\E[1~, kmous=\E[M, nel=\EE, rev=\E[7m, ri=\EM,
-@@ -8396,6 +8397,7 @@
+ 	rmir=\E[4l, rmkx=\E[?1l\E>, rmso=\E[23m,
+ 	rs2=\Ec\E[?1000l\E[?25h,
+@@ -8857,6 +8858,7 @@
  # on Solaris because Sun's curses implementation gets confused.
  screen.teraterm|disable ncv in teraterm,
  	ncv#127,

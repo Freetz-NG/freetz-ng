@@ -1,11 +1,11 @@
 --- misc/Makefile.in
 +++ misc/Makefile.in
-@@ -73,7 +73,7 @@
+@@ -72,7 +72,7 @@
  INSTALL_SCRIPT	= @INSTALL_SCRIPT@
  INSTALL_DATA	= @INSTALL_DATA@
  
 -PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 +PKG_CONFIG_LIBDIR = $(patsubst $(DESTDIR)%,%,@PKG_CONFIG_LIBDIR@)
  
- ################################################################################
- 
+ BINDIR		= $(DESTDIR)$(bindir@MERGE_PREFIX@)
+ DATADIR		= $(DESTDIR)$(datadir@MERGE_PREFIX@)

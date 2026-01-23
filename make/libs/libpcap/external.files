@@ -1,2 +1,2 @@
-[ "FREETZ_LIB_libpcap_VERSION_ABANDON" == "y" ] && ELIBVER="1.1.1" || ELIBVER="1.10.5"
+[ "FREETZ_LIB_libpcap_VERSION_ABANDON" == "y" ] && ELIBVER="1.1.1" || ELIBVER="1.10.6"
 [ "$EXTERNAL_FREETZ_LIB_libpcap" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libpcap.so.$ELIBVER"
