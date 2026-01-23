@@ -203,7 +203,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Dns2tcp is a network tool designed to relay TCP connections through DNS traffic. Encapsulation is done on the TCP level, thus no specific driver is needed (i.e: TUN/TAP).
      - [Using with FreeDNS](../../docs/make/dns2tcp.md#using-with-freedns)
 
-  * **[Dnsmasq 2.80/2.91](../../docs/make/dnsmasq.md)<a id='dnsmasq'></a>**<br>
+  * **[Dnsmasq 2.80/2.92](../../docs/make/dnsmasq.md)<a id='dnsmasq'></a>**<br>
     Combined DHCP, DNS and TFTP server.
      - [Installation](../../docs/make/dnsmasq.md#installation)
      - [Konfiguration](../../docs/make/dnsmasq.md#konfiguration)

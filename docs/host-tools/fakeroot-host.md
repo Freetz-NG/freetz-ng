@@ -1,4 +1,4 @@
-# fakeroot 1.37.1.2
+# fakeroot 1.37.2
   - Homepage: [https://wiki.debian.org/FakeRoot](https://wiki.debian.org/FakeRoot)
   - Manpage: [https://man.archlinux.org/man/fakeroot.1.en](https://man.archlinux.org/man/fakeroot.1.en)
   - Changelog: [https://launchpad.net/debian/+source/fakeroot/+changelog](https://launchpad.net/debian/+source/fakeroot/+changelog)

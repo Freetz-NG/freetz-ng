@@ -1,4 +1,4 @@
-# cmake 4.2.1
+# cmake 4.2.2
   - Homepage: [https://cmake.org/](https://cmake.org/)
   - Manpage: [https://cmake.org/cmake/help/latest/](https://cmake.org/cmake/help/latest/)
   - Changelog: [https://github.com/Kitware/CMake/releases](https://github.com/Kitware/CMake/releases)

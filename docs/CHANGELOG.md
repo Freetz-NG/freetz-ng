@@ -74,12 +74,13 @@ Latest changes
     * automake 1.18.1
     * ca-bundle 2025-12-02
     * config a2287c3
-    * cmake 4.2.1
+    * cmake 4.2.2
     * dos2unix 7.5.3
+    * fakeroot 1.37.2
     * file 5.46
     * gperf 3.3
     * kconfig 6.18
-    * meson 1.10.0
+    * meson 1.10.1
     * ninja 1.13.2
     * patchelf 0.14.5/0.18.0-b49de1b33
     * patchelf-target 0.14.5/0.15.0
@@ -90,7 +91,7 @@ Latest changes
     * python3-pip 25.3
     * python3-referencing 0.37.0
     * tools 2025-12-09
-    * uboot 2025.10
+    * uboot 2026.01
 
   - AVM sources:
     * 600      8.20 - 4.4.271
@@ -117,6 +118,7 @@ Latest changes
     * Bzip2 1.0.8
     * CA-bundle 2025-12-02
     * Curl 8.12.1/8.17.0
+    * Dnsmasq 2.80/2.92
     * Dropbear 2025.89
     * file 5.46
     * GNU Make 4.2.1/4.4.1
@@ -143,9 +145,10 @@ Latest changes
     * Whois 5.6.5
 
   - Libraries:
-    * harfbuzz 12.2.0
+    * harfbuzz 12.3.1
     * libcap 2.49/2.77
     * libdeflate 1.25
+    * libpcap 1.1.1/1.10.6
     * libpng 1.6.54
     * liburcu 0.15.4
     * libxml2 2.15.1
@@ -3870,3 +3873,5 @@ Features:
 
 Latest change of this file: $Id$
 ```
+
+ 
