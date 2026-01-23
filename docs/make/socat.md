@@ -1,4 +1,4 @@
-# socat 1.8.0.3 (binary only)
+# socat 1.8.1.0 (binary only)
   - Homepage: [http://www.dest-unreach.org/socat/](http://www.dest-unreach.org/socat/)
   - Manpage: [http://www.dest-unreach.org/socat/doc/socat.html](http://www.dest-unreach.org/socat/doc/socat.html)
   - Changelog: [https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES](https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES)

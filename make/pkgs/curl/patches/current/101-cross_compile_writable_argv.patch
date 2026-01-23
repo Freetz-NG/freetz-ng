@@ -1,7 +1,7 @@
 --- configure
 +++ configure
-@@ -24795,7 +24795,9 @@
-   if test "$curl_cv_apple" = 'yes'; then
+@@ -25021,7 +25021,9 @@
+   if test "$curl_cv_apple" = "yes"; then
      if test "$cross_compiling" = yes
  then :
 +     if test "${curl_cv_writable_argv+set}" != set; then :

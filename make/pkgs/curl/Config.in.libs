@@ -15,7 +15,7 @@ if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
 			depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 		config FREETZ_LIB_libcurl_WITH_VERSION_CURRENT
-			bool "8.17.0"
+			bool "8.18.0"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice
@@ -49,6 +49,8 @@ if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
 		depends on FREETZ_LIB_libcurl_WITH_VERSION_ABANDON && FREETZ_LIB_libcurl_WITH_MBEDTLS &&  FREETZ_MBEDTLS_VERSION_306_MIN
 	comment "WARNING: Since version 8.16 MbedTLS v3 is required"
 		depends on FREETZ_LIB_libcurl_WITH_VERSION_CURRENT && FREETZ_LIB_libcurl_WITH_MBEDTLS && !FREETZ_MBEDTLS_VERSION_306_MIN
+	comment "WARNING: Since version 8.18 OpenSSL v3 is required"
+		depends on FREETZ_LIB_libcurl_WITH_VERSION_CURRENT && FREETZ_LIB_libcurl_WITH_OPENSSL && !FREETZ_OPENSSL_VERSION_30_MIN
 
 	config FREETZ_LIB_libcurl_WITH_SFTP
 		bool "build with sftp support"

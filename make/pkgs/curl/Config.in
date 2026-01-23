@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_CURL
-	bool "Curl 8.12.1/8.17.0 (binary only)"
+	bool "Curl 8.12.1/8.18.0 (binary only)"
 	default n
 	select FREETZ_LIB_libcurl if ! FREETZ_PACKAGE_CURL_STATIC
 	help
@@ -20,7 +20,7 @@ if FREETZ_PACKAGE_CURL
 			depends on FREETZ_LIB_libcurl_WITH_VERSION_ABANDON
 
 		config FREETZ_PACKAGE_CURL_VERSION_CURRENT
-			bool "8.17.0"
+			bool "8.18.0"
 			depends on FREETZ_LIB_libcurl_WITH_VERSION_CURRENT
 
 	endchoice

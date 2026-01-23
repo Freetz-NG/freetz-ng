@@ -1,10 +1,9 @@
 config FREETZ_PACKAGE_BIND
-	bool "BIND 9.11.37/9.20.16"
+	bool "BIND 9.11.37/9.20.17"
 	select FREETZ_LIB_libdns             if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libisc             if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libisccfg          if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libpthread         if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libatomic          if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_liburcu            if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_liburcu_cds        if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_liburcu_common     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
@@ -29,7 +28,7 @@ if FREETZ_PACKAGE_BIND
 			depends on !(FREETZ_TARGET_GCC_5_4_MIN && !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29))
 
 		config FREETZ_PACKAGE_BIND_VERSION_CURRENT
-			bool "9.20.16"
+			bool "9.20.17"
 			depends on  (FREETZ_TARGET_GCC_5_4_MIN && !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29))
 
 	endchoice
@@ -44,6 +43,7 @@ if FREETZ_PACKAGE_BIND
 		select FREETZ_LIB_libcrypto_WITH_EC  if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 		select FREETZ_LIB_libssl             if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 		select FREETZ_LIB_libuv              if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+		select FREETZ_LIB_libatomic          if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 		help
 			named is a DNS server, part of the BIND 9 distribution.
 			You have to provide the config and needed zone files yourself.
@@ -82,6 +82,7 @@ if FREETZ_PACKAGE_BIND
 	config FREETZ_PACKAGE_BIND_DIG
 		bool "dig (binary only)"
 		default n
+		select FREETZ_LIB_libns              if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 		help
 			dig is a flexible tool for interrogating DNS name servers.
 			This file needs about 2,8 MB uncompressed.

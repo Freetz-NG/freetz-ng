@@ -29,12 +29,12 @@ ifeq ($(strip $(or $(FREETZ_TARGET_UCLIBC_0_9_28),$(FREETZ_TARGET_UCLIBC_0_9_29)
 $(PKG)_DEFINES += -DVFWPRINTF_WORKAROUND_REQUIRED
 endif
 
-$(PKG)_CXXFLAGS := $(TARGET_CXXFLAGS)
-$(PKG)_CXXFLAGS += -fno-rtti
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
+$(PKG)_CFLAGS += -fno-rtti
 ifeq ($(strip $(FREETZ_PACKAGE_UNRAR_VERSION_ABANDON)),y)
-$(PKG)_CXXFLAGS += -fno-exceptions
+$(PKG)_CFLAGS += -fno-exceptions
 else
-$(PKG)_CXXFLAGS += -std=gnu++11
+$(PKG)_CFLAGS += -std=gnu++11
 endif
 
 
@@ -45,7 +45,7 @@ $(PKG_CONFIGURED_NOP)
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(UNRAR_DIR) -f makefile \
 		CXX="$(TARGET_CXX)" \
-		CXXFLAGS="$(UNRAR_CXXFLAGS)" \
+		CXXFLAGS="$(UNRAR_CFLAGS)" \
 		LDFLAGS="$(UNRAR_LDFLAGS)" \
 		DEFINES="$(UNRAR_DEFINES)" \
 		STRIP=true

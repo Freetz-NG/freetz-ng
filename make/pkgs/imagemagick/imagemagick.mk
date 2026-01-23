@@ -1,10 +1,10 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_IMAGEMAGICK_VERSION_ABANDON),7.1.0-62,7.1.2-9))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_IMAGEMAGICK_VERSION_ABANDON),7.1.0-62,7.1.2-12))
 $(PKG)_LIB_VERSION:=$(if $(FREETZ_PACKAGE_IMAGEMAGICK_VERSION_ABANDON),10.0.0,10.0.2)
 $(PKG)_ABI_SUFFIX:=Q16
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 $(PKG)_SOURCE:=ImageMagick-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=8b89c1a023d4b03cca3e63a0f3cb944427d46d1363a20440282d9f6e0e343518
-$(PKG)_HASH_CURRENT:=f1c14b41a1a48762db63b1db4eddbeb251d8dfebdc13d214282e15bbbfc2bc34
+$(PKG)_HASH_CURRENT:=e22c5dc6cd3f8e708a2809483fd10f8e37438ef7831ec8d3a07951ccd70eceba
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_IMAGEMAGICK_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://download.imagemagick.org/archive,https://download.imagemagick.org/archive/releases,https://imagemagick.org/archive,https://imagemagick.org/archive/releases,@SF/$(pkg)
 ### WEBSITE:=https://www.imagemagick.org/

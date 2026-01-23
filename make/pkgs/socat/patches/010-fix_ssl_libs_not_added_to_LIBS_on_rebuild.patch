@@ -3,7 +3,7 @@
 
 --- configure
 +++ configure
-@@ -7070,7 +7070,7 @@
+@@ -7112,7 +7112,7 @@
    # Note, version OpenSSL 0.9.7j and higher requires -lcrypto even on Linux.
    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for libssl" >&5
  printf %s "checking for libssl... " >&6; }

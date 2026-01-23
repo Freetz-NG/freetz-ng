@@ -3,7 +3,7 @@
 
 --- configure
 +++ configure
-@@ -24496,7 +24496,7 @@
+@@ -24937,7 +24937,7 @@
    # next, we search for the wrap library (libwrap.*)
    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for libwrap" >&5
  printf %s "checking for libwrap... " >&6; }

@@ -2,12 +2,6 @@ config EXTERNAL_FREETZ_PACKAGE_BIND
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_BIND
 	bool "bind"
 	default n
-	help
-		externals the following file(s):
-		 /usr/sbin/named
-		 /usr/sbin/rndc
-		 /usr/bin/nsupdate
-		 /usr/bin/dig
 
 if EXTERNAL_FREETZ_PACKAGE_BIND
 
