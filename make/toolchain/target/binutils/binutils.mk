@@ -19,6 +19,9 @@ BINUTILS_MAKE_DIR:=$(MAKE_DIR)/toolchain/target/binutils
 BINUTILS_DIR1:=$(BINUTILS_DIR)-build
 
 BINUTILS_CFLAGS := $(TOOLCHAIN_HOST_CFLAGS)
+#
+#
+#
 ifeq ($(if $(filter $(BINUTILS_VERSION),2.18 2.22 2.23.2 2.24 2.25.1 2.26.1 2.31.1 2.36.1 2.42 2.43.1),y),y)
 BINUTILS_CFLAGS += --std=gnu11
 endif
