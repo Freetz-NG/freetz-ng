@@ -414,10 +414,10 @@ jobs:
 
       - name: release
         uses: ncipollo/release-action@v1
-        if: ${{ github.event.inputs.release-toolchains == 'yes' && steps.args.outputs.fritz_name != '' }}
+        if: ${{ github.event.inputs.release-toolchains == 'yes' }}
         with:
-          tag: dl-toolchains_${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
-          name: dl-toolchains-${{ steps.version.outputs.version }}_${{ matrix.docker }}_${{ steps.args.outputs.fritz_name }}
+          tag: dl-toolchains_${{ steps.version.outputs.version }}_${{ matrix.docker }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}_${{ matrix.docker }}
           body: These files are internally used!
           prerelease: true
           allowUpdates: true
