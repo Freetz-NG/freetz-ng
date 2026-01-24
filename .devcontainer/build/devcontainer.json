@@ -1,8 +1,0 @@
-{
-  "name": "Freetz-NG Build Env",
-  "image": "ghcr.io/freetz-ng/dl-packs:latest",
-
-  "remoteUser": "freetz",
-
-  "postCreateCommand": "sudo chown -R freetz:freetz ${containerWorkspaceFolder} /tmp && sudo chmod -R 755 ${containerWorkspaceFolder} /tmp && git -C ${containerWorkspaceFolder} checkout --force"
-}
