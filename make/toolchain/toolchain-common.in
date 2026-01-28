@@ -12,6 +12,11 @@ TOOLCHAIN_HOST_CFLAGS+=-fno-stack-protector
 endif
 
 
+# GCC 13+ stringop-overflow warning becomes error in some cases
+ifneq ($(strip $(FREETZ_TARGET_GCC_8_MAX)),y)
+TOOLCHAIN_HOST_TARGET_CFLAGS+=-Wno-error=stringop-overflow
+endif
+
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES:=
 #
 ifeq ($(findstring y, $(FREETZ_CPU_MODEL_ARM_arm11) $(FREETZ_SYSTEM_TYPE_BCM63138) $(FREETZ_TARGET_ARCH_AARCH64) ),y)
