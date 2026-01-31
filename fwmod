@@ -1386,6 +1386,50 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
+		if [ "$FREETZ_KERNEL_VERSION_5" = "y" ]
+		then
+			symvers=$ABS_BASE_DIR/source/kernel/ref-$KERNEL_ID/linux-$FREETZ_KERNEL_VERSION_MAJOR/Module.symvers
+			firsthash=$(($(head -c10 $symvers)))
+			[ $firsthash -eq 0 ] && echo0 "update modules vermagic" || echo0 "update modules symvers"
+			for module in $(cd $MODULES_DIR && find . -name *.ko)
+			do
+				[ -f ${KERNEL_REP_DIR}/modules-${KERNEL_ID}/$(echo $module | sed 's,/kernel/,/,') ] && continue
+				module=$MODULES_DIR/$module
+				updated=0
+				total=0
+				if [ $firsthash -eq 0 ]
+				then
+					((total++))
+					((updated++))
+					vermagic=$(echo -n 'vermagic=' | xxd -p -c0)
+					modversions=$(echo -n 'modversions ' | xxd -p -c0)
+					zeropadding=$(echo $modversions | sed 's/./0/g')
+					pattern='s/('$vermagic'.*)'$modversions'(([^0].)*00)/\1\2'$zeropadding'/'
+				else
+					pattern=''
+					for symbol in $(modprobe --dump-modversions $module | sed -r 's/\t/,/')
+					do
+						((total++))
+						declare $(echo $symbol | sed -rn 's/0x(..)(..)(..)(..),(.*)/hash=\4\3\2\1 name=\5/p')
+						newhash=$(grep -w $name $symvers | sed -rn 's/0x(..)(..)(..)(..).*/\4\3\2\1/p')
+						if [ $newhash ] && [ $newhash != $hash ]
+						then
+							((updated++))
+							hexname=$(echo -n $name | xxd -p -c0)'00'
+							pattern=$pattern's/'$hash$hexname'/'$newhash$hexname'/;'
+						fi
+					done
+				fi
+				if [ $updated -gt 0 ]
+				then
+					xxd -p -c0 $module | sed -r $pattern | xxd -r -p > tmp && mv tmp $module
+					bn="$(basename "$module")"
+					sizeinfo "$bn"
+					[ $firsthash -ne 0 ] && printf '%5d of %5d .......' $updated $total
+					sizeinfo mod $module
+				fi
+			done
+		fi
 		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
 		echo0 "installing$strip_output modules"
 		for i in \
@@ -1397,7 +1441,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 			ko_symbol="$(echo "${bn%\.ko}" | tr '\-+' '_x')"
 			ko_install="$(eval "echo \"\$FREETZ_MODULE_$ko_symbol\"")"
 			echo " $FREETZ_MODULES_OWN " | grep -q " $ko_symbol " && ko_install="y"
-			[ "$FREETZ_MODULES_ALL" = "y" -o "$ko_install" == "y" ] || continue
+			ko_file_ori="${MODULES_DIR}/kernel/${i}"
+			[ "$FREETZ_KERNEL_VERSION_5" = "y" -a -f "$ko_file_ori" -o "$FREETZ_MODULES_ALL" = "y" -o "$ko_install" == "y" ] || continue
 			sizeinfo "$bn"
 			ko_file_src="${KERNEL_REP_DIR}/modules-${KERNEL_ID}/${i}"
 			ko_path_dst="${MODULES_DIR}/kernel/$(dirname "$i")"
@@ -1429,10 +1474,19 @@ if [ "$DO_MOD" -gt 0 ]; then
 			  "$MODULES_DIR/modules.builtin" \
 			  "$MODULES_DIR/modules.builtin.modinfo" \
 			  "$MODULES_DIR/modules.order"
-			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
-			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
-			  $FREETZ_KERNEL_VERSION \
-			  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
+			if [ "$FREETZ_KERNEL_VERSION_5" = "y" -a $firsthash -ne 0 ]
+			then
+				LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
+				  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
+				  -E $symvers \
+				  $FREETZ_KERNEL_VERSION \
+				  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
+			else
+				LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
+				  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
+				  $FREETZ_KERNEL_VERSION \
+				  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
+			fi
 		else
 			NM=$NM ${TOOLS_DIR}/depmod.pl -e -b "$MODULES_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
