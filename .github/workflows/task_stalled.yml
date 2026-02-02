@@ -21,17 +21,33 @@ jobs:
 
       - name: stalled
         uses: actions/stale@v10
+        env:
+          # global
+          STALE_LABEL:             'stalled'
+          EXEMPT_LABEL:            'task'
+          # pr
+          DAYS_BEFORE_PR_STALE:    '7'
+          DAYS_BEFORE_PR_CLOSE:    '7'
+          # issue
+          DAYS_BEFORE_ISSUE_STALE: '7'
+          DAYS_BEFORE_ISSUE_CLOSE: '7'
         with:
-          stale-issue-message: 'This issue is stalled because it has been open for 7 days with no activity.'
-          stale-pr-message: 'This PR is stalled because it has been open for 7 days with no activity.'
-          close-issue-message: 'This issue was closed because it has been inactive for 7 days since being marked as stalled.'
-          close-pr-message: 'This PR was closed because it has been inactive for 7 days since being marked as stalled.'
-          stale-issue-label: 'stalled'
-          stale-pr-label: 'stalled'
-          labels-to-remove-when-unstale: 'stalled'
-          exempt-issue-labels: 'task'
-          exempt-pr-labels: 'task'
-          days-before-stale: 7
-          remove-stale-when-updated: true
+          # global
           enable-statistics: true
-
+          labels-to-remove-when-unstale: ${{ env.STALE_LABEL }}
+          # pr
+          stale-pr-message:        'This PR has been open for ${{ env.DAYS_BEFORE_PR_STALE }} days with no activity. Please comment or update this PR or it will be closed in ${{ env.DAYS_BEFORE_PR_CLOSE }} days.'
+          close-pr-message:        'This PR was closed because it has been inactive for ${{ env.DAYS_BEFORE_PR_CLOSE }} days since being marked as ${{ env.STALE_LABEL }}.'
+          days-before-pr-close:    ${{ env.DAYS_BEFORE_PR_CLOSE }}
+          days-before-pr-stale:    ${{ env.DAYS_BEFORE_PR_STALE }}
+          stale-pr-label:          ${{ env.STALE_LABEL }}
+          exempt-pr-labels:        ${{ env.EXEMPT_LABEL }}
+          remove-pr-stale-when-updated: true
+          # issue
+          stale-issue-message:     'This issue has been open for ${{ env.DAYS_BEFORE_ISSUE_STALE }} days with no activity. Please comment or update this issue or it will be closed in ${{ env.DAYS_BEFORE_ISSUE_CLOSE }} days.'
+          close-issue-message:     'This issue was closed because it has been inactive for ${{ env.DAYS_BEFORE_ISSUE_CLOSE }} days since being marked as ${{ env.STALE_LABEL }}.'
+          days-before-issue-close: ${{ env.DAYS_BEFORE_ISSUE_CLOSE }}
+          days-before-issue-stale: ${{ env.DAYS_BEFORE_ISSUE_STALE }}
+          stale-issue-label:       ${{ env.STALE_LABEL }}
+          exempt-issue-labels:     ${{ env.EXEMPT_LABEL }}
+          remove-issue-stale-when-updated: true
