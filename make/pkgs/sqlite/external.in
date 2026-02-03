@@ -3,6 +3,6 @@ config EXTERNAL_FREETZ_PACKAGE_SQLITE
 	bool "SQLite (CLI)"
 	default n
 	help
-		externals the following file(s):
-		 /usr/bin/sqlite3
+		Esternalizza il seguente file:
+		 /usr/bin/sqlite3 (versione 3.50.4)
 
