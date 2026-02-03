@@ -1,0 +1,51 @@
+config FREETZ_PACKAGE_GCC_TOOLCHAIN
+	bool "GCC (Native Compiler for On-Device Compilation)"
+	select FREETZ_TARGET_TOOLCHAIN
+	select FREETZ_LIB_libgcc_s
+	select FREETZ_PACKAGE_BINUTILS_TOOLS
+	select FREETZ_PACKAGE_BINUTILS_TOOLS_AR
+	select FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB
+	default n
+	help
+		Install the GCC compiler on Fritz!Box for native compilation.
+		
+		Base installation includes:
+		- gcc, g++, cpp (compilers)
+		- ar, ranlib (archive tools from Binutils package)
+
+if FREETZ_PACKAGE_GCC_TOOLCHAIN
+
+	config FREETZ_PACKAGE_GCC_TOOLCHAIN_FULL_BINUTILS
+		bool "Include full binutils tools"
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_ADDR2LINE
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_AR
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_NM
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_OBJCOPY
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_SIZE
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_STRINGS
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_READELF
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_CXXFILT
+		select FREETZ_PACKAGE_BINUTILS_TOOLS_ELFEDIT
+		default y
+		help
+			Include complete binutils and profiling toolset.
+			
+			Adds to base GCC installation:
+			- Profiling/coverage: gcov, gprof
+			- Binutils: addr2line, ar, nm, objcopy, objdump, 
+			  ranlib, size, strings, strip, readelf, as, ld,
+			  c++filt, elfedit
+			
+	config FREETZ_PACKAGE_GCC_TOOLCHAIN_HEADERS
+		bool "Include development headers"
+		default y
+		help
+			Include C/C++ standard library headers for compilation.
+			Required for compiling most programs.
+			
+			Size: ~20 MB
+
+endif # FREETZ_PACKAGE_GCC_TOOLCHAIN

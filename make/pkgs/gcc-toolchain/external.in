@@ -1,0 +1,12 @@
+config EXTERNAL_FREETZ_PACKAGE_GCC_TOOLCHAIN
+        depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_GCC_TOOLCHAIN && EXTERNAL_SUBDIRS
+        bool "gcc-toolchain"
+        default y
+        help
+                Externalizes the following directories and files:
+                 /usr/bin/gcc, g++, as, ld, ar, nm, objdump, etc.
+                 /usr/lib/gcc/
+                 /usr/libexec/gcc/
+                 /usr/include/
+                
+                Total size: ~230 MB
