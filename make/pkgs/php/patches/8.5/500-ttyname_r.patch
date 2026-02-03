@@ -1,0 +1,9 @@
+--- configure
++++ configure
+@@ -60374,6 +60374,7 @@
+ then :
+   php_cv_func_ttyname_r=yes
++  printf "%s\n" "#define HAVE_TTYNAME_R 1" >>confdefs.h
+ else $as_nop
+   php_cv_func_ttyname_r=no
+ fi
