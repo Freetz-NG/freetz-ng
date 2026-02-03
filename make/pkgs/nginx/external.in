@@ -1,0 +1,6 @@
+config EXTERNAL_FREETZ_PACKAGE_NGINX
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_NGINX
+	bool "nginx"
+	default n
+	help
+		Externalize nginx binary (/usr/sbin/nginx) to USB/external storage.
