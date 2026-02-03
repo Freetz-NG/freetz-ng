@@ -12,7 +12,9 @@ menuconfig FREETZ_PACKAGE_BINUTILS_TOOLS
 		!FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB && \
 		!FREETZ_PACKAGE_BINUTILS_TOOLS_SIZE && \
 		!FREETZ_PACKAGE_BINUTILS_TOOLS_STRINGS && \
-		!FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_CXXFILT && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_ELFEDIT
 	help
 		Collection of essential tools for analyzing and
 		manipulating ELF binaries.
@@ -101,6 +103,20 @@ if FREETZ_PACKAGE_BINUTILS_TOOLS
 		help
 			Removes debugging symbols and other unnecessary information from object files,
 			reducing their size. Note: BusyBox already provides a 'strip' command.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_CXXFILT
+		bool "c++filt - Demangle C++ symbols"
+		select FREETZ_LIB_libbfd
+		default n
+		help
+			Demangles C++ mangled names, making them readable.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_ELFEDIT
+		bool "elfedit - Update ELF header information"
+		select FREETZ_LIB_libbfd
+		default n
+		help
+			Updates ELF header information in ELF files.
 
 endif # FREETZ_PACKAGE_BINUTILS_TOOLS
 
