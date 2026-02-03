@@ -1775,10 +1775,9 @@ This mechanism allows building firmware that remains compatible with legacy appl
 | CURRENT | 1.18    | 2.7.0          | Modern toolchains, newer devices |
 
 **Files Modified**:
-- `make/libs/libiconv/Config.in` - Version selection menu
-- `make/libs/libiconv/libiconv.mk` - Makefile with version logic
-- `make/pkgs/iconv/Config.in` - Package version selection
-- `make/pkgs/iconv/iconv.mk` - Package makefile with version logic
+- `make/pkgs/iconv/Config.in.libs` - Library version selection menu
+- `make/pkgs/iconv/Config.in` - Package configuration
+- `make/pkgs/iconv/iconv.mk` - Makefile with version logic for both binary and library
 
 **What Changed**:
 - Package version: 1.13.1 → 1.18
@@ -1972,7 +1971,7 @@ Some libraries **automatically select ABANDON version** based on toolchain const
 - **Reason**: Older uClibc versions need older sqlite3
 
 ### libiconv
-- **Auto-ABANDON**: When `FREETZ_TARGET_UCLIBC_0_9_28` or `FREETZ_TARGET_UCLIBC_0_9_29`
+- **Auto-ABANDON**: When `FREETZ_TARGET_UCLIBC_0_9_28`
 - **Reason**: Older toolchains require older iconv
 
 ### libreadline
@@ -2026,14 +2025,13 @@ If you previously built firmware with the old version and now need to update:
 
 | Library | Files Modified | What Changed |
 |---------|---------------|--------------|
-| **iconv/libiconv** | `make/pkgs/iconv/Config.in`<br>`make/pkgs/iconv/iconv.mk`<br>`make/libs/libiconv/Config.in`<br>`make/libs/libiconv/libiconv.mk` | Added version selection: 1.13.1 (ABANDON) vs 1.18 (CURRENT)<br>Library versions: 2.5.0 vs 2.7.0 |
+| **iconv/libiconv** | `make/pkgs/iconv/Config.in.libs`<br>`make/pkgs/iconv/iconv.mk`<br>`docs/make/iconv.md`<br>`docs/wiki/60_Development/coding_guide.en.md` | Added automatic version selection: 1.13.1 (ABANDON) for uClibc 0.9.28<br>Added multiple download URLs for reliability<br>Updated documentation and coding guide |
 | **sqlite3** | `make/pkgs/sqlite/sqlite.mk` | **FIXED** LIB_VERSION to differentiate: 0.8.6 (ABANDON) vs 3.50.4 (CURRENT) |
 
 ### Total Changes
-- **5 files modified**
+- **6 files modified**
 - **57 lines added**, 9 lines removed
-- **2 libraries** now properly support version selection
-
+- **1 library** now properly supports automatic version selection
 ## Best Practices
 
 1. **Default to CURRENT**: Unless you have specific compatibility requirements, use CURRENT versions for latest features and security fixes.
