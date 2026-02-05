@@ -129,7 +129,6 @@ if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 			[ "$LIGHTTPD_SSLPORT" != "443" ] && REDIRECT_PORT_SUFFIX=":$LIGHTTPD_SSLPORT" || REDIRECT_PORT_SUFFIX=""
 			# https://redmine.lighttpd.net/projects/lighttpd/wiki/HowToRedirectHttpToHttps
 			echo 'url.redirect = ( "" => "https://${url.authority.noport}'"${REDIRECT_PORT_SUFFIX}"'${url.path}${qsa}")'
-			fi
 			if [ -n "$virtsrv" ]; then
 				virthost_conf "$virtsrv"
 				echo 'else { url.redirect = () }'
