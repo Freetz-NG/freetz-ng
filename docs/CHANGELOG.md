@@ -161,7 +161,7 @@ Latest changes
     * Whois 5.6.5
 
   - Libraries:
-    * harfbuzz 12.3.1
+    * harfbuzz 12.3.2
     * libcap 2.49/2.77
     * libdeflate 1.25
     * libpcap 1.1.1/1.10.6
