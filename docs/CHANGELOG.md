@@ -166,7 +166,7 @@ Latest changes
     * libcap 2.49/2.77
     * libdeflate 1.25
     * libpcap 1.1.1/1.10.6
-    * libpng 1.6.54
+    * libpng 1.6.55
     * liburcu 0.15.4
     * libxml2 2.15.1
     * libyaml 0.2.5

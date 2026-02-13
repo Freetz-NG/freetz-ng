@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.6.54)
-$(PKG)_LIB_VERSION:=16.54.0
+$(call PKG_INIT_LIB, 1.6.55)
+$(PKG)_LIB_VERSION:=16.55.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=01c9d8a303c941ec2c511c14312a3b1d36cedb41e2f5168ccdaa85d53b887805
+$(PKG)_HASH:=d925722864837ad5ae2a82070d4b2e0603dc72af44bd457c3962298258b8e82d
 $(PKG)_SITE:=@SF/libpng
 ### WEBSITE:=https://libpng.sf.net
 ### MANPAGE:=http://www.libpng.org/pub/png/
