@@ -1,9 +1,25 @@
 config FREETZ_LIB_libiconv
-	bool "libiconv (libiconv.so)"
-	depends on FREETZ_TARGET_UCLIBC_0_9_28
+	bool "Iconv (libiconv.so)"
 	default n
 	help
 		This library provides an iconv() implementation, for use on systems
 		which don't have one, or whose implementation cannot convert from/to
 		Unicode.
+
+if FREETZ_LIB_libiconv
+
+	choice
+		prompt "Version"
+			default FREETZ_LIB_libiconv_WITH_VERSION_CURRENT
+
+		config FREETZ_LIB_libiconv_WITH_VERSION_ABANDON
+			bool "2.5.0 (from libiconv 1.13.1)"
+
+		config FREETZ_LIB_libiconv_WITH_VERSION_CURRENT
+			bool "2.7.0 (from libiconv 1.18)"
+			depends on !FREETZ_TARGET_UCLIBC_0_9_28
+
+	endchoice
+
+endif # FREETZ_LIB_libiconv
 

@@ -1,2 +1,2 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_ICONV" == "y" ] && EXTERNAL_FILES+=" /usr/bin/iconv"
-[ "$EXTERNAL_FREETZ_LIB_libiconv" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libiconv.so.2.5.0"
+[ "$EXTERNAL_FREETZ_LIB_libiconv" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libiconv.so.2.7.0"
