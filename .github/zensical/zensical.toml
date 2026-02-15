@@ -1,0 +1,60 @@
+[project]
+site_name = "Freetz-NG Documentation"
+site_description = "Freetz-NG firmware modification for ​AVM devices like FRITZ!Box"
+site_author = "Freetz-NG"
+site_url = "https://freetz-ng.github.io/"
+site_dir = "site"
+repo_url = "https://github.com/freetz-ng/freetz-ng"
+edit_uri = "../freetz-ng/blob/master/docs/"
+docs_dir = "docs"
+copyright = '&copy <span>Freetz-NG</span><br/><span>Licensed under <a href="https://github.com/Freetz-NG/freetz-ng/raw/refs/heads/master/COPYING" target="_blank" rel="noopener noreferrer">GPL-2.0</a></span><br/>'
+extra_css = ["extra.css"]
+
+[project.extra]
+generator = false
+
+[project.theme]
+variant = "classic"
+
+favicon = "screenshots/000-TAG_freetz-ng.png"
+logo = "screenshots/000-TAG_freetz-ng.png"
+language = "en"
+
+features = [
+    "navigation.top",
+    "navigation.instant",
+    "navigation.indexes",
+    "search.suggest",
+    "search.highlight",
+    "search.share",
+    "content.action.edit",
+    "content.code.copy",
+]
+
+[project.theme.font]
+text = "Noto Sans Lisu"
+code = "Roboto Mono"
+
+[[project.theme.palette]]
+scheme = "default"
+media = "(prefers-color-scheme: light)"
+primary = "blue grey"
+accent = "blue grey"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+media = "(prefers-color-scheme: dark)"
+primary = "blue grey"
+accent = "blue grey"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/freetz-ng"
+name = "GitHub"
+
+[project.markdown_extensions.tables]
+
