@@ -1,70 +1,60 @@
-site_name: 'Freetz-NG Documentation'
-site_description: 'Freetz-NG firmware modification for ​AVM devices like FRITZ!Box'
-site_author: 'Freetz-NG'
-site_url: 'https://freetz-ng.github.io/'
-repo_url: 'https://github.com/freetz-ng/freetz-ng'
-edit_uri: '../freetz-ng/blob/master/docs/'
-docs_dir: '../../docs/'
-copyright: |
-  &copy <span>Freetz-NG</span><br/>
-  <span>Licensed under <a href="https://github.com/Freetz-NG/freetz-ng/raw/refs/heads/master/COPYING" target="_blank" rel="noopener noreferrer">GPL-2.0</a></span><br/>
-remote_branch: gh-pages
-validation:
-  links:
-    not_found: ignore
-    anchors: ignore
-    absolute_links: ignore
-    unrecognized_links: ignore
-theme:
-  name: 'material'
-  favicon: 'screenshots/000-TAG_freetz-ng.png'
-  logo: 'screenshots/000-TAG_freetz-ng.png'
-  language: 'en'
-  font:
-    text: 'Noto Sans Lisu'
-    code: 'Roboto Mono'
-  features:
-    - navigation.top
-    - navigation.instant
-    - navigation.indexes
-    - search.suggest
-    - search.highlight
-    - search.share
-    - content.action.edit
-    - content.code.copy
-  palette:
+[project]
+site_name = "Freetz-NG Documentation"
+site_description = "Freetz-NG firmware modification for ​AVM devices like FRITZ!Box"
+site_author = "Freetz-NG"
+site_url = "https://freetz-ng.github.io/"
+site_dir = "site"
+repo_url = "https://github.com/freetz-ng/freetz-ng"
+edit_uri = "../freetz-ng/blob/master/docs/"
+docs_dir = "docs"
+copyright = '&copy <span>Freetz-NG</span><br/><span>Licensed under <a href="https://github.com/Freetz-NG/freetz-ng/raw/refs/heads/master/COPYING" target="_blank" rel="noopener noreferrer">GPL-2.0</a></span><br/>'
+extra_css = ["extra.css"]
 
-    # Light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: blue grey
-      accent: blue grey
-      toggle:
-        icon: material/lightbulb-outline
-        name: Switch to dark mode
+[project.extra]
+generator = false
 
-    # Dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: blue grey
-      accent: blue grey
-      toggle:
-        icon: material/lightbulb
-        name: Switch to light mode
+[project.theme]
+variant = "classic"
 
-extra:
-  generator: false
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/freetz-ng
-      name: GitHub
+favicon = "screenshots/000-TAG_freetz-ng.png"
+logo = "screenshots/000-TAG_freetz-ng.png"
+language = "en"
 
-extra_css:
-  - 'extra.css'
+features = [
+    "navigation.top",
+    "navigation.instant",
+    "navigation.indexes",
+    "search.suggest",
+    "search.highlight",
+    "search.share",
+    "content.action.edit",
+    "content.code.copy",
+]
 
-markdown_extensions:
-  - tables
+[project.theme.font]
+text = "Noto Sans Lisu"
+code = "Roboto Mono"
 
-plugins:
-  - search
+[[project.theme.palette]]
+scheme = "default"
+media = "(prefers-color-scheme: light)"
+primary = "blue grey"
+accent = "blue grey"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+media = "(prefers-color-scheme: dark)"
+primary = "blue grey"
+accent = "blue grey"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/freetz-ng"
+name = "GitHub"
+
+[project.markdown_extensions.tables]
 

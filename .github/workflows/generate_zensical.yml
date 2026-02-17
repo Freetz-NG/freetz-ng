@@ -1,4 +1,4 @@
-name: generate_mkdocs
+name: generate_zensical
 
 on:
   workflow_run:
@@ -8,8 +8,8 @@ on:
   push:
     branches: [ master ]
     paths:
-      - '.github/workflows/generate_mkdocs.yml'
-      - '.github/mkdocs/*'
+      - '.github/workflows/generate_zensical.yml'
+      - '.github/zensical/*'
       - 'docs/**/*.md'
       - 'docs/**/*.jpg'
       - 'docs/**/*.png'
@@ -23,9 +23,9 @@ concurrency:
 jobs:
   build:
     env:
-      MKDOCS_REQUIREMENTS_FILE: .github/mkdocs/requirements.txt
-      MKDOCS_CONFIG_FILE: .github/mkdocs/mkdocs.yml
-      MKDOCS_INPUT_PATH: .github/mkdocs/site
+      ZENSICAL_REQUIREMENTS_FILE: .github/zensical/requirements.txt
+      ZENSICAL_CONFIG_FILE: .github/zensical/zensical.toml
+      ZENSICAL_INPUT_PATH: .github/zensical/site
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -33,15 +33,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install dependencies
-        run: pip install -r "${{ env.MKDOCS_REQUIREMENTS_FILE }}"
+        run: pip install -r "${{ env.ZENSICAL_REQUIREMENTS_FILE }}"
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Build with MkDocs
-        run: mkdocs build --config-file "${{ env.MKDOCS_CONFIG_FILE }}"
+      - name: Build with Zensical
+        run: zensical build --config-file "${{ env.ZENSICAL_CONFIG_FILE }}"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: "${{ env.MKDOCS_INPUT_PATH }}"
+          path: "${{ env.ZENSICAL_INPUT_PATH }}"
 
   deploy:
     environment:
@@ -56,5 +56,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
