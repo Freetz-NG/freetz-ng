@@ -1,0 +1,14 @@
+--- configure
++++ configure
+@@ -61313,7 +61313,9 @@
+ then :
+   ac_fn_c_check_func "$LINENO" "ttyname_r" "ac_cv_func_ttyname_r"
+ if test "x$ac_cv_func_ttyname_r" = xyes
+ then :
+-  php_cv_func_ttyname_r=yes
++#evaluated by running test program on target platform
++  php_cv_func_ttyname_r=yes
++  printf "%s\n" "#define HAVE_TTYNAME_R 1" >>confdefs.h
+ else case e in #(
+   e) php_cv_func_ttyname_r=no ;;
+ esac

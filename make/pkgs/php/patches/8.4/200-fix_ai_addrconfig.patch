@@ -1,0 +1,23 @@
+--- a/ext/sockets/sockets.c
++++ b/ext/sockets/sockets.c
+@@ -43,6 +43,9 @@
+ # include <netinet/tcp.h>
+ # include <sys/un.h>
+ # include <arpa/inet.h>
++#ifndef AI_ADDRCONFIG
++#define AI_ADDRCONFIG 0x0020
++#endif
+ # include <sys/time.h>
+ # include <unistd.h>
+ # include <errno.h>
+--- a/ext/sockets/sockaddr_conv.c
++++ b/ext/sockets/sockaddr_conv.c
+@@ -8,6 +8,9 @@
+ #include <netdb.h>
+ #include <arpa/inet.h>
+ #endif
++#ifndef AI_ADDRCONFIG
++#define AI_ADDRCONFIG 0x0020
++#endif
+ 
+ extern zend_result php_string_to_if_index(const char *val, unsigned *out);

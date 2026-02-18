@@ -1,3 +1,6 @@
+comment "PHP 8.x is selected - deselect it to enable PHP5 5.6.40"
+	depends on FREETZ_PACKAGE_PHP
+
 config FREETZ_PACKAGE_PHP5
 	bool "PHP5 5.6.40 (binary only) - DEPRECATED"
 	depends on !FREETZ_PACKAGE_PHP
@@ -6,6 +9,8 @@ config FREETZ_PACKAGE_PHP5
 	default n
 	help
 		PHP: Hypertext Preprocessor
+
+		Note: This conflicts with PHP 8.x - only one can be selected.
 
 		PHP is a widely-used general-purpose scripting language that is especially
 		suited for Web development and can be embedded into HTML. Much of its syntax
