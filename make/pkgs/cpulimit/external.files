@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_CPULIMIT" == "y" ] && EXTERNAL_FILES+=" /usr/bin/cpulimit"

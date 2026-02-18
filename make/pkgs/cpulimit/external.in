@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_PACKAGE_CPULIMIT
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_CPULIMIT
+	bool "cpulimit"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/cpulimit
