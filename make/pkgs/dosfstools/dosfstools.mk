@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN, v3.0.28)
+$(PKG)_CATEGORY:=Disk Tools
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=93b5581c5fd223cc5a3d7de2a567083e4fac9e2b416489119a1a51b6c42be5ce
 $(PKG)_SITE:=git://github.com/dosfstools/dosfstools.git

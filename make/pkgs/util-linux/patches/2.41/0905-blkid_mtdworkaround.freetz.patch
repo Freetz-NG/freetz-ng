@@ -1,0 +1,22 @@
+Skip MTD devices in blkid probe
+
+FRITZ!Box devices use MTD (Memory Technology Device) partitions for
+flash storage. These should not be probed by blkid as they are not
+block devices with regular filesystems.
+
+This workaround prevents blkid from attempting to probe /dev/mtd*
+devices, avoiding potential issues with the flash partitioning on
+FRITZ!Box routers.
+
+--- libblkid/src/devname.c
++++ libblkid/src/devname.c
+@@ -56,6 +56,9 @@
+ 	if (!cache || !devname)
+ 		return NULL;
+ 
++	if (strncmp(devname, "/dev/mtd", 8) == 0)
++		return NULL;
++
+ 	/* search by name */
+ 	list_for_each(p, &cache->bic_devs) {
+ 		tmp = list_entry(p, struct blkid_struct_dev, bid_devs);

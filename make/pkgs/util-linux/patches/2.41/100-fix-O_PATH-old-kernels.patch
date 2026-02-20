@@ -1,0 +1,14 @@
+--- a/libmount/src/context_umount.c
++++ b/libmount/src/context_umount.c
+@@ -23,6 +23,11 @@
+ #include "strutils.h"
+ #include "closestream.h"
+ 
++/* O_PATH is not available in old kernel headers */
++#ifndef O_PATH
++#define O_PATH 010000000
++#endif
++
+ /*
+  * Called by mount(8) or umount(8) to umount all filesystems
+  * from /etc/mtab (or /proc/mounts) based on @pattern.

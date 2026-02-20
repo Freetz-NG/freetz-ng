@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN, 1.42.13)
+$(PKG)_CATEGORY:=Disk Tools
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=e16474b5a3a30f9197160c4b91bd48d5a463583049c0fcc405b6f0f7075aa0c7
 $(PKG)_SITE:=@SF/e2fsprogs,@KERNEL/linux/kernel/people/tytso/e2fsprogs/v$($(PKG)_VERSION)

@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN, 1.0.1)
+$(PKG)_CATEGORY:=Disk Tools
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=864c8aee2efdda50346804d7e6230407d5f42a8ae754df70404dd8b2fdfaeac7
 $(PKG)_VERSION:=d7f3d306b083123bcc6f5941efade586
@@ -6,8 +7,6 @@ $(PKG)_SITE:=http://pkgs.fedoraproject.org/lookaside/pkgs/gdisk/$(pkg)-$($(PKG)_
 
 # log2/log are provided by libm in uClibc
 $(PKG)_PATCH_POST_CMDS += $(SED) -r -i -e 's,(-luuid),\1 -lm,g' Makefile;
-
-$(PKG)_CATEGORY:=Unstable
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/gdisk
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/gdisk

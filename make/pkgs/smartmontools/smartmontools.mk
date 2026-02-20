@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN, 7.5)
+$(PKG)_CATEGORY:=Disk Tools
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=690b83ca331378da9ea0d9d61008c4b22dde391387b9bbad7f29387f2595f76e
 $(PKG)_SITE:=@SF/smartmontools

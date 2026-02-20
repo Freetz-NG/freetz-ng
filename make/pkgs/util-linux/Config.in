@@ -1,9 +1,107 @@
 config FREETZ_PACKAGE_UTIL_LINUX
-	bool "util-linux 2.27.1 (binary only) - DEPRECATED"
-	depends on FREETZ_PATCH_FREETZMOUNT
+	bool "util-linux (Linux disk utilities)"
 	# TODO: util-linux' libsysfs requires fdopendir, which is missing in uClibc-0.9.28/0.9.29
 	depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 	default n
 	help
-		Provides blkid util from util-linux project
+		Provides essential disk and block device utilities from util-linux project.
+
+if FREETZ_PACKAGE_UTIL_LINUX
+
+choice
+	prompt "util-linux version"
+	default FREETZ_UTIL_LINUX_VERSION_2_27_1 if FREETZ_TARGET_UCLIBC_0_9_32 || FREETZ_TARGET_UCLIBC_0_9_33 || FREETZ_TARGET_GCC_5_MAX
+	default FREETZ_UTIL_LINUX_VERSION_2_41
+
+	config FREETZ_UTIL_LINUX_VERSION_2_27_1
+		bool "2.27.1 (legacy - minimal, for old devices)"
+		help
+			Legacy version 2.27.1 (November 2015) - minimal build.
+			
+			Provides only:
+			- blkid: Block device identification
+			
+			Recommended for old toolchains (uClibc 0.9.x or GCC <= 5.5).
+			Includes 7 patches for old uClibc/toolchain compatibility.
+			Automatically selected for uClibc 0.9.32/0.9.33 or GCC 5.x and older.
+
+	config FREETZ_UTIL_LINUX_VERSION_2_41
+		bool "2.41 (modern - full featured)"
+		help
+			Modern version 2.41 (August 2022) - full featured build.
+			
+			Provides configurable utilities (see below for selection).
+			
+			Requires modern toolchain (gcc >= 4.9, uClibc >= 0.9.32).
+			All legacy patches applied upstream.
+
+endchoice
+
+if FREETZ_UTIL_LINUX_VERSION_2_41
+
+menu "Utilities selection"
+
+config FREETZ_UTIL_LINUX_BLKID
+	bool "blkid - identify block devices (renamed to blkid-util-linux)"
+	default y
+	help
+		blkid is used to identify block device attributes such as
+		filesystem type, UUID, LABEL, etc.
+		
+		Conflicts with busybox blkid, renamed to blkid-util-linux.
+
+config FREETZ_UTIL_LINUX_LOSETUP
+	bool "losetup - manage loop devices (renamed to losetup-util-linux)"
+	default y
+	help
+		losetup is used to associate loop devices with regular files
+		or block devices, to detach loop devices, and to query the
+		status of a loop device.
+		
+		Conflicts with busybox losetup, renamed to losetup-util-linux.
+
+config FREETZ_UTIL_LINUX_MKSWAP
+	bool "mkswap - create swap area (renamed to mkswap-util-linux)"
+	default y
+	help
+		mkswap sets up a Linux swap area on a device or in a file.
+		
+		Conflicts with busybox mkswap, renamed to mkswap-util-linux.
+
+config FREETZ_UTIL_LINUX_SWAPON
+	bool "swapon/swapoff - enable/disable swap (renamed to *-util-linux)"
+	default y
+	help
+		swapon is used to activate swap areas.
+		swapoff is used to deactivate swap areas.
+		
+		Conflicts with busybox swapon, renamed to swapon-util-linux and swapoff-util-linux.
+
+config FREETZ_UTIL_LINUX_LSBLK
+	bool "lsblk - list block devices"
+	select FREETZ_LIB_libncursesw
+	default y
+	help
+		lsblk lists information about all available or specified block
+		devices. It reads the sysfs filesystem and udev db to gather
+		information.
+		
+		Requires ncursesw library for colored output.
+		Unique to util-linux (no busybox equivalent).
+
+config FREETZ_UTIL_LINUX_FINDMNT
+	bool "findmnt - find mounted filesystems"
+	default y
+	help
+		findmnt will list all mounted filesystems or search for a
+		filesystem. It can search in /etc/fstab, /etc/mtab or /proc/self/mountinfo.
+		
+		Unique to util-linux (no busybox equivalent).
+
+endmenu
+
+endif # FREETZ_UTIL_LINUX_VERSION_2_41
+
+endif # FREETZ_PACKAGE_UTIL_LINUX
+
 
