@@ -2248,7 +2248,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 	# create the link images/latest.image to the just created .image
 	img_link="${img_name%/*}/latest.image"
 	rm -f "$img_link"
-#uwe	ln -s "${img_name#*/}" "$img_link"
+	ln -s "${img_name#*/}" "$img_link"
 fi
 
 # ----------------------------------------------
