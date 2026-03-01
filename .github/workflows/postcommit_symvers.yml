@@ -190,7 +190,7 @@ jobs:
           echo "$FREETZ_AVM_SOURCE_ID"
           KERNEL_ID="${FREETZ_SYSTEM_TYPE}${FREETZ_SYSTEM_TYPE_CORE_SUFFIX}-${FREETZ_AVM_SOURCE_ID}"
           echo "$KERNEL_ID"
-          KERNEL_ID="echo "${KERNEL_ID}" | sed 's/\"//g'"
+          KERNEL_ID="$(echo "${KERNEL_ID}" | sed 's/\"//g')"
           echo "$KERNEL_ID"
           KERNEL_CONFIG="make/kernel/configs/freetz/config-${KERNEL_ID}"
           echo "$KERNEL_CONFIG"
