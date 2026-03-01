@@ -213,7 +213,7 @@ jobs:
           path: make/kernel/configs/symvers/
           if-no-files-found: warn
           retention-days: 1
-          compression-level: 9
+          compression-level: 6
           overwrite: true
           include-hidden-files: false
 
