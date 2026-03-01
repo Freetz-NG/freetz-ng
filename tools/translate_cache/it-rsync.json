@@ -1,0 +1,30 @@
+{
+  "deepl:RSync": {
+    "original": "RSync",
+    "translation": "RSync",
+    "timestamp": "2026-02-15T23:51:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:e.g. 192.168.178.1 or leave blank for all": {
+    "original": "e.g. 192.168.178.1 or leave blank for all",
+    "translation": "es. 192.168.178.1 o lasciare vuoto per tutti",
+    "timestamp": "2026-02-15T23:52:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Max connections": {
+    "original": "Max connections",
+    "translation": "Connessioni Max",
+    "timestamp": "2026-02-15T23:52:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:File:&nbsp;&nbsp;&nbsp;": {
+    "original": "File:&nbsp;&nbsp;&nbsp;",
+    "translation": "File:&nbsp;&nbsp;&nbsp;",
+    "timestamp": "2026-02-15T23:52:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

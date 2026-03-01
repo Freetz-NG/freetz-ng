@@ -1,0 +1,177 @@
+{
+  "deepl:Activation": {
+    "original": "Activation",
+    "translation": "Attivazione",
+    "timestamp": "2026-02-15T23:09:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Inactive": {
+    "original": "Inactive",
+    "translation": "Inattivo",
+    "timestamp": "2026-02-15T23:09:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:with debug output": {
+    "original": "with debug output",
+    "translation": "con output di debug",
+    "timestamp": "2026-02-15T23:09:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server parameters": {
+    "original": "Server parameters",
+    "translation": "Parametri del server",
+    "timestamp": "2026-02-15T23:26:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server type": {
+    "original": "Server type",
+    "translation": "Tipo di server",
+    "timestamp": "2026-02-15T23:26:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Remote dir": {
+    "original": "Remote dir",
+    "translation": "dir remoto",
+    "timestamp": "2026-02-15T23:26:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Only for ftp server": {
+    "original": "Only for ftp server",
+    "translation": "Solo per il server ftp",
+    "timestamp": "2026-02-15T23:26:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:User": {
+    "original": "User",
+    "translation": "Utente",
+    "timestamp": "2026-02-15T23:26:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:d": {
+    "original": "d",
+    "translation": "d",
+    "timestamp": "2026-02-15T23:26:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Download parameters": {
+    "original": "Download parameters",
+    "translation": "Parametri di download",
+    "timestamp": "2026-02-15T23:26:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Duration": {
+    "original": "Duration",
+    "translation": "Durata",
+    "timestamp": "2026-02-15T23:26:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Number of repeats": {
+    "original": "Number of repeats",
+    "translation": "Numero di ripetizioni",
+    "timestamp": "2026-02-15T23:26:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Download files": {
+    "original": "Download files",
+    "translation": "Scarica i file",
+    "timestamp": "2026-02-15T23:29:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:File(w/o.gz)": {
+    "original": "File(w/o.gz)",
+    "translation": "File(w/o.gz)",
+    "timestamp": "2026-02-15T23:29:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Permissions": {
+    "original": "Permissions",
+    "translation": "Permessi",
+    "timestamp": "2026-02-15T23:29:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Destination dir": {
+    "original": "Destination dir",
+    "translation": "Destinazione dir",
+    "timestamp": "2026-02-15T23:29:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Remove downloaded files": {
+    "original": "Remove downloaded files",
+    "translation": "Rimuovere i file scaricati",
+    "timestamp": "2026-02-15T23:29:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:View log file": {
+    "original": "View log file",
+    "translation": "Visualizza il file di log",
+    "timestamp": "2026-02-15T23:29:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Downloader - log": {
+    "original": "Downloader - log",
+    "translation": "Downloader - log",
+    "timestamp": "2026-02-15T23:29:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Wrong parameter": {
+    "original": "Wrong parameter",
+    "translation": "Parametro errato",
+    "timestamp": "2026-02-15T23:29:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Delete log file": {
+    "original": "Delete log file",
+    "translation": "Cancellare il file di log",
+    "timestamp": "2026-02-15T23:29:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:does not exist": {
+    "original": "does not exist",
+    "translation": "non esiste",
+    "timestamp": "2026-02-15T23:29:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Downloader - Removing": {
+    "original": "Downloader - Removing",
+    "translation": "Downloader - Rimozione",
+    "timestamp": "2026-02-15T23:29:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Removing": {
+    "original": "Removing",
+    "translation": "Rimozione",
+    "timestamp": "2026-02-15T23:29:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Removing of all by Downloader downloaded files.<br>Please do not forget to stop before all appropriate services!": {
+    "original": "Removing of all by Downloader downloaded files.<br>Please do not forget to stop before all appropriate services!",
+    "translation": "Rimozione di tutti i file scaricati da Downloader.<br>Per favore non dimenticate di fermare prima tutti i servizi appropriati!",
+    "timestamp": "2026-02-15T23:29:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

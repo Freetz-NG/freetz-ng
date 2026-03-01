@@ -1,0 +1,149 @@
+{
+  "deepl:This GUI requires at least one active forwarding to the box itself. You might (temporarily) allow HTTPS access in AVM GUI.": {
+    "original": "This GUI requires at least one active forwarding to the box itself. You might (temporarily) allow HTTPS access in AVM GUI.",
+    "translation": "Questa GUI richiede almeno un inoltro attivo verso la casella stessa. È possibile consentire (temporaneamente) l'accesso HTTPS alla GUI AVM.",
+    "timestamp": "2026-02-15T23:07:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Important": {
+    "original": "Important",
+    "translation": "Importante",
+    "timestamp": "2026-02-15T23:07:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note that there is no (known) reliable way to enable port forwarding to the Fritzbox without doing severe modifications to the AVM configuration files. This results in a risk that these changes might render the AVM settings unusable. In addition, the regular firmware might overwrite the settings made here. <br> It is therefore strongly recommended not to use the regular AVM GUI simultaneously with this GUI (no matter which web page). Please close all other web sessions to the box and reboot it asap after making changes using this GUI. <br><br> This package will only open ports to the fritzbox itself. To forward ports to other devices use the AVM GUI instead!": {
+    "original": "Please note that there is no (known) reliable way to enable port forwarding to the Fritzbox without doing severe modifications to the AVM configuration files. This results in a risk that these changes might render the AVM settings unusable. In addition, the regular firmware might overwrite the settings made here. <br> It is therefore strongly recommended not to use the regular AVM GUI simultaneously with this GUI (no matter which web page). Please close all other web sessions to the box and reboot it asap after making changes using this GUI. <br><br> This package will only open ports to the fritzbox itself. To forward ports to other devices use the AVM GUI instead!",
+    "translation": "Si prega di notare che non esiste un modo (noto) affidabile per abilitare l'inoltro delle porte al Fritzbox senza apportare modifiche sostanziali ai file di configurazione dell'AVM. Ciò comporta il rischio che tali modifiche rendano inutilizzabili le impostazioni dell'AVM. Inoltre, il firmware normale potrebbe sovrascrivere le impostazioni effettuate qui. <br> Si raccomanda quindi vivamente di non utilizzare la normale GUI AVM contemporaneamente a questa GUI (indipendentemente dalla pagina web). Si prega di chiudere tutte le altre sessioni web del box e di riavviarlo al più presto dopo aver apportato modifiche utilizzando questa GUI. <br><br> Questo pacchetto aprirà le porte solo al fritzbox stesso. Per inoltrare le porte ad altri dispositivi, utilizzare invece la GUI AVM!",
+    "timestamp": "2026-02-15T23:07:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Open new port on fritzbox": {
+    "original": "Open new port on fritzbox",
+    "translation": "Aprire una nuova porta sul fritzbox",
+    "timestamp": "2026-02-15T23:07:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Destination port": {
+    "original": "Destination port",
+    "translation": "Porta di destinazione",
+    "timestamp": "2026-02-15T23:07:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Add rule": {
+    "original": "Add rule",
+    "translation": "Aggiungi regola",
+    "timestamp": "2026-02-15T23:07:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port forwarding rules to box itself": {
+    "original": "Port forwarding rules to box itself",
+    "translation": "Regole di inoltro delle porte alla scatola stessa",
+    "timestamp": "2026-02-15T23:07:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This firmware prevents opening FTP port (21) here. Use AVM webif instead.": {
+    "original": "This firmware prevents opening FTP port (21) here. Use AVM webif instead.",
+    "translation": "Questo firmware impedisce l'apertura della porta FTP (21). Utilizzare invece AVM webif.",
+    "timestamp": "2026-02-15T23:07:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:For debugging show forwarding rules": {
+    "original": "For debugging show forwarding rules",
+    "translation": "Per il debug delle regole di inoltro",
+    "timestamp": "2026-02-15T23:07:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Active": {
+    "original": "Active",
+    "translation": "Attivo",
+    "timestamp": "2026-02-15T23:07:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Protocol": {
+    "original": "Protocol",
+    "translation": "Protocollo",
+    "timestamp": "2026-02-15T23:07:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Source Port": {
+    "original": "Source Port",
+    "translation": "Porta sorgente",
+    "timestamp": "2026-02-15T23:07:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Dest. Port": {
+    "original": "Dest. Port",
+    "translation": "Dest.",
+    "timestamp": "2026-02-15T23:07:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Description": {
+    "original": "Description",
+    "translation": "Descrizione",
+    "timestamp": "2026-02-15T23:07:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configure": {
+    "original": "Configure",
+    "translation": "Configurare",
+    "timestamp": "2026-02-15T23:07:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:No forwarding rules found. Please activate at least one rule.": {
+    "original": "No forwarding rules found. Please activate at least one rule.",
+    "translation": "Non sono state trovate regole di inoltro. Attivare almeno una regola.",
+    "timestamp": "2026-02-15T23:07:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\": {
+    "original": "\\",
+    "translation": "\\",
+    "timestamp": "2026-02-15T23:07:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Saving will <b>not</b> activate any rule by default! <b>To do so, some daemoms have to be restarted:</b>": {
+    "original": "Saving will <b>not</b> activate any rule by default! <b>To do so, some daemoms have to be restarted:</b>",
+    "translation": "Il salvataggio non attiverà alcuna regola per impostazione predefinita! <b>Per farlo, alcuni demoni devono essere riavviati:</b>",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This might crash your box or even restore factory defaults!": {
+    "original": "This might crash your box or even restore factory defaults!",
+    "translation": "Questo potrebbe mandare in crash il computer o addirittura ripristinare le impostazioni di fabbrica!",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate rules directly after saving": {
+    "original": "Activate rules directly after saving",
+    "translation": "Attivare le regole direttamente dopo il salvataggio",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Safe way to activate the settings is only save them here and then restart the box": {
+    "original": "Safe way to activate the settings is only save them here and then restart the box",
+    "translation": "Il modo più sicuro per attivare le impostazioni è quello di salvarle qui e poi riavviare il computer.",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

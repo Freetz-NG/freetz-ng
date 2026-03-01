@@ -1,0 +1,44 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:08:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:dnsd": {
+    "original": "dnsd",
+    "translation": "dnsd",
+    "timestamp": "2026-02-15T23:08:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:TTL": {
+    "original": "TTL",
+    "translation": "TTL",
+    "timestamp": "2026-02-15T23:08:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port": {
+    "original": "Port",
+    "translation": "Porto",
+    "timestamp": "2026-02-15T23:08:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Address": {
+    "original": "Address",
+    "translation": "Indirizzo",
+    "timestamp": "2026-02-15T23:08:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Extra options": {
+    "original": "Extra options",
+    "translation": "Opzioni extra",
+    "timestamp": "2026-02-15T23:09:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

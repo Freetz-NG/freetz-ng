@@ -1,0 +1,16 @@
+{
+  "deepl:Configuration updated": {
+    "github_user": "",
+    "original": "Configuration updated",
+    "service": "deepl",
+    "timestamp": "",
+    "translation": "Konfiguration aktualisiert"
+  },
+  "deepl:File not found": {
+    "github_user": "",
+    "original": "File not found",
+    "service": "deepl",
+    "timestamp": "",
+    "translation": "Datei nicht gefunden"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "deepl:Information": {
+    "original": "Information",
+    "translation": "Informazioni",
+    "timestamp": "2026-02-15T23:34:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:When starting Mcabber just the configfile (/mod/root/.mcabberrc) is created.": {
+    "original": "When starting Mcabber just the configfile (/mod/root/.mcabberrc) is created.",
+    "translation": "All'avvio di Mcabber viene creato solo il file di configurazione (/mod/root/.mcabberrc).",
+    "timestamp": "2026-02-15T23:34:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To start Mcabber you have to start it from the console.": {
+    "original": "To start Mcabber you have to start it from the console.",
+    "translation": "Per avviare Mcabber è necessario avviarlo dalla console.",
+    "timestamp": "2026-02-15T23:34:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:settings": {
+    "original": "settings",
+    "translation": "impostazioni",
+    "timestamp": "2026-02-15T23:35:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:username": {
+    "original": "username",
+    "translation": "nome utente",
+    "timestamp": "2026-02-15T23:35:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:server": {
+    "original": "server",
+    "translation": "server",
+    "timestamp": "2026-02-15T23:35:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:additional settings": {
+    "original": "additional settings",
+    "translation": "impostazioni aggiuntive",
+    "timestamp": "2026-02-15T23:35:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:e.g. set proxy_host = \\": {
+    "original": "e.g. set proxy_host = \\",
+    "translation": "es. impostare proxy_host = \\",
+    "timestamp": "2026-02-15T23:35:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:more information: <a TARGET=\\": {
+    "original": "more information: <a TARGET=\\",
+    "translation": "ulteriori informazioni: <a TARGET=\\",
+    "timestamp": "2026-02-15T23:35:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

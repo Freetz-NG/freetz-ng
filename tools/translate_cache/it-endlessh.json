@@ -1,0 +1,30 @@
+{
+  "deepl:Endlessh daemon": {
+    "original": "Endlessh daemon",
+    "translation": "Demone Endlessh",
+    "timestamp": "2026-02-15T23:29:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum number of connections to accept at a time": {
+    "original": "Maximum number of connections to accept at a time",
+    "translation": "Numero massimo di connessioni da accettare alla volta",
+    "timestamp": "2026-02-15T23:29:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Delay in milliseconds between individual lines": {
+    "original": "Delay in milliseconds between individual lines",
+    "translation": "Ritardo in millisecondi tra le singole righe",
+    "timestamp": "2026-02-15T23:29:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum length of each line": {
+    "original": "Maximum length of each line",
+    "translation": "Lunghezza massima di ogni riga",
+    "timestamp": "2026-02-15T23:29:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

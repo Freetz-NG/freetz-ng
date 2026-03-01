@@ -1,0 +1,44 @@
+{
+  "deepl:Virtual fileservers": {
+    "original": "Virtual fileservers",
+    "translation": "Fileserver virtuali",
+    "timestamp": "2026-02-15T23:36:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Users": {
+    "original": "Users",
+    "translation": "Utenti",
+    "timestamp": "2026-02-15T23:36:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Create and persistently save users as follows": {
+    "original": "Create and persistently save users as follows",
+    "translation": "Creare e salvare in modo persistente gli utenti come segue",
+    "timestamp": "2026-02-15T23:36:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Netatalk": {
+    "original": "Netatalk",
+    "translation": "Netatalk",
+    "timestamp": "2026-02-15T23:37:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum number of clients": {
+    "original": "Maximum number of clients",
+    "translation": "Numero massimo di client",
+    "timestamp": "2026-02-15T23:37:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log level": {
+    "original": "Log level",
+    "translation": "Livello di log",
+    "timestamp": "2026-02-15T23:37:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

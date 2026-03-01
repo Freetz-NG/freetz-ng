@@ -14,9 +14,9 @@ cat << EOF
 $(lang de:"Freizugebende Ports, mehrere durch Leerzeichen getrennt" en:"Ports to open, multiple seperated by spaces").
 EOF
 
-cgi_print_textline_p "tcp" "$AVM_PORTFW_TCP" 55/255 "TCP$(lang de:"-Ports" en:" ports"): "
+cgi_print_textline_p "tcp" "$AVM_PORTFW_TCP" 55/255 "TCP $(lang de:"Ports" en:"ports"): "
 
-cgi_print_textline_p "udp" "$AVM_PORTFW_UDP" 55/255 "UDP$(lang de:"-Ports" en:" ports"): "
+cgi_print_textline_p "udp" "$AVM_PORTFW_UDP" 55/255 "UDP $(lang de:"Ports" en:"ports"): "
 
 cat << EOF
 <ul>

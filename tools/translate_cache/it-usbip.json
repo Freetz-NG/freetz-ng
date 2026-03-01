@@ -1,0 +1,37 @@
+{
+  "deepl:Currently connected devices": {
+    "original": "Currently connected devices",
+    "translation": "Dispositivi attualmente collegati",
+    "timestamp": "2026-02-15T23:58:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Share all devices (except storages and hubs)": {
+    "original": "Share all devices (except storages and hubs)",
+    "translation": "Condividere tutti i dispositivi (tranne gli storage e gli hub)",
+    "timestamp": "2026-02-15T23:58:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Share storages": {
+    "original": "Share storages",
+    "translation": "Condividi gli archivi",
+    "timestamp": "2026-02-15T23:58:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Share usb-hubs": {
+    "original": "Share usb-hubs",
+    "translation": "Condividi hub usb",
+    "timestamp": "2026-02-15T23:58:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shared these devices": {
+    "original": "Shared these devices",
+    "translation": "Condivisione di questi dispositivi",
+    "timestamp": "2026-02-15T23:58:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

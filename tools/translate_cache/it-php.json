@@ -1,0 +1,9 @@
+{
+  "deepl:These configuration parameters are stored in Flash RAM where there is not too much space. Therefore, all comments have been removed from the php.ini file. A documentation of the php.ini file can be found on the <a href=\"http://de.php.net/ini.core\">PHP website</a><br />After re-configuration, the webserver has to be restarted.": {
+    "original": "These configuration parameters are stored in Flash RAM where there is not too much space. Therefore, all comments have been removed from the php.ini file. A documentation of the php.ini file can be found on the <a href=\"http://de.php.net/ini.core\">PHP website</a><br />After re-configuration, the webserver has to be restarted.",
+    "translation": "Questi parametri di configurazione sono memorizzati nella Flash RAM, dove non c'è molto spazio. Pertanto, tutti i commenti sono stati rimossi dal file php.ini. La documentazione del file php.ini è disponibile sul sito web <a href=\"http://de.php.net/ini.core\">PHP</a><br />Dopo la riconfigurazione, il server web deve essere riavviato.",
+    "timestamp": "2026-02-16T14:18:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

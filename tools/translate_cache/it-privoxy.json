@@ -1,0 +1,177 @@
+{
+  "deepl:The Privoxy server is listening on": {
+    "original": "The Privoxy server is listening on",
+    "translation": "Il server Privoxy è in ascolto su",
+    "timestamp": "2026-02-15T23:42:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IP Address": {
+    "original": "IP Address",
+    "translation": "Indirizzo IP",
+    "timestamp": "2026-02-15T23:42:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Content Filter": {
+    "original": "Content Filter",
+    "translation": "Filtro contenuti",
+    "timestamp": "2026-02-15T23:42:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Privoxy shall filter internet content": {
+    "original": "Privoxy shall filter internet content",
+    "translation": "Privoxy filtrerà i contenuti internet",
+    "timestamp": "2026-02-15T23:42:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Yes": {
+    "original": "Yes",
+    "translation": "Sì",
+    "timestamp": "2026-02-15T23:42:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Internal flash memory is limited. With this option privoxy loads <i>user.action</i> and <i>user.filter</i> from the given directory (usually outside the flash memory of the box).": {
+    "original": "Internal flash memory is limited. With this option privoxy loads <i>user.action</i> and <i>user.filter</i> from the given directory (usually outside the flash memory of the box).",
+    "translation": "Con questa opzione privoxy carica <i>user.action</i> e <i>user.filter</i> dalla directory indicata (di solito fuori dalla memoria flash della scatola).",
+    "timestamp": "2026-02-15T23:42:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:set": {
+    "original": "set",
+    "translation": "set",
+    "timestamp": "2026-02-15T23:42:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:unset": {
+    "original": "unset",
+    "translation": "unset",
+    "timestamp": "2026-02-15T23:42:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Whether or not the web-based toggle feature may be used, see": {
+    "original": "Whether or not the web-based toggle feature may be used, see",
+    "translation": "Per sapere se è possibile utilizzare o meno la funzione di selezione via web, vedere",
+    "timestamp": "2026-02-15T23:42:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Whether the user is allowed to ignore blocks and can go there anyway, see": {
+    "original": "Whether the user is allowed to ignore blocks and can go there anyway, see",
+    "translation": "Se l'utente è autorizzato a ignorare i blocchi e può andarci comunque, vedere",
+    "timestamp": "2026-02-15T23:42:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Whether the filters affect Privoxys own CGIs or not, see": {
+    "original": "Whether the filters affect Privoxys own CGIs or not, see",
+    "translation": "Per sapere se i filtri hanno effetto sui CGI di Privox o meno, vedere",
+    "timestamp": "2026-02-15T23:42:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:AdBlock Plus": {
+    "original": "AdBlock Plus",
+    "translation": "AdBlock Plus",
+    "timestamp": "2026-02-15T23:42:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Import AdBlock Plus filter on every startup": {
+    "original": "Import AdBlock Plus filter on every startup",
+    "translation": "Importazione del filtro AdBlock Plus a ogni avvio",
+    "timestamp": "2026-02-15T23:42:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Import now": {
+    "original": "Import now",
+    "translation": "Importa ora",
+    "timestamp": "2026-02-15T23:42:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Waiting for internet connectivity may delay startup for up to 15 seconds; because of the size only reasonable with external directory": {
+    "original": "Waiting for internet connectivity may delay startup for up to 15 seconds; because of the size only reasonable with external directory",
+    "translation": "L'attesa della connettività internet può ritardare l'avvio fino a 15 secondi; a causa delle dimensioni, è ragionevole solo con una directory esterna.",
+    "timestamp": "2026-02-15T23:42:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:URL to AdBlock Plus filter list:": {
+    "original": "URL to AdBlock Plus filter list:",
+    "translation": "URL all'elenco dei filtri di AdBlock Plus:",
+    "timestamp": "2026-02-15T23:42:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Specifies the url from which the AdBlock Plus filter should be imported from.": {
+    "original": "Specifies the url from which the AdBlock Plus filter should be imported from.",
+    "translation": "Specifica l'url da cui importare il filtro AdBlock Plus.",
+    "timestamp": "2026-02-15T23:42:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Forwarding": {
+    "original": "Forwarding",
+    "translation": "Inoltro",
+    "timestamp": "2026-02-15T23:42:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Next proxy:": {
+    "original": "Next proxy:",
+    "translation": "Prossima delega:",
+    "timestamp": "2026-02-15T23:42:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Privoxy shall forward all requests to the specified (socks) proxy server. This could be a tor node, for example.": {
+    "original": "Privoxy shall forward all requests to the specified (socks) proxy server. This could be a tor node, for example.",
+    "translation": "Privoxy inoltra tutte le richieste al server proxy (socks) specificato, che potrebbe essere un nodo tor, ad esempio.",
+    "timestamp": "2026-02-15T23:42:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Next proxy type:": {
+    "original": "Next proxy type:",
+    "translation": "Tipo di proxy successivo:",
+    "timestamp": "2026-02-15T23:42:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access Control": {
+    "original": "Access Control",
+    "translation": "Controllo degli accessi",
+    "timestamp": "2026-02-15T23:42:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:See the Privoxy User Manual about <a href='http://www.privoxy.org/user-manual/config.html#ACCESS-CONTROL' target='_blank'>Access Control</a> for a brief description.": {
+    "original": "See the Privoxy User Manual about <a href='http://www.privoxy.org/user-manual/config.html#ACCESS-CONTROL' target='_blank'>Access Control</a> for a brief description.",
+    "translation": "Per una breve descrizione, consultare il Manuale utente di Privoxy su <a href='http://www.privoxy.org/user-manual/config.html#ACCESS-CONTROL' target='_blank'>Controllo degli accessi</a>.",
+    "timestamp": "2026-02-15T23:43:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:List of allowed clients and destinations:": {
+    "original": "List of allowed clients and destinations:",
+    "translation": "Elenco dei client e delle destinazioni consentite:",
+    "timestamp": "2026-02-15T23:45:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:List of denied clients and destinations:": {
+    "original": "List of denied clients and destinations:",
+    "translation": "Elenco dei client e delle destinazioni negate:",
+    "timestamp": "2026-02-15T23:45:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

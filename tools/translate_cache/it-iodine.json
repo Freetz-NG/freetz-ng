@@ -1,0 +1,30 @@
+{
+  "deepl:DNS Domain name": {
+    "original": "DNS Domain name",
+    "translation": "DNS Nome di dominio",
+    "timestamp": "2026-02-15T23:31:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS port number": {
+    "original": "DNS port number",
+    "translation": "Numero di porta DNS",
+    "timestamp": "2026-02-15T23:31:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server tunnel IP": {
+    "original": "Server tunnel IP",
+    "translation": "IP del tunnel del server",
+    "timestamp": "2026-02-15T23:31:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Tunnel password": {
+    "original": "Tunnel password",
+    "translation": "Tunnel password",
+    "timestamp": "2026-02-15T23:31:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

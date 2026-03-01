@@ -1,0 +1,121 @@
+{
+  "deepl:Activate kernel-log daemon": {
+    "original": "Activate kernel-log daemon",
+    "translation": "Attivare il daemon del kernel-log",
+    "timestamp": "2026-02-16T14:18:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional command line options (for experts)": {
+    "original": "Additional command line options (for experts)",
+    "translation": "Opzioni aggiuntive da riga di comando (per esperti)",
+    "timestamp": "2026-02-16T14:18:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Extra": {
+    "original": "Extra",
+    "translation": "Extra",
+    "timestamp": "2026-02-16T14:17:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:In memory buffer": {
+    "original": "In memory buffer",
+    "translation": "Buffer in memoria",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Kernel Daemon (klogd) loglevel": {
+    "original": "Kernel Daemon (klogd) loglevel",
+    "translation": "Livello di log del kernel daemon (klogd)",
+    "timestamp": "2026-02-16T14:18:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Local logger": {
+    "original": "Local logger",
+    "translation": "Logger locale",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log file location": {
+    "original": "Log file location",
+    "translation": "Posizione del file di log",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log file rotation": {
+    "original": "Log file rotation",
+    "translation": "Rotazione dei file di log",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log viewer": {
+    "original": "Log viewer",
+    "translation": "Visualizzatore di log",
+    "timestamp": "2026-02-16T14:17:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Max log file size": {
+    "original": "Max log file size",
+    "translation": "Dimensione massima del file di log",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Max number of logs to keep": {
+    "original": "Max number of logs to keep",
+    "translation": "Numero massimo di log da conservare",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Memory buffer": {
+    "original": "Memory buffer",
+    "translation": "Buffer di memoria",
+    "timestamp": "2026-02-16T14:17:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Network logger": {
+    "original": "Network logger",
+    "translation": "Logger di rete",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:No local logging enabled": {
+    "original": "No local logging enabled",
+    "translation": "Il logging locale non è abilitato",
+    "timestamp": "2026-02-16T14:17:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Options": {
+    "original": "Options",
+    "translation": "Opzioni",
+    "timestamp": "2026-02-16T14:17:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-16T14:17:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:in logfile": {
+    "original": "in logfile",
+    "translation": "nel file di log",
+    "timestamp": "2026-02-16T14:17:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

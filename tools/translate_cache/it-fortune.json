@@ -1,0 +1,30 @@
+{
+  "deepl:Fortune settings": {
+    "original": "Fortune settings",
+    "translation": "Impostazioni di Fortune",
+    "timestamp": "2026-02-15T23:29:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Directory with fortune-files": {
+    "original": "Directory with fortune-files",
+    "translation": "Directory con file di fortuna",
+    "timestamp": "2026-02-15T23:29:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:There should be some fortune-files in the fortune-directory for fortune to use. Such fortune-files may for example be found in the FreeBSD repository, <a href=\\": {
+    "original": "There should be some fortune-files in the fortune-directory for fortune to use. Such fortune-files may for example be found in the FreeBSD repository, <a href=\\",
+    "translation": "Nella directory fortune devono essere presenti alcuni file di fortune da utilizzare. Tali file di fortune possono essere trovati, ad esempio, nel repository di FreeBSD, <a href=\\",
+    "timestamp": "2026-02-15T23:30:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:By the way ...": {
+    "original": "By the way ...",
+    "translation": "A proposito...",
+    "timestamp": "2026-02-15T23:30:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

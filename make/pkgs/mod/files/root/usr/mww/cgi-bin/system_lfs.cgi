@@ -45,11 +45,12 @@ get_partition_by_name() {
 
 fitinfo() {
 	[ -e /tmp/bootmanager.data ] && . /tmp/bootmanager.data
+	UNK="$(lang de:"Unbekannt" en:"Unknown")"
 	VER="${inactive_version#*.}"
 	VER="${VER%-*}"
 	REV="${inactive_version#*-}"
 	DAT="$(date -d @$inactive_date_epoch +'%d.%m.%Y %H:%M:%S')"
-	echo "FritzOS ${VER:-UNKNOWN}${REV:+ rev$REV}${DAT:+ ($DAT)}"
+	echo "FritzOS ${VER:-$UNK}${REV:+ rev$REV}${DAT:+ ($DAT)}"
 
 	if [ -n "$inactive_modified_by" -a "$inactive_modified_by" != "-" ]; then
 		WHO="${inactive_modified_by/Freetz-NG/Freetz}"
@@ -61,12 +62,13 @@ fitinfo() {
 
 imginfo() {
 	DIR=${1:-/}
+	UNK="$(lang de:"Unbekannt" en:"Unknown")"
 
 	VER="$(cat ${DIR}/etc/.version)"
 	REV="$(cat ${DIR}/etc/.revision)"
 	DAT="$(sed -rn 's!.*FIRMWARE_DATE=!!p' ${DIR}/etc/version | sed 's/\"//g')"
 	[ -z "$DAT" ] && DAT="$(date -d"$(stat -c '%y' ${DIR}/etc/version | sed 's/\..*//')" "+%d.%m.%Y %H:%M:%S")"
-	echo "FritzOS ${VER:-UNKNOWN}${REV:+ rev$REV}${DAT:+ ($DAT)}"
+	echo "FritzOS ${VER:-$UNK}${REV:+ rev$REV}${DAT:+ ($DAT)}"
 
 	if [ -e ${DIR}/etc/.freetz-version ]; then
 		SUB="$(cat ${DIR}/etc/.freetz-version)"

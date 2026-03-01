@@ -1,0 +1,65 @@
+{
+  "deepl:Integrated WEB Server": {
+    "original": "Integrated WEB Server",
+    "translation": "Server WEB integrato",
+    "timestamp": "2026-02-15T23:53:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Default port": {
+    "original": "Default port",
+    "translation": "Porta predefinita",
+    "timestamp": "2026-02-15T23:53:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Detected multiple socket outlets": {
+    "original": "Detected multiple socket outlets",
+    "translation": "Rilevate prese multiple",
+    "timestamp": "2026-02-15T23:53:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Serial No": {
+    "original": "Serial No",
+    "translation": "Numero di serie",
+    "timestamp": "2026-02-15T23:53:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Type": {
+    "original": "Type",
+    "translation": "Tipo",
+    "timestamp": "2026-02-15T23:53:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allocation and naming": {
+    "original": "Allocation and naming",
+    "translation": "Assegnazione e denominazione",
+    "timestamp": "2026-02-15T23:53:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Number of administrated devices": {
+    "original": "Number of administrated devices",
+    "translation": "Numero di dispositivi amministrati",
+    "timestamp": "2026-02-15T23:53:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Naming": {
+    "original": "Naming",
+    "translation": "Denominazione",
+    "timestamp": "2026-02-15T23:53:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Socket": {
+    "original": "Socket",
+    "translation": "Presa di corrente",
+    "timestamp": "2026-02-15T23:53:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

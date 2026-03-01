@@ -1,0 +1,170 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:08:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enabled": {
+    "original": "Enabled",
+    "translation": "Abilitato",
+    "timestamp": "2026-02-15T23:08:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disabled": {
+    "original": "Disabled",
+    "translation": "Disabili",
+    "timestamp": "2026-02-15T23:08:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Let's Encrypt renews the certificates automatically by cron and doesn't need to run as a daemon.": {
+    "original": "Let's Encrypt renews the certificates automatically by cron and doesn't need to run as a daemon.",
+    "translation": "Let's Encrypt rinnova i certificati automaticamente tramite cron e non ha bisogno di essere eseguito come demone.",
+    "timestamp": "2026-02-15T23:08:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show": {
+    "original": "Show",
+    "translation": "Mostra",
+    "timestamp": "2026-02-15T23:08:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show log file": {
+    "original": "Show log file",
+    "translation": "Mostra il file di log",
+    "timestamp": "2026-02-15T23:08:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Cron": {
+    "original": "Cron",
+    "translation": "Cron",
+    "timestamp": "2026-02-15T23:08:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hour": {
+    "original": "Hour",
+    "translation": "Ora",
+    "timestamp": "2026-02-15T23:08:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Minute": {
+    "original": "Minute",
+    "translation": "Minuto",
+    "timestamp": "2026-02-15T23:08:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Day": {
+    "original": "Day",
+    "translation": "Giorno",
+    "timestamp": "2026-02-15T23:08:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Options": {
+    "original": "Options",
+    "translation": "Opzioni",
+    "timestamp": "2026-02-15T23:08:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Key length (at least 2048)": {
+    "original": "Key length (at least 2048)",
+    "translation": "Lunghezza della chiave (almeno 2048)",
+    "timestamp": "2026-02-15T23:08:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Certificate storage directory": {
+    "original": "Certificate storage directory",
+    "translation": "Directory di archiviazione dei certificati",
+    "timestamp": "2026-02-15T23:08:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Private certificates to use with Lighttpd e.g. by <i>ssl.pemfile</i> will be placed here": {
+    "original": "Private certificates to use with Lighttpd e.g. by <i>ssl.pemfile</i> will be placed here",
+    "translation": "I certificati privati da utilizzare con Lighttpd, ad esempio da <i>ssl.pemfile</i>, saranno inseriti qui",
+    "timestamp": "2026-02-15T23:08:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Web server public directory": {
+    "original": "Web server public directory",
+    "translation": "Directory pubblica del server web",
+    "timestamp": "2026-02-15T23:08:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To publish acme-challenge files by http.": {
+    "original": "To publish acme-challenge files by http.",
+    "translation": "Per pubblicare i file di acme-challenge via http.",
+    "timestamp": "2026-02-15T23:08:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log file": {
+    "original": "Log file",
+    "translation": "File di registro",
+    "timestamp": "2026-02-15T23:08:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Advanced": {
+    "original": "Advanced",
+    "translation": "Avanzato",
+    "timestamp": "2026-02-15T23:08:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:E-mail address": {
+    "original": "E-mail address",
+    "translation": "Indirizzo e-mail",
+    "timestamp": "2026-02-15T23:08:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Restart Lighttpd after renew": {
+    "original": "Restart Lighttpd after renew",
+    "translation": "Riavviare Lighttpd dopo il rinnovo",
+    "timestamp": "2026-02-15T23:08:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Custom values into": {
+    "original": "Custom values into",
+    "translation": "Valori personalizzati in",
+    "timestamp": "2026-02-15T23:08:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Note": {
+    "original": "Note",
+    "translation": "Nota",
+    "timestamp": "2026-02-15T23:08:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To initialize and show output run": {
+    "original": "To initialize and show output run",
+    "translation": "Per inizializzare e mostrare l'output eseguire",
+    "timestamp": "2026-02-15T23:08:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The log file is empty.": {
+    "original": "The log file is empty.",
+    "translation": "Il file di registro è vuoto.",
+    "timestamp": "2026-02-15T23:08:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

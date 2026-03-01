@@ -1,0 +1,37 @@
+{
+  "deepl:Repository": {
+    "original": "Repository",
+    "translation": "Repository",
+    "timestamp": "2026-02-15T23:30:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path": {
+    "original": "Path",
+    "translation": "Percorso",
+    "timestamp": "2026-02-15T23:30:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server": {
+    "original": "Server",
+    "translation": "Server",
+    "timestamp": "2026-02-15T23:30:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Bind-address": {
+    "original": "Bind-address",
+    "translation": "Bind-address",
+    "timestamp": "2026-02-15T23:30:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Listen-port": {
+    "original": "Listen-port",
+    "translation": "Listen-port",
+    "timestamp": "2026-02-15T23:30:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

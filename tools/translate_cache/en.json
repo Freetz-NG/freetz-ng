@@ -1,0 +1,16 @@
+{
+  "deepl:(Log-Datei ist leer)": {
+    "github_user": "",
+    "original": "(Log-Datei ist leer)",
+    "service": "deepl",
+    "timestamp": "",
+    "translation": "(Log file is empty)"
+  },
+  "deepl:Fehler beim Laden": {
+    "github_user": "",
+    "original": "Fehler beim Laden",
+    "service": "deepl",
+    "timestamp": "",
+    "translation": "Load Error"
+  }
+}

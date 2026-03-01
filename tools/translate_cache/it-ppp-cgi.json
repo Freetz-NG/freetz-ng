@@ -1,0 +1,177 @@
+{
+  "deepl:Global logfile": {
+    "original": "Global logfile",
+    "translation": "File di registro globale",
+    "timestamp": "2026-02-15T23:41:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:(show)": {
+    "original": "(show)",
+    "translation": "(mostra)",
+    "timestamp": "2026-02-15T23:41:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Execute this script before dialin": {
+    "original": "Execute this script before dialin",
+    "translation": "Eseguire questo script prima della connessione",
+    "timestamp": "2026-02-15T23:41:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Execute this script after hangup": {
+    "original": "Execute this script after hangup",
+    "translation": "Eseguire questo script dopo il riaggancio",
+    "timestamp": "2026-02-15T23:41:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Command-TTY (eg /dev/ttyUSB2)": {
+    "original": "Command-TTY (eg /dev/ttyUSB2)",
+    "translation": "Comando-TTY (es. /dev/ttyUSB2)",
+    "timestamp": "2026-02-15T23:41:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:preferred": {
+    "original": "preferred",
+    "translation": "preferito",
+    "timestamp": "2026-02-15T23:41:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:only": {
+    "original": "only",
+    "translation": "solo",
+    "timestamp": "2026-02-15T23:41:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:not selected": {
+    "original": "not selected",
+    "translation": "non selezionato",
+    "timestamp": "2026-02-15T23:41:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Fallback": {
+    "original": "Fallback",
+    "translation": "Fallback",
+    "timestamp": "2026-02-15T23:41:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Fallback enabled": {
+    "original": "Fallback enabled",
+    "translation": "Fallback abilitato",
+    "timestamp": "2026-02-15T23:41:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Fallback-logfile": {
+    "original": "Fallback-logfile",
+    "translation": "Fallback-logfile",
+    "timestamp": "2026-02-15T23:41:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Internet connection check interval": {
+    "original": "Internet connection check interval",
+    "translation": "Intervallo di controllo della connessione a Internet",
+    "timestamp": "2026-02-15T23:41:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Establish alternative connection after a timeout of": {
+    "original": "Establish alternative connection after a timeout of",
+    "translation": "Stabilire una connessione alternativa dopo un timeout di",
+    "timestamp": "2026-02-15T23:41:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Space separated list of hosts to be used for internet connection check": {
+    "original": "Space separated list of hosts to be used for internet connection check",
+    "translation": "Elenco separato da spazi di host da utilizzare per il controllo della connessione a Internet",
+    "timestamp": "2026-02-15T23:41:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Host for online-again check (not reachable while dun-connection!)": {
+    "original": "Host for online-again check (not reachable while dun-connection!)",
+    "translation": "Host per il controllo online (non raggiungibile durante la disconnessione!)",
+    "timestamp": "2026-02-15T23:41:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Refresh initiated. This max take up to one minute.": {
+    "original": "Refresh initiated. This max take up to one minute.",
+    "translation": "L'aggiornamento è stato avviato e può richiedere fino a un minuto.",
+    "timestamp": "2026-02-15T23:41:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Connect time": {
+    "original": "Connect time",
+    "translation": "Collegare il tempo",
+    "timestamp": "2026-02-15T23:41:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Uploaded": {
+    "original": "Uploaded",
+    "translation": "Caricato",
+    "timestamp": "2026-02-15T23:41:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Downloaded": {
+    "original": "Downloaded",
+    "translation": "Scaricato",
+    "timestamp": "2026-02-15T23:41:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PIN-state": {
+    "original": "PIN-state",
+    "translation": "PIN-stato",
+    "timestamp": "2026-02-15T23:41:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Connected": {
+    "original": "Connected",
+    "translation": "Collegato",
+    "timestamp": "2026-02-15T23:41:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Network-mode": {
+    "original": "Network-mode",
+    "translation": "Modalità di rete",
+    "timestamp": "2026-02-15T23:41:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Signal-strength": {
+    "original": "Signal-strength",
+    "translation": "Segnale-forza",
+    "timestamp": "2026-02-15T23:41:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Detected networks": {
+    "original": "Detected networks",
+    "translation": "Reti rilevate",
+    "timestamp": "2026-02-15T23:41:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Logfile": {
+    "original": "Logfile",
+    "translation": "Logfile",
+    "timestamp": "2026-02-15T23:41:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

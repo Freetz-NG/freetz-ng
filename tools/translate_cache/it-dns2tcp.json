@@ -1,0 +1,72 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:08:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS2TCP daemon": {
+    "original": "DNS2TCP daemon",
+    "translation": "demone DNS2TCP",
+    "timestamp": "2026-02-15T23:08:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Listen on UDP port": {
+    "original": "Listen on UDP port",
+    "translation": "Ascoltare sulla porta UDP",
+    "timestamp": "2026-02-15T23:08:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note that port 53 is already used by the Fritz.Box DNS server - use a different port. In order to have the tunnel accessible from the Internet, add a port forwarding rule from UDP port 53 to this configured UDP port.": {
+    "original": "Please note that port 53 is already used by the Fritz.Box DNS server - use a different port. In order to have the tunnel accessible from the Internet, add a port forwarding rule from UDP port 53 to this configured UDP port.",
+    "translation": "Tenere presente che la porta 53 è già utilizzata dal server DNS del Fritz.Box: utilizzare una porta diversa. Per rendere il tunnel accessibile da Internet, aggiungere una regola di port forwarding dalla porta UDP 53 a questa porta UDP configurata.",
+    "timestamp": "2026-02-15T23:08:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:A DNS domain is necessary for the communication. You can also provide a DNS subdomain. This domain must be known in the Internet.": {
+    "original": "A DNS domain is necessary for the communication. You can also provide a DNS subdomain. This domain must be known in the Internet.",
+    "translation": "Per la comunicazione è necessario un dominio DNS. È possibile fornire anche un sottodominio DNS, che deve essere conosciuto in Internet.",
+    "timestamp": "2026-02-15T23:08:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS domain": {
+    "original": "DNS domain",
+    "translation": "dominio DNS",
+    "timestamp": "2026-02-15T23:08:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Pre-shared key": {
+    "original": "Pre-shared key",
+    "translation": "Chiave precondivisa",
+    "timestamp": "2026-02-15T23:08:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hints for usage": {
+    "original": "Hints for usage",
+    "translation": "Suggerimenti per l'uso",
+    "timestamp": "2026-02-15T23:08:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Currently this front end allows the configuration to the Dropbear port 22 on the box only - any other connections must be configured by yourself - this application allows wrong configurations too easily. Please note that with this tunnel the Dropbear SSH daemon is freely reachable from the Internet if you don't configure a pre-shared key. This tunnel can be used to establish a SOCKSv5 connection to your box when using the OpenSSH client on your source host. Use the following commands as normal user on your source host (the first establishes the dns2tcp tunnel listening on port 2222, the second establishes the SOCKSv5 tunnel listening on port 1080) - the name dns2tcp.meine.domain has to be replaced with the name configured above:<br><pre>dns2tcpc -r ssh -l 2222 -k preshared_key -z dns2tcp.meine.domain dns_server_ip<br>ssh root@localhost -p 2222 -D 1080<br></pre>": {
+    "original": "Currently this front end allows the configuration to the Dropbear port 22 on the box only - any other connections must be configured by yourself - this application allows wrong configurations too easily. Please note that with this tunnel the Dropbear SSH daemon is freely reachable from the Internet if you don't configure a pre-shared key. This tunnel can be used to establish a SOCKSv5 connection to your box when using the OpenSSH client on your source host. Use the following commands as normal user on your source host (the first establishes the dns2tcp tunnel listening on port 2222, the second establishes the SOCKSv5 tunnel listening on port 1080) - the name dns2tcp.meine.domain has to be replaced with the name configured above:<br><pre>dns2tcpc -r ssh -l 2222 -k preshared_key -z dns2tcp.meine.domain dns_server_ip<br>ssh root@localhost -p 2222 -D 1080<br></pre>",
+    "translation": "Currently this front end allows the configuration to the Dropbear port 22 on the box only - any other connections must be configured by yourself - this application allows wrong configurations too easily. Please note that with this tunnel the Dropbear SSH daemon is freely reachable from the Internet if you don't configure a pre-shared key. This tunnel can be used to establish a SOCKSv5 connection to your box when using the OpenSSH client on your source host. Use the following commands as normal user on your source host (the first establishes the dns2tcp tunnel listening on port 2222, the second establishes the SOCKSv5 tunnel listening on port 1080) - the name dns2tcp.meine.domain has to be replaced with the name configured above:<br><pre>dns2tcpc -r ssh -l 2222 -k preshared_key -z dns2tcp.meine.domain dns_server_ip<br>ssh root@localhost -p 2222 -D 1080<br></pre>",
+    "timestamp": "2026-02-15T23:08:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To use the SOCKS connection you either have to use an application that can speak SOCKS or you use tsocks. For tsocks, you change in /etc/tsocks.conf that the SOCKSv5 server is 127.0.0.1. With tsocks, every application can be used with SOCKS:<br>tsocks APPLICATIONNAME": {
+    "original": "To use the SOCKS connection you either have to use an application that can speak SOCKS or you use tsocks. For tsocks, you change in /etc/tsocks.conf that the SOCKSv5 server is 127.0.0.1. With tsocks, every application can be used with SOCKS:<br>tsocks APPLICATIONNAME",
+    "translation": "Per utilizzare la connessione SOCKS è necessario utilizzare un'applicazione in grado di parlare SOCKS oppure utilizzare tsocks. Per tsocks, si modifica in /etc/tsocks.conf che il server SOCKSv5 è 127.0.0.1. Con tsocks, ogni applicazione può essere utilizzata con SOCKS:<br>tsocks APPLICATIONNAME",
+    "timestamp": "2026-02-15T23:08:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

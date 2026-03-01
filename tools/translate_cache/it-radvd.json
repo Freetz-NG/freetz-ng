@@ -1,0 +1,93 @@
+{
+  "deepl:radvd": {
+    "original": "radvd",
+    "translation": "radvd",
+    "timestamp": "2026-02-15T23:49:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IPv6 interface": {
+    "original": "IPv6 interface",
+    "translation": "Interfaccia IPv6",
+    "timestamp": "2026-02-15T23:49:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IPv6 address": {
+    "original": "IPv6 address",
+    "translation": "Indirizzo IPv6",
+    "timestamp": "2026-02-15T23:49:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IPv6 prefix": {
+    "original": "IPv6 prefix",
+    "translation": "Prefisso IPv6",
+    "timestamp": "2026-02-15T23:49:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IPv6 MTU": {
+    "original": "IPv6 MTU",
+    "translation": "MTU IPv6",
+    "timestamp": "2026-02-15T23:49:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate on start resp. deactivate on stop the IPv6 forwarding.": {
+    "original": "Activate on start resp. deactivate on stop the IPv6 forwarding.",
+    "translation": "Attivare all'avvio e disattivare all'arresto l'inoltro IPv6.",
+    "timestamp": "2026-02-15T23:49:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Set on start resp. unset on stop the IPv6 address of the interface.": {
+    "original": "Set on start resp. unset on stop the IPv6 address of the interface.",
+    "translation": "Imposta all'avvio o disattiva all'arresto l'indirizzo IPv6 dell'interfaccia.",
+    "timestamp": "2026-02-15T23:49:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Mark IPv6 subnet as managed": {
+    "original": "Mark IPv6 subnet as managed",
+    "translation": "Contrassegnare la sottorete IPv6 come gestita",
+    "timestamp": "2026-02-15T23:49:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Request other config from the network": {
+    "original": "Request other config from the network",
+    "translation": "Richiedere altre configurazioni dalla rete",
+    "timestamp": "2026-02-15T23:49:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Optional parameters": {
+    "original": "Optional parameters",
+    "translation": "Parametri opzionali",
+    "timestamp": "2026-02-15T23:49:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:A space separated list of clients (IPv6 addresses) to advertise to": {
+    "original": "A space separated list of clients (IPv6 addresses) to advertise to",
+    "translation": "Un elenco, separato da spazi, di client (indirizzi IPv6) a cui fare pubblicità",
+    "timestamp": "2026-02-15T23:49:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS server list (separated by spaces)": {
+    "original": "DNS server list (separated by spaces)",
+    "translation": "Elenco dei server DNS (separati da spazi)",
+    "timestamp": "2026-02-15T23:49:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS domain search list": {
+    "original": "DNS domain search list",
+    "translation": "Elenco di ricerca dei domini DNS",
+    "timestamp": "2026-02-15T23:49:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

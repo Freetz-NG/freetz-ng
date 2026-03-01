@@ -1,0 +1,16 @@
+{
+  "deepl:File name": {
+    "original": "File name",
+    "translation": "Nome del file",
+    "timestamp": "2026-02-15T23:31:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Logfile is empty.": {
+    "original": "Logfile is empty.",
+    "translation": "Il file di log è vuoto.",
+    "timestamp": "2026-02-15T23:31:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

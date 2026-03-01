@@ -1,0 +1,23 @@
+{
+  "deepl:Startparameters": {
+    "original": "Startparameters",
+    "translation": "Startparameters",
+    "timestamp": "2026-02-16T00:00:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:(e.g. client connection to Server: <i>name 1.2.3.4</i>)": {
+    "original": "(e.g. client connection to Server: <i>name 1.2.3.4</i>)",
+    "translation": "(es. connessione client al server: <i>nome 1.2.3.4</i>)",
+    "timestamp": "2026-02-16T00:00:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configurationfile:": {
+    "original": "Configurationfile:",
+    "translation": "Configurationfile:",
+    "timestamp": "2026-02-16T00:00:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

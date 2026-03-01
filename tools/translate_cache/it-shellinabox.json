@@ -1,0 +1,51 @@
+{
+  "deepl:Disable SSL": {
+    "original": "Disable SSL",
+    "translation": "Disabilita SSL",
+    "timestamp": "2026-02-15T23:53:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:use FRITZ!Box certificate from vendor's GUI": {
+    "original": "use FRITZ!Box certificate from vendor's GUI",
+    "translation": "utilizzare il certificato FRITZ!Box dalla GUI del fornitore",
+    "timestamp": "2026-02-15T23:53:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:use certificate from below": {
+    "original": "use certificate from below",
+    "translation": "utilizzare il certificato di seguito riportato",
+    "timestamp": "2026-02-15T23:53:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Certificate": {
+    "original": "Certificate",
+    "translation": "Certificato",
+    "timestamp": "2026-02-15T23:53:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This will build a self signed certificate on the box. Will take some time..": {
+    "original": "This will build a self signed certificate on the box. Will take some time..",
+    "translation": "Questo creerà un certificato autofirmato sulla scatola. Ci vorrà un po' di tempo....",
+    "timestamp": "2026-02-15T23:53:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Generate certificate": {
+    "original": "Generate certificate",
+    "translation": "Generare un certificato",
+    "timestamp": "2026-02-15T23:53:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional options": {
+    "original": "Additional options",
+    "translation": "Opzioni aggiuntive",
+    "timestamp": "2026-02-15T23:53:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

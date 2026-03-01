@@ -1,0 +1,3376 @@
+{
+  "deepl: (separate by spaces)": {
+    "github_user": "Ircama",
+    "original": " (separate by spaces)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": " (separare con spazi)"
+  },
+  "deepl: en:": {
+    "github_user": "Ircama",
+    "original": " en:",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:59Z",
+    "translation": " en:"
+  },
+  "deepl:%m/%d/%Y": {
+    "github_user": "Ircama",
+    "original": "%m/%d/%Y",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:26Z",
+    "translation": "%m/%d/%Y"
+  },
+  "deepl:'$name' is not a valid skin.": {
+    "github_user": "Ircama",
+    "original": "'$name' is not a valid skin.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:01Z",
+    "translation": "'$nome' non è una skin valida."
+  },
+  "deepl:-none-": {
+    "github_user": "Ircama",
+    "original": "-none-",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "-nessuno-"
+  },
+  "deepl:.": {
+    "github_user": "Ircama",
+    "original": ".",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:19Z",
+    "translation": "."
+  },
+  "deepl::": {
+    "github_user": "Ircama",
+    "original": ":",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": ":"
+  },
+  "deepl:A file with config and log files is created to find errors. Confidential details like Callmonitor phonenumbers, DSL-serial, MAC-, IPv4- and IPv6-addresses will be removed. But please check the file before publishing it!": {
+    "github_user": "Ircama",
+    "original": "A file with config and log files is created to find errors. Confidential details like Callmonitor phonenumbers, DSL-serial, MAC-, IPv4- and IPv6-addresses will be removed. But please check the file before publishing it!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:21Z",
+    "translation": "Viene generato un file contenente configurazioni e log di sistema per l’analisi degli errori.\nI dati sensibili (numeri di telefono del Callmonitor, seriale DSL, indirizzi MAC, IPv4 e IPv6) vengono automaticamente rimossi.<br><br>\nSi raccomanda comunque una verifica manuale del file prima della pubblicazione."
+  },
+  "deepl:ARGO: AVM telemetry": {
+    "github_user": "Ircama",
+    "original": "ARGO: AVM telemetry",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "ARGO: telemetria AVM"
+  },
+  "deepl:AVM Packet Accelerator": {
+    "github_user": "Ircama",
+    "original": "AVM Packet Accelerator",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:16Z",
+    "translation": "Acceleratore di pacchetti AVM"
+  },
+  "deepl:AVM default password": {
+    "github_user": "Ircama",
+    "original": "AVM default password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Password AVM predefinita"
+  },
+  "deepl:AVM firmware version": {
+    "github_user": "Ircama",
+    "original": "AVM firmware version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Versione firmware AVM"
+  },
+  "deepl:AVM generates the name by ${METHOD} currently. See help to change.": {
+    "github_user": "Ircama",
+    "original": "AVM generates the name by ${METHOD} currently. See help to change.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Attualmente AVM genera il nome con ${METHOD}. Vedere la guida per modificarlo."
+  },
+  "deepl:AVM info": {
+    "github_user": "Ircama",
+    "original": "AVM info",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "Info AVM"
+  },
+  "deepl:AVM logs": {
+    "github_user": "Ircama",
+    "original": "AVM logs",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Logs AVM"
+  },
+  "deepl:AVM services": {
+    "github_user": "Ircama",
+    "original": "AVM services",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:51Z",
+    "translation": "Servizi AVM"
+  },
+  "deepl:AVM web interface": {
+    "github_user": "Ircama",
+    "original": "AVM web interface",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": "Interfaccia web AVM"
+  },
+  "deepl:Abort if the year is higher than this value": {
+    "github_user": "Ircama",
+    "original": "Abort if the year is higher than this value",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Interrompere se l'anno è superiore a questo valore"
+  },
+  "deepl:About": {
+    "github_user": "Ircama",
+    "original": "About",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:54Z",
+    "translation": "Informazioni su"
+  },
+  "deepl:Access denied!": {
+    "github_user": "Ircama",
+    "original": "Access denied!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:39Z",
+    "translation": "Accesso negato!"
+  },
+  "deepl:Activated": {
+    "github_user": "Ircama",
+    "original": "Activated",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:36Z",
+    "translation": "Attivato"
+  },
+  "deepl:Additional partitions": {
+    "github_user": "Ircama",
+    "original": "Additional partitions",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Partizioni aggiuntive"
+  },
+  "deepl:Additional script": {
+    "github_user": "Ircama",
+    "original": "Additional script",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:47Z",
+    "translation": "Scrittura aggiuntiva"
+  },
+  "deepl:Additional script '$path.cgi' not found.": {
+    "github_user": "Ircama",
+    "original": "Additional script '$path.cgi' not found.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:47Z",
+    "translation": "Script aggiuntivo '$path.cgi' non trovato."
+  },
+  "deepl:Additional status pages": {
+    "github_user": "Ircama",
+    "original": "Additional status pages",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Pagine di stato aggiuntive"
+  },
+  "deepl:Address": {
+    "github_user": "Ircama",
+    "original": "Address",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Indirizzo"
+  },
+  "deepl:Advanced settings": {
+    "github_user": "Ircama",
+    "original": "Advanced settings",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Impostazioni avanzate"
+  },
+  "deepl:After restore you should reboot the device in order to activate the configuration. Please remember to double-check all settings afterwards!": {
+    "github_user": "Ircama",
+    "original": "After restore you should reboot the device in order to activate the configuration. Please remember to double-check all settings afterwards!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Dopo il ripristino è necessario riavviare il dispositivo per attivare la configurazione. Ricordarsi di ricontrollare tutte le impostazioni!"
+  },
+  "deepl:Allow access for applications": {
+    "github_user": "Ircama",
+    "original": "Allow access for applications",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Consentire l'accesso alle applicazioni"
+  },
+  "deepl:Allow downgrade to older version": {
+    "github_user": "Ircama",
+    "original": "Allow downgrade to older version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Consentire il downgrade alla versione precedente"
+  },
+  "deepl:Always use this method": {
+    "github_user": "Ircama",
+    "original": "Always use this method",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Utilizzare sempre questo metodo"
+  },
+  "deepl:An encrypted backup contains additional data to restore the backup even on another device.": {
+    "github_user": "Ircama",
+    "original": "An encrypted backup contains additional data to restore the backup even on another device.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Un backup criptato contiene dati aggiuntivi per ripristinare il backup anche su un altro dispositivo."
+  },
+  "deepl:An export could be restored by the AVM web interface. With newer FritzOS a password needs to be entered.": {
+    "github_user": "Ircama",
+    "original": "An export could be restored by the AVM web interface. With newer FritzOS a password needs to be entered.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Un'esportazione può essere ripristinata dall'interfaccia web di AVM. Con i FritzOS più recenti è necessario inserire una password."
+  },
+  "deepl:Apply": {
+    "github_user": "Ircama",
+    "original": "Apply",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:48Z",
+    "translation": "Applica"
+  },
+  "deepl:Assign IPv6 adresses to interfaces": {
+    "github_user": "Ircama",
+    "original": "Assign IPv6 adresses to interfaces",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Assegnare indirizzi IPv6 alle interfacce"
+  },
+  "deepl:Authentification": {
+    "github_user": "Ircama",
+    "original": "Authentification",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:28Z",
+    "translation": "Autenticazione"
+  },
+  "deepl:Automatic": {
+    "github_user": "Ircama",
+    "original": "Automatic",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:36Z",
+    "translation": "Automatico"
+  },
+  "deepl:Available": {
+    "github_user": "Ircama",
+    "original": "Available",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Disponibile"
+  },
+  "deepl:Available firmware versions": {
+    "github_user": "Ircama",
+    "original": "Available firmware versions",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Versioni del firmware disponibili"
+  },
+  "deepl:Available methods": {
+    "github_user": "Ircama",
+    "original": "Available methods",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Metodi disponibili"
+  },
+  "deepl:BLOCK new phone numbers": {
+    "github_user": "Ircama",
+    "original": "BLOCK new phone numbers",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "Bloccare i nuovi numeri di telefono"
+  },
+  "deepl:Back": {
+    "github_user": "Ircama",
+    "original": "Back",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Indietro"
+  },
+  "deepl:Back to main page": {
+    "github_user": "Ircama",
+    "original": "Back to main page",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Torna alla pagina principale"
+  },
+  "deepl:Back to update": {
+    "github_user": "Ircama",
+    "original": "Back to update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:40Z",
+    "translation": "Torna all'aggiornamento"
+  },
+  "deepl:Backup": {
+    "github_user": "Ircama",
+    "original": "Backup",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Backup"
+  },
+  "deepl:Backup &amp; restore": {
+    "github_user": "Ircama",
+    "original": "Backup &amp; restore",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": "Backup e ripristino"
+  },
+  "deepl:Backup configuration": {
+    "github_user": "Ircama",
+    "original": "Backup configuration",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Configurazione del backup"
+  },
+  "deepl:Backup file": {
+    "github_user": "Ircama",
+    "original": "Backup file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "File di backup"
+  },
+  "deepl:Backup/restore configuration": {
+    "github_user": "Ircama",
+    "original": "Backup/restore configuration",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Backup/ripristino della configurazione"
+  },
+  "deepl:Block SIP 5060 udp+tcp": {
+    "github_user": "Ircama",
+    "original": "Block SIP 5060 udp+tcp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "Blocca SIP 5060 udp+tcp"
+  },
+  "deepl:Boot environment": {
+    "github_user": "Ircama",
+    "original": "Boot environment",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Ambiente di avvio"
+  },
+  "deepl:Boot loader": {
+    "github_user": "Ircama",
+    "original": "Boot loader",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Boot loader"
+  },
+  "deepl:Box info": {
+    "github_user": "Ircama",
+    "original": "Box info",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Box info"
+  },
+  "deepl:Box name": {
+    "github_user": "Ircama",
+    "original": "Box name",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:21Z",
+    "translation": "Nome del dispositivo"
+  },
+  "deepl:Box type": {
+    "github_user": "Ircama",
+    "original": "Box type",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Tipo di dispositivo"
+  },
+  "deepl:Branding": {
+    "github_user": "Ircama",
+    "original": "Branding",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:19Z",
+    "translation": "Branding"
+  },
+  "deepl:Built-in packages": {
+    "github_user": "Ircama",
+    "original": "Built-in packages",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:51Z",
+    "translation": "Pacchetti integrati"
+  },
+  "deepl:Change branding": {
+    "github_user": "Ircama",
+    "original": "Change branding",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Cambiare il marchio"
+  },
+  "deepl:Change password": {
+    "github_user": "Ircama",
+    "original": "Change password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:05Z",
+    "translation": "Modifica della password"
+  },
+  "deepl:Changelog": {
+    "github_user": "Ircama",
+    "original": "Changelog",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Changelog"
+  },
+  "deepl:Check firmware version": {
+    "github_user": "Ircama",
+    "original": "Check firmware version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Controllare la versione del firmware"
+  },
+  "deepl:Checking OpenSSL": {
+    "github_user": "Ircama",
+    "original": "Checking OpenSSL",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "Verifica di OpenSSL"
+  },
+  "deepl:Checking identity": {
+    "github_user": "Ircama",
+    "original": "Checking identity",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Controllo dell'identità"
+  },
+  "deepl:Clean up TFFS": {
+    "github_user": "Ircama",
+    "original": "Clean up TFFS",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:13Z",
+    "translation": "Pulire il TFFS"
+  },
+  "deepl:Clean up attributes": {
+    "github_user": "Ircama",
+    "original": "Clean up attributes",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:14Z",
+    "translation": "Pulire gli attributi"
+  },
+  "deepl:Cleaning up attributes": {
+    "github_user": "Ircama",
+    "original": "Cleaning up attributes",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:14Z",
+    "translation": "Pulizia degli attributi"
+  },
+  "deepl:Cleans up marker for \"unauthorized changes\"": {
+    "github_user": "Ircama",
+    "original": "Cleans up marker for \"unauthorized changes\"",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:14Z",
+    "translation": "Pulisce il marcatore per le \"modifiche non autorizzate\"."
+  },
+  "deepl:Cleans up marker for \\": {
+    "github_user": "Ircama",
+    "original": "Cleans up marker for \\",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:19Z",
+    "translation": "Pulisce il marcatore per la cartella"
+  },
+  "deepl:Clock frequencies": {
+    "github_user": "Ircama",
+    "original": "Clock frequencies",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Frequenze di clock"
+  },
+  "deepl:Compilation date": {
+    "github_user": "Ircama",
+    "original": "Compilation date",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Data di compilazione"
+  },
+  "deepl:Config memory": {
+    "github_user": "Ircama",
+    "original": "Config memory",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "Memoria di configurazione"
+  },
+  "deepl:Config partition": {
+    "github_user": "Ircama",
+    "original": "Config partition",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:27Z",
+    "translation": "Partizione di configurazione"
+  },
+  "deepl:Configuartion": {
+    "github_user": "Ircama",
+    "original": "Configuartion",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Configurazione"
+  },
+  "deepl:Control": {
+    "github_user": "Ircama",
+    "original": "Control",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "Controllo"
+  },
+  "deepl:Copy to RAM": {
+    "github_user": "Ircama",
+    "original": "Copy to RAM",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Copia nella RAM"
+  },
+  "deepl:Create support file": {
+    "github_user": "Ircama",
+    "original": "Create support file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:21Z",
+    "translation": "Creare un file di supporto"
+  },
+  "deepl:Create swap file": {
+    "github_user": "Ircama",
+    "original": "Create swap file",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:49Z",
+    "translation": "Creare un file di swap"
+  },
+  "deepl:Create swapfile": {
+    "github_user": "Ircama",
+    "original": "Create swapfile",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:16Z",
+    "translation": "Creare swapfile"
+  },
+  "deepl:Creating empty file ...": {
+    "github_user": "Ircama",
+    "original": "Creating empty file ...",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:12Z",
+    "translation": "Creare un file vuoto..."
+  },
+  "deepl:Creation date": {
+    "github_user": "Ircama",
+    "original": "Creation date",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Data di creazione"
+  },
+  "deepl:Creation of swapfile ...": {
+    "github_user": "Ircama",
+    "original": "Creation of swapfile ...",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:04Z",
+    "translation": "Creazione di swapfile..."
+  },
+  "deepl:Current method to generate mount point": {
+    "github_user": "Ircama",
+    "original": "Current method to generate mount point",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Metodo attuale per generare il mount point"
+  },
+  "deepl:DISABLE Energy Efficient Ethernet": {
+    "github_user": "Ircama",
+    "original": "DISABLE Energy Efficient Ethernet",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "DISABILITA Ethernet ad alta efficienza energetica"
+  },
+  "deepl:DONE": {
+    "github_user": "Ircama",
+    "original": "DONE",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "FATTO"
+  },
+  "deepl:DSL drivers and hardware": {
+    "github_user": "Ircama",
+    "original": "DSL drivers and hardware",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Driver e hardware DSL"
+  },
+  "deepl:DSL: Block NetBIOS 137/udp 138/udp 445/tcp": {
+    "github_user": "Ircama",
+    "original": "DSL: Block NetBIOS 137/udp 138/udp 445/tcp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "DSL: Blocco NetBIOS 137/udp 138/udp 445/tcp"
+  },
+  "deepl:DSL: Block SMTP 25/tcp": {
+    "github_user": "Ircama",
+    "original": "DSL: Block SMTP 25/tcp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "DSL: Blocco SMTP 25/tcp"
+  },
+  "deepl:DSL: Block UPNP 1900/udp": {
+    "github_user": "Ircama",
+    "original": "DSL: Block UPNP 1900/udp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "DSL: bloccare UPNP 1900/udp"
+  },
+  "deepl:DSL: Do not answer incoming ICMP": {
+    "github_user": "Ircama",
+    "original": "DSL: Do not answer incoming ICMP",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "DSL: Non rispondere agli ICMP in arrivo"
+  },
+  "deepl:DSL: PPPoE VLAN ID": {
+    "github_user": "Ircama",
+    "original": "DSL: PPPoE VLAN ID",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "DSL: ID VLAN PPPoE"
+  },
+  "deepl:Deactivated": {
+    "github_user": "Ircama",
+    "original": "Deactivated",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:36Z",
+    "translation": "Disattivato"
+  },
+  "deepl:Decode AVM settings": {
+    "github_user": "Ircama",
+    "original": "Decode AVM settings",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Decodifica delle impostazioni AVM"
+  },
+  "deepl:Decoding": {
+    "github_user": "Ircama",
+    "original": "Decoding",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Decodifica"
+  },
+  "deepl:Decoding files": {
+    "github_user": "Ircama",
+    "original": "Decoding files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Decodifica dei file"
+  },
+  "deepl:Decrypting backup files": {
+    "github_user": "Ircama",
+    "original": "Decrypting backup files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "Decriptazione dei file di backup"
+  },
+  "deepl:Decrypting environment": {
+    "github_user": "Ircama",
+    "original": "Decrypting environment",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Ambiente di decodifica"
+  },
+  "deepl:Default password set! Please change it.": {
+    "github_user": "Ircama",
+    "original": "Default password set! Please change it.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:05Z",
+    "translation": "La password predefinita è stata cambiata."
+  },
+  "deepl:Default password set. <a href=\"/cgi-bin/passwd.cgi\">Please change!</a>": {
+    "github_user": "Ircama",
+    "original": "Default password set. <a href=\"/cgi-bin/passwd.cgi\">Please change!</a>",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:18Z",
+    "translation": "Password predefinita. <a href=\"/cgi-bin/passwd.cgi\">Per favore cambia!</a>"
+  },
+  "deepl:Defaults": {
+    "github_user": "Ircama",
+    "original": "Defaults",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:44Z",
+    "translation": "Default"
+  },
+  "deepl:Delete JFFS2 partition": {
+    "github_user": "Ircama",
+    "original": "Delete JFFS2 partition",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Eliminare la partizione JFFS2"
+  },
+  "deepl:Delete hist.": {
+    "github_user": "Ircama",
+    "original": "Delete hist.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Cancella hist."
+  },
+  "deepl:Delete old external files": {
+    "github_user": "Ircama",
+    "original": "Delete old external files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Eliminare i vecchi file esterni"
+  },
+  "deepl:Detected encrypted backup file": {
+    "github_user": "Ircama",
+    "original": "Detected encrypted backup file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "Rilevato file di backup criptato"
+  },
+  "deepl:Detection of radio interference (RFI)": {
+    "github_user": "Ircama",
+    "original": "Detection of radio interference (RFI)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Rilevamento delle interferenze radio (RFI)"
+  },
+  "deepl:Device hostname, dots only via ar7.cfg": {
+    "github_user": "Ircama",
+    "original": "Device hostname, dots only via ar7.cfg",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:16Z",
+    "translation": "Nome host del dispositivo, punti solo tramite ar7.cfg"
+  },
+  "deepl:Directory for external": {
+    "github_user": "Ircama",
+    "original": "Directory for external",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Directory per la sezione \"external\""
+  },
+  "deepl:Do not stop": {
+    "github_user": "Ircama",
+    "original": "Do not stop",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Pacchetti che non devono essere fermati"
+  },
+  "deepl:Do not stop any AVM services (sufficient memory available or pseudo update without reboot)": {
+    "github_user": "Ircama",
+    "original": "Do not stop any AVM services (sufficient memory available or pseudo update without reboot)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Non interrompere nessun servizio AVM (memoria sufficiente disponibile o pseudo aggiornamento senza riavvio)"
+  },
+  "deepl:Does not accept changes": {
+    "github_user": "Ircama",
+    "original": "Does not accept changes",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Non accetta modifiche"
+  },
+  "deepl:Download": {
+    "github_user": "Ircama",
+    "original": "Download",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Scarica"
+  },
+  "deepl:Download as text file": {
+    "github_user": "Ircama",
+    "original": "Download as text file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Scarica come file di testo"
+  },
+  "deepl:ERROR: Either uploading or renaming has failed.": {
+    "github_user": "Ircama",
+    "original": "ERROR: Either uploading or renaming has failed.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:18Z",
+    "translation": "ERRORE: l'operazione di upload o di ridenominazione non è riuscita."
+  },
+  "deepl:ERROR: Environment could not be dectypted": {
+    "github_user": "Ircama",
+    "original": "ERROR: Environment could not be dectypted",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "ERRORE: L'ambiente non può essere eliminato"
+  },
+  "deepl:ERROR: File could not be dectypted": {
+    "github_user": "Ircama",
+    "original": "ERROR: File could not be dectypted",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "ERRORE: Il file non può essere decifrato"
+  },
+  "deepl:ERROR: No password was supplied": {
+    "github_user": "Ircama",
+    "original": "ERROR: No password was supplied",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "ERRORE: Non è stata fornita alcuna password"
+  },
+  "deepl:ERROR: Not a valid backup file": {
+    "github_user": "Ircama",
+    "original": "ERROR: Not a valid backup file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "ERRORE: file di backup non valido"
+  },
+  "deepl:ERROR: OpenSSL is not installed": {
+    "github_user": "Ircama",
+    "original": "ERROR: OpenSSL is not installed",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "ERRORE: OpenSSL non è installato"
+  },
+  "deepl:ERROR: The data could not be decoded": {
+    "github_user": "Ircama",
+    "original": "ERROR: The data could not be decoded",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "ERRORE: Non è stato possibile decodificare i dati."
+  },
+  "deepl:ERROR: The data could not be unpacked": {
+    "github_user": "Ircama",
+    "original": "ERROR: The data could not be unpacked",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "ERRORE: Non è stato possibile decomprimere i dati."
+  },
+  "deepl:ERROR: The file could not be unpacked": {
+    "github_user": "Ircama",
+    "original": "ERROR: The file could not be unpacked",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "ERRORE: Non è stato possibile decomprimere il file."
+  },
+  "deepl:ERROR: This backup file was created on another device": {
+    "github_user": "Ircama",
+    "original": "ERROR: This backup file was created on another device",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "ERRORE: Questo file di backup è stato creato su un altro dispositivo."
+  },
+  "deepl:ERROR: To decode the environment is required": {
+    "github_user": "Ircama",
+    "original": "ERROR: To decode the environment is required",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "ERRORE: Per decodificare l'ambiente è necessario"
+  },
+  "deepl:Edit": {
+    "github_user": "Ircama",
+    "original": "Edit",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Modifica"
+  },
+  "deepl:Edit file": {
+    "github_user": "Ircama",
+    "original": "Edit file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Modifica del file"
+  },
+  "deepl:Edited!": {
+    "github_user": "Ircama",
+    "original": "Edited!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Modificato!"
+  },
+  "deepl:Enable forwarding.": {
+    "github_user": "Ircama",
+    "original": "Enable forwarding.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Abilita il forwarding."
+  },
+  "deepl:Encrypt the backup with OpenSSL": {
+    "github_user": "Ircama",
+    "original": "Encrypt the backup with OpenSSL",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Crittografare il backup con OpenSSL"
+  },
+  "deepl:Energy Efficient Ethernet - LAN port 1": {
+    "github_user": "Ircama",
+    "original": "Energy Efficient Ethernet - LAN port 1",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Ethernet ad alta efficienza energetica - Porta LAN 1"
+  },
+  "deepl:Energy Efficient Ethernet - LAN port 2": {
+    "github_user": "Ircama",
+    "original": "Energy Efficient Ethernet - LAN port 2",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Ethernet ad alta efficienza energetica - Porta LAN 2"
+  },
+  "deepl:Energy Efficient Ethernet - LAN port 3": {
+    "github_user": "Ircama",
+    "original": "Energy Efficient Ethernet - LAN port 3",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Ethernet ad alta efficienza energetica - Porta LAN 3"
+  },
+  "deepl:Energy Efficient Ethernet - LAN port 4": {
+    "github_user": "Ircama",
+    "original": "Energy Efficient Ethernet - LAN port 4",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Ethernet ad alta efficienza energetica - Porta LAN 4"
+  },
+  "deepl:Erron on creating directory": {
+    "github_user": "Ircama",
+    "original": "Erron on creating directory",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Errore nella creazione della directory"
+  },
+  "deepl:Erron on creating file": {
+    "github_user": "Ircama",
+    "original": "Erron on creating file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Errore nella creazione del file"
+  },
+  "deepl:Erron on creating identity": {
+    "github_user": "Ircama",
+    "original": "Erron on creating identity",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Erron sulla creazione di identità"
+  },
+  "deepl:Erron on creating of contents.txt": {
+    "github_user": "Ircama",
+    "original": "Erron on creating of contents.txt",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Errore nella creazione di contents.txt"
+  },
+  "deepl:Erron on encrypting environment": {
+    "github_user": "Ircama",
+    "original": "Erron on encrypting environment",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Errore nella crittografia dell'ambiente"
+  },
+  "deepl:Erron on encrypting file": {
+    "github_user": "Ircama",
+    "original": "Erron on encrypting file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Errore nella crittografia del file"
+  },
+  "deepl:Error": {
+    "github_user": "Ircama",
+    "original": "Error",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Errore"
+  },
+  "deepl:Error on packing": {
+    "github_user": "Ircama",
+    "original": "Error on packing",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:07Z",
+    "translation": "Errore nell'imballaggio"
+  },
+  "deepl:Example": {
+    "github_user": "Ircama",
+    "original": "Example",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Esempio"
+  },
+  "deepl:Execute": {
+    "github_user": "Ircama",
+    "original": "Execute",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:27Z",
+    "translation": "Eseguire"
+  },
+  "deepl:Executing firmware installation script": {
+    "github_user": "Ircama",
+    "original": "Executing firmware installation script",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Esecuzione dello script di installazione del firmware"
+  },
+  "deepl:External-file": {
+    "github_user": "Ircama",
+    "original": "External-file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "File esterno"
+  },
+  "deepl:Externalised files": {
+    "github_user": "Ircama",
+    "original": "Externalised files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "File esternalizzati"
+  },
+  "deepl:Extra confirmation to configure certain settings and functions": {
+    "github_user": "Ircama",
+    "original": "Extra confirmation to configure certain settings and functions",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Conferma supplementare per la configurazione di alcune impostazioni e funzioni"
+  },
+  "deepl:Extract files": {
+    "github_user": "Ircama",
+    "original": "Extract files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:40Z",
+    "translation": "Estrarre i file"
+  },
+  "deepl:Extract firmware, prepare update": {
+    "github_user": "Ircama",
+    "original": "Extract firmware, prepare update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Estrarre il firmware, preparare l'aggiornamento"
+  },
+  "deepl:Extracting backup files": {
+    "github_user": "Ircama",
+    "original": "Extracting backup files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "Estrazione dei file di backup"
+  },
+  "deepl:Extracting firmware archive": {
+    "github_user": "Ircama",
+    "original": "Extracting firmware archive",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Estrazione dell'archivio del firmware"
+  },
+  "deepl:Extracting uploaded file": {
+    "github_user": "Ircama",
+    "original": "Extracting uploaded file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Estrazione del file caricato"
+  },
+  "deepl:FAILED": {
+    "github_user": "Ircama",
+    "original": "FAILED",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "FALLITO"
+  },
+  "deepl:FOS UI-Modules": {
+    "github_user": "Ircama",
+    "original": "FOS UI-Modules",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Moduli UI FOS"
+  },
+  "deepl:FREETZ configuration": {
+    "github_user": "Ircama",
+    "original": "FREETZ configuration",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Configurazione FREETZ"
+  },
+  "deepl:FRITZ!Box searches for updates periodically.": {
+    "github_user": "Ircama",
+    "original": "FRITZ!Box searches for updates periodically.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "FRITZ!Box cerca periodicamente gli aggiornamenti."
+  },
+  "deepl:File '$ID' of package '$PACKAGE' is unknown.": {
+    "github_user": "Ircama",
+    "original": "File '$ID' of package '$PACKAGE' is unknown.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:49Z",
+    "translation": "Il file '$ID' del pacchetto '$PACKAGE' è sconosciuto."
+  },
+  "deepl:File successfully uploaded to: $FORM_target\\\\nFile size:": {
+    "github_user": "Ircama",
+    "original": "File successfully uploaded to: $FORM_target\\\\nFile size:",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:22Z",
+    "translation": "File caricato con successo su: $FORM_target\\\\nDimensione del file:"
+  },
+  "deepl:File successfully uploaded to: $FORM_target\\nFile size:": {
+    "github_user": "Ircama",
+    "original": "File successfully uploaded to: $FORM_target\\nFile size:",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:18Z",
+    "translation": "File caricato con successo su: $FORM_target\\nDimensioni del file:"
+  },
+  "deepl:Filesystems": {
+    "github_user": "Ircama",
+    "original": "Filesystems",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:24Z",
+    "translation": "Filesystem"
+  },
+  "deepl:Firmware": {
+    "github_user": "Ircama",
+    "original": "Firmware",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Firmware"
+  },
+  "deepl:Firmware image": {
+    "github_user": "Ircama",
+    "original": "Firmware image",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Immagine del firmware"
+  },
+  "deepl:Firmware update": {
+    "github_user": "Ircama",
+    "original": "Firmware update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Aggiornamento del firmware"
+  },
+  "deepl:First choose an external-file for upload. This": {
+    "github_user": "Ircama",
+    "original": "First choose an external-file for upload. This",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Per prima cosa scegliere un file esterno da caricare. Questo"
+  },
+  "deepl:First you are encouraged to select a firmware image for uploading. This image will be loaded to and extracted on the box. Subsequently, <i>/var/install</i> will be called. If successful, the update starts by an automatic reboot.": {
+    "github_user": "Ircama",
+    "original": "First you are encouraged to select a firmware image for uploading. This image will be loaded to and extracted on the box. Subsequently, <i>/var/install</i> will be called. If successful, the update starts by an automatic reboot.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Premere \"Scegli file\" e selezionare un'immagine del firmware da caricare. L'immagine verrà caricata nel dispositivo, estratta in un folder e successivamente verrà richiamato <i>/var/install</i>. L'aggiornamento terminerà con riavvio automatico."
+  },
+  "deepl:Fixed prefix": {
+    "github_user": "Ircama",
+    "original": "Fixed prefix",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:53Z",
+    "translation": "Prefisso fisso"
+  },
+  "deepl:Fixed prefix for mount points": {
+    "github_user": "Ircama",
+    "original": "Fixed prefix for mount points",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:57Z",
+    "translation": "Prefisso fisso per i punti di montaggio"
+  },
+  "deepl:Flash info": {
+    "github_user": "Ircama",
+    "original": "Flash info",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Flash info"
+  },
+  "deepl:Flash memory": {
+    "github_user": "Ircama",
+    "original": "Flash memory",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "Memoria flash"
+  },
+  "deepl:Flash storage": {
+    "github_user": "Ircama",
+    "original": "Flash storage",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "Memoria flash"
+  },
+  "deepl:Freetz info": {
+    "github_user": "Ircama",
+    "original": "Freetz info",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Freetz info"
+  },
+  "deepl:GPON ONT-Installation password": {
+    "github_user": "Ircama",
+    "original": "GPON ONT-Installation password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Password di installazione dell'ONT GPON"
+  },
+  "deepl:GPON Registration ID": {
+    "github_user": "Ircama",
+    "original": "GPON Registration ID",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "ID di registrazione GPON"
+  },
+  "deepl:GPON Serial number": {
+    "github_user": "Ircama",
+    "original": "GPON Serial number",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "GPON Numero di serie"
+  },
+  "deepl:Generated content of": {
+    "github_user": "Ircama",
+    "original": "Generated content of",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Contenuto generato di"
+  },
+  "deepl:Goto extras": {
+    "github_user": "Ircama",
+    "original": "Goto extras",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:47Z",
+    "translation": "Goto extra"
+  },
+  "deepl:HIDE lanbridges (docsis only)": {
+    "github_user": "Ircama",
+    "original": "HIDE lanbridges (docsis only)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "NASCONDERE le lanterne (solo per docsis)"
+  },
+  "deepl:HIDE lanpublic (docsis only)": {
+    "github_user": "Ircama",
+    "original": "HIDE lanpublic (docsis only)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:16Z",
+    "translation": "Nascondere lanpubblica (solo docsis)"
+  },
+  "deepl:Handle externalised scripts:": {
+    "github_user": "Ircama",
+    "original": "Handle externalised scripts:",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Gestire gli script esternalizzati:"
+  },
+  "deepl:Hardware": {
+    "github_user": "Ircama",
+    "original": "Hardware",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:21Z",
+    "translation": "Hardware"
+  },
+  "deepl:Help": {
+    "github_user": "Ircama",
+    "original": "Help",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:26Z",
+    "translation": "Aiuto"
+  },
+  "deepl:Here you can enter commands to be executed during system shutdown.": {
+    "github_user": "Ircama",
+    "original": "Here you can enter commands to be executed during system shutdown.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:14Z",
+    "translation": "Qui è possibile inserire i comandi da eseguire durante lo spegnimento del sistema."
+  },
+  "deepl:Here you can enter modules to be loaded during boot process (e.g. pl2303).": {
+    "github_user": "Ircama",
+    "original": "Here you can enter modules to be loaded during boot process (e.g. pl2303).",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:12Z",
+    "translation": "Qui è possibile inserire i moduli da caricare durante il processo di avvio (ad esempio, pl2303)."
+  },
+  "deepl:Hide section": {
+    "github_user": "Ircama",
+    "original": "Hide section",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Nascondi sezione"
+  },
+  "deepl:History": {
+    "github_user": "Ircama",
+    "original": "History",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Storia"
+  },
+  "deepl:IP address": {
+    "github_user": "Ircama",
+    "original": "IP address",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "indirizzo IP"
+  },
+  "deepl:Identify inactive firmware version at boot": {
+    "github_user": "Ircama",
+    "original": "Identify inactive firmware version at boot",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Identificare la versione del firmware inattiva all'avvio"
+  },
+  "deepl:Impulse noise protection (INP)": {
+    "github_user": "Ircama",
+    "original": "Impulse noise protection (INP)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Protezione da rumore impulsivo (INP)"
+  },
+  "deepl:Include additional an export of the AVM settings": {
+    "github_user": "Ircama",
+    "original": "Include additional an export of the AVM settings",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Includere un'esportazione aggiuntiva delle impostazioni AVM."
+  },
+  "deepl:Inetd": {
+    "github_user": "Ircama",
+    "original": "Inetd",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:35Z",
+    "translation": "Inetd"
+  },
+  "deepl:Information about firmware": {
+    "github_user": "Ircama",
+    "original": "Information about firmware",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Informazioni sul firmware"
+  },
+  "deepl:Initial file name": {
+    "github_user": "Ircama",
+    "original": "Initial file name",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Nome iniziale del file"
+  },
+  "deepl:Input the names of /mod/etc/init.d/rc.DAEMON files without rc., separated by space. ": {
+    "github_user": "Ircama",
+    "original": "Input the names of /mod/etc/init.d/rc.DAEMON files without rc., separated by space. ",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Inserire i nomi dei file /mod/etc/init.d/rc.DAEMON senza rc., separati da spazi. "
+  },
+  "deepl:Install new FRITZ!OS-Versions automatically": {
+    "github_user": "Ircama",
+    "original": "Install new FRITZ!OS-Versions automatically",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Installare automaticamente nuove versioni di FRITZ!OS"
+  },
+  "deepl:Installation log:": {
+    "github_user": "Ircama",
+    "original": "Installation log:",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Log di installazione:"
+  },
+  "deepl:Installation script not found or not executable.": {
+    "github_user": "Ircama",
+    "original": "Installation script not found or not executable.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Script di installazione non trovato o non eseguibile."
+  },
+  "deepl:Installation script return code": {
+    "github_user": "Ircama",
+    "original": "Installation script return code",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Codice di ritorno dello script di installazione"
+  },
+  "deepl:Installed version": {
+    "github_user": "Ircama",
+    "original": "Installed version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Versione installata"
+  },
+  "deepl:Interfaces": {
+    "github_user": "Ircama",
+    "original": "Interfaces",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Interfacce"
+  },
+  "deepl:Internal": {
+    "github_user": "Ircama",
+    "original": "Internal",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Interno"
+  },
+  "deepl:Invalid size of swapfile": {
+    "github_user": "Ircama",
+    "original": "Invalid size of swapfile",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:10Z",
+    "translation": "Dimensione non valida del file di swap"
+  },
+  "deepl:It is stored on the device under the temporary name": {
+    "github_user": "Ircama",
+    "original": "It is stored on the device under the temporary name",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Viene memorizzato sul dispositivo con il nome temporaneo"
+  },
+  "deepl:Key Lock": {
+    "github_user": "Ircama",
+    "original": "Key Lock",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Blocco tasti"
+  },
+  "deepl:Kill all programs blocking unmount.": {
+    "github_user": "Ircama",
+    "original": "Kill all programs blocking unmount.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Terminare tutti i programmi che bloccano lo smontaggio."
+  },
+  "deepl:LEDs: 2=off 1=timer 0=on": {
+    "github_user": "Ircama",
+    "original": "LEDs: 2=off 1=timer 0=on",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "LED: 2=spento 1=scatto 0=acceso"
+  },
+  "deepl:LTE: Block NetBIOS 137/udp 138/udp 445/tcp": {
+    "github_user": "Ircama",
+    "original": "LTE: Block NetBIOS 137/udp 138/udp 445/tcp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "LTE: bloccare NetBIOS 137/udp 138/udp 445/tcp"
+  },
+  "deepl:LTE: Block SMTP 25/tcp": {
+    "github_user": "Ircama",
+    "original": "LTE: Block SMTP 25/tcp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "LTE: Blocco SMTP 25/tcp"
+  },
+  "deepl:LTE: Block UPNP 1900/udp": {
+    "github_user": "Ircama",
+    "original": "LTE: Block UPNP 1900/udp",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "LTE: bloccare UPNP 1900/udp"
+  },
+  "deepl:LTE: Do not answer incoming ICMP": {
+    "github_user": "Ircama",
+    "original": "LTE: Do not answer incoming ICMP",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "LTE: Non rispondere all'ICMP in arrivo"
+  },
+  "deepl:LTE: PPPoE VLAN ID": {
+    "github_user": "Ircama",
+    "original": "LTE: PPPoE VLAN ID",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "LTE: ID VLAN PPPoE"
+  },
+  "deepl:Language": {
+    "github_user": "Ircama",
+    "original": "Language",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Lingua"
+  },
+  "deepl:Language selection": {
+    "github_user": "Ircama",
+    "original": "Language selection",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Selezione della lingua"
+  },
+  "deepl:Last check": {
+    "github_user": "Ircama",
+    "original": "Last check",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Ultimo controllo"
+  },
+  "deepl:Latest firmware version": {
+    "github_user": "Ircama",
+    "original": "Latest firmware version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Ultima versione del firmware"
+  },
+  "deepl:Latest version": {
+    "github_user": "Ircama",
+    "original": "Latest version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Ultima versione"
+  },
+  "deepl:Link to USB": {
+    "github_user": "Ircama",
+    "original": "Link to USB",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Collegamento a USB"
+  },
+  "deepl:Local": {
+    "github_user": "Ircama",
+    "original": "Local",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:05Z",
+    "translation": "Locale"
+  },
+  "deepl:Log in again": {
+    "github_user": "Ircama",
+    "original": "Log in again",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:58Z",
+    "translation": "Effettuare nuovamente il login"
+  },
+  "deepl:Logged out": {
+    "github_user": "Ircama",
+    "original": "Logged out",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:58Z",
+    "translation": "Scollegato"
+  },
+  "deepl:Login": {
+    "github_user": "Ircama",
+    "original": "Login",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Accesso"
+  },
+  "deepl:Login <a href=\"/\" target=\"_top\">here</a> after reboot.": {
+    "github_user": "Ircama",
+    "original": "Login <a href=\"/\" target=\"_top\">here</a> after reboot.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:15Z",
+    "translation": "Effettuare l'accesso <a href=\"/\" target=\"_top\">qui</a> dopo il riavvio."
+  },
+  "deepl:Login <a href=\\": {
+    "github_user": "Ircama",
+    "original": "Login <a href=\\",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:20Z",
+    "translation": "Accesso <a href=\\"
+  },
+  "deepl:Loop interval": {
+    "github_user": "Ircama",
+    "original": "Loop interval",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Intervallo di loop"
+  },
+  "deepl:MTDs": {
+    "github_user": "Ircama",
+    "original": "MTDs",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:24Z",
+    "translation": "MTD"
+  },
+  "deepl:Main memory": {
+    "github_user": "Ircama",
+    "original": "Main memory",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "Memoria principale"
+  },
+  "deepl:Mainpage": {
+    "github_user": "Ircama",
+    "original": "Mainpage",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Pagina principale"
+  },
+  "deepl:Manage these externalized services of Freetz": {
+    "github_user": "Ircama",
+    "original": "Manage these externalized services of Freetz",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Gestire questi servizi esternalizzati di Freetz"
+  },
+  "deepl:Manage these self defined services": {
+    "github_user": "Ircama",
+    "original": "Manage these self defined services",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Gestire questi servizi autodefiniti"
+  },
+  "deepl:Manual": {
+    "github_user": "Ircama",
+    "original": "Manual",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:36Z",
+    "translation": "Manuale"
+  },
+  "deepl:Maximum number of requests": {
+    "github_user": "Ircama",
+    "original": "Maximum number of requests",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Numero massimo di tentativi per query DNS"
+  },
+  "deepl:Mod extras": {
+    "github_user": "Ircama",
+    "original": "Mod extras",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:47Z",
+    "translation": "Mod extra"
+  },
+  "deepl:Mod info": {
+    "github_user": "Ircama",
+    "original": "Mod info",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "Mod info"
+  },
+  "deepl:Mod logs": {
+    "github_user": "Ircama",
+    "original": "Mod logs",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Log Mod"
+  },
+  "deepl:Mount options": {
+    "github_user": "Ircama",
+    "original": "Mount options",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:27Z",
+    "translation": "Opzioni di montaggio"
+  },
+  "deepl:Mount points naming scheme": {
+    "github_user": "Ircama",
+    "original": "Mount points naming scheme",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:52Z",
+    "translation": "Schema di denominazione dei punti di montaggio"
+  },
+  "deepl:Mounted partitions on": {
+    "github_user": "Ircama",
+    "original": "Mounted partitions on",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Partizioni montate su"
+  },
+  "deepl:NOTE: The script has not generated any output.": {
+    "github_user": "Ircama",
+    "original": "NOTE: The script has not generated any output.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "NOTA: Lo script non ha generato alcun output."
+  },
+  "deepl:NOTE: There is no executable post-installation script.": {
+    "github_user": "Ircama",
+    "original": "NOTE: There is no executable post-installation script.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": "NOTA: Non esiste uno script di post-installazione eseguibile."
+  },
+  "deepl:NVRAM": {
+    "github_user": "Ircama",
+    "original": "NVRAM",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "NVRAM"
+  },
+  "deepl:Nagging with a link when box is not signed during diagnostics": {
+    "github_user": "Ircama",
+    "original": "Nagging with a link when box is not signed during diagnostics",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Il nagging con un link quando la casella non è firmata durante la diagnostica"
+  },
+  "deepl:Name": {
+    "github_user": "Ircama",
+    "original": "Name",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "Nome"
+  },
+  "deepl:Names": {
+    "github_user": "Ircama",
+    "original": "Names",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Nomi"
+  },
+  "deepl:Network": {
+    "github_user": "Ircama",
+    "original": "Network",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Rete"
+  },
+  "deepl:Networks": {
+    "github_user": "Ircama",
+    "original": "Networks",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Reti"
+  },
+  "deepl:New login with session id": {
+    "github_user": "Ircama",
+    "original": "New login with session id",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:28Z",
+    "translation": "Nuovo accesso con id di sessione"
+  },
+  "deepl:New password": {
+    "github_user": "Ircama",
+    "original": "New password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Nuova password"
+  },
+  "deepl:New password set.": {
+    "github_user": "Ircama",
+    "original": "New password set.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:05Z",
+    "translation": "Nuova password impostata."
+  },
+  "deepl:No external-file provided!": {
+    "github_user": "Ircama",
+    "original": "No external-file provided!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Non è stato fornito alcun file esterno!"
+  },
+  "deepl:No firmware file provided!": {
+    "github_user": "Ircama",
+    "original": "No firmware file provided!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Non è stato fornito alcun file del firmware!"
+  },
+  "deepl:No firmware found": {
+    "github_user": "Ircama",
+    "original": "No firmware found",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Nessun firmware trovato"
+  },
+  "deepl:No firmware has been uploaded": {
+    "github_user": "Ircama",
+    "original": "No firmware has been uploaded",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:22Z",
+    "translation": "Non è stato caricato alcun firmware"
+  },
+  "deepl:No known method to decode": {
+    "github_user": "Ircama",
+    "original": "No known method to decode",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Nessun metodo noto per la decodifica"
+  },
+  "deepl:No log files found": {
+    "github_user": "Ircama",
+    "original": "No log files found",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:26Z",
+    "translation": "Nessun file di log trovato"
+  },
+  "deepl:No script for": {
+    "github_user": "Ircama",
+    "original": "No script for",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:44Z",
+    "translation": "Nessuno script per"
+  },
+  "deepl:None found": {
+    "github_user": "Ircama",
+    "original": "None found",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:27Z",
+    "translation": "Nessuno trovato"
+  },
+  "deepl:Old password": {
+    "github_user": "Ircama",
+    "original": "Old password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Vecchia password"
+  },
+  "deepl:Operating hours counter": {
+    "github_user": "Ircama",
+    "original": "Operating hours counter",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Contatore delle ore di funzionamento"
+  },
+  "deepl:Partition label": {
+    "github_user": "Ircama",
+    "original": "Partition label",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:56Z",
+    "translation": "Etichetta di partizione"
+  },
+  "deepl:Password": {
+    "github_user": "Ircama",
+    "original": "Password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:04Z",
+    "translation": "Password"
+  },
+  "deepl:Password (if encrypted)": {
+    "github_user": "Ircama",
+    "original": "Password (if encrypted)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Password (se crittografata)"
+  },
+  "deepl:Password changed!": {
+    "github_user": "Ircama",
+    "original": "Password changed!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:00Z",
+    "translation": "Password cambiata!"
+  },
+  "deepl:Password for encryption and export": {
+    "github_user": "Ircama",
+    "original": "Password for encryption and export",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Password per la crittografia e l'esportazione"
+  },
+  "deepl:Password successfully changed!": {
+    "github_user": "Ircama",
+    "original": "Password successfully changed!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:00Z",
+    "translation": "La password è stata modificata con successo!"
+  },
+  "deepl:Passwords do not match!": {
+    "github_user": "Ircama",
+    "original": "Passwords do not match!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Le password non corrispondono!"
+  },
+  "deepl:Path for wtmp": {
+    "github_user": "Ircama",
+    "original": "Path for wtmp",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:01Z",
+    "translation": "Percorso per wtmp"
+  },
+  "deepl:Please choose from the following skins (cookies required):": {
+    "github_user": "Ircama",
+    "original": "Please choose from the following skins (cookies required):",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:01Z",
+    "translation": "Si prega di scegliere tra le seguenti skin (i cookie sono necessari):"
+  },
+  "deepl:Please don't use the default password!": {
+    "github_user": "Ircama",
+    "original": "Please don't use the default password!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Non utilizzare la password predefinita!"
+  },
+  "deepl:Please specifiy size of swapfile (in MB)": {
+    "github_user": "Ircama",
+    "original": "Please specifiy size of swapfile (in MB)",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:06Z",
+    "translation": "Specificare la dimensione del file di swap (in MB)"
+  },
+  "deepl:Please specify path of swapfile": {
+    "github_user": "Ircama",
+    "original": "Please specify path of swapfile",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:07Z",
+    "translation": "Specificare il percorso del file di swap"
+  },
+  "deepl:Port": {
+    "github_user": "Ircama",
+    "original": "Port",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:28Z",
+    "translation": "Porto"
+  },
+  "deepl:Prepare downgrade": {
+    "github_user": "Ircama",
+    "original": "Prepare downgrade",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Preparare il downgrade"
+  },
+  "deepl:Prepare update": {
+    "github_user": "Ircama",
+    "original": "Prepare update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Preparare l'aggiornamento"
+  },
+  "deepl:Preparing file for swap usage ...": {
+    "github_user": "Ircama",
+    "original": "Preparing file for swap usage ...",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:14Z",
+    "translation": "Preparazione del file per l'uso di swap..."
+  },
+  "deepl:Prevent network loop": {
+    "github_user": "Ircama",
+    "original": "Prevent network loop",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Prevenzione del loop di rete"
+  },
+  "deepl:Processor": {
+    "github_user": "Ircama",
+    "original": "Processor",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Processore"
+  },
+  "deepl:Properties": {
+    "github_user": "Ircama",
+    "original": "Properties",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Proprietà"
+  },
+  "deepl:Protocol": {
+    "github_user": "Ircama",
+    "original": "Protocol",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Protocollo"
+  },
+  "deepl:Public": {
+    "github_user": "Ircama",
+    "original": "Public",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "Pubblico"
+  },
+  "deepl:Read-only file. It may not be modified.": {
+    "github_user": "Ircama",
+    "original": "Read-only file. It may not be modified.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:48Z",
+    "translation": "File di sola lettura, non può essere modificato."
+  },
+  "deepl:Reboot": {
+    "github_user": "Ircama",
+    "original": "Reboot",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:15Z",
+    "translation": "Riavvio"
+  },
+  "deepl:Reboot after restore": {
+    "github_user": "Ircama",
+    "original": "Reboot after restore",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Riavvio dopo il ripristino"
+  },
+  "deepl:Reboot cause": {
+    "github_user": "Ircama",
+    "original": "Reboot cause",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Causa del riavvio"
+  },
+  "deepl:Rebooting": {
+    "github_user": "Ircama",
+    "original": "Rebooting",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:15Z",
+    "translation": "Riavvio"
+  },
+  "deepl:Region": {
+    "github_user": "Ircama",
+    "original": "Region",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Regione"
+  },
+  "deepl:Remote administration of LAN by Provider": {
+    "github_user": "Ircama",
+    "original": "Remote administration of LAN by Provider",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:19Z",
+    "translation": "Amministrazione remota della LAN da parte del provider"
+  },
+  "deepl:Removing temporary files": {
+    "github_user": "Ircama",
+    "original": "Removing temporary files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Rimozione dei file temporanei"
+  },
+  "deepl:Reserve at": {
+    "github_user": "Ircama",
+    "original": "Reserve at",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Firmware di riserva in modalità"
+  },
+  "deepl:Reset": {
+    "github_user": "Ircama",
+    "original": "Reset",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:44Z",
+    "translation": "Reset"
+  },
+  "deepl:Reset warning": {
+    "github_user": "Ircama",
+    "original": "Reset warning",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Avviso di reset"
+  },
+  "deepl:Restart box": {
+    "github_user": "Ircama",
+    "original": "Restart box",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:01Z",
+    "translation": "Pulsante di riavvio del dispositivo"
+  },
+  "deepl:Restarting": {
+    "github_user": "Ircama",
+    "original": "Restarting",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Riavvio"
+  },
+  "deepl:Restarting the Freetz webinterface in 9 seconds": {
+    "github_user": "Ircama",
+    "original": "Restarting the Freetz webinterface in 9 seconds",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:46Z",
+    "translation": "Riavvio dell'interfaccia web di Freetz in 9 secondi"
+  },
+  "deepl:Restarting webcfg ...": {
+    "github_user": "Ircama",
+    "original": "Restarting webcfg ...",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:05Z",
+    "translation": "Riavviare webcfg..."
+  },
+  "deepl:Restore": {
+    "github_user": "Ircama",
+    "original": "Restore",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Ripristino"
+  },
+  "deepl:Restore Freetz settings only": {
+    "github_user": "Ircama",
+    "original": "Restore Freetz settings only",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Ripristinare solo le impostazioni di Freetz"
+  },
+  "deepl:Restore configuration": {
+    "github_user": "Ircama",
+    "original": "Restore configuration",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Ripristinare la configurazione"
+  },
+  "deepl:Restore default settings": {
+    "github_user": "Ircama",
+    "original": "Restore default settings",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:46Z",
+    "translation": "Ripristino delle impostazioni predefinite"
+  },
+  "deepl:Restore previously saved configuration archive.  This way the device will be restored to the state it was in when you created the corresponding backup.": {
+    "github_user": "Ircama",
+    "original": "Restore previously saved configuration archive.  This way the device will be restored to the state it was in when you created the corresponding backup.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Ripristina l'archivio di una configurazione precedentemente salvata. In questo modo il dispositivo verrà riportato allo stato in cui si trovava quando è stato creato il backup corrispondente."
+  },
+  "deepl:Restoring configuration": {
+    "github_user": "Ircama",
+    "original": "Restoring configuration",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Ripristino della configurazione"
+  },
+  "deepl:Resuming without reboot. You may want to clean up the extracted files.": {
+    "github_user": "Ircama",
+    "original": "Resuming without reboot. You may want to clean up the extracted files.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Riprendere senza riavviare. Si consiglia di ripulire i file estratti."
+  },
+  "deepl:Retype password": {
+    "github_user": "Ircama",
+    "original": "Retype password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Riscrivi la password"
+  },
+  "deepl:Router's system time": {
+    "github_user": "Ircama",
+    "original": "Router's system time",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:26Z",
+    "translation": "Ora del sistema del router"
+  },
+  "deepl:Rudi edit": {
+    "github_user": "Ircama",
+    "original": "Rudi edit",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Rudi edit"
+  },
+  "deepl:Rudi shell": {
+    "github_user": "Ircama",
+    "original": "Rudi shell",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": "Shell Rudi"
+  },
+  "deepl:Rudi shell is not available at the current security level!": {
+    "github_user": "Ircama",
+    "original": "Rudi shell is not available at the current security level!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "La shell Rudi non è disponibile al livello di sicurezza attuale!"
+  },
+  "deepl:Rudi(mentary) Shell": {
+    "github_user": "Ircama",
+    "original": "Rudi(mentary) Shell",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:16Z",
+    "translation": "Shell Rudi(mentary)"
+  },
+  "deepl:Run autorun.sh and autoend.sh automatically.": {
+    "github_user": "Ircama",
+    "original": "Run autorun.sh and autoend.sh automatically.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Eseguire automaticamente autorun.sh e autoend.sh."
+  },
+  "deepl:Run script": {
+    "github_user": "Ircama",
+    "original": "Run script",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Eseguire lo script"
+  },
+  "deepl:Running at": {
+    "github_user": "Ircama",
+    "original": "Running at",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Firmware in esecuzione in modalità"
+  },
+  "deepl:SKIPPED": {
+    "github_user": "Ircama",
+    "original": "SKIPPED",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "SKIPPED"
+  },
+  "deepl:Save": {
+    "github_user": "Ircama",
+    "original": "Save",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Salva"
+  },
+  "deepl:Save all settings from flash memory <i>/var/flash</i>. This includes firmware settings of AVM as well as Freetz and other installed extensions.": {
+    "github_user": "Ircama",
+    "original": "Save all settings from flash memory <i>/var/flash</i>. This includes firmware settings of AVM as well as Freetz and other installed extensions.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:11Z",
+    "translation": "Salva tutte le impostazioni presenti nella memoria flash <i>/var/flash</i>. Questo include le impostazioni del firmware di AVM, Freetz e altre estensioni installate."
+  },
+  "deepl:Saving": {
+    "github_user": "Ircama",
+    "original": "Saving",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:49Z",
+    "translation": "Risparmio"
+  },
+  "deepl:Saving settings": {
+    "github_user": "Ircama",
+    "original": "Saving settings",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:50Z",
+    "translation": "Salvataggio delle impostazioni"
+  },
+  "deepl:Security level does not allow shell access": {
+    "github_user": "Ircama",
+    "original": "Security level does not allow shell access",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:39Z",
+    "translation": "Il livello di sicurezza non consente l'accesso alla shell"
+  },
+  "deepl:Send error messages automatically to AVM": {
+    "github_user": "Ircama",
+    "original": "Send error messages automatically to AVM",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Invio automatico di messaggi di errore all'AVM"
+  },
+  "deepl:Server for STUN/VoIP method": {
+    "github_user": "Ircama",
+    "original": "Server for STUN/VoIP method",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "Server per il metodo STUN/VoIP"
+  },
+  "deepl:Services": {
+    "github_user": "Ircama",
+    "original": "Services",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:51Z",
+    "translation": "Servizi"
+  },
+  "deepl:Session id timeout:": {
+    "github_user": "Ircama",
+    "original": "Session id timeout:",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Timeout dell'id di sessione:"
+  },
+  "deepl:Settings": {
+    "github_user": "Ircama",
+    "original": "Settings",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:45Z",
+    "translation": "Impostazioni"
+  },
+  "deepl:Settings are not available at current security level!": {
+    "github_user": "Ircama",
+    "original": "Settings are not available at current security level!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:49Z",
+    "translation": "Le impostazioni non sono disponibili al livello di sicurezza attuale!"
+  },
+  "deepl:Show memory usage": {
+    "github_user": "Ircama",
+    "original": "Show memory usage",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Mostra l'utilizzo della memoria"
+  },
+  "deepl:Show section": {
+    "github_user": "Ircama",
+    "original": "Show section",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Mostra sezione"
+  },
+  "deepl:Size": {
+    "github_user": "Ircama",
+    "original": "Size",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:48Z",
+    "translation": "Dimensione"
+  },
+  "deepl:Size of swapfile must be at least 1 MB": {
+    "github_user": "Ircama",
+    "original": "Size of swapfile must be at least 1 MB",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:11Z",
+    "translation": "La dimensione dello swapfile deve essere di almeno 1 MB"
+  },
+  "deepl:Skin selection": {
+    "github_user": "Ircama",
+    "original": "Skin selection",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Selezione dello skin"
+  },
+  "deepl:Source file": {
+    "github_user": "Ircama",
+    "original": "Source file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "File sorgente"
+  },
+  "deepl:Start external services after update": {
+    "github_user": "Ircama",
+    "original": "Start external services after update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Avviare i servizi esterni dopo l'aggiornamento"
+  },
+  "deepl:Starting": {
+    "github_user": "Ircama",
+    "original": "Starting",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "Avvio"
+  },
+  "deepl:Starting external services": {
+    "github_user": "Ircama",
+    "original": "Starting external services",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:40Z",
+    "translation": "Avvio di servizi esterni"
+  },
+  "deepl:State": {
+    "github_user": "Ircama",
+    "original": "State",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "Stato"
+  },
+  "deepl:Static packages": {
+    "github_user": "Ircama",
+    "original": "Static packages",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "Pacchetti statici"
+  },
+  "deepl:Status": {
+    "github_user": "Ircama",
+    "original": "Status",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:58Z",
+    "translation": "Stato"
+  },
+  "deepl:Still under development!\\\\nPlease make sure, you have an alternate way to access your box (telnet/ssh).\\\\nDefault password is \\": {
+    "github_user": "Ircama",
+    "original": "Still under development!\\\\nPlease make sure, you have an alternate way to access your box (telnet/ssh).\\\\nDefault password is \\",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:43Z",
+    "translation": "Ancora in fase di sviluppo!\\\\nAssicuratevi di avere un modo alternativo per accedere al vostro box (telnet/ssh).\\\\nLa password di default è \\"
+  },
+  "deepl:Still under development!\\nPlease make sure, you have an alternate way to access your box (telnet/ssh).\\nDefault password is \"freetz\", changing password will set it to \"<User><PW>\"!\\n\\nYou can set the PW in console with this command:\\necho -n \"<password>\" | md5sum | sed \"s/ .*$//\" > /tmp/flash/mod/webmd5\\n": {
+    "github_user": "Ircama",
+    "original": "Still under development!\\nPlease make sure, you have an alternate way to access your box (telnet/ssh).\\nDefault password is \"freetz\", changing password will set it to \"<User><PW>\"!\\n\\nYou can set the PW in console with this command:\\necho -n \"<password>\" | md5sum | sed \"s/ .*$//\" > /tmp/flash/mod/webmd5\\n",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Ancora in fase di sviluppo!\\nAssicuratevi di avere un modo alternativo per accedere al vostro box (telnet/ssh).\\nLa password di default è \"freetz\", cambiando la password sarà impostata su \"<Utente><PW>\"!\\n\\nPotete impostare la PW in console con questo comando:\\necho -n \"<password>\" | md5sum | sed \"s/ .*$//\" > /tmp/flash/mod/webmd5\\n"
+  },
+  "deepl:Stop AVM services (less memory available)": {
+    "github_user": "Ircama",
+    "original": "Stop AVM services (less memory available)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Interrompere i servizi AVM (meno memoria disponibile)"
+  },
+  "deepl:Stop at first": {
+    "github_user": "Ircama",
+    "original": "Stop at first",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Primi pacchetti a fermarsi"
+  },
+  "deepl:Stop at last": {
+    "github_user": "Ircama",
+    "original": "Stop at last",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Ultimi pacchetti a fermarsi"
+  },
+  "deepl:Stop of packages at shutdown": {
+    "github_user": "Ircama",
+    "original": "Stop of packages at shutdown",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Arresto dei pacchetti allo spegnimento"
+  },
+  "deepl:Stop some of the AVM services (remote firmware update)": {
+    "github_user": "Ircama",
+    "original": "Stop some of the AVM services (remote firmware update)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Arresto di alcuni servizi AVM (aggiornamento remoto del firmware)"
+  },
+  "deepl:Stopping": {
+    "github_user": "Ircama",
+    "original": "Stopping",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "Fermarsi"
+  },
+  "deepl:Stopping AVM services, part 1": {
+    "github_user": "Ircama",
+    "original": "Stopping AVM services, part 1",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Arresto dei servizi AVM, parte 1"
+  },
+  "deepl:Stopping AVM services, part 2": {
+    "github_user": "Ircama",
+    "original": "Stopping AVM services, part 2",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Arresto dei servizi AVM, parte 2"
+  },
+  "deepl:Stopping some of the AVM services, part 1": {
+    "github_user": "Ircama",
+    "original": "Stopping some of the AVM services, part 1",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "Arresto di alcuni servizi AVM, parte 1"
+  },
+  "deepl:Storages": {
+    "github_user": "Ircama",
+    "original": "Storages",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:33Z",
+    "translation": "Storage"
+  },
+  "deepl:Submenu": {
+    "github_user": "Ircama",
+    "original": "Submenu",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "Sottomenu"
+  },
+  "deepl:Sucessfully logged out": {
+    "github_user": "Ircama",
+    "original": "Sucessfully logged out",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:58Z",
+    "translation": "Disconnessione riuscita"
+  },
+  "deepl:Supporters": {
+    "github_user": "Ircama",
+    "original": "Supporters",
+    "service": "deepl",
+    "timestamp": "2026-02-16T20:57:25Z",
+    "translation": "Contributori"
+  },
+  "deepl:Swap file": {
+    "github_user": "Ircama",
+    "original": "Swap file",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:43Z",
+    "translation": "Scambiare file"
+  },
+  "deepl:Swap file creation failed.": {
+    "github_user": "Ircama",
+    "original": "Swap file creation failed.",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:15Z",
+    "translation": "Creazione di un file di scambio non riuscita."
+  },
+  "deepl:Swap space": {
+    "github_user": "Ircama",
+    "original": "Swap space",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "Spazio di scambio"
+  },
+  "deepl:Swapfile": {
+    "github_user": "Ircama",
+    "original": "Swapfile",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:15Z",
+    "translation": "Swapfile"
+  },
+  "deepl:Swappiness": {
+    "github_user": "Ircama",
+    "original": "Swappiness",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:50Z",
+    "translation": "Swappiness"
+  },
+  "deepl:Switch back to default skin": {
+    "github_user": "Ircama",
+    "original": "Switch back to default skin",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:01Z",
+    "translation": "Tornare alla skin predefinita"
+  },
+  "deepl:Syntax": {
+    "github_user": "Ircama",
+    "original": "Syntax",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Sintassi"
+  },
+  "deepl:TFFS": {
+    "github_user": "Ircama",
+    "original": "TFFS",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "TFFS"
+  },
+  "deepl:Target DS SNR margin": {
+    "github_user": "Ircama",
+    "original": "Target DS SNR margin",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Margine SNR target DS"
+  },
+  "deepl:Target US SNR margin": {
+    "github_user": "Ircama",
+    "original": "Target US SNR margin",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:18Z",
+    "translation": "Margine SNR target US"
+  },
+  "deepl:Target directory": {
+    "github_user": "Ircama",
+    "original": "Target directory",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Directory di destinazione"
+  },
+  "deepl:Target file": {
+    "github_user": "Ircama",
+    "original": "Target file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "File di destinazione"
+  },
+  "deepl:Temperature": {
+    "github_user": "Ircama",
+    "original": "Temperature",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Temperatura"
+  },
+  "deepl:Temporary": {
+    "github_user": "Ircama",
+    "original": "Temporary",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Temporaneo"
+  },
+  "deepl:Temporary storage": {
+    "github_user": "Ircama",
+    "original": "Temporary storage",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:27Z",
+    "translation": "Storage temporaneo"
+  },
+  "deepl:The device will reboot now": {
+    "github_user": "Ircama",
+    "original": "The device will reboot now",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": "Il dispositivo si riavvia ora"
+  },
+  "deepl:The device's configuration was not changed": {
+    "github_user": "Ircama",
+    "original": "The device's configuration was not changed",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "La configurazione del dispositivo non è stata modificata"
+  },
+  "deepl:The file size is": {
+    "github_user": "Ircama",
+    "original": "The file size is",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "La dimensione del file è"
+  },
+  "deepl:The file specified does already exist.": {
+    "github_user": "Ircama",
+    "original": "The file specified does already exist.",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:08Z",
+    "translation": "Il file specificato esiste già."
+  },
+  "deepl:The old password was wrong!": {
+    "github_user": "Ircama",
+    "original": "The old password was wrong!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "La vecchia password era sbagliata!"
+  },
+  "deepl:The password is empty!": {
+    "github_user": "Ircama",
+    "original": "The password is empty!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "La password è vuota!"
+  },
+  "deepl:The password was not changed.": {
+    "github_user": "Ircama",
+    "original": "The password was not changed.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:04Z",
+    "translation": "La password non è stata modificata."
+  },
+  "deepl:The post-installation script will be executed upon reboot.": {
+    "github_user": "Ircama",
+    "original": "The post-installation script will be executed upon reboot.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:42Z",
+    "translation": "Lo script post-installazione verrà eseguito al riavvio."
+  },
+  "deepl:This changed the DNS server the box uses itself for name resolution. Neither a upstream name server of a installed dns server will be modified, nor anything of name resolution for other devices at the local network.": {
+    "github_user": "Ircama",
+    "original": "This changed the DNS server the box uses itself for name resolution. Neither a upstream name server of a installed dns server will be modified, nor anything of name resolution for other devices at the local network.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Questa configurazione modifica esclusivamente il resolver DNS locale del dispositivo (FRITZ!Box) per la risoluzione dei nomi.\nNon altera il DNS upstream di eventuali server DNS locali né la risoluzione dei nomi per gli altri dispositivi della rete LAN."
+  },
+  "deepl:This could be a very bad idea! You should create a settings backup before you start. See also": {
+    "github_user": "Ircama",
+    "original": "This could be a very bad idea! You should create a settings backup before you start. See also",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Questa potrebbe essere una pessima idea! Si consiglia di creare un backup delle impostazioni prima di iniziare. Vedere anche"
+  },
+  "deepl:This device": {
+    "github_user": "Ircama",
+    "original": "This device",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Questo dispositivo"
+  },
+  "deepl:This script is not available at the current security level!": {
+    "github_user": "Ircama",
+    "original": "This script is not available at the current security level!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:47Z",
+    "translation": "Questo script non è disponibile al livello di sicurezza corrente!"
+  },
+  "deepl:This script will be executed if the following dtrace-phonecode is detected": {
+    "github_user": "Ircama",
+    "original": "This script will be executed if the following dtrace-phonecode is detected",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:10Z",
+    "translation": "Questo script viene eseguito se viene rilevato il seguente dtrace-phonecode"
+  },
+  "deepl:This warning can be reset here.": {
+    "github_user": "Ircama",
+    "original": "This warning can be reset here.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Questo avviso può essere ripristinato qui."
+  },
+  "deepl:This would be helpful if a service is not externalized, but needs your USB-device for storing data-files (like RRDstats, Tor, bip, Xmail or vnstat-cgi).": {
+    "github_user": "Ircama",
+    "original": "This would be helpful if a service is not externalized, but needs your USB-device for storing data-files (like RRDstats, Tor, bip, Xmail or vnstat-cgi).",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Questo è utile se un servizio non è esternalizzato, ma ha bisogno di un dispositivo USB per memorizzare i file di dati (come RRDstats, Tor, bip, Xmail o vnstat-cgi)."
+  },
+  "deepl:Time-synchronisation": {
+    "github_user": "Ircama",
+    "original": "Time-synchronisation",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Sincronizzazione temporale"
+  },
+  "deepl:Timeout for each request": {
+    "github_user": "Ircama",
+    "original": "Timeout for each request",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Timeout per singola query DNS"
+  },
+  "deepl:To activate swapfile, settings must be saved.": {
+    "github_user": "Ircama",
+    "original": "To activate swapfile, settings must be saved.",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:36:18Z",
+    "translation": "Per attivare swapfile, le impostazioni devono essere salvate."
+  },
+  "deepl:To improve the product and ensure safe operation on your connection, this FRITZ!Box sends diagnostic data, for instance error reports, to AVM where needed.": {
+    "github_user": "Ircama",
+    "original": "To improve the product and ensure safe operation on your connection, this FRITZ!Box sends diagnostic data, for instance error reports, to AVM where needed.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Per migliorare il prodotto e garantire un funzionamento sicuro sulla vostra connessione, il FRITZ!Box invia all'AVM, se necessario, dati diagnostici, ad esempio segnalazioni di errori."
+  },
+  "deepl:Toggle firmware partition": {
+    "github_user": "Ircama",
+    "original": "Toggle firmware partition",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Alterna la partizione del firmware"
+  },
+  "deepl:Transmit status information via UPnP": {
+    "github_user": "Ircama",
+    "original": "Transmit status information via UPnP",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:16Z",
+    "translation": "Trasmettere informazioni sullo stato tramite UPnP"
+  },
+  "deepl:Trying OpenSSL 1.0 compatibility mode": {
+    "github_user": "Ircama",
+    "original": "Trying OpenSSL 1.0 compatibility mode",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "Provare la modalità di compatibilità con OpenSSL 1.0"
+  },
+  "deepl:UBI info": {
+    "github_user": "Ircama",
+    "original": "UBI info",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:24Z",
+    "translation": "Info UBI"
+  },
+  "deepl:Unauthorized changes": {
+    "github_user": "Ircama",
+    "original": "Unauthorized changes",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Modifiche non autorizzate"
+  },
+  "deepl:Unknown": {
+    "github_user": "Ircama",
+    "original": "Unknown",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Sconosciuto"
+  },
+  "deepl:Unknown command": {
+    "github_user": "Ircama",
+    "original": "Unknown command",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "Comando sconosciuto"
+  },
+  "deepl:Unmount messages": {
+    "github_user": "Ircama",
+    "original": "Unmount messages",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:26Z",
+    "translation": "Smontare i messaggi"
+  },
+  "deepl:Updates to new FRITZ!OS versions can be triggered without login from other devices in the home network": {
+    "github_user": "Ircama",
+    "original": "Updates to new FRITZ!OS versions can be triggered without login from other devices in the home network",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Gli aggiornamenti alle nuove versioni di FRITZ!OS possono essere attivati senza login da altri dispositivi della rete domestica"
+  },
+  "deepl:Upload": {
+    "github_user": "Ircama",
+    "original": "Upload",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:17Z",
+    "translation": "Upload"
+  },
+  "deepl:Upload external-file": {
+    "github_user": "Ircama",
+    "original": "Upload external-file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Upload di un file esterno"
+  },
+  "deepl:Upload file": {
+    "github_user": "Ircama",
+    "original": "Upload file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Carica il file"
+  },
+  "deepl:Upload firmware": {
+    "github_user": "Ircama",
+    "original": "Upload firmware",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Caricare il firmware"
+  },
+  "deepl:User defined information": {
+    "github_user": "Ircama",
+    "original": "User defined information",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "Informazioni definite dall'utente"
+  },
+  "deepl:Username": {
+    "github_user": "Ircama",
+    "original": "Username",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:28Z",
+    "translation": "Nome utente"
+  },
+  "deepl:Vendor-Product as prefix": {
+    "github_user": "Ircama",
+    "original": "Vendor-Product as prefix",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:55Z",
+    "translation": "Vendor-Product come prefisso"
+  },
+  "deepl:Verifying backup files": {
+    "github_user": "Ircama",
+    "original": "Verifying backup files",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:09Z",
+    "translation": "Verifica dei file di backup"
+  },
+  "deepl:Verifying environment": {
+    "github_user": "Ircama",
+    "original": "Verifying environment",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "Verifica dell'ambiente"
+  },
+  "deepl:Version of bootloader": {
+    "github_user": "Ircama",
+    "original": "Version of bootloader",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Versione del bootloader"
+  },
+  "deepl:Version of urlader": {
+    "github_user": "Ircama",
+    "original": "Version of urlader",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "Versione di urlader"
+  },
+  "deepl:WLAN AP 1 (2.4 GHz)": {
+    "github_user": "Ircama",
+    "original": "WLAN AP 1 (2.4 GHz)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "WLAN AP 1 (2,4 GHz)"
+  },
+  "deepl:WLAN AP 1 channel width (0=20, 1=40, 2=80, 4=160 MHz)": {
+    "github_user": "Ircama",
+    "original": "WLAN AP 1 channel width (0=20, 1=40, 2=80, 4=160 MHz)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Larghezza canale WLAN AP 1 (0=20, 1=40, 2=80, 4=160 MHz)"
+  },
+  "deepl:WLAN AP 2 (5 GHz)": {
+    "github_user": "Ircama",
+    "original": "WLAN AP 2 (5 GHz)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "WLAN AP 2 (5 GHz)"
+  },
+  "deepl:WLAN AP 2 channel width (0=20, 1=40, 2=80, 4=160 MHz)": {
+    "github_user": "Ircama",
+    "original": "WLAN AP 2 channel width (0=20, 1=40, 2=80, 4=160 MHz)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Larghezza canale WLAN AP 2 (0=20, 1=40, 2=80, 4=160 MHz)"
+  },
+  "deepl:WLAN AP 3": {
+    "github_user": "Ircama",
+    "original": "WLAN AP 3",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "WLAN AP 3"
+  },
+  "deepl:WLAN AP 3 channel width (0=20, 1=40, 2=80, 4=160 MHz)": {
+    "github_user": "Ircama",
+    "original": "WLAN AP 3 channel width (0=20, 1=40, 2=80, 4=160 MHz)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Larghezza canale WLAN AP 3 (0=20, 1=40, 2=80, 4=160 MHz)"
+  },
+  "deepl:WLAN guest access": {
+    "github_user": "Ircama",
+    "original": "WLAN guest access",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Accesso ospite WLAN"
+  },
+  "deepl:Wait for time synchronisation (year must be at least 2020)": {
+    "github_user": "Ircama",
+    "original": "Wait for time synchronisation (year must be at least 2020)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Attendere la sincronizzazione dell'ora (l'anno deve essere almeno il 2020)"
+  },
+  "deepl:Wait infinitely.": {
+    "github_user": "Ircama",
+    "original": "Wait infinitely.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Aspettare all'infinito."
+  },
+  "deepl:Wait maximum 15 minutes.": {
+    "github_user": "Ircama",
+    "original": "Wait maximum 15 minutes.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Attendere al massimo 15 minuti."
+  },
+  "deepl:Warning": {
+    "github_user": "Ircama",
+    "original": "Warning",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:35Z",
+    "translation": "Avviso"
+  },
+  "deepl:Web interface": {
+    "github_user": "Ircama",
+    "original": "Web interface",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:28Z",
+    "translation": "Interfaccia web"
+  },
+  "deepl:Web interface start type": {
+    "github_user": "Ircama",
+    "original": "Web interface start type",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:28Z",
+    "translation": "Tipo di avvio dell'interfaccia web"
+  },
+  "deepl:Wi-Fi Protected Setup": {
+    "github_user": "Ircama",
+    "original": "Wi-Fi Protected Setup",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:20Z",
+    "translation": "Impostazione protetta Wi-Fi"
+  },
+  "deepl:Width of the main content area": {
+    "github_user": "Ircama",
+    "original": "Width of the main content area",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:30Z",
+    "translation": "Larghezza della content area principale"
+  },
+  "deepl:Wiki: UI modules and ctlmgr_ctl": {
+    "github_user": "Ircama",
+    "original": "Wiki: UI modules and ctlmgr_ctl",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "Wiki: Moduli UI e ctlmgr_ctl"
+  },
+  "deepl:Write this dns server to /etc/resolv.conf": {
+    "github_user": "Ircama",
+    "original": "Write this dns server to /etc/resolv.conf",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "Scrivere il server DNS in /etc/resolv.conf"
+  },
+  "deepl:Wrong password!": {
+    "github_user": "Ircama",
+    "original": "Wrong password!",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "Password sbagliata!"
+  },
+  "deepl:Wrong token": {
+    "github_user": "Ircama",
+    "original": "Wrong token",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:39Z",
+    "translation": "Gettone sbagliato"
+  },
+  "deepl:You could change here internal variables which are disabled or hidden on the AVM web interface.": {
+    "github_user": "Ircama",
+    "original": "You could change here internal variables which are disabled or hidden on the AVM web interface.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "È possibile modificare qui le variabili interne che sono disabilitate o nascoste nell'interfaccia web di AVM."
+  },
+  "deepl:You have not provided a password": {
+    "github_user": "Ircama",
+    "original": "You have not provided a password",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:06Z",
+    "translation": "Non è stata fornita una password"
+  },
+  "deepl:You have not selected any backup file to upload": {
+    "github_user": "Ircama",
+    "original": "You have not selected any backup file to upload",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Non è stato selezionato alcun file di backup da caricare"
+  },
+  "deepl:You have to restart": {
+    "github_user": "Ircama",
+    "original": "You have to restart",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:10Z",
+    "translation": "È necessario riavviare"
+  },
+  "deepl:You just uploaded the file": {
+    "github_user": "Ircama",
+    "original": "You just uploaded the file",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "Hai appena effettuato l'upload del file"
+  },
+  "deepl:You must reboot the device for the changes to take effect.": {
+    "github_user": "Ircama",
+    "original": "You must reboot the device for the changes to take effect.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:12Z",
+    "translation": "Per rendere effettive le modifiche, è necessario riavviare il dispositivo."
+  },
+  "deepl:Your FRITZ!Box can be reached by AVM to retrieve selected diagnostics data or a diagnostics summary.": {
+    "github_user": "Ircama",
+    "original": "Your FRITZ!Box can be reached by AVM to retrieve selected diagnostics data or a diagnostics summary.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:17Z",
+    "translation": "Il FRITZ!Box può essere raggiunto dall'AVM per richiamare i dati diagnostici selezionati o un riepilogo della diagnostica."
+  },
+  "deepl:addresses": {
+    "github_user": "Ircama",
+    "original": "addresses",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:23Z",
+    "translation": "indirizzi"
+  },
+  "deepl:bytes": {
+    "github_user": "Ircama",
+    "original": "bytes",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:18Z",
+    "translation": "byte"
+  },
+  "deepl:bytes.": {
+    "github_user": "Ircama",
+    "original": "bytes.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:08Z",
+    "translation": "byte."
+  },
+  "deepl:cache": {
+    "github_user": "Ircama",
+    "original": "cache",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "cache"
+  },
+  "deepl:change": {
+    "github_user": "Ircama",
+    "original": "change",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "cambiare"
+  },
+  "deepl:cores": {
+    "github_user": "Ircama",
+    "original": "cores",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "▸ core"
+  },
+  "deepl:crond start type": {
+    "github_user": "Ircama",
+    "original": "crond start type",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:31Z",
+    "translation": "tipo di avviamento del crond"
+  },
+  "deepl:disabled": {
+    "github_user": "Ircama",
+    "original": "disabled",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "disabilitato"
+  },
+  "deepl:done": {
+    "github_user": "Ircama",
+    "original": "done",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:14Z",
+    "translation": "fatto"
+  },
+  "deepl:e.g.": {
+    "github_user": "Ircama",
+    "original": "e.g.",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:45Z",
+    "translation": "es."
+  },
+  "deepl:e.g. 10.0.0.1 * * www.local mfh1 # my server": {
+    "github_user": "Ircama",
+    "original": "e.g. 10.0.0.1 * * www.local mfh1 # my server",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:11Z",
+    "translation": "es. 10.0.0.1 * * www.local mfh1 # il mio server"
+  },
+  "deepl:empty for default": {
+    "github_user": "Ircama",
+    "original": "empty for default",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:32Z",
+    "translation": "vuoto per l'impostazione predefinita"
+  },
+  "deepl:en": {
+    "github_user": "Ircama",
+    "original": "en",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:37Z",
+    "translation": "it"
+  },
+  "deepl:enabled": {
+    "github_user": "Ircama",
+    "original": "enabled",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "abilitato"
+  },
+  "deepl:especially <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>All variables</a> to find more variables.": {
+    "github_user": "Ircama",
+    "original": "especially <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>All variables</a> to find more variables.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "in particolare <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>Tutte le variabili</a> per trovare altre variabili."
+  },
+  "deepl:external update failed.": {
+    "github_user": "Ircama",
+    "original": "external update failed.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:22Z",
+    "translation": "aggiornamento esterno non riuscito."
+  },
+  "deepl:external-file update": {
+    "github_user": "Ircama",
+    "original": "external-file update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "aggiornamento file esterno"
+  },
+  "deepl:external-update": {
+    "github_user": "Ircama",
+    "original": "external-update",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:40Z",
+    "translation": "aggiornamento esterno"
+  },
+  "deepl:family": {
+    "github_user": "Ircama",
+    "original": "family",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "▸ famiglia"
+  },
+  "deepl:file will be loaded to and extracted on the Box. You should": {
+    "github_user": "Ircama",
+    "original": "file will be loaded to and extracted on the Box. You should",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "Il file verrà caricato ed estratto sul Box. Si dovrebbe"
+  },
+  "deepl:free": {
+    "github_user": "Ircama",
+    "original": "free",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "libero"
+  },
+  "deepl:minute hour day month day-of-week command": {
+    "github_user": "Ircama",
+    "original": "minute hour day month day-of-week command",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:09Z",
+    "translation": "minuto ora giorno mese giorno della settimana comando"
+  },
+  "deepl:model": {
+    "github_user": "Ircama",
+    "original": "model",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:22Z",
+    "translation": "▸ modello"
+  },
+  "deepl:never": {
+    "github_user": "Ircama",
+    "original": "never",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:02Z",
+    "translation": "mai"
+  },
+  "deepl:no extras": {
+    "github_user": "Ircama",
+    "original": "no extras",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:47Z",
+    "translation": "nessun extra"
+  },
+  "deepl:no script for": {
+    "github_user": "Ircama",
+    "original": "no script for",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "nessuno script per"
+  },
+  "deepl:no script for status display": {
+    "github_user": "Ircama",
+    "original": "no script for status display",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:53Z",
+    "translation": "nessuno script per la visualizzazione dello stato"
+  },
+  "deepl:no static packages": {
+    "github_user": "Ircama",
+    "original": "no static packages",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "nessun pacchetto statico"
+  },
+  "deepl:not defined": {
+    "github_user": "Ircama",
+    "original": "not defined",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:11Z",
+    "translation": "non definito"
+  },
+  "deepl:not installed": {
+    "github_user": "Ircama",
+    "original": "not installed",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:19Z",
+    "translation": "non installato"
+  },
+  "deepl:of": {
+    "github_user": "Ircama",
+    "original": "of",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "di"
+  },
+  "deepl:on next system start": {
+    "github_user": "Ircama",
+    "original": "on next system start",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:03Z",
+    "translation": "al successivo avvio del sistema"
+  },
+  "deepl:optimized for": {
+    "github_user": "Ircama",
+    "original": "optimized for",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:26Z",
+    "translation": "ottimizzato per"
+  },
+  "deepl:or": {
+    "github_user": "Ircama",
+    "original": "or",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:46Z",
+    "translation": "o"
+  },
+  "deepl:request": {
+    "github_user": "Ircama",
+    "original": "request",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:21Z",
+    "translation": "richiesta"
+  },
+  "deepl:restart": {
+    "github_user": "Ircama",
+    "original": "restart",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "riavviare"
+  },
+  "deepl:script is executed at the end of external": {
+    "github_user": "Ircama",
+    "original": "script is executed at the end of external",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:14Z",
+    "translation": "Viene eseguito alla fine dell'attivazione della della componente esternalizzata del firmware"
+  },
+  "deepl:script is executed at the end of the boot process": {
+    "github_user": "Ircama",
+    "original": "script is executed at the end of the boot process",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:13Z",
+    "translation": "Viene eseguito alla fine del processo di avvio."
+  },
+  "deepl:script will be executed while the login process of root": {
+    "github_user": "Ircama",
+    "original": "script will be executed while the login process of root",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:09Z",
+    "translation": "Sarà eseguito durante il processo di login di root."
+  },
+  "deepl:seconds": {
+    "github_user": "Ircama",
+    "original": "seconds",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "secondi"
+  },
+  "deepl:start": {
+    "github_user": "Ircama",
+    "original": "start",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "avviare"
+  },
+  "deepl:stop": {
+    "github_user": "Ircama",
+    "original": "stop",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:34Z",
+    "translation": "fermare"
+  },
+  "deepl:swap start type": {
+    "github_user": "Ircama",
+    "original": "swap start type",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:44Z",
+    "translation": "tipo di avvio swap"
+  },
+  "deepl:telnetd start type": {
+    "github_user": "Ircama",
+    "original": "telnetd start type",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:39Z",
+    "translation": "tipo di avvio di telnetd"
+  },
+  "deepl:the package '$PACKAGE' is not configurable.": {
+    "github_user": "Ircama",
+    "original": "the package '$PACKAGE' is not configurable.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:45Z",
+    "translation": "il pacchetto '$PACKAGE' non è configurabile."
+  },
+  "deepl:unknown": {
+    "github_user": "Ircama",
+    "original": "unknown",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:21Z",
+    "translation": "sconosciuto"
+  },
+  "deepl:unknown command": {
+    "github_user": "Ircama",
+    "original": "unknown command",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:54Z",
+    "translation": "comando sconosciuto"
+  },
+  "deepl:unknown error code": {
+    "github_user": "Ircama",
+    "original": "unknown error code",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:41Z",
+    "translation": "codice di errore sconosciuto"
+  },
+  "deepl:unknown type": {
+    "github_user": "Ircama",
+    "original": "unknown type",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:48Z",
+    "translation": "tipo sconosciuto"
+  },
+  "deepl:unknown view": {
+    "github_user": "Ircama",
+    "original": "unknown view",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:52Z",
+    "translation": "vista sconosciuta"
+  },
+  "deepl:upload external file (optional)": {
+    "github_user": "Ircama",
+    "original": "upload external file (optional)",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:24Z",
+    "translation": "Upload di un file esterno (opzionale)"
+  },
+  "deepl:upload the appropriate firmware afterwards.": {
+    "github_user": "Ircama",
+    "original": "upload the appropriate firmware afterwards.",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:23Z",
+    "translation": "caricare successivamente il firmware appropriato."
+  },
+  "deepl:used": {
+    "github_user": "Ircama",
+    "original": "used",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:19:20Z",
+    "translation": "usato"
+  },
+  "deepl:version": {
+    "github_user": "Ircama",
+    "original": "version",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:25Z",
+    "translation": "versione"
+  },
+  "deepl:websrv start type": {
+    "github_user": "Ircama",
+    "original": "websrv start type",
+    "service": "deepl",
+    "timestamp": "2026-02-15T23:35:41Z",
+    "translation": "tipo di avvio del websrv"
+  },
+  "deepl:with buttons": {
+    "github_user": "Ircama",
+    "original": "with buttons",
+    "service": "deepl",
+    "timestamp": "2026-02-16T14:18:29Z",
+    "translation": "con i pulsanti"
+  }
+}

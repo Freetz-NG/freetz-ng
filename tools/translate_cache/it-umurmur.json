@@ -1,0 +1,16 @@
+{
+  "deepl:Run with realtime priority": {
+    "original": "Run with realtime priority",
+    "translation": "Esecuzione con priorità in tempo reale",
+    "timestamp": "2026-02-15T23:58:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration file": {
+    "original": "Configuration file",
+    "translation": "File di configurazione",
+    "timestamp": "2026-02-15T23:58:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

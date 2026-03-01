@@ -1,0 +1,72 @@
+{
+  "deepl:Show logfile": {
+    "original": "Show logfile",
+    "translation": "Mostra il file di log",
+    "timestamp": "2026-02-15T23:54:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Squid": {
+    "original": "Squid",
+    "translation": "Calamaro",
+    "timestamp": "2026-02-15T23:54:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path for cache": {
+    "original": "Path for cache",
+    "translation": "Percorso per la cache",
+    "timestamp": "2026-02-15T23:54:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path for coredumps": {
+    "original": "Path for coredumps",
+    "translation": "Percorso per coredumps",
+    "timestamp": "2026-02-15T23:54:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path for logfiles": {
+    "original": "Path for logfiles",
+    "translation": "Percorso per i file di log",
+    "timestamp": "2026-02-15T23:54:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:These values should only be altered by experienced users": {
+    "original": "These values should only be altered by experienced users",
+    "translation": "Questi valori devono essere modificati solo da utenti esperti.",
+    "timestamp": "2026-02-15T23:54:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Amount of disk space": {
+    "original": "Amount of disk space",
+    "translation": "Quantità di spazio su disco",
+    "timestamp": "2026-02-15T23:54:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:First-level subdirectories": {
+    "original": "First-level subdirectories",
+    "translation": "Sottodirectory di primo livello",
+    "timestamp": "2026-02-15T23:54:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Second-level subdirectories": {
+    "original": "Second-level subdirectories",
+    "translation": "Sottodirectory di secondo livello",
+    "timestamp": "2026-02-15T23:54:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This logfile is empty.": {
+    "original": "This logfile is empty.",
+    "translation": "Questo file di log è vuoto.",
+    "timestamp": "2026-02-15T23:54:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

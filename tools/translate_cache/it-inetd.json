@@ -1,0 +1,58 @@
+{
+  "deepl:Enable additional IPv6 support": {
+    "original": "Enable additional IPv6 support",
+    "translation": "Abilitare il supporto IPv6 aggiuntivo",
+    "timestamp": "2026-02-16T14:18:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Inetd config": {
+    "original": "Inetd config",
+    "translation": "Configurazione di Inetd",
+    "timestamp": "2026-02-16T14:18:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Inetd current config": {
+    "original": "Inetd current config",
+    "translation": "Configurazione attuale di Inetd",
+    "timestamp": "2026-02-16T14:18:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Inetd custom": {
+    "original": "Inetd custom",
+    "translation": "Inetd personalizzato",
+    "timestamp": "2026-02-16T14:18:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Inetd custom config": {
+    "original": "Inetd custom config",
+    "translation": "Configurazione personalizzata di Inetd",
+    "timestamp": "2026-02-16T14:18:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Internet 'super-server' (inetd)": {
+    "original": "Internet 'super-server' (inetd)",
+    "translation": "Il \"super-server\" di Internet (inetd)",
+    "timestamp": "2026-02-16T14:18:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum connections per minute": {
+    "original": "Maximum connections per minute",
+    "translation": "Connessioni massime al minuto",
+    "timestamp": "2026-02-16T14:18:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Size of socket listen queue": {
+    "original": "Size of socket listen queue",
+    "translation": "Dimensione della coda di connessioni in attesa sul socket",
+    "timestamp": "2026-02-16T14:18:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "deepl:Without authentication": {
+    "original": "Without authentication",
+    "translation": "Senza autenticazione",
+    "timestamp": "2026-02-15T23:36:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Data directory (empty for none)": {
+    "original": "Data directory (empty for none)",
+    "translation": "Cartella dati (vuota se non c'è)",
+    "timestamp": "2026-02-15T23:36:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use syslog": {
+    "original": "Use syslog",
+    "translation": "Usa syslog",
+    "timestamp": "2026-02-15T23:36:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

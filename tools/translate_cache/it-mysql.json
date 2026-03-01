@@ -1,0 +1,72 @@
+{
+  "deepl:Directory": {
+    "original": "Directory",
+    "translation": "Directory",
+    "timestamp": "2026-02-15T23:36:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:means all IPs": {
+    "original": "means all IPs",
+    "translation": "significa tutti gli IP",
+    "timestamp": "2026-02-15T23:36:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:General log": {
+    "original": "General log",
+    "translation": "Registro generale",
+    "timestamp": "2026-02-15T23:36:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl: Error log": {
+    "original": " Error log",
+    "translation": " Registro degli errori",
+    "timestamp": "2026-02-15T23:36:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional command-line arguments": {
+    "original": "Additional command-line arguments",
+    "translation": "Argomenti aggiuntivi della riga di comando",
+    "timestamp": "2026-02-15T23:36:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The database directory does not exists. You could initiliaze it this way": {
+    "original": "The database directory does not exists. You could initiliaze it this way",
+    "translation": "La cartella del database non esiste. Si può iniziare in questo modo",
+    "timestamp": "2026-02-15T23:36:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Root acces by network": {
+    "original": "Root acces by network",
+    "translation": "Accesso di root dalla rete",
+    "timestamp": "2026-02-15T23:36:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Set local root password": {
+    "original": "Set local root password",
+    "translation": "Impostare la password di root locale",
+    "timestamp": "2026-02-15T23:36:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:MySQL is not running.": {
+    "original": "MySQL is not running.",
+    "translation": "MySQL non è in esecuzione.",
+    "timestamp": "2026-02-15T23:36:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:MySQL status": {
+    "original": "MySQL status",
+    "translation": "Stato di MySQL",
+    "timestamp": "2026-02-15T23:36:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "deepl:OpenDD updates the dynamic dns addresses automatically after an IP change and doesn't need to run as a daemon.": {
+    "original": "OpenDD updates the dynamic dns addresses automatically after an IP change and doesn't need to run as a daemon.",
+    "translation": "OpenDD aggiorna gli indirizzi dns dinamici automaticamente dopo un cambio di IP e non ha bisogno di essere eseguito come demone.",
+    "timestamp": "2026-02-15T23:37:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Force update after 25 days (you should also enable crond).": {
+    "original": "Force update after 25 days (you should also enable crond).",
+    "translation": "Forzare l'aggiornamento dopo 25 giorni (si dovrebbe anche abilitare crond).",
+    "timestamp": "2026-02-15T23:37:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hostname": {
+    "original": "Hostname",
+    "translation": "Hostname",
+    "timestamp": "2026-02-15T23:37:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use commas to enter more than one": {
+    "original": "Use commas to enter more than one",
+    "translation": "Usare le virgole per inserire più di uno",
+    "timestamp": "2026-02-15T23:37:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use SSL": {
+    "original": "Use SSL",
+    "translation": "Usa SSL",
+    "timestamp": "2026-02-15T23:37:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:E-Mail": {
+    "original": "E-Mail",
+    "translation": "E-Mail",
+    "timestamp": "2026-02-15T23:37:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Send eMail": {
+    "original": "Send eMail",
+    "translation": "Invia eMail",
+    "timestamp": "2026-02-15T23:37:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Sender name": {
+    "original": "Sender name",
+    "translation": "Nome del mittente",
+    "timestamp": "2026-02-15T23:37:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Sender address": {
+    "original": "Sender address",
+    "translation": "Indirizzo del mittente",
+    "timestamp": "2026-02-15T23:37:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Recipient": {
+    "original": "Recipient",
+    "translation": "Destinatario",
+    "timestamp": "2026-02-15T23:37:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:E-mail server": {
+    "original": "E-mail server",
+    "translation": "Server di posta elettronica",
+    "timestamp": "2026-02-15T23:37:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:E-mail server port": {
+    "original": "E-mail server port",
+    "translation": "Porta del server di posta elettronica",
+    "timestamp": "2026-02-15T23:37:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:E-mail server timeout": {
+    "original": "E-mail server timeout",
+    "translation": "Timeout del server di posta elettronica",
+    "timestamp": "2026-02-15T23:37:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:E-mail server max. retry": {
+    "original": "E-mail server max. retry",
+    "translation": "Server di posta elettronica max. tentativi",
+    "timestamp": "2026-02-15T23:37:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Advanced options": {
+    "original": "Advanced options",
+    "translation": "Opzioni avanzate",
+    "timestamp": "2026-02-15T23:37:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Wildcard": {
+    "original": "Wildcard",
+    "translation": "jolly",
+    "timestamp": "2026-02-15T23:37:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:MX-server": {
+    "original": "MX-server",
+    "translation": "MX-server",
+    "timestamp": "2026-02-15T23:37:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use host as a backup mailserver": {
+    "original": "Use host as a backup mailserver",
+    "translation": "Utilizzare l'host come mailserver di backup",
+    "timestamp": "2026-02-15T23:37:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Offline-Host": {
+    "original": "Offline-Host",
+    "translation": "Offline-Host",
+    "timestamp": "2026-02-15T23:37:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

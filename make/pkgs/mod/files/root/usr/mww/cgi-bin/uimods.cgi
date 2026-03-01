@@ -101,10 +101,10 @@ $(lang \
   de:"Das kann eine schlechte Idee sein! Vor dem Experimentieren sollte man unbedingt eine Konfigurationsicherung erstellen. Siehe auch" \
   en:"This could be a very bad idea! You should create a settings backup before you start. See also" \
 )
-<a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods' target='_blank'>Wiki: UI-Module und ctlmgr_ctl</a>,
+<a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods' target='_blank'>$(lang de:"Wiki: UI-Module und ctlmgr_ctl" en:"Wiki: UI modules and ctlmgr_ctl")</a>,
 $(lang \
-  de:"insbesondere der Punkt <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>Alle Variablen</a>." \
-  en:"especially <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>Alle Variablen</a> to find more variables." \
+	de:"insbesondere der Punkt <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>Alle Variablen</a>." \
+	en:"especially <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>All variables</a> to find more variables." \
 )
 EOX
 }

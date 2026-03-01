@@ -1,0 +1,79 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show statistics": {
+    "original": "Show statistics",
+    "translation": "Mostra le statistiche",
+    "timestamp": "2026-02-15T23:07:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Settings": {
+    "original": "Settings",
+    "translation": "Impostazioni",
+    "timestamp": "2026-02-15T23:07:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Graph folder": {
+    "original": "Graph folder",
+    "translation": "Cartella grafica",
+    "timestamp": "2026-02-15T23:07:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Graph dimensions ratio": {
+    "original": "Graph dimensions ratio",
+    "translation": "Rapporto tra le dimensioni del grafico",
+    "timestamp": "2026-02-15T23:07:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Period of main graph": {
+    "original": "Period of main graph",
+    "translation": "Periodo del grafico principale",
+    "timestamp": "2026-02-15T23:07:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:sub-pages": {
+    "original": "sub-pages",
+    "translation": "sottopagine",
+    "timestamp": "2026-02-15T23:07:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show only the following hosts on the main page": {
+    "original": "Show only the following hosts on the main page",
+    "translation": "Mostra solo i seguenti host nella pagina principale",
+    "timestamp": "2026-02-15T23:07:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show only the following plugins on the main page": {
+    "original": "Show only the following plugins on the main page",
+    "translation": "Mostrare solo i seguenti plugin nella pagina principale",
+    "timestamp": "2026-02-15T23:07:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Expert Settings": {
+    "original": "Expert Settings",
+    "translation": "Impostazioni dell'esperto",
+    "timestamp": "2026-02-15T23:07:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Custom script for graph generation": {
+    "original": "Custom script for graph generation",
+    "translation": "Script personalizzato per la generazione del grafico",
+    "timestamp": "2026-02-15T23:07:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

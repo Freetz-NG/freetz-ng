@@ -18,9 +18,9 @@ cat << EOF
 $(lang de:"Freizugebende Ports, mehrere durch Leerzeichen getrennt" en:"Ports to open, multiple seperated by spaces").
 EOF
 
-cgi_print_textline_p "tcp" "$AVM_RULES_TCP" 55/255 "TCP$(lang de:"-Ports" en:" ports"): "
+cgi_print_textline_p "tcp" "$AVM_RULES_TCP" 55/255 "TCP $(lang de:"Ports" en:"ports"): "
 
-cgi_print_textline_p "udp" "$AVM_RULES_UDP" 55/255 "UDP$(lang de:"-Ports" en:" ports"): "
+cgi_print_textline_p "udp" "$AVM_RULES_UDP" 55/255 "UDP $(lang de:"Ports" en:"ports"): "
 
 cgi_print_textline_p "seconds" "$AVM_RULES_SECONDS" 5/3 "$(lang de:"Timeout der offenen Ports, max 120 [Sekunden]" en:"Timeout of opened ports, max 120 [seconds]"): "
 

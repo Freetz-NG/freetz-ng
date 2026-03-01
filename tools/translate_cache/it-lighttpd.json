@@ -1,0 +1,653 @@
+{
+  "deepl:Please specify the virtual hosts the configuration of $3 applies to in the following box. You can either provide a full qualified domain name or a regular expression to match multiple host names. When supplying multiple values, please separate them using a space character. In case the configuration applies to all virtual hosts, leave the box empty.": {
+    "original": "Please specify the virtual hosts the configuration of $3 applies to in the following box. You can either provide a full qualified domain name or a regular expression to match multiple host names. When supplying multiple values, please separate them using a space character. In case the configuration applies to all virtual hosts, leave the box empty.",
+    "translation": "Specificare gli host virtuali a cui si applica la configurazione di $3 nel riquadro seguente. È possibile fornire un nome di dominio qualificato completo o un'espressione regolare per corrispondere a più nomi di host. Quando si forniscono più valori, separarli con uno spazio. Se la configurazione si applica a tutti gli host virtuali, lasciare il riquadro vuoto.",
+    "timestamp": "2026-02-15T23:32:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Virtual hosts": {
+    "original": "Virtual hosts",
+    "translation": "Host virtuali",
+    "timestamp": "2026-02-15T23:32:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Web server": {
+    "original": "Web server",
+    "translation": "Server web",
+    "timestamp": "2026-02-15T23:32:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Listen on port": {
+    "original": "Listen on port",
+    "translation": "Ascoltare sulla porta",
+    "timestamp": "2026-02-15T23:32:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Validate configuration before start": {
+    "original": "Validate configuration before start",
+    "translation": "Convalidare la configurazione prima dell'avvio",
+    "timestamp": "2026-02-15T23:32:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The document root directory must exist as otherwise lighttpd will not start.": {
+    "original": "The document root directory must exist as otherwise lighttpd will not start.",
+    "translation": "La directory principale del documento deve esistere, altrimenti lighttpd non si avvia.",
+    "timestamp": "2026-02-15T23:32:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Document Root": {
+    "original": "Document Root",
+    "translation": "Radice del documento",
+    "timestamp": "2026-02-15T23:32:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shall the document root directory used as chroot directory?": {
+    "original": "Shall the document root directory used as chroot directory?",
+    "translation": "La directory principale del documento deve essere usata come directory chroot?",
+    "timestamp": "2026-02-15T23:32:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use chroot": {
+    "original": "Use chroot",
+    "translation": "Usa chroot",
+    "timestamp": "2026-02-15T23:32:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:No chroot": {
+    "original": "No chroot",
+    "translation": "No chroot",
+    "timestamp": "2026-02-15T23:32:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note that with an activated chroot, the following properties apply relative to the above supplied docroot directory which becomes the chroot directory: the docroot will be searched in /websites/default and virtual hosts in /websites/&lt;extension&gt;, all other path configurations are to be supplied relative to the chroot directory. If FastCGI is configured, all FastCGI programs and their libraries must be found within the chroot - if the ldd program exists, this will be done automatically.": {
+    "original": "Please note that with an activated chroot, the following properties apply relative to the above supplied docroot directory which becomes the chroot directory: the docroot will be searched in /websites/default and virtual hosts in /websites/&lt;extension&gt;, all other path configurations are to be supplied relative to the chroot directory. If FastCGI is configured, all FastCGI programs and their libraries must be found within the chroot - if the ldd program exists, this will be done automatically.",
+    "translation": "Si noti che con una chroot attivata, le seguenti proprietà si applicano relativamente alla directory docroot fornita in precedenza, che diventa la directory chroot: la docroot verrà cercata in /websites/default e gli host virtuali in /websites/&lt;extension&gt;, tutte le altre configurazioni di percorso devono essere fornite relativamente alla directory chroot. Se FastCGI è configurato, tutti i programmi FastCGI e le loro librerie devono essere trovati all'interno della chroot - se il programma ldd esiste, questo verrà fatto automaticamente.",
+    "timestamp": "2026-02-15T23:32:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Based on the configuration lighttpd is looking for your HTML and other files in the following directories - the listing is updated after each save:$dirs": {
+    "original": "Based on the configuration lighttpd is looking for your HTML and other files in the following directories - the listing is updated after each save:$dirs",
+    "translation": "In base alla configurazione, lighttpd cerca i file HTML e altri file nelle seguenti directory - l'elenco viene aggiornato dopo ogni salvataggio:$dirs",
+    "timestamp": "2026-02-15T23:32:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Virtual Hosts": {
+    "original": "Virtual Hosts",
+    "translation": "Host virtuali",
+    "timestamp": "2026-02-15T23:32:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate virtual hosts": {
+    "original": "Activate virtual hosts",
+    "translation": "Attivare gli host virtuali",
+    "timestamp": "2026-02-15T23:32:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The document root of the virtual host is defined by combining the above configured document root plus the extension selected as follows (&lt;docroot&gt;/&lt;extension&gt;). If the directory for the virtual host does not exist, the above configured document root extended with \\": {
+    "original": "The document root of the virtual host is defined by combining the above configured document root plus the extension selected as follows (&lt;docroot&gt;/&lt;extension&gt;). If the directory for the virtual host does not exist, the above configured document root extended with \\",
+    "translation": "La radice del documento dell'host virtuale è definita combinando la radice del documento configurata sopra più l'estensione selezionata come segue (&lt;docroot&gt;/&lt;extension&gt;). Se la directory per l'host virtuale non esiste, la radice del documento configurata sopra estesa con \\",
+    "timestamp": "2026-02-15T23:32:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Document root directory extension": {
+    "original": "Document root directory extension",
+    "translation": "Estensione della directory principale del documento",
+    "timestamp": "2026-02-15T23:32:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allow listing of directory contents": {
+    "original": "Allow listing of directory contents",
+    "translation": "Consentire l'elenco dei contenuti delle directory",
+    "timestamp": "2026-02-15T23:32:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Deactivate": {
+    "original": "Deactivate",
+    "translation": "Disattiva",
+    "timestamp": "2026-02-15T23:32:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:File name encoding": {
+    "original": "File name encoding",
+    "translation": "Codifica del nome del file",
+    "timestamp": "2026-02-15T23:32:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:directory listing": {
+    "original": "directory listing",
+    "translation": "elenco delle directory",
+    "timestamp": "2026-02-15T23:32:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Listing of directory contents not available - mod_dirlisting.so unavailable.": {
+    "original": "Listing of directory contents not available - mod_dirlisting.so unavailable.",
+    "translation": "Elenco dei contenuti delle directory non disponibile - mod_dirlisting.so non disponibile.",
+    "timestamp": "2026-02-15T23:32:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SSL support": {
+    "original": "SSL support",
+    "translation": "Supporto SSL",
+    "timestamp": "2026-02-15T23:32:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To start lighttpd with SSL-Support you have to setup Certifikat&amp;Key <a TARGET=\\": {
+    "original": "To start lighttpd with SSL-Support you have to setup Certifikat&amp;Key <a TARGET=\\",
+    "translation": "Per avviare lighttpd con il supporto SSL è necessario configurare Certifikat&amp;Key <a TARGET=\\",
+    "timestamp": "2026-02-15T23:32:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:In case the certificate was signed with a CA, please provide the CA certificate <a TARGET=\\": {
+    "original": "In case the certificate was signed with a CA, please provide the CA certificate <a TARGET=\\",
+    "translation": "Nel caso in cui il certificato sia stato firmato da una CA, si prega di fornire il certificato della CA <a TARGET=\\",
+    "timestamp": "2026-02-15T23:33:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Set available cipher": {
+    "original": "Set available cipher",
+    "translation": "Impostare il cifrario disponibile",
+    "timestamp": "2026-02-15T23:33:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Secure list": {
+    "original": "Secure list",
+    "translation": "Elenco sicuro",
+    "timestamp": "2026-02-15T23:33:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Compaitble list": {
+    "original": "Compaitble list",
+    "translation": "Elenco di Compaitble",
+    "timestamp": "2026-02-15T23:33:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The SSL support can be configured globally as the exclusive access method (the above configured port will be used) or in addition to the unencrypted communication. In case the SSL support is intended to be in addition to the unencrypted communication, all of the following options must be set.": {
+    "original": "The SSL support can be configured globally as the exclusive access method (the above configured port will be used) or in addition to the unencrypted communication. In case the SSL support is intended to be in addition to the unencrypted communication, all of the following options must be set.",
+    "translation": "Il supporto SSL può essere configurato globalmente come metodo di accesso esclusivo (verrà utilizzata la porta configurata sopra) o in aggiunta alla comunicazione non criptata. Nel caso in cui il supporto SSL sia inteso in aggiunta alla comunicazione non criptata, devono essere impostate tutte le seguenti opzioni.",
+    "timestamp": "2026-02-15T23:33:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional SSL support": {
+    "original": "Additional SSL support",
+    "translation": "Supporto SSL aggiuntivo",
+    "timestamp": "2026-02-15T23:33:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Exclusive SSL support": {
+    "original": "Exclusive SSL support",
+    "translation": "Supporto SSL esclusivo",
+    "timestamp": "2026-02-15T23:33:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SSL port": {
+    "original": "SSL port",
+    "translation": "Porta SSL",
+    "timestamp": "2026-02-15T23:33:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Using the following option, a HTTP redirect is activated redirecting traffic from the unencrypted port to the SSL port. This redirect is only active if SSL is configured as an additional service. When using virtual hosts, only the host names are redirected which are also configured for the SSL support.": {
+    "original": "Using the following option, a HTTP redirect is activated redirecting traffic from the unencrypted port to the SSL port. This redirect is only active if SSL is configured as an additional service. When using virtual hosts, only the host names are redirected which are also configured for the SSL support.",
+    "translation": "Utilizzando la seguente opzione, viene attivato un reindirizzamento HTTP che reindirizza il traffico dalla porta non criptata alla porta SSL. Questo reindirizzamento è attivo solo se SSL è configurato come servizio aggiuntivo. Quando si utilizzano host virtuali, vengono reindirizzati solo i nomi di host che sono configurati anche per il supporto SSL.",
+    "timestamp": "2026-02-15T23:33:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate redirect": {
+    "original": "Activate redirect",
+    "translation": "Attiva il reindirizzamento",
+    "timestamp": "2026-02-15T23:33:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of SSL support": {
+    "original": "activation of SSL support",
+    "translation": "attivazione del supporto SSL",
+    "timestamp": "2026-02-15T23:33:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable HTTP/2 support": {
+    "original": "Enable HTTP/2 support",
+    "translation": "Abilitare il supporto HTTP/2",
+    "timestamp": "2026-02-15T23:33:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SSL support for lighttpd not compiled in.": {
+    "original": "SSL support for lighttpd not compiled in.",
+    "translation": "Supporto SSL per lighttpd non compilato.",
+    "timestamp": "2026-02-15T23:33:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access control": {
+    "original": "Access control",
+    "translation": "Controllo dell'accesso",
+    "timestamp": "2026-02-15T23:33:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To allow lighttpd to authenticate users, you have to add users <a TARGET=\\": {
+    "original": "To allow lighttpd to authenticate users, you have to add users <a TARGET=\\",
+    "translation": "Per consentire a lighttpd di autenticare gli utenti, è necessario aggiungere agli utenti <a TARGET=\\",
+    "timestamp": "2026-02-15T23:33:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access rights can be added <a href=\\": {
+    "original": "Access rights can be added <a href=\\",
+    "translation": "I diritti di accesso possono essere aggiunti <a href=\\",
+    "timestamp": "2026-02-15T23:33:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate access control and user accounts": {
+    "original": "Activate access control and user accounts",
+    "translation": "Attivare il controllo degli accessi e gli account utente",
+    "timestamp": "2026-02-15T23:33:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Basic authentication": {
+    "original": "Basic authentication",
+    "translation": "Autenticazione di base",
+    "timestamp": "2026-02-15T23:33:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Digest Authentication": {
+    "original": "Digest Authentication",
+    "translation": "Autenticazione Digest",
+    "timestamp": "2026-02-15T23:33:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access control cannot be configured - mod_auth.so unavailable.": {
+    "original": "Access control cannot be configured - mod_auth.so unavailable.",
+    "translation": "Il controllo degli accessi non può essere configurato - mod_auth.so non è disponibile.",
+    "timestamp": "2026-02-15T23:33:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Dynamic Web Pages": {
+    "original": "Dynamic Web Pages",
+    "translation": "Pagine Web dinamiche",
+    "timestamp": "2026-02-15T23:33:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate mod_cgi (files *.cgi and in /cgi-bin executable": {
+    "original": "Activate mod_cgi (files *.cgi and in /cgi-bin executable",
+    "translation": "Attivare mod_cgi (file *.cgi e in /cgi-bin eseguibile)",
+    "timestamp": "2026-02-15T23:33:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of mod_cgi": {
+    "original": "activation of mod_cgi",
+    "translation": "attivazione di mod_cgi",
+    "timestamp": "2026-02-15T23:33:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:CGI support cannot be configured - mod_cgi.so unavailable.": {
+    "original": "CGI support cannot be configured - mod_cgi.so unavailable.",
+    "translation": "Il supporto CGI non può essere configurato - mod_cgi.so non è disponibile.",
+    "timestamp": "2026-02-15T23:33:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate mod_fastcgi for PHP (files *.php executable)": {
+    "original": "Activate mod_fastcgi for PHP (files *.php executable)",
+    "translation": "Attivare mod_fastcgi per PHP (file *.php eseguibili)",
+    "timestamp": "2026-02-15T23:33:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Program php-cgi was not found. Please provide complete path to this program.": {
+    "original": "Program php-cgi was not found. Please provide complete path to this program.",
+    "translation": "Il programma php-cgi non è stato trovato. Fornire il percorso completo del programma.",
+    "timestamp": "2026-02-15T23:33:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Program php-cgi was found at $foundphp. Please either provide this or the correct path to this program in following box.": {
+    "original": "Program php-cgi was found at $foundphp. Please either provide this or the correct path to this program in following box.",
+    "translation": "Il programma php-cgi è stato trovato in $foundphp. Si prega di fornire questo o il percorso corretto di questo programma nella casella seguente.",
+    "timestamp": "2026-02-15T23:33:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path to php-cgi": {
+    "original": "Path to php-cgi",
+    "translation": "Percorso di php-cgi",
+    "timestamp": "2026-02-15T23:33:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum number of PHP processes": {
+    "original": "Maximum number of PHP processes",
+    "translation": "Numero massimo di processi PHP",
+    "timestamp": "2026-02-15T23:33:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of PHP FastCGI support": {
+    "original": "activation of PHP FastCGI support",
+    "translation": "attivazione del supporto PHP FastCGI",
+    "timestamp": "2026-02-15T23:33:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate mod_fastcgi for RUBY (files *.rb executable)": {
+    "original": "Activate mod_fastcgi for RUBY (files *.rb executable)",
+    "translation": "Attivare mod_fastcgi per RUBY (file *.rb eseguibili)",
+    "timestamp": "2026-02-15T23:33:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Program ruby-cgi was not found. Please provide complete path to this program.": {
+    "original": "Program ruby-cgi was not found. Please provide complete path to this program.",
+    "translation": "Il programma ruby-cgi non è stato trovato. Fornire il percorso completo del programma.",
+    "timestamp": "2026-02-15T23:33:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Program ruby-cgi was found at $foundruby. Please either provide this or the correct path to this program in following box.": {
+    "original": "Program ruby-cgi was found at $foundruby. Please either provide this or the correct path to this program in following box.",
+    "translation": "Il programma ruby-cgi è stato trovato in $foundruby. Si prega di fornire questo o il percorso corretto di questo programma nella casella seguente.",
+    "timestamp": "2026-02-15T23:33:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path to ruby-cgi": {
+    "original": "Path to ruby-cgi",
+    "translation": "Percorso di ruby-cgi",
+    "timestamp": "2026-02-15T23:33:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum number of RUBY processes": {
+    "original": "Maximum number of RUBY processes",
+    "translation": "Numero massimo di processi RUBY",
+    "timestamp": "2026-02-15T23:33:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of RUBY FastCGI support": {
+    "original": "activation of RUBY FastCGI support",
+    "translation": "attivazione del supporto RUBY FastCGI",
+    "timestamp": "2026-02-15T23:33:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Advanced Options": {
+    "original": "Advanced Options",
+    "translation": "Opzioni avanzate",
+    "timestamp": "2026-02-15T23:33:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate mod_deflate (Cache dir must be configured": {
+    "original": "Activate mod_deflate (Cache dir must be configured",
+    "translation": "Attivare mod_deflate (la cache dir deve essere configurata)",
+    "timestamp": "2026-02-15T23:33:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Directory of Cache": {
+    "original": "Directory of Cache",
+    "translation": "Directory di cache",
+    "timestamp": "2026-02-15T23:33:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of mod_deflate support": {
+    "original": "activation of mod_deflate support",
+    "translation": "attivazione del supporto mod_deflate",
+    "timestamp": "2026-02-15T23:33:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Caching of files cannot be configured - mod_deflate.so unavailable.": {
+    "original": "Caching of files cannot be configured - mod_deflate.so unavailable.",
+    "translation": "Non è possibile configurare la cache dei file - mod_deflate.so non è disponibile.",
+    "timestamp": "2026-02-15T23:33:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate status display (URLs must be configured": {
+    "original": "Activate status display (URLs must be configured",
+    "translation": "Attivare la visualizzazione dello stato (gli URL devono essere configurati)",
+    "timestamp": "2026-02-15T23:33:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate JavaScript for sorting of status display": {
+    "original": "Activate JavaScript for sorting of status display",
+    "translation": "Attivare JavaScript per l'ordinamento della visualizzazione dello stato",
+    "timestamp": "2026-02-15T23:33:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:An empty URL field deactivates the corresponding status display.": {
+    "original": "An empty URL field deactivates the corresponding status display.",
+    "translation": "Un campo URL vuoto disattiva la visualizzazione dello stato corrispondente.",
+    "timestamp": "2026-02-15T23:34:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:In case the web server is reachable in the Internet, please consider the protection of these URLs (for example by using the access control feature - see above).": {
+    "original": "In case the web server is reachable in the Internet, please consider the protection of these URLs (for example by using the access control feature - see above).",
+    "translation": "Nel caso in cui il server web sia raggiungibile in Internet, si prega di considerare la protezione di questi URL (ad esempio utilizzando la funzione di controllo degli accessi - vedi sopra).",
+    "timestamp": "2026-02-15T23:34:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:URL for configuration": {
+    "original": "URL for configuration",
+    "translation": "URL per la configurazione",
+    "timestamp": "2026-02-15T23:34:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:URL for statistics": {
+    "original": "URL for statistics",
+    "translation": "URL per le statistiche",
+    "timestamp": "2026-02-15T23:34:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:URL for status": {
+    "original": "URL for status",
+    "translation": "URL per lo stato",
+    "timestamp": "2026-02-15T23:34:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of mod_status support": {
+    "original": "activation of mod_status support",
+    "translation": "attivazione del supporto mod_status",
+    "timestamp": "2026-02-15T23:34:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Status information cannot be displayed - mod_status.so unavailable.": {
+    "original": "Status information cannot be displayed - mod_status.so unavailable.",
+    "translation": "Le informazioni sullo stato non possono essere visualizzate - mod_status.so non è disponibile.",
+    "timestamp": "2026-02-15T23:34:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Return own error message instead of the automated error messages (provide file prefix": {
+    "original": "Return own error message instead of the automated error messages (provide file prefix",
+    "translation": "Restituire un proprio messaggio di errore invece dei messaggi di errore automatici (fornire il prefisso del file",
+    "timestamp": "2026-02-15T23:34:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:You can customize what page to send back based on a status code. This provides you with an alternative way to customize 404 pages. You may also customize other status-codes with their own custom page (500 pages, etc). Only static files are allowed to be sent back. Format: &lt;errorfile-prefix&gt;&lt;status-code&gt;.html. This path must be the absolute path name on the host system, not only starting with the docroot.": {
+    "original": "You can customize what page to send back based on a status code. This provides you with an alternative way to customize 404 pages. You may also customize other status-codes with their own custom page (500 pages, etc). Only static files are allowed to be sent back. Format: &lt;errorfile-prefix&gt;&lt;status-code&gt;.html. This path must be the absolute path name on the host system, not only starting with the docroot.",
+    "translation": "È possibile personalizzare la pagina da inviare in base a un codice di stato. Questo fornisce un modo alternativo per personalizzare le pagine 404. È inoltre possibile personalizzare altri codici di stato con una pagina personalizzata (pagine 500, ecc.). È possibile inviare solo file statici. Formato: &lt;errorfile-prefix&gt;&lt;status-code&gt;.html. Questo percorso deve essere il nome assoluto del percorso sul sistema host, non solo a partire dalla docroot.",
+    "timestamp": "2026-02-15T23:34:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:File prefix for error": {
+    "original": "File prefix for error",
+    "translation": "Prefisso del file per errore",
+    "timestamp": "2026-02-15T23:34:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activation of error pages": {
+    "original": "activation of error pages",
+    "translation": "attivazione di pagine di errore",
+    "timestamp": "2026-02-15T23:34:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The following boxes allw the specification of the maximum data transfer rate in kBytes/s. The value of 0 means no limit. Please note that a limit below 32kb/s might actually limit the traffic to 32kb/s. This is caused by the size of the TCP send buffer.": {
+    "original": "The following boxes allw the specification of the maximum data transfer rate in kBytes/s. The value of 0 means no limit. Please note that a limit below 32kb/s might actually limit the traffic to 32kb/s. This is caused by the size of the TCP send buffer.",
+    "translation": "Le caselle seguenti consentono di specificare la velocità massima di trasferimento dei dati in kByte/s. Il valore 0 significa che non ci sono limiti. Si noti che un limite inferiore a 32kb/s potrebbe effettivamente limitare il traffico a 32kb/s. Ciò è dovuto alla dimensione del buffer di invio TCP.",
+    "timestamp": "2026-02-15T23:34:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum throughput per connection": {
+    "original": "Maximum throughput per connection",
+    "translation": "Velocità massima per connessione",
+    "timestamp": "2026-02-15T23:34:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum throughput for all connections": {
+    "original": "Maximum throughput for all connections",
+    "translation": "Massimo throughput per tutte le connessioni",
+    "timestamp": "2026-02-15T23:34:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:limitation of data transfer rate": {
+    "original": "limitation of data transfer rate",
+    "translation": "limitazione della velocità di trasferimento dei dati",
+    "timestamp": "2026-02-15T23:34:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server log files": {
+    "original": "Server log files",
+    "translation": "File di log del server",
+    "timestamp": "2026-02-15T23:34:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note that the log files use precious RAM memory if the standard directory for the log files is used (see below). Use logging only for debugging and disable it for regular operation.": {
+    "original": "Please note that the log files use precious RAM memory if the standard directory for the log files is used (see below). Use logging only for debugging and disable it for regular operation.",
+    "translation": "Si noti che i file di log utilizzano molta memoria RAM se si utilizza la directory standard per i file di log (vedere sotto). Utilizzare il logging solo per il debug e disabilitarlo per il funzionamento regolare.",
+    "timestamp": "2026-02-15T23:34:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show logfiles": {
+    "original": "Show logfiles",
+    "translation": "Mostra i file di log",
+    "timestamp": "2026-02-15T23:34:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate logging": {
+    "original": "Activate logging",
+    "translation": "Attiva la registrazione",
+    "timestamp": "2026-02-15T23:34:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Save type of access log": {
+    "original": "Save type of access log",
+    "translation": "Salva il tipo di log di accesso",
+    "timestamp": "2026-02-15T23:34:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:File": {
+    "original": "File",
+    "translation": "File",
+    "timestamp": "2026-02-15T23:34:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Syslog": {
+    "original": "Syslog",
+    "translation": "Syslog",
+    "timestamp": "2026-02-15T23:34:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access logs cannot be configured - mod_accesslog.so unavailable.": {
+    "original": "Access logs cannot be configured - mod_accesslog.so unavailable.",
+    "translation": "I log di accesso non possono essere configurati - mod_accesslog.so non è disponibile.",
+    "timestamp": "2026-02-15T23:34:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Save type of error log": {
+    "original": "Save type of error log",
+    "translation": "Salva il tipo di log degli errori",
+    "timestamp": "2026-02-15T23:34:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:In the following boxes, you can alter the absolute path names to the log files. Please note, the lighttpd web server runs with the user ID of wwwrun. The provided file/path must be writeable for this user ID. The default directory /var/log/lighttpd/ is always writeable for wwwrun. If you use a different directory than the default directory, the log files will not be automatically removed in case you deactivate logging. If the path name starts with a '|' the rest of the name is taken as the name of a process which will be spawned and will get the output via STDIN.": {
+    "original": "In the following boxes, you can alter the absolute path names to the log files. Please note, the lighttpd web server runs with the user ID of wwwrun. The provided file/path must be writeable for this user ID. The default directory /var/log/lighttpd/ is always writeable for wwwrun. If you use a different directory than the default directory, the log files will not be automatically removed in case you deactivate logging. If the path name starts with a '|' the rest of the name is taken as the name of a process which will be spawned and will get the output via STDIN.",
+    "translation": "Nelle caselle seguenti è possibile modificare i nomi dei percorsi assoluti dei file di log. Si noti che il server web lighttpd funziona con l'ID utente wwwrun. Il file/percorso fornito deve essere scrivibile per questo ID utente. La directory predefinita /var/log/lighttpd/ è sempre scrivibile per wwwrun. Se si utilizza una directory diversa da quella predefinita, i file di log non verranno rimossi automaticamente in caso di disattivazione del logging. Se il nome del percorso inizia con un '|', il resto del nome viene considerato come il nome di un processo che verrà generato e riceverà l'output tramite STDIN.",
+    "timestamp": "2026-02-15T23:34:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access log": {
+    "original": "Access log",
+    "translation": "Log di accesso",
+    "timestamp": "2026-02-15T23:34:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Error log": {
+    "original": "Error log",
+    "translation": "Log degli errori",
+    "timestamp": "2026-02-15T23:34:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

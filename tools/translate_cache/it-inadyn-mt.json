@@ -1,0 +1,44 @@
+{
+  "deepl:Inadyn-Daemon": {
+    "original": "Inadyn-Daemon",
+    "translation": "Inadyn-Daemon",
+    "timestamp": "2026-02-15T23:31:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Verbosity level": {
+    "original": "Verbosity level",
+    "translation": "Livello di verbosità",
+    "timestamp": "2026-02-15T23:31:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS Service": {
+    "original": "DNS Service",
+    "translation": "Servizio DNS",
+    "timestamp": "2026-02-15T23:31:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:User defined": {
+    "original": "User defined",
+    "translation": "Definito dall'utente",
+    "timestamp": "2026-02-15T23:31:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Custom URL": {
+    "original": "Custom URL",
+    "translation": "URL personalizzato",
+    "timestamp": "2026-02-15T23:31:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Alias": {
+    "original": "Alias",
+    "translation": "Alias",
+    "timestamp": "2026-02-15T23:31:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

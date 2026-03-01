@@ -1,0 +1,51 @@
+{
+  "deepl:Settings": {
+    "original": "Settings",
+    "translation": "Impostazioni",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Ports to open, multiple seperated by spaces": {
+    "original": "Ports to open, multiple seperated by spaces",
+    "translation": "Porte da aprire; più valori vanno separati da spazi",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:ports": {
+    "original": "ports",
+    "translation": "porte",
+    "timestamp": "2026-02-15T23:07:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:For a range of ports: PORT+COUNT, eg 55500+3 for 55500-55502": {
+    "original": "For a range of ports: PORT+COUNT, eg 55500+3 for 55500-55502",
+    "translation": "Per un intervallo di porte: PORT+COUNT, ad esempio 55500+3 per 55500-55502",
+    "timestamp": "2026-02-15T23:07:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To redirect ports: EXTERNAL(+COUNT):INTERNAL, eg 443:8443 or 80+2:8008": {
+    "original": "To redirect ports: EXTERNAL(+COUNT):INTERNAL, eg 443:8443 or 80+2:8008",
+    "translation": "Per reindirizzare le porte: EXTERNAL(+COUNT):INTERNAL, ad esempio 443:8443 o 80+2:8008",
+    "timestamp": "2026-02-15T23:07:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:You could check the settings by AVM webif with Diagnose > Sicherheit": {
+    "original": "You could check the settings by AVM webif with Diagnose > Sicherheit",
+    "translation": "È possibile verificare le impostazioni tramite AVM webif con Diagnose > Sicherheit",
+    "timestamp": "2026-02-15T23:07:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:On syntax errors, the whole ar7.cfg will be reset by AVM": {
+    "original": "On syntax errors, the whole ar7.cfg will be reset by AVM",
+    "translation": "In caso di errori di sintassi, l'intero ar7.cfg verrà resettato da AVM.",
+    "timestamp": "2026-02-15T23:07:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

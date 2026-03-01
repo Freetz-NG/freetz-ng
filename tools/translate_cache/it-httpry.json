@@ -1,0 +1,44 @@
+{
+  "deepl:Configuration and filter": {
+    "original": "Configuration and filter",
+    "translation": "Configurazione e filtro",
+    "timestamp": "2026-02-15T23:31:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Parameters (except -d -u -o -i): ": {
+    "original": "Parameters (except -d -u -o -i): ",
+    "translation": "Parametri (tranne -d -u -o -i): ",
+    "timestamp": "2026-02-15T23:31:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log file: ": {
+    "original": "Log file: ",
+    "translation": "File di log: ",
+    "timestamp": "2026-02-15T23:31:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Interface: ": {
+    "original": "Interface: ",
+    "translation": "Interfaccia: ",
+    "timestamp": "2026-02-15T23:31:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Capture filter": {
+    "original": "Capture filter",
+    "translation": "Filtro di cattura",
+    "timestamp": "2026-02-15T23:31:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The logfile is empty.": {
+    "original": "The logfile is empty.",
+    "translation": "Il file di log è vuoto.",
+    "timestamp": "2026-02-15T23:31:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

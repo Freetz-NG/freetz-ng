@@ -1,0 +1,429 @@
+{
+  "deepl:Printer": {
+    "original": "Printer",
+    "translation": "Stampante",
+    "timestamp": "2026-02-15T23:30:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:hp-utils interface": {
+    "original": "hp-utils interface",
+    "translation": "interfaccia hp-utils",
+    "timestamp": "2026-02-15T23:30:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port of hp-utils webserver": {
+    "original": "Port of hp-utils webserver",
+    "translation": "Porta del webserver hp-utils",
+    "timestamp": "2026-02-15T23:30:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:no clean level": {
+    "original": "no clean level",
+    "translation": "nessun livello di pulizia",
+    "timestamp": "2026-02-15T23:30:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Cleaning": {
+    "original": "Cleaning",
+    "translation": "Pulizia",
+    "timestamp": "2026-02-15T23:30:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:idle": {
+    "original": "idle",
+    "translation": "inattivo",
+    "timestamp": "2026-02-15T23:30:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:busy": {
+    "original": "busy",
+    "translation": "occupato",
+    "timestamp": "2026-02-15T23:30:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:printing": {
+    "original": "printing",
+    "translation": "stampa",
+    "timestamp": "2026-02-15T23:30:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:turning off": {
+    "original": "turning off",
+    "translation": "spegnere",
+    "timestamp": "2026-02-15T23:30:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:report printing": {
+    "original": "report printing",
+    "translation": "stampa di report",
+    "timestamp": "2026-02-15T23:30:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:canceling": {
+    "original": "canceling",
+    "translation": "cancellazione",
+    "timestamp": "2026-02-15T23:30:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:I/O stall": {
+    "original": "I/O stall",
+    "translation": "I/O stall",
+    "timestamp": "2026-02-15T23:30:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:dry wait time": {
+    "original": "dry wait time",
+    "translation": "tempo di attesa a secco",
+    "timestamp": "2026-02-15T23:30:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:pen change": {
+    "original": "pen change",
+    "translation": "cambio penna",
+    "timestamp": "2026-02-15T23:30:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:out of paper": {
+    "original": "out of paper",
+    "translation": "fuori dalla carta",
+    "timestamp": "2026-02-15T23:30:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:banner eject": {
+    "original": "banner eject",
+    "translation": "banner eject",
+    "timestamp": "2026-02-15T23:30:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:media jam": {
+    "original": "media jam",
+    "translation": "media jam",
+    "timestamp": "2026-02-15T23:30:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:pen failure": {
+    "original": "pen failure",
+    "translation": "fallimento della penna",
+    "timestamp": "2026-02-15T23:30:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:hard error": {
+    "original": "hard error",
+    "translation": "errore di difficoltà",
+    "timestamp": "2026-02-15T23:30:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:power down": {
+    "original": "power down",
+    "translation": "spegnere",
+    "timestamp": "2026-02-15T23:30:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:out of ink/toner": {
+    "original": "out of ink/toner",
+    "translation": "esaurito l'inchiostro/toner",
+    "timestamp": "2026-02-15T23:30:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:tray 2 missing": {
+    "original": "tray 2 missing",
+    "translation": "vassoio 2 mancante",
+    "timestamp": "2026-02-15T23:30:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:duplexer missing": {
+    "original": "duplexer missing",
+    "translation": "duplexer mancante",
+    "timestamp": "2026-02-15T23:30:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:rear tray missing": {
+    "original": "rear tray missing",
+    "translation": "manca il vassoio posteriore",
+    "timestamp": "2026-02-15T23:30:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:battery very low": {
+    "original": "battery very low",
+    "translation": "batteria molto scarica",
+    "timestamp": "2026-02-15T23:30:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:output tray closed": {
+    "original": "output tray closed",
+    "translation": "vassoio di uscita chiuso",
+    "timestamp": "2026-02-15T23:30:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:manual feed blocked": {
+    "original": "manual feed blocked",
+    "translation": "alimentazione manuale bloccata",
+    "timestamp": "2026-02-15T23:30:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:rear feed blocked": {
+    "original": "rear feed blocked",
+    "translation": "alimentazione posteriore bloccata",
+    "timestamp": "2026-02-15T23:30:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:tray 2 out of paper": {
+    "original": "tray 2 out of paper",
+    "translation": "vassoio 2 esaurito",
+    "timestamp": "2026-02-15T23:30:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:non hp ink": {
+    "original": "non hp ink",
+    "translation": "inchiostro non hp",
+    "timestamp": "2026-02-15T23:30:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:pen cleaning": {
+    "original": "pen cleaning",
+    "translation": "pulizia della penna",
+    "timestamp": "2026-02-15T23:30:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:pen checking": {
+    "original": "pen checking",
+    "translation": "controllo della penna",
+    "timestamp": "2026-02-15T23:30:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Black": {
+    "original": "Black",
+    "translation": "Nero",
+    "timestamp": "2026-02-15T23:31:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Tri-color": {
+    "original": "Tri-color",
+    "translation": "Tri-color",
+    "timestamp": "2026-02-15T23:31:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Yellow": {
+    "original": "Yellow",
+    "translation": "Giallo",
+    "timestamp": "2026-02-15T23:31:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Photo cyan": {
+    "original": "Photo cyan",
+    "translation": "Foto ciano",
+    "timestamp": "2026-02-15T23:31:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Photo magenta": {
+    "original": "Photo magenta",
+    "translation": "Foto magenta",
+    "timestamp": "2026-02-15T23:31:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Photo yellow": {
+    "original": "Photo yellow",
+    "translation": "Foto giallo",
+    "timestamp": "2026-02-15T23:31:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Photo gray": {
+    "original": "Photo gray",
+    "translation": "Foto grigio",
+    "timestamp": "2026-02-15T23:31:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Photo blue": {
+    "original": "Photo blue",
+    "translation": "Foto blu",
+    "timestamp": "2026-02-15T23:31:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Print head": {
+    "original": "Print head",
+    "translation": "Testina di stampa",
+    "timestamp": "2026-02-15T23:31:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Photo magenta and photo cyan": {
+    "original": "Photo magenta and photo cyan",
+    "translation": "Foto magenta e foto ciano",
+    "timestamp": "2026-02-15T23:31:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Black and yellow": {
+    "original": "Black and yellow",
+    "translation": "Nero e giallo",
+    "timestamp": "2026-02-15T23:31:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Cyan and magenta": {
+    "original": "Cyan and magenta",
+    "translation": "Ciano e magenta",
+    "timestamp": "2026-02-15T23:31:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Light gray and photo black": {
+    "original": "Light gray and photo black",
+    "translation": "Grigio chiaro e nero fotografico",
+    "timestamp": "2026-02-15T23:31:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Light gray": {
+    "original": "Light gray",
+    "translation": "Grigio chiaro",
+    "timestamp": "2026-02-15T23:31:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Medium gray": {
+    "original": "Medium gray",
+    "translation": "Grigio medio",
+    "timestamp": "2026-02-15T23:31:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Good/OK": {
+    "original": "Good/OK",
+    "translation": "Bene/Ok",
+    "timestamp": "2026-02-15T23:31:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:misinstalled": {
+    "original": "misinstalled",
+    "translation": "disinstallato",
+    "timestamp": "2026-02-15T23:31:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Print Cartridge Cleaning": {
+    "original": "Print Cartridge Cleaning",
+    "translation": "Pulizia della cartuccia di stampa",
+    "timestamp": "2026-02-15T23:31:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Print Cartridge Alignment": {
+    "original": "Print Cartridge Alignment",
+    "translation": "Allineamento della cartuccia di stampa",
+    "timestamp": "2026-02-15T23:31:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Printer not configured.": {
+    "original": "Printer not configured.",
+    "translation": "Stampante non configurata.",
+    "timestamp": "2026-02-15T23:31:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Printer not found.": {
+    "original": "Printer not found.",
+    "translation": "Stampante non trovata.",
+    "timestamp": "2026-02-15T23:31:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Unsupported on this printer.": {
+    "original": "Unsupported on this printer.",
+    "translation": "Non supportato da questa stampante.",
+    "timestamp": "2026-02-15T23:31:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Not (yet) implemented for this printer.": {
+    "original": "Not (yet) implemented for this printer.",
+    "translation": "Non (ancora) implementato per questa stampante.",
+    "timestamp": "2026-02-15T23:31:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:I/O-Error.": {
+    "original": "I/O-Error.",
+    "translation": "I/O-Errore.",
+    "timestamp": "2026-02-15T23:31:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Supplies": {
+    "original": "Supplies",
+    "translation": "Forniture",
+    "timestamp": "2026-02-15T23:31:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl: cartridge": {
+    "original": " cartridge",
+    "translation": " cartuccia",
+    "timestamp": "2026-02-15T23:31:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:clean level": {
+    "original": "clean level",
+    "translation": "livello pulito",
+    "timestamp": "2026-02-15T23:31:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Clean": {
+    "original": "Clean",
+    "translation": "Pulire",
+    "timestamp": "2026-02-15T23:31:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:not (yet) implemented": {
+    "original": "not (yet) implemented",
+    "translation": "non (ancora) implementato",
+    "timestamp": "2026-02-15T23:31:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

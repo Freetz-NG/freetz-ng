@@ -1,0 +1,51 @@
+{
+  "deepl:List of allowed clients (separated by ',')": {
+    "original": "List of allowed clients (separated by ',')",
+    "translation": "Elenco dei client consentiti (separati da ',')",
+    "timestamp": "2026-02-15T23:40:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disable indexing of the local cache": {
+    "original": "Disable indexing of the local cache",
+    "translation": "Disabilitare l'indicizzazione della cache locale",
+    "timestamp": "2026-02-15T23:40:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disable the list of known servers": {
+    "original": "Disable the list of known servers",
+    "translation": "Disattivare l'elenco dei server conosciuti",
+    "timestamp": "2026-02-15T23:40:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional options (one per line)": {
+    "original": "Additional options (one per line)",
+    "translation": "Opzioni aggiuntive (una per riga)",
+    "timestamp": "2026-02-15T23:40:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Polipo internal web interface": {
+    "original": "Polipo internal web interface",
+    "translation": "Interfaccia web interna di Polipo",
+    "timestamp": "2026-02-15T23:40:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disable reconfiguring Polipo at runtime": {
+    "original": "Disable reconfiguring Polipo at runtime",
+    "translation": "Disabilitare la riconfigurazione di Polipo in runtime",
+    "timestamp": "2026-02-15T23:41:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disable the local configuration pages": {
+    "original": "Disable the local configuration pages",
+    "translation": "Disabilitare le pagine di configurazione locale",
+    "timestamp": "2026-02-15T23:41:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

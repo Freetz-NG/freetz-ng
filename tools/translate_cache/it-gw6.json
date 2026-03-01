@@ -1,0 +1,44 @@
+{
+  "deepl:gw6": {
+    "original": "gw6",
+    "translation": "gw6",
+    "timestamp": "2026-02-15T23:30:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Leave this empty for anonymous login": {
+    "original": "Leave this empty for anonymous login",
+    "translation": "Lasciare vuoto per il login anonimo",
+    "timestamp": "2026-02-15T23:30:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Broker": {
+    "original": "Broker",
+    "translation": "Broker",
+    "timestamp": "2026-02-15T23:30:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Leave this empty for default": {
+    "original": "Leave this empty for default",
+    "translation": "Lasciare vuoto per impostazione predefinita",
+    "timestamp": "2026-02-15T23:30:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Logging": {
+    "original": "Logging",
+    "translation": "Registrazione",
+    "timestamp": "2026-02-15T23:30:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log to /tmp/gw6c.log.": {
+    "original": "Log to /tmp/gw6c.log.",
+    "translation": "Log in /tmp/gw6c.log.",
+    "timestamp": "2026-02-15T23:30:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "deepl:Alias of this server": {
+    "original": "Alias of this server",
+    "translation": "Alias di questo server",
+    "timestamp": "2026-02-15T23:55:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Alias of server 1": {
+    "original": "Alias of server 1",
+    "translation": "Alias del server 1",
+    "timestamp": "2026-02-15T23:55:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Alias of server 2": {
+    "original": "Alias of server 2",
+    "translation": "Alias del server 2",
+    "timestamp": "2026-02-15T23:55:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Alias of server 3": {
+    "original": "Alias of server 3",
+    "translation": "Alias del server 3",
+    "timestamp": "2026-02-15T23:55:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Bind to": {
+    "original": "Bind to",
+    "translation": "Legare a",
+    "timestamp": "2026-02-15T23:55:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Debug level": {
+    "original": "Debug level",
+    "translation": "Livello di debug",
+    "timestamp": "2026-02-15T23:55:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log to file": {
+    "original": "Log to file",
+    "translation": "Log in file",
+    "timestamp": "2026-02-15T23:55:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

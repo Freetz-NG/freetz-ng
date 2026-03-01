@@ -1,0 +1,30 @@
+{
+  "deepl:Interfaces for monitoring": {
+    "original": "Interfaces for monitoring",
+    "translation": "Interfacce per il monitoraggio",
+    "timestamp": "2026-02-15T23:59:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Available interfaces": {
+    "original": "Available interfaces",
+    "translation": "Interfacce disponibili",
+    "timestamp": "2026-02-15T23:59:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl: - leave empty for all": {
+    "original": " - leave empty for all",
+    "translation": " - lasciare vuoto per tutti",
+    "timestamp": "2026-02-15T23:59:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Webserver": {
+    "original": "Webserver",
+    "translation": "Webserver",
+    "timestamp": "2026-02-15T23:59:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

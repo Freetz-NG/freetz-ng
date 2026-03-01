@@ -4,7 +4,8 @@
 echo "<h1>$(lang de:"Aktuelle Firmwareversion" en:"Latest firmware version")</h1>"
 
 LAST="$(date -d @$(stat -c %Y /tmp/.juis_check) +'%d.%m.%Y %H:%M:%S' 2>/dev/null)"
-echo "<ul><li>$(lang de:"Letzte &Uuml;berpr&uuml;fung" en:"Last check"): ${LAST:-niemals}</li></ul>"
+LAST_FALLBACK="$(lang de:"niemals" en:"never")"
+echo "<ul><li>$(lang de:"Letzte &Uuml;berpr&uuml;fung" en:"Last check"): ${LAST:-$LAST_FALLBACK}</li></ul>"
 
 vfromk() {
 	sed -rn "s/.*<ns3:$1>(.*)<\/ns3:$1>.*/\1/p" /tmp/.juis_check 2>/dev/null

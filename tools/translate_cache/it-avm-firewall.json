@@ -1,0 +1,275 @@
+{
+  "deepl:This GUI is for router mode only and is based on the ar7.cfg file. Changes will be active after next reboot \\(or after checking the box at the bottom of the page\\).": {
+    "original": "This GUI is for router mode only and is based on the ar7.cfg file. Changes will be active after next reboot \\(or after checking the box at the bottom of the page\\).",
+    "translation": "Questa GUI è solo per la modalità router ed è basata sul file ar7.cfg. Le modifiche saranno attive dopo il prossimo riavvio (o dopo aver selezionato la casella in fondo alla pagina).",
+    "timestamp": "2026-02-15T23:06:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Mode": {
+    "original": "Mode",
+    "translation": "Modalità",
+    "timestamp": "2026-02-15T23:06:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Firewall add new rule": {
+    "original": "Firewall add new rule",
+    "translation": "Firewall aggiungi nuova regola",
+    "timestamp": "2026-02-15T23:06:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Source Address": {
+    "original": "Source Address",
+    "translation": "Indirizzo sorgente",
+    "timestamp": "2026-02-15T23:06:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Destination Address": {
+    "original": "Destination Address",
+    "translation": "Indirizzo di destinazione",
+    "timestamp": "2026-02-15T23:06:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Protocol": {
+    "original": "Protocol",
+    "translation": "Protocollo",
+    "timestamp": "2026-02-15T23:06:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:c": {
+    "original": "c",
+    "translation": "c",
+    "timestamp": "2026-02-15T23:06:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:permit": {
+    "original": "permit",
+    "translation": "permesso",
+    "timestamp": "2026-02-15T23:06:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:deny": {
+    "original": "deny",
+    "translation": "negare",
+    "timestamp": "2026-02-15T23:06:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:reject": {
+    "original": "reject",
+    "translation": "rifiutare",
+    "timestamp": "2026-02-15T23:06:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Rule": {
+    "original": "Rule",
+    "translation": "Regola",
+    "timestamp": "2026-02-15T23:06:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Insert as #": {
+    "original": "Insert as #",
+    "translation": "Inserire come #",
+    "timestamp": "2026-02-15T23:06:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Add rule": {
+    "original": "Add rule",
+    "translation": "Aggiungi regola",
+    "timestamp": "2026-02-15T23:06:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Firewall rules": {
+    "original": "Firewall rules",
+    "translation": "Regole del firewall",
+    "timestamp": "2026-02-15T23:06:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Incoming": {
+    "original": "Incoming",
+    "translation": "In arrivo",
+    "timestamp": "2026-02-15T23:06:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Outgoing": {
+    "original": "Outgoing",
+    "translation": "In uscita",
+    "timestamp": "2026-02-15T23:06:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable logging": {
+    "original": "Enable logging",
+    "translation": "Abilita la registrazione",
+    "timestamp": "2026-02-15T23:06:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:For debugging show rules window": {
+    "original": "For debugging show rules window",
+    "translation": "Per il debug della finestra Mostra regole",
+    "timestamp": "2026-02-15T23:06:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log all dropped packets": {
+    "original": "Log all dropped packets",
+    "translation": "Registra tutti i pacchetti caduti",
+    "timestamp": "2026-02-15T23:06:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:AVM default policy is \\": {
+    "original": "AVM default policy is \\",
+    "translation": "Il criterio predefinito di AVM è \\",
+    "timestamp": "2026-02-15T23:06:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:<b>Default</b> policy": {
+    "original": "<b>Default</b> policy",
+    "translation": "<b>Politica predefinita</b>",
+    "timestamp": "2026-02-15T23:06:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Source": {
+    "original": "Source",
+    "translation": "Fonte",
+    "timestamp": "2026-02-15T23:06:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Destination": {
+    "original": "Destination",
+    "translation": "Destinazione",
+    "timestamp": "2026-02-15T23:06:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:&nbsp;&nbsp;&nbsp;Configure&nbsp;&nbsp;&nbsp;": {
+    "original": "&nbsp;&nbsp;&nbsp;Configure&nbsp;&nbsp;&nbsp;",
+    "translation": "&nbsp;&nbsp;&nbsp;&nbsp;Configura&nbsp;&nbsp;&nbsp;&nbsp;",
+    "timestamp": "2026-02-15T23:06:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port forwarding add new rule": {
+    "original": "Port forwarding add new rule",
+    "translation": "Inoltro porte aggiungere nuova regola",
+    "timestamp": "2026-02-15T23:06:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port forwarding rules": {
+    "original": "Port forwarding rules",
+    "translation": "Regole di inoltro delle porte",
+    "timestamp": "2026-02-15T23:07:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This firmware prevents forwarding to FTP (port 21) here. Use AVM webif instead.": {
+    "original": "This firmware prevents forwarding to FTP (port 21) here. Use AVM webif instead.",
+    "translation": "Questo firmware impedisce l'inoltro a FTP (porta 21). Utilizzare invece AVM webif.",
+    "timestamp": "2026-02-15T23:07:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:For debugging show forwarding rules": {
+    "original": "For debugging show forwarding rules",
+    "translation": "Per il debug delle regole di inoltro",
+    "timestamp": "2026-02-15T23:06:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Aktive": {
+    "original": "Aktive",
+    "translation": "Aktive",
+    "timestamp": "2026-02-15T23:07:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Source Port": {
+    "original": "Source Port",
+    "translation": "Porta sorgente",
+    "timestamp": "2026-02-15T23:07:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Address": {
+    "original": "Address",
+    "translation": "Indirizzo",
+    "timestamp": "2026-02-15T23:07:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Dest. Port": {
+    "original": "Dest. Port",
+    "translation": "Dest.",
+    "timestamp": "2026-02-15T23:07:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Description": {
+    "original": "Description",
+    "translation": "Descrizione",
+    "timestamp": "2026-02-15T23:07:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configure": {
+    "original": "Configure",
+    "translation": "Configurare",
+    "timestamp": "2026-02-15T23:07:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\": {
+    "original": "\\",
+    "translation": "\\",
+    "timestamp": "2026-02-15T23:07:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Saving will <b>not</b> activate rules or new dsld switches by default! <b>To do so, some daemoms have to be restarted:</b>": {
+    "original": "Saving will <b>not</b> activate rules or new dsld switches by default! <b>To do so, some daemoms have to be restarted:</b>",
+    "translation": "Il salvataggio non attiverà le regole o i nuovi switch dsld per impostazione predefinita! <b>Per farlo, alcuni demoni devono essere riavviati:</b>",
+    "timestamp": "2026-02-15T23:07:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This might crash your box or even restore factory defaults!": {
+    "original": "This might crash your box or even restore factory defaults!",
+    "translation": "Questo potrebbe mandare in crash il computer o addirittura ripristinare le impostazioni di fabbrica!",
+    "timestamp": "2026-02-15T23:07:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate rules directly after saving": {
+    "original": "Activate rules directly after saving",
+    "translation": "Attivare le regole direttamente dopo il salvataggio",
+    "timestamp": "2026-02-15T23:07:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Safe way to activate the settings is only save them here and then restart the box": {
+    "original": "Safe way to activate the settings is only save them here and then restart the box",
+    "translation": "Il modo più sicuro per attivare le impostazioni è quello di salvarle qui e poi riavviare il computer.",
+    "timestamp": "2026-02-15T23:07:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

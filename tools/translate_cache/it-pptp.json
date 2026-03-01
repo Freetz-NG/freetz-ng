@@ -1,0 +1,128 @@
+{
+  "deepl:Attention": {
+    "original": "Attention",
+    "translation": "Attenzione",
+    "timestamp": "2026-02-15T23:41:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Without 'replace kernel' you can not use mppe and mppc.": {
+    "original": "Without 'replace kernel' you can not use mppe and mppc.",
+    "translation": "Senza 'replace kernel' non è possibile utilizzare mppe e mppc.",
+    "timestamp": "2026-02-15T23:41:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration files": {
+    "original": "Configuration files",
+    "translation": "File di configurazione",
+    "timestamp": "2026-02-15T23:41:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:edit chap-secrets": {
+    "original": "edit chap-secrets",
+    "translation": "modifica chap-secrets",
+    "timestamp": "2026-02-15T23:41:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:edit options.pptp": {
+    "original": "edit options.pptp",
+    "translation": "modifica opzioni.pptp",
+    "timestamp": "2026-02-15T23:41:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PPTP configuration": {
+    "original": "PPTP configuration",
+    "translation": "Configurazione PPTP",
+    "timestamp": "2026-02-15T23:41:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hostname/IP address": {
+    "original": "Hostname/IP address",
+    "translation": "Nome host/indirizzo IP",
+    "timestamp": "2026-02-15T23:41:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Servername": {
+    "original": "Servername",
+    "translation": "Servername",
+    "timestamp": "2026-02-15T23:41:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional configuration": {
+    "original": "Additional configuration",
+    "translation": "Configurazione aggiuntiva",
+    "timestamp": "2026-02-15T23:41:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Commandline options": {
+    "original": "Commandline options",
+    "translation": "Opzioni della riga di comando",
+    "timestamp": "2026-02-15T23:41:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Reconnect on disconnect": {
+    "original": "Reconnect on disconnect",
+    "translation": "Ricollegarsi alla disconnessione",
+    "timestamp": "2026-02-15T23:42:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Preconnecting command": {
+    "original": "Preconnecting command",
+    "translation": "Comando di preconnessione",
+    "timestamp": "2026-02-15T23:42:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IP routing": {
+    "original": "IP routing",
+    "translation": "instradamento IP",
+    "timestamp": "2026-02-15T23:42:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Here you can configure the routing to the server subnet.": {
+    "original": "Here you can configure the routing to the server subnet.",
+    "translation": "Qui è possibile configurare l'instradamento verso la sottorete del server.",
+    "timestamp": "2026-02-15T23:42:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Subnet routing (one per row)": {
+    "original": "Subnet routing (one per row)",
+    "translation": "Instradamento della sottorete (uno per riga)",
+    "timestamp": "2026-02-15T23:42:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Syntax: &lt;Subnet-IP&gt; &lt;Subnetmask&gt; [&lt;Comment&gt;]": {
+    "original": "Syntax: &lt;Subnet-IP&gt; &lt;Subnetmask&gt; [&lt;Comment&gt;]",
+    "translation": "Sintassi: &lt;Subnet-IP&gt; &lt;Subnetmask&gt; [&lt;Commento&gt;]",
+    "timestamp": "2026-02-15T23:42:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:example": {
+    "original": "example",
+    "translation": "esempio",
+    "timestamp": "2026-02-15T23:42:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:server_subnet": {
+    "original": "server_subnet",
+    "translation": "server_subnet",
+    "timestamp": "2026-02-15T23:42:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

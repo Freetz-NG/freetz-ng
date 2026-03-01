@@ -1,0 +1,23 @@
+{
+  "deepl:Network settings": {
+    "original": "Network settings",
+    "translation": "Impostazioni di rete",
+    "timestamp": "2026-02-15T23:58:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Virtual IP-Adress": {
+    "original": "Virtual IP-Adress",
+    "translation": "Indirizzo IP virtuale",
+    "timestamp": "2026-02-15T23:58:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Subnet Mask": {
+    "original": "Subnet Mask",
+    "translation": "Maschera di sottorete",
+    "timestamp": "2026-02-15T23:58:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

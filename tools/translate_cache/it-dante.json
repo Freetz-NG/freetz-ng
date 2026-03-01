@@ -1,0 +1,23 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:07:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit sockd.conf": {
+    "original": "Edit sockd.conf",
+    "translation": "Modificare sockd.conf",
+    "timestamp": "2026-02-15T23:07:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

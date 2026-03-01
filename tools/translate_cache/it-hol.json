@@ -1,0 +1,79 @@
+{
+  "deepl:Remote Host": {
+    "original": "Remote Host",
+    "translation": "Host remoto",
+    "timestamp": "2026-02-15T23:30:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Actions": {
+    "original": "Actions",
+    "translation": "Azioni",
+    "timestamp": "2026-02-15T23:30:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log Off": {
+    "original": "Log Off",
+    "translation": "Disconnettiti",
+    "timestamp": "2026-02-15T23:30:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shutdown": {
+    "original": "Shutdown",
+    "translation": "Spegnimento",
+    "timestamp": "2026-02-15T23:30:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PowerOff": {
+    "original": "PowerOff",
+    "translation": "Spegnimento",
+    "timestamp": "2026-02-15T23:30:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:StandBy": {
+    "original": "StandBy",
+    "translation": "StandBy",
+    "timestamp": "2026-02-15T23:30:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hibernate": {
+    "original": "Hibernate",
+    "translation": "Ibernazione",
+    "timestamp": "2026-02-15T23:30:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Lock": {
+    "original": "Lock",
+    "translation": "Blocco",
+    "timestamp": "2026-02-15T23:30:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Monitor Off": {
+    "original": "Monitor Off",
+    "translation": "Monitor spento",
+    "timestamp": "2026-02-15T23:30:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Monitor On": {
+    "original": "Monitor On",
+    "translation": "Monitor On",
+    "timestamp": "2026-02-15T23:30:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Message": {
+    "original": "Message",
+    "translation": "Messaggio",
+    "timestamp": "2026-02-15T23:30:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

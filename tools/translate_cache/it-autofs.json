@@ -1,0 +1,51 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:06:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:06:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Optional commandline parameters:": {
+    "original": "Optional commandline parameters:",
+    "translation": "Parametri opzionali della riga di comando:",
+    "timestamp": "2026-02-15T23:06:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start/stop <a href=/cgi-bin/conf/mod#external>external</a> with autofs": {
+    "original": "Start/stop <a href=/cgi-bin/conf/mod#external>external</a> with autofs",
+    "translation": "Avviare/arrestare <a href=/cgi-bin/conf/mod#external>external</a> con autofs",
+    "timestamp": "2026-02-15T23:06:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Filesystems": {
+    "original": "Filesystems",
+    "translation": "Filesystem",
+    "timestamp": "2026-02-15T23:06:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:configure davfs2": {
+    "original": "configure davfs2",
+    "translation": "configurare davfs2",
+    "timestamp": "2026-02-15T23:06:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Directory for davfs2's cache": {
+    "original": "Directory for davfs2's cache",
+    "translation": "Directory per la cache di davfs2",
+    "timestamp": "2026-02-15T23:06:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

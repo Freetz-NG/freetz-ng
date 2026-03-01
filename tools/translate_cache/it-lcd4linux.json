@@ -1,0 +1,65 @@
+{
+  "deepl:Show status page": {
+    "original": "Show status page",
+    "translation": "Mostra la pagina di stato",
+    "timestamp": "2026-02-15T23:32:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show web site": {
+    "original": "Show web site",
+    "translation": "Mostra sito web",
+    "timestamp": "2026-02-15T23:32:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Write output file": {
+    "original": "Write output file",
+    "translation": "Scrivere il file di output",
+    "timestamp": "2026-02-15T23:32:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Out file (png):": {
+    "original": "Out file (png):",
+    "translation": "File in uscita (png):",
+    "timestamp": "2026-02-15T23:32:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Optional parameters (except -o):": {
+    "original": "Optional parameters (except -o):",
+    "translation": "Parametri opzionali (tranne -o):",
+    "timestamp": "2026-02-15T23:32:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Output": {
+    "original": "Output",
+    "translation": "Uscita",
+    "timestamp": "2026-02-15T23:32:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate status page": {
+    "original": "Activate status page",
+    "translation": "Attivare la pagina di stato",
+    "timestamp": "2026-02-15T23:32:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate webserver on port": {
+    "original": "Activate webserver on port",
+    "translation": "Attivare il server web sulla porta",
+    "timestamp": "2026-02-15T23:32:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate inetd support": {
+    "original": "Activate inetd support",
+    "translation": "Attivare il supporto inetd",
+    "timestamp": "2026-02-15T23:32:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

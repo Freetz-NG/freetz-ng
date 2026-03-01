@@ -70,4 +70,5 @@
 /xargs
 /xdelta3
 /xz
+/translate_cache/*.backup-*
 

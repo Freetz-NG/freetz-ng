@@ -432,10 +432,454 @@ modunpack_autodetect_fs() {
 }
 
 
+# modlang_complete_base_translations <file>
+#   Pre-processes <file> to complete missing de/en base translations using AI.
+#   For each $(lang ...) block that has ONLY de: or ONLY en:, generates the
+#   missing translation automatically. This ensures all messages have both base
+#   languages for better translation quality.
+#
+#   Examples:
+#     $(lang de:"Fehler") → $(lang de:"Fehler" en:"Error")
+#     $(lang en:"Hello") → $(lang de:"Hallo" en:"Hello")
+#
+#   Requires: tools/freetz_translate to be configured and working.
+#
+modlang_complete_base_translations() {
+	local file="$1"
+	local translate_tool="${FREETZ_BASE_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}/tools/freetz_translate"
+
+	# Check translation tool exists
+	if [ ! -x "$translate_tool" ]; then
+		return 0  # Skip silently if tool not available
+	fi
+
+	# Check that a translation service is configured
+	local service_configured=0
+	for svc in FREETZ_TRANSLATE_DEEPL FREETZ_TRANSLATE_LIBRETRANSLATE FREETZ_TRANSLATE_APERTIUM \
+	           FREETZ_TRANSLATE_MYMEMORY FREETZ_TRANSLATE_LINGVA FREETZ_TRANSLATE_OPENAI; do
+		if [ "$(eval echo \$$svc)" = "y" ]; then
+			service_configured=1
+			break
+		fi
+	done
+	if [ "$service_configured" = "0" ]; then
+		return 0  # Skip silently if no service configured
+	fi
+
+	# Use Python to extract, translate, and inject missing base language translations
+	python3 - "$file" "$translate_tool" << 'PYEOF'
+import os
+import re
+import subprocess
+import sys
+
+filepath = sys.argv[1]
+translate_tool = sys.argv[2]
+
+
+def extract_lang_blocks(text):
+	"""Extract $(lang ... ) blocks robustly, including multiline with '\\' continuations."""
+	blocks = []
+	marker = '$(lang'
+	i = 0
+	n = len(text)
+
+	while i < n:
+		start = text.find(marker, i)
+		if start == -1:
+			break
+
+		j = start + len(marker)
+		in_quote = False
+		escaped = False
+
+		while j < n:
+			ch = text[j]
+			if in_quote:
+				if escaped:
+					escaped = False
+				elif ch == '\\':
+					escaped = True
+				elif ch == '"':
+					in_quote = False
+			else:
+				if ch == '"':
+					in_quote = True
+				elif ch == ')':
+					blocks.append((start, j + 1, text[start:j + 1]))
+					i = j + 1
+					break
+			j += 1
+		else:
+			break
+
+	return blocks
+
+
+with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
+	content = f.read()
+
+translations_needed = {}  # (source_text, src_lang, tgt_lang) -> None
+blocks_to_modify = []
+
+for start, end, block in extract_lang_blocks(content):
+	inner = block[len('$(lang'):-1]
+
+	has_de = re.search(r'\bde:"', inner)
+	has_en = re.search(r'\ben:"', inner)
+
+	if has_de and has_en:
+		continue
+	if not has_de and not has_en:
+		continue
+
+	if has_de and not has_en:
+		de_match = re.search(r'\bde:"((?:[^"\\]|\\.)*)"', inner)
+		if de_match:
+			source_text = de_match.group(1)
+			source_clean = source_text.replace('\\"', '"').replace('\\\\', '\\')
+			if source_clean.strip():
+				key = (source_clean, 'de', 'en')
+				translations_needed[key] = None
+				blocks_to_modify.append((start, end, block, source_clean, 'de', 'en', source_text))
+
+	elif has_en and not has_de:
+		en_match = re.search(r'\ben:"((?:[^"\\]|\\.)*)"', inner)
+		if en_match:
+			source_text = en_match.group(1)
+			source_clean = source_text.replace('\\"', '"').replace('\\\\', '\\')
+			if source_clean.strip():
+				key = (source_clean, 'en', 'de')
+				translations_needed[key] = None
+				blocks_to_modify.append((start, end, block, source_clean, 'en', 'de', source_text))
+
+if not blocks_to_modify:
+	sys.exit(0)
+
+translated = {}
+env = os.environ.copy()
+de_count = 0
+en_count = 0
+
+for text, src_lang, tgt_lang in translations_needed.keys():
+	try:
+		result = subprocess.run(
+			[translate_tool, src_lang, tgt_lang, text],
+			capture_output=True,
+			text=True,
+			timeout=60,
+			env=env,
+		)
+		if result.returncode == 0 and result.stdout.strip():
+			t = result.stdout.strip().replace('\\', '\\\\').replace('"', '\\"')
+			translated[(text, src_lang, tgt_lang)] = t
+			if tgt_lang == 'de':
+				de_count += 1
+			else:
+				en_count += 1
+	except KeyboardInterrupt:
+		sys.stderr.write("\nInterrupted by user (Ctrl+C)\n")
+		sys.exit(130)
+	except Exception as e:
+		sys.stderr.write(f"freetz_translate: WARNING: failed to complete base translation: {e}\\n")
+
+if not translated:
+	sys.exit(0)
+
+new_content = content
+for start, end, block, source_clean, src_lang, tgt_lang, source_raw in reversed(blocks_to_modify):
+	key = (source_clean, src_lang, tgt_lang)
+	if key not in translated:
+		continue
+	trans_text = translated[key]
+	new_block = block[:-1] + ' ' + tgt_lang + ':"' + trans_text + '")'
+	new_content = new_content[:start] + new_block + new_content[end:]
+
+with open(filepath, 'w', encoding='utf-8') as f:
+	f.write(new_content)
+
+if de_count > 0 or en_count > 0:
+	parts = []
+	if en_count > 0:
+		parts.append(f"{en_count} en")
+	if de_count > 0:
+		parts.append(f"{de_count} de")
+	sys.stderr.write(
+		f"    freetz_translate: completed {' + '.join(parts)} base translations in {os.path.basename(filepath)}\\n"
+	)
+PYEOF
+
+	return 0
+}
+
+# modlang_inject_translations <target_lang> <file>
+#   Pre-processes <file> to inject AI-translated strings for <target_lang>.
+#   For each $(lang ...) block that does NOT already contain <target_lang>:"...",
+#   extracts the English text (fallback: German), translates it via the
+#   configured cloud service, and injects <target_lang>:"<translated>" into
+#   the block. This runs BEFORE modlangsubst so the normal sed pipeline works.
+#
+#   Requires: tools/freetz_translate to be configured and working.
+#
+modlang_inject_translations() {
+	local target_lang="$1"
+	local file="$2"
+	local translate_tool="${FREETZ_BASE_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}/tools/freetz_translate"
+
+	# Only inject if target language is not natively available (de/en)
+	case "$target_lang" in
+		de|en|xx) return 0 ;;
+	esac
+
+	# Clear translation cache if requested (once per build)
+	local cache_clear_flag="/tmp/.freetz_translate_cache_cleared"
+	if [ "$FREETZ_TRANSLATE_CACHE_CLEAR" = "y" ] && [ ! -f "$cache_clear_flag" ]; then
+		local cache_dir="${FREETZ_BASE_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}/tools/translate_cache"
+		if [ -d "$cache_dir" ]; then
+			echo "freetz_translate: clearing translation cache: $cache_dir"
+			rm -rf "$cache_dir"
+			mkdir -p "$cache_dir"
+		fi
+		touch "$cache_clear_flag"
+		echo "freetz_translate: cache cleared. Remember to disable the 'Clear cache' option in menuconfig."
+	fi
+
+	# Check translation tool exists
+	if [ ! -x "$translate_tool" ]; then
+		warn "modlang_inject_translations: translation tool not found: $translate_tool"
+		return 1
+	fi
+
+	# Check that a translation service is configured
+	local service_configured=0
+	for svc in FREETZ_TRANSLATE_DEEPL FREETZ_TRANSLATE_LIBRETRANSLATE FREETZ_TRANSLATE_APERTIUM \
+	           FREETZ_TRANSLATE_MYMEMORY FREETZ_TRANSLATE_LINGVA FREETZ_TRANSLATE_OPENAI; do
+		if [ "$(eval echo \$$svc)" = "y" ]; then
+			service_configured=1
+			break
+		fi
+	done
+	if [ "$service_configured" = "0" ]; then
+		warn "modlang_inject_translations: no translation service configured for '$target_lang'"
+		return 1
+	fi
+
+	# Extract all unique $(lang ...) blocks, get source text, translate, build sed script
+	# We use a temporary file for the sed substitution script
+	local sed_script
+	sed_script=$(mktemp /tmp/freetz_translate_sed.XXXXXX) || return 1
+	trap "rm -f '$sed_script'" RETURN
+
+	# Extract all $(lang ...) occurrences from the file.
+	# We look for blocks that contain en:"..." but NOT <target_lang>:"..."
+	# Use grep -oP to extract the English text from each block.
+	#
+	# Strategy: read file, find $(lang ...) blocks, for each one:
+	#   - check if target_lang already present -> skip
+	#   - extract en:"..." text (or de:"..." as fallback)
+	#   - translate
+	#   - generate sed command to inject target_lang:"translated" before the closing )
+
+	# Use a python helper for reliable multi-line $(lang ...) block extraction
+	# since the blocks can span multiple lines
+	python3 - "$target_lang" "$file" "$translate_tool" "$sed_script" "$package_name" << 'PYEOF'
+import os
+import re
+import subprocess
+import sys
+
+target_lang = sys.argv[1]
+filepath = sys.argv[2]
+translate_tool = sys.argv[3]
+sed_script_path = sys.argv[4]
+package_name = sys.argv[5]
+
+
+def extract_lang_blocks(text):
+	"""Extract $(lang ... ) blocks robustly, including multiline with '\\' continuations."""
+	blocks = []
+	marker = '$(lang'
+	i = 0
+	n = len(text)
+
+	while i < n:
+		start = text.find(marker, i)
+		if start == -1:
+			break
+
+		j = start + len(marker)
+		in_quote = False
+		escaped = False
+
+		while j < n:
+			ch = text[j]
+			if in_quote:
+				if escaped:
+					escaped = False
+				elif ch == '\\':
+					escaped = True
+				elif ch == '"':
+					in_quote = False
+			else:
+				if ch == '"':
+					in_quote = True
+				elif ch == ')':
+					blocks.append((start, j + 1, text[start:j + 1]))
+					i = j + 1
+					break
+			j += 1
+		else:
+			break
+
+	return blocks
+
+
+with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
+	content = f.read()
+
+translations_needed = {}
+blocks_to_modify = []
+
+for start, end, block in extract_lang_blocks(content):
+	inner = block[len('$(lang'):-1]
+
+	tgt_pattern = r'\b' + re.escape(target_lang) + r':"'
+	if re.search(tgt_pattern, inner):
+		continue
+
+	en_match = re.search(r'\ben:"((?:[^"\\]|\\.)*)"', inner)
+	if en_match:
+		source_text = en_match.group(1)
+		source_lang = 'en'
+	else:
+		de_match = re.search(r'\bde:"((?:[^"\\]|\\.)*)"', inner)
+		if de_match:
+			source_text = de_match.group(1)
+			source_lang = 'de'
+		else:
+			continue
+
+	source_clean = source_text.replace('\\"', '"').replace('\\\\', '\\')
+	if not source_clean or not source_clean.strip():
+		continue
+
+	if source_clean not in translations_needed:
+		translations_needed[source_clean] = {
+			'source_lang': source_lang,
+			'source_raw': source_text,
+		}
+	blocks_to_modify.append((start, end, block, source_clean, source_text))
+
+if not blocks_to_modify:
+	sys.exit(0)
+
+translated = {}
+env = os.environ.copy()
+quota_exceeded = False
+cache_hits = 0
+api_calls = 0
+
+for text, info in translations_needed.items():
+	if quota_exceeded:
+		sys.stderr.write(f"freetz_translate: SKIPPING (quota exceeded): {text[:50]}...\n")
+		continue
+
+	try:
+		result = subprocess.run(
+			[translate_tool, info['source_lang'], target_lang, text, package_name],
+			capture_output=True,
+			text=True,
+			timeout=60,
+			env=env,
+		)
+		if result.returncode == 0 and result.stdout.strip():
+			t = result.stdout.strip().replace('\\', '\\\\').replace('"', '\\"')
+			translated[text] = t
+			if 'from cache' in result.stderr.lower():
+				cache_hits += 1
+			else:
+				api_calls += 1
+		else:
+			stderr_msg = result.stderr.lower() if result.stderr else ""
+			if 'quota exceeded' in stderr_msg or 'daily quota' in stderr_msg or 'rate limit' in stderr_msg:
+				sys.stderr.write("freetz_translate: QUOTA EXCEEDED - stopping translations\n")
+				quota_exceeded = True
+			elif 'too long' in stderr_msg or 'length limit' in stderr_msg:
+				sys.stderr.write(f"freetz_translate: WARNING: text too long, skipping: {text[:50]}...\n")
+			elif 'too short' in stderr_msg:
+				sys.stderr.write(f"freetz_translate: WARNING: text too short, skipping: {text[:50]}...\n")
+			else:
+				sys.stderr.write(f"freetz_translate: WARNING: failed to translate: {text[:50]}...\n")
+				if result.stderr:
+					sys.stderr.write(f"  stderr: {result.stderr.strip()}\n")
+	except KeyboardInterrupt:
+		sys.stderr.write("\nInterrupted by user (Ctrl+C)\n")
+		sys.exit(130)
+	except subprocess.TimeoutExpired:
+		sys.stderr.write(f"freetz_translate: WARNING: timeout translating: {text[:50]}...\n")
+	except Exception as e:
+		sys.stderr.write(f"freetz_translate: WARNING: error translating: {e}\n")
+
+if not translated:
+	sys.exit(0)
+
+new_content = content
+for start, end, block, source_clean, source_raw in reversed(blocks_to_modify):
+	if source_clean not in translated:
+		continue
+	trans_text = translated[source_clean]
+	new_block = block[:-1] + ' ' + target_lang + ':"' + trans_text + '")'
+	new_content = new_content[:start] + new_block + new_content[end:]
+
+with open(filepath, 'w', encoding='utf-8') as f:
+	f.write(new_content)
+
+count = sum(1 for s in blocks_to_modify if s[3] in translated)
+if cache_hits + api_calls > 0:
+	if api_calls > 0:
+		sys.stderr.write(
+			f"\n    freetz_translate: injected {count} translations ({target_lang}) into {os.path.basename(filepath)} [{cache_hits} cached, \033[1m{api_calls} API\033[0m]"
+		)
+	else:
+		sys.stderr.write(
+			f"\n    freetz_translate: injected {count} translations ({target_lang}) into {os.path.basename(filepath)} [{cache_hits} cached, {api_calls} API]"
+		)
+else:
+	sys.stderr.write(
+		f"\n    freetz_translate: injected {count} translations ({target_lang}) into {os.path.basename(filepath)}"
+	)
+PYEOF
+
+	local rc=$?
+	if [ $rc -ne 0 ]; then
+		warn "modlang_inject_translations: translation injection failed for $file (rc=$rc)"
+	fi
+	return $rc
+}
+
 modlangsubst() {
 	# modlangsubst <lang> <file>
 	#   Substitutes all $(lang de:"Deutscher Text" en:"English text" ...) occurrences
 	#   in <file> with <text> of the corresponding <lang>:"<text>" section.
+	#
+	#   If <lang> is not natively available in the file (e.g. "it", "fr", "es")
+	#   and AI translation is configured, the file is first pre-processed to
+	#   inject machine-translated strings before the normal substitution runs.
+
+	# Pre-process: complete missing base translations (de/en) if AI translation is enabled
+	if [ "$FREETZ_LANG_NEEDS_TRANSLATION" = "y" ]; then
+		modlang_complete_base_translations "$2"
+	fi
+
+	# Pre-process: inject AI translations if needed for non-native languages
+	case "$1" in
+		de|en|xx) ;; # Native languages and developer mode - skip translation
+		*)
+			if [ "$FREETZ_LANG_NEEDS_TRANSLATION" = "y" ]; then
+				modlang_inject_translations "$1" "$2" "$package_name"
+			fi
+			;;
+	esac
 
 	s='[\t\r\n\\ ]'
 	val='\(\([^"\\]*\(\\.\)*\)*\)'
@@ -444,6 +888,8 @@ modlangsubst() {
 	LC_ALL="" LC_CTYPE=C sed -i -e "
 		:a
 		s/\$(lang\(${s}\+${entry}\)*${s}\+${1}:\"${val}\"\(${s}\+${entry}\)*${s}*)/\$(lang:\"\5\")/g
+		s/\$(lang\(${s}\+${entry}\)*${s}\+en:\"${val}\"\(${s}\+${entry}\)*${s}*)/\$(lang:\"\5\")/g
+		s/\$(lang\(${s}\+${entry}\)*${s}\+de:\"${val}\"\(${s}\+${entry}\)*${s}*)/\$(lang:\"\5\")/g
 		s/\$(lang\(${s}\+${entry}\)*${s}*)/*** error: language[${1}] not available ***/g
 		:n
 		s/\$(lang:\"\(\([^\"\\]\+\)\|[\\]\(.\)\)${val}\")/\2\3\$(lang:\"\4\")/g
@@ -463,7 +909,14 @@ modlangconf() {
 }
 
 modlang() {
-	# modlang <conffile> <dir>
+	# modlang <conffile> <dir> [package_name]
+	#
+	# When FREETZ_LANG_NEEDS_TRANSLATION=y and the requested language is not
+	# natively available in the .language file, we use English as the base
+	# language for extraction but pass the actual target language to modlangsubst,
+	# which will trigger AI translation injection before the sed substitution.
+
+	local package_name="${3:-unknown}"
 
 	[ "$FREETZ_LANG_STRING" == "xx" ] && return
 
@@ -485,12 +938,49 @@ modlang() {
 		done
 	done
 
+	# AI translation: if the requested language is not natively available but
+	# translation is configured, use English as the base language and let
+	# modlangsubst handle the translation injection.
+	local translate_target=""
+	if [ -z "$lang" ] || [ "$lang" != "$FREETZ_LANG_STRING" ]; then
+		if [ "$FREETZ_LANG_NEEDS_TRANSLATION" = "y" ] && [ "$FREETZ_LANG_STRING" != "de" ] && [ "$FREETZ_LANG_STRING" != "en" ]; then
+			# Use English as base, translate to target
+			translate_target="$FREETZ_LANG_STRING"
+			# Find English in available languages for extraction
+			for j in $avail; do
+				if [ "$j" == "en" ]; then
+					lang="en"
+					break
+				fi
+			done
+			# Fallback to any available base language
+			if [ -z "$lang" ]; then
+				for j in $avail; do
+					lang="$j"
+					break
+				done
+			fi
+		fi
+	fi
+
 	if [ -z "$lang" ]; then
 		error 1 "no language available"
 	fi
 
-	[ "$lang" == "$FREETZ_LANG_STRING" ] || \
-		echo "NOTICE: language $FREETZ_LANG_STRING not available; $lang chosen." 1>&2
+	# Print translation notice only once per session (not for every file)
+	if [ -n "$translate_target" ]; then
+		if [ -z "$_FREETZ_TRANSLATION_NOTICE_SHOWN" ]; then
+			echo "" 1>&2  # Newline to keep package size on first line
+			echo "NOTICE: language $FREETZ_LANG_STRING not natively available; translating from $lang via AI." 1>&2
+			export _FREETZ_TRANSLATION_NOTICE_SHOWN=1
+		fi
+	elif [ "$lang" != "$FREETZ_LANG_STRING" ]; then
+		if [ -z "$_FREETZ_FALLBACK_NOTICE_SHOWN" ]; then
+			echo "" 1>&2  # Newline to keep package size on first line
+			echo "NOTICE: language $FREETZ_LANG_STRING not available; $lang chosen." 1>&2
+			export _FREETZ_FALLBACK_NOTICE_SHOWN=1
+		fi
+	fi
 
 	(
 		if ! cd "${2}"; then
@@ -498,9 +988,14 @@ modlang() {
 			return
 		fi
 		local dot_exclude="$(echo $FREETZ_BASE_DIR/$1 | sed 's/language$/exclude/')"
+		# When AI translation is active, use the target language for substitution
+		local subst_lang="$lang"
+		if [ -n "$translate_target" ]; then
+			subst_lang="$translate_target"
+		fi
 		for i in $(modlangconf "files" "$conffile"); do
 			if [ -e "${i}" ]; then
-				modlangsubst "$lang" "${i}"
+				modlangsubst "$subst_lang" "${i}"
 			else
 				do_excluded=n
 				do_asterisk=n

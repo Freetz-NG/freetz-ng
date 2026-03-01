@@ -1,0 +1,37 @@
+{
+  "deepl:Other configuration files": {
+    "original": "Other configuration files",
+    "translation": "Altri file di configurazione",
+    "timestamp": "2026-02-15T23:42:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:edit eaptls-server": {
+    "original": "edit eaptls-server",
+    "translation": "modifica eaptls-server",
+    "timestamp": "2026-02-15T23:42:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Here you can configure the routing to client subnets.": {
+    "original": "Here you can configure the routing to client subnets.",
+    "translation": "Qui è possibile configurare l'instradamento verso le sottoreti dei client.",
+    "timestamp": "2026-02-15T23:42:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Syntax: &lt;Subnet-IP&gt; &lt;Subnetmask&gt; &lt;Client-IP&gt; [&lt;Comment&gt;]": {
+    "original": "Syntax: &lt;Subnet-IP&gt; &lt;Subnetmask&gt; &lt;Client-IP&gt; [&lt;Comment&gt;]",
+    "translation": "Sintassi: &lt;Subnet-IP&gt; &lt;Subnetmask&gt; &lt;Client-IP&gt; [&lt;Commento&gt;]",
+    "timestamp": "2026-02-15T23:42:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:client_subnet": {
+    "original": "client_subnet",
+    "translation": "client_subnet",
+    "timestamp": "2026-02-15T23:42:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

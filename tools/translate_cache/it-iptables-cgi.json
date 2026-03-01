@@ -1,0 +1,23 @@
+{
+  "deepl:Reboot may be necessary": {
+    "original": "Reboot may be necessary",
+    "translation": "Potrebbe essere necessario un riavvio",
+    "timestamp": "2026-02-15T23:32:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Running values": {
+    "original": "Running values",
+    "translation": "Valori in esecuzione",
+    "timestamp": "2026-02-15T23:32:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:memory usage": {
+    "original": "memory usage",
+    "translation": "utilizzo della memoria",
+    "timestamp": "2026-02-15T23:32:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

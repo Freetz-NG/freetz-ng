@@ -1,0 +1,30 @@
+{
+  "deepl:enable password login": {
+    "original": "enable password login",
+    "translation": "abilitare la password di accesso",
+    "timestamp": "2026-02-15T23:37:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allow root login": {
+    "original": "Allow root login",
+    "translation": "Consentire il login di root",
+    "timestamp": "2026-02-15T23:37:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional command-line options ": {
+    "original": "Additional command-line options ",
+    "translation": "Opzioni aggiuntive della riga di comando ",
+    "timestamp": "2026-02-15T23:37:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Standard options \\(don't change unless you really know, what you are doing\\)": {
+    "original": "Standard options \\(don't change unless you really know, what you are doing\\)",
+    "translation": "Opzioni standard (da non modificare se non si sa bene cosa si sta facendo)",
+    "timestamp": "2026-02-15T23:37:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

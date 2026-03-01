@@ -1,0 +1,184 @@
+{
+  "deepl:restart multid": {
+    "original": "restart multid",
+    "translation": "riavviare multid",
+    "timestamp": "2026-02-15T23:09:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:edit 'hosts' file": {
+    "original": "edit 'hosts' file",
+    "translation": "modificare il file \"hosts",
+    "timestamp": "2026-02-15T23:09:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Global options": {
+    "original": "Global options",
+    "translation": "Opzioni globali",
+    "timestamp": "2026-02-15T23:09:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum count of buffered lines on logging": {
+    "original": "Maximum count of buffered lines on logging",
+    "translation": "Conteggio massimo delle righe bufferizzate sulla registrazione",
+    "timestamp": "2026-02-15T23:09:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DNS server": {
+    "original": "DNS server",
+    "translation": "server DNS",
+    "timestamp": "2026-02-15T23:09:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The DNS server is listening on": {
+    "original": "The DNS server is listening on",
+    "translation": "Il server DNS è in ascolto su",
+    "timestamp": "2026-02-15T23:09:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Domain": {
+    "original": "Domain",
+    "translation": "Dominio",
+    "timestamp": "2026-02-15T23:09:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Do not forward reverse DNS lookups for private IP address ranges (RFC1918).": {
+    "original": "Do not forward reverse DNS lookups for private IP address ranges (RFC1918).",
+    "translation": "Non inoltrare le ricerche DNS inverse per gli intervalli di indirizzi IP privati (RFC1918).",
+    "timestamp": "2026-02-15T23:09:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Reject addresses from upstream nameservers which are in private IP ranges.": {
+    "original": "Reject addresses from upstream nameservers which are in private IP ranges.",
+    "translation": "Rifiuta gli indirizzi dei server dei nomi a monte che si trovano in intervalli IP privati.",
+    "timestamp": "2026-02-15T23:09:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Validate DNS replies and cache DNSSEC data.": {
+    "original": "Validate DNS replies and cache DNSSEC data.",
+    "translation": "Convalida le risposte DNS e memorizza i dati DNSSEC.",
+    "timestamp": "2026-02-15T23:09:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log name resolution.": {
+    "original": "Log name resolution.",
+    "translation": "Risoluzione del nome del registro.",
+    "timestamp": "2026-02-15T23:09:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use the upstream nameservers of your provider/AVM.": {
+    "original": "Use the upstream nameservers of your provider/AVM.",
+    "translation": "Utilizzare i nameserver upstream del proprio provider/AVM.",
+    "timestamp": "2026-02-15T23:09:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:at the moment: ": {
+    "original": "at the moment: ",
+    "translation": "al momento: ",
+    "timestamp": "2026-02-15T23:09:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl: and ": {
+    "original": " and ",
+    "translation": " e ",
+    "timestamp": "2026-02-15T23:09:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use these upstream nameservers additionally (separated by space)": {
+    "original": "Use these upstream nameservers additionally (separated by space)",
+    "translation": "Utilizzate inoltre questi nameserver upstream (separati da uno spazio)",
+    "timestamp": "2026-02-15T23:09:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DHCP server": {
+    "original": "DHCP server",
+    "translation": "Server DHCP",
+    "timestamp": "2026-02-15T23:09:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DHCP range (one per line)": {
+    "original": "DHCP range (one per line)",
+    "translation": "Intervallo DHCP (uno per riga)",
+    "timestamp": "2026-02-15T23:09:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Static DHCP leases from": {
+    "original": "Static DHCP leases from",
+    "translation": "Leasing DHCP statici da",
+    "timestamp": "2026-02-15T23:09:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:items with valid IP and MAC addresses only": {
+    "original": "items with valid IP and MAC addresses only",
+    "translation": "solo elementi con indirizzi IP e MAC validi",
+    "timestamp": "2026-02-15T23:09:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Read DHCP host information from the specified file.": {
+    "original": "Read DHCP host information from the specified file.",
+    "translation": "Legge le informazioni sull'host DHCP dal file specificato.",
+    "timestamp": "2026-02-15T23:09:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please <a href=''>reload</a> webpage after activation.": {
+    "original": "Please <a href=''>reload</a> webpage after activation.",
+    "translation": "Si prega di <a href=''>ricaricare</a> la pagina web dopo l'attivazione.",
+    "timestamp": "2026-02-15T23:09:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Ignore DHCP clients naming itself <i>wpad</i>": {
+    "original": "Ignore DHCP clients naming itself <i>wpad</i>",
+    "translation": "Ignora i client DHCP che si chiamano <i>wpad</i>.",
+    "timestamp": "2026-02-15T23:09:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:DHCP Boot": {
+    "original": "DHCP Boot",
+    "translation": "DHCP Boot",
+    "timestamp": "2026-02-15T23:09:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:boot file": {
+    "original": "boot file",
+    "translation": "file di avvio",
+    "timestamp": "2026-02-15T23:09:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:TFTP server": {
+    "original": "TFTP server",
+    "translation": "server TFTP",
+    "timestamp": "2026-02-15T23:09:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:tftp root": {
+    "original": "tftp root",
+    "translation": "tftp root",
+    "timestamp": "2026-02-15T23:09:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

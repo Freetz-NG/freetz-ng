@@ -1,0 +1,65 @@
+{
+  "deepl:Show peers": {
+    "original": "Show peers",
+    "translation": "Mostra i colleghi",
+    "timestamp": "2026-02-16T00:00:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Interface name": {
+    "original": "Interface name",
+    "translation": "Nome dell'interfaccia",
+    "timestamp": "2026-02-16T00:00:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:MTU": {
+    "original": "MTU",
+    "translation": "MTU",
+    "timestamp": "2026-02-16T00:00:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IPv4 address": {
+    "original": "IPv4 address",
+    "translation": "Indirizzo IPv4",
+    "timestamp": "2026-02-16T00:00:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Leave IPv6 empty if not applicable": {
+    "original": "Leave IPv6 empty if not applicable",
+    "translation": "Lasciare IPv6 vuoto se non applicabile",
+    "timestamp": "2026-02-16T00:00:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PreUp Command": {
+    "original": "PreUp Command",
+    "translation": "Comando PreUp",
+    "timestamp": "2026-02-16T00:00:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PostUp Command": {
+    "original": "PostUp Command",
+    "translation": "Comando PostUp",
+    "timestamp": "2026-02-16T00:00:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PreDown Command": {
+    "original": "PreDown Command",
+    "translation": "Comando PreDown",
+    "timestamp": "2026-02-16T00:00:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PostDown Command": {
+    "original": "PostDown Command",
+    "translation": "Comando PostDown",
+    "timestamp": "2026-02-16T00:00:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

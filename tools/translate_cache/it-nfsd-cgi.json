@@ -1,0 +1,16 @@
+{
+  "deepl:Do not offer NFS version 4": {
+    "original": "Do not offer NFS version 4",
+    "translation": "Non offrire la versione 4 di NFS",
+    "timestamp": "2026-02-15T23:37:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Non dynamic port for mountd (empty: random)": {
+    "original": "Non dynamic port for mountd (empty: random)",
+    "translation": "Porta non dinamica per mountd (vuota: casuale)",
+    "timestamp": "2026-02-15T23:37:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

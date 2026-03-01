@@ -1,0 +1,23 @@
+{
+  "deepl:Htpdate doesn't run as a daemon, it updates the time after an IP change, during system startup and the given intervals automatically.": {
+    "original": "Htpdate doesn't run as a daemon, it updates the time after an IP change, during system startup and the given intervals automatically.",
+    "translation": "Htpdate non viene eseguito come demone, ma aggiorna automaticamente l'ora dopo un cambio di IP, all'avvio del sistema e a intervalli prestabiliti.",
+    "timestamp": "2026-02-15T23:31:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Servers": {
+    "original": "Servers",
+    "translation": "Server",
+    "timestamp": "2026-02-15T23:31:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Interval": {
+    "original": "Interval",
+    "translation": "Intervallo",
+    "timestamp": "2026-02-15T23:31:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

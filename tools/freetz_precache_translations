@@ -1,0 +1,623 @@
+#!/usr/bin/env bash
+# freetz_precache_translations - Pre-generate translation cache for freetz-ng
+#
+# Usage:
+#   ./freetz_precache_translations [options]
+#
+# Options:
+#   -l LANG     Target language (default: from .config FREETZ_LANG_STRING)
+#   -d DIR      Scan directory for source files (default: make/)
+#   -f FILE     Process specific file(s) (can be specified multiple times)
+#   -s SERVICE  Force translation service (deepl|mymemory|libretranslate|apertium|lingva|openai)
+#   --strict-package-only  Process only files under make/pkgs/<package>/ (never write <lang>.json)
+#   -v          Verbose output
+#   -h          Show this help
+#
+# This script extracts ALL unique messages from source files (CGI, shell scripts)
+# and pre-generates translations to populate the cache at tools/translate_cache/<lang>/
+#
+# Unlike building, this processes SOURCE files in make/pkgs/, not build output.
+# It extracts unique $(lang ...) messages and translates each one only once.
+#
+# Useful when you want to:
+#   - Pre-populate cache before first build
+#   - Test translation quality for all messages
+#   - Generate offline cache for complete freetz-ng UI
+#
+# Example:
+#   # Pre-generate Italian cache from all source files
+#   ./freetz_precache_translations -l it
+#
+#   # Use specific service
+#   ./freetz_precache_translations -l it -s deepl
+#
+
+set -e
+set -o pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+export FREETZ_BASE_DIR="$BASE_DIR"
+
+# Source freetz functions
+if [ ! -f "$SCRIPT_DIR/freetz_functions" ]; then
+	echo "ERROR: freetz_functions not found in $SCRIPT_DIR" >&2
+	exit 1
+fi
+
+# Don't source yet - we need to set config first
+
+# --- Default values ---
+TARGET_LANG=""
+SCAN_DIRS=()
+SPECIFIC_FILES=()
+FORCE_SERVICE=""
+VERBOSE=0
+STRICT_PACKAGE_ONLY=0
+
+# --- Functions ---
+
+show_help() {
+	sed -n '2,/^$/p' "$0" | sed 's/^# \?//'
+	exit 0
+}
+
+log() {
+	echo "[precache] $*"
+}
+
+verbose() {
+	if [ "$VERBOSE" = "1" ]; then
+		echo "[precache] $*"
+	fi
+}
+
+die() {
+	echo "[precache] ERROR: $*" >&2
+	exit 1
+}
+
+# Load config from .config
+load_config() {
+	local config_file="$BASE_DIR/.config"
+	
+	if [ ! -f "$config_file" ]; then
+		die "No .config file found. Run 'make menuconfig' first."
+	fi
+	
+	# Source config
+	source "$config_file" 2>/dev/null || die "Failed to source .config"
+	
+	# Get target language if not specified
+	if [ -z "$TARGET_LANG" ]; then
+		TARGET_LANG="${FREETZ_LANG_STRING}"
+		if [ -z "$TARGET_LANG" ]; then
+			die "No target language in .config. Set FREETZ_LANG_STRING or use -l option."
+		fi
+	fi
+	
+	verbose "Target language: $TARGET_LANG"
+	
+	# Check if translation is needed
+	case "$TARGET_LANG" in
+		de|en|xx)
+			die "Language '$TARGET_LANG' doesn't need translation (native language)"
+			;;
+	esac
+	
+	# Check if translation service is configured
+	local service_found=0
+	if [ -n "$FORCE_SERVICE" ]; then
+		case "$FORCE_SERVICE" in
+			deepl)           export FREETZ_TRANSLATE_DEEPL=y; service_found=1 ;;
+			mymemory)        export FREETZ_TRANSLATE_MYMEMORY=y; service_found=1 ;;
+			libretranslate)  export FREETZ_TRANSLATE_LIBRETRANSLATE=y; service_found=1 ;;
+			apertium)        export FREETZ_TRANSLATE_APERTIUM=y; service_found=1 ;;
+			lingva)          export FREETZ_TRANSLATE_LINGVA=y; service_found=1 ;;
+			openai)          export FREETZ_TRANSLATE_OPENAI=y; service_found=1 ;;
+			*) die "Unknown service: $FORCE_SERVICE" ;;
+		esac
+		verbose "Using forced service: $FORCE_SERVICE"
+	else
+		for svc in FREETZ_TRANSLATE_DEEPL FREETZ_TRANSLATE_MYMEMORY \
+		           FREETZ_TRANSLATE_LIBRETRANSLATE FREETZ_TRANSLATE_APERTIUM \
+		           FREETZ_TRANSLATE_LINGVA FREETZ_TRANSLATE_OPENAI; do
+			if [ "$(eval echo \$$svc)" = "y" ]; then
+				service_found=1
+				verbose "Translation service configured: ${svc#FREETZ_TRANSLATE_}"
+				break
+			fi
+		done
+	fi
+	
+	if [ "$service_found" = "0" ]; then
+		die "No translation service configured. Run 'make menuconfig' and select a service under 'AI Translation'."
+	fi
+	
+	# Enable cache
+	export FREETZ_TRANSLATE_CACHE_ENABLED=y
+	
+	# Ensure FREETZ_LANG_NEEDS_TRANSLATION is set
+	export FREETZ_LANG_NEEDS_TRANSLATION=y
+}
+
+# Find files with $(lang ...) blocks
+find_translatable_files() {
+	local search_dir="$1"
+	
+	if [ ! -d "$search_dir" ]; then
+		verbose "Directory not found: $search_dir"
+		return
+	fi
+	
+	verbose "Scanning directory: $search_dir"
+	
+	# Find source files with $(lang ...) pattern
+	# Search in CGI scripts (.cgi) and shell scripts (.sh)
+	find "$search_dir" -type f \( -name '*.cgi' -o -name '*.sh' \) \
+		-exec grep -l '\$(lang[[:space:]]' {} \; 2>/dev/null || true
+}
+
+# Extract all unique messages from a file
+# Returns lines like: de:"German text" en:"English text"
+extract_messages_from_file() {
+	local file="$1"
+	
+	if [ ! -f "$file" ]; then
+		return 1
+	fi
+	
+	# Use Python to extract $(lang ...) blocks
+	python3 - "$file" << 'EOFPYTHON'
+import re
+import sys
+
+if len(sys.argv) < 2:
+	sys.exit(1)
+
+file_path = sys.argv[1]
+
+try:
+	with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+		content = f.read()
+	
+	# Regex to match $(lang de:"..." en:"..." ...) blocks
+	# Allows multi-line and handles escaped quotes
+	pattern = r'\$\(lang\s+((?:\w+:"(?:[^"\\]|\\.)*"\s*)+)\)'
+	
+	matches = re.findall(pattern, content, re.DOTALL)
+	
+	for match in matches:
+		# Normalize whitespace
+		normalized = ' '.join(match.split())
+		print(normalized)
+
+except Exception as e:
+	print(f"Error processing {file_path}: {e}", file=sys.stderr)
+	sys.exit(1)
+EOFPYTHON
+}
+
+# Extract English text from a lang block
+# Input: de:"German" en:"English text" fr:"French"
+# Output: English text
+extract_english_text() {
+	local lang_block="$1"
+	
+	# Extract en:"..." part
+	echo "$lang_block" | grep -o 'en:"[^"]*"' | sed 's/^en:"//;s/"$//' || echo ""
+}
+
+# Check if message already has target language
+has_target_language() {
+	local lang_block="$1"
+	local target_lang="$2"
+	
+	echo "$lang_block" | grep -q "${target_lang}:\"" && return 0
+	return 1
+}
+
+# Translate a single message
+translate_message() {
+	local english_text="$1"
+	local target_lang="$2"
+	local package_name="$3"
+	
+	if [ -z "$english_text" ]; then
+		return 1
+	fi
+	
+	# Call freetz_translate
+	local result
+	result=$("$SCRIPT_DIR/freetz_translate" "en" "$target_lang" "$english_text" "$package_name" 2>/dev/null)
+	
+	if [ $? -eq 0 ] && [ -n "$result" ]; then
+		echo "$result"
+		return 0
+	fi
+	
+	return 1
+}
+
+get_active_service() {
+	if [ -n "$FORCE_SERVICE" ]; then
+		echo "$FORCE_SERVICE"
+		return 0
+	fi
+
+	if [ "$FREETZ_TRANSLATE_DEEPL" = "y" ]; then echo "deepl"
+	elif [ "$FREETZ_TRANSLATE_LIBRETRANSLATE" = "y" ]; then echo "libretranslate"
+	elif [ "$FREETZ_TRANSLATE_APERTIUM" = "y" ]; then echo "apertium"
+	elif [ "$FREETZ_TRANSLATE_MYMEMORY" = "y" ]; then echo "mymemory"
+	elif [ "$FREETZ_TRANSLATE_LINGVA" = "y" ]; then echo "lingva"
+	elif [ "$FREETZ_TRANSLATE_OPENAI" = "y" ]; then echo "openai"
+	else echo "unknown"
+	fi
+}
+
+# Derive package name from source path similar to make package context.
+# Files under make/pkgs/<package>/... map to package-specific cache.
+detect_package_from_file() {
+	local file="$1"
+	local rel
+	rel="${file#${BASE_DIR}/}"
+
+	if [[ "$rel" =~ ^make/pkgs/([^/]+)/ ]]; then
+		echo "${BASH_REMATCH[1]}"
+	else
+		echo ""
+	fi
+}
+
+get_cache_file_for_context() {
+	local lang="$1"
+	local package_name="$2"
+	if [ -n "$package_name" ]; then
+		echo "$BASE_DIR/tools/translate_cache/${lang}-${package_name}.json"
+	else
+		echo "$BASE_DIR/tools/translate_cache/${lang}.json"
+	fi
+}
+
+# Check whether translation already exists in cache for this text.
+# Search priority matches freetz_translate behavior:
+#   1) package-specific file (if package provided)
+#   2) base language file
+#   3) other language variants (<lang>-*.json)
+# If found, do NOT call translator.
+cache_has_text_in_cache() {
+	local target_lang="$1"
+	local package_name="$2"
+	local english_text="$3"
+
+	local -a search_files=()
+	if [ -n "$package_name" ]; then
+		search_files+=("$BASE_DIR/tools/translate_cache/${target_lang}-${package_name}.json")
+	fi
+	search_files+=("$BASE_DIR/tools/translate_cache/${target_lang}.json")
+	for cache_file in "$BASE_DIR/tools/translate_cache/${target_lang}"-*.json; do
+		[ -f "$cache_file" ] && search_files+=("$cache_file")
+	done
+
+	for cache_file in "${search_files[@]}"; do
+		[ -f "$cache_file" ] || continue
+		if jq -e --arg text "$english_text" '
+			to_entries
+			| map(select((.value.translation // "") != "" and ((.value.original // "") == $text or (.key | endswith(":" + $text)))))
+			| length > 0
+		' "$cache_file" >/dev/null 2>&1; then
+			return 0
+		fi
+	done
+
+	return 1
+}
+
+# Process all files
+process_all_files() {
+	local total_files=0
+	local total_messages=0
+	local translated_messages=0
+	local skipped_messages=0
+	local existing_messages=0
+	local skipped_nonpackage_files=0
+	
+	# Collect all files to process
+	local -a all_files=()
+	
+	# Add specific files
+	for file in "${SPECIFIC_FILES[@]}"; do
+		if [ -f "$file" ]; then
+			all_files+=("$file")
+		else
+			log "Warning: File not found: $file"
+		fi
+	done
+	
+	# Add files from scan directories
+	for dir in "${SCAN_DIRS[@]}"; do
+		while IFS= read -r file; do
+			all_files+=("$file")
+		done < <(find_translatable_files "$dir")
+	done
+	
+	# Remove duplicates
+	local -a unique_files=($(printf '%s\n' "${all_files[@]}" | sort -u))
+	
+	total_files=${#unique_files[@]}
+	
+	if [ "$total_files" -eq 0 ]; then
+		log "No source files found with translation blocks."
+		log ""
+		log "Suggestions:"
+		log "  - Check that source files exist in: make/pkgs/"
+		log "  - Specify directories to scan: -d make/"
+		log "  - Specify files directly: -f path/to/file.cgi"
+		return 0
+	fi
+	
+	log "Found $total_files source file(s) with translation blocks"
+	log ""
+	
+	# Extract unique messages per package context
+	log "Extracting unique messages from source files (package-aware)..."
+
+	local sep=$'\x1f'
+	declare -A seen_pkg_msg=()
+	local -a message_items=()
+
+	for file in "${unique_files[@]}"; do
+		verbose "  Extracting from: $file"
+		local package_name
+		package_name=$(detect_package_from_file "$file")
+		
+		if [ "$STRICT_PACKAGE_ONLY" = "1" ] && [ -z "$package_name" ]; then
+			((skipped_nonpackage_files++)) || true
+			verbose "  Skipping non-package file (strict mode): $file"
+			continue
+		fi
+
+		while IFS= read -r lang_block; do
+			[ -z "$lang_block" ] && continue
+			local dedup_key="${package_name}${sep}${lang_block}"
+			if [ -z "${seen_pkg_msg[$dedup_key]:-}" ]; then
+				seen_pkg_msg[$dedup_key]=1
+				message_items+=("$dedup_key")
+			fi
+		done < <(extract_messages_from_file "$file" 2>/dev/null || true)
+	done
+
+	total_messages=${#message_items[@]}
+	log "Extracted $total_messages unique message(s) (per package)"
+	log ""
+	
+	if [ "$total_messages" -eq 0 ]; then
+		log "No messages found. This might indicate:"
+		log "  - Files don't contain \$(lang ...) blocks"
+		log "  - Pattern matching failed"
+		return 0
+	fi
+	
+	# Translate each unique message
+	log "Translating messages to '$TARGET_LANG'..."
+	log ""
+	
+	local progress=0
+	local quota_exceeded=0
+	
+	local active_service
+	active_service=$(get_active_service)
+	log "Using translation agent: $active_service"
+	log ""
+
+	for item in "${message_items[@]}"; do
+		((progress++)) || true
+
+		local package_name="${item%%$sep*}"
+		local lang_block="${item#*$sep}"
+		
+		# Stop if quota exceeded
+		if [ "$quota_exceeded" = "1" ]; then
+			verbose "[$progress/$total_messages] Skipping (quota exceeded): ${lang_block:0:50}..."
+			((skipped_messages++)) || true
+			continue
+		fi
+		
+		# Check if already has target language
+		if has_target_language "$lang_block" "$TARGET_LANG"; then
+			verbose "[$progress/$total_messages] Already has $TARGET_LANG: ${lang_block:0:50}..."
+			((skipped_messages++)) || true
+			continue
+		fi
+		
+		# Extract English text
+		local english_text
+		english_text=$(extract_english_text "$lang_block")
+		
+		if [ -z "$english_text" ]; then
+			verbose "[$progress/$total_messages] No English text found: ${lang_block:0:50}..."
+			((skipped_messages++)) || true
+			continue
+		fi
+
+		# Append-only mode: never update existing entries and never call translator
+		# if translation is already available in cache.
+		if cache_has_text_in_cache "$TARGET_LANG" "$package_name" "$english_text"; then
+			verbose "[$progress/$total_messages] Already present in cache (skip API call): ${english_text:0:50}..."
+			((existing_messages++)) || true
+			((skipped_messages++)) || true
+			continue
+		fi
+		
+		# Translate
+		if [ "$VERBOSE" = "1" ]; then
+			if [ -n "$package_name" ]; then
+				echo -n "[$progress/$total_messages] [$package_name][$active_service] Translating: \"$english_text\" ... "
+			else
+				echo -n "[$progress/$total_messages] [global][$active_service] Translating: \"$english_text\" ... "
+			fi
+		else
+			# Show progress every 10 messages
+			if [ $((progress % 10)) -eq 0 ]; then
+				echo -n "."
+			fi
+		fi
+		
+		local translated stderr_output
+		stderr_output=$(mktemp /tmp/translate_err.XXXXXX)
+		translated=$(translate_message "$english_text" "$TARGET_LANG" "$package_name" 2>"$stderr_output")
+		local translate_result=$?
+		local error_msg=$(cat "$stderr_output" 2>/dev/null)
+		rm -f "$stderr_output"
+		
+		if [ $translate_result -eq 0 ] && [ -n "$translated" ]; then
+			if [ "$VERBOSE" = "1" ]; then
+				echo "✓ \"$translated\""
+			fi
+			((translated_messages++)) || true
+		else
+			if [ "$VERBOSE" = "1" ]; then
+				echo "✗ failed"
+			fi
+			
+			# Check error type
+			if echo "$error_msg" | grep -qi "quota exceeded\|daily quota\|rate limit\|AVAILABLE FREE TRANSLATIONS"; then
+				log "  ERROR: Translation quota exceeded. Stopping."
+				log "  Suggestion: Wait a few hours or provide API email (FREETZ_TRANSLATE_MYMEMORY_EMAIL)"
+				quota_exceeded=1
+			elif echo "$error_msg" | grep -qi "too long\|length limit"; then
+				verbose "  Warning: Text too long (>500 chars), skipped: ${english_text:0:30}..."
+			elif echo "$error_msg" | grep -qi "too short"; then
+				verbose "  Warning: Text too short (<3 chars), skipped: '$english_text'"
+			else
+				verbose "  Warning: Failed to translate: ${english_text:0:50}..."
+				[ -n "$error_msg" ] && verbose "    Error: $error_msg"
+			fi
+			
+			((skipped_messages++)) || true
+		fi
+	done
+	
+	# Newline after progress dots
+	[ "$VERBOSE" = "0" ] && echo ""
+	
+	log ""
+	log "===== Summary ====="
+	log "Source files scanned: $total_files"
+	if [ "$STRICT_PACKAGE_ONLY" = "1" ]; then
+		log "Skipped non-package files (strict mode): $skipped_nonpackage_files"
+	fi
+	log "Unique messages found (package-aware): $total_messages"
+	log "Successfully translated: $translated_messages"
+	log "Skipped (already present in target cache): $existing_messages"
+	log "Skipped (already have target or no English): $skipped_messages"
+	log "Failed: $((total_messages - translated_messages - skipped_messages))"
+	log "Target language: $TARGET_LANG"
+	log "Active service key: $active_service"
+	log "Cache location: tools/translate_cache/"
+	log "Strict package-only mode: $STRICT_PACKAGE_ONLY"
+	
+	# Show cache statistics
+	local cache_dir="$BASE_DIR/tools/translate_cache/$TARGET_LANG"
+	if [ -d "$cache_dir" ]; then
+		local cache_count=$(find "$cache_dir" -type f 2>/dev/null | wc -l)
+		log "Total cached translations: $cache_count"
+	fi
+}
+
+# --- Main ---
+
+# Parse arguments
+while getopts "l:d:f:s:vh" opt; do
+	case "$opt" in
+		l) TARGET_LANG="$OPTARG" ;;
+		d) SCAN_DIRS+=("$OPTARG") ;;
+		f) SPECIFIC_FILES+=("$OPTARG") ;;
+		s) FORCE_SERVICE="$OPTARG" ;;
+		v) VERBOSE=1 ;;
+		h) show_help ;;
+		*) show_help ;;
+	esac
+done
+
+# Support positional/remaining arguments for convenience:
+#   <lang> [service] [-v] [--strict-package-only]
+shift $((OPTIND - 1))
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-v)
+			VERBOSE=1
+			shift
+			;;
+		--strict-package-only)
+			STRICT_PACKAGE_ONLY=1
+			shift
+			;;
+		deepl|mymemory|libretranslate|apertium|lingva|openai)
+			if [ -z "$FORCE_SERVICE" ]; then
+				FORCE_SERVICE="$1"
+				shift
+			else
+				echo "Unknown extra argument: $1" >&2
+				show_help
+			fi
+			;;
+		--)
+			shift
+			break
+			;;
+		-*)
+			echo "Unknown option: $1" >&2
+			show_help
+			;;
+		*)
+			if [ -z "$TARGET_LANG" ]; then
+				TARGET_LANG="$1"
+				shift
+			else
+				echo "Unknown extra argument: $1" >&2
+				show_help
+			fi
+			;;
+	esac
+done
+
+# If no directories specified, use default
+if [ ${#SCAN_DIRS[@]} -eq 0 ] && [ ${#SPECIFIC_FILES[@]} -eq 0 ]; then
+	# Default: scan source directory (make/pkgs) for all CGI and shell scripts
+	if [ -d "$BASE_DIR/make" ]; then
+		SCAN_DIRS+=("$BASE_DIR/make")
+		verbose "Using default source directory: make/"
+	else
+		log "Error: Source directory 'make/' not found."
+		log "Are you running this from the freetz-ng base directory?"
+		exit 1
+	fi
+fi
+
+log "===== Freetz-ng Translation Pre-cache Generator ====="
+log ""
+
+# Load configuration
+load_config
+
+# Check that freetz_translate exists
+if [ ! -x "$SCRIPT_DIR/freetz_translate" ]; then
+	die "Translation tool not found: $SCRIPT_DIR/freetz_translate"
+fi
+
+# Process files and extract messages
+process_all_files
+
+log ""
+log "✓ Done!"
+log ""
+log "Next steps:"
+log "  1. Review cached translations in: tools/translate_cache/$TARGET_LANG/"
+log "  2. Run 'make' to build with pre-cached translations"
+log "  3. All \$(lang ...) blocks will automatically use cached translations"
+log ""
+log "Note: Cache is package-aware (e.g. it-<package>.json) and append-only."
+log "      Existing entries are never modified by this tool."
+
+exit 0

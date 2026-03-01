@@ -1,0 +1,16 @@
+{
+  "deepl:Remote CAPI daemon": {
+    "original": "Remote CAPI daemon",
+    "translation": "Demone CAPI remoto",
+    "timestamp": "2026-02-15T23:49:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The remote CAPI daemon is listening on": {
+    "original": "The remote CAPI daemon is listening on",
+    "translation": "Il demone CAPI remoto è in ascolto su",
+    "timestamp": "2026-02-15T23:49:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

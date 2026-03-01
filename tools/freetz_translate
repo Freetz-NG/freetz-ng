@@ -1,0 +1,1047 @@
+#!/usr/bin/env bash
+# freetz_translate - Cloud-based translation for freetz-ng build system
+#
+# Usage:
+#   freetz_translate <source_lang> <target_lang> <text> [package_name]
+#
+# Translates <text> from <source_lang> to <target_lang> using the configured
+# cloud translation service. Output goes to stdout.
+# Optional package_name is used for package-specific cache files.
+#
+# Environment variables (set from .config):
+#   FREETZ_TRANSLATE_DEEPL=y|n
+#   FREETZ_TRANSLATE_LIBRETRANSLATE=y|n
+#   FREETZ_TRANSLATE_APERTIUM=y|n
+#   FREETZ_TRANSLATE_MYMEMORY=y|n
+#   FREETZ_TRANSLATE_LINGVA=y|n
+#   FREETZ_TRANSLATE_OPENAI=y|n
+#   FREETZ_TRANSLATE_DEEPL_API_KEY=<key>
+#   FREETZ_TRANSLATE_OPENAI_API_KEY=<key>
+#   FREETZ_TRANSLATE_LIBRETRANSLATE_API_KEY=<key>
+#   FREETZ_TRANSLATE_API_URL=<url>
+#   FREETZ_TRANSLATE_MYMEMORY_EMAIL=<email>
+#   FREETZ_TRANSLATE_CACHE_ENABLED=y|n
+#
+# Supports: DeepL, LibreTranslate, Apertium, MyMemory, Lingva, OpenAI
+#
+# All translations happen at BUILD TIME only. Nothing is sent at runtime.
+
+set -o pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CACHE_BASE_DIR="${SCRIPT_DIR}/translate_cache"
+
+# Load .config to get FREETZ_TRANSLATE_* variables if not already in environment
+# This is needed because make doesn't always export these to subprocess environments
+config_file="${FREETZ_BASE_DIR:-$(cd "$SCRIPT_DIR/.." && pwd)}/.config"
+if [ -f "$config_file" ]; then
+	# Use temporary file to extract only FREETZ_TRANSLATE_* variables
+	temp_config=$(mktemp /tmp/freetz_config.XXXXXX)
+	grep '^FREETZ_TRANSLATE_' "$config_file" 2>/dev/null > "$temp_config" || true
+	
+	# Source the filtered config (safe because we filtered it)
+	# Variables already set in environment will NOT be overwritten
+	while IFS='=' read -r key value; do
+		[ -z "$key" ] && continue
+		
+		# Only set if not already set in environment
+		if [ -z "$(eval echo \$$key)" ]; then
+			# Remove quotes from value if present
+			value="${value%\"}"
+			value="${value#\"}"
+			export "$key=$value"
+		fi
+	done < "$temp_config"
+	
+	rm -f "$temp_config"
+fi
+
+# --- Utility functions ---
+
+die() {
+	echo "freetz_translate: ERROR: $*" >&2
+	exit 1
+}
+
+warn() {
+	echo "freetz_translate: WARNING: $*" >&2
+}
+
+debug() {
+	[ "$FREETZ_TRANSLATE_DEBUG" = "y" ] && echo "freetz_translate: DEBUG: $*" >&2 || true
+}
+
+# URL-encode a string (portable, no python dependency attempt first)
+urlencode() {
+	local string="$1"
+	if command -v python3 &>/dev/null; then
+		python3 -c "import urllib.parse; print(urllib.parse.quote('''${string//\'/\'\\\'\'}''', safe=''))"
+	elif command -v python &>/dev/null; then
+		python -c "import urllib; print(urllib.quote('''${string//\'/\'\\\'\'}'''))"
+	else
+		# Pure bash fallback (basic)
+		local length="${#string}"
+		local c
+		for (( i = 0; i < length; i++ )); do
+			c="${string:i:1}"
+			case "$c" in
+				[a-zA-Z0-9.~_-]) printf '%s' "$c" ;;
+				' ') printf '%%20' ;;
+				*) printf '%%%02X' "'$c" ;;
+			esac
+		done
+		echo
+	fi
+}
+
+# Extract a JSON string value by key (simple, no jq dependency)
+# Usage: json_get_string <json> <key>
+json_get_string() {
+	local json="$1" key="$2"
+	# Try jq first if available
+	if command -v jq &>/dev/null; then
+		echo "$json" | jq -r ".$key // empty" 2>/dev/null
+		return
+	fi
+	# Fallback: simple grep/sed extraction
+	echo "$json" | grep -o "\"$key\"[[:space:]]*:[[:space:]]*\"[^\"]*\"" | head -1 | sed "s/\"$key\"[[:space:]]*:[[:space:]]*\"//;s/\"$//"
+}
+
+# Extract JSON array first element's string field
+# Usage: json_get_array_first <json> <array_key> <field_key>
+json_get_array_first() {
+	local json="$1" array_key="$2" field_key="$3"
+	if command -v jq &>/dev/null; then
+		echo "$json" | jq -r ".${array_key}[0].${field_key} // empty" 2>/dev/null
+		return
+	fi
+	# Fallback: extract field from first object in array
+	echo "$json" | grep -o "\"$field_key\"[[:space:]]*:[[:space:]]*\"[^\"]*\"" | head -1 | sed "s/\"$field_key\"[[:space:]]*:[[:space:]]*\"//;s/\"$//"
+}
+
+# JSON-escape a string
+json_escape() {
+	local s="$1"
+	s="${s//\\/\\\\}"
+	s="${s//\"/\\\"}"
+	s="${s//$'\n'/\\n}"
+	s="${s//$'\r'/\\r}"
+	s="${s//$'\t'/\\t}"
+	echo -n "$s"
+}
+
+# Unescape common JSON escape sequences in translated text
+json_unescape() {
+	local s="$1"
+	s="${s//\\n/$'\n'}"
+	s="${s//\\r/}"
+	s="${s//\\t/$'\t'}"
+	s="${s//\\\"/\"}"
+	s="${s//\\\\/\\}"
+	echo -n "$s"
+}
+
+# Load optional DeepL context text from language-specific file:
+#   tools/translate_cache/<lang>.deepl-context
+load_deepl_context() {
+	local lang="$1"
+	local context_file="${CACHE_BASE_DIR}/${lang}.deepl-context"
+
+	if [ -f "$context_file" ]; then
+		cat "$context_file" 2>/dev/null
+	fi
+}
+
+# --- Cache functions ---
+
+cache_key() {
+	local src="$1" tgt="$2" text="$3" service="$4"
+	# Key with service prefix - jq --arg handles escaping
+	echo -n "${service}:${text}"
+}
+
+cache_get() {
+	local key="$1" lang="$2" package="${3:-}"
+	
+	# Search priority: package-specific cache first, then general cache, then all variants
+	local search_files=()
+	
+	if [ -n "$package" ]; then
+		# Try package-specific cache first
+		search_files+=("${CACHE_BASE_DIR}/${lang}-${package}.json")
+	fi
+	
+	# Then base cache
+	search_files+=("${CACHE_BASE_DIR}/${lang}.json")
+	
+	# Then all other variants
+	for cache_file in "${CACHE_BASE_DIR}/${lang}"-*.json; do
+		[ -f "$cache_file" ] && search_files+=("$cache_file")
+	done
+	
+	for cache_file in "${search_files[@]}"; do
+		# Skip if file doesn't exist
+		[ -f "$cache_file" ] || continue
+		# Strictly accept only files ending with .json
+		case "${cache_file##*/}" in
+			*.json) ;;
+			*) continue ;;
+		esac
+		
+		# Read translation from JSON (field .translation)
+		local value=$(jq -r --arg key "$key" '.[$key].translation // empty' "$cache_file" 2>/dev/null)
+		if [ -n "$value" ]; then
+			echo -n "$value"
+			return 0
+		fi
+	done
+	return 1
+}
+
+cache_get_original() {
+	# Fallback: ritorna il testo originale inglese dalla cache
+	local key="$1" lang="$2" package="${3:-}"
+	
+	# Search priority: package-specific cache first, then general cache, then all variants
+	local search_files=()
+	
+	if [ -n "$package" ]; then
+		search_files+=("${CACHE_BASE_DIR}/${lang}-${package}.json")
+	fi
+	search_files+=("${CACHE_BASE_DIR}/${lang}.json")
+	for cache_file in "${CACHE_BASE_DIR}/${lang}"-*.json; do
+		[ -f "$cache_file" ] && search_files+=("$cache_file")
+	done
+	
+	for cache_file in "${search_files[@]}"; do
+		[ -f "$cache_file" ] || continue
+		case "${cache_file##*/}" in
+			*.json) ;;
+			*) continue ;;
+		esac
+		
+		local original=$(jq -r --arg key "$key" '.[$key].original // empty' "$cache_file" 2>/dev/null)
+		if [ -n "$original" ]; then
+			echo -n "$original"
+			return 0
+		fi
+	done
+	return 1
+}
+
+# Get translation from any service in cache (fallback when primary service not available)
+cache_get_any_service() {
+	local src_lang="$1" tgt_lang="$2" text="$3" current_service="$4" package="${5:-}"
+	
+	# List of all possible services to try
+	local services="deepl libretranslate apertium mymemory lingva openai"
+	
+	for service in $services; do
+		# Skip the current service (already tried)
+		[ "$service" = "$current_service" ] && continue
+		
+		# Try to get cached translation from this service in all cache files
+		for cache_file in "${CACHE_BASE_DIR}/${tgt_lang}".json "${CACHE_BASE_DIR}/${tgt_lang}"-*.json; do
+			# Skip if file doesn't exist (glob didn't match)
+			[ -f "$cache_file" ] || continue
+			case "${cache_file##*/}" in
+				*.json) ;;
+				*) continue ;;
+			esac
+			
+			local alt_key=$(cache_key "$src_lang" "$tgt_lang" "$text" "$service")
+			local value=$(jq -r --arg key "$alt_key" '.[$key].translation // empty' "$cache_file" 2>/dev/null)
+			
+			if [ -n "$value" ]; then
+				# Found translation from alternative service!
+				# Echo the service name and translation separated by "|"
+				echo -n "$service|$value"
+				return 0
+			fi
+		done
+	done
+	
+	return 1
+}
+
+cache_put() {
+	local key="$1" original="$2" translation="$3" lang="$4" service="${5:-unknown}" package="${6:-}"
+	# Write to package-specific cache file if package name provided
+	local cache_file
+	if [ -n "$package" ]; then
+		cache_file="${CACHE_BASE_DIR}/${lang}-${package}.json"
+	else
+		cache_file="${CACHE_BASE_DIR}/${lang}.json"
+	fi
+	local lock_file="${cache_file}.lock"
+	
+	# Crea directory se non esiste
+	mkdir -p "${CACHE_BASE_DIR}" 2>/dev/null
+	
+	# Lock per scrittura atomica (previene race conditions)
+	local lock_timeout=10
+	local waited=0
+	while [ -f "$lock_file" ] && [ $waited -lt $lock_timeout ]; do
+		sleep 0.1
+		waited=$((waited + 1))
+	done
+	
+	# Crea lock
+	touch "$lock_file" 2>/dev/null
+	
+	# Inizializza file JSON se non esiste
+	if [ ! -f "$cache_file" ]; then
+		echo '{}' > "$cache_file"
+	fi
+	
+	# Genera timestamp ISO 8601
+	local timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ" 2>/dev/null)
+	[ -z "$timestamp" ] && timestamp="unknown"
+	
+	# Ottieni GitHub username da git config (fallback a "unknown")
+	local github_user=$(git config --get user.name 2>/dev/null)
+	[ -z "$github_user" ] && github_user="unknown"
+	
+	# Aggiorna JSON con oggetto contenente tutti i metadati
+	local tmp_file="${cache_file}.tmp.$$"
+	jq --arg key "$key" \
+	   --arg original "$original" \
+	   --arg translation "$translation" \
+	   --arg timestamp "$timestamp" \
+	   --arg service "$service" \
+	   --arg github_user "$github_user" \
+		'.[$key] = {"original": $original, "translation": $translation, "timestamp": $timestamp, "service": $service, "github_user": $github_user}' \
+		"$cache_file" > "$tmp_file" 2>/dev/null
+	
+	if [ $? -eq 0 ]; then
+		mv "$tmp_file" "$cache_file"
+	else
+		# Fallback: ricrea JSON se corrotto
+		echo '{}' | jq --arg key "$key" \
+		   --arg original "$original" \
+		   --arg translation "$translation" \
+		   --arg timestamp "$timestamp" \
+		   --arg service "$service" \
+		   --arg github_user "$github_user" \
+			'.[$key] = {"original": $original, "translation": $translation, "timestamp": $timestamp, "service": $service, "github_user": $github_user}' > "$cache_file"
+		rm -f "$tmp_file"
+	fi
+	
+	# Rimuovi lock
+	rm -f "$lock_file"
+}
+
+# --- DeepL language code mapping ---
+
+deepl_lang_code() {
+	local lang="$1"
+	case "$lang" in
+		en) echo "EN" ;;
+		de) echo "DE" ;;
+		fr) echo "FR" ;;
+		es) echo "ES" ;;
+		it) echo "IT" ;;
+		pt) echo "PT-PT" ;;
+		nl) echo "NL" ;;
+		pl) echo "PL" ;;
+		ru) echo "RU" ;;
+		*) echo "${lang^^}" ;;
+	esac
+}
+
+deepl_source_lang_code() {
+	local lang="$1"
+	case "$lang" in
+		en) echo "EN" ;;
+		de) echo "DE" ;;
+		fr) echo "FR" ;;
+		es) echo "ES" ;;
+		it) echo "IT" ;;
+		pt|pt-pt|pt-br) echo "PT" ;;
+		nl) echo "NL" ;;
+		pl) echo "PL" ;;
+		ru) echo "RU" ;;
+		*) echo "${lang^^}" ;;
+	esac
+}
+
+# --- Escape sequence protection with placeholders ---
+
+# Protect leading/trailing whitespace that translation services often remove
+# This must be called FIRST before other protections
+protect_whitespace() {
+	local text="$1"
+	local result="$text"
+	
+	# Count and protect leading spaces/tabs
+	local leading_spaces=""
+	local leading_tabs=""
+	
+	# Extract leading whitespace
+	if [[ "$result" =~ ^([[:space:]]*) ]]; then
+		local leading="${BASH_REMATCH[1]}"
+		# Count spaces and tabs separately
+		leading_spaces="${leading//[^[:blank:]]}"
+		leading_spaces="${leading_spaces//$'\t'}"
+		leading_tabs="${leading//[^$'\t']}"
+		
+		if [ -n "$leading_spaces" ]; then
+			local space_count=${#leading_spaces}
+			result="__FREETZ_LEADSP${space_count}__${result#${leading_spaces}}"
+		fi
+		if [ -n "$leading_tabs" ]; then
+			local tab_count=${#leading_tabs}
+			result="__FREETZ_LEADTAB${tab_count}__${result#${leading_tabs}}"
+		fi
+	fi
+	
+	# Extract trailing whitespace
+	if [[ "$result" =~ ([[:space:]]*)$ ]]; then
+		local trailing="${BASH_REMATCH[1]}"
+		# Count spaces and tabs separately
+		local trailing_spaces="${trailing//[^[:blank:]]}"
+		trailing_spaces="${trailing_spaces//$'\t'}"
+		local trailing_tabs="${trailing//[^$'\t']}"
+		
+		if [ -n "$trailing_spaces" ]; then
+			local space_count=${#trailing_spaces}
+			result="${result%${trailing_spaces}}__FREETZ_TRAILSP${space_count}__"
+		fi
+		if [ -n "$trailing_tabs" ]; then
+			local tab_count=${#trailing_tabs}
+			result="${result%${trailing_tabs}}__FREETZ_TRAILTAB${tab_count}__"
+		fi
+	fi
+	
+	echo -n "$result"
+}
+
+# Restore leading/trailing whitespace from placeholders
+# This must be called LAST after all other restorations
+restore_whitespace() {
+	local text="$1"
+	local result="$text"
+	
+	# Restore leading spaces
+	while [[ "$result" =~ __FREETZ_LEADSP([0-9]+)__ ]]; do
+		local count="${BASH_REMATCH[1]}"
+		local spaces=$(printf '%*s' "$count" '')
+		result="${result//__FREETZ_LEADSP${count}__/$spaces}"
+	done
+	
+	# Restore leading tabs
+	while [[ "$result" =~ __FREETZ_LEADTAB([0-9]+)__ ]]; do
+		local count="${BASH_REMATCH[1]}"
+		local tabs=$(printf '\t%.0s' $(seq 1 "$count"))
+		result="${result//__FREETZ_LEADTAB${count}__/$tabs}"
+	done
+	
+	# Restore trailing spaces
+	while [[ "$result" =~ __FREETZ_TRAILSP([0-9]+)__ ]]; do
+		local count="${BASH_REMATCH[1]}"
+		local spaces=$(printf '%*s' "$count" '')
+		result="${result//__FREETZ_TRAILSP${count}__/$spaces}"
+	done
+	
+	# Restore trailing tabs
+	while [[ "$result" =~ __FREETZ_TRAILTAB([0-9]+)__ ]]; do
+		local count="${BASH_REMATCH[1]}"
+		local tabs=$(printf '\t%.0s' $(seq 1 "$count"))
+		result="${result//__FREETZ_TRAILTAB${count}__/$tabs}"
+	done
+	
+	echo -n "$result"
+}
+
+# Replace escape sequences with placeholders before translation
+# This prevents translation services from removing or misinterpreting them
+protect_escape_sequences() {
+	local text="$1"
+	echo -n "$text" | sed 's/\\n/__FREETZ_NL__/g; s/\\t/__FREETZ_TAB__/g; s/\\r/__FREETZ_CR__/g'
+}
+
+# Restore escape sequences from placeholders after translation
+restore_escape_sequences() {
+	local text="$1"
+	echo -n "$text" | sed 's/__FREETZ_NL__/\\n/g; s/__FREETZ_TAB__/\\t/g; s/__FREETZ_CR__/\\r/g'
+}
+
+# Protect specific shell patterns that translation services often modify incorrectly
+# Currently protects: sed "s/pattern/replacement/flags"
+protect_shell_commands() {
+	local text="$1"
+	local result="$text"
+	local counter=0
+	
+	# Protect sed substitution commands: sed "s/.../.../..."
+	# Save each match and replace with placeholder
+	while true; do
+		# Match: sed followed by optional flags and "s/.../.../..."
+		if [[ "$result" =~ sed[[:space:]]+(\"s/[^\"]+\"|\'s/[^\']+\') ]]; then
+			local matched="${BASH_REMATCH[0]}"
+			# Save to temp file for later restoration
+			echo "$matched" >> "/tmp/freetz_protected_cmds_$$_${counter}"
+			result="${result//"$matched"/__FREETZ_CMD${counter}__}"
+			((counter++))
+			[ $counter -gt 50 ] && break
+		else
+			break
+		fi
+	done
+	
+	echo -n "$result"
+}
+
+# Restore protected shell commands after translation
+restore_shell_commands() {
+	local text="$1"
+	local result="$text"
+	local counter=0
+	
+	# Restore commands from temp files
+	while [ -f "/tmp/freetz_protected_cmds_$$_${counter}" ]; do
+		local cmd=$(cat "/tmp/freetz_protected_cmds_$$_${counter}")
+		result="${result//__FREETZ_CMD${counter}__/$cmd}"
+		rm -f "/tmp/freetz_protected_cmds_$$_${counter}"
+		((counter++))
+	done
+	
+	echo -n "$result"
+}
+
+# --- Translation backends ---
+
+translate_deepl() {
+	local src_lang="$1" tgt_lang="$2" text="$3"
+	local api_key="${FREETZ_TRANSLATE_DEEPL_API_KEY}"
+
+	[ -z "$api_key" ] && die "DeepL API key not set (FREETZ_TRANSLATE_DEEPL_API_KEY)"
+
+	# DeepL often rejects very short text (single words) and text ending with "..."
+	# Strip trailing ellipsis and spaces, we'll add them back after
+	local stripped_text="$text"
+	local trailing_ellipsis=""
+	local trailing_spaces=""
+	local added_context=false
+	
+	# Save trailing whitespace
+	if [[ "$stripped_text" =~ [[:space:]]+$ ]]; then
+		trailing_spaces="${BASH_REMATCH[0]}"
+		stripped_text="${stripped_text%"${trailing_spaces}"}"
+	fi
+	
+	# Check for trailing ellipsis (including variations like "... " or "...")
+	if [[ "$stripped_text" =~ \.\.\.+$ ]]; then
+		trailing_ellipsis="${BASH_REMATCH[0]}"
+		stripped_text="${stripped_text%"${trailing_ellipsis}"}"
+	fi
+	
+	# DeepL refuses single words - add temporary context for very short text
+	local word_count=$(echo "$stripped_text" | wc -w)
+	local text_to_translate="$stripped_text"
+	if [ "$word_count" -le 2 ]; then
+		text_to_translate="Translate this: ${stripped_text}"
+		added_context=true
+	fi
+
+	# Determine API endpoint (free vs pro key)
+	local api_url="https://api-free.deepl.com/v2/translate"
+	if [[ "$api_key" != *":fx" ]]; then
+		api_url="https://api.deepl.com/v2/translate"
+	fi
+
+	local src_code tgt_code
+	src_code=$(deepl_source_lang_code "$src_lang")
+	tgt_code=$(deepl_lang_code "$tgt_lang")
+	
+	local deepl_context
+	deepl_context=$(load_deepl_context "$tgt_lang")
+
+	# Build JSON payload with options for better handling of UI strings and short text
+	# Note: preserve_formatting not supported by DeepL Free API
+	local json_payload
+	if [ -n "$deepl_context" ]; then
+		json_payload=$(cat <<-EOF
+			{
+				"text": ["$(json_escape "$text_to_translate")"],
+				"source_lang": "$src_code",
+				"target_lang": "$tgt_code",
+				"split_sentences": "0",
+				"context": "$(json_escape "$deepl_context")"
+			}
+		EOF
+		)
+	else
+		json_payload=$(cat <<-EOF
+			{
+				"text": ["$(json_escape "$text_to_translate")"],
+				"source_lang": "$src_code",
+				"target_lang": "$tgt_code",
+				"split_sentences": "0"
+			}
+		EOF
+		)
+	fi
+
+	local response
+	response=$(curl -s -X POST "$api_url" \
+		-H "Authorization: DeepL-Auth-Key $api_key" \
+		-H "Content-Type: application/json" \
+		-d "$json_payload" \
+		--connect-timeout 10 --max-time 30) || die "DeepL API request failed"
+
+	# Small delay to avoid rate limiting (100ms)
+	sleep 0.1
+
+	local translated
+	translated=$(json_get_array_first "$response" "translations" "text")
+	
+	# Check if DeepL returned empty translation (common for very short text or technical terms)
+	if [ -z "$translated" ]; then
+		warn "DeepL: returned empty translation for: '$text'"
+		# Return original text with trailing ellipsis/spaces restored
+		echo -n "${text}"
+		return 1
+	fi
+
+	# Unescape
+	translated=$(json_unescape "$translated")
+	
+	# If we added context, extract the translated term (text after colon)
+	if [ "$added_context" = true ]; then
+		# Extract text after ":" or similar pattern in various languages
+		if [[ "$translated" =~ :[[:space:]]*(.+)$ ]]; then
+			translated="${BASH_REMATCH[1]}"
+		elif [[ "$translated" =~ (Traduci|Tradurre|Übersetzen|Traducir|Traduire).*:[[:space:]]*(.+)$ ]]; then
+			translated="${BASH_REMATCH[2]}"
+		else
+			# Fallback: use the whole result (DeepL might have translated it differently)
+			warn "DeepL: could not extract term from context, using full result: '$translated'"
+		fi
+	fi
+	
+	# Restore trailing ellipsis and spaces
+	echo -n "${translated}${trailing_ellipsis}${trailing_spaces}"
+}
+
+translate_libretranslate() {
+	local src_lang="$1" tgt_lang="$2" text="$3"
+	local api_url="${FREETZ_TRANSLATE_API_URL:-https://libretranslate.com}"
+	api_url="${api_url%/}"
+
+	local payload="{\"q\":\"$(json_escape "$text")\",\"source\":\"$src_lang\",\"target\":\"$tgt_lang\",\"format\":\"text\"}"
+
+	# Add API key if provided
+	if [ -n "$FREETZ_TRANSLATE_LIBRETRANSLATE_API_KEY" ]; then
+		payload="${payload%\}},\"api_key\":\"$FREETZ_TRANSLATE_LIBRETRANSLATE_API_KEY\"}"
+	fi
+
+	local response
+	response=$(curl -s -X POST "${api_url}/translate" \
+		-H "Content-Type: application/json" \
+		-d "$payload" \
+		--connect-timeout 10 --max-time 30) || die "LibreTranslate API request failed"
+
+	local translated
+	translated=$(json_get_string "$response" "translatedText")
+	[ -z "$translated" ] && die "LibreTranslate: empty response. API response: $response"
+
+	json_unescape "$translated"
+}
+
+translate_apertium() {
+	local src_lang="$1" tgt_lang="$2" text="$3"
+	local api_url="https://apertium.org/apy/translate"
+
+	local encoded_text
+	encoded_text=$(urlencode "$text")
+
+	local response
+	response=$(curl -s -G "$api_url" \
+		--data-urlencode "q=$text" \
+		-d "langpair=${src_lang}|${tgt_lang}" \
+		-d "markUnknown=no" \
+		--connect-timeout 10 --max-time 30) || die "Apertium API request failed"
+
+	local translated
+	if command -v jq &>/dev/null; then
+		translated=$(echo "$response" | jq -r '.responseData.translatedText // empty' 2>/dev/null)
+	else
+		translated=$(echo "$response" | grep -o '"translatedText"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/"translatedText"[[:space:]]*:[[:space:]]*"//;s/"$//')
+	fi
+	[ -z "$translated" ] && die "Apertium: empty response. API response: $response"
+
+	json_unescape "$translated"
+}
+
+translate_mymemory() {
+	local src_lang="$1" tgt_lang="$2" text="$3"
+	local api_url="https://api.mymemory.translated.net/get"
+
+	# Validate text length and content
+	local text_len=${#text}
+	local text_trimmed=$(echo "$text" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+	
+	# Block pure punctuation/symbols (regardless of length)
+	if echo "$text_trimmed" | grep -qE '^[[:punct:][:space:]]+$'; then
+		die "MyMemory: text is only punctuation/symbols: '$text'"
+	fi
+	
+	# Allow alphabetic words of 2+ characters (On, No, Ok, If, etc.)
+	# Block very short texts only if they don't contain letters
+	if [ $text_len -lt 2 ]; then
+		die "MyMemory: text too short ($text_len chars): '$text'"
+	elif [ $text_len -eq 2 ]; then
+		# 2-char texts: must contain at least 1 letter
+		if ! echo "$text_trimmed" | grep -qE '[[:alpha:]]'; then
+			die "MyMemory: 2-char text without letters: '$text'"
+		fi
+	fi
+
+	# Check text length limit (MyMemory max: 500 chars)
+	if [ $text_len -gt 500 ]; then
+		die "MyMemory: text too long ($text_len chars, max 500). Skipping."
+	fi
+
+	local extra_params=""
+	if [ -n "$FREETZ_TRANSLATE_MYMEMORY_EMAIL" ]; then
+		extra_params="&de=${FREETZ_TRANSLATE_MYMEMORY_EMAIL}"
+	fi
+
+	local response
+	response=$(curl -s -G "$api_url" \
+		--data-urlencode "q=$text" \
+		-d "langpair=${src_lang}|${tgt_lang}${extra_params}" \
+		--connect-timeout 10 --max-time 30) || die "MyMemory API request failed"
+
+	local translated
+	if command -v jq &>/dev/null; then
+		translated=$(echo "$response" | jq -r '.responseData.translatedText // empty' 2>/dev/null)
+	else
+		translated=$(echo "$response" | grep -o '"translatedText"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/"translatedText"[[:space:]]*:[[:space:]]*"//;s/"$//')
+	fi
+	[ -z "$translated" ] && die "MyMemory: empty response. API response: $response"
+
+	# Detect error messages in translation
+	case "$translated" in
+		*"QUERY LENGTH LIMIT EXCEEDED"*)
+			die "MyMemory: query length limit exceeded"
+			;;
+		*"YOU USED ALL AVAILABLE FREE TRANSLATIONS"*)
+			die "MyMemory: daily quota exceeded. Try again later or provide email."
+			;;
+		*"MYMEMORY WARNING"*)
+			die "MyMemory: API warning/error in response"
+			;;
+	esac
+
+	# Unescape and validate
+	translated=$(json_unescape "$translated")
+
+	# Check if translation is too similar to source (likely untranslated)
+	# Compare lowercase versions
+	local source_lower=$(echo "$text" | tr '[:upper:]' '[:lower:]')
+	local trans_lower=$(echo "$translated" | tr '[:upper:]' '[:lower:]')
+	
+	if [ "$source_lower" = "$trans_lower" ]; then
+		# Identical = no translation happened (acceptable for technical terms)
+		warn "MyMemory: translation identical to source (may be technical term): '$text'"
+	fi
+
+	echo -n "$translated"
+}
+
+translate_lingva() {
+	local src_lang="$1" tgt_lang="$2" text="$3"
+	local api_url="${FREETZ_TRANSLATE_API_URL:-https://lingva.ml}"
+	api_url="${api_url%/}"
+
+	local encoded_text
+	encoded_text=$(urlencode "$text")
+
+	local response
+	response=$(curl -s "${api_url}/api/v1/${src_lang}/${tgt_lang}/${encoded_text}" \
+		--connect-timeout 10 --max-time 30) || die "Lingva API request failed"
+
+	local translated
+	translated=$(json_get_string "$response" "translation")
+	[ -z "$translated" ] && die "Lingva: empty response. API response: $response"
+
+	json_unescape "$translated"
+}
+
+translate_openai() {
+	local src_lang="$1" tgt_lang="$2" text="$3"
+	local api_key="${FREETZ_TRANSLATE_OPENAI_API_KEY}"
+
+	[ -z "$api_key" ] && die "OpenAI API key not set (FREETZ_TRANSLATE_OPENAI_API_KEY)"
+
+	local lang_names
+	case "$tgt_lang" in
+		de) lang_names="German" ;;
+		en) lang_names="English" ;;
+		it) lang_names="Italian" ;;
+		fr) lang_names="French" ;;
+		es) lang_names="Spanish" ;;
+		pt) lang_names="Portuguese" ;;
+		nl) lang_names="Dutch" ;;
+		pl) lang_names="Polish" ;;
+		ru) lang_names="Russian" ;;
+		*) lang_names="$tgt_lang" ;;
+	esac
+
+	local src_lang_name
+	case "$src_lang" in
+		de) src_lang_name="German" ;;
+		en) src_lang_name="English" ;;
+		*) src_lang_name="$src_lang" ;;
+	esac
+
+	local system_prompt="You are a translator for a router web interface (Fritz!Box). Translate the following ${src_lang_name} text to ${lang_names}. Output ONLY the translation, nothing else. Keep it concise and technical. Preserve any HTML tags, format specifiers, or special characters exactly as they are."
+
+	local payload
+	payload=$(cat <<-EOJSON
+	{
+	  "model": "gpt-4o-mini",
+	  "messages": [
+	    {"role": "system", "content": "$(json_escape "$system_prompt")"},
+	    {"role": "user", "content": "$(json_escape "$text")"}
+	  ],
+	  "temperature": 0.1,
+	  "max_tokens": 256
+	}
+	EOJSON
+	)
+
+	local response
+	response=$(curl -s -X POST "https://api.openai.com/v1/chat/completions" \
+		-H "Authorization: Bearer $api_key" \
+		-H "Content-Type: application/json" \
+		-d "$payload" \
+		--connect-timeout 10 --max-time 30) || die "OpenAI API request failed"
+
+	local translated
+	if command -v jq &>/dev/null; then
+		translated=$(echo "$response" | jq -r '.choices[0].message.content // empty' 2>/dev/null)
+	else
+		# Rough extraction without jq
+		translated=$(echo "$response" | grep -o '"content"[[:space:]]*:[[:space:]]*"[^"]*"' | tail -1 | sed 's/"content"[[:space:]]*:[[:space:]]*"//;s/"$//')
+	fi
+	[ -z "$translated" ] && die "OpenAI: empty response. API response: $response"
+
+	json_unescape "$translated"
+}
+
+# --- Main dispatch ---
+
+get_service_name() {
+	# Check if FREETZ_TRANSLATE_SERVICE is set directly (override)
+	if [ -n "$FREETZ_TRANSLATE_SERVICE" ]; then
+		echo "$FREETZ_TRANSLATE_SERVICE"
+		return
+	fi
+	
+	# Fallback: detect from boolean flags (for .config compatibility)
+	if [ "$FREETZ_TRANSLATE_DEEPL" = "y" ]; then echo "deepl"
+	elif [ "$FREETZ_TRANSLATE_LIBRETRANSLATE" = "y" ]; then echo "libretranslate"
+	elif [ "$FREETZ_TRANSLATE_APERTIUM" = "y" ]; then echo "apertium"
+	elif [ "$FREETZ_TRANSLATE_MYMEMORY" = "y" ]; then echo "mymemory"
+	elif [ "$FREETZ_TRANSLATE_LINGVA" = "y" ]; then echo "lingva"
+	elif [ "$FREETZ_TRANSLATE_OPENAI" = "y" ]; then echo "openai"
+	else echo "none"
+	fi
+}
+
+translate() {
+	local src_lang="$1" tgt_lang="$2" text="$3" package="${4:-}"
+
+	# Same language = no translation needed
+	if [ "$src_lang" = "$tgt_lang" ]; then
+		echo -n "$text"
+		return 0
+	fi
+
+	# Skip empty or whitespace-only text
+	if [ -z "$text" ] || [ -z "${text//[[:space:]]/}" ]; then
+		echo -n "$text"
+		return 0
+	fi
+
+	local service
+	service=$(get_service_name)
+
+	if [ "$service" = "none" ]; then
+		warn "No translation service configured, returning source text"
+		echo -n "$text"
+		return 1
+	fi
+
+	# Check cache (uses original text with literal \n)
+	debug "Using service: $service (src=$src_lang, tgt=$tgt_lang, package=$package)"
+	if [ "$FREETZ_TRANSLATE_CACHE_ENABLED" = "y" ]; then
+		debug "Checking cache..."
+		local key
+		key=$(cache_key "$src_lang" "$tgt_lang" "$text" "$service")
+		local cached
+		if cached=$(cache_get "$key" "$tgt_lang" "$package"); then
+			# If a package is specified, mirror cache-hit into package-specific file
+			# so package cache files become visible even when data comes from base cache.
+			if [ -n "$package" ]; then
+				cache_put "$key" "$text" "$cached" "$tgt_lang" "$service" "$package"
+			fi
+			# Indicate cache hit for statistics
+			echo "from cache" >&2
+			debug "Cache HIT: returning cached translation from $service"
+			echo -n "$cached"
+			return 0
+		fi
+		debug "Cache MISS: not found in $service cache"
+		
+		# If not found in primary service cache, try alternative services
+		if [ "$FREETZ_TRANSLATE_REUSE_CACHE_ANY_SERVICE" = "y" ]; then
+			debug "Trying alternative service caches..."
+			local alt_result
+			if alt_result=$(cache_get_any_service "$src_lang" "$tgt_lang" "$text" "$service" "$package"); then
+				# Format: "service|translation"
+				local alt_service="${alt_result%%|*}"
+				local alt_translation="${alt_result#*|}"
+				local alt_key
+				alt_key=$(cache_key "$src_lang" "$tgt_lang" "$text" "$alt_service")
+				if [ -n "$package" ]; then
+					cache_put "$alt_key" "$text" "$alt_translation" "$tgt_lang" "$alt_service" "$package"
+				fi
+				
+				# Found in alternative service cache - reuse it
+				# Do NOT re-cache under current service - keep original service attribution
+				echo "from cache ($alt_service)" >&2
+				debug "Cache HIT: reusing translation from alternative service: $alt_service"
+				
+				echo -n "$alt_translation"
+				return 0
+			fi
+			debug "No translation found in any service cache"
+		fi
+	else
+		debug "Cache disabled (FREETZ_TRANSLATE_CACHE_ENABLED=$FREETZ_TRANSLATE_CACHE_ENABLED)"
+	fi
+
+	# Protect whitespace FIRST (leading/trailing spaces/tabs)
+	# This prevents translation services from stripping whitespace
+	debug "Applying text protections..."
+	local protected_text
+	protected_text=$(protect_whitespace "$text")
+	debug "Protected whitespace: '$text' -> '$protected_text'"
+	
+	# Protect escape sequences with placeholders before translation
+	# This prevents translation services from removing \n, \t, \r
+	protected_text=$(protect_escape_sequences "$protected_text")
+	debug "Protected escape sequences"
+	
+	# Protect shell commands from being modified by translation
+	# This prevents DeepL from "correcting" sed/awk/grep commands
+	protected_text=$(protect_shell_commands "$protected_text")
+	debug "Protected shell commands"
+
+	# Call translation backend with protected text
+	debug "Calling API: $service"
+	local result
+	local rc
+	case "$service" in
+		deepl)           
+			debug "Requesting translation from DeepL API..."
+			result=$(translate_deepl "$src_lang" "$tgt_lang" "$protected_text")
+			rc=$?
+			# If DeepL fails (rate limit), try MyMemory as fallback
+			if [ $rc -ne 0 ] || [ -z "$result" ]; then
+				warn "DeepL failed (rc=$rc), trying MyMemory fallback..."
+				debug "Requesting translation from MyMemory API (fallback)..."
+				result=$(translate_mymemory "$src_lang" "$tgt_lang" "$protected_text")
+				rc=$?
+				if [ $rc -eq 0 ] && [ -n "$result" ]; then
+					debug "Fallback successful: MyMemory returned translation"
+				else
+					debug "Fallback failed: MyMemory also failed (rc=$rc)"
+				fi
+			else
+				debug "DeepL API successful"
+			fi
+			;;
+		libretranslate)
+			debug "Requesting translation from LibreTranslate API..."
+			result=$(translate_libretranslate "$src_lang" "$tgt_lang" "$protected_text"); rc=$?
+			debug "LibreTranslate API returned: rc=$rc"
+			;;
+		apertium)
+			debug "Requesting translation from Apertium API..."
+			result=$(translate_apertium "$src_lang" "$tgt_lang" "$protected_text"); rc=$?
+			debug "Apertium API returned: rc=$rc"
+			;;
+		mymemory)
+			debug "Requesting translation from MyMemory API..."
+			result=$(translate_mymemory "$src_lang" "$tgt_lang" "$protected_text"); rc=$?
+			debug "MyMemory API returned: rc=$rc"
+			;;
+		lingva)
+			debug "Requesting translation from Lingva API..."
+			result=$(translate_lingva "$src_lang" "$tgt_lang" "$protected_text"); rc=$?
+			debug "Lingva API returned: rc=$rc"
+			;;
+		openai)
+			debug "Requesting translation from OpenAI API..."
+			result=$(translate_openai "$src_lang" "$tgt_lang" "$protected_text"); rc=$?
+			debug "OpenAI API returned: rc=$rc"
+			;;
+		*) die "Unknown translation service: $service" ;;
+	esac
+
+	if [ $rc -ne 0 ] || [ -z "$result" ]; then
+		warn "Translation failed for: $text"
+		debug "Final result: FAILED (rc=$rc, result='$result')"
+		# Don't cache failures - allow retry later
+		# Return original text unchanged
+		echo -n "$text"
+		return 1
+	fi
+	debug "Translation successful: '$protected_text' -> '$result'"
+
+	# Restore in reverse order: shell commands first, escape sequences, then whitespace LAST
+	debug "Restoring text protections..."
+	result=$(restore_shell_commands "$result")
+	debug "Restored shell commands"
+	result=$(restore_escape_sequences "$result")
+	debug "Restored escape sequences"
+	result=$(restore_whitespace "$result")
+	debug "Restored whitespace: final result='$result'"
+
+	# Store in cache with original text and restored translation
+	# Only cache translations that were actually requested from this service
+	if [ "$FREETZ_TRANSLATE_CACHE_ENABLED" = "y" ]; then
+		debug "Caching translation: service=$service, lang=$tgt_lang"
+		cache_put "$key" "$text" "$result" "$tgt_lang" "$service" "$package"
+	else
+		debug "Not caching (FREETZ_TRANSLATE_CACHE_ENABLED=$FREETZ_TRANSLATE_CACHE_ENABLED)"
+	fi
+
+	echo -n "$result"
+	return 0
+}
+
+# --- CLI entry point ---
+
+if [ $# -lt 3 ]; then
+	echo "Usage: $0 <source_lang> <target_lang> <text> [package_name]" >&2
+	echo "  Translates <text> from <source_lang> to <target_lang>" >&2
+	echo "  using the configured translation service." >&2
+	echo "  Optional package_name for package-specific cache." >&2
+	echo "" >&2
+	echo "  Configure via environment variables:" >&2
+	echo "    FREETZ_TRANSLATE_DEEPL=y  (+ FREETZ_TRANSLATE_DEEPL_API_KEY)" >&2
+	echo "    FREETZ_TRANSLATE_LIBRETRANSLATE=y  (+ FREETZ_TRANSLATE_LIBRETRANSLATE_API_KEY, optional FREETZ_TRANSLATE_API_URL)" >&2
+	echo "    FREETZ_TRANSLATE_APERTIUM=y" >&2
+	echo "    FREETZ_TRANSLATE_MYMEMORY=y  (+ optional FREETZ_TRANSLATE_MYMEMORY_EMAIL)" >&2
+	echo "    FREETZ_TRANSLATE_LINGVA=y  (+ optional FREETZ_TRANSLATE_API_URL)" >&2
+	echo "    FREETZ_TRANSLATE_OPENAI=y  (+ FREETZ_TRANSLATE_OPENAI_API_KEY)" >&2
+	exit 1
+fi
+
+translate "$1" "$2" "$3" "${4:-}"

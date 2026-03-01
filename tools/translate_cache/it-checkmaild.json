@@ -1,0 +1,79 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Accounts": {
+    "original": "Accounts",
+    "translation": "Conti",
+    "timestamp": "2026-02-15T23:07:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Name": {
+    "original": "Name",
+    "translation": "Nome",
+    "timestamp": "2026-02-15T23:07:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Incoming mail server": {
+    "original": "Incoming mail server",
+    "translation": "Server di posta in arrivo",
+    "timestamp": "2026-02-15T23:07:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Username": {
+    "original": "Username",
+    "translation": "Nome utente",
+    "timestamp": "2026-02-15T23:07:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Password": {
+    "original": "Password",
+    "translation": "Password",
+    "timestamp": "2026-02-15T23:07:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:07:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Check mailbox every": {
+    "original": "Check mailbox every",
+    "translation": "Controllare la cassetta della posta ogni",
+    "timestamp": "2026-02-15T23:07:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:minutes": {
+    "original": "minutes",
+    "translation": "minuti",
+    "timestamp": "2026-02-15T23:07:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable script execution": {
+    "original": "Enable script execution",
+    "translation": "Abilita l'esecuzione di script",
+    "timestamp": "2026-02-15T23:07:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Download header and body": {
+    "original": "Download header and body",
+    "translation": "Scarica l'intestazione e il corpo",
+    "timestamp": "2026-02-15T23:07:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -3,6 +3,15 @@
 
 . /etc/freetz_info.cfg
 
+# FREETZ_INFO_EXTERNAL_FILES may be very large. If exported, every external
+# command can fail with "Argument list too long" due oversized CGI env.
+if [ -n "$FREETZ_INFO_EXTERNAL_FILES" ]; then
+	_freetz_info_external_files="$FREETZ_INFO_EXTERNAL_FILES"
+	unset FREETZ_INFO_EXTERNAL_FILES
+	FREETZ_INFO_EXTERNAL_FILES="$_freetz_info_external_files"
+	unset _freetz_info_external_files
+fi
+
 divstyle="style='margin-top:6px;'"
 
 sec_begin "$(lang de:"Firmware-Informationen" en:"Information about firmware")"
@@ -19,9 +28,9 @@ if [ -r /proc/version ]; then
 	_kernelversion=$(cat /proc/version | sed -e 's/Linux version //;s/#.*//;s/.collect2:.*//')
 fi
 if [ -n "$_kernelversion" ]; then
-	echo "<dl class='info'><dt>Kernel$(lang de:"version" en:" version")</dt><dd>$_kernelversion</dd></dl>"
+	echo "<dl class='info'><dt>Kernel $(lang de:"Version" en:"version")</dt><dd>$_kernelversion</dd></dl>"
 fi
-echo "<dl class='info'><dt>Freetz$(lang de:"-Version" en:" version")</dt><dd>$FREETZ_INFO_VERSION</dd></dl>"
+echo "<dl class='info'><dt>Freetz $(lang de:"Version" en:"version")</dt><dd>$FREETZ_INFO_VERSION</dd></dl>"
 date_de_format=$(echo "$FREETZ_INFO_MAKEDATE" \
   | sed -re 's/([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2})(.*)/\3.\2.\1 \4\:\5\:\6/')
 [ "$date_de_format" != "reproducible" ] && \
@@ -41,8 +50,13 @@ print_entry() {
 			print_entry "$type" "${name}_$sub"
 		fi
 	else
-		[ "$type" == "cgi" ] && name="${name}_cgi"
-		[ "$type" == "cgi" -o "$type" == "pkg" ] && ver="$(cut /etc/packages.lst -d ' ' -f 3,4 | sed -n "s/^${name//_/.} / /p")" || ver=''
+		[ "$type" = "cgi" ] && name="${name}_cgi"
+		if [ "$type" = "cgi" ] || [ "$type" = "pkg" ]; then
+			name_dotted="$(echo "$name" | tr '_' '.')"
+			ver="$(cut /etc/packages.lst -d ' ' -f 3,4 | sed -n "s/^${name_dotted} / /p")"
+		else
+			ver=''
+		fi
 		echo "$name$ver<br>"
 		open_entry=$name
 	fi
@@ -189,7 +203,7 @@ format_conf() {
 	cat <<- EOF
 	<div $divstyle><br><a href="$(href extra mod do_download_config)"><b>.config:</b></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="$(href extra mod do_download_config)">$(lang de:"Herunterladen als Textdatei" en:"Download as text file")</a></div>
 	EOF
-	let width=_cgi_width-30
+	width=$((_cgi_width - 30))
 	echo -n "<pre style='width: ${width}px; max-height: 100px;'>"
 	html < /etc/.config
 	echo '</pre>'
@@ -205,7 +219,7 @@ fi
 
 if [ -n "$FREETZ_INFO_EXTERNAL_FILES" ]; then
 	sec_begin "$(lang de:"Ausgelagerte Dateien" en:"Externalised files")"
-		let width=_cgi_width-30
+		width=$((_cgi_width - 30))
 		echo -n "<pre style='width: ${width}px; max-height: 100px;'>"
 		echo -n "$FREETZ_INFO_EXTERNAL_FILES" | sort
 		echo '</pre>'

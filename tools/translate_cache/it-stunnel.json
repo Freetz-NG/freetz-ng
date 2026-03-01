@@ -1,0 +1,51 @@
+{
+  "deepl:Default certificate for non-client services": {
+    "original": "Default certificate for non-client services",
+    "translation": "Certificato predefinito per i servizi non client",
+    "timestamp": "2026-02-15T23:55:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:use device certificate": {
+    "original": "use device certificate",
+    "translation": "utilizzare il certificato del dispositivo",
+    "timestamp": "2026-02-15T23:55:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:use own certificate": {
+    "original": "use own certificate",
+    "translation": "utilizzare il proprio certificato",
+    "timestamp": "2026-02-15T23:55:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:OpenSSL options": {
+    "original": "OpenSSL options",
+    "translation": "Opzioni OpenSSL",
+    "timestamp": "2026-02-15T23:55:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit services file": {
+    "original": "Edit services file",
+    "translation": "Modifica del file dei servizi",
+    "timestamp": "2026-02-15T23:55:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit own certificate chain": {
+    "original": "Edit own certificate chain",
+    "translation": "Modificare la propria catena di certificati",
+    "timestamp": "2026-02-15T23:55:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit own private key": {
+    "original": "Edit own private key",
+    "translation": "Modifica della propria chiave privata",
+    "timestamp": "2026-02-15T23:55:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

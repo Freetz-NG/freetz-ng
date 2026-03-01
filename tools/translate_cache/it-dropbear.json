@@ -1,0 +1,72 @@
+{
+  "deepl:Additional command-line options (for experts)": {
+    "original": "Additional command-line options (for experts)",
+    "translation": "Opzioni aggiuntive della riga di comando (per gli esperti)",
+    "timestamp": "2026-02-16T14:18:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allow only root login": {
+    "original": "Allow only root login",
+    "translation": "Consentire solo il login di root",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allow password login": {
+    "original": "Allow password login",
+    "translation": "Consentire l'accesso con password",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit authorized_keys": {
+    "original": "Edit authorized_keys",
+    "translation": "Modifica authorized_keys",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Options": {
+    "original": "Options",
+    "translation": "Opzioni",
+    "timestamp": "2026-02-16T14:18:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note that the FRITZ!Box does not support normal user management. The files /etc/passwd and /etc/shadow have to be saved with <b>modsave</b>. Please activate the support for regular users only if you know what you are doing.": {
+    "original": "Please note that the FRITZ!Box does not support normal user management. The files /etc/passwd and /etc/shadow have to be saved with <b>modsave</b>. Please activate the support for regular users only if you know what you are doing.",
+    "translation": "Si noti che il FRITZ!Box non supporta la normale gestione degli utenti. I file /etc/passwd e /etc/shadow devono essere salvati con <b>modsave</b>. Attivate il supporto per gli utenti normali solo se sapete cosa state facendo.",
+    "timestamp": "2026-02-16T14:18:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Public key authentication": {
+    "original": "Public key authentication",
+    "translation": "Autenticazione a chiave pubblica",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SSH server": {
+    "original": "SSH server",
+    "translation": "server SSH",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The SSH server is listening on": {
+    "original": "The SSH server is listening on",
+    "translation": "Il server SSH è in ascolto su",
+    "timestamp": "2026-02-16T14:18:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "deepl:The Tor server is listening on": {
+    "original": "The Tor server is listening on",
+    "translation": "Il server Tor è in ascolto su",
+    "timestamp": "2026-02-15T23:56:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Remote Control": {
+    "original": "Remote Control",
+    "translation": "Telecomando",
+    "timestamp": "2026-02-15T23:56:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:, if not specified": {
+    "original": ", if not specified",
+    "translation": "se non specificato",
+    "timestamp": "2026-02-15T23:56:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:If Control Interface is not empty you must provide a password.": {
+    "original": "If Control Interface is not empty you must provide a password.",
+    "translation": "Se l'interfaccia di controllo non è vuota, è necessario fornire una password.",
+    "timestamp": "2026-02-15T23:56:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:You can create a password hash with <i>tor --hash-password my_password</i>.": {
+    "original": "You can create a password hash with <i>tor --hash-password my_password</i>.",
+    "translation": "È possibile creare un hash della password con <i>tor --hash-password my_password</i>.",
+    "timestamp": "2026-02-15T23:56:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Circuits Available Timeout": {
+    "original": "Circuits Available Timeout",
+    "translation": "Timeout dei circuiti disponibili",
+    "timestamp": "2026-02-15T23:56:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allowed clients": {
+    "original": "Allowed clients",
+    "translation": "Clienti consentiti",
+    "timestamp": "2026-02-15T23:56:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:all": {
+    "original": "all",
+    "translation": "tutti",
+    "timestamp": "2026-02-15T23:56:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:restricted": {
+    "original": "restricted",
+    "translation": "ristretto",
+    "timestamp": "2026-02-15T23:56:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:List of IP-Addresses (one per line)": {
+    "original": "List of IP-Addresses (one per line)",
+    "translation": "Elenco di indirizzi IP (uno per riga)",
+    "timestamp": "2026-02-15T23:56:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To specify all internal and link-local networks, you can use the <i>private</i> alias instead of an address": {
+    "original": "To specify all internal and link-local networks, you can use the <i>private</i> alias instead of an address",
+    "translation": "Per specificare tutte le reti interne e link-local, è possibile utilizzare l'alias <i>privato</i> al posto di un indirizzo",
+    "timestamp": "2026-02-15T23:56:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Entry and exit nodes": {
+    "original": "Entry and exit nodes",
+    "translation": "Nodi di entrata e di uscita",
+    "timestamp": "2026-02-15T23:56:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Tor entry nodes (one per line)": {
+    "original": "Tor entry nodes (one per line)",
+    "translation": "Nodi di ingresso Tor (uno per riga)",
+    "timestamp": "2026-02-15T23:56:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Tor exit nodes (one per line)": {
+    "original": "Tor exit nodes (one per line)",
+    "translation": "Nodi di uscita Tor (uno per riga)",
+    "timestamp": "2026-02-15T23:56:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Tor nodes to avoid (one per line)": {
+    "original": "Tor nodes to avoid (one per line)",
+    "translation": "Nodi Tor da evitare (uno per riga)",
+    "timestamp": "2026-02-15T23:56:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Treat nodes to avoid as the ones definitely to exclude": {
+    "original": "Treat nodes to avoid as the ones definitely to exclude",
+    "translation": "Trattare i nodi da evitare come quelli sicuramente da escludere",
+    "timestamp": "2026-02-15T23:56:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Relay (node) configuration": {
+    "original": "Relay (node) configuration",
+    "translation": "Configurazione del relè (nodo)",
+    "timestamp": "2026-02-15T23:56:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Open tor relay": {
+    "original": "Open tor relay",
+    "translation": "Aprire il relè tor",
+    "timestamp": "2026-02-15T23:56:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Nickname": {
+    "original": "Nickname",
+    "translation": "Soprannome",
+    "timestamp": "2026-02-15T23:56:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:IP or FQDN for your server": {
+    "original": "IP or FQDN for your server",
+    "translation": "IP o FQDN del vostro server",
+    "timestamp": "2026-02-15T23:56:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use this server as a bridge": {
+    "original": "Use this server as a bridge",
+    "translation": "Utilizzare questo server come ponte",
+    "timestamp": "2026-02-15T23:57:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:directory": {
+    "original": "directory",
+    "translation": "directory",
+    "timestamp": "2026-02-15T23:57:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Advanced relay options": {
+    "original": "Advanced relay options",
+    "translation": "Opzioni avanzate per il relè",
+    "timestamp": "2026-02-15T23:57:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit secret id key": {
+    "original": "Edit secret id key",
+    "translation": "Modifica della chiave id segreta",
+    "timestamp": "2026-02-15T23:57:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit local port-forwarding": {
+    "original": "Edit local port-forwarding",
+    "translation": "Modifica del port-forwarding locale",
+    "timestamp": "2026-02-15T23:57:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:click here": {
+    "original": "click here",
+    "translation": "clicca qui",
+    "timestamp": "2026-02-15T23:57:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

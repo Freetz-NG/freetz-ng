@@ -1,0 +1,86 @@
+{
+  "deepl:Debug logging to file and syslog": {
+    "original": "Debug logging to file and syslog",
+    "translation": "Logging di debug su file e syslog",
+    "timestamp": "2026-02-16T14:18:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Informations": {
+    "original": "Informations",
+    "translation": "Informazioni",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:New ports get instantly opened on daemon start": {
+    "original": "New ports get instantly opened on daemon start",
+    "translation": "Le nuove porte vengono aperte istantaneamente all'avvio del daemon",
+    "timestamp": "2026-02-16T14:18:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:On configuration changes old ports are updated after the first intervall": {
+    "original": "On configuration changes old ports are updated after the first intervall",
+    "translation": "In caso di modifica della configurazione, le vecchie porte vengono aggiornate dopo il primo intervento",
+    "timestamp": "2026-02-16T14:18:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Open ports could not be closed and you have wait for the timeout": {
+    "original": "Open ports could not be closed and you have wait for the timeout",
+    "translation": "Non è possibile chiudere le porte aperte e bisogna attendere il timeout",
+    "timestamp": "2026-02-16T14:18:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Ports to open, multiple seperated by spaces": {
+    "original": "Ports to open, multiple seperated by spaces",
+    "translation": "Porte da aprire; più valori vanno separati da spazi",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Settings": {
+    "original": "Settings",
+    "translation": "Impostazioni",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The ports will be opened for maximum 120 seconds and need to be refreshed afterwards": {
+    "original": "The ports will be opened for maximum 120 seconds and need to be refreshed afterwards",
+    "translation": "Le porte saranno aperte per un massimo di 120 secondi e dovranno poi essere aggiornate",
+    "timestamp": "2026-02-16T14:18:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Timeout of opened ports, max 120 [seconds]": {
+    "original": "Timeout of opened ports, max 120 [seconds]",
+    "translation": "Timeout delle porte aperte, max 120 [secondi].",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Timeout without internet connection [seconds]": {
+    "original": "Timeout without internet connection [seconds]",
+    "translation": "Timeout senza connessione a Internet [secondi]",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:ports": {
+    "original": "ports",
+    "translation": "porte",
+    "timestamp": "2026-02-16T14:18:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

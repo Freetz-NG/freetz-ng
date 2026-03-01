@@ -1,0 +1,44 @@
+{
+  "deepl:Add ripped files to filter rules": {
+    "original": "Add ripped files to filter rules",
+    "translation": "Aggiungere file strappati alle regole del filtro",
+    "timestamp": "2026-02-15T23:55:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Complement filter rules": {
+    "original": "Complement filter rules",
+    "translation": "Regole del filtro di complemento",
+    "timestamp": "2026-02-15T23:55:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Basic options": {
+    "original": "Basic options",
+    "translation": "Opzioni di base",
+    "timestamp": "2026-02-15T23:55:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Startoptions": {
+    "original": "Startoptions",
+    "translation": "Startoptions",
+    "timestamp": "2026-02-15T23:55:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:List of ripped files": {
+    "original": "List of ripped files",
+    "translation": "Elenco dei file strappati",
+    "timestamp": "2026-02-15T23:55:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Copy&Paste to filter rules": {
+    "original": "Copy&Paste to filter rules",
+    "translation": "Copia e incolla per filtrare le regole",
+    "timestamp": "2026-02-15T23:55:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

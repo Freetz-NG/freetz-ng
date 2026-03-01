@@ -1,0 +1,737 @@
+{
+  "deepl:Multiple Configurations": {
+    "original": "Multiple Configurations",
+    "translation": "Configurazioni multiple",
+    "timestamp": "2026-02-15T23:37:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Select/Delete configuration": {
+    "original": "Select/Delete configuration",
+    "translation": "Seleziona/Elimina la configurazione",
+    "timestamp": "2026-02-15T23:37:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Delete this configuration (not possible for \\": {
+    "original": "\\'Delete this configuration (not possible for \\",
+    "translation": "\\Cancellare questa configurazione (non possibile per \\",
+    "timestamp": "2026-02-15T23:37:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This is the last configuration and therefor cannot be deleted!": {
+    "original": "This is the last configuration and therefor cannot be deleted!",
+    "translation": "Questa è l'ultima configurazione e quindi non può essere cancellata!",
+    "timestamp": "2026-02-15T23:38:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Add a new configuration": {
+    "original": "Add a new configuration",
+    "translation": "Aggiungere una nuova configurazione",
+    "timestamp": "2026-02-15T23:38:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Short name for the new configuration e.g. \\": {
+    "original": "\\'Short name for the new configuration e.g. \\",
+    "translation": "\\Nome breve per la nuova configurazione, ad esempio \\",
+    "timestamp": "2026-02-15T23:38:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Add": {
+    "original": "Add",
+    "translation": "Aggiungi",
+    "timestamp": "2026-02-15T23:38:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Add a new configuration with specified name\\'": {
+    "original": "\\'Add a new configuration with specified name\\'",
+    "translation": "\\Aggiungi una nuova configurazione con il nome specificato",
+    "timestamp": "2026-02-15T23:38:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Load the tun module (and if available yf_patchkernel) automatically": {
+    "original": "Load the tun module (and if available yf_patchkernel) automatically",
+    "translation": "Carica automaticamente il modulo tun (e se disponibile yf_patchkernel)",
+    "timestamp": "2026-02-15T23:38:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Save messages to ": {
+    "original": "Save messages to ",
+    "translation": "Salvare i messaggi su ",
+    "timestamp": "2026-02-15T23:38:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable debug mode": {
+    "original": "Enable debug mode",
+    "translation": "Abilitare la modalità di debug",
+    "timestamp": "2026-02-15T23:38:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Verbosity of the Log": {
+    "original": "Verbosity of the Log",
+    "translation": "Verbosità del registro",
+    "timestamp": "2026-02-15T23:38:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Verbosity: usual=3, &quot;R/W&quot; per paket=5, detailed=6, &quot;everything&quot;=11": {
+    "original": "Verbosity: usual=3, &quot;R/W&quot; per paket=5, detailed=6, &quot;everything&quot;=11",
+    "translation": "Verbosità: solito=3, &quot;R/W&quot; per paket=5, dettagliato=6, &quot;tutto&quot;=11",
+    "timestamp": "2026-02-15T23:38:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:<b>!Don\\'t forget to stop the daemon after some time!</b><br>(To prevent filesystem overflow.)": {
+    "original": "<b>!Don\\'t forget to stop the daemon after some time!</b><br>(To prevent filesystem overflow.)",
+    "translation": "<b>Non dimenticare di arrestare il demone dopo qualche tempo!</b><br> (Per prevenire l'overflow del filesystem).",
+    "timestamp": "2026-02-15T23:38:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log file will be deleted next start w/o debug mode.": {
+    "original": "Log file will be deleted next start w/o debug mode.",
+    "translation": "Il file di log verrà cancellato al prossimo avvio senza modalità di debug.",
+    "timestamp": "2026-02-15T23:38:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Basic Configuration": {
+    "original": "Basic Configuration",
+    "translation": "Configurazione di base",
+    "timestamp": "2026-02-15T23:38:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Bridge": {
+    "original": "Bridge",
+    "translation": "Ponte",
+    "timestamp": "2026-02-15T23:38:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server is listening for incoming requests on this port": {
+    "original": "Server is listening for incoming requests on this port",
+    "translation": "Il server è in ascolto per le richieste in arrivo su questa porta",
+    "timestamp": "2026-02-15T23:38:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:TAP interface will be bridged to LAN using brctl. LAN IP will ignore the local IP and use the IP of the interface lan.": {
+    "original": "TAP interface will be bridged to LAN using brctl. LAN IP will ignore the local IP and use the IP of the interface lan.",
+    "translation": "L'interfaccia TAP sarà collegata alla LAN tramite brctl. L'IP della LAN ignorerà l'IP locale e utilizzerà l'IP dell'interfaccia lan.",
+    "timestamp": "2026-02-15T23:38:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:don't bridge tap": {
+    "original": "don't bridge tap",
+    "translation": "non fare un bridge tap",
+    "timestamp": "2026-02-15T23:38:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:bridge to LAN": {
+    "original": "bridge to LAN",
+    "translation": "ponte verso la LAN",
+    "timestamp": "2026-02-15T23:38:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:bridge and use LAN IP": {
+    "original": "bridge and use LAN IP",
+    "translation": "ponte e utilizzare l'IP della LAN",
+    "timestamp": "2026-02-15T23:38:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Connection will be established via IPv6 (as client) or OpenVPN can additonally be reached via IPv6 (as server)": {
+    "original": "Connection will be established via IPv6 (as client) or OpenVPN can additonally be reached via IPv6 (as server)",
+    "translation": "La connessione verrà stabilita tramite IPv6 (come client) o OpenVPN può essere raggiunto tramite IPv6 (come server).",
+    "timestamp": "2026-02-15T23:38:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use IPv6": {
+    "original": "Use IPv6",
+    "translation": "Utilizzare IPv6",
+    "timestamp": "2026-02-15T23:38:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:and port if needed": {
+    "original": "and port if needed",
+    "translation": "e la porta, se necessario",
+    "timestamp": "2026-02-15T23:38:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server (and port if port &ne; 1194) e.g. \\": {
+    "original": "Server (and port if port &ne; 1194) e.g. \\",
+    "translation": "Server (e porta se porta &ne; 1194) ad esempio \\",
+    "timestamp": "2026-02-15T23:38:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Security": {
+    "original": "Security",
+    "translation": "Sicurezza",
+    "timestamp": "2026-02-15T23:38:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Authentification Method": {
+    "original": "Authentification Method",
+    "translation": "Metodo di autenticazione",
+    "timestamp": "2026-02-15T23:38:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Must be the same setting on each server <b>and</b> client.": {
+    "original": "Must be the same setting on each server <b>and</b> client.",
+    "translation": "Deve essere la stessa impostazione su ogni server <b>e</b> client.",
+    "timestamp": "2026-02-15T23:38:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Static key": {
+    "original": "Static key",
+    "translation": "Chiave statica",
+    "timestamp": "2026-02-15T23:38:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Certificates": {
+    "original": "Certificates",
+    "translation": "Certificati",
+    "timestamp": "2026-02-15T23:38:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:unencrypted": {
+    "original": "unencrypted",
+    "translation": "non criptato",
+    "timestamp": "2026-02-15T23:38:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Authentication": {
+    "original": "Authentication",
+    "translation": "Autenticazione",
+    "timestamp": "2026-02-15T23:38:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Caution! Default cipher \\": {
+    "original": "Caution! Default cipher \\",
+    "translation": "Attenzione! Cifrario predefinito",
+    "timestamp": "2026-02-15T23:38:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Accept server certificates even without \\": {
+    "original": "\\'Accept server certificates even without \\",
+    "translation": "\\Accettare i certificati del server anche senza \\code(0144)™.",
+    "timestamp": "2026-02-15T23:38:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Accept server certificate w/o ": {
+    "original": "Accept server certificate w/o ",
+    "translation": "Accettare il certificato del server w/o ",
+    "timestamp": "2026-02-15T23:38:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'This configuration requires its own key/certificates.\\'": {
+    "original": "\\'This configuration requires its own key/certificates.\\'",
+    "translation": "\\Questa configurazione richiede le proprie chiavi/certificati.",
+    "timestamp": "2026-02-15T23:38:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Own key/certificates for this configuration": {
+    "original": "Own key/certificates for this configuration",
+    "translation": "Chiavi/certificati propri per questa configurazione",
+    "timestamp": "2026-02-15T23:38:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hide keys/certificates links in menu (for simplicity's sake)": {
+    "original": "Hide keys/certificates links in menu (for simplicity's sake)",
+    "translation": "Nascondere i link alle chiavi/certificati nel menu (per semplicità)",
+    "timestamp": "2026-02-15T23:38:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hide links to keys/certificates of this configuration": {
+    "original": "Hide links to keys/certificates of this configuration",
+    "translation": "Nascondere i link alle chiavi/certificati di questa configurazione",
+    "timestamp": "2026-02-15T23:38:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:VPN IP-Addresses and VPN Routing": {
+    "original": "VPN IP-Addresses and VPN Routing",
+    "translation": "Indirizzi IP VPN e instradamento VPN",
+    "timestamp": "2026-02-15T23:38:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:You can configure VPN IP addresses and routing inside the VPN here": {
+    "original": "You can configure VPN IP addresses and routing inside the VPN here",
+    "translation": "È possibile configurare gli indirizzi IP VPN e il routing all'interno della VPN qui",
+    "timestamp": "2026-02-15T23:38:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Local IP-Address": {
+    "original": "Local IP-Address",
+    "translation": "Indirizzo IP locale",
+    "timestamp": "2026-02-15T23:39:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'IP of local VPN interface ( TAP / TUN ), e.g.\\": {
+    "original": "\\'IP of local VPN interface ( TAP / TUN ), e.g.\\",
+    "translation": "\\IP dell'interfaccia VPN locale ( TAP / TUN ), ad es.",
+    "timestamp": "2026-02-15T23:39:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Netmask": {
+    "original": "Netmask",
+    "translation": "Netmask",
+    "timestamp": "2026-02-15T23:39:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Netmask for local VPN interface ( TAP / TUN ), e.g. \\": {
+    "original": "\\'Netmask for local VPN interface ( TAP / TUN ), e.g. \\",
+    "translation": "\\Netmask per l'interfaccia VPN locale ( TAP / TUN ), ad es.",
+    "timestamp": "2026-02-15T23:39:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:address": {
+    "original": "address",
+    "translation": "indirizzo",
+    "timestamp": "2026-02-15T23:39:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'IP of remote VPN interface ( TAP / TUN ), e.g. \\": {
+    "original": "\\'IP of remote VPN interface ( TAP / TUN ), e.g. \\",
+    "translation": "\\IP dell'interfaccia VPN remota ( TAP / TUN ), ad es.",
+    "timestamp": "2026-02-15T23:39:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:for": {
+    "original": "for",
+    "translation": "per",
+    "timestamp": "2026-02-15T23:39:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Range for Client-IP-addresses. Syntax: &lt;start-ip&gt; &lt;end-ip&gt;, e.g. \\": {
+    "original": "\\'Range for Client-IP-addresses. Syntax: &lt;start-ip&gt; &lt;end-ip&gt;, e.g. \\",
+    "translation": "\\'Intervallo per gli indirizzi IP dei client. Sintassi: &lt;start-ip&gt; &lt;end-ip&gt;, ad esempio \\",
+    "timestamp": "2026-02-15T23:39:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:of IP networks": {
+    "original": "of IP networks",
+    "translation": "di reti IP",
+    "timestamp": "2026-02-15T23:39:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Remote Network": {
+    "original": "Remote Network",
+    "translation": "Rete remota",
+    "timestamp": "2026-02-15T23:39:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This network will be routed to the client through VPN.": {
+    "original": "This network will be routed to the client through VPN.",
+    "translation": "Questa rete verrà inoltrata al client tramite VPN.",
+    "timestamp": "2026-02-15T23:39:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Redirect all client traffic through VPN": {
+    "original": "Redirect all client traffic through VPN",
+    "translation": "Reindirizzare tutto il traffico dei client attraverso la VPN",
+    "timestamp": "2026-02-15T23:39:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Redirect client traffic": {
+    "original": "Redirect client traffic",
+    "translation": "Reindirizzare il traffico client",
+    "timestamp": "2026-02-15T23:39:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Client receives options (e.g. routes) the server is pushing\\'": {
+    "original": "\\'Client receives options (e.g. routes) the server is pushing\\'",
+    "translation": "\\Il client riceve le opzioni (ad esempio le rotte) che il server sta spingendo\".",
+    "timestamp": "2026-02-15T23:39:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Receive options from server": {
+    "original": "Receive options from server",
+    "translation": "Ricevere le opzioni dal server",
+    "timestamp": "2026-02-15T23:39:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:(only whith certificates)": {
+    "original": "(only whith certificates)",
+    "translation": "(solo con certificati)",
+    "timestamp": "2026-02-15T23:39:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Server also \\": {
+    "original": "\\'Server also \\",
+    "translation": "\\Server anche \\",
+    "timestamp": "2026-02-15T23:39:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Also receive client IP-Adresse from server": {
+    "original": "Also receive client IP-Adresse from server",
+    "translation": "Ricevere anche l'indirizzo IP del client dal server",
+    "timestamp": "2026-02-15T23:39:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Valid for use with TAP or TUN server with &quot;Extended client configuration&quot;": {
+    "original": "Valid for use with TAP or TUN server with &quot;Extended client configuration&quot;",
+    "translation": "Valido per l'uso con TAP o server TUN con &quot;Configurazione client estesa&quot;",
+    "timestamp": "2026-02-15T23:39:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Local network": {
+    "original": "Local network",
+    "translation": "Rete locale",
+    "timestamp": "2026-02-15T23:39:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Local net, syntax: &lt;ip&gt; &lt;subnetmask&gt; e.g. &quot;192.168.178.0 255.255.255.0&quot;": {
+    "original": "Local net, syntax: &lt;ip&gt; &lt;subnetmask&gt; e.g. &quot;192.168.178.0 255.255.255.0&quot;",
+    "translation": "Rete locale, sintassi: &lt;ip&gt; &lt;subnetmask&gt; ad esempio &quot;192.168.178.0 255.255.255.0&quot;",
+    "timestamp": "2026-02-15T23:39:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Client will receive a network route via": {
+    "original": "Client will receive a network route via",
+    "translation": "Il client riceverà un percorso di rete tramite",
+    "timestamp": "2026-02-15T23:39:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Extended client configuration": {
+    "original": "Extended client configuration",
+    "translation": "Configurazione estesa del client",
+    "timestamp": "2026-02-15T23:39:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Set static VPN-IPs for clients and route networks to particular clients": {
+    "original": "Set static VPN-IPs for clients and route networks to particular clients",
+    "translation": "Impostare IP VPN statici per i client e instradare le reti verso determinati client",
+    "timestamp": "2026-02-15T23:39:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Client name": {
+    "original": "Client name",
+    "translation": "Nome del cliente",
+    "timestamp": "2026-02-15T23:39:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:from certificate": {
+    "original": "from certificate",
+    "translation": "da certificato",
+    "timestamp": "2026-02-15T23:39:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Network at client": {
+    "original": "Network at client",
+    "translation": "Rete presso il client",
+    "timestamp": "2026-02-15T23:39:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Option \\": {
+    "original": "Option \\",
+    "translation": "Opzione \\",
+    "timestamp": "2026-02-15T23:39:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server Configuration (only with certificatess)": {
+    "original": "Server Configuration (only with certificatess)",
+    "translation": "Configurazione del server (solo con i certificati)",
+    "timestamp": "2026-02-15T23:39:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Maximum number of clients allowed to be connected at once\\'": {
+    "original": "\\'Maximum number of clients allowed to be connected at once\\'",
+    "translation": "\\´Numero massimo di client consentiti per la connessione in una sola volta´",
+    "timestamp": "2026-02-15T23:39:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Client shall redirect ALL traffic through VPN\\'": {
+    "original": "\\'Client shall redirect ALL traffic through VPN\\'",
+    "translation": "\\Il cliente deve reindirizzare TUTTO il traffico attraverso VPN",
+    "timestamp": "2026-02-15T23:39:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Redirect all clients' traffic": {
+    "original": "Redirect all clients' traffic",
+    "translation": "Reindirizzare il traffico di tutti i client",
+    "timestamp": "2026-02-15T23:39:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Enable routing between client networks\\'": {
+    "original": "\\'Enable routing between client networks\\'",
+    "translation": "\\Abilitare il routing tra le reti client",
+    "timestamp": "2026-02-15T23:39:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:to": {
+    "original": "to",
+    "translation": "a",
+    "timestamp": "2026-02-15T23:39:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Further Options": {
+    "original": "Further Options",
+    "translation": "Ulteriori opzioni",
+    "timestamp": "2026-02-15T23:39:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Send pings to keep connection alive": {
+    "original": "Send pings to keep connection alive",
+    "translation": "Inviare ping per mantenere viva la connessione",
+    "timestamp": "2026-02-15T23:40:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use LZO compression? !!Must be the same setting on server and client site!!": {
+    "original": "Use LZO compression? !!Must be the same setting on server and client site!!",
+    "translation": "Utilizzare la compressione LZO?!!! Deve essere la stessa impostazione sul server e sul sito client!!!",
+    "timestamp": "2026-02-15T23:40:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:LZO compression not compiled in": {
+    "original": "LZO compression not compiled in",
+    "translation": "La compressione LZO non è stata compilata in",
+    "timestamp": "2026-02-15T23:40:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Remote site may change IP during connection (e.g. when using dynamic IPs)\\'": {
+    "original": "\\'Remote site may change IP during connection (e.g. when using dynamic IPs)\\'",
+    "translation": "\\´Il sito remoto può cambiare IP durante la connessione (ad esempio quando si utilizzano IP dinamici)´.",
+    "timestamp": "2026-02-15T23:40:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allow IP change": {
+    "original": "Allow IP change",
+    "translation": "Consentire la modifica dell'IP",
+    "timestamp": "2026-02-15T23:40:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Current status of connection will be logged to /var/log/openvpn.log\\'": {
+    "original": "\\'Current status of connection will be logged to /var/log/openvpn.log\\'",
+    "translation": "\\Lo stato attuale della connessione sarà registrato in /var/log/openvpn.log",
+    "timestamp": "2026-02-15T23:40:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log status": {
+    "original": "Log status",
+    "translation": "Stato del registro",
+    "timestamp": "2026-02-15T23:40:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Unlock expert settings / edit advanced parameters": {
+    "original": "Unlock expert settings / edit advanced parameters",
+    "translation": "Sbloccare le impostazioni degli esperti / modificare i parametri avanzati",
+    "timestamp": "2026-02-15T23:40:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:I herby swear: I will not change any following paramter without prior reading manuals from \\": {
+    "original": "I herby swear: I will not change any following paramter without prior reading manuals from \\",
+    "translation": "Giuro che non modificherò i seguenti parametri senza aver prima letto i manuali di \\",
+    "timestamp": "2026-02-15T23:40:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Bandwidth shaper [Bytes/second]": {
+    "original": "Bandwidth shaper [Bytes/second]",
+    "translation": "Riduzione della larghezza di banda [Bytes/secondo]",
+    "timestamp": "2026-02-15T23:40:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Only listen to this IP-address": {
+    "original": "Only listen to this IP-address",
+    "translation": "Ascolta solo questo indirizzo IP",
+    "timestamp": "2026-02-15T23:40:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'OpenVPN only listens on this IP-address (no entry = listen on all IP-addresses)\\'": {
+    "original": "\\'OpenVPN only listens on this IP-address (no entry = listen on all IP-addresses)\\'",
+    "translation": "\\´OpenVPN ascolta solo questo indirizzo IP (nessuna voce = ascolta tutti gli indirizzi IP)´",
+    "timestamp": "2026-02-15T23:40:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Margin between keepalive pings [seconds]": {
+    "original": "Margin between keepalive pings [seconds]",
+    "translation": "Margine tra i ping di mantenimento [secondi]",
+    "timestamp": "2026-02-15T23:40:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:[seconds]": {
+    "original": "[seconds]",
+    "translation": "[secondi]",
+    "timestamp": "2026-02-15T23:40:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Fragment UDP packets (to solve problems)": {
+    "original": "Fragment UDP packets (to solve problems)",
+    "translation": "Frammentare i pacchetti UDP (per risolvere i problemi)",
+    "timestamp": "2026-02-15T23:40:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\'Always fragment UDP packets exceeding this length. Proposal = 1300[Bytes] (for MTU = 1500[Bytes])\\'": {
+    "original": "\\'Always fragment UDP packets exceeding this length. Proposal = 1300[Bytes] (for MTU = 1500[Bytes])\\'",
+    "translation": "\\Frammenta sempre i pacchetti UDP che superano questa lunghezza. Proposta = 1300[Byte] (per MTU = 1500[Byte])\\'",
+    "timestamp": "2026-02-15T23:40:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional parameters (separated by \\": {
+    "original": "Additional parameters (separated by \\",
+    "translation": "Parametri aggiuntivi (separati da \\",
+    "timestamp": "2026-02-15T23:40:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Files to copy into chroot environment (separate by \\": {
+    "original": "Files to copy into chroot environment (separate by \\",
+    "translation": "File da copiare nell'ambiente chroot (separati da \\",
+    "timestamp": "2026-02-15T23:40:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:For busybox commands you will need to copy programm and busybox": {
+    "original": "For busybox commands you will need to copy programm and busybox",
+    "translation": "Per i comandi di busybox è necessario copiare programm e busybox",
+    "timestamp": "2026-02-15T23:40:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl: unsupported\\\\n": {
+    "original": " unsupported\\\\n",
+    "translation": " non supportato\\\\n",
+    "timestamp": "2026-02-15T23:40:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The saved configuration is not supported by this binary.\\\\n": {
+    "original": "The saved configuration is not supported by this binary.\\\\n",
+    "translation": "La configurazione salvata non è supportata da questo binario.\\\\n",
+    "timestamp": "2026-02-15T23:40:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:\\\\nPlease save a new configuration before starting.": {
+    "original": "\\\\nPlease save a new configuration before starting.",
+    "translation": "\\\\nSalvare una nuova configurazione prima di iniziare.",
+    "timestamp": "2026-02-15T23:40:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Client VPN-IP (in the same network as &quot;local IP&quot; above)": {
+    "original": "Client VPN-IP (in the same network as &quot;local IP&quot; above)",
+    "translation": "Client VPN-IP (nella stessa rete di &quot;local IP&quot; sopra)",
+    "timestamp": "2026-02-15T23:40:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This network will be routed to the client": {
+    "original": "This network will be routed to the client",
+    "translation": "Questa rete verrà instradata al client",
+    "timestamp": "2026-02-15T23:40:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Connected clients": {
+    "original": "Connected clients",
+    "translation": "Clienti collegati",
+    "timestamp": "2026-02-15T23:40:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:connected since": {
+    "original": "connected since",
+    "translation": "connesso dal",
+    "timestamp": "2026-02-15T23:40:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Status at": {
+    "original": "Status at",
+    "translation": "Stato a",
+    "timestamp": "2026-02-15T23:40:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shown only for server configurations with selected option \\": {
+    "original": "Shown only for server configurations with selected option \\",
+    "translation": "Mostrato solo per le configurazioni server con l'opzione selezionata \\",
+    "timestamp": "2026-02-15T23:40:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

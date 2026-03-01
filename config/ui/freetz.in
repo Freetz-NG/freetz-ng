@@ -39,6 +39,30 @@ menu "Web Interface"
 		config FREETZ_LANG_EN
 			bool "en - english"
 
+		config FREETZ_LANG_IT
+			bool "it - italiano"
+			select FREETZ_LANG_NEEDS_TRANSLATION
+			help
+				Italian language for the Freetz web interface.
+				Requires AI translation to be configured (see below).
+				Strings are translated from English at build time.
+
+		config FREETZ_LANG_FR
+			bool "fr - français"
+			select FREETZ_LANG_NEEDS_TRANSLATION
+			help
+				French language for the Freetz web interface.
+				Requires AI translation to be configured (see below).
+				Strings are translated from English at build time.
+
+		config FREETZ_LANG_ES
+			bool "es - español"
+			select FREETZ_LANG_NEEDS_TRANSLATION
+			help
+				Spanish language for the Freetz web interface.
+				Requires AI translation to be configured (see below).
+				Strings are translated from English at build time.
+
 		config FREETZ_LANG_XX
 			bool "xx - DEVELOPER"
 			depends on FREETZ_SHOW_DEVELOPER
@@ -55,8 +79,196 @@ menu "Web Interface"
 		string
 		default "de"            if FREETZ_LANG_DE
 		default "en"            if FREETZ_LANG_EN
+		default "it"            if FREETZ_LANG_IT
+		default "fr"            if FREETZ_LANG_FR
+		default "es"            if FREETZ_LANG_ES
 		default "xx"            if FREETZ_LANG_XX
 
+	config FREETZ_LANG_NEEDS_TRANSLATION
+		bool
+		default n
+
+	menu "AI Translation"
+		visible if FREETZ_LANG_NEEDS_TRANSLATION
+
+		comment "A translation service is REQUIRED for the selected language."
+		depends on FREETZ_LANG_NEEDS_TRANSLATION && !FREETZ_TRANSLATE_DEEPL && !FREETZ_TRANSLATE_LIBRETRANSLATE && !FREETZ_TRANSLATE_APERTIUM && !FREETZ_TRANSLATE_MYMEMORY && !FREETZ_TRANSLATE_LINGVA && !FREETZ_TRANSLATE_OPENAI
+
+		choice
+			prompt "Translation service"
+			default FREETZ_TRANSLATE_MYMEMORY
+			help
+				Select which cloud translation service to use for translating
+				Freetz web interface strings from English to the selected language.
+
+				All translations are performed at build time and cached.
+				No internet access is needed on the target device.
+
+			config FREETZ_TRANSLATE_MYMEMORY
+				bool "MyMemory"
+				help
+					MyMemory is a free translation memory service with good quality.
+					No API key required (1000 words/day anonymous).
+					Optionally provide an email for 10000 words/day.
+					https://mymemory.translated.net/doc/spec.php
+
+			config FREETZ_TRANSLATE_DEEPL
+				bool "DeepL API"
+				help
+					DeepL provides best-in-class translation quality.
+					Requires a free or pro API key from https://www.deepl.com/pro-api
+					The free plan allows 500,000 characters/month.
+
+			config FREETZ_TRANSLATE_LIBRETRANSLATE
+				bool "LibreTranslate"
+				help
+					LibreTranslate is a free and open source machine translation API.
+					
+					NOTE: Since 2024, the public instance at https://libretranslate.com
+					requires an API key (free tier available).
+					Get a free key at: https://portal.libretranslate.com
+					
+					Alternatively, you can self-host your own instance.
+					GitHub: https://github.com/LibreTranslate/LibreTranslate
+
+			config FREETZ_TRANSLATE_APERTIUM
+				bool "Apertium"
+				help
+					Apertium is a free/open-source rule-based machine translation platform.
+					Uses the public API at https://apertium.org
+					
+					Limited language pair support (mainly Romance languages):
+					  • Italian: it↔es, it→ca, it→srd
+					  • Spanish: es↔fr, es↔pt, es↔ca, es↔gl
+					  • Catalan: ca↔es, ca↔fr, ca↔pt
+					  • Portuguese: pt↔es, pt↔gl
+					  • French: fr↔es, fr↔ca
+					
+					NOTE: English↔Italian NOT supported. Use DeepL or MyMemory instead.
+					Full list: https://apertium.org/apy/listPairs
+					GitHub: https://github.com/apertium
+
+			config FREETZ_TRANSLATE_LINGVA
+				bool "Lingva Translate"
+				help
+					Lingva Translate is a free alternative front-end for Google Translate.
+					Uses public instances, no API key needed.
+					Default: https://lingva.ml
+					GitHub: https://github.com/thedaviddelta/lingva-translate
+
+			config FREETZ_TRANSLATE_OPENAI
+				bool "OpenAI API (GPT)"
+				help
+					Use OpenAI GPT models for translation. Very high quality
+					with good context understanding.
+					Requires an API key from https://platform.openai.com
+					Uses gpt-4o-mini model by default.
+
+		endchoice # "Translation service" #
+
+	config FREETZ_TRANSLATE_DEEPL_API_KEY
+		string "DeepL API Key"
+		default ""
+		depends on FREETZ_TRANSLATE_DEEPL
+		help
+			API key for DeepL translation service.
+			
+			Get a free key at https://www.deepl.com/pro-api
+			Free plan: 500,000 chars/month
+			
+			This key is used ONLY at build time and is NOT included in the image.
+
+	config FREETZ_TRANSLATE_OPENAI_API_KEY
+		string "OpenAI API Key"
+		default ""
+		depends on FREETZ_TRANSLATE_OPENAI
+		help
+			API key for OpenAI (GPT) translation service.
+			
+			Get a key at https://platform.openai.com/api-keys
+			Uses gpt-4o-mini model (cost-effective for translation)
+			
+			This key is used ONLY at build time and is NOT included in the image.
+
+	config FREETZ_TRANSLATE_LIBRETRANSLATE_API_KEY
+		string "LibreTranslate API Key"
+		default ""
+		depends on FREETZ_TRANSLATE_LIBRETRANSLATE
+		help
+			API key for LibreTranslate service.
+			
+			Get a free key at https://portal.libretranslate.com
+			Required since 2024 for public instance (https://libretranslate.com)
+			
+			This key is used ONLY at build time and is NOT included in the image.
+
+	config FREETZ_TRANSLATE_API_URL
+		string "API URL (optional override)"
+		default ""
+		depends on FREETZ_TRANSLATE_LIBRETRANSLATE || FREETZ_TRANSLATE_LINGVA
+		help
+			Optional: Override the default API endpoint URL.
+
+			For LibreTranslate: default is https://libretranslate.com
+			  You can use a self-hosted instance, e.g. http://localhost:5000
+
+			For Lingva: default is https://lingva.ml
+			  You can use any public Lingva instance.
+
+	config FREETZ_TRANSLATE_MYMEMORY_EMAIL
+		string "MyMemory contact email (optional)"
+		default ""
+		depends on FREETZ_TRANSLATE_MYMEMORY
+		help
+			Optional email address for MyMemory API.
+			Without email: 1000 words/day limit.
+			With email: 10000 words/day limit.
+
+	config FREETZ_TRANSLATE_CACHE_ENABLED
+		bool "Enable translation cache"
+		default y
+		help
+			Cache translated strings to avoid re-translating unchanged text
+			on subsequent builds.
+			
+			Cache location: tools/translate_cache/<language>/
+			Organized by target language for easier management.
+			
+			Highly recommended to reduce API calls and build time.
+
+	config FREETZ_TRANSLATE_REUSE_CACHE_ANY_SERVICE
+		bool "Reuse translations from other services"
+		default y
+		depends on FREETZ_TRANSLATE_CACHE_ENABLED
+		help
+			If a translation is already cached from a different translation service,
+			reuse it instead of calling the API again.
+			
+			Example: If you switch from MyMemory to DeepL, previously cached
+			MyMemory translations will be reused, avoiding redundant API calls.
+			
+			This saves API quota and build time when the same text has already
+			been translated by another service.
+			
+			Recommended: keep enabled to maximize cache efficiency.
+
+	config FREETZ_TRANSLATE_CACHE_CLEAR
+		bool "Clear translation cache on next build"
+		default n
+		help
+			Remove all cached translations before building.
+			
+			Useful when:
+			  - Switching translation service
+			  - Previous translations had poor quality
+			  - You want completely fresh translations
+			
+			This will delete: tools/translate_cache/
+			
+			After the build, remember to disable this option
+			to avoid clearing the cache on every build.
+
+	endmenu # "AI Translation" #
 
 	config FREETZ_SECURITY_LEVEL
 		int "Freetz security level (0-2)"

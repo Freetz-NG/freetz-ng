@@ -1,0 +1,100 @@
+{
+  "deepl:Filesharing (smbd) ": {
+    "original": "Filesharing (smbd) ",
+    "translation": "Filesharing (smbd) ",
+    "timestamp": "2026-02-15T23:52:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Nameservices (nmbd) ": {
+    "original": "Nameservices (nmbd) ",
+    "translation": "Nameservices (nmbd) ",
+    "timestamp": "2026-02-15T23:52:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Samba security": {
+    "original": "Samba security",
+    "translation": "Sicurezza di Samba",
+    "timestamp": "2026-02-15T23:52:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Share": {
+    "original": "Share",
+    "translation": "Condividi",
+    "timestamp": "2026-02-15T23:52:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:User name": {
+    "original": "User name",
+    "translation": "Nome utente",
+    "timestamp": "2026-02-15T23:52:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:leave empty to deactivate": {
+    "original": "leave empty to deactivate",
+    "translation": "lasciare vuoto per disattivare",
+    "timestamp": "2026-02-15T23:52:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:For example: 192.168.178.1/255.255.255.0 or leave blank for all": {
+    "original": "For example: 192.168.178.1/255.255.255.0 or leave blank for all",
+    "translation": "Per esempio: 192.168.178.1/255.255.255.0 o lasciare vuoto per tutti",
+    "timestamp": "2026-02-15T23:52:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Netbios Name": {
+    "original": "Netbios Name",
+    "translation": "Nome Netbios",
+    "timestamp": "2026-02-15T23:52:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Workgroup": {
+    "original": "Workgroup",
+    "translation": "Gruppo di lavoro",
+    "timestamp": "2026-02-15T23:52:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:OS level election": {
+    "original": "OS level election",
+    "translation": "Elezione a livello di sistema operativo",
+    "timestamp": "2026-02-15T23:52:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Preferred Master": {
+    "original": "Preferred Master",
+    "translation": "Master preferito",
+    "timestamp": "2026-02-15T23:52:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Default shares": {
+    "original": "Default shares",
+    "translation": "Azioni predefinite",
+    "timestamp": "2026-02-15T23:52:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Share all partitions": {
+    "original": "Share all partitions",
+    "translation": "Condividere tutte le partizioni",
+    "timestamp": "2026-02-15T23:52:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shares are only readable": {
+    "original": "Shares are only readable",
+    "translation": "Le condivisioni sono solo leggibili",
+    "timestamp": "2026-02-15T23:52:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

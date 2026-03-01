@@ -1,0 +1,30 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:07:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Help": {
+    "original": "Help",
+    "translation": "Aiuto",
+    "timestamp": "2026-02-15T23:07:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Parameters": {
+    "original": "Parameters",
+    "translation": "Parametri",
+    "timestamp": "2026-02-15T23:07:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Settings": {
+    "original": "Settings",
+    "translation": "Impostazioni",
+    "timestamp": "2026-02-15T23:07:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Temporary directory": {
+    "original": "Temporary directory",
+    "translation": "Directory temporanea",
+    "timestamp": "2026-02-15T23:07:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hint: Use a USB-device for larger files but don't remove it (or use external-services).": {
+    "original": "Hint: Use a USB-device for larger files but don't remove it (or use external-services).",
+    "translation": "Suggerimento: utilizzare un dispositivo USB per i file più grandi, ma non rimuoverlo (o utilizzare servizi esterni).",
+    "timestamp": "2026-02-15T23:07:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Cache size": {
+    "original": "Cache size",
+    "translation": "Dimensione della cache",
+    "timestamp": "2026-02-15T23:07:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Attention: Only a warning is been showing on overrunning the limitation.": {
+    "original": "Attention: Only a warning is been showing on overrunning the limitation.",
+    "translation": "Attenzione: quando si supera la limitazione, viene visualizzato solo un avviso.",
+    "timestamp": "2026-02-15T23:07:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Accounts": {
+    "original": "Accounts",
+    "translation": "Conti",
+    "timestamp": "2026-02-15T23:07:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Account": {
+    "original": "Account",
+    "translation": "Conto",
+    "timestamp": "2026-02-15T23:07:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Account enabled": {
+    "original": "Account enabled",
+    "translation": "Account abilitato",
+    "timestamp": "2026-02-15T23:08:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use certificate 1": {
+    "original": "Use certificate 1",
+    "translation": "Utilizzare il certificato 1",
+    "timestamp": "2026-02-15T23:08:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Username": {
+    "original": "Username",
+    "translation": "Nome utente",
+    "timestamp": "2026-02-15T23:08:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Password": {
+    "original": "Password",
+    "translation": "Password",
+    "timestamp": "2026-02-15T23:08:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Deactivate use-locks": {
+    "original": "Deactivate use-locks",
+    "translation": "Disattivare i blocchi d'uso",
+    "timestamp": "2026-02-15T23:08:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate if_match_bug-option": {
+    "original": "Activate if_match_bug-option",
+    "translation": "Attivare l'opzione if_match_bug",
+    "timestamp": "2026-02-15T23:08:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Mountpoint": {
+    "original": "Mountpoint",
+    "translation": "Mountpoint",
+    "timestamp": "2026-02-15T23:08:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use certificate 2": {
+    "original": "Use certificate 2",
+    "translation": "Utilizzare il certificato 2",
+    "timestamp": "2026-02-15T23:08:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use certificate 3": {
+    "original": "Use certificate 3",
+    "translation": "Utilizzare il certificato 3",
+    "timestamp": "2026-02-15T23:08:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

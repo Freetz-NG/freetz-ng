@@ -1,0 +1,37 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start delay (seconds)": {
+    "original": "Start delay (seconds)",
+    "translation": "Ritardo di avvio (secondi)",
+    "timestamp": "2026-02-15T23:07:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Applies only to start type 'automatic'. Gives e.g. OpenVPN a chance to establish VPN tunnels": {
+    "original": "Applies only to start type 'automatic'. Gives e.g. OpenVPN a chance to establish VPN tunnels",
+    "translation": "Si applica solo al tipo di avvio \"automatico\". Dà ad esempio a OpenVPN la possibilità di stabilire tunnel VPN.",
+    "timestamp": "2026-02-15T23:07:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:07:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit bird.conf": {
+    "original": "Edit bird.conf",
+    "translation": "Modifica bird.conf",
+    "timestamp": "2026-02-15T23:07:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

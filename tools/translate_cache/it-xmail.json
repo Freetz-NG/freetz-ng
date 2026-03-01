@@ -1,0 +1,247 @@
+{
+  "deepl:On this Fritz!Box is the PHPXMail webfrontend installed, so you can klick": {
+    "original": "On this Fritz!Box is the PHPXMail webfrontend installed, so you can klick",
+    "translation": "Su questo Fritz!Box è installato il webfrontend PHPXMail, per cui è possibile fare clic su",
+    "timestamp": "2026-02-16T00:01:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl: to start it.": {
+    "original": " to start it.",
+    "translation": "  per avviarlo.",
+    "timestamp": "2026-02-16T00:01:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Core server configuration": {
+    "original": "Core server configuration",
+    "translation": "Configurazione del server principale",
+    "timestamp": "2026-02-16T00:01:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start XMail with unprivileged user ID": {
+    "original": "Start XMail with unprivileged user ID",
+    "translation": "Avvio di XMail con ID utente non privilegiato",
+    "timestamp": "2026-02-16T00:01:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please provide the storage location for XMail (this location contains all email boxes, spool storage, configuration files). This directory must be writeable and exist. In case the directory is empty, the proper directory structure will be created. This directory will contain all configuration files for XMail which must be modified directly or via a web frontend.": {
+    "original": "Please provide the storage location for XMail (this location contains all email boxes, spool storage, configuration files). This directory must be writeable and exist. In case the directory is empty, the proper directory structure will be created. This directory will contain all configuration files for XMail which must be modified directly or via a web frontend.",
+    "translation": "Indicare la posizione di archiviazione di XMail (questa posizione contiene tutte le caselle di posta elettronica, l'archiviazione dello spool e i file di configurazione). Questa directory deve essere scrivibile ed esistere. Nel caso in cui la directory sia vuota, verrà creata la struttura di directory appropriata. Questa directory conterrà tutti i file di configurazione di XMail che devono essere modificati direttamente o tramite un frontend web.",
+    "timestamp": "2026-02-16T00:01:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Directory for XMail": {
+    "original": "Directory for XMail",
+    "translation": "Directory per XMail",
+    "timestamp": "2026-02-16T00:01:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please change these values only if you know what you are doing.": {
+    "original": "Please change these values only if you know what you are doing.",
+    "translation": "Modificate questi valori solo se sapete cosa state facendo.",
+    "timestamp": "2026-02-16T00:01:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start parameters": {
+    "original": "Start parameters",
+    "translation": "Parametri di avvio",
+    "timestamp": "2026-02-16T00:01:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Offered services": {
+    "original": "Offered services",
+    "translation": "Servizi offerti",
+    "timestamp": "2026-02-16T00:01:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note: If XMail is started with an unprivileged user ID, all ports must be above or equal to 1024 as otherwise the service will not be started. To make services available from the Internet, please use the port forwarding with the Fritz!Box firewall (e.g. from port 25 on the Internet side to port 10025 on the local side.": {
+    "original": "Please note: If XMail is started with an unprivileged user ID, all ports must be above or equal to 1024 as otherwise the service will not be started. To make services available from the Internet, please use the port forwarding with the Fritz!Box firewall (e.g. from port 25 on the Internet side to port 10025 on the local side.",
+    "translation": "Nota bene: se XMail viene avviato con un ID utente non privilegiato, tutte le porte devono essere superiori o uguali a 1024, altrimenti il servizio non verrà avviato. Per rendere disponibili i servizi da Internet, utilizzare il port forwarding con il firewall Fritz!Box (ad esempio, dalla porta 25 sul lato Internet alla porta 10025 sul lato locale).",
+    "timestamp": "2026-02-16T00:01:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate SMTP": {
+    "original": "Activate SMTP",
+    "translation": "Attiva SMTP",
+    "timestamp": "2026-02-16T00:01:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SMTP port": {
+    "original": "SMTP port",
+    "translation": "Porta SMTP",
+    "timestamp": "2026-02-16T00:01:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shall another port for SSL/TLS protected SMTP be activated (SSL/TLS is also available using the regular port)?": {
+    "original": "Shall another port for SSL/TLS protected SMTP be activated (SSL/TLS is also available using the regular port)?",
+    "translation": "Si deve attivare un'altra porta per l'SMTP protetto da SSL/TLS (SSL/TLS è disponibile anche con la porta normale)?",
+    "timestamp": "2026-02-16T00:01:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate SSMTP": {
+    "original": "Activate SSMTP",
+    "translation": "Attivare SSMTP",
+    "timestamp": "2026-02-16T00:01:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SSMTP port": {
+    "original": "SSMTP port",
+    "translation": "Porta SSMTP",
+    "timestamp": "2026-02-16T00:01:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate POP3": {
+    "original": "Activate POP3",
+    "translation": "Attivare POP3",
+    "timestamp": "2026-02-16T00:01:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:POP3 port": {
+    "original": "POP3 port",
+    "translation": "Porta POP3",
+    "timestamp": "2026-02-16T00:01:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shall another port for SSL/TLS protected POP3 be activated (SSL/TLS is also available using the regular port)?": {
+    "original": "Shall another port for SSL/TLS protected POP3 be activated (SSL/TLS is also available using the regular port)?",
+    "translation": "Si deve attivare un'altra porta per il POP3 protetto da SSL/TLS (SSL/TLS è disponibile anche con la porta normale)?",
+    "timestamp": "2026-02-16T00:01:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate POP3S": {
+    "original": "Activate POP3S",
+    "translation": "Attivare POP3S",
+    "timestamp": "2026-02-16T00:01:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:POP3S port": {
+    "original": "POP3S port",
+    "translation": "Porta POP3S",
+    "timestamp": "2026-02-16T00:01:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note: The SSL protected admin access is available from all networks (port 6018). The unprotected admin access is available via localhost only (port 6017).": {
+    "original": "Please note: The SSL protected admin access is available from all networks (port 6018). The unprotected admin access is available via localhost only (port 6017).",
+    "translation": "Nota bene: l'accesso amministratore protetto SSL è disponibile da tutte le reti (porta 6018), mentre l'accesso amministratore non protetto è disponibile solo tramite localhost (porta 6017).",
+    "timestamp": "2026-02-16T00:01:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate unencrypted admin access": {
+    "original": "Activate unencrypted admin access",
+    "translation": "Attivare l'accesso admin non criptato",
+    "timestamp": "2026-02-16T00:02:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Shall SSL/TLS protected admin access be activated?": {
+    "original": "Shall SSL/TLS protected admin access be activated?",
+    "translation": "Si deve attivare l'accesso admin protetto da SSL/TLS?",
+    "timestamp": "2026-02-16T00:02:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate SSL admin access": {
+    "original": "Activate SSL admin access",
+    "translation": "Attivare l'accesso amministratore SSL",
+    "timestamp": "2026-02-16T00:02:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:In the moment there are no XMail administrators configured. If you want to create the standard administrator": {
+    "original": "In the moment there are no XMail administrators configured. If you want to create the standard administrator",
+    "translation": "Al momento non sono stati configurati amministratori XMail. Se si desidera creare l'amministratore standard",
+    "timestamp": "2026-02-16T00:02:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:now, than you must set the password for the freetz web configuration interface again. Click": {
+    "original": "now, than you must set the password for the freetz web configuration interface again. Click",
+    "translation": "Ora è necessario impostare nuovamente la password per l'interfaccia di configurazione web di freetz. Fare clic su",
+    "timestamp": "2026-02-16T00:02:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:to set the password now.": {
+    "original": "to set the password now.",
+    "translation": "per impostare subito la password.",
+    "timestamp": "2026-02-16T00:02:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Server logging": {
+    "original": "Server logging",
+    "translation": "Registrazione del server",
+    "timestamp": "2026-02-16T00:02:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Please note that XMail saves the log data in logs/.": {
+    "original": "Please note that XMail saves the log data in logs/.",
+    "translation": "Si noti che XMail salva i dati di log in logs/.",
+    "timestamp": "2026-02-16T00:02:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate SMTP logging": {
+    "original": "Activate SMTP logging",
+    "translation": "Attivare la registrazione SMTP",
+    "timestamp": "2026-02-16T00:02:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate POP3 logging": {
+    "original": "Activate POP3 logging",
+    "translation": "Attivare la registrazione POP3",
+    "timestamp": "2026-02-16T00:02:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate XMail internal logging": {
+    "original": "Activate XMail internal logging",
+    "translation": "Attivare la registrazione interna di XMail",
+    "timestamp": "2026-02-16T00:02:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Hints for configuration": {
+    "original": "Hints for configuration",
+    "translation": "Suggerimenti per la configurazione",
+    "timestamp": "2026-02-16T00:02:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To activate SSL you have to provide the SSL certificate and the corresponding private key which have to be copied into the above given XMail directory. The certificate must be saved in the file server.cert and the key in the file server.key. Please ensure that XMail has the permissions to read those files (if you selected to start XMail with an unprivileged ID, these files must be readable by the user xmail or group xmail).": {
+    "original": "To activate SSL you have to provide the SSL certificate and the corresponding private key which have to be copied into the above given XMail directory. The certificate must be saved in the file server.cert and the key in the file server.key. Please ensure that XMail has the permissions to read those files (if you selected to start XMail with an unprivileged ID, these files must be readable by the user xmail or group xmail).",
+    "translation": "Per attivare l'SSL è necessario fornire il certificato SSL e la corrispondente chiave privata, che devono essere copiati nella directory di XMail indicata sopra. Il certificato deve essere salvato nel file server.cert e la chiave nel file server.key. Assicurarsi che XMail abbia i permessi per leggere questi file (se si è scelto di avviare XMail con un ID non privilegiato, questi file devono essere leggibili dall'utente xmail o dal gruppo xmail).",
+    "timestamp": "2026-02-16T00:02:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:TBD - see German part": {
+    "original": "TBD - see German part",
+    "translation": "TBD - vedi parte tedesca",
+    "timestamp": "2026-02-16T00:02:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "deepl:To edit the ngircd.conf click here.": {
+    "original": "To edit the ngircd.conf click here.",
+    "translation": "Per modificare il file ngircd.conf fare clic qui.",
+    "timestamp": "2026-02-15T23:37:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Optional parameters (except -p and -f):": {
+    "original": "Optional parameters (except -p and -f):",
+    "translation": "Parametri opzionali (tranne -p e -f):",
+    "timestamp": "2026-02-15T23:37:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

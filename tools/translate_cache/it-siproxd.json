@@ -1,0 +1,23 @@
+{
+  "deepl:Edit siproxd.conf": {
+    "original": "Edit siproxd.conf",
+    "translation": "Modifica siproxd.conf",
+    "timestamp": "2026-02-15T23:53:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit siproxd.pwd": {
+    "original": "Edit siproxd.pwd",
+    "translation": "Modifica siproxd.pwd",
+    "timestamp": "2026-02-15T23:53:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit siproxd.reg": {
+    "original": "Edit siproxd.reg",
+    "translation": "Modifica siproxd.reg",
+    "timestamp": "2026-02-15T23:53:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

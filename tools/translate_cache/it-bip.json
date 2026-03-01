@@ -1,0 +1,72 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:07:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port:": {
+    "original": "Port:",
+    "translation": "Porto:",
+    "timestamp": "2026-02-15T23:07:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log System (bip's internal message logging)": {
+    "original": "Log System (bip's internal message logging)",
+    "translation": "Log System (registrazione interna dei messaggi di bip)",
+    "timestamp": "2026-02-15T23:07:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Loglevel:": {
+    "original": "Loglevel:",
+    "translation": "Loglevel:",
+    "timestamp": "2026-02-15T23:07:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log root:": {
+    "original": "Log root:",
+    "translation": "Log root:",
+    "timestamp": "2026-02-15T23:07:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log format:": {
+    "original": "Log format:",
+    "translation": "Formato del registro:",
+    "timestamp": "2026-02-15T23:07:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log (Enable logging and backlogging)": {
+    "original": "Log (Enable logging and backlogging)",
+    "translation": "Log (Abilita la registrazione e il backlogging)",
+    "timestamp": "2026-02-15T23:07:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log Sync Interval:": {
+    "original": "Log Sync Interval:",
+    "translation": "Intervallo di sincronizzazione del registro:",
+    "timestamp": "2026-02-15T23:07:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Optional parameters (except -f):": {
+    "original": "Optional parameters (except -f):",
+    "translation": "Parametri opzionali (tranne -f):",
+    "timestamp": "2026-02-15T23:07:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

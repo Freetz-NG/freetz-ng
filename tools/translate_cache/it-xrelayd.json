@@ -1,0 +1,23 @@
+{
+  "deepl:Verbose level": {
+    "original": "Verbose level",
+    "translation": "Livello verboso",
+    "timestamp": "2026-02-16T00:02:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit certificate chain": {
+    "original": "Edit certificate chain",
+    "translation": "Modifica della catena di certificati",
+    "timestamp": "2026-02-16T00:02:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit private key": {
+    "original": "Edit private key",
+    "translation": "Modifica della chiave privata",
+    "timestamp": "2026-02-16T00:02:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

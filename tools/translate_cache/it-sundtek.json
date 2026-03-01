@@ -1,0 +1,23 @@
+{
+  "deepl:Driver version": {
+    "original": "Driver version",
+    "translation": "Versione driver",
+    "timestamp": "2026-02-15T23:55:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Supported hardware": {
+    "original": "Supported hardware",
+    "translation": "Hardware supportato",
+    "timestamp": "2026-02-15T23:55:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Parameters for 'sundtek-mediaclient' (one per row)": {
+    "original": "Parameters for 'sundtek-mediaclient' (one per row)",
+    "translation": "Parametri per 'sundtek-mediaclient' (uno per riga)",
+    "timestamp": "2026-02-15T23:55:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

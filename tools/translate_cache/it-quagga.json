@@ -1,0 +1,30 @@
+{
+  "deepl:Routing daemons": {
+    "original": "Routing daemons",
+    "translation": "Demoni di routing",
+    "timestamp": "2026-02-15T23:45:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration file(s)": {
+    "original": "Configuration file(s)",
+    "translation": "File di configurazione",
+    "timestamp": "2026-02-15T23:45:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit zebra.conf": {
+    "original": "Edit zebra.conf",
+    "translation": "Modifica zebra.conf",
+    "timestamp": "2026-02-15T23:45:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit ${daemon}.conf": {
+    "original": "Edit ${daemon}.conf",
+    "translation": "Modifica ${daemon}.conf",
+    "timestamp": "2026-02-15T23:45:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "deepl:C": {
+    "original": "C",
+    "translation": "C",
+    "timestamp": "2026-02-15T23:31:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Certificate file name in configuration": {
+    "original": "Certificate file name in configuration",
+    "translation": "Nome del file di certificato nella configurazione",
+    "timestamp": "2026-02-15T23:32:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Key file name in configuration": {
+    "original": "Key file name in configuration",
+    "translation": "Nome del file chiave nella configurazione",
+    "timestamp": "2026-02-15T23:32:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:CA name in configuration": {
+    "original": "CA name in configuration",
+    "translation": "Nome della CA nella configurazione",
+    "timestamp": "2026-02-15T23:32:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:preshared key file": {
+    "original": "preshared key file",
+    "translation": "file della chiave preshared",
+    "timestamp": "2026-02-15T23:32:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Path to certificates and key": {
+    "original": "Path to certificates and key",
+    "translation": "Percorso dei certificati e della chiave",
+    "timestamp": "2026-02-15T23:32:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Dynamic DNS name of remote site": {
+    "original": "Dynamic DNS name of remote site",
+    "translation": "Nome DNS dinamico del sito remoto",
+    "timestamp": "2026-02-15T23:32:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Local VPN IP": {
+    "original": "Local VPN IP",
+    "translation": "IP VPN locale",
+    "timestamp": "2026-02-15T23:32:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Remote VPN IP": {
+    "original": "Remote VPN IP",
+    "translation": "IP VPN remoto",
+    "timestamp": "2026-02-15T23:32:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:cert file": {
+    "original": "cert file",
+    "translation": "file cert",
+    "timestamp": "2026-02-15T23:32:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:key file": {
+    "original": "key file",
+    "translation": "file chiave",
+    "timestamp": "2026-02-15T23:32:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:CA cert file": {
+    "original": "CA cert file",
+    "translation": "File cert CA",
+    "timestamp": "2026-02-15T23:32:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PSK file": {
+    "original": "PSK file",
+    "translation": "file PSK",
+    "timestamp": "2026-02-15T23:32:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

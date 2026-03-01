@@ -1,0 +1,58 @@
+{
+  "deepl:Enable/Disable USB root": {
+    "original": "Enable/Disable USB root",
+    "translation": "Abilitare/disabilitare il root USB",
+    "timestamp": "2026-02-15T23:58:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Current state:": {
+    "original": "Current state:",
+    "translation": "Stato attuale:",
+    "timestamp": "2026-02-15T23:58:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Device and partition selection": {
+    "original": "Device and partition selection",
+    "translation": "Selezione del dispositivo e della partizione",
+    "timestamp": "2026-02-15T23:58:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Partition": {
+    "original": "Partition",
+    "translation": "Partizione",
+    "timestamp": "2026-02-15T23:58:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Filesystem": {
+    "original": "Filesystem",
+    "translation": "Filesystem",
+    "timestamp": "2026-02-15T23:58:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Root directory": {
+    "original": "Root directory",
+    "translation": "directory radice",
+    "timestamp": "2026-02-15T23:58:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Mount filesystem as": {
+    "original": "Mount filesystem as",
+    "translation": "Montare il filesystem come",
+    "timestamp": "2026-02-15T23:58:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Caution: Activating this option can cause reboot loops": {
+    "original": "Caution: Activating this option can cause reboot loops",
+    "translation": "Attenzione: l'attivazione di questa opzione può causare cicli di riavvio.",
+    "timestamp": "2026-02-15T23:58:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

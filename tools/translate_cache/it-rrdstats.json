@@ -1,0 +1,569 @@
+{
+  "deepl:Show DigiTemp": {
+    "original": "Show DigiTemp",
+    "translation": "Mostra DigiTemp",
+    "timestamp": "2026-02-15T23:49:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show SmartHome": {
+    "original": "Show SmartHome",
+    "translation": "Mostra SmartHome",
+    "timestamp": "2026-02-15T23:49:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate additional webserver on port": {
+    "original": "Activate additional webserver on port",
+    "translation": "Attivare un webserver aggiuntivo sulla porta",
+    "timestamp": "2026-02-15T23:49:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Temporary folder": {
+    "original": "Temporary folder",
+    "translation": "Cartella temporanea",
+    "timestamp": "2026-02-15T23:49:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Persistent folder": {
+    "original": "Persistent folder",
+    "translation": "Cartella persistente",
+    "timestamp": "2026-02-15T23:49:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Log interval in seconds": {
+    "original": "Log interval in seconds",
+    "translation": "Intervallo di log in secondi",
+    "timestamp": "2026-02-15T23:49:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Width of additional webservers": {
+    "original": "Width of additional webservers",
+    "translation": "Larghezza dei server web aggiuntivi",
+    "timestamp": "2026-02-15T23:49:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Always generate new graphs (not lazy)": {
+    "original": "Always generate new graphs (not lazy)",
+    "translation": "Generare sempre nuovi grafici (non è pigro)",
+    "timestamp": "2026-02-15T23:49:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Home": {
+    "original": "Home",
+    "translation": "Home",
+    "timestamp": "2026-02-15T23:49:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Sub-pages": {
+    "original": "Sub-pages",
+    "translation": "Sottopagine",
+    "timestamp": "2026-02-15T23:49:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show the name of the author of rrdtool on all graphs": {
+    "original": "Show the name of the author of rrdtool on all graphs",
+    "translation": "Mostra il nome dell'autore di rrdtool su tutti i grafici",
+    "timestamp": "2026-02-15T23:49:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Draw a frame around the graphs": {
+    "original": "Draw a frame around the graphs",
+    "translation": "Disegnare una cornice intorno ai grafici",
+    "timestamp": "2026-02-15T23:49:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable dark-mode for the graphs": {
+    "original": "Enable dark-mode for the graphs",
+    "translation": "Abilitare la modalità scura per i grafici",
+    "timestamp": "2026-02-15T23:49:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum of the CPU utilization graph always at 100%": {
+    "original": "Maximum of the CPU utilization graph always at 100%",
+    "translation": "Il massimo del grafico dell'utilizzo della CPU è sempre al 100%.",
+    "timestamp": "2026-02-15T23:49:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Uptime logging and graphs": {
+    "original": "Uptime logging and graphs",
+    "translation": "Registrazione e grafici dei tempi di attività",
+    "timestamp": "2026-02-15T23:50:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Power Consumption logging and graphs": {
+    "original": "Power Consumption logging and graphs",
+    "translation": "Registrazione e grafici del consumo energetico",
+    "timestamp": "2026-02-15T23:50:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Observe these consumers": {
+    "original": "Observe these consumers",
+    "translation": "Osservare questi consumatori",
+    "timestamp": "2026-02-15T23:50:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Temperature logging and graphs": {
+    "original": "Temperature logging and graphs",
+    "translation": "Registrazione e grafici della temperatura",
+    "timestamp": "2026-02-15T23:50:07Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Backup folder": {
+    "original": "Backup folder",
+    "translation": "Cartella di backup",
+    "timestamp": "2026-02-15T23:50:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Backup files": {
+    "original": "Backup files",
+    "translation": "Backup dei file",
+    "timestamp": "2026-02-15T23:50:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:during start": {
+    "original": "during start",
+    "translation": "durante l'avvio",
+    "timestamp": "2026-02-15T23:50:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:during stop": {
+    "original": "during stop",
+    "translation": "durante l'arresto",
+    "timestamp": "2026-02-15T23:50:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Restore files during startup": {
+    "original": "Restore files during startup",
+    "translation": "Ripristino dei file all'avvio",
+    "timestamp": "2026-02-15T23:50:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Do not keep more backups than": {
+    "original": "Do not keep more backups than",
+    "translation": "Non conservare un numero di backup superiore a",
+    "timestamp": "2026-02-15T23:50:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Cable modem": {
+    "original": "Cable modem",
+    "translation": "Modem via cavo",
+    "timestamp": "2026-02-15T23:50:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Observe none": {
+    "original": "Observe none",
+    "translation": "Osservare nessuno",
+    "timestamp": "2026-02-15T23:50:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:More parameters: Downstream frequence, upstream channel and uptime": {
+    "original": "More parameters: Downstream frequence, upstream channel and uptime",
+    "translation": "Altri parametri: frequenza downstream, canale upstream e uptime",
+    "timestamp": "2026-02-15T23:50:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Firmware date": {
+    "original": "Firmware date",
+    "translation": "Data del firmware",
+    "timestamp": "2026-02-15T23:50:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Observe uptime too": {
+    "original": "Observe uptime too",
+    "translation": "Osservare anche il tempo di attività",
+    "timestamp": "2026-02-15T23:50:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:channels for downstream available": {
+    "original": "channels for downstream available",
+    "translation": "canali per il downstream disponibili",
+    "timestamp": "2026-02-15T23:50:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:channels for upstream available": {
+    "original": "channels for upstream available",
+    "translation": "canali per l'upstream disponibili",
+    "timestamp": "2026-02-15T23:50:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Warning: You have to modify the database by your own after changing the count of channels": {
+    "original": "Warning: You have to modify the database by your own after changing the count of channels",
+    "translation": "Attenzione: è necessario modificare il database da soli dopo aver cambiato il numero di canali.",
+    "timestamp": "2026-02-15T23:50:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:see": {
+    "original": "see",
+    "translation": "vedere",
+    "timestamp": "2026-02-15T23:50:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Sub pages for the values on the main page": {
+    "original": "Sub pages for the values on the main page",
+    "translation": "Sottopagine per i valori della pagina principale",
+    "timestamp": "2026-02-15T23:50:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:More parameters: Downstream frequency, upstream frequency and uptime": {
+    "original": "More parameters: Downstream frequency, upstream frequency and uptime",
+    "translation": "Altri parametri: frequenza downstream, frequenza upstream e uptime",
+    "timestamp": "2026-02-15T23:50:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Credentials of AVM webif": {
+    "original": "Credentials of AVM webif",
+    "translation": "Credenziali di AVM webif",
+    "timestamp": "2026-02-15T23:50:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:URL": {
+    "original": "URL",
+    "translation": "URL",
+    "timestamp": "2026-02-15T23:50:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:optional": {
+    "original": "optional",
+    "translation": "opzionale",
+    "timestamp": "2026-02-15T23:50:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Cable segment": {
+    "original": "Cable segment",
+    "translation": "Segmento cavo",
+    "timestamp": "2026-02-15T23:50:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Observe cable segment load": {
+    "original": "Observe cable segment load",
+    "translation": "Osservare il carico del segmento di cavo",
+    "timestamp": "2026-02-15T23:50:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Frequencies": {
+    "original": "Frequencies",
+    "translation": "Frequenze",
+    "timestamp": "2026-02-15T23:50:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Symbol rate": {
+    "original": "Symbol rate",
+    "translation": "Tasso di simbolizzazione",
+    "timestamp": "2026-02-15T23:50:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Use 256 QAM below this frequency, otherwise 64 QAM.": {
+    "original": "Use 256 QAM below this frequency, otherwise 64 QAM.",
+    "translation": "Utilizzare 256 QAM al di sotto di questa frequenza, altrimenti 64 QAM.",
+    "timestamp": "2026-02-15T23:50:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Wait after each frequency": {
+    "original": "Wait after each frequency",
+    "translation": "Attendere dopo ogni frequenza",
+    "timestamp": "2026-02-15T23:50:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show maximum bandwidth on main page": {
+    "original": "Show maximum bandwidth on main page",
+    "translation": "Mostra la larghezza di banda massima nella pagina principale",
+    "timestamp": "2026-02-15T23:50:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show maximum bandwidth on sub pages": {
+    "original": "Show maximum bandwidth on sub pages",
+    "translation": "Mostra la larghezza di banda massima nelle pagine secondarie",
+    "timestamp": "2026-02-15T23:50:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Environment for DVB programs": {
+    "original": "Environment for DVB programs",
+    "translation": "Ambiente per programmi DVB",
+    "timestamp": "2026-02-15T23:50:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:before": {
+    "original": "before",
+    "translation": "prima",
+    "timestamp": "2026-02-15T23:50:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:after": {
+    "original": "after",
+    "translation": "dopo",
+    "timestamp": "2026-02-15T23:51:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disks": {
+    "original": "Disks",
+    "translation": "Dischi",
+    "timestamp": "2026-02-15T23:51:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Disk label": {
+    "original": "Disk label",
+    "translation": "Etichetta disco",
+    "timestamp": "2026-02-15T23:51:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Device": {
+    "original": "Device",
+    "translation": "Dispositivo",
+    "timestamp": "2026-02-15T23:51:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum": {
+    "original": "Maximum",
+    "translation": "Massimo",
+    "timestamp": "2026-02-15T23:51:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Logarithm.": {
+    "original": "Logarithm.",
+    "translation": "Logaritmo.",
+    "timestamp": "2026-02-15T23:51:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:activated": {
+    "original": "activated",
+    "translation": "attivato",
+    "timestamp": "2026-02-15T23:51:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Devices: sda, sda1, sda2, sdb, ...": {
+    "original": "Devices: sda, sda1, sda2, sdb, ...",
+    "translation": "Dispositivi: sda, sda1, sda2, sdb,...",
+    "timestamp": "2026-02-15T23:51:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum: Maximum bandwidth megabytes per second, '0' for automatic allocation": {
+    "original": "Maximum: Maximum bandwidth megabytes per second, '0' for automatic allocation",
+    "translation": "Massimo: Larghezza di banda massima megabyte al secondo, '0' per l'allocazione automatica",
+    "timestamp": "2026-02-15T23:51:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Interface label": {
+    "original": "Interface label",
+    "translation": "Etichetta di interfaccia",
+    "timestamp": "2026-02-15T23:51:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Interface": {
+    "original": "Interface",
+    "translation": "Interfaccia",
+    "timestamp": "2026-02-15T23:51:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Up/Down": {
+    "original": "Up/Down",
+    "translation": "Su/Giù",
+    "timestamp": "2026-02-15T23:51:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:inverted": {
+    "original": "inverted",
+    "translation": "invertito",
+    "timestamp": "2026-02-15T23:51:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Interfaces: cpmac0 (DSL-Modem), wan (ATA-module), lan (Network), usbrndis (USB), ...": {
+    "original": "Interfaces: cpmac0 (DSL-Modem), wan (ATA-module), lan (Network), usbrndis (USB), ...",
+    "translation": "Interfacce: cpmac0 (modem DSL), wan (modulo ATA), lan (rete), usbrndis (USB),...",
+    "timestamp": "2026-02-15T23:51:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum: Maximum bandwidth megabits per second, '0' for automatic allocation": {
+    "original": "Maximum: Maximum bandwidth megabits per second, '0' for automatic allocation",
+    "translation": "Massimo: Larghezza di banda massima megabit al secondo, '0' per l'assegnazione automatica",
+    "timestamp": "2026-02-15T23:51:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable observation of actors": {
+    "original": "Enable observation of actors",
+    "translation": "Abilitare l'osservazione degli attori",
+    "timestamp": "2026-02-15T23:51:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate alert observer": {
+    "original": "Activate alert observer",
+    "translation": "Attivare l'osservatore degli avvisi",
+    "timestamp": "2026-02-15T23:51:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Run this before the first start and if you change or rename your devices": {
+    "original": "Run this before the first start and if you change or rename your devices",
+    "translation": "Eseguire questa operazione prima del primo avvio e se si cambiano o si rinominano i dispositivi",
+    "timestamp": "2026-02-15T23:51:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Host": {
+    "original": "Host",
+    "translation": "Host",
+    "timestamp": "2026-02-15T23:51:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Observe 1-wire adapters with DigiTemp": {
+    "original": "Observe 1-wire adapters with DigiTemp",
+    "translation": "Osservare gli adattatori a 1 filo con DigiTemp",
+    "timestamp": "2026-02-15T23:51:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Unit of measure": {
+    "original": "Unit of measure",
+    "translation": "Unità di misura",
+    "timestamp": "2026-02-15T23:51:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Serial port": {
+    "original": "Serial port",
+    "translation": "Porta seriale",
+    "timestamp": "2026-02-15T23:51:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:eg /dev/ttyS0 - leave empty for USB": {
+    "original": "eg /dev/ttyS0 - leave empty for USB",
+    "translation": "es. /dev/ttyS0 - lasciare vuoto per USB",
+    "timestamp": "2026-02-15T23:51:40Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Y-axis range": {
+    "original": "Y-axis range",
+    "translation": "Campo dell'asse Y",
+    "timestamp": "2026-02-15T23:51:42Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:leave empty for autoscaling": {
+    "original": "leave empty for autoscaling",
+    "translation": "lasciare vuoto per l'autoscaling",
+    "timestamp": "2026-02-15T23:51:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Ignore 185.000000&deg;F (errors and values)": {
+    "original": "Ignore 185.000000&deg;F (errors and values)",
+    "translation": "Ignora 185.000000&deg;F (errori e valori)",
+    "timestamp": "2026-02-15T23:51:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Count of retries, if a sensorc does not return a value": {
+    "original": "Count of retries, if a sensorc does not return a value",
+    "translation": "Conteggio dei tentativi, se un sensore non restituisce alcun valore",
+    "timestamp": "2026-02-15T23:51:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Retry also with 185.000000&deg;F (errors and values)": {
+    "original": "Retry also with 185.000000&deg;F (errors and values)",
+    "translation": "Riprova anche con 185.000000&deg;F (errori e valori)",
+    "timestamp": "2026-02-15T23:51:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Run this before the first start of if you change your devices": {
+    "original": "Run this before the first start of if you change your devices",
+    "translation": "Eseguire questa operazione prima del primo avvio se si modificano i dispositivi",
+    "timestamp": "2026-02-15T23:51:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Initialize DigiTemp": {
+    "original": "Initialize DigiTemp",
+    "translation": "Inizializzare DigiTemp",
+    "timestamp": "2026-02-15T23:51:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Initializing DigiTemp": {
+    "original": "Initializing DigiTemp",
+    "translation": "Inizializzazione di DigiTemp",
+    "timestamp": "2026-02-15T23:51:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Refresh DigiTemp": {
+    "original": "Refresh DigiTemp",
+    "translation": "Aggiorna DigiTemp",
+    "timestamp": "2026-02-15T23:51:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Refreshing SmartHome": {
+    "original": "Refreshing SmartHome",
+    "translation": "Aggiornare SmartHome",
+    "timestamp": "2026-02-15T23:51:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

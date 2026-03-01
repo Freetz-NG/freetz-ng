@@ -1,0 +1,30 @@
+{
+  "deepl:You should add the remote host to the global ssh_known_hosts file. Otherwise sshfs will fail unless the user has ssh'ed to the host before.": {
+    "original": "You should add the remote host to the global ssh_known_hosts file. Otherwise sshfs will fail unless the user has ssh'ed to the host before.",
+    "translation": "È necessario aggiungere l'host remoto al file globale ssh_known_hosts, altrimenti sshfs fallirà a meno che l'utente non abbia già effettuato l'accesso all'host.",
+    "timestamp": "2026-02-15T23:54:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit known_hosts": {
+    "original": "Edit known_hosts",
+    "translation": "Modifica known_hosts",
+    "timestamp": "2026-02-15T23:54:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:In most cases it is better to use SSH keys and leave the password field emty.": {
+    "original": "In most cases it is better to use SSH keys and leave the password field emty.",
+    "translation": "Nella maggior parte dei casi è meglio usare le chiavi SSH e lasciare il campo password vuoto.",
+    "timestamp": "2026-02-15T23:54:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Start shares": {
+    "original": "Start shares",
+    "translation": "Avvia le azioni",
+    "timestamp": "2026-02-15T23:54:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

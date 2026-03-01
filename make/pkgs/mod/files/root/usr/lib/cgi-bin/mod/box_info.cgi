@@ -136,9 +136,9 @@ echo "<dt>RAM</dt><dd>$CONFIG_RAMSIZE MB</dd>"
 echo "</dl>"
 
 echo "<dl class='info'>"
-[ -n "$cpu_family" ] && echo "<dt>CPU$(lang de:"-Familie" en:" family")</dt><dd>$cpu_family</dd>"
-[ -n "$cpu_model"  ] && echo "<dt>CPU$(lang de:"-Modell"  en:" model" )</dt><dd>$cpu_model</dd>"
-[ -n "$cpu_cores"  ] && echo "<dt>CPU$(lang de:"-Kerne" en:" cores" )</dt><dd>$cpu_cores</dd>"
+[ -n "$cpu_family" ] && echo "<dt>CPU $(lang de:"Familie" en:"family")</dt><dd>$cpu_family</dd>"
+[ -n "$cpu_model"  ] && echo "<dt>CPU $(lang de:"Modell" en:"model")</dt><dd>$cpu_model</dd>"
+[ -n "$cpu_cores"  ] && echo "<dt>CPU $(lang de:"Kerne" en:"cores")</dt><dd>$cpu_cores</dd>"
 echo "</dl>"
 
 if [ -n "$_CPU_FQZ$_PCLOCKS$_CPU_FRQ$_SYS_FRQ" ]; then
@@ -157,7 +157,7 @@ if [ -n "$_CPU_TMP$cpu_bogom" ]; then
 	echo "<dl class='info'>"
 	echo "<dt>$(lang de:"Prozessor" en:"Processor")</dt>"
 	echo "<dl>"
-	[ -n "$_CPU_TMP" ] && echo "<dt>$(lang de:"Temperatur" en:"Temperature")</dt><dd>${_CPU_TMP%%.} $(echo -e '\260')C</dd>"
+	[ -n "$_CPU_TMP" ] && echo "<dt>$(lang de:"Temperatur" en:"Temperature")</dt><dd>${_CPU_TMP%%.} °C</dd>"
 	[ -n "$cpu_bogom" ] && echo "<dt>BogoMIPS</dt><dd>$cpu_bogom</dd>"
 	echo "</dl>"
 	echo "</dl>"
@@ -221,7 +221,7 @@ done
 echo '</table>'
 
 echo "<dl class='info'>"
-echo "<dt>MAC$(lang de:"-Adressen" en:" address")</dt><dd><dl>"
+echo "<dt>MAC $(lang de:"Adressen" en:"addresses")</dt><dd><dl>"
 echo "<dt>DSL</dt><dd><small>$mac_dsl</small></dd>"
 echo "<dt>LAN</dt><dd><small>$mac_lan</small></dd>"
 [ -n "$mac_wlan3" ] && echo "<br>"

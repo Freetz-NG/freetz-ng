@@ -1,0 +1,121 @@
+{
+  "deepl:Show status": {
+    "original": "Show status",
+    "translation": "Mostra lo stato",
+    "timestamp": "2026-02-15T23:35:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:force full rescan on start": {
+    "original": "force full rescan on start",
+    "translation": "forzare il rescan completo all'avvio",
+    "timestamp": "2026-02-15T23:35:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Network interfaces (separated by ',')": {
+    "original": "Network interfaces (separated by ',')",
+    "translation": "Interfacce di rete (separate da ',')",
+    "timestamp": "2026-02-15T23:35:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:available": {
+    "original": "available",
+    "translation": "disponibile",
+    "timestamp": "2026-02-15T23:35:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:enable support for TiVo supporting HMO": {
+    "original": "enable support for TiVo supporting HMO",
+    "translation": "abilitare il supporto per TiVo che supporta HMO",
+    "timestamp": "2026-02-15T23:35:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:allow server side downscaling of images": {
+    "original": "allow server side downscaling of images",
+    "translation": "consentire il ridimensionamento delle immagini sul lato server",
+    "timestamp": "2026-02-15T23:35:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:automatically discover new files": {
+    "original": "automatically discover new files",
+    "translation": "scoprire automaticamente nuovi file",
+    "timestamp": "2026-02-15T23:35:24Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Notify interval (seconds)": {
+    "original": "Notify interval (seconds)",
+    "translation": "Intervallo di notifica (secondi)",
+    "timestamp": "2026-02-15T23:35:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Database directory": {
+    "original": "Database directory",
+    "translation": "Database directory",
+    "timestamp": "2026-02-15T23:35:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Logging directory": {
+    "original": "Logging directory",
+    "translation": "Directory di registrazione",
+    "timestamp": "2026-02-15T23:35:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Album art filenames": {
+    "original": "Album art filenames",
+    "translation": "Nomi dei file dell'album",
+    "timestamp": "2026-02-15T23:35:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Media directories": {
+    "original": "Media directories",
+    "translation": "Directory multimediali",
+    "timestamp": "2026-02-15T23:35:31Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Remark": {
+    "original": "Remark",
+    "translation": "Osservazione",
+    "timestamp": "2026-02-15T23:35:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The database will be recreated. This may take a while.": {
+    "original": "The database will be recreated. This may take a while.",
+    "translation": "Il database verrà ricreato e questa operazione potrebbe richiedere un po' di tempo.",
+    "timestamp": "2026-02-15T23:35:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:MiniDLNA is not running.": {
+    "original": "MiniDLNA is not running.",
+    "translation": "MiniDLNA non è in esecuzione.",
+    "timestamp": "2026-02-15T23:35:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:rescan": {
+    "original": "rescan",
+    "translation": "rescan",
+    "timestamp": "2026-02-15T23:35:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:refresh": {
+    "original": "refresh",
+    "translation": "rinfrescare",
+    "timestamp": "2026-02-15T23:35:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

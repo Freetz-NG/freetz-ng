@@ -1,0 +1,30 @@
+{
+  "deepl:Log-file": {
+    "original": "Log-file",
+    "translation": "File di registro",
+    "timestamp": "2026-02-15T23:55:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show log-file": {
+    "original": "Show log-file",
+    "translation": "Mostra file di log",
+    "timestamp": "2026-02-15T23:55:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Subversion log-file": {
+    "original": "Subversion log-file",
+    "translation": "File di log di Subversion",
+    "timestamp": "2026-02-15T23:55:32Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Subversion log-file not available": {
+    "original": "Subversion log-file not available",
+    "translation": "File di log di Subversion non disponibile",
+    "timestamp": "2026-02-15T23:55:34Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

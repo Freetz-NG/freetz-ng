@@ -1,0 +1,72 @@
+{
+  "deepl:Send and receive SMS": {
+    "original": "Send and receive SMS",
+    "translation": "Inviare e ricevere SMS",
+    "timestamp": "2026-02-15T23:54:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Click here for status page": {
+    "original": "Click here for status page",
+    "translation": "Clicca qui per la pagina di stato",
+    "timestamp": "2026-02-15T23:54:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:data directory": {
+    "original": "data directory",
+    "translation": "dati directory",
+    "timestamp": "2026-02-15T23:54:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:event handler": {
+    "original": "event handler",
+    "translation": "gestore di eventi",
+    "timestamp": "2026-02-15T23:54:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:UMTS device": {
+    "original": "UMTS device",
+    "translation": "Dispositivo UMTS",
+    "timestamp": "2026-02-15T23:54:12Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:leave empty if deactivated": {
+    "original": "leave empty if deactivated",
+    "translation": "lasciare vuoto se disattivato",
+    "timestamp": "2026-02-15T23:54:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Send SMS": {
+    "original": "Send SMS",
+    "translation": "Invia SMS",
+    "timestamp": "2026-02-15T23:54:16Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Transmitting SMS": {
+    "original": "Transmitting SMS",
+    "translation": "Trasmissione di SMS",
+    "timestamp": "2026-02-15T23:54:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Received SMS": {
+    "original": "Received SMS",
+    "translation": "SMS ricevuto",
+    "timestamp": "2026-02-15T23:54:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Conveyed SMS": {
+    "original": "Conveyed SMS",
+    "translation": "SMS trasportato",
+    "timestamp": "2026-02-15T23:54:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:FTP server": {
+    "original": "FTP server",
+    "translation": "server FTP",
+    "timestamp": "2026-02-15T23:07:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The FTP server is listening on": {
+    "original": "The FTP server is listening on",
+    "translation": "Il server FTP è in ascolto su",
+    "timestamp": "2026-02-15T23:07:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port range for passive FTP, e.g. 5000,6000-6100": {
+    "original": "Port range for passive FTP, e.g. 5000,6000-6100",
+    "translation": "Intervallo di porte per FTP passivo, ad es. 5000, 6000-6100",
+    "timestamp": "2026-02-15T23:07:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port range": {
+    "original": "Port range",
+    "translation": "Gamma di porte",
+    "timestamp": "2026-02-15T23:07:22Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional command-line options (for experts)": {
+    "original": "Additional command-line options (for experts)",
+    "translation": "Opzioni aggiuntive della riga di comando (per gli esperti)",
+    "timestamp": "2026-02-15T23:07:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Options": {
+    "original": "Options",
+    "translation": "Opzioni",
+    "timestamp": "2026-02-15T23:07:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access": {
+    "original": "Access",
+    "translation": "Accesso",
+    "timestamp": "2026-02-15T23:07:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The password for the user 'ftp' can be set by using the command 'passwd ftp' and subsequently saved persistently by 'modusers save; modsave flash'.": {
+    "original": "The password for the user 'ftp' can be set by using the command 'passwd ftp' and subsequently saved persistently by 'modusers save; modsave flash'.",
+    "translation": "La password dell'utente 'ftp' può essere impostata con il comando 'passwd ftp' e successivamente salvata in modo persistente con 'modusers save; modsave flash'.",
+    "timestamp": "2026-02-15T23:07:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Anonymous FTP": {
+    "original": "Anonymous FTP",
+    "translation": "FTP anonimo",
+    "timestamp": "2026-02-15T23:07:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

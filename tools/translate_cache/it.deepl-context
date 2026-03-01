@@ -1,0 +1,28 @@
+Freetz-ng è un toolkit per costruire un firmware modificato basato sul firmware originale per i router DSL/LAN/WLAN/VoIP AVM Fritz!Box e trasferire tale firmware sul dispositivo. Consta di numerosi pacchetti di estensione, insieme a opzioni per rimuovere funzionalità indesiderate dal firmware originale e ampi parametri di configurazione.
+
+Parole che non devono essere tradotte:
+- log (non “registro”)
+- upload (non “caricamento”)
+- download (non “scaricamento”)
+- daemon (non “demone”)
+- boot loader
+- mount point
+- logger
+- shell (non guscio o conchiglia)
+- storage
+- skin
+- forwarding
+- server
+- clean
+- cipher
+- forward
+- seeds
+- peers
+- authorized_key
+
+Parole che devono essere tradotte in modo specifico:
+- box deve essere tradotto in dispositivo
+- device deve essere tradotto in dispositivo
+- dir o directory deve essere tradotto in cartella
+- on deve essere tradotto in "Attivo" o "Abilitato" a seconda del contesto
+- off deve essere tradotto in "Disattivo" o "Disabilitato"

@@ -1,0 +1,9 @@
+{
+  "deepl:Edit snmpd.conf": {
+    "original": "Edit snmpd.conf",
+    "translation": "Modifica snmpd.conf",
+    "timestamp": "2026-02-15T23:37:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

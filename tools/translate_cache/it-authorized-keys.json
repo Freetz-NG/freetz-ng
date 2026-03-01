@@ -1,0 +1,44 @@
+{
+  "deepl:Known host-keys": {
+    "original": "Known host-keys",
+    "translation": "Chiavi host conosciute",
+    "timestamp": "2026-02-16T14:18:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Private DSA key": {
+    "original": "Private DSA key",
+    "translation": "Chiave DSA privata",
+    "timestamp": "2026-02-16T14:18:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Private ECDSA key": {
+    "original": "Private ECDSA key",
+    "translation": "Chiave privata ECDSA",
+    "timestamp": "2026-02-16T14:18:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Private ED25519 key": {
+    "original": "Private ED25519 key",
+    "translation": "Chiave privata ED25519",
+    "timestamp": "2026-02-16T14:18:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Private RSA key": {
+    "original": "Private RSA key",
+    "translation": "Chiave privata RSA",
+    "timestamp": "2026-02-16T14:18:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The following box allows you to specify the authorized_keys for users. The keys are supplied by providing the username followed by the content of .ssh/id_dsa.pub, .ssh/id_rsa.pub or .ssh/id_ed25519.pub. Per user, you can supply zero, one or more keys.<br>Please note that only for the root user, the keys are automatically saved on persistent storage. For all other users, the home directory should be on a persistent storage device (such as a USB hard disk).<br>If a user is deleted from the list below, then his authorized_key file will also be deleted.": {
+    "original": "The following box allows you to specify the authorized_keys for users. The keys are supplied by providing the username followed by the content of .ssh/id_dsa.pub, .ssh/id_rsa.pub or .ssh/id_ed25519.pub. Per user, you can supply zero, one or more keys.<br>Please note that only for the root user, the keys are automatically saved on persistent storage. For all other users, the home directory should be on a persistent storage device (such as a USB hard disk).<br>If a user is deleted from the list below, then his authorized_key file will also be deleted.",
+    "translation": "Il riquadro seguente consente di specificare le authorized_keys per gli utenti. Le chiavi vengono prodotte fornendo il nome utente seguito dal contenuto di .ssh/id_dsa.pub, .ssh/id_rsa.pub o .ssh/id_ed25519.pub. Per ogni utente è possibile fornire zero, una o più chiavi.<br><br>Si noti che solo per l'utente root le chiavi vengono salvate automaticamente su una memoria persistente. Per tutti gli altri utenti, la home directory deve trovarsi su un dispositivo di memorizzazione persistente (ad esempio un disco rigido USB).<br><br>Se un utente viene cancellato dall'elenco sottostante, anche il suo file di authorized_key verrà cancellato.",
+    "timestamp": "2026-02-16T14:18:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

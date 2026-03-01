@@ -1,0 +1,86 @@
+{
+  "deepl:No devices found.": {
+    "original": "No devices found.",
+    "translation": "Nessun dispositivo trovato.",
+    "timestamp": "2026-02-15T23:53:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:smartctl not found.": {
+    "original": "smartctl not found.",
+    "translation": "smartctl non trovato.",
+    "timestamp": "2026-02-15T23:53:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:S.M.A.R.T. not supported": {
+    "original": "S.M.A.R.T. not supported",
+    "translation": "S.M.A.R.T. non supportato",
+    "timestamp": "2026-02-15T23:53:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:PASSED": {
+    "original": "PASSED",
+    "translation": "PASSATO",
+    "timestamp": "2026-02-15T23:53:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Health": {
+    "original": "Health",
+    "translation": "Salute",
+    "timestamp": "2026-02-15T23:53:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Wear leveling": {
+    "original": "Wear leveling",
+    "translation": "Livellamento dell'usura",
+    "timestamp": "2026-02-15T23:53:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Termperature": {
+    "original": "Termperature",
+    "translation": "Termperatura",
+    "timestamp": "2026-02-15T23:53:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Power-on": {
+    "original": "Power-on",
+    "translation": "Accensione",
+    "timestamp": "2026-02-15T23:53:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:days": {
+    "original": "days",
+    "translation": "giorni",
+    "timestamp": "2026-02-15T23:53:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Power cycles / spinups": {
+    "original": "Power cycles / spinups",
+    "translation": "Cicli di alimentazione / spinup",
+    "timestamp": "2026-02-15T23:53:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Power cycles": {
+    "original": "Power cycles",
+    "translation": "Cicli di alimentazione",
+    "timestamp": "2026-02-15T23:54:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Spinups": {
+    "original": "Spinups",
+    "translation": "Spinup",
+    "timestamp": "2026-02-15T23:54:02Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

@@ -16,7 +16,7 @@ cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
 
 <p>
-<h1>Supporters</h1>
+<h1>$(lang de:"Unterst&uuml;tzer" en:"Supporters")</h1>
 abraXxl
 aholler
 AldoB.

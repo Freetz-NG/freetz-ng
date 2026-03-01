@@ -1,0 +1,30 @@
+{
+  "deepl:pyLoad web interface": {
+    "original": "pyLoad web interface",
+    "translation": "Interfaccia web di pyLoad",
+    "timestamp": "2026-02-15T23:45:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:pyLoad directory": {
+    "original": "pyLoad directory",
+    "translation": "pyLoad directory",
+    "timestamp": "2026-02-15T23:45:17Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:pyLoad is not configured. To do so, please run this in a terminal": {
+    "original": "pyLoad is not configured. To do so, please run this in a terminal",
+    "translation": "pyLoad non è configurato. Per farlo, eseguire questo comando in un terminale",
+    "timestamp": "2026-02-15T23:45:19Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The user management can be run by": {
+    "original": "The user management can be run by",
+    "translation": "La gestione degli utenti può essere eseguita da",
+    "timestamp": "2026-02-15T23:45:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

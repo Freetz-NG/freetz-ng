@@ -1,0 +1,44 @@
+{
+  "deepl:Storage location": {
+    "original": "Storage location",
+    "translation": "Luogo di archiviazione",
+    "timestamp": "2026-02-15T23:35:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Not configured": {
+    "original": "Not configured",
+    "translation": "Non configurato",
+    "timestamp": "2026-02-15T23:35:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:volatile memory": {
+    "original": "volatile memory",
+    "translation": "memoria volatile",
+    "timestamp": "2026-02-15T23:35:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:persistent storage": {
+    "original": "persistent storage",
+    "translation": "archiviazione persistente",
+    "timestamp": "2026-02-15T23:35:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Activate mini_fo at boot time": {
+    "original": "Activate mini_fo at boot time",
+    "translation": "Attivare mini_fo all'avvio",
+    "timestamp": "2026-02-15T23:35:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Changes will take effect after a reboot, even if new settings will already be displayed here.": {
+    "original": "Changes will take effect after a reboot, even if new settings will already be displayed here.",
+    "translation": "Le modifiche avranno effetto dopo un riavvio, anche se le nuove impostazioni saranno già visualizzate qui.",
+    "timestamp": "2026-02-15T23:35:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

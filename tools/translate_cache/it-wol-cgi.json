@@ -1,0 +1,79 @@
+{
+  "deepl:WOL web interface": {
+    "original": "WOL web interface",
+    "translation": "Interfaccia web WOL",
+    "timestamp": "2026-02-16T00:00:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Known hosts": {
+    "original": "Known hosts",
+    "translation": "Host conosciuti",
+    "timestamp": "2026-02-16T00:00:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Edit hosts": {
+    "original": "Edit hosts",
+    "translation": "Modifica gli host",
+    "timestamp": "2026-02-16T00:00:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:all items with a valid MAC address": {
+    "original": "all items with a valid MAC address",
+    "translation": "tutti gli articoli con un indirizzo MAC valido",
+    "timestamp": "2026-02-16T00:00:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:WOL interface": {
+    "original": "WOL interface",
+    "translation": "Interfaccia WOL",
+    "timestamp": "2026-02-16T00:00:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Port of WOL webserver": {
+    "original": "Port of WOL webserver",
+    "translation": "Porta del server web WOL",
+    "timestamp": "2026-02-16T00:00:55Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:(choose)": {
+    "original": "(choose)",
+    "translation": "(scegli)",
+    "timestamp": "2026-02-16T00:00:57Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Fill in a MAC address and a network interface for etherwake or select a known host from the drop down list above.": {
+    "original": "Fill in a MAC address and a network interface for etherwake or select a known host from the drop down list above.",
+    "translation": "Inserire un indirizzo MAC e un'interfaccia di rete per etherwake o selezionare un host noto dall'elenco a discesa in alto.",
+    "timestamp": "2026-02-16T00:01:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Method:": {
+    "original": "Method:",
+    "translation": "Metodo:",
+    "timestamp": "2026-02-16T00:01:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:no MAC address given": {
+    "original": "no MAC address given",
+    "translation": "nessun indirizzo MAC indicato",
+    "timestamp": "2026-02-16T00:01:05Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Wake up '\\": {
+    "original": "Wake up '\\",
+    "translation": "Svegliare '\\",
+    "timestamp": "2026-02-16T00:01:08Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

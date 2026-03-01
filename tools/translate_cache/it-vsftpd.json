@@ -1,0 +1,191 @@
+{
+  "deepl:Local users": {
+    "original": "Local users",
+    "translation": "Utenti locali",
+    "timestamp": "2026-02-15T23:59:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:chroot jail": {
+    "original": "chroot jail",
+    "translation": "chroot jail",
+    "timestamp": "2026-02-15T23:59:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Allow ftpuser login": {
+    "original": "Allow ftpuser login",
+    "translation": "Consentire il login dell'utente ftp",
+    "timestamp": "2026-02-15T23:59:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:SSL Settings": {
+    "original": "SSL Settings",
+    "translation": "Impostazioni SSL",
+    "timestamp": "2026-02-15T23:59:18Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:enable SSL": {
+    "original": "enable SSL",
+    "translation": "abilitare SSL",
+    "timestamp": "2026-02-15T23:59:20Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:To start VSFTPD with SSL-Support you have to setup Certifikat&amp;Key <a TARGET=\\": {
+    "original": "To start VSFTPD with SSL-Support you have to setup Certifikat&amp;Key <a TARGET=\\",
+    "translation": "Per avviare VSFTPD con il supporto SSL è necessario configurare Certifikat&amp;Key <a TARGET=\\",
+    "timestamp": "2026-02-15T23:59:21Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:permit SSL v2": {
+    "original": "permit SSL v2",
+    "translation": "consentire SSL v2",
+    "timestamp": "2026-02-15T23:59:23Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:permit SSL v3": {
+    "original": "permit SSL v3",
+    "translation": "consentire SSL v3",
+    "timestamp": "2026-02-15T23:59:25Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:permit TLS v1": {
+    "original": "permit TLS v1",
+    "translation": "consentire TLS v1",
+    "timestamp": "2026-02-15T23:59:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:force users to use a secure SSL connection to send and recieve data": {
+    "original": "force users to use a secure SSL connection to send and recieve data",
+    "translation": "costringere gli utenti a utilizzare una connessione sicura SSL per inviare e ricevere dati",
+    "timestamp": "2026-02-15T23:59:30Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:force users to use a secure SSL connection to login": {
+    "original": "force users to use a secure SSL connection to login",
+    "translation": "forzare gli utenti a utilizzare una connessione sicura SSL per il login",
+    "timestamp": "2026-02-15T23:59:33Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Maximum connections": {
+    "original": "Maximum connections",
+    "translation": "Connessioni massime",
+    "timestamp": "2026-02-15T23:59:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:overall": {
+    "original": "overall",
+    "translation": "generale",
+    "timestamp": "2026-02-15T23:59:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:per client": {
+    "original": "per client",
+    "translation": "per cliente",
+    "timestamp": "2026-02-15T23:59:41Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Passive ports": {
+    "original": "Passive ports",
+    "translation": "Porte passive",
+    "timestamp": "2026-02-15T23:59:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:minimum": {
+    "original": "minimum",
+    "translation": "minimo",
+    "timestamp": "2026-02-15T23:59:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:maximum": {
+    "original": "maximum",
+    "translation": "massimo",
+    "timestamp": "2026-02-15T23:59:48Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Enable FXP": {
+    "original": "Enable FXP",
+    "translation": "Abilita FXP",
+    "timestamp": "2026-02-15T23:59:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Show banner": {
+    "original": "Show banner",
+    "translation": "Mostra banner",
+    "timestamp": "2026-02-15T23:59:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The following 2 settings are mainly for operating with SSL, because the firewall can't follow the encrypted traffic.": {
+    "original": "The following 2 settings are mainly for operating with SSL, because the firewall can't follow the encrypted traffic.",
+    "translation": "Le 2 impostazioni seguenti servono principalmente per operare con SSL, perché il firewall non può seguire il traffico criptato.",
+    "timestamp": "2026-02-15T23:59:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:write actual public IP as pasv_address to config": {
+    "original": "write actual public IP as pasv_address to config",
+    "translation": "scrivere l'IP pubblico effettivo come indirizzo pasv_address in configurazione",
+    "timestamp": "2026-02-15T23:59:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Create script /etc/onlinechanged/reload_vsftpd to recreate config after IP-change.": {
+    "original": "Create script /etc/onlinechanged/reload_vsftpd to recreate config after IP-change.",
+    "translation": "Creare lo script /etc/onlinechanged/reload_vsftpd per ricreare la configurazione dopo il cambio di IP.",
+    "timestamp": "2026-02-15T23:59:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Additional config options (for experts)": {
+    "original": "Additional config options (for experts)",
+    "translation": "Opzioni di configurazione aggiuntive (per gli esperti)",
+    "timestamp": "2026-02-16T00:00:00Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Extend by protocol-log": {
+    "original": "Extend by protocol-log",
+    "translation": "Estensione per protocollo-log",
+    "timestamp": "2026-02-16T00:00:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:File:&nbsp;&nbsp;": {
+    "original": "File:&nbsp;&nbsp;",
+    "translation": "File:&nbsp;&nbsp;",
+    "timestamp": "2026-02-16T00:00:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:chroot_list": {
+    "original": "chroot_list",
+    "translation": "chroot_list",
+    "timestamp": "2026-02-16T00:00:10Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Put all local users in the list who should be placed in a chroot jail in their home directory upon login. The meaning is slightly different if 'chroot jail' is set to YES. In this case, the list becomes a list of users which are NOT to be placed in a chroot() jail.": {
+    "original": "Put all local users in the list who should be placed in a chroot jail in their home directory upon login. The meaning is slightly different if 'chroot jail' is set to YES. In this case, the list becomes a list of users which are NOT to be placed in a chroot() jail.",
+    "translation": "Inserisce nell'elenco tutti gli utenti locali che al momento dell'accesso devono essere inseriti in una jail chroot nella loro home directory. Il significato è leggermente diverso se \"chroot jail\" è impostato su YES. In questo caso, l'elenco diventa un elenco di utenti che NON devono essere inseriti in una jail chroot().",
+    "timestamp": "2026-02-16T00:00:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

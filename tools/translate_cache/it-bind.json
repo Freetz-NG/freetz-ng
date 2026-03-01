@@ -1,0 +1,37 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:07:26Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:start before multid": {
+    "original": "start before multid",
+    "translation": "iniziare prima di multid",
+    "timestamp": "2026-02-15T23:07:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:07:27Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Optional parameters:": {
+    "original": "Optional parameters:",
+    "translation": "Parametri opzionali:",
+    "timestamp": "2026-02-15T23:07:28Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Restart multid to use port 53.": {
+    "original": "Restart multid to use port 53.",
+    "translation": "Riavviare multid per utilizzare la porta 53.",
+    "timestamp": "2026-02-15T23:07:29Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

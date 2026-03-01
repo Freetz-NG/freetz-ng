@@ -1300,7 +1300,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 		fi
 
 		[ -r "${PACKAGES_DIR}/${pkg}/.language" ] && \
-			modlang "${PACKAGES_DIR}/${pkg}/.language" "${FILESYSTEM_MOD_DIR}"
+			modlang "${PACKAGES_DIR}/${pkg}/.language" "${FILESYSTEM_MOD_DIR}" "$pkg_name"
 
 		if ! grep -q "^$pkg_name$" "${VARTAR_MOD_DIR}/var/mod/etc/static.pkg" >/dev/null 2>&1; then
 			echo "$pkg_name" >> "${VARTAR_MOD_DIR}/var/mod/etc/static.pkg"
@@ -1334,7 +1334,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			fi
 
 			[ -r "${ADDON_DIR}/${pkg}/.language" ] && \
-				modlang "${ADDON_DIR}/${pkg}/.language" "${FILESYSTEM_MOD_DIR}"
+				modlang "${ADDON_DIR}/${pkg}/.language" "${FILESYSTEM_MOD_DIR}" "$pkg_name"
 		fi
 
 		if ! grep -q "^$pkg_name$" "${VARTAR_MOD_DIR}/var/mod/etc/static.pkg" >/dev/null 2>&1; then
@@ -1880,7 +1880,7 @@ if [ "$action_names" ]; then
 		echo "export FREETZ_INFO_MAKEDATE='${export_modmakedate}'" >> "$freetz_info_file"
 		echo "export FREETZ_INFO_IMAGE_NAME='${export_modstring}.image'" >> "$freetz_info_file"
 		echo "export FREETZ_INFO_COMMENT='${FREETZ_USER_DEFINED_COMMENT}'" >> "$freetz_info_file"
-		echo "export FREETZ_INFO_EXTERNAL_FILES='${externalised_files}'" >> "$freetz_info_file"
+		echo "FREETZ_INFO_EXTERNAL_FILES='${externalised_files}'" >> "$freetz_info_file"
 	fi
 
 	# Pack var.tar (use old tar for compatibility)

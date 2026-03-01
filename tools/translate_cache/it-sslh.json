@@ -1,0 +1,30 @@
+{
+  "deepl:Listen on these ports (space separated)": {
+    "original": "Listen on these ports (space separated)",
+    "translation": "Ascoltare su queste porte (separate da spazi)",
+    "timestamp": "2026-02-15T23:54:52Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:On unknown protocol use this (leave empty to decativate)": {
+    "original": "On unknown protocol use this (leave empty to decativate)",
+    "translation": "Su protocollo sconosciuto utilizzare questo (lasciare vuoto per decativare)",
+    "timestamp": "2026-02-15T23:54:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Fallback timeout (sec)": {
+    "original": "Fallback timeout (sec)",
+    "translation": "Timeout di fallback (sec)",
+    "timestamp": "2026-02-15T23:54:56Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Support IPv6 too": {
+    "original": "Support IPv6 too",
+    "translation": "Supporta anche IPv6",
+    "timestamp": "2026-02-15T23:54:58Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

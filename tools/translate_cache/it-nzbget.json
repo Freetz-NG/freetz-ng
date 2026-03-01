@@ -1,0 +1,16 @@
+{
+  "deepl:NZBGet web interface": {
+    "original": "NZBGet web interface",
+    "translation": "Interfaccia web di NZBGet",
+    "timestamp": "2026-02-15T23:37:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:NZBGet directory": {
+    "original": "NZBGet directory",
+    "translation": "NZBGet directory",
+    "timestamp": "2026-02-15T23:37:14Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

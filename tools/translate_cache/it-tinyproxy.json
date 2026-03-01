@@ -1,0 +1,58 @@
+{
+  "deepl:Basic proxy configuration": {
+    "original": "Basic proxy configuration",
+    "translation": "Configurazione di base del proxy",
+    "timestamp": "2026-02-15T23:55:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Multiple entries are separated by \\": {
+    "original": "Multiple entries are separated by \\",
+    "translation": "Le voci multiple sono separate da una \\",
+    "timestamp": "2026-02-15T23:56:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Force HTTP redirection to proxy (with iptables)": {
+    "original": "Force HTTP redirection to proxy (with iptables)",
+    "translation": "Forzare il reindirizzamento HTTP al proxy (con iptables)",
+    "timestamp": "2026-02-15T23:56:04Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configure a HTTP server to deliver a PAC file": {
+    "original": "Configure a HTTP server to deliver a PAC file",
+    "translation": "Configurare un server HTTP per la consegna di un file PAC",
+    "timestamp": "2026-02-15T23:56:06Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Security and filter configuration": {
+    "original": "Security and filter configuration",
+    "translation": "Configurazione della sicurezza e dei filtri",
+    "timestamp": "2026-02-15T23:56:09Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:content of filter file": {
+    "original": "content of filter file",
+    "translation": "contenuto del file di filtro",
+    "timestamp": "2026-02-15T23:56:11Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Extended proxy configuration": {
+    "original": "Extended proxy configuration",
+    "translation": "Configurazione estesa del proxy",
+    "timestamp": "2026-02-15T23:56:13Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Note: Disables logging to file": {
+    "original": "Note: Disables logging to file",
+    "translation": "Nota: disabilita la registrazione su file",
+    "timestamp": "2026-02-15T23:56:15Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

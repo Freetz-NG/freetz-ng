@@ -1,0 +1,72 @@
+{
+  "deepl:NDAS Device-ID": {
+    "original": "NDAS Device-ID",
+    "translation": "NDAS Device-ID",
+    "timestamp": "2026-02-15T23:36:43Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Number of Partitions": {
+    "original": "Number of Partitions",
+    "translation": "Numero di partizioni",
+    "timestamp": "2026-02-15T23:36:45Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Access Mode": {
+    "original": "Access Mode",
+    "translation": "Modalità di accesso",
+    "timestamp": "2026-02-15T23:36:44Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Read-only": {
+    "original": "Read-only",
+    "translation": "Solo lettura",
+    "timestamp": "2026-02-15T23:36:46Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Read/Write": {
+    "original": "Read/Write",
+    "translation": "Leggere/Scrivere",
+    "timestamp": "2026-02-15T23:36:47Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Write Key": {
+    "original": "Write Key",
+    "translation": "Chiave di scrittura",
+    "timestamp": "2026-02-15T23:36:49Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:NDAS Network Interface": {
+    "original": "NDAS Network Interface",
+    "translation": "Interfaccia di rete NDAS",
+    "timestamp": "2026-02-15T23:36:50Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Mount command for partition nda$i": {
+    "original": "Mount command for partition nda$i",
+    "translation": "Comando di montaggio per la partizione nda$i",
+    "timestamp": "2026-02-15T23:36:51Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Restart the Samba service": {
+    "original": "Restart the Samba service",
+    "translation": "Riavviare il servizio Samba",
+    "timestamp": "2026-02-15T23:36:53Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Restart the NFS service": {
+    "original": "Restart the NFS service",
+    "translation": "Riavviare il servizio NFS",
+    "timestamp": "2026-02-15T23:36:54Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

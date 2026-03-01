@@ -1,0 +1,58 @@
+{
+  "deepl:Start type": {
+    "original": "Start type",
+    "translation": "Tipo di avvio",
+    "timestamp": "2026-02-15T23:06:35Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Configuration": {
+    "original": "Configuration",
+    "translation": "Configurazione",
+    "timestamp": "2026-02-15T23:06:36Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Directory containing configuration files": {
+    "original": "Directory containing configuration files",
+    "translation": "Directory contenente i file di configurazione",
+    "timestamp": "2026-02-15T23:06:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Documentation": {
+    "original": "Documentation",
+    "translation": "Documentazione",
+    "timestamp": "2026-02-15T23:06:37Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:documentation": {
+    "original": "documentation",
+    "translation": "documentazione",
+    "timestamp": "2026-02-15T23:06:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Note": {
+    "original": "Note",
+    "translation": "Nota",
+    "timestamp": "2026-02-15T23:06:38Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Asterisk is not configured. To do so, please run this in a terminal": {
+    "original": "Asterisk is not configured. To do so, please run this in a terminal",
+    "translation": "Asterisk non è configurato. Per farlo, eseguire questa operazione in un terminale",
+    "timestamp": "2026-02-15T23:06:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:The console can be run by": {
+    "original": "The console can be run by",
+    "translation": "La console può essere eseguita da",
+    "timestamp": "2026-02-15T23:06:39Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}

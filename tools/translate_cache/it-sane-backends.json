@@ -1,0 +1,23 @@
+{
+  "deepl:Sane Daemon": {
+    "original": "Sane Daemon",
+    "translation": "Sane Daemon",
+    "timestamp": "2026-02-15T23:52:59Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:This setting does only work in inetd mode": {
+    "original": "This setting does only work in inetd mode",
+    "translation": "Questa impostazione funziona solo in modalità inetd",
+    "timestamp": "2026-02-15T23:53:01Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  },
+  "deepl:Permit access from (one host/range per line)": {
+    "original": "Permit access from (one host/range per line)",
+    "translation": "Permettere l'accesso da (un host/gamma per riga)",
+    "timestamp": "2026-02-15T23:53:03Z",
+    "service": "deepl",
+    "github_user": "Ircama"
+  }
+}
