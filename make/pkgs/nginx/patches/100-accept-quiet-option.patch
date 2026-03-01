@@ -1,0 +1,20 @@
+Add support for --quiet and --silent configure options
+
+Nginx's custom configure script doesn't support the standard --quiet option
+that autoconf-based configure scripts accept. This patch adds support for
+--quiet and --silent options by simply ignoring them, allowing the build
+system to pass these options without causing errors.
+
+--- auto/options
++++ auto/options
+@@ -369,6 +369,10 @@
+         --test-build-epoll)              NGX_TEST_BUILD_EPOLL=YES   ;;
+         --test-build-solaris-sendfilev)  NGX_TEST_BUILD_SOLARIS_SENDFILEV=YES ;;
+ 
++        --quiet)                         ;;
++        --silent)                        ;;
++        -q)                              ;;
++
+         *)
+             echo "$0: error: invalid option \"$option\""
+             exit 1

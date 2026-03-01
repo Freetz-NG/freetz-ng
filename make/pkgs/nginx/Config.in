@@ -1,0 +1,253 @@
+menuconfig FREETZ_PACKAGE_NGINX
+	bool "Nginx 1.29.3"
+	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	default n
+	help
+		Nginx is a high-performance HTTP server and reverse proxy, as well as
+		an IMAP/POP3 proxy server. Nginx is known for its high performance,
+		stability, rich feature set, simple configuration, and low resource
+		consumption.
+
+if FREETZ_PACKAGE_NGINX
+
+config FREETZ_PACKAGE_NGINX_WITH_SSL
+	bool "SSL support"
+	select FREETZ_LIB_libssl
+	select FREETZ_LIB_libcrypto
+	default y
+	help
+		Enable HTTPS/SSL support and HTTP/2.
+
+config FREETZ_PACKAGE_NGINX_WITH_STUB_STATUS
+	bool "Stub status module"
+	default y
+	help
+		Provides access to basic status information.
+
+config FREETZ_PACKAGE_NGINX_WITH_GZIP_STATIC
+	bool "Gzip static module"
+	default y
+	help
+		Allows sending precompressed files with the ".gz" filename extension
+		instead of regular files.
+
+config FREETZ_PACKAGE_NGINX_WITH_REALIP
+	bool "Real IP module"
+	default n
+	help
+		Changes the client address to the one sent in the specified header field.
+
+config FREETZ_PACKAGE_NGINX_WITH_AUTH_REQUEST
+	bool "Auth request module"
+	default n
+	help
+		Implements client authorization based on the result of a subrequest.
+
+config FREETZ_PACKAGE_NGINX_WITH_DAV
+	bool "WebDAV module"
+	default n
+	help
+		Adds WebDAV support (PUT, DELETE, MKCOL, COPY, and MOVE methods).
+
+config FREETZ_PACKAGE_NGINX_WITH_FLV
+	bool "FLV module"
+	default n
+	help
+		Provides pseudo-streaming server-side support for Flash Video (FLV) files.
+
+config FREETZ_PACKAGE_NGINX_WITH_MP4
+	bool "MP4 module"
+	default n
+	help
+		Provides pseudo-streaming server-side support for MP4 files.
+
+config FREETZ_PACKAGE_NGINX_WITH_SUB
+	bool "Substitution filter module"
+	default n
+	help
+		Modifies a response by replacing one specified string by another.
+
+config FREETZ_PACKAGE_NGINX_WITH_PROXY
+	bool "Proxy module"
+	default y
+	help
+		Allows passing requests to another server.
+
+config FREETZ_PACKAGE_NGINX_WITH_FASTCGI
+	bool "FastCGI module"
+	default y
+	help
+		Allows passing requests to a FastCGI server (e.g., PHP-FPM).
+
+config FREETZ_PACKAGE_NGINX_WITH_STREAM
+	bool "Stream module"
+	default n
+	help
+		Provides support for TCP/UDP proxying and load balancing.
+
+comment "Additional HTTP modules (disabled by default to save space)"
+
+config FREETZ_PACKAGE_NGINX_WITH_SSI
+	bool "SSI (Server Side Includes) module"
+	default n
+	help
+		Processes SSI (Server Side Includes) commands in responses passing through it.
+
+config FREETZ_PACKAGE_NGINX_WITH_USERID
+	bool "User ID module"
+	default n
+	help
+		Issues cookies suitable for client identification.
+
+config FREETZ_PACKAGE_NGINX_WITH_AUTOINDEX
+	bool "Autoindex module"
+	default n
+	help
+		Processes requests ending with the slash character and produces a directory listing.
+
+config FREETZ_PACKAGE_NGINX_WITH_GEO
+	bool "Geo module"
+	default n
+	help
+		Creates variables with values depending on the client IP address.
+
+config FREETZ_PACKAGE_NGINX_WITH_MAP
+	bool "Map module"
+	default n
+	help
+		Creates variables whose values depend on values of other variables.
+
+config FREETZ_PACKAGE_NGINX_WITH_SPLIT_CLIENTS
+	bool "Split clients module"
+	default n
+	help
+		Creates variables suitable for A/B testing (split testing).
+
+config FREETZ_PACKAGE_NGINX_WITH_REFERER
+	bool "Referer module"
+	default n
+	help
+		Blocks access to the site for requests with invalid values in the Referer header field.
+
+config FREETZ_PACKAGE_NGINX_WITH_UWSGI
+	bool "uWSGI module"
+	default n
+	help
+		Allows passing requests to a uwsgi server.
+
+config FREETZ_PACKAGE_NGINX_WITH_SCGI
+	bool "SCGI module"
+	default n
+	help
+		Allows passing requests to an SCGI server.
+
+config FREETZ_PACKAGE_NGINX_WITH_MEMCACHED
+	bool "Memcached module"
+	default n
+	help
+		Obtains responses from a memcached server.
+
+config FREETZ_PACKAGE_NGINX_WITH_LIMIT_CONN
+	bool "Limit conn module"
+	default n
+	help
+		Limits the number of connections per the defined key.
+
+config FREETZ_PACKAGE_NGINX_WITH_LIMIT_REQ
+	bool "Limit req module"
+	default n
+	help
+		Limits the request processing rate per a defined key.
+
+config FREETZ_PACKAGE_NGINX_WITH_EMPTY_GIF
+	bool "Empty GIF module"
+	default n
+	help
+		Emits single-pixel transparent GIF.
+
+config FREETZ_PACKAGE_NGINX_WITH_BROWSER
+	bool "Browser module"
+	default n
+	help
+		Creates variables whose values depend on the value of the User-Agent request header.
+
+config FREETZ_PACKAGE_NGINX_WITH_UPSTREAM_HASH
+	bool "Upstream hash module"
+	default n
+	help
+		Specifies a load balancing method where the server is selected based on a user-defined hashed key.
+
+config FREETZ_PACKAGE_NGINX_WITH_UPSTREAM_IP_HASH
+	bool "Upstream IP hash module"
+	default n
+	help
+		Specifies that a group should use a load balancing method where requests are distributed between servers based on client IP addresses.
+
+config FREETZ_PACKAGE_NGINX_WITH_UPSTREAM_LEAST_CONN
+	bool "Upstream least conn module"
+	default n
+	help
+		Specifies that a group should use a load balancing method where a request is passed to the server with the least number of active connections.
+
+config FREETZ_PACKAGE_NGINX_WITH_UPSTREAM_RANDOM
+	bool "Upstream random module"
+	default n
+	help
+		Specifies that a group should use a load balancing method where a request is passed to a randomly selected server.
+
+config FREETZ_PACKAGE_NGINX_WITH_UPSTREAM_KEEPALIVE
+	bool "Upstream keepalive module"
+	default n
+	help
+		Activates the cache for connections to upstream servers.
+
+config FREETZ_PACKAGE_NGINX_WITH_UPSTREAM_ZONE
+	bool "Upstream zone module"
+	default n
+	help
+		Defines the name and size of the shared memory zone that keeps the group's configuration and run-time state.
+
+comment "Mail proxy modules (disabled by default)"
+
+config FREETZ_PACKAGE_NGINX_WITH_MAIL
+	bool "Mail proxy support"
+	default n
+	help
+		Enable mail proxy functionality (POP3/IMAP/SMTP).
+
+if FREETZ_PACKAGE_NGINX_WITH_MAIL
+
+config FREETZ_PACKAGE_NGINX_WITH_MAIL_SSL
+	bool "Mail SSL module"
+	default n
+	help
+		Adds SSL/TLS protocol support to a mail proxy server.
+
+endif
+
+config FREETZ_PACKAGE_NGINX_CONF_PATH
+	string "Configuration file path"
+	default "/mod/etc/nginx/nginx.conf"
+	help
+		Path to the nginx configuration file.
+
+config FREETZ_PACKAGE_NGINX_PID_PATH
+	string "PID file path"
+	default "/var/run/nginx.pid"
+	help
+		Path to the nginx PID file.
+
+config FREETZ_PACKAGE_NGINX_ERROR_LOG_PATH
+	string "Error log path"
+	default "/var/log/nginx/error.log"
+	help
+		Path to the nginx error log file.
+
+config FREETZ_PACKAGE_NGINX_HTTP_LOG_PATH
+	string "HTTP access log path"
+	default "/var/log/nginx/access.log"
+	help
+		Path to the nginx HTTP access log file.
+
+endif
+

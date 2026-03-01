@@ -1,0 +1,33 @@
+--- auto/feature
++++ auto/feature
+@@ -53,7 +53,14 @@
+ 
+         yes)
+             # /bin/sh is used to intercept "Killed" or "Abort trap" messages
+-            if /bin/sh -c $NGX_AUTOTEST >> $NGX_AUTOCONF_ERR 2>&1; then
++            # For cross-compilation, skip running tests and assume success if binary compiled
++            if [ "$ngx_force_c_compiler" = "yes" ]; then
++                echo " found (cross-compile)"
++                ngx_found=yes
++                if test -n "$ngx_feature_name"; then
++                    have=$ngx_have_feature . auto/have
++                fi
++            elif /bin/sh -c $NGX_AUTOTEST >> $NGX_AUTOCONF_ERR 2>&1; then
+                 echo " found"
+                 ngx_found=yes
+ 
+@@ -68,7 +75,14 @@
+ 
+         value)
+             # /bin/sh is used to intercept "Killed" or "Abort trap" messages
+-            if /bin/sh -c $NGX_AUTOTEST >> $NGX_AUTOCONF_ERR 2>&1; then
++            # For cross-compilation, skip running tests and assume success if binary compiled
++            if [ "$ngx_force_c_compiler" = "yes" ]; then
++                echo " found (cross-compile)"
++                ngx_found=yes
++                if test -n "$ngx_feature_name"; then
++                    have=$ngx_have_feature . auto/have
++                fi
++            elif /bin/sh -c $NGX_AUTOTEST >> $NGX_AUTOCONF_ERR 2>&1; then
+                 echo " found"
+                 ngx_found=yes

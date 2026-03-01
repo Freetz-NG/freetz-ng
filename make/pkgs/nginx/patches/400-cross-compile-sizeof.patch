@@ -1,0 +1,26 @@
+--- auto/types/sizeof
++++ auto/types/sizeof
+@@ -41,7 +41,22 @@
+ 
+ 
+ if [ -x $NGX_AUTOTEST ]; then
+-    ngx_size=`$NGX_AUTOTEST`
++    # For cross-compilation, use forced sizeof values
++    if [ "$ngx_force_c_compiler" = "yes" ]; then
++        case "$ngx_type" in
++            int)                ngx_size=$ngx_force_sizeof_int ;;
++            long)               ngx_size=$ngx_force_sizeof_long ;;
++            "long long")        ngx_size=$ngx_force_sizeof_long_long ;;
++            void*)              ngx_size=$ngx_force_sizeof_void_p ;;
++            sig_atomic_t)       ngx_size=$ngx_force_sizeof_sig_atomic_t ;;
++            size_t)             ngx_size=$ngx_force_sizeof_size_t ;;
++            off_t)              ngx_size=$ngx_force_sizeof_off_t ;;
++            time_t)             ngx_size=$ngx_force_sizeof_time_t ;;
++            *)                  ngx_size=4 ;;
++        esac
++    else
++        ngx_size=`$NGX_AUTOTEST`
++    fi
+     echo " $ngx_size bytes"
+ fi
+ 

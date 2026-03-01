@@ -1,0 +1,11 @@
+--- auto/cc/name
++++ auto/cc/name
+@@ -6,7 +6,7 @@
+ 
+     ngx_feature="C compiler"
+     ngx_feature_name=
+-    ngx_feature_run=yes
++    ngx_feature_run=no
+     ngx_feature_incs=
+     ngx_feature_path=
+     ngx_feature_libs=
