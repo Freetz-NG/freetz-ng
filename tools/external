@@ -73,6 +73,107 @@ for EXT_FILE in make/pkgs/*/external.files make/libs/*/external.files; do
 done
 EXTERNAL_FILES=$(echo $EXTERNAL_FILES | sed -e 's| |\n/|g;s|//\+|/|g' | sort -u)
 
+# Special handling for GCC_TOOLCHAIN_ARCHIVE marker
+# If found, unpack its contents to external/ and remove the marker directory
+if echo "$EXTERNAL_FILES" | grep -q "/GCC_TOOLCHAIN_ARCHIVE"; then
+	if [ -d "${FILESYSTEM_MOD_DIR}/GCC_TOOLCHAIN_ARCHIVE" ]; then
+		echo1 "Unpacking GCC_TOOLCHAIN_ARCHIVE..."
+		# Move all contents from GCC_TOOLCHAIN_ARCHIVE/* to external/
+		for item in "${FILESYSTEM_MOD_DIR}/GCC_TOOLCHAIN_ARCHIVE"/*; do
+			if [ -e "$item" ]; then
+				item_name=$(basename "$item")
+				echo2 "  Moving GCC_TOOLCHAIN_ARCHIVE/$item_name to external/$item_name"
+				# Check if target already exists and merge if needed
+				if [ -d "$item" ] && [ -d "${EXTERNAL_MOD_DIR}/$item_name" ]; then
+					# Merge directories recursively
+					echo2 "    Merging with existing $item_name..."
+					cp -a "$item"/* "${EXTERNAL_MOD_DIR}/$item_name/" 2>/dev/null || true
+					rm -rf "$item"
+				elif [ -e "${EXTERNAL_MOD_DIR}/$item_name" ]; then
+					# Target exists but conflict - skip with warning
+					warn "$MESSAGE ${EXTERNAL_MOD_DIR}/$item_name already exists, skipping GCC_TOOLCHAIN_ARCHIVE/$item_name"
+					rm -rf "$item"
+				else
+					# Normal move
+					mv "$item" "${EXTERNAL_MOD_DIR}/"
+				fi
+			fi
+		done
+		# Remove empty marker directory
+		rmdir "${FILESYSTEM_MOD_DIR}/GCC_TOOLCHAIN_ARCHIVE" 2>/dev/null
+		
+		# Create symlinks in filesystem for GCC toolchain
+		echo2 "  Creating symlinks for GCC toolchain..."
+		
+		# 1. Symlink binaries in /usr/bin
+		if [ -d "${EXTERNAL_MOD_DIR}/usr/bin" ]; then
+			mkdir -p "${FILESYSTEM_MOD_DIR}/usr/bin"
+			for gcc_bin in "${EXTERNAL_MOD_DIR}/usr/bin"/{gcc,g++,cpp,cc,c++,gcov,gcov-tool,gcov-dump,gprof,as,ld,ar,ranlib,gcc-ar,gcc-ranlib,nm,objdump,objcopy,strip,strings,readelf,addr2line,c++filt,lto-dump}; do
+				if [ -e "$gcc_bin" ]; then
+					bin_name=$(basename "$gcc_bin")
+					ln -sf "/mod/external/usr/bin/$bin_name" "${FILESYSTEM_MOD_DIR}/usr/bin/$bin_name"
+					echo2 "    Linked /usr/bin/$bin_name -> /mod/external/usr/bin/$bin_name"
+				fi
+			done
+		fi
+		
+		# 2. Symlink headers from /mod/external/usr/include to /usr/include
+		if [ -d "${EXTERNAL_MOD_DIR}/usr/include" ]; then
+			mkdir -p "${FILESYSTEM_MOD_DIR}/usr/include"
+			# Symlink each item (files AND directories) from external/usr/include to filesystem/usr/include
+			for item in "${EXTERNAL_MOD_DIR}/usr/include"/*; do
+				if [ -e "$item" ]; then
+					item_name=$(basename "$item")
+					# Skip if already exists (like python2.7, python3.13, linux)
+					if [ ! -e "${FILESYSTEM_MOD_DIR}/usr/include/$item_name" ]; then
+						ln -sf "/mod/external/usr/include/$item_name" "${FILESYSTEM_MOD_DIR}/usr/include/$item_name"
+						if [ -d "$item" ]; then
+							echo2 "    Linked /usr/include/$item_name/ -> /mod/external/usr/include/$item_name/ (directory)"
+						else
+							echo2 "    Linked /usr/include/$item_name -> /mod/external/usr/include/$item_name (file)"
+						fi
+					fi
+				fi
+			done
+		fi
+		
+		# 3. Fix library symlinks in external/usr/lib (ld-uClibc.so.*, libc.so.*)
+		if [ -d "${EXTERNAL_MOD_DIR}/usr/lib" ]; then
+			# Create symlinks to /mod/external/usr/lib/freetz/ for dynamic linker and libc
+			for lib in ld-uClibc.so.0 ld-uClibc.so.1 libc.so.1; do
+				if [ -e "${EXTERNAL_MOD_DIR}/usr/lib/freetz/$lib" ]; then
+					ln -sf "/mod/external/usr/lib/freetz/$lib" "${EXTERNAL_MOD_DIR}/usr/lib/$lib"
+					echo2 "    Fixed external/usr/lib/$lib -> /mod/external/usr/lib/freetz/$lib"
+				fi
+			done
+		fi
+		
+		# 4. Symlink libraries from /mod/external/usr/lib to /usr/lib
+		if [ -d "${EXTERNAL_MOD_DIR}/usr/lib" ]; then
+			mkdir -p "${FILESYSTEM_MOD_DIR}/usr/lib"
+			# Symlink each item (files AND directories) from external/usr/lib to filesystem/usr/lib
+			for item in "${EXTERNAL_MOD_DIR}/usr/lib"/*; do
+				if [ -e "$item" ]; then
+					item_name=$(basename "$item")
+					# Skip if already exists in filesystem
+					if [ ! -e "${FILESYSTEM_MOD_DIR}/usr/lib/$item_name" ]; then
+						ln -sf "/mod/external/usr/lib/$item_name" "${FILESYSTEM_MOD_DIR}/usr/lib/$item_name"
+						if [ -d "$item" ]; then
+							echo2 "    Linked /usr/lib/$item_name/ -> /mod/external/usr/lib/$item_name/ (directory)"
+						else
+							echo2 "    Linked /usr/lib/$item_name -> /mod/external/usr/lib/$item_name (file)"
+						fi
+					fi
+				fi
+			done
+		fi
+		
+		echo1 "GCC_TOOLCHAIN_ARCHIVE unpacked successfully"
+	fi
+	# Remove marker from EXTERNAL_FILES list to avoid processing it again
+	EXTERNAL_FILES=$(echo "$EXTERNAL_FILES" | grep -v "/GCC_TOOLCHAIN_ARCHIVE")
+fi
+
 for EXTERNAL_FILE in $EXTERNAL_FILES; do
 	FILENAME=$(basename $EXTERNAL_FILE)
 	if [ -L "${FILESYSTEM_MOD_DIR}$EXTERNAL_FILE" -a "$EXTERNAL_LINKS" != "y" ]; then

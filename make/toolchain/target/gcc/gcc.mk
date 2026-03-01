@@ -251,6 +251,9 @@ $(GCC_BUILD_DIR2)/.installed: $(GCC_BUILD_DIR2)/.compiled
 	-(cd $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib && $(TARGET_STRIP) libstdc++.so.*.*.* libgcc_s.so.1 libatomic.so.*.*.* >/dev/null 2>&1)
 	# remove broken *.la* files (invalid checkout directory with dl-toolchains)
 	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/*.la*
+	# Remove libiberty.a which may be in wrong format (host instead of target) for old GCC versions
+	# This prevents libtool relink errors in packages like binutils-tools with armeb gcc-4.7.4
+	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib{,64}/libiberty*
 	# set up the symlinks to enable lying about target name
 	ln -snf $(REAL_GNU_TARGET_NAME) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/$(GNU_TARGET_NAME)
 	$(call CREATE_TARGET_NAME_SYMLINKS,$(TARGET_TOOLCHAIN_STAGING_DIR)/usr,$(GCC_BINARIES_BIN),$(REAL_GNU_TARGET_NAME),$(GNU_TARGET_NAME))
@@ -292,6 +295,10 @@ $(GCC_BUILD_DIR3)/.configured: $(GCC_BUILD_DIR2)/.installed $(GCC_TARGET_PREREQ)
 		\
 		CXX="$(TARGET_MAKE_PATH)/$(TARGET_CROSS)g++" \
 		\
+		CFLAGS="" \
+		CXXFLAGS="" \
+		CC_FOR_BUILD="gcc" \
+		CXX_FOR_BUILD="g++" \
 		CFLAGS_FOR_BUILD="$(GCC_CFLAGS) -O2 -I$(HOST_TOOLS_DIR)/include" \
 		CXXFLAGS_FOR_BUILD="$(GCC_CXXFLAGS) -O2 -I$(HOST_TOOLS_DIR)/include" \
 		LDFLAGS_FOR_BUILD="-L$(HOST_TOOLS_DIR)/lib" \
@@ -306,6 +313,7 @@ $(GCC_BUILD_DIR3)/.configured: $(GCC_BUILD_DIR2)/.installed $(GCC_TARGET_PREREQ)
 		--enable-shared \
 		--enable-threads \
 		--disable-libstdcxx-pch \
+		--disable-libcc1 \
 		$(GCC_COMMON_CONFIGURE_OPTIONS) \
 		$(SILENT) \
 	);
@@ -313,7 +321,9 @@ $(GCC_BUILD_DIR3)/.configured: $(GCC_BUILD_DIR2)/.installed $(GCC_TARGET_PREREQ)
 
 $(GCC_BUILD_DIR3)/.compiled: $(GCC_BUILD_DIR3)/.configured
 	@$(call _ECHO,building,$(GCC_ECHO_TYPE),$(GCC_ECHO_MAKE),target)
-	$(MAKE_ENV) $(MAKE) $(GCC_EXTRA_MAKE_OPTIONS) -C $(GCC_BUILD_DIR3) all $(SILENT)
+	# Force serial build (-j1) to avoid race conditions in toolchain dependencies
+	# uClibc header generation requires cross-compiler to be fully built first
+	$(MAKE_ENV) CFLAGS= CXXFLAGS= $(MAKE) -j1 $(GCC_EXTRA_MAKE_OPTIONS) -C $(GCC_BUILD_DIR3) all $(SILENT)
 	touch $@
 
 GCC_INCLUDE_DIR:=include-fixed
@@ -330,7 +340,7 @@ $(TARGET_UTILS_DIR)/usr/bin/gcc: $(GCC_BUILD_DIR3)/.compiled
 	# work around problem of missing syslimits.h
 	if [ ! -f $(TARGET_UTILS_DIR)/usr/$(GCC_LIB_SUBDIR)/$(GCC_INCLUDE_DIR)/syslimits.h ]; then \
 		echo "warning: working around missing syslimits.h"; \
-		cp -f $(TARGET_TOOLCHAIN_STAGING_DIR)/$(GCC_LIB_SUBDIR)/$(GCC_INCLUDE_DIR)/syslimits.h \
+		cp -f $(TARGET_TOOLCHAIN_STAGING_DIR)/$(GCC_LIB_SUBDIR)/include/syslimits.h \
 			$(TARGET_UTILS_DIR)/usr/$(GCC_LIB_SUBDIR)/$(GCC_INCLUDE_DIR)/; \
 	fi
 	touch -c $@

@@ -1,0 +1,13 @@
+# GCC Toolchain externalization
+# 
+# All GCC toolchain files are packaged inside a special marker directory
+# GCC_TOOLCHAIN_ARCHIVE/ which is recognized by tools/external script.
+#
+# The external script will:
+# 1. Detect GCC_TOOLCHAIN_ARCHIVE/ in the filesystem
+# 2. Move its CONTENTS (not the directory itself) to external/
+# 3. Remove the empty GCC_TOOLCHAIN_ARCHIVE/ directory
+# 4. Create symlinks in filesystem/ pointing to /mod/external/...
+
+# Marker for gcc-toolchain archive (tools/external will unpack this)
+[ "$EXTERNAL_FREETZ_PACKAGE_GCC_TOOLCHAIN" == "y" ] && EXTERNAL_FILES+=" /GCC_TOOLCHAIN_ARCHIVE"

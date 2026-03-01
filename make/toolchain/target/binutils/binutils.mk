@@ -125,6 +125,7 @@ $(BINUTILS_DIR2)/.configured: $(BINUTILS_DIR)/.unpacked
 		--target=$(REAL_GNU_TARGET_NAME) \
 		--disable-multilib \
 		--without-zlib \
+		--disable-gprofng \
 		$(DISABLE_NLS) \
 		--disable-werror \
 		$(SILENT) \

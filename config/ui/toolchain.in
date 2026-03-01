@@ -1404,12 +1404,13 @@ config FREETZ_TARGET_TOOLCHAIN
 	select FREETZ_LIB_libgmp
 	select FREETZ_LIB_libmpfr
 	select FREETZ_LIB_libmpc
-	bool "Build binutils and gcc for target" if FREETZ_BUILD_TOOLCHAIN
-	depends on FREETZ_REAL_DEVELOPER_ONLY
+	bool "Build binutils and gcc for target" if FREETZ_BUILD_TOOLCHAIN && FREETZ_REAL_DEVELOPER_ONLY
 	default n
 	help
 		Build the binutils and gcc to run on the target.
 		Files are installed into toolchain/target/target-utils.
+		
+		This option is automatically enabled when GCC Toolchain package is selected.
 
 
 comment "Host-tools options ----------------------------------"
