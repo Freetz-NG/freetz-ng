@@ -21,7 +21,7 @@ $(PKG)_LIBRARY_TARGET   := $($(PKG)_TARGET_LIBDIR)/$($(PKG)_LIBNAME)
 
 $(PKG)_DEPENDS_ON += python3-host
 
-$(PKG)_CONFIGURE_ENV += PYTHON=python3
+$(PKG)_CONFIGURE_ENV += PYTHON=$(HOST_TOOLS_DIR)/usr/bin/python3
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
