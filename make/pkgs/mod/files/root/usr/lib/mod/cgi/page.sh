@@ -73,7 +73,7 @@ cgi_begin() {
 	fi
 	local CRet=$'\r'
 	cat << EOF
-Content-Type: text/html; charset=ISO-8859-1${CRet}
+Content-Type: text/html; charset=UTF-8${CRet}
 Content-Language: $(lang de:"de" en:"en")${CRet}
 Expires: 0${CRet}
 Pragma: no-cache${CRet}
@@ -83,7 +83,7 @@ ${CRet}
    "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 EOF
 	site_refresh
 	cgi_width_setup

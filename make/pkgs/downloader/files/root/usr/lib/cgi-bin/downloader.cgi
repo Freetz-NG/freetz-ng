@@ -52,7 +52,7 @@ value="http://"$http_chk>http://</option>
 </td>
 </tr>
 </table>
-<h2>$(lang de:"Nur für FTP-Server" en:"Only for ftp server"):</h2>
+<h2>$(lang de:"Nur f&uuml;r FTP-Server" en:"Only for ftp server"):</h2>
 <p>$(lang de:"Benutzer" en:"User"):
 <input type="text" name="srvusr" size="20" maxlength="30" value="$(html "$DOWNLOADER_SRVUSR")">
 &nbsp;&nbsp;&nbsp;&nbsp;Passwor$(lang de:"t" en:"d"):
@@ -91,7 +91,7 @@ sec_begin 'Extras'
 cat << EOF
 <ul>
 <li>
-<a href="$(href extra downloader downremover)">$(lang de:"Heruntergeladene Dateien löschen" en:"Remove downloaded files")</a>
+<a href="$(href extra downloader downremover)">$(lang de:"Heruntergeladene Dateien l&ouml;schen" en:"Remove downloaded files")</a>
 </li>
 <li>
 <a href="$(href extra downloader downlog)">$(lang de:"Protokoll ansehen" en:"View log file")</a>

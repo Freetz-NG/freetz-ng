@@ -15,7 +15,7 @@ sec_begin "$(lang de:"Einstellungen" en:"Settings")"
 cat << EOF
 <h2>ip_conntrack</h2>
 <p>hashsize: <input type="text" name="ip_conntrack_hashsize" size="10" maxlength="255" value="$(html "$IPTABLES_IP_CONNTRACK_HASHSIZE")"></p>
-<p><font size="1">$(lang de:"Evtl. ist ein Neustart nötig" en:"Reboot may be necessary")</font></p>
+<p><font size="1">$(lang de:"Evtl. ist ein Neustart n&ouml;tig" en:"Reboot may be necessary")</font></p>
 EOF
 sec_end
 

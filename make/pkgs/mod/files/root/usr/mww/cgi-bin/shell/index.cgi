@@ -65,7 +65,7 @@ cat << EOF
 				ajax_exec('script=echo "'+encodeURIComponent(code.value)+'" > '+file.value);
 				code.value="";
 				output.innerHTML="$(lang de:"Editiert!" en:"Edited!")";
-				exec.value="$(lang de:"Skript ausführen" en:"Run script")";
+				exec.value="$(lang de:"Skript ausf&uuml;hren" en:"Run script")";
 				editing=0;
 			}
 			else{
