@@ -90,7 +90,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-polarssl
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libcurl_WITH_OPENSSL),--with-openssl="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr",--without-openssl)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libcurl_WITH_MBEDTLS),--with-mbedtls="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr",--without-mbedtls)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(or $(FREETZ_LIB_libcurl_WITH_OPENSSL),$(FREETZ_LIB_libcurl_WITH_MBEDTLS)),,--without-ssl)
-$(PKG)_CONFIGURE_OPTIONS += --without-ca-bundle
+$(PKG)_CONFIGURE_OPTIONS += $(if $(or $(FREETZ_LIB_libcurl_WITH_OPENSSL),$(FREETZ_LIB_libcurl_WITH_MBEDTLS)),--with-ca-bundle=/etc/ssl/certs/ca-bundle.crt,--without-ca-bundle)
 $(PKG)_CONFIGURE_OPTIONS += --without-gssapi
 $(PKG)_CONFIGURE_OPTIONS += --without-libpsl
 $(PKG)_CONFIGURE_OPTIONS += --without-libgsasl
