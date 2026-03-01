@@ -1,0 +1,4 @@
+config FREETZ_LIB_libmediainfo
+	bool "libmediainfo"
+	select FREETZ_LIB_libzen
+

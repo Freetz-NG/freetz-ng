@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libzen
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libzen
+	bool "libzen"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libzen.so.0.0.0

@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_PACKAGE_MEDIAINFO
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_MEDIAINFO
+	bool "MediaInfo"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/mediainfo
+

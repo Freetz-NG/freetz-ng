@@ -1,0 +1,3 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_MEDIAINFO" == "y" ] && EXTERNAL_FILES+=" /usr/bin/mediainfo"
+
+[ "$EXTERNAL_FREETZ_LIB_libmediainfo" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmediainfo.so.0.0.0"

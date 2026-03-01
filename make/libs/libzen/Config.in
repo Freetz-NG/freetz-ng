@@ -1,0 +1,6 @@
+config FREETZ_LIB_libzen
+	bool "libzen (libzen.so)"
+	default n
+	help
+		ZenLib is a C++ library that supplements the standard library.
+		It is used by MediaInfo as a dependency.

@@ -1,0 +1,16 @@
+config FREETZ_PACKAGE_MEDIAINFO
+	bool "MediaInfo 25.10"
+	select FREETZ_LIB_libmediainfo
+	default n
+	help
+		MediaInfo - multimedia file analyzer
+
+		MediaInfo is a convenient unified display of the most relevant technical
+		and tag data for video and audio files.
+
+		It displays general information about the file (name, size, creation date...)
+		and technical information about the codecs used (audio: codec, bitrate,
+		sample rate, language; video: codec, bitrate, frame rate, resolution...)
+
+		This is the command line interface (CLI) version.
+
