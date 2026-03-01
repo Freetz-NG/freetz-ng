@@ -186,7 +186,7 @@ jobs:
           FREETZ_SYSTEM_TYPE_CORE_SUFFIX="$(sed -rn 's/^FREETZ_SYSTEM_TYPE_CORE_SUFFIX=//p' .config)"
           FREETZ_AVM_SOURCE_ID="$(sed -rn 's/^FREETZ_AVM_SOURCE_ID=//p' .config)"
           KERNEL_ID="${FREETZ_SYSTEM_TYPE}${FREETZ_SYSTEM_TYPE_CORE_SUFFIX}-${FREETZ_AVM_SOURCE_ID}"
-          KERNEL_ID="${KERNEL_ID//\"/}"
+          KERNEL_ID="echo "${KERNEL_ID}" | sed 's/\"//g'"
           KERNEL_CONFIG="make/kernel/configs/freetz/config-${KERNEL_ID}"
           KERNEL_SYMVERS="make/kernel/configs/symvers/symvers-${KERNEL_ID}"
           ! grep -q '^CONFIG_MODVERSIONS=y' "${KERNEL_CONFIG}" && echo "No MODVERSIONS enabled, abort." && echo 'skip=skip' >> $GITHUB_OUTPUT && exit
