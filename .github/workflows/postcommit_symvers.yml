@@ -193,7 +193,7 @@ jobs:
       - name: upload-artifact
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ github.workflow }}--${{ github.job }}
+          name: ${{ github.workflow }}--${{ matrix.fritz.fos }}-${{ matrix.fritz.box }}
           path: make/kernel/configs/symvers/
           if-no-files-found: warn
           retention-days: 1
