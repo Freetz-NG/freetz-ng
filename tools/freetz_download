@@ -592,4 +592,92 @@ download_by_vcs() {
 download_by_url
 [ "$FREETZ_DL_VCS_REPO_FIRST" != "y" ] && download_by_vcs
 
+print_final_download_failure_help() {
+	local doc_url="https://github.com/Freetz-NG/freetz-ng/blob/master/docs/wiki/40_Troubleshooting/download_failures.md"
+	local dl_path
+	local show_hosttools_hint=n
+	local out_fd=2
+	local c_reset="" c_bold="" c_dim="" c_red="" c_yellow="" c_cyan="" c_ul=""
+	local sep_line="================================================================================"
+	local is_utf8=n
+	case "${LC_ALL:-${LC_CTYPE:-${LANG:-}}}" in
+		*UTF-8*|*utf8*|*UTF8*) is_utf8=y ;;
+		*) is_utf8=n ;;
+	esac
+	
+	# Detect interactive output (stderr TTY or /dev/tty available)
+	if [ -t 2 ]; then
+		# stderr is a TTY, output directly to it
+		out_fd=2
+	elif exec 3>/dev/tty 2>/dev/null; then
+		# stderr redirected, but /dev/tty available
+		out_fd=3
+	fi
+	
+	# Enable ANSI colors only for interactive output
+	if [ "$out_fd" != "2" ] || [ -t 2 ]; then
+		c_reset=$'\033[0m'
+		c_bold=$'\033[1m'
+		c_dim=$'\033[2m'
+		c_red=$'\033[31m'
+		c_yellow=$'\033[33m'
+		c_cyan=$'\033[36m'
+		c_ul=$'\033[4m'
+		if [ "$is_utf8" = "y" ]; then
+			sep_line=$(printf '═%.0s' {1..80})
+		fi
+	fi
+	if [[ "${DL_FILE}" =~ ^tools-[0-9]{4}-[0-9]{2}-[0-9]{2}\.tar\.xz$ ]]; then
+		show_hosttools_hint=y
+	fi
+	if [ "$DL_DIR" = "check" ] || [ "${DL_DIR:0:5}" = "check" ]; then
+		dl_path="(check mode)"
+	else
+		dl_path="$DL_DIR/${opt_out_file:-$DL_FILE}"
+	fi
+
+	cat >&${out_fd} << EOF
+
+${c_dim}${sep_line}${c_reset}
+${c_bold}${c_red}Freetz-NG: download failed${c_reset} for: ${c_bold}${DL_FILE}${c_reset}
+
+This might be temporary (network/mirror overload). The issue often resolves by
+simply running ${c_cyan}${c_bold}"make"${c_reset} again (try multiple times, or wait and retry later).
+
+If you already have the correct source file, place it here and rerun make:
+  ${c_bold}${dl_path}${c_reset}
+
+EOF
+
+	if [ "$show_hosttools_hint" = "y" ]; then
+		cat >&${out_fd} << EOF
+
+For precompiled host-tools (tools-YYYY-MM-DD.tar.xz), you can rebuild the requested tarball with:
+  ${c_cyan}${c_bold}tools/dl-hosttools own${c_reset}
+
+${c_yellow}⚠ Warning:${c_reset} This script overwrites ${c_bold}.config${c_reset} with a minimal configuration.
+Before running it, save your configuration: ${c_cyan}${c_bold}cp .config .config.backup${c_reset}
+
+More guidance and troubleshooting steps:
+  ${c_ul}${doc_url}${c_reset}
+${c_dim}${sep_line}${c_reset}
+
+EOF
+	else
+		cat >&${out_fd} << EOF
+
+More guidance and troubleshooting steps:
+  ${c_ul}${doc_url}${c_reset}
+${c_dim}${sep_line}${c_reset}
+
+EOF
+	fi
+
+	if [ "$out_fd" = "3" ]; then
+		exec 3>&-
+	fi
+}
+
+print_final_download_failure_help
+
 exit 1
