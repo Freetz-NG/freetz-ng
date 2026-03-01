@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_PACKAGE_GH
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_GH
+	bool "gh - GitHub CLI"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/gh
+
