@@ -192,8 +192,8 @@ jobs:
           KERNEL_SYMVERS="make/kernel/configs/symvers/symvers-${KERNEL_ID}"
           ! grep -q '^CONFIG_MODVERSIONS=y' "${KERNEL_CONFIG}" && echo "No MODVERSIONS enabled, abort." && echo 'skip=skip' >> $GITHUB_OUTPUT || true
           test -s "${KERNEL_SYMVERS}" && echo "Kernel symvers exists, abort." && echo 'skip=skip' >> $GITHUB_OUTPUT || true
-          grep '^CONFIG_MODVERSIONS=y' "${KERNEL_CONFIG}" || false
-          ls -al "${KERNEL_SYMVERS}" || false
+          grep '^CONFIG_MODVERSIONS=y' "${KERNEL_CONFIG}" || true
+          ls -al "${KERNEL_SYMVERS}" || true
 
       - name: generate
         env:
