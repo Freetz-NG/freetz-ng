@@ -250,7 +250,7 @@ jobs:
       - name: download-artifact
         uses: actions/download-artifact@v8
         with:
-          pattern: ${{ github.workflow }}--*.zip
+          pattern: ${{ github.workflow }}--*
           path: make/kernel/configs/symvers/
           merge-multiple: true
       
