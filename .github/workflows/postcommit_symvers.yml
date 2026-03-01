@@ -182,6 +182,7 @@ jobs:
       - name: check
         id: check
         run: |
+          make olddefconfig >/dev/null
           FREETZ_SYSTEM_TYPE="$(sed -rn 's/^FREETZ_SYSTEM_TYPE=//p' .config)"
           echo "$FREETZ_SYSTEM_TYPE"
           FREETZ_SYSTEM_TYPE_CORE_SUFFIX="$(sed -rn 's/^FREETZ_SYSTEM_TYPE_CORE_SUFFIX=//p' .config)"
