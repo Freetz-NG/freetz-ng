@@ -12,10 +12,12 @@ $(PKG)_SITE:=@GNU/binutils
 $(PKG)_CATEGORY:=Debug helpers
 
 $(PKG)_SRC_POSTFIX:=-new
-$(PKG)_SRC_BIN:=ar addr2line nm-new objcopy objdump ranlib readelf size strings strip-new
+$(PKG)_SRC_BIN:=ar addr2line nm-new objcopy objdump ranlib readelf size strings strip-new cxxfilt elfedit
 $(PKG)_DST_BIN:=$(patsubst %$($(PKG)_SRC_POSTFIX),%,$($(PKG)_SRC_BIN))
 $(PKG)_SEL_BIN:=$(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_DST_BIN))
-$(PKG)_SRC_DIR:=$($(PKG)_SRC_BIN:%=$($(PKG)_DIR)/binutils/.libs/%)
+$(PKG)_SRC_DIR_LIBS:=$(filter-out $($(PKG)_DIR)/binutils/.libs/elfedit,$($(PKG)_SRC_BIN:%=$($(PKG)_DIR)/binutils/.libs/%))
+$(PKG)_SRC_DIR_BIN:=$($(PKG)_DIR)/binutils/elfedit
+$(PKG)_SRC_DIR:=$($(PKG)_SRC_DIR_LIBS) $($(PKG)_SRC_DIR_BIN)
 $(PKG)_DST_DIR:=$($(PKG)_DST_BIN:%=$($(PKG)_DEST_DIR)/usr/bin/%)
 $(PKG)_SEL_DIR:=$($(PKG)_SEL_BIN:%=$($(PKG)_DEST_DIR)/usr/bin/%)
 $(PKG)_EXCLUDED:=$(filter-out $($(PKG)_SEL_DIR),$($(PKG)_DST_DIR))
@@ -49,6 +51,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-included-gettext
 $(PKG)_CONFIGURE_OPTIONS += --enable-deterministic-archives
 # Disable gprofng (requires glibc-only features: dlvsym, Dl_serinfo, RTLD_DI_SERINFOSIZE)
 $(PKG)_CONFIGURE_OPTIONS += --disable-gprofng
+$(PKG)_CONFIGURE_OPTIONS += --enable-elfedit
 
 
 $(PKG_SOURCE_DOWNLOAD)
