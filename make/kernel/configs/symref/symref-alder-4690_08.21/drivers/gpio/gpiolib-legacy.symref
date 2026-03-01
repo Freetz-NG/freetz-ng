@@ -1,0 +1,8 @@
+override gpio_free extern void gpio_free ( unsigned ) 
+override gpio_request_one extern int gpio_request_one ( unsigned , unsigned long , const char * ) 
+override gpio_request extern int gpio_request ( unsigned , const char * ) 
+override s#gpio struct gpio { unsigned gpio ; unsigned long flags ; const char * label ; } 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override gpio_request_array extern int gpio_request_array ( const s#gpio * , t#size_t ) 
+override gpio_free_array extern void gpio_free_array ( const s#gpio * , t#size_t ) 

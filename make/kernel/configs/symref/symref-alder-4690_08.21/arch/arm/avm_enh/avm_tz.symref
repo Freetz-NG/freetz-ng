@@ -1,0 +1,4 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#uint64_t typedef t#u64 uint64_t 
+override avm_tz_supported_features t#uint64_t avm_tz_supported_features ( void ) 

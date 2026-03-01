@@ -1,0 +1,33 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override jiffies_64 extern t#u64 __attribute__ ( ( __aligned__ ( ( 1 << 6 ) ) , __section__ ( ".data..cacheline_aligned" ) ) ) jiffies_64 
+override __round_jiffies unsigned long __round_jiffies ( unsigned long , int ) 
+override __round_jiffies_relative unsigned long __round_jiffies_relative ( unsigned long , int ) 
+override round_jiffies unsigned long round_jiffies ( unsigned long ) 
+override round_jiffies_relative unsigned long round_jiffies_relative ( unsigned long ) 
+override __round_jiffies_up unsigned long __round_jiffies_up ( unsigned long , int ) 
+override __round_jiffies_up_relative unsigned long __round_jiffies_up_relative ( unsigned long , int ) 
+override round_jiffies_up unsigned long round_jiffies_up ( unsigned long ) 
+override round_jiffies_up_relative unsigned long round_jiffies_up_relative ( unsigned long ) 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#timer_list struct timer_list { s#hlist_node entry ; unsigned long expires ; void ( * function ) ( s#timer_list * ) ; t#u32 flags ; } 
+override s#lock_class_key struct lock_class_key { } 
+override init_timer_key void init_timer_key ( s#timer_list * , void ( * ) ( s#timer_list * ) , unsigned int , const char * , s#lock_class_key * ) 
+override mod_timer_pending extern int mod_timer_pending ( s#timer_list * , unsigned long ) 
+override mod_timer extern int mod_timer ( s#timer_list * , unsigned long ) 
+override timer_reduce extern int timer_reduce ( s#timer_list * , unsigned long ) 
+override add_timer extern void add_timer ( s#timer_list * ) 
+override add_timer_on extern void add_timer_on ( s#timer_list * , int ) 
+override del_timer extern int del_timer ( s#timer_list * ) 
+override try_to_del_timer_sync extern int try_to_del_timer_sync ( s#timer_list * ) 
+override del_timer_sync extern int del_timer_sync ( s#timer_list * ) 
+override schedule_timeout extern long schedule_timeout ( long ) 
+override schedule_timeout_interruptible extern long schedule_timeout_interruptible ( long ) 
+override schedule_timeout_killable extern long schedule_timeout_killable ( long ) 
+override schedule_timeout_uninterruptible extern long schedule_timeout_uninterruptible ( long ) 
+override schedule_timeout_idle extern long schedule_timeout_idle ( long ) 
+override msleep void msleep ( unsigned int ) 
+override msleep_interruptible unsigned long msleep_interruptible ( unsigned int ) 
+override usleep_range void usleep_range ( unsigned long , unsigned long ) 

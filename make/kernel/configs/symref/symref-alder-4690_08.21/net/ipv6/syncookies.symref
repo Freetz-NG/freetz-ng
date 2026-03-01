@@ -1,0 +1,13 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u8 typedef unsigned char __u8 
+override t#__u16 typedef unsigned short __u16 
+override t#__be16 typedef t#__u16 __be16 
+override t#__be32 typedef t#__u32 __be32 
+override s#in6_addr struct in6_addr { union { t#__u8 u6_addr8 [ 16 ] ; t#__be16 u6_addr16 [ 8 ] ; t#__be32 u6_addr32 [ 4 ] ; } in6_u ; } 
+override s#ipv6hdr struct ipv6hdr { t#__u8 priority : 4 , version : 4 ; t#__u8 flow_lbl [ 3 ] ; t#__be16 payload_len ; t#__u8 nexthdr ; t#__u8 hop_limit ; s#in6_addr saddr ; s#in6_addr daddr ; } 
+override t#__sum16 typedef t#__u16 __sum16 
+override s#tcphdr struct tcphdr { t#__be16 source ; t#__be16 dest ; t#__be32 seq ; t#__be32 ack_seq ; t#__u16 res1 : 4 , doff : 4 , fin : 1 , syn : 1 , rst : 1 , psh : 1 , ack : 1 , urg : 1 , ece : 1 , cwr : 1 ; t#__be16 window ; t#__sum16 check ; t#__be16 urg_ptr ; } 
+override t#u16 typedef t#__u16 u16 
+override __cookie_v6_init_sequence t#u32 __cookie_v6_init_sequence ( const s#ipv6hdr * , const s#tcphdr * , t#u16 * ) 
+override __cookie_v6_check int __cookie_v6_check ( const s#ipv6hdr * , const s#tcphdr * , t#u32 ) 

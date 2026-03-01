@@ -1,0 +1,16 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#semaphore struct semaphore { t#raw_spinlock_t lock ; unsigned int count ; s#list_head wait_list ; } 
+override down extern void down ( s#semaphore * ) 
+override down_interruptible extern int down_interruptible ( s#semaphore * ) 
+override down_killable extern int down_killable ( s#semaphore * ) 
+override down_trylock extern int down_trylock ( s#semaphore * ) 
+override down_timeout extern int down_timeout ( s#semaphore * , long ) 
+override up extern void up ( s#semaphore * ) 

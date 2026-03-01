@@ -1,0 +1,3 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override fsnotify_get_cookie extern t#u32 fsnotify_get_cookie ( void ) 

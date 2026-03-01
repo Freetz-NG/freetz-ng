@@ -1,0 +1,6 @@
+override E1Tx_Transparent int E1Tx_Transparent ( void * __attribute__ ( ( unused ) ) ) 
+override E1Tx_OpenTransparent extern unsigned int E1Tx_OpenTransparent ( void ) 
+override E1Tx_CloseTransparent extern unsigned int E1Tx_CloseTransparent ( void ) 
+override E1Tx_SendTransparent extern unsigned int E1Tx_SendTransparent ( unsigned char * , unsigned int ) 
+override Transparent_Init extern int Transparent_Init ( void ( * ) ( const unsigned char * , int ) ) 
+override Transparent_Deinit extern void Transparent_Deinit ( void ) 

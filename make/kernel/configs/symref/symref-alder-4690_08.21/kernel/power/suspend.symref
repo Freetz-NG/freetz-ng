@@ -1,0 +1,10 @@
+override t#suspend_state_t typedef int suspend_state_t 
+override pm_suspend_target_state extern t#suspend_state_t pm_suspend_target_state 
+override pm_suspend_global_flags extern unsigned int pm_suspend_global_flags 
+override t#bool typedef _Bool bool 
+override pm_suspend_default_s2idle extern t#bool pm_suspend_default_s2idle ( void ) 
+override s2idle_wake extern void s2idle_wake ( void ) 
+override s#platform_suspend_ops struct platform_suspend_ops { int ( * valid ) ( t#suspend_state_t ) ; int ( * begin ) ( t#suspend_state_t ) ; int ( * prepare ) ( void ) ; int ( * prepare_late ) ( void ) ; int ( * enter ) ( t#suspend_state_t ) ; void ( * wake ) ( void ) ; void ( * finish ) ( void ) ; t#bool ( * suspend_again ) ( void ) ; void ( * end ) ( void ) ; void ( * recover ) ( void ) ; } 
+override suspend_set_ops extern void suspend_set_ops ( const s#platform_suspend_ops * ) 
+override suspend_valid_only_mem extern int suspend_valid_only_mem ( t#suspend_state_t ) 
+override pm_suspend extern int pm_suspend ( t#suspend_state_t ) 

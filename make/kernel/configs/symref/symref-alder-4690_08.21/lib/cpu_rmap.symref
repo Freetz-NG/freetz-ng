@@ -1,0 +1,15 @@
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override s#kref struct kref { t#refcount_t refcount ; } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#cpu_rmap struct cpu_rmap { s#kref refcount ; t#u16 size , used ; void * * obj ; struct { t#u16 index ; t#u16 dist ; } near [ 0 ] ; } 
+override t#gfp_t typedef unsigned int gfp_t 
+override alloc_cpu_rmap extern s#cpu_rmap * alloc_cpu_rmap ( unsigned int , t#gfp_t ) 
+override cpu_rmap_put extern int cpu_rmap_put ( s#cpu_rmap * ) 
+override cpu_rmap_add extern int cpu_rmap_add ( s#cpu_rmap * , void * ) 
+override s#cpumask struct cpumask { unsigned long bits [ ( ( ( 4 ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } 
+override cpu_rmap_update extern int cpu_rmap_update ( s#cpu_rmap * , t#u16 , const s#cpumask * ) 
+override free_irq_cpu_rmap extern void free_irq_cpu_rmap ( s#cpu_rmap * ) 
+override irq_cpu_rmap_add extern int irq_cpu_rmap_add ( s#cpu_rmap * , int ) 

@@ -1,0 +1,6 @@
+override t#__u16 typedef unsigned short __u16 
+override s#nlattr struct nlattr { t#__u16 nla_len ; t#__u16 nla_type ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#netlink_ext_ack struct netlink_ext_ack { const char * _msg ; const s#nlattr * bad_attr ; t#u8 cookie [ 20 ] ; t#u8 cookie_len ; } 
+override rtm_getroute_parse_ip_proto int rtm_getroute_parse_ip_proto ( s#nlattr * , t#u8 * , t#u8 , s#netlink_ext_ack * ) 

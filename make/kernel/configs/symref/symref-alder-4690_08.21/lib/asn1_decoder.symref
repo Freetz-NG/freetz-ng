@@ -1,0 +1,5 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#asn1_action_t typedef int ( * asn1_action_t ) ( void * , t#size_t , unsigned char , const void * , t#size_t ) 
+override s#asn1_decoder struct asn1_decoder { const unsigned char * machine ; t#size_t machlen ; const t#asn1_action_t * actions ; } 
+override asn1_ber_decoder extern int asn1_ber_decoder ( const s#asn1_decoder * , void * , const unsigned char * , t#size_t ) 

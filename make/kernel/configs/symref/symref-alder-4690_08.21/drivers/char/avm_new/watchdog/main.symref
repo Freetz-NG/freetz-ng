@@ -1,0 +1,8 @@
+override watchdog_in_progress unsigned int watchdog_in_progress 
+override t#bool typedef _Bool bool 
+override ar7wdt_panic_on_timeout extern t#bool ar7wdt_panic_on_timeout 
+override AVM_WATCHDOG_emergency_retrigger extern void AVM_WATCHDOG_emergency_retrigger ( void ) 
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override AVM_WATCHDOG_register_reboot_notifier extern int AVM_WATCHDOG_register_reboot_notifier ( s#notifier_block * ) 
+override AVM_WATCHDOG_unregister_reboot_notifier extern int AVM_WATCHDOG_unregister_reboot_notifier ( s#notifier_block * ) 

@@ -1,0 +1,85 @@
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#__kernel_gid32_t typedef unsigned int __kernel_gid32_t 
+override t#gid_t typedef t#__kernel_gid32_t gid_t 
+override t#kgid_t typedef struct { t#gid_t val ; } kgid_t 
+override s#group_info struct group_info { t#atomic_t usage ; int ngroups ; t#kgid_t gid [ 0 ] ; } 
+override groups_alloc extern s#group_info * groups_alloc ( int ) 
+override groups_free extern void groups_free ( s#group_info * ) 
+override groups_sort extern void groups_sort ( s#group_info * ) 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override t#__u32 typedef unsigned int __u32 
+override s#kernel_cap_struct struct kernel_cap_struct { t#__u32 cap [ 2 ] ; } 
+override t#kernel_cap_t typedef s#kernel_cap_struct kernel_cap_t 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override t#int32_t typedef t#s32 int32_t 
+override t#key_serial_t typedef t#int32_t key_serial_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override s#key_user struct key_user { UNKNOWN } 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#time64_t typedef t#__s64 time64_t 
+override t#uint32_t typedef t#u32 uint32_t 
+override t#key_perm_t typedef t#uint32_t key_perm_t 
+override s#key_type struct key_type { UNKNOWN } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override t#bool typedef _Bool bool 
+override s#key_tag struct key_tag { s#callback_head rcu ; t#refcount_t usage ; t#bool removed ; } 
+override s#keyring_index_key struct keyring_index_key { unsigned long hash ; union { struct { t#u16 desc_len ; char desc [ sizeof ( long ) - 2 ] ; } ; unsigned long x ; } ; s#key_type * type ; s#key_tag * domain_tag ; const char * description ; } 
+override u#key_payload union key_payload { void * rcu_data0 ; void * data [ 4 ] ; } 
+override s#assoc_array_ptr struct assoc_array_ptr { UNKNOWN } 
+override s#assoc_array struct assoc_array { s#assoc_array_ptr * root ; unsigned long nr_leaves_on_tree ; } 
+override t#key_restrict_link_func_t typedef int ( * key_restrict_link_func_t ) ( s#key * , const s#key_type * , const u#key_payload * , s#key * ) 
+override s#key_restriction struct key_restriction { t#key_restrict_link_func_t check ; s#key * key ; s#key_type * keytype ; } 
+override s#key struct key { t#refcount_t usage ; t#key_serial_t serial ; union { s#list_head graveyard_link ; s#rb_node serial_node ; } ; s#rw_semaphore sem ; s#key_user * user ; void * security ; union { t#time64_t expiry ; t#time64_t revoked_at ; } ; t#time64_t last_used_at ; t#kuid_t uid ; t#kgid_t gid ; t#key_perm_t perm ; unsigned short quotalen ; unsigned short datalen ; short state ; unsigned long flags ; union { s#keyring_index_key index_key ; struct { unsigned long hash ; unsigned long len_desc ; s#key_type * type ; s#key_tag * domain_tag ; char * description ; } ; } ; union { u#key_payload payload ; struct { s#list_head name_link ; s#assoc_array keys ; } ; } ; s#key_restriction * restrict_link ; } 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override s#ratelimit_state struct ratelimit_state { t#raw_spinlock_t lock ; int interval ; int burst ; int printed ; int missed ; unsigned long begin ; unsigned long flags ; } 
+override s#user_struct struct user_struct { t#refcount_t __count ; t#atomic_t processes ; t#atomic_t sigpending ; t#atomic_t fanotify_listeners ; t#atomic_long_t epoll_watches ; unsigned long mq_bytes ; unsigned long locked_shm ; unsigned long unix_inflight ; t#atomic_long_t pipe_bufs ; s#hlist_node uidhash_node ; t#kuid_t uid ; t#atomic_long_t locked_vm ; s#ratelimit_state ratelimit ; } 
+override s#uid_gid_extent struct uid_gid_extent { t#u32 first ; t#u32 lower_first ; t#u32 count ; } 
+override s#uid_gid_map struct uid_gid_map { t#u32 nr_extents ; union { s#uid_gid_extent extent [ 5 ] ; struct { s#uid_gid_extent * forward ; s#uid_gid_extent * reverse ; } ; } ; } 
+override s#proc_ns_operations struct proc_ns_operations { UNKNOWN } 
+override s#ns_common struct ns_common { t#atomic_long_t stashed ; const s#proc_ns_operations * ops ; unsigned int inum ; } 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override t#umode_t typedef unsigned short umode_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#__kernel_loff_t typedef long long __kernel_loff_t 
+override t#loff_t typedef t#__kernel_loff_t loff_t 
+override t#proc_handler typedef int proc_handler ( s#ctl_table * , int , void * , t#size_t * , t#loff_t * ) 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#wait_queue_head struct wait_queue_head { t#spinlock_t lock ; s#list_head head ; } 
+override t#wait_queue_head_t typedef s#wait_queue_head wait_queue_head_t 
+override s#ctl_table_poll struct ctl_table_poll { t#atomic_t event ; t#wait_queue_head_t wait ; } 
+override s#ctl_table struct ctl_table { const char * procname ; void * data ; int maxlen ; t#umode_t mode ; s#ctl_table * child ; t#proc_handler * proc_handler ; s#ctl_table_poll * poll ; void * extra1 ; void * extra2 ; } 
+override s#completion struct completion { unsigned int done ; t#wait_queue_head_t wait ; } 
+override s#ctl_table_root struct ctl_table_root { s#ctl_table_set default_set ; s#ctl_table_set * ( * lookup ) ( s#ctl_table_root * ) ; void ( * set_ownership ) ( s#ctl_table_header * , s#ctl_table * , t#kuid_t * , t#kgid_t * ) ; int ( * permissions ) ( s#ctl_table_header * , s#ctl_table * ) ; } 
+override s#ctl_node struct ctl_node { s#rb_node node ; s#ctl_table_header * header ; } 
+override s#hlist_head struct hlist_head { s#hlist_node * first ; } 
+override s#ctl_table_header struct ctl_table_header { union { struct { s#ctl_table * ctl_table ; int used ; int count ; int nreg ; } ; s#callback_head rcu ; } ; s#completion * unregistering ; s#ctl_table * ctl_table_arg ; s#ctl_table_root * root ; s#ctl_table_set * set ; s#ctl_dir * parent ; s#ctl_node * node ; s#hlist_head inodes ; } 
+override s#rb_root struct rb_root { s#rb_node * rb_node ; } 
+override s#ctl_dir struct ctl_dir { s#ctl_table_header header ; s#rb_root root ; } 
+override s#ctl_table_set struct ctl_table_set { int ( * is_seen ) ( s#ctl_table_set * ) ; s#ctl_dir dir ; } 
+override E#UCOUNT_COUNTS 9 
+override s#ucounts struct ucounts { s#hlist_node node ; s#user_namespace * ns ; t#kuid_t uid ; int count ; t#atomic_t ucount [ E#UCOUNT_COUNTS ] ; } 
+override s#user_namespace struct user_namespace { s#uid_gid_map uid_map ; s#uid_gid_map gid_map ; s#uid_gid_map projid_map ; t#atomic_t count ; s#user_namespace * parent ; int level ; t#kuid_t owner ; t#kgid_t group ; s#ns_common ns ; unsigned long flags ; s#list_head keyring_name_list ; s#key * user_keyring_register ; s#rw_semaphore keyring_sem ; s#work_struct work ; s#ctl_table_set set ; s#ctl_table_header * sysctls ; s#ucounts * ucounts ; int ucount_max [ E#UCOUNT_COUNTS ] ; } 
+override s#cred struct cred { t#atomic_t usage ; t#kuid_t uid ; t#kgid_t gid ; t#kuid_t suid ; t#kgid_t sgid ; t#kuid_t euid ; t#kgid_t egid ; t#kuid_t fsuid ; t#kgid_t fsgid ; unsigned securebits ; t#kernel_cap_t cap_inheritable ; t#kernel_cap_t cap_permitted ; t#kernel_cap_t cap_effective ; t#kernel_cap_t cap_bset ; t#kernel_cap_t cap_ambient ; unsigned char jit_keyring ; s#key * session_keyring ; s#key * process_keyring ; s#key * thread_keyring ; s#key * request_key_auth ; void * security ; s#user_struct * user ; s#user_namespace * user_ns ; s#group_info * group_info ; union { int non_rcu ; s#callback_head rcu ; } ; } 
+override set_groups extern void set_groups ( s#cred * , s#group_info * ) 
+override set_current_groups extern int set_current_groups ( s#group_info * ) 
+override in_group_p extern int in_group_p ( t#kgid_t ) 
+override in_egroup_p extern int in_egroup_p ( t#kgid_t ) 

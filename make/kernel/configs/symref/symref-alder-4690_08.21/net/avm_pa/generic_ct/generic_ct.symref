@@ -1,0 +1,9 @@
+override e#generic_ct_dir enum generic_ct_dir { GENERIC_CT_DIR_ORIGINAL = 0 , GENERIC_CT_DIR_REPLY = 1 , GENERIC_CT_DIR_MAX } 
+override s#generic_ct_ops struct generic_ct_ops { void ( * destroy ) ( s#generic_ct * ) ; void ( * pa_session_add ) ( s#generic_ct * , e#generic_ct_dir , unsigned long ) ; void ( * pa_session_del ) ( s#generic_ct * , e#generic_ct_dir , unsigned long ) ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#generic_ct struct generic_ct { void * ct ; s#generic_ct_ops * ops ; t#atomic_t use ; } 
+override t#gfp_t typedef unsigned int gfp_t 
+override generic_ct_create extern s#generic_ct * generic_ct_create ( void * , s#generic_ct_ops * , t#gfp_t ) 
+override generic_ct_destroy extern void generic_ct_destroy ( s#generic_ct * ) 
+override e#generic_ct_exceptions enum generic_ct_exceptions { GENERIC_CT_NO_EXCEPTION , GENERIC_CT_COUNTER_EXCEPTION , GENERIC_CT_NUM_EXCEPTIONS , } 
+override generic_ct_raise_exception int generic_ct_raise_exception ( s#generic_ct * , e#generic_ct_exceptions ) 

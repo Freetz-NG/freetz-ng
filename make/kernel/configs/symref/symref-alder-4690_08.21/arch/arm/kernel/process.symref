@@ -1,0 +1,19 @@
+override __stack_chk_guard extern unsigned long __stack_chk_guard 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override s#atomic_notifier_head struct atomic_notifier_head { t#spinlock_t lock ; s#notifier_block * head ; } 
+override thread_notify_head s#atomic_notifier_head thread_notify_head 
+override s#pt_regs struct pt_regs { unsigned long uregs [ 18 ] ; } 
+override s#fp_reg struct fp_reg { unsigned int sign1 : 1 ; unsigned int unused : 15 ; unsigned int sign2 : 1 ; unsigned int exponent : 14 ; unsigned int j : 1 ; unsigned int mantissa1 : 31 ; unsigned int mantissa0 : 32 ; } 
+override s#user_fp struct user_fp { s#fp_reg fpregs [ 8 ] ; unsigned int fpsr : 32 ; unsigned int fpcr : 32 ; unsigned char ftype [ 8 ] ; unsigned int init_flag ; } 
+override t#elf_fpregset_t typedef s#user_fp elf_fpregset_t 
+override dump_fpu extern int dump_fpu ( s#pt_regs * , t#elf_fpregset_t * ) 

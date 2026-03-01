@@ -1,0 +1,2 @@
+override in_avm_wdt_handling int in_avm_wdt_handling ( void ) 
+override ar7wdt_hw_trigger void ar7wdt_hw_trigger ( void ) 

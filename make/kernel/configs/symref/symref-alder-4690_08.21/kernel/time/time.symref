@@ -1,0 +1,54 @@
+override s#timezone struct timezone { int tz_minuteswest ; int tz_dsttime ; } 
+override sys_tz extern s#timezone sys_tz 
+override jiffies_to_msecs extern unsigned int jiffies_to_msecs ( const unsigned long ) 
+override jiffies_to_usecs extern unsigned int jiffies_to_usecs ( const unsigned long ) 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#time64_t typedef t#__s64 time64_t 
+override mktime64 extern t#time64_t mktime64 ( const unsigned int , const unsigned int , const unsigned int , const unsigned int , const unsigned int , const unsigned int ) 
+override t#__kernel_long_t typedef long __kernel_long_t 
+override t#__kernel_time_t typedef t#__kernel_long_t __kernel_time_t 
+override s#timespec struct timespec { t#__kernel_time_t tv_sec ; long tv_nsec ; } 
+override t#s64 typedef t#__s64 s64 
+override ns_to_timespec extern s#timespec ns_to_timespec ( const t#s64 ) 
+override t#__kernel_suseconds_t typedef t#__kernel_long_t __kernel_suseconds_t 
+override s#timeval struct timeval { t#__kernel_time_t tv_sec ; t#__kernel_suseconds_t tv_usec ; } 
+override ns_to_timeval extern s#timeval ns_to_timeval ( const t#s64 ) 
+override s#__kernel_old_timeval struct __kernel_old_timeval { t#__kernel_long_t tv_sec ; t#__kernel_long_t tv_usec ; } 
+override ns_to_kernel_old_timeval extern s#__kernel_old_timeval ns_to_kernel_old_timeval ( t#s64 ) 
+override s#timespec64 struct timespec64 { t#time64_t tv_sec ; long tv_nsec ; } 
+override set_normalized_timespec64 extern void set_normalized_timespec64 ( s#timespec64 * , t#time64_t , t#s64 ) 
+override ns_to_timespec64 extern s#timespec64 ns_to_timespec64 ( const t#s64 ) 
+override __msecs_to_jiffies extern unsigned long __msecs_to_jiffies ( const unsigned int ) 
+override __usecs_to_jiffies extern unsigned long __usecs_to_jiffies ( const unsigned int ) 
+override timespec64_to_jiffies extern unsigned long timespec64_to_jiffies ( const s#timespec64 * ) 
+override jiffies_to_timespec64 extern void jiffies_to_timespec64 ( const unsigned long , s#timespec64 * ) 
+override timeval_to_jiffies extern unsigned long timeval_to_jiffies ( const s#timeval * ) 
+override jiffies_to_timeval extern void jiffies_to_timeval ( const unsigned long , s#timeval * ) 
+override t#__kernel_clock_t typedef t#__kernel_long_t __kernel_clock_t 
+override t#clock_t typedef t#__kernel_clock_t clock_t 
+override jiffies_to_clock_t extern t#clock_t jiffies_to_clock_t ( unsigned long ) 
+override clock_t_to_jiffies extern unsigned long clock_t_to_jiffies ( unsigned long ) 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override jiffies_64_to_clock_t extern t#u64 jiffies_64_to_clock_t ( t#u64 ) 
+override jiffies64_to_nsecs extern t#u64 jiffies64_to_nsecs ( t#u64 ) 
+override jiffies64_to_msecs extern t#u64 jiffies64_to_msecs ( t#u64 ) 
+override nsecs_to_jiffies64 extern t#u64 nsecs_to_jiffies64 ( t#u64 ) 
+override nsecs_to_jiffies extern unsigned long nsecs_to_jiffies ( t#u64 ) 
+override t#__kernel_time64_t typedef long long __kernel_time64_t 
+override s#__kernel_timespec struct __kernel_timespec { t#__kernel_time64_t tv_sec ; long long tv_nsec ; } 
+override get_timespec64 int get_timespec64 ( s#timespec64 * , const s#__kernel_timespec * ) 
+override put_timespec64 int put_timespec64 ( const s#timespec64 * , s#__kernel_timespec * ) 
+override get_old_timespec32 extern int get_old_timespec32 ( s#timespec64 * , const void * ) 
+override put_old_timespec32 extern int put_old_timespec32 ( const s#timespec64 * , void * ) 
+override s#itimerspec64 struct itimerspec64 { s#timespec64 it_interval ; s#timespec64 it_value ; } 
+override s#__kernel_itimerspec struct __kernel_itimerspec { s#__kernel_timespec it_interval ; s#__kernel_timespec it_value ; } 
+override get_itimerspec64 int get_itimerspec64 ( s#itimerspec64 * , const s#__kernel_itimerspec * ) 
+override put_itimerspec64 int put_itimerspec64 ( const s#itimerspec64 * , s#__kernel_itimerspec * ) 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override t#old_time32_t typedef t#s32 old_time32_t 
+override s#old_timespec32 struct old_timespec32 { t#old_time32_t tv_sec ; t#s32 tv_nsec ; } 
+override s#old_itimerspec32 struct old_itimerspec32 { s#old_timespec32 it_interval ; s#old_timespec32 it_value ; } 
+override get_old_itimerspec32 extern int get_old_itimerspec32 ( s#itimerspec64 * , const s#old_itimerspec32 * ) 
+override put_old_itimerspec32 extern int put_old_itimerspec32 ( const s#itimerspec64 * , s#old_itimerspec32 * ) 

@@ -1,0 +1,4 @@
+override fs_ftype_to_dtype extern unsigned char fs_ftype_to_dtype ( unsigned int ) 
+override t#umode_t typedef unsigned short umode_t 
+override fs_umode_to_ftype extern unsigned char fs_umode_to_ftype ( t#umode_t ) 
+override fs_umode_to_dtype extern unsigned char fs_umode_to_dtype ( t#umode_t ) 

@@ -1,0 +1,8 @@
+override e#avm_prom_config_type enum avm_prom_config_type { AVM_PROM_WLAN = 0 , AVM_PROM_DECT = 1 , AVM_PROM_WLAN2 = 2 , AVM_PROM_ZERTIFIKATE = 3 , AVM_PROM_DOCSIS = 4 , AVM_PROM_DSL = 5 , AVM_PROM_PROLIFIC = 6 , AVM_PROM_WLAN_ZIP = 7 , AVM_PROM_WLAN2_ZIP = 8 , AVM_PROM_ZERTIFIKATE2 = 9 , AVM_PROM_ZERTIFIKATE3 = 10 , AVM_PROM_ZERTIFIKATE4 = 11 , AVM_PROM_FINAL = 12 , AVM_PROM_PRODCERT1 = 13 , AVM_PROM_PRODCERT2 = 14 , AVM_PROM_PRODCERT3 = 15 , AVM_PROM_PRODCERT4 = 16 , AVM_PROM_PRODENV = 17 , AVM_PROM_WLAN3_ZIP = 18 , AVM_PROM_WLAN3 = 19 , AVM_PROM_AVMZERTIFIKATE = 20 , AVM_PROM_LRWPAN = 21 , AVM_PROM_DTB_OVERLAY = 22 , AVM_PROM_FIBER = 23 , AVM_PROM_FIBER_ZIP = 24 , AVM_PROM_WLAN4 = 25 , AVM_PROM_WLAN4_ZIP = 26 , AVM_PROM_MAX_TYPE , } 
+override get_wlan_dect_config extern int get_wlan_dect_config ( e#avm_prom_config_type , unsigned char * , unsigned int ) 
+override t#__kernel_ssize_t typedef int __kernel_ssize_t 
+override t#ssize_t typedef t#__kernel_ssize_t ssize_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override avm_prom_get_config extern t#ssize_t avm_prom_get_config ( e#avm_prom_config_type , void * , t#size_t ) 
+override avm_prom_get_config_alloc extern t#ssize_t avm_prom_get_config_alloc ( e#avm_prom_config_type , void * * ) 

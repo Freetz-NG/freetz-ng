@@ -1,0 +1,6 @@
+override _CA_MALLOC void * _CA_MALLOC ( unsigned int , char * __attribute__ ( ( unused ) ) , unsigned int Line __attribute__ ( ( unused ) ) ) 
+override _CA_FREE void _CA_FREE ( void * , char * __attribute__ ( ( unused ) ) , unsigned int Line __attribute__ ( ( unused ) ) ) 
+override CA_MALLOC void * CA_MALLOC ( unsigned int ) 
+override CA_FREE void CA_FREE ( void * ) 
+override CA_MEM_SHOW void CA_MEM_SHOW ( void ) 
+override CA_MEM_EXIT void CA_MEM_EXIT ( void ) 

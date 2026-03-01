@@ -1,0 +1,1 @@
+override tffs_panic_log_suppress extern unsigned int tffs_panic_log_suppress 

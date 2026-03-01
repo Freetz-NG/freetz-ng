@@ -1,0 +1,6 @@
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override qld_stream_work_hdlr void qld_stream_work_hdlr ( s#work_struct * ) 

@@ -1,0 +1,47 @@
+override ZSTD_maxCLevel int ZSTD_maxCLevel ( void ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override ZSTD_compressBound t#size_t ZSTD_compressBound ( t#size_t ) 
+override t#ZSTD_strategy typedef enum { ZSTD_fast , ZSTD_dfast , ZSTD_greedy , ZSTD_lazy , ZSTD_lazy2 , ZSTD_btlazy2 , ZSTD_btopt , ZSTD_btopt2 } ZSTD_strategy 
+override t#ZSTD_compressionParameters typedef struct { unsigned int windowLog ; unsigned int chainLog ; unsigned int hashLog ; unsigned int searchLog ; unsigned int searchLength ; unsigned int targetLength ; t#ZSTD_strategy strategy ; } ZSTD_compressionParameters 
+override ZSTD_CCtxWorkspaceBound t#size_t ZSTD_CCtxWorkspaceBound ( t#ZSTD_compressionParameters ) 
+override s#ZSTD_CCtx_s struct ZSTD_CCtx_s { UNKNOWN } 
+override t#ZSTD_CCtx typedef s#ZSTD_CCtx_s ZSTD_CCtx 
+override ZSTD_initCCtx t#ZSTD_CCtx * ZSTD_initCCtx ( void * , t#size_t ) 
+override t#ZSTD_frameParameters typedef struct { unsigned int contentSizeFlag ; unsigned int checksumFlag ; unsigned int noDictIDFlag ; } ZSTD_frameParameters 
+override t#ZSTD_parameters typedef struct { t#ZSTD_compressionParameters cParams ; t#ZSTD_frameParameters fParams ; } ZSTD_parameters 
+override ZSTD_compressCCtx t#size_t ZSTD_compressCCtx ( t#ZSTD_CCtx * , void * , t#size_t , const void * , t#size_t , t#ZSTD_parameters ) 
+override ZSTD_compress_usingDict t#size_t ZSTD_compress_usingDict ( t#ZSTD_CCtx * , void * , t#size_t , const void * , t#size_t , const void * , t#size_t , t#ZSTD_parameters ) 
+override ZSTD_CDictWorkspaceBound t#size_t ZSTD_CDictWorkspaceBound ( t#ZSTD_compressionParameters ) 
+override s#ZSTD_CDict_s struct ZSTD_CDict_s { UNKNOWN } 
+override t#ZSTD_CDict typedef s#ZSTD_CDict_s ZSTD_CDict 
+override ZSTD_initCDict t#ZSTD_CDict * ZSTD_initCDict ( const void * , t#size_t , t#ZSTD_parameters , void * , t#size_t ) 
+override ZSTD_compress_usingCDict t#size_t ZSTD_compress_usingCDict ( t#ZSTD_CCtx * , void * , t#size_t , const void * , t#size_t , const t#ZSTD_CDict * ) 
+override ZSTD_CStreamWorkspaceBound t#size_t ZSTD_CStreamWorkspaceBound ( t#ZSTD_compressionParameters ) 
+override s#ZSTD_CStream_s struct ZSTD_CStream_s { UNKNOWN } 
+override t#ZSTD_CStream typedef s#ZSTD_CStream_s ZSTD_CStream 
+override ZSTD_initCStream t#ZSTD_CStream * ZSTD_initCStream ( t#ZSTD_parameters , unsigned long long , void * , t#size_t ) 
+override ZSTD_initCStream_usingCDict t#ZSTD_CStream * ZSTD_initCStream_usingCDict ( const t#ZSTD_CDict * , unsigned long long , void * , t#size_t ) 
+override ZSTD_resetCStream t#size_t ZSTD_resetCStream ( t#ZSTD_CStream * , unsigned long long ) 
+override s#ZSTD_outBuffer_s struct ZSTD_outBuffer_s { void * dst ; t#size_t size ; t#size_t pos ; } 
+override t#ZSTD_outBuffer typedef s#ZSTD_outBuffer_s ZSTD_outBuffer 
+override s#ZSTD_inBuffer_s struct ZSTD_inBuffer_s { const void * src ; t#size_t size ; t#size_t pos ; } 
+override t#ZSTD_inBuffer typedef s#ZSTD_inBuffer_s ZSTD_inBuffer 
+override ZSTD_compressStream t#size_t ZSTD_compressStream ( t#ZSTD_CStream * , t#ZSTD_outBuffer * , t#ZSTD_inBuffer * ) 
+override ZSTD_flushStream t#size_t ZSTD_flushStream ( t#ZSTD_CStream * , t#ZSTD_outBuffer * ) 
+override ZSTD_endStream t#size_t ZSTD_endStream ( t#ZSTD_CStream * , t#ZSTD_outBuffer * ) 
+override ZSTD_CStreamInSize t#size_t ZSTD_CStreamInSize ( void ) 
+override ZSTD_CStreamOutSize t#size_t ZSTD_CStreamOutSize ( void ) 
+override ZSTD_getCParams t#ZSTD_compressionParameters ZSTD_getCParams ( int , unsigned long long , t#size_t ) 
+override ZSTD_getParams t#ZSTD_parameters ZSTD_getParams ( int , unsigned long long , t#size_t ) 
+override ZSTD_checkCParams t#size_t ZSTD_checkCParams ( t#ZSTD_compressionParameters ) 
+override ZSTD_adjustCParams t#ZSTD_compressionParameters ZSTD_adjustCParams ( t#ZSTD_compressionParameters , unsigned long long , t#size_t ) 
+override ZSTD_compressBegin t#size_t ZSTD_compressBegin ( t#ZSTD_CCtx * , int ) 
+override ZSTD_compressBegin_usingDict t#size_t ZSTD_compressBegin_usingDict ( t#ZSTD_CCtx * , const void * , t#size_t , int ) 
+override ZSTD_compressBegin_advanced t#size_t ZSTD_compressBegin_advanced ( t#ZSTD_CCtx * , const void * , t#size_t , t#ZSTD_parameters , unsigned long long ) 
+override ZSTD_copyCCtx t#size_t ZSTD_copyCCtx ( t#ZSTD_CCtx * , const t#ZSTD_CCtx * , unsigned long long ) 
+override ZSTD_compressBegin_usingCDict t#size_t ZSTD_compressBegin_usingCDict ( t#ZSTD_CCtx * , const t#ZSTD_CDict * , unsigned long long ) 
+override ZSTD_compressContinue t#size_t ZSTD_compressContinue ( t#ZSTD_CCtx * , void * , t#size_t , const void * , t#size_t ) 
+override ZSTD_compressEnd t#size_t ZSTD_compressEnd ( t#ZSTD_CCtx * , void * , t#size_t , const void * , t#size_t ) 
+override ZSTD_getBlockSizeMax t#size_t ZSTD_getBlockSizeMax ( t#ZSTD_CCtx * ) 
+override ZSTD_compressBlock t#size_t ZSTD_compressBlock ( t#ZSTD_CCtx * , void * , t#size_t , const void * , t#size_t ) 

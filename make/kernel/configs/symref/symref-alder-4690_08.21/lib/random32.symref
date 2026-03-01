@@ -1,0 +1,11 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#rnd_state struct rnd_state { t#__u32 s1 , s2 , s3 , s4 ; } 
+override prandom_u32_state t#u32 prandom_u32_state ( s#rnd_state * ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override prandom_bytes_state void prandom_bytes_state ( s#rnd_state * , void * , t#size_t ) 
+override prandom_seed_full_state void prandom_seed_full_state ( s#rnd_state * ) 
+override prandom_u32 t#u32 prandom_u32 ( void ) 
+override prandom_bytes void prandom_bytes ( void * , t#size_t ) 
+override prandom_seed void prandom_seed ( t#u32 ) 

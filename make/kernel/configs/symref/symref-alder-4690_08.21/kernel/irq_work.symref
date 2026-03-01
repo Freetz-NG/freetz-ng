@@ -1,0 +1,6 @@
+override t#bool typedef _Bool bool 
+override s#llist_node struct llist_node { s#llist_node * next ; } 
+override s#irq_work struct irq_work { unsigned long flags ; s#llist_node llnode ; void ( * func ) ( s#irq_work * ) ; } 
+override irq_work_queue t#bool irq_work_queue ( s#irq_work * ) 
+override irq_work_run void irq_work_run ( void ) 
+override irq_work_sync void irq_work_sync ( s#irq_work * ) 

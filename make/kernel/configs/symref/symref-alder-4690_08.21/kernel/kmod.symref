@@ -1,0 +1,2 @@
+override t#bool typedef _Bool bool 
+override __request_module extern __attribute__ ( ( __format__ ( printf , 2 , 3 ) ) ) int __request_module ( t#bool , const char * , ... ) 

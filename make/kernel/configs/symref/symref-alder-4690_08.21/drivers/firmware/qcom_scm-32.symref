@@ -1,0 +1,3 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override qcom_scm_get_version extern t#u32 qcom_scm_get_version ( void ) 

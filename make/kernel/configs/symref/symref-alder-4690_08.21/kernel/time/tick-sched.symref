@@ -1,0 +1,4 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override get_cpu_idle_time_us extern t#u64 get_cpu_idle_time_us ( int , t#u64 * ) 
+override get_cpu_iowait_time_us extern t#u64 get_cpu_iowait_time_us ( int , t#u64 * ) 

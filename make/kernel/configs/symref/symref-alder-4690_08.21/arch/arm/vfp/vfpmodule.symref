@@ -1,0 +1,2 @@
+override kernel_neon_begin void kernel_neon_begin ( void ) 
+override kernel_neon_end void kernel_neon_end ( void ) 

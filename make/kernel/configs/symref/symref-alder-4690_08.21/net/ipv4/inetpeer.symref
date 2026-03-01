@@ -1,0 +1,32 @@
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override s#rb_root struct rb_root { s#rb_node * rb_node ; } 
+override s#seqcount struct seqcount { unsigned sequence ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#seqlock_t typedef struct { s#seqcount seqcount ; t#spinlock_t lock ; } seqlock_t 
+override s#inet_peer_base struct inet_peer_base { s#rb_root rb_root ; t#seqlock_t lock ; int total ; } 
+override inet_peer_base_init void inet_peer_base_init ( s#inet_peer_base * ) 
+override t#__be32 typedef t#__u32 __be32 
+override s#ipv4_addr_key struct ipv4_addr_key { t#__be32 addr ; int vif ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#__be16 typedef t#__u16 __be16 
+override s#in6_addr struct in6_addr { union { t#__u8 u6_addr8 [ 16 ] ; t#__be16 u6_addr16 [ 8 ] ; t#__be32 u6_addr32 [ 4 ] ; } in6_u ; } 
+override s#inetpeer_addr struct inetpeer_addr { union { s#ipv4_addr_key a4 ; s#in6_addr a6 ; t#u32 key [ ( sizeof ( struct in6_addr ) / sizeof ( u32 ) ) ] ; } ; t#__u16 family ; } 
+override E#__RTAX_MAX 18 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override s#inet_peer struct inet_peer { s#rb_node rb_node ; s#inetpeer_addr daddr ; t#u32 metrics [ ( E#__RTAX_MAX - 1 ) ] ; t#u32 rate_tokens ; t#u32 n_redirects ; unsigned long rate_last ; union { struct { t#atomic_t rid ; } ; s#callback_head rcu ; } ; t#__u32 dtime ; t#refcount_t refcnt ; } 
+override inet_getpeer s#inet_peer * inet_getpeer ( s#inet_peer_base * , const s#inetpeer_addr * , int ) 
+override inet_putpeer void inet_putpeer ( s#inet_peer * ) 
+override t#bool typedef _Bool bool 
+override inet_peer_xrlim_allow t#bool inet_peer_xrlim_allow ( s#inet_peer * , int ) 
+override inetpeer_invalidate_tree void inetpeer_invalidate_tree ( s#inet_peer_base * ) 

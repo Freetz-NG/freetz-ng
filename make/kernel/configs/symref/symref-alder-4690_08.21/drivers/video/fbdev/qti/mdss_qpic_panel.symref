@@ -1,0 +1,9 @@
+override s#regulator struct regulator { UNKNOWN } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#pinctrl struct pinctrl { UNKNOWN } 
+override s#pinctrl_state struct pinctrl_state { UNKNOWN } 
+override s#qpic_pinctrl_res struct qpic_pinctrl_res { s#pinctrl * pinctrl ; s#pinctrl_state * gpio_state_active ; s#pinctrl_state * gpio_state_suspend ; } 
+override s#qpic_panel_io_desc struct qpic_panel_io_desc { int rst_gpio ; int cs_gpio ; int ad8_gpio ; int te_gpio ; int bl_gpio ; s#regulator * vdd_vreg ; s#regulator * avdd_vreg ; t#u32 init ; s#qpic_pinctrl_res pin_res ; } 
+override qpic_panel_on extern int ( * qpic_panel_on ) ( s#qpic_panel_io_desc * ) 
+override qpic_panel_off extern void ( * qpic_panel_off ) ( s#qpic_panel_io_desc * ) 

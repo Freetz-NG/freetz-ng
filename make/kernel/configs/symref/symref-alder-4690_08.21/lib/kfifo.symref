@@ -1,0 +1,30 @@
+override s#__kfifo struct __kfifo { unsigned int in ; unsigned int out ; unsigned int mask ; unsigned int esize ; void * data ; } 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#gfp_t typedef unsigned int gfp_t 
+override __kfifo_alloc extern int __kfifo_alloc ( s#__kfifo * , unsigned int , t#size_t , t#gfp_t ) 
+override __kfifo_free extern void __kfifo_free ( s#__kfifo * ) 
+override __kfifo_init extern int __kfifo_init ( s#__kfifo * , void * , unsigned int , t#size_t ) 
+override __kfifo_in extern unsigned int __kfifo_in ( s#__kfifo * , const void * , unsigned int ) 
+override __kfifo_out_peek extern unsigned int __kfifo_out_peek ( s#__kfifo * , void * , unsigned int ) 
+override __kfifo_out extern unsigned int __kfifo_out ( s#__kfifo * , void * , unsigned int ) 
+override __kfifo_from_user extern int __kfifo_from_user ( s#__kfifo * , const void * , unsigned long , unsigned int * ) 
+override __kfifo_to_user extern int __kfifo_to_user ( s#__kfifo * , void * , unsigned long , unsigned int * ) 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#dma_addr_t typedef t#u32 dma_addr_t 
+override s#scatterlist struct scatterlist { unsigned long page_link ; unsigned int offset ; unsigned int length ; t#dma_addr_t dma_address ; } 
+override __kfifo_dma_in_prepare extern unsigned int __kfifo_dma_in_prepare ( s#__kfifo * , s#scatterlist * , int , unsigned int ) 
+override __kfifo_dma_out_prepare extern unsigned int __kfifo_dma_out_prepare ( s#__kfifo * , s#scatterlist * , int , unsigned int ) 
+override __kfifo_max_r extern unsigned int __kfifo_max_r ( unsigned int , t#size_t ) 
+override __kfifo_len_r extern unsigned int __kfifo_len_r ( s#__kfifo * , t#size_t ) 
+override __kfifo_in_r extern unsigned int __kfifo_in_r ( s#__kfifo * , const void * , unsigned int , t#size_t ) 
+override __kfifo_out_peek_r extern unsigned int __kfifo_out_peek_r ( s#__kfifo * , void * , unsigned int , t#size_t ) 
+override __kfifo_out_r extern unsigned int __kfifo_out_r ( s#__kfifo * , void * , unsigned int , t#size_t ) 
+override __kfifo_skip_r extern void __kfifo_skip_r ( s#__kfifo * , t#size_t ) 
+override __kfifo_from_user_r extern int __kfifo_from_user_r ( s#__kfifo * , const void * , unsigned long , unsigned int * , t#size_t ) 
+override __kfifo_to_user_r extern int __kfifo_to_user_r ( s#__kfifo * , void * , unsigned long , unsigned int * , t#size_t ) 
+override __kfifo_dma_in_prepare_r extern unsigned int __kfifo_dma_in_prepare_r ( s#__kfifo * , s#scatterlist * , int , unsigned int , t#size_t ) 
+override __kfifo_dma_in_finish_r extern void __kfifo_dma_in_finish_r ( s#__kfifo * , unsigned int , t#size_t ) 
+override __kfifo_dma_out_prepare_r extern unsigned int __kfifo_dma_out_prepare_r ( s#__kfifo * , s#scatterlist * , int , unsigned int , t#size_t ) 
+override __kfifo_dma_out_finish_r extern void __kfifo_dma_out_finish_r ( s#__kfifo * , t#size_t ) 

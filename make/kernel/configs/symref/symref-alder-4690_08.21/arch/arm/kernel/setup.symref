@@ -1,0 +1,10 @@
+override processor_id extern unsigned int processor_id 
+override __machine_arch_type extern unsigned int __machine_arch_type 
+override cacheid extern unsigned int cacheid 
+override system_rev extern unsigned int system_rev 
+override system_serial extern const char * system_serial 
+override system_serial_low extern unsigned int system_serial_low 
+override system_serial_high extern unsigned int system_serial_high 
+override elf_hwcap extern unsigned int elf_hwcap 
+override elf_hwcap2 extern unsigned int elf_hwcap2 
+override elf_platform extern char elf_platform [ ] 

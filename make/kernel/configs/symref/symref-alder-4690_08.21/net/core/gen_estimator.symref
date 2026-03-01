@@ -1,0 +1,24 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#__u32 typedef unsigned int __u32 
+override s#gnet_stats_basic_packed struct gnet_stats_basic_packed { t#__u64 bytes ; t#__u32 packets ; } 
+override s#seqcount struct seqcount { unsigned sequence ; } 
+override t#seqcount_t typedef s#seqcount seqcount_t 
+override s#u64_stats_sync struct u64_stats_sync { t#seqcount_t seq ; } 
+override s#gnet_stats_basic_cpu struct gnet_stats_basic_cpu { s#gnet_stats_basic_packed bstats ; s#u64_stats_sync syncp ; } 
+override s#net_rate_estimator struct net_rate_estimator { UNKNOWN } 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#nlattr struct nlattr { t#__u16 nla_len ; t#__u16 nla_type ; } 
+override gen_new_estimator int gen_new_estimator ( s#gnet_stats_basic_packed * , s#gnet_stats_basic_cpu * , s#net_rate_estimator * * , t#spinlock_t * , t#seqcount_t * , s#nlattr * ) 
+override gen_kill_estimator void gen_kill_estimator ( s#net_rate_estimator * * ) 
+override gen_replace_estimator int gen_replace_estimator ( s#gnet_stats_basic_packed * , s#gnet_stats_basic_cpu * , s#net_rate_estimator * * , t#spinlock_t * , t#seqcount_t * , s#nlattr * ) 
+override t#bool typedef _Bool bool 
+override gen_estimator_active t#bool gen_estimator_active ( s#net_rate_estimator * * ) 
+override s#gnet_stats_rate_est64 struct gnet_stats_rate_est64 { t#__u64 bps ; t#__u64 pps ; } 
+override gen_estimator_read t#bool gen_estimator_read ( s#net_rate_estimator * * , s#gnet_stats_rate_est64 * ) 

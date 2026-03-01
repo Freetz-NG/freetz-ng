@@ -1,0 +1,18 @@
+override t#mpi_limb_t typedef unsigned long int mpi_limb_t 
+override s#gcry_mpi struct gcry_mpi { int alloced ; int nlimbs ; int nbits ; int sign ; unsigned flags ; t#mpi_limb_t * d ; } 
+override t#MPI typedef s#gcry_mpi * MPI 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override mpi_read_raw_data t#MPI mpi_read_raw_data ( const void * , t#size_t ) 
+override mpi_read_from_buffer t#MPI mpi_read_from_buffer ( const void * , unsigned * ) 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#uint8_t typedef t#u8 uint8_t 
+override mpi_read_buffer int mpi_read_buffer ( t#MPI , t#uint8_t * , unsigned , unsigned * , int * ) 
+override mpi_get_buffer void * mpi_get_buffer ( t#MPI , unsigned * , int * ) 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#dma_addr_t typedef t#u32 dma_addr_t 
+override s#scatterlist struct scatterlist { unsigned long page_link ; unsigned int offset ; unsigned int length ; t#dma_addr_t dma_address ; } 
+override mpi_write_to_sgl int mpi_write_to_sgl ( t#MPI , s#scatterlist * , unsigned , int * ) 
+override mpi_read_raw_from_sgl t#MPI mpi_read_raw_from_sgl ( s#scatterlist * , unsigned int ) 

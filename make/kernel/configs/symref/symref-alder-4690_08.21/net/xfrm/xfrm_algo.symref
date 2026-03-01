@@ -1,0 +1,22 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#xfrm_algo_aead_info struct xfrm_algo_aead_info { char * geniv ; t#u16 icv_truncbits ; } 
+override s#xfrm_algo_auth_info struct xfrm_algo_auth_info { t#u16 icv_truncbits ; t#u16 icv_fullbits ; } 
+override s#xfrm_algo_encr_info struct xfrm_algo_encr_info { char * geniv ; t#u16 blockbits ; t#u16 defkeybits ; } 
+override s#xfrm_algo_comp_info struct xfrm_algo_comp_info { t#u16 threshold ; } 
+override s#sadb_alg struct sadb_alg { t#__u8 sadb_alg_id ; t#__u8 sadb_alg_ivlen ; t#__u16 sadb_alg_minbits ; t#__u16 sadb_alg_maxbits ; t#__u16 sadb_alg_reserved ; } 
+override s#xfrm_algo_desc struct xfrm_algo_desc { char * name ; char * compat ; t#u8 available : 1 ; t#u8 pfkey_supported : 1 ; union { s#xfrm_algo_aead_info aead ; s#xfrm_algo_auth_info auth ; s#xfrm_algo_encr_info encr ; s#xfrm_algo_comp_info comp ; } uinfo ; s#sadb_alg desc ; } 
+override xfrm_aalg_get_byid s#xfrm_algo_desc * xfrm_aalg_get_byid ( int ) 
+override xfrm_ealg_get_byid s#xfrm_algo_desc * xfrm_ealg_get_byid ( int ) 
+override xfrm_calg_get_byid s#xfrm_algo_desc * xfrm_calg_get_byid ( int ) 
+override xfrm_aalg_get_byname s#xfrm_algo_desc * xfrm_aalg_get_byname ( const char * , int ) 
+override xfrm_ealg_get_byname s#xfrm_algo_desc * xfrm_ealg_get_byname ( const char * , int ) 
+override xfrm_calg_get_byname s#xfrm_algo_desc * xfrm_calg_get_byname ( const char * , int ) 
+override xfrm_aead_get_byname s#xfrm_algo_desc * xfrm_aead_get_byname ( const char * , int , int ) 
+override xfrm_aalg_get_byidx s#xfrm_algo_desc * xfrm_aalg_get_byidx ( unsigned int ) 
+override xfrm_ealg_get_byidx s#xfrm_algo_desc * xfrm_ealg_get_byidx ( unsigned int ) 
+override xfrm_probe_algs void xfrm_probe_algs ( void ) 
+override xfrm_count_pfkey_auth_supported int xfrm_count_pfkey_auth_supported ( void ) 
+override xfrm_count_pfkey_enc_supported int xfrm_count_pfkey_enc_supported ( void ) 
