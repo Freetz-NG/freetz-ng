@@ -1,0 +1,20 @@
+config FREETZ_PACKAGE_PYTHON3_CFFI
+	bool "cffi 1.17.1"
+	depends on FREETZ_PACKAGE_PYTHON3
+	select FREETZ_LIB_libffi
+	default n
+	help
+		CFFI (C Foreign Function Interface) for Python 3.
+		
+		Interact with almost any C code from Python, based on C-like
+		declarations that you can often copy-paste from header files
+		or documentation.
+		
+		Required by many modern Python packages including:
+		- cryptography
+		- PyNaCl
+		- bcrypt
+		- argon2-cffi
+		
+		Website: https://cffi.readthedocs.io/
+		GitHub: https://github.com/python-cffi/cffi

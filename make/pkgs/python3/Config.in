@@ -1,3 +1,6 @@
+comment "Python 3.14.2 requires modern toolchain (GCC 13+ / uClibc-ng 1.0.55+)"
+	depends on !FREETZ_SEPARATE_AVM_UCLIBC
+
 config FREETZ_PACKAGE_PYTHON3
 	bool "Python 3.14.2 - EXPERIMENTAL"
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
@@ -12,9 +15,12 @@ config FREETZ_PACKAGE_PYTHON3
 	help
 		Python is a remarkably powerful dynamic programming language
 		that is used in a wide variety of application domains.
-		CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on
-		your choice of modules) of uncompressed data to your image.
-		In most cases, it should therefore be externalized.
+
+		CAUTION: Python 3.14 with all modules requires approximately
+		59 MB (core) + 24 MB (addon packages) = ~83 MB total.
+		Consider using external storage for complete installations.
+
+		Size: ~59 MB (core), up to ~83 MB (with all addons)
 
 if FREETZ_PACKAGE_PYTHON3
 
@@ -79,11 +85,13 @@ if FREETZ_PACKAGE_PYTHON3
 
 		config FREETZ_PACKAGE_PYTHON3_MOD_BSDDB
 			bool "bsddb"
-			select FREETZ_LIB_libdb
+			depends on FREETZ_TARGET_BITS_32
+			select FREETZ_LIB_libdb if FREETZ_TARGET_BITS_32
 			default n
 			help
 				Interface to Berkeley DB library. Requires libdb.
 				For details, see: https://docs.python.org/3/library/bsddb.html
+				Only available on 32-bit architectures.
 
 		config FREETZ_PACKAGE_PYTHON3_MOD_CMATH
 			bool "cmath"
@@ -328,9 +336,19 @@ if FREETZ_PACKAGE_PYTHON3
 
 	endmenu
 
-#	menu "3rd-party modules"
-#		source "make/pkgs/python3-.../Config.in"
-#	endmenu
+	menu "3rd-party modules"
+		source "make/pkgs/python3-cffi/Config.in"
+		source "make/pkgs/python3-cryptography/Config.in"
+		source "make/pkgs/python3-lxml/Config.in"
+		source "make/pkgs/python3-markupsafe/Config.in"
+		source "make/pkgs/python3-numpy/Config.in"
+		source "make/pkgs/python3-pandas/Config.in"
+		source "make/pkgs/python3-pillow/Config.in"
+		source "make/pkgs/python3-pip/Config.in"
+		source "make/pkgs/python3-pycryptodome/Config.in"
+		source "make/pkgs/python3-pyyaml/Config.in"
+		source "make/pkgs/python3-setuptools/Config.in"
+	endmenu
 
 endif # FREETZ_PACKAGE_PYTHON3
 

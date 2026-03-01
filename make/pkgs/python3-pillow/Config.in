@@ -1,0 +1,25 @@
+config FREETZ_PACKAGE_PYTHON3_PILLOW
+	bool "Pillow 11.0.0 (for Python 3) - DEVELOPER ONLY"
+	depends on FREETZ_PACKAGE_PYTHON3
+	depends on FREETZ_DL_TOOL_developer
+	select FREETZ_LIB_libjpeg
+	select FREETZ_LIB_libpng
+	select FREETZ_LIB_libz
+	default n
+	help
+		Pillow is the friendly PIL (Python Imaging Library) fork for Python 3.
+		
+		WARNING: Cross-compilation issues with host include paths.
+		Provides extensive file format support, efficient internal
+		representation, and powerful image processing capabilities.
+		
+		Supported formats: PNG, JPEG, GIF, TIFF, BMP, WebP, and many more.
+		
+		Common uses:
+		- Image manipulation and processing
+		- Thumbnail generation
+		- Image format conversion
+		- Computer vision preprocessing
+		
+		Website: https://python-pillow.org/
+		GitHub: https://github.com/python-pillow/Pillow

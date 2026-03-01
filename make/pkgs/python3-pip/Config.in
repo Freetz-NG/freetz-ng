@@ -1,0 +1,29 @@
+config FREETZ_PACKAGE_PYTHON3_PIP
+	bool "pip 24.3.1"
+	depends on FREETZ_PACKAGE_PYTHON3
+	select FREETZ_PACKAGE_PYTHON3_SETUPTOOLS
+	default n
+	help
+		pip is the package installer for Python 3.
+		
+		Allows you to install and manage additional Python packages
+		from PyPI (Python Package Index) and other sources.
+		
+		Common uses:
+		- Install pure-Python packages on the router
+		- Manage Python package dependencies
+		- Install packages from PyPI, git, local files
+		- Upgrade and uninstall packages
+		
+		Usage examples:
+		  pip3 install requests
+		  pip3 install flask
+		  pip3 list
+		  pip3 uninstall package-name
+		
+		Note: For packages with C extensions, it's better to
+		use pre-compiled modules from the "3rd-party modules" menu.
+		Pip works best for pure-Python packages.
+		
+		Website: https://pip.pypa.io/
+		Docs: https://pip.pypa.io/en/stable/

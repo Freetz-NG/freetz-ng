@@ -1,0 +1,34 @@
+comment "pandas requires external storage  (Enable 'External processing' in the main menu)"
+	depends on FREETZ_PACKAGE_PYTHON3 && !EXTERNAL_ENABLED && FREETZ_DL_TOOL_developer
+
+config FREETZ_PACKAGE_PYTHON3_PANDAS
+	bool "pandas 2.2.3 (for Python 3) - DEVELOPER ONLY"
+	depends on FREETZ_PACKAGE_PYTHON3
+	depends on FREETZ_PACKAGE_PYTHON3_NUMPY
+	depends on EXTERNAL_ENABLED
+	depends on FREETZ_DL_TOOL_developer
+	default n
+	help
+		pandas is a powerful data analysis and manipulation library.
+		
+		WARNING: Requires NumPy (currently developer-only).
+		
+		Provides:
+		- DataFrame and Series data structures
+		- Data alignment and integrated handling of missing data
+		- Reshaping and pivoting of data sets
+		- Label-based slicing, indexing, and subsetting
+		- Time series functionality
+		- Data I/O (CSV, Excel, SQL, HDF5, JSON, Parquet)
+		
+		Common uses:
+		- Data cleaning and preparation
+		- Statistical analysis
+		- Time series analysis
+		- Data visualization (with matplotlib)
+		
+		WARNING: pandas is large (~10-15 MB) and REQUIRES NumPy.
+		Both MUST be externalized to USB storage.
+		
+		Website: https://pandas.pydata.org/
+		Docs: https://pandas.pydata.org/docs/

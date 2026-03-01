@@ -1,0 +1,26 @@
+config FREETZ_PACKAGE_PYTHON3_PYYAML
+	bool "pyyaml 6.0.2"
+	depends on FREETZ_PACKAGE_PYTHON3
+	select FREETZ_LIB_libyaml
+	default n
+	help
+		PyYAML is a full-featured YAML framework for Python.
+		
+		Provides:
+		- Complete YAML 1.1 parser and emitter
+		- Python object serialization/deserialization
+		- Support for user-defined Python objects
+		- Unicode support
+		- Low-level event-based API (LibYAML binding)
+		- High-level object-oriented API
+		
+		Common uses:
+		- Configuration file parsing
+		- Data serialization (alternative to JSON/XML)
+		- DevOps and infrastructure automation
+		- CI/CD pipeline configurations
+		
+		This build uses LibYAML C library for faster parsing.
+		
+		Website: https://pyyaml.org/
+		Docs: https://pyyaml.org/wiki/PyYAMLDocumentation

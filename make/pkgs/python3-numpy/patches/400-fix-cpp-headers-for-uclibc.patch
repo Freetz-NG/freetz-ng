@@ -1,0 +1,65 @@
+--- numpy/_core/src/common/npstd.hpp.orig
++++ numpy/_core/src/common/npstd.hpp
+@@ -3,8 +3,12 @@
+ 
+ #include <numpy/npy_common.h>
+ 
++#include <features.h>
++
+ #include <cstddef>
+ #include <cstring>
+ #include <cctype>
++#ifndef __UCLIBC__
+ #include <cstdint>
++#endif
+ 
+ #include <string>
+--- numpy/_core/src/common/utils.hpp.orig
++++ numpy/_core/src/common/utils.hpp
+@@ -7,8 +7,12 @@
+     #include <bit>
+ #endif
+ 
++#include <features.h>
++
+ #include <type_traits>
+ #include <string.h>
++#ifndef __UCLIBC__
+ #include <cstdint>
++#endif
+ #include <cassert>
+ 
+--- numpy/_core/src/highway/hwy/abort.cc.orig
++++ numpy/_core/src/highway/hwy/abort.cc
+@@ -6,9 +6,13 @@
+ 
+ #include "hwy/abort.h"
+ 
++#include <features.h>
++
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
++#ifndef __UCLIBC__
+ #include <atomic>
++#endif
+ #include <string>
+--- numpy/_core/src/highway/hwy/targets.h.orig
++++ numpy/_core/src/highway/hwy/targets.h
+@@ -25,9 +25,15 @@
+ // For SIMD module implementations and their callers. Defines which targets to
+ // generate and call.
+ 
++#include <features.h>
++
+ #include "hwy/base.h"
+ #include "hwy/detect_targets.h"
+ #include "hwy/highway_export.h"
+ 
++#ifdef __UCLIBC__
++#define HWY_NO_LIBCXX
++#endif
++
+ #if !defined(HWY_NO_LIBCXX)
+ #include <atomic>

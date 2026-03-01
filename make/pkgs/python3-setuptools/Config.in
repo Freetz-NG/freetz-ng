@@ -1,0 +1,21 @@
+config FREETZ_PACKAGE_PYTHON3_SETUPTOOLS
+	bool "setuptools 75.6.0"
+	depends on FREETZ_PACKAGE_PYTHON3
+	default n
+	help
+		setuptools is a collection of enhancements to Python distutils.
+		
+		Required by pip and many Python packages for:
+		- Package installation
+		- Dependency management
+		- Entry point discovery
+		- Package resource management
+		
+		This is the runtime version of setuptools.
+		The host version (python3-setuptools-host) is used during
+		firmware build, while this version runs on the Fritz!Box.
+		
+		Automatically selected when you install pip.
+		
+		Website: https://setuptools.pypa.io/
+		Docs: https://setuptools.pypa.io/en/latest/

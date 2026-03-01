@@ -4,5 +4,5 @@
   - Changelog: [https://www.python.org/downloads/](https://www.python.org/downloads/)
   - Repository: [https://github.com/python/cpython](https://github.com/python/cpython)
   - Package: [master/make/pkgs/python3/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/python3/)
-  - Maintainer: -
+  - Maintainer: [@Ircama](https://github.com/Ircama)
 

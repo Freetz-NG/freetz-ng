@@ -1,0 +1,28 @@
+config FREETZ_PACKAGE_PYTHON3_LXML
+	bool "lxml 5.3.0"
+	depends on FREETZ_PACKAGE_PYTHON3
+	select FREETZ_LIB_libxml2
+	select FREETZ_LIB_libxml2_WITH_RELAXNG if !FREETZ_PACKAGE_PYTHON3_LXML_STATIC
+	select FREETZ_LIB_libxslt
+	default n
+	help
+		lxml is a powerful XML and HTML processing library.
+		
+		Provides:
+		- Pythonic binding for libxml2 and libxslt
+		- ElementTree API for XML parsing and generation
+		- Fast and memory-efficient XML/HTML processing
+		- XPath and XSLT support (requires libxslt, not available)
+		- HTML cleaning and repair
+		
+		Common uses:
+		- Web scraping (BeautifulSoup backend)
+		- XML parsing and generation
+		- Configuration file processing
+		- Data extraction from HTML/XML
+		
+		Note: This build uses only libxml2 (without libxslt).
+		XSLT transformations will not be available.
+		
+		Website: https://lxml.de/
+		Docs: https://lxml.de/tutorial.html

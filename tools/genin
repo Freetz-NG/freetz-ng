@@ -139,7 +139,7 @@ for CAT in $CATs; do
 	echo -e "\nmenu \"${CATREAL}\""                                                                 >> $CFILE
 	for PKG in $(echo -e "${CATTABLE}"| sed "/^${CATONLY/\//\\/}##/ !d ; s/^[^#]*##// "); do
 		[ -e "$PKGDIR/$PKG/external.in" ] && echo "source \"$PKGDIR/$PKG/external.in\""         >> $EFILE
-		case "$PKG" in asterisk-*|iptables-cgi|nhipt|python-*|ruby-fcgi|sg3_utils) continue ;; esac
+		case "$PKG" in asterisk-*|iptables-cgi|nhipt|python-*|python3-*|ruby-fcgi|sg3_utils) continue ;; esac
 		[ -e "$PKGDIR/$PKG/Config.in" ] && echo -e "\tsource \"$PKGDIR/$PKG/Config.in\""        >> $CFILE
 	done
 	SAVEMENU="$SAVEMENU%%$CAT"

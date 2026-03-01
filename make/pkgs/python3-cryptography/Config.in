@@ -1,0 +1,42 @@
+config FREETZ_PACKAGE_PYTHON3_CRYPTOGRAPHY
+	bool "cryptography 3.3.2 (last version without Rust)"
+	depends on FREETZ_PACKAGE_PYTHON3
+	select FREETZ_PACKAGE_PYTHON3_CFFI
+	select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_OPENSSL
+	select FREETZ_LIB_libssl if !FREETZ_PACKAGE_OPENSSL
+	default n
+	help
+		cryptography 3.3.2 - Last version compatible with embedded targets
+		
+		This is the last version of cryptography (3.3.2, released 2020)
+		that doesn't require Rust compiler.
+		
+		For newer cryptographic features, consider using
+		python3-pycryptodome as an alternative.
+		
+
+		See PYTHON3_CRYPTOGRAPHY_UNSUPPORTED.md for migration guide.
+		
+		---
+		
+		cryptography is a package which provides cryptographic recipes and
+		primitives to Python developers.
+		
+		Features:
+		  - SSL/TLS support
+		  - X.509 certificate handling
+		  - Symmetric encryption (AES, ChaCha20, etc.)
+		  - Asymmetric encryption (RSA, ECDSA, etc.)
+		  - Message digests and signatures
+		  - Key derivation functions
+		
+		Dependencies:
+		  - Python 3.x
+		  - cffi (Python C Foreign Function Interface)
+		  - OpenSSL >= 1.1.1 (for cryptographic operations)
+		
+		Build: Uses setuptools (no Rust required for 3.3.2)
+		
+		Size: ~2-3 MB installed
+		
+		WWW: https://cryptography.io/

@@ -13,24 +13,30 @@ PYTHON3_SITE_PKG_DIR:=/usr/lib/python$(PYTHON3_MAJOR_VERSION)/site-packages
 
 PYTHON:=python$(PYTHON3_MAJOR_VERSION)
 
-HOST_PYTHON3_BIN:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/hostpython3
+HOST_PYTHON3_BIN:=$(HOST_TOOLS_DIR)/usr/bin/python3
 
 # $(1) => statements to be executed before calling host-python
 # $(2) => parameters to be passed to host-python
 define HostPython3
-	( \
-		export PYTHONHOME="$(HOST_TOOLS_DIR)/usr"; \
-		export PYTHON3_INCDIR="$(PYTHON3_STAGING_INC_DIR)"; \
-		export PYTHON3_LIBDIR="$(PYTHON3_STAGING_LIB_DIR)"; \
-		export PYTHONPATH="$(PYTHON3_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/$(PYTHON3_SITE_PKG_DIR)"; \
-		export PYTHONOPTIMIZE=""; \
-		export PYTHONDONTWRITEBYTECODE="x"; \
-		export CFLAGS="$(TARGET_CFLAGS) -I$(PYTHON3_STAGING_INC_DIR)"; \
-		export CPPFLAGS="$(TARGET_CFLAGS) -I$(PYTHON3_STAGING_INC_DIR)"; \
-		export LDFLAGS="$(TARGET_LDFLAGS) -L$(PYTHON3_STAGING_LIB_DIR)"; \
-		$(1) \
-		$(HOST_PYTHON3_BIN) $(2); \
-	)
+        ( \
+                export PYTHONHOME="$(HOST_TOOLS_DIR)/usr"; \
+                export PYTHON3_INCDIR="$(PYTHON3_STAGING_INC_DIR)"; \
+                export PYTHON3_LIBDIR="$(PYTHON3_STAGING_LIB_DIR)"; \
+                export PYTHONPATH="$(HOST_TOOLS_DIR)/usr/lib/python$(PYTHON3_MAJOR_VERSION):$(PYTHON3_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/$(PYTHON3_SITE_PKG_DIR)"; \
+                export PYTHONOPTIMIZE=""; \
+                export PYTHONDONTWRITEBYTECODE="x"; \
+                export CC="$(TARGET_CC)"; \
+                export CXX="$(TARGET_CXX)"; \
+                export LD="$(TARGET_CC)"; \
+                export LDSHARED="$(TARGET_CC) -shared"; \
+                export BLDSHARED="$(TARGET_CC) -shared"; \
+                export AR="$(TARGET_AR)"; \
+                export RANLIB="$(TARGET_RANLIB)"; \
+                export CFLAGS="$(TARGET_CFLAGS) -I$(PYTHON3_STAGING_INC_DIR)"; \
+                export LDFLAGS="$(TARGET_LDFLAGS) -L$(PYTHON3_STAGING_LIB_DIR)"; \
+                $(1) \
+                $(HOST_PYTHON3_BIN) $(2); \
+        )
 endef
 
 # $(1) => build dir
@@ -38,26 +44,54 @@ endef
 # $(3) => additional variables
 # $(4) => dir to look for .so files to be stripped
 define Build/PyMod3/Generic
-	$(call HostPython3, \
-		cd $(strip $(1)); \
-		$(TARGET_CONFIGURE_ENV) \
-		$(FREETZ_LD_RUN_PATH) \
-		$(3) \
-		, \
-		./setup.py $(2) \
-	)
-	$(if $(strip $(4)),find $(strip $(4)) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+)
+        $(call HostPython3, \
+                cd $(strip $(1)); \
+                $(TARGET_CONFIGURE_ENV) \
+                $(FREETZ_LD_RUN_PATH) \
+                $(3) \
+                , \
+                ./setup.py $(2) build_ext --include-dirs=$(PYTHON3_STAGING_INC_DIR) --library-dirs=$(PYTHON3_STAGING_LIB_DIR) \
+        )
+        $(if $(strip $(4)),find $(strip $(4)) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+)
 endef
 
 # $(1) => PKG value
 # $(2) => additional arguments to setup.py
 # $(3) => additional variables
 define Build/PyMod3/PKG
-	$(call Build/PyMod3/Generic, \
-		$($(strip $(1))_DIR), \
-		install --prefix=/usr --root=$(abspath $($(strip $(1))_DEST_DIR)) \
-		$(2), \
-		$(3), \
-		$($(strip $(1))_DEST_DIR)$(PYTHON3_SITE_PKG_DIR) \
-	)
+        $(call Build/PyMod3/Generic, \
+                $($(strip $(1))_DIR), \
+                install --prefix=/usr --root=$(abspath $($(strip $(1))_DEST_DIR)) \
+                $(2), \
+                $(3), \
+                $($(strip $(1))_DEST_DIR)$(PYTHON3_SITE_PKG_DIR) \
+        )
+endef
+
+# Alias for Python3 modules
+# define Build/PyMod3/PKG
+#	$(call Build/PyMod/PKG,$(1),$(2),$(3))
+# endef
+# For packages using pyproject.toml (PEP 517) instead of setup.py
+# $(1) => PKG value
+# $(2) => additional pip install arguments
+# $(3) => additional environment variables
+# $(4) => if set to "isolated", allows build isolation (default: no isolation)
+define Build/PyMod3/Pip
+        $(call HostPython3, \
+                cd $($(strip $(1))_DIR); \
+                $(TARGET_CONFIGURE_ENV) \
+                $(FREETZ_LD_RUN_PATH) \
+                $(3) \
+                , \
+                -m pip install --no-deps $(if $(filter isolated,$(strip $(4))),,--no-build-isolation) \
+                        --prefix=/usr \
+                        --root=$(abspath $($(strip $(1))_DEST_DIR)) \
+                        --no-compile \
+                        --config-settings=build_ext.include_dirs="$(PYTHON3_STAGING_INC_DIR)" \
+                        --config-settings=build_ext.library_dirs="$(PYTHON3_STAGING_LIB_DIR)" \
+                        $(2) \
+                        . \
+        )
+        find $($(strip $(1))_DEST_DIR)$(PYTHON3_SITE_PKG_DIR) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+ 2>/dev/null || true
 endef

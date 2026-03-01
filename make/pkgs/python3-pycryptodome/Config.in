@@ -1,0 +1,19 @@
+config FREETZ_PACKAGE_PYTHON3_PYCRYPTODOME
+	bool "pycryptodome 3.23.0"
+	depends on FREETZ_PACKAGE_PYTHON3
+	default n
+	help
+		PyCryptodome is a self-contained Python 3 package of low-level
+		cryptographic primitives.
+		
+		It's a fork of PyCrypto that has been enhanced for modern systems
+		and Python 3 compatibility.
+		
+		Features:
+		- AES, DES, 3DES, ARC2, ARC4, Blowfish, CAST, Salsa20, ChaCha20
+		- RSA, DSA, ECC (NIST P-curves and Curve25519)
+		- SHA-1, SHA-2, SHA-3, BLAKE2, HMAC, CMAC, PBKDF2
+		- And many more cryptographic primitives
+		
+		Website: https://www.pycryptodome.org/
+		GitHub: https://github.com/Legrandin/pycryptodome
