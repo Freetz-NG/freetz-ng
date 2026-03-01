@@ -9,12 +9,13 @@ $(PKG)_SITE:=@SF/procps-ng/Production
 ### SUPPORT:=Ircama
 
 $(PKG)_BINARIES_SRC_DIR             := ps        top .    .      .      .  .   .     .     .     .    .       .     .     .     .     .      .   
-$(PKG)_BINARIES_ALL                 := pscommand top free uptime vmstat w pmap pgrep pkill pidof pwdx slabtop tload watch skill snice sysctl kill
+$(PKG)_BINARIES_ALL                 := ps        top free uptime vmstat w pmap pgrep pkill pidof pwdx slabtop tload watch skill snice sysctl kill
+$(PKG)_BINARIES_SRC                 := pscommand top free uptime vmstat w pmap pgrep pkill pidof pwdx slabtop tload watch skill snice sysctl kill
 
 $(PKG)_BINARIES_POSTFIX             := -ng
 $(PKG)_BINARIES                     := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
 $(PKG)_BINARIES_TARGET              := $($(PKG)_BINARIES:%=%$($(PKG)_BINARIES_POSTFIX))
-$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/src/%/),$($(PKG)_BINARIES_ALL))
+$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/src/%/),$($(PKG)_BINARIES_SRC))
 $(PKG)_BINARIES_ALL_TARGET_DIR      := $($(PKG)_BINARIES_ALL:%=$($(PKG)_DEST_DIR)/usr/bin/%$($(PKG)_BINARIES_POSTFIX))
 $(PKG)_FILTER_OUT                    = $(foreach k,$(1), $(foreach v,$(2), $(if $(subst $(notdir $(v)),,$(k)),,$(v)) ) )
 $(PKG)_BINARIES_TARGET_DIR          := $(call $(PKG)_FILTER_OUT,$($(PKG)_BINARIES_TARGET),$($(PKG)_BINARIES_ALL_TARGET_DIR))
@@ -65,7 +66,7 @@ $(PKG_CONFIGURED_CONFIGURE)
 $($(PKG)_BINARIES_BUILD_DIR): $(PROCPS_NG_DIR)/.configured
 	$(SUBMAKE) -C $(PROCPS_NG_DIR)
 
-$(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/bin,,$(binary)$($(PKG)_BINARIES_POSTFIX))))
+$(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/bin,,$(if $(filter pscommand,$(notdir $(binary))),ps, $(notdir $(binary)))$($(PKG)_BINARIES_POSTFIX))))
 
 $(pkg):
 
