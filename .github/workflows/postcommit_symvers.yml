@@ -180,17 +180,22 @@ jobs:
           echo "##########################################################" && echo -n "Lines=" && wc -l .config
 
       - name: check
-        shell: bash
+        id: check
         run: |
-          . ./.config
+          FREETZ_SYSTEM_TYPE="$(sed -rn 's/^FREETZ_SYSTEM_TYPE=//p' .config)"
+          FREETZ_SYSTEM_TYPE_CORE_SUFFIX="$(sed -rn 's/^FREETZ_SYSTEM_TYPE_CORE_SUFFIX=//p' .config)"
+          FREETZ_AVM_SOURCE_ID="$(sed -rn 's/^FREETZ_AVM_SOURCE_ID=//p' .config)"
           KERNEL_ID="${FREETZ_SYSTEM_TYPE}${FREETZ_SYSTEM_TYPE_CORE_SUFFIX}-${FREETZ_AVM_SOURCE_ID}"
-          grep -q '^CONFIG_MODVERSIONS=y' "make/kernel/configs/freetz/config-${KERNEL_ID}" && exit
-          echo "No MODVERSIONS enabled, abort."
-          pkill -2 Runner.Listener
+          KERNEL_ID=${KERNEL_ID//\"/}
+          KERNEL_CONFIG="make/kernel/configs/freetz/config-${KERNEL_ID}"
+          KERNEL_SYMVERS="make/kernel/configs/symvers/symvers-${KERNEL_ID}"
+          ! grep -q '^CONFIG_MODVERSIONS=y' "${KERNEL_CONFIG}" && echo "No MODVERSIONS enabled, abort." && echo 'skip=skip' >> $GITHUB_OUTPUT && exit
+          test -s "${KERNEL_SYMVERS}" && echo "Kernel symvers exists, abort." && echo 'skip=skip' >> $GITHUB_OUTPUT && exit
 
       - name: generate
         env:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
+        if: ${{ steps.check.outputs.skip != 'skip' }}
         run: |
           make && rm -f images/latest.image
 
