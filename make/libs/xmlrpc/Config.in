@@ -1,0 +1,60 @@
+config FREETZ_LIB_libxmlrpc
+	bool "libxmlrpc.so"
+	default n
+	help
+		xmlrpc-c core library
+
+config FREETZ_LIB_libxmlrpc_server
+	bool "libxmlrpc_server.so"
+	default n
+	select FREETZ_LIB_libxmlrpc
+	help
+		xmlrpc-c server library
+
+config FREETZ_LIB_libxmlrpc_server_abyss
+	bool "libxmlrpc_server_abyss.so"
+	default n
+	select FREETZ_LIB_libxmlrpc_server
+	select FREETZ_LIB_libxmlrpc_abyss
+	help
+		xmlrpc-c Abyss server library
+
+config FREETZ_LIB_libxmlrpc_server_cgi
+	bool "libxmlrpc_server_cgi.so"
+	default n
+	select FREETZ_LIB_libxmlrpc_server
+	help
+		xmlrpc-c CGI server library
+
+config FREETZ_LIB_libxmlrpc_client
+	bool "libxmlrpc_client.so"
+	default n
+	select FREETZ_LIB_libxmlrpc
+	select FREETZ_LIB_libxmlrpc_util
+	help
+		xmlrpc-c client library
+
+config FREETZ_LIB_libxmlrpc_abyss
+	bool "libxmlrpc_abyss.so"
+	default n
+	select FREETZ_LIB_libxmlrpc_util
+	help
+		xmlrpc-c Abyss HTTP server library
+
+config FREETZ_LIB_libxmlrpc_util
+	bool "libxmlrpc_util.so"
+	default n
+	help
+		xmlrpc-c utility library
+
+config FREETZ_LIB_libxmlrpc_xmlparse
+	bool "libxmlrpc_xmlparse.so"
+	default n
+	help
+		xmlrpc-c XML parser library
+
+config FREETZ_LIB_libxmlrpc_xmltok
+	bool "libxmlrpc_xmltok.so"
+	default n
+	help
+		xmlrpc-c XML tokenizer library

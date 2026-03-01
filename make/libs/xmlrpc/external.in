@@ -1,0 +1,16 @@
+config EXTERNAL_FREETZ_LIB_libxmlrpc
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libxmlrpc
+	bool "libxmlrpc"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_server.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_server_abyss.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_server_cgi.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_client.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_abyss.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_util.so.4
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_xmlparse.so.3
+		 ${FREETZ_LIBRARY_DIR}/libxmlrpc_xmltok.so.3
+
