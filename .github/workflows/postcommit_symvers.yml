@@ -179,6 +179,14 @@ jobs:
           grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo "FREETZ_TYPE_FIRMWARE_$FOS=y"              >> .config
           echo "##########################################################" && echo -n "Lines=" && wc -l .config
 
+      - name: check
+        run: |
+          source .config
+          KERNEL_ID="${FREETZ_SYSTEM_TYPE}${FREETZ_SYSTEM_TYPE_CORE_SUFFIX}-${FREETZ_AVM_SOURCE_ID}"
+          grep -q '^CONFIG_MODVERSIONS=y' "make/kernel/configs/freetz/config-${KERNEL_ID}" && exit
+          echo "No MODVERSIONS enabled, abort."
+          pkill -2 Runner.Listener
+
       - name: generate
         env:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
