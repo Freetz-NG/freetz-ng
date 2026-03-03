@@ -28,7 +28,7 @@ jobs:
       ZENSICAL_INPUT_PATH: .github/zensical/site
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -50,7 +50,7 @@ jobs:
     permissions:
       pages: write
       id-token: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs: build
     steps:
       - name: Deploy to GitHub Pages

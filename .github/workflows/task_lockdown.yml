@@ -5,15 +5,11 @@ on:
     types: opened
   workflow_dispatch:
 
-
-
-
-
 jobs:
   build:
     permissions:
       issues: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
@@ -31,4 +27,3 @@ jobs:
           issue-lock-reason: ''
           log-output: true
           process-only: 'issues'
-
