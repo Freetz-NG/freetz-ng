@@ -35,6 +35,11 @@ config FREETZ_MODULES_ALL
 	depends on FREETZ_REPLACE_KERNEL
 	default n
 
+config FREETZ_REPLACE_MODULES
+	bool "Replace available Modules"
+	depends on FREETZ_REPLACE_KERNEL
+	default n
+
 
 menu "block"
 depends on \

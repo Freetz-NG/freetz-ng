@@ -1397,7 +1397,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			ko_symbol="$(echo "${bn%\.ko}" | tr '\-+' '_x')"
 			ko_install="$(eval "echo \"\$FREETZ_MODULE_$ko_symbol\"")"
 			echo " $FREETZ_MODULES_OWN " | grep -q " $ko_symbol " && ko_install="y"
-			[ "$FREETZ_MODULES_ALL" = "y" -o "$ko_install" == "y" ] || continue
+			[ "$FREETZ_REPLACE_MODULES" = "y" -a -f "${MODULES_DIR}/kernel/${i}" -o "$FREETZ_MODULES_ALL" = "y" -o "$ko_install" == "y" ] || continue
 			sizeinfo "$bn"
 			ko_file_src="${KERNEL_REP_DIR}/modules-${KERNEL_ID}/${i}"
 			ko_path_dst="${MODULES_DIR}/kernel/$(dirname "$i")"
