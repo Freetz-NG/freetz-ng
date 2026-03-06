@@ -6,6 +6,8 @@ bsdmainutils
 bzip2
 ccache
 cmake
+coreutils-from-gnu
+coreutils-from-uutils-
 curl
 ecj
 flex

@@ -100,6 +100,9 @@ detect_linux() {
 install_requisite() {
 	local OSV="$1" ARG="$2"DOY="$3"
 
+	local DNF_PARAMETERS="--refresh"
+	local APT_PARAMETERS="$(dpkg --compare-versions "$(awk -F= '$1=="VERSION_ID"{gsub(/"/,"",$2);print $2}' /etc/os-release)" ge 26.04 && echo "--allow-remove-essential")"
+
 	[ -z "$OSV" ] && OSV="$(detect_linux)"
 	[ -z "$OSV" ] && echo 'Can not detect you Linux version, set it manually'&& list_linux  && exit 1
 
@@ -113,10 +116,10 @@ install_requisite() {
 	echo -e "\nPackages for '$OSV':\n$vals\n"
 	[ "${ARG:0:1}" == "s" ] && exit 0
 	case "$OSV" in
-		Fedora*)                                       $SUDO dnf --refresh  install $DOY $vals || exit 1 ;;
-		Debian*|Devuan*|LMDE*) $SUDO apt-get update && $SUDO apt            install $DOY $vals || exit 1 ;;
-		Ubuntu*|Mint*)         $SUDO apt-get update && $SUDO apt-get        install $DOY $vals || exit 1 ;;
-		*)                     echo 'No known installer'                                       && exit 1 ;;
+		Fedora*)                                       $SUDO dnf     ${DNF_PARAMETERS} install $DOY $vals || exit 1 ;;
+		Debian*|Devuan*|LMDE*) $SUDO apt-get update && $SUDO apt     ${APT_PARAMETERS} install $DOY $vals || exit 1 ;;
+		Ubuntu*|Mint*)         $SUDO apt-get update && $SUDO apt-get ${APT_PARAMETERS} install $DOY $vals || exit 1 ;;
+		*)                     echo 'No known installer'                                                  && exit 1 ;;
 	esac
 	exit 0
 }
