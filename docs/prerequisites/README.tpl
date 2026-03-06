@@ -166,6 +166,10 @@ Workaround: Deinstallation von uutil-Coreutils und gleichzeitige Installation vo
 sudo apt-get remove --allow-remove-essential coreutils-from-uutils
 ```
 
+  - Ubuntu 26 64-Bit:
+```
+sudo apt-get -y install %%Ubuntu26%%
+
   - Ubuntu 23/24/25 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu23%%
