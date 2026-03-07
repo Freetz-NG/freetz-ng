@@ -1,0 +1,17 @@
+override t#u_char typedef unsigned char u_char 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#_cdebbuf typedef struct { t#u_char * buf ; t#u_char * p ; t#size_t size ; t#size_t pos ; } _cdebbuf 
+override cdebbuf_free void cdebbuf_free ( t#_cdebbuf * ) 
+override t#__u16 typedef unsigned short __u16 
+override t#__u8 typedef unsigned char __u8 
+override t#__u32 typedef unsigned int __u32 
+override t#_cmstruct typedef enum { CAPI_COMPOSE , CAPI_DEFAULT } _cmstruct 
+override t#_cstruct typedef t#__u8 * _cstruct 
+override t#_cmsg typedef struct { t#__u16 ApplId ; t#__u8 Command ; t#__u8 Subcommand ; t#__u16 Messagenumber ; union { t#__u32 adrController ; t#__u32 adrPLCI ; t#__u32 adrNCCI ; } adr ; t#_cmstruct AdditionalInfo ; t#_cstruct B1configuration ; t#__u16 B1protocol ; t#_cstruct B2configuration ; t#__u16 B2protocol ; t#_cstruct B3configuration ; t#__u16 B3protocol ; t#_cstruct BC ; t#_cstruct BChannelinformation ; t#_cmstruct BProtocol ; t#_cstruct CalledPartyNumber ; t#_cstruct CalledPartySubaddress ; t#_cstruct CallingPartyNumber ; t#_cstruct CallingPartySubaddress ; t#__u32 CIPmask ; t#__u32 CIPmask2 ; t#__u16 CIPValue ; t#__u32 Class ; t#_cstruct ConnectedNumber ; t#_cstruct ConnectedSubaddress ; t#__u32 Data ; t#__u16 DataHandle ; t#__u16 DataLength ; t#_cstruct FacilityConfirmationParameter ; t#_cstruct Facilitydataarray ; t#_cstruct FacilityIndicationParameter ; t#_cstruct FacilityRequestParameter ; t#__u16 FacilitySelector ; t#__u16 Flags ; t#__u32 Function ; t#_cstruct HLC ; t#__u16 Info ; t#_cstruct InfoElement ; t#__u32 InfoMask ; t#__u16 InfoNumber ; t#_cstruct Keypadfacility ; t#_cstruct LLC ; t#_cstruct ManuData ; t#__u32 ManuID ; t#_cstruct NCPI ; t#__u16 Reason ; t#__u16 Reason_B3 ; t#__u16 Reject ; t#_cstruct Useruserdata ; unsigned l , p ; unsigned char * par ; t#__u8 * m ; t#__u8 buf [ 180 ] ; } _cmsg 
+override capi_cmsg2message unsigned capi_cmsg2message ( t#_cmsg * , t#__u8 * ) 
+override capi_message2cmsg unsigned capi_message2cmsg ( t#_cmsg * , t#__u8 * ) 
+override capi_cmsg_header unsigned capi_cmsg_header ( t#_cmsg * , t#__u16 , t#__u8 , t#__u8 , t#__u16 , t#__u32 ) 
+override capi_cmd2str char * capi_cmd2str ( t#__u8 , t#__u8 ) 
+override capi_cmsg2str t#_cdebbuf * capi_cmsg2str ( t#_cmsg * ) 
+override capi_message2str t#_cdebbuf * capi_message2str ( t#__u8 * ) 

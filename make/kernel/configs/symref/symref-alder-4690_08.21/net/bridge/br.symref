@@ -1,0 +1,2 @@
+override t#br_notify_hook_t typedef void ( br_notify_hook_t ) ( int , int , const void * ) 
+override br_notify_hook extern t#br_notify_hook_t * br_notify_hook 

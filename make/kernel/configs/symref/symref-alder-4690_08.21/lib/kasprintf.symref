@@ -1,0 +1,6 @@
+override t#gfp_t typedef unsigned int gfp_t 
+override t#__gnuc_va_list typedef __builtin_va_list __gnuc_va_list 
+override t#va_list typedef t#__gnuc_va_list va_list 
+override kvasprintf extern __attribute__ ( ( __format__ ( printf , 2 , 0 ) ) ) __attribute__ ( ( __malloc__ ) ) char * kvasprintf ( t#gfp_t , const char * , t#va_list ) 
+override kvasprintf_const extern __attribute__ ( ( __format__ ( printf , 2 , 0 ) ) ) const char * kvasprintf_const ( t#gfp_t , const char * , t#va_list ) 
+override kasprintf extern __attribute__ ( ( __format__ ( printf , 2 , 3 ) ) ) __attribute__ ( ( __malloc__ ) ) char * kasprintf ( t#gfp_t , const char * , ... ) 

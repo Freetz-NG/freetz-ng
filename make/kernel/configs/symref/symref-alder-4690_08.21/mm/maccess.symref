@@ -1,0 +1,6 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override probe_kernel_read extern long probe_kernel_read ( void * , const void * , t#size_t ) 
+override probe_user_read extern long probe_user_read ( void * , const void * , t#size_t ) 
+override probe_kernel_write extern long __attribute__ ( ( __no_instrument_function__ ) ) probe_kernel_write ( void * , const void * , t#size_t ) 
+override probe_user_write extern long __attribute__ ( ( __no_instrument_function__ ) ) probe_user_write ( void * , const void * , t#size_t ) 

@@ -1,0 +1,51 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#gfp_t typedef unsigned int gfp_t 
+override s#xarray struct xarray { t#spinlock_t xa_lock ; t#gfp_t xa_flags ; void * xa_head ; } 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#xa_node struct xa_node { unsigned char shift ; unsigned char offset ; unsigned char count ; unsigned char nr_values ; s#xa_node * parent ; s#xarray * array ; union { s#list_head private_list ; s#callback_head callback_head ; } ; void * slots [ ( 1UL << ( 0 ? 4 : 6 ) ) ] ; union { unsigned long tags [ 3 ] [ ( ( ( ( 1UL << ( 0 ? 4 : 6 ) ) ) + ( 32 ) - 1 ) / ( 32 ) ) ] ; unsigned long marks [ 3 ] [ ( ( ( ( 1UL << ( 0 ? 4 : 6 ) ) ) + ( 32 ) - 1 ) / ( 32 ) ) ] ; } ; } 
+override t#xa_update_node_t typedef void ( * xa_update_node_t ) ( s#xa_node * ) 
+override s#xa_state struct xa_state { s#xarray * xa ; unsigned long xa_index ; unsigned char xa_shift ; unsigned char xa_sibs ; unsigned char xa_offset ; unsigned char xa_pad ; s#xa_node * xa_node ; s#xa_node * xa_alloc ; t#xa_update_node_t xa_update ; } 
+override xas_load void * xas_load ( s#xa_state * ) 
+override t#bool typedef _Bool bool 
+override xas_nomem t#bool xas_nomem ( s#xa_state * , t#gfp_t ) 
+override xas_create_range void xas_create_range ( s#xa_state * ) 
+override xas_store void * xas_store ( s#xa_state * , void * ) 
+override t#xa_mark_t typedef unsigned xa_mark_t 
+override xas_get_mark t#bool xas_get_mark ( const s#xa_state * , t#xa_mark_t ) 
+override xas_set_mark void xas_set_mark ( const s#xa_state * , t#xa_mark_t ) 
+override xas_clear_mark void xas_clear_mark ( const s#xa_state * , t#xa_mark_t ) 
+override xas_init_marks void xas_init_marks ( const s#xa_state * ) 
+override xas_pause void xas_pause ( s#xa_state * ) 
+override __xas_prev void * __xas_prev ( s#xa_state * ) 
+override __xas_next void * __xas_next ( s#xa_state * ) 
+override xas_find void * xas_find ( s#xa_state * , unsigned long ) 
+override xas_find_marked void * xas_find_marked ( s#xa_state * , unsigned long , t#xa_mark_t ) 
+override xas_find_conflict void * xas_find_conflict ( s#xa_state * ) 
+override xa_load void * xa_load ( s#xarray * , unsigned long ) 
+override __xa_erase void * __xa_erase ( s#xarray * , unsigned long ) 
+override xa_erase void * xa_erase ( s#xarray * , unsigned long ) 
+override __xa_store void * __xa_store ( s#xarray * , unsigned long , void * , t#gfp_t ) 
+override xa_store void * xa_store ( s#xarray * , unsigned long , void * , t#gfp_t ) 
+override __xa_cmpxchg void * __xa_cmpxchg ( s#xarray * , unsigned long , void * , void * , t#gfp_t ) 
+override __xa_insert int __xa_insert ( s#xarray * , unsigned long , void * , t#gfp_t ) 
+override s#xa_limit struct xa_limit { t#u32 max ; t#u32 min ; } 
+override __xa_alloc int __xa_alloc ( s#xarray * , t#u32 * , void * , s#xa_limit , t#gfp_t ) 
+override __xa_alloc_cyclic int __xa_alloc_cyclic ( s#xarray * , t#u32 * , void * , s#xa_limit , t#u32 * , t#gfp_t ) 
+override __xa_set_mark void __xa_set_mark ( s#xarray * , unsigned long , t#xa_mark_t ) 
+override __xa_clear_mark void __xa_clear_mark ( s#xarray * , unsigned long , t#xa_mark_t ) 
+override xa_get_mark t#bool xa_get_mark ( s#xarray * , unsigned long , t#xa_mark_t ) 
+override xa_set_mark void xa_set_mark ( s#xarray * , unsigned long , t#xa_mark_t ) 
+override xa_clear_mark void xa_clear_mark ( s#xarray * , unsigned long , t#xa_mark_t ) 
+override xa_find void * xa_find ( s#xarray * , unsigned long * , unsigned long , t#xa_mark_t ) 
+override xa_find_after void * xa_find_after ( s#xarray * , unsigned long * , unsigned long , t#xa_mark_t ) 
+override xa_extract unsigned int xa_extract ( s#xarray * , void * * , unsigned long , unsigned long , unsigned int , t#xa_mark_t ) 
+override xa_destroy void xa_destroy ( s#xarray * ) 

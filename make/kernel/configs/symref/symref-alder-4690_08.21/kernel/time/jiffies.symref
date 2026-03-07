@@ -1,0 +1,4 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override get_jiffies_64 t#u64 get_jiffies_64 ( void ) 
+override jiffies extern unsigned long volatile __attribute__ ( ( __aligned__ ( ( 1 << 6 ) ) , __section__ ( ".data..cacheline_aligned" ) ) ) jiffies 

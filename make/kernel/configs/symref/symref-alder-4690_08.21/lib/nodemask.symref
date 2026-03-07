@@ -1,0 +1,2 @@
+override t#nodemask_t typedef struct { unsigned long bits [ ( ( ( ( 1 << 0 ) ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } nodemask_t 
+override __next_node_in unsigned int __next_node_in ( int , const t#nodemask_t * ) 

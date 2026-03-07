@@ -1,0 +1,10 @@
+override t#irq_cpustat_t typedef struct { unsigned int __softirq_pending ; unsigned int ipi_irqs [ 7 ] ; } __attribute__ ( ( __aligned__ ( ( 1 << 6 ) ) ) ) irq_cpustat_t 
+override irq_stat extern __attribute__ ( ( section ( ".data..percpu" "..shared_aligned" ) ) ) __typeof__ ( t#irq_cpustat_t ) irq_stat 
+override _local_bh_enable extern void _local_bh_enable ( void ) 
+override __local_bh_enable_ip extern void __local_bh_enable_ip ( unsigned long , unsigned int ) 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#tasklet_struct struct tasklet_struct { s#tasklet_struct * next ; unsigned long state ; t#atomic_t count ; void ( * func ) ( unsigned long ) ; unsigned long data ; } 
+override __tasklet_schedule extern void __tasklet_schedule ( s#tasklet_struct * ) 
+override __tasklet_hi_schedule extern void __tasklet_hi_schedule ( s#tasklet_struct * ) 
+override tasklet_init extern void tasklet_init ( s#tasklet_struct * , void ( * ) ( unsigned long ) , unsigned long ) 
+override tasklet_kill extern void tasklet_kill ( s#tasklet_struct * ) 

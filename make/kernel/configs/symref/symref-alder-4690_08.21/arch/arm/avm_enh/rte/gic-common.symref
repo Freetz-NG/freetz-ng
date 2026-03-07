@@ -1,0 +1,6 @@
+override e#gic_reg_atomic_e enum gic_reg_atomic_e { IS_NOT_ATOMIC , IS_ATOMIC } 
+override t#gic_reg_atomic_t typedef e#gic_reg_atomic_e gic_reg_atomic_t 
+override set_ICDIPTR void set_ICDIPTR ( unsigned int , unsigned int , t#gic_reg_atomic_t ) 
+override avm_gic_fiq_enable void avm_gic_fiq_enable ( unsigned int , unsigned int ) 
+override avm_gic_fiq_disable void avm_gic_fiq_disable ( unsigned int , unsigned int ) 
+override avm_gic_fiq_raise_irq void avm_gic_fiq_raise_irq ( unsigned int ) 

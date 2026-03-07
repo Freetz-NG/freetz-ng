@@ -1,0 +1,57 @@
+override t#__u16 typedef unsigned short __u16 
+override s#nlattr struct nlattr { t#__u16 nla_len ; t#__u16 nla_type ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#u16 typedef t#__u16 u16 
+override t#__s16 typedef __signed__ short __s16 
+override t#s16 typedef t#__s16 s16 
+override s#netlink_ext_ack struct netlink_ext_ack { const char * _msg ; const s#nlattr * bad_attr ; t#u8 cookie [ 20 ] ; t#u8 cookie_len ; } 
+override s#nla_policy struct nla_policy { t#u8 type ; t#u8 validation_type ; t#u16 len ; union { const void * validation_data ; struct { t#s16 min , max ; } ; int ( * validate ) ( const s#nlattr * , s#netlink_ext_ack * ) ; t#u16 strict_start_type ; } ; } 
+override __nla_validate int __nla_validate ( const s#nlattr * , int , int , const s#nla_policy * , unsigned int , s#netlink_ext_ack * ) 
+override nla_policy_len int nla_policy_len ( const s#nla_policy * , int ) 
+override __nla_parse int __nla_parse ( s#nlattr * * , int , const s#nlattr * , int , const s#nla_policy * , unsigned int , s#netlink_ext_ack * ) 
+override nla_find s#nlattr * nla_find ( const s#nlattr * , int , int ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override nla_strlcpy t#size_t nla_strlcpy ( char * , const s#nlattr * , t#size_t ) 
+override t#gfp_t typedef unsigned int gfp_t 
+override nla_strdup char * nla_strdup ( const s#nlattr * , t#gfp_t ) 
+override nla_memcpy int nla_memcpy ( void * , const s#nlattr * , int ) 
+override nla_memcmp int nla_memcmp ( const s#nlattr * , const void * , t#size_t ) 
+override nla_strcmp int nla_strcmp ( const s#nlattr * , const char * ) 
+override s#net_device struct net_device { UNKNOWN } 
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#sock struct sock { UNKNOWN } 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#s64 typedef t#__s64 s64 
+override t#ktime_t typedef t#s64 ktime_t 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override e#generic_ct_dir enum generic_ct_dir { GENERIC_CT_DIR_ORIGINAL = 0 , GENERIC_CT_DIR_REPLY = 1 , GENERIC_CT_DIR_MAX } 
+override s#generic_ct_ops struct generic_ct_ops { UNKNOWN } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#generic_ct struct generic_ct { void * ct ; s#generic_ct_ops * ops ; t#atomic_t use ; } 
+override s#generic_ct_data struct generic_ct_data { e#generic_ct_dir generic_ct_dir ; s#generic_ct * generic_ct ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#__wsum typedef t#__u32 __wsum 
+override t#__be16 typedef t#__u16 __be16 
+override t#sk_buff_data_t typedef unsigned char * sk_buff_data_t 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override E#SKB_EXT_NUM 2 
+override s#skb_ext struct skb_ext { t#refcount_t refcnt ; t#u8 offset [ E#SKB_EXT_NUM ] ; t#u8 chunks ; char data [ 0 ] __attribute__ ( ( __aligned__ ( 8 ) ) ) ; } 
+override s#sk_buff struct sk_buff { union { struct { s#sk_buff * next ; s#sk_buff * prev ; union { s#net_device * dev ; unsigned long dev_scratch ; } ; } ; s#rb_node rbnode ; s#list_head list ; } ; union { s#sock * sk ; int ip_defrag_offset ; } ; union { t#ktime_t tstamp ; t#u64 skb_mstamp_ns ; } ; char cb [ 48 ] __attribute__ ( ( __aligned__ ( 8 ) ) ) ; union { struct { unsigned long _skb_refdst ; void ( * destructor ) ( s#sk_buff * ) ; } ; s#list_head tcp_tsorted_anchor ; } ; unsigned long _nfct ; s#generic_ct_data ct_data ; unsigned int len , data_len ; t#__u16 mac_len , hdr_len ; t#__u16 queue_mapping ; t#__u8 __cloned_offset [ 0 ] ; t#__u8 cloned : 1 , nohdr : 1 , fclone : 2 , peeked : 1 , head_frag : 1 , pfmemalloc : 1 ; t#__u8 active_extensions ; t#__u32 headers_start [ 0 ] ; t#__u8 __pkt_type_offset [ 0 ] ; t#__u8 pkt_type : 3 ; t#__u8 ignore_df : 1 ; t#__u8 nf_trace : 1 ; t#__u8 ip_summed : 2 ; t#__u8 ooo_okay : 1 ; t#__u8 l4_hash : 1 ; t#__u8 sw_hash : 1 ; t#__u8 wifi_acked_valid : 1 ; t#__u8 wifi_acked : 1 ; t#__u8 no_fcs : 1 ; t#__u8 encapsulation : 1 ; t#__u8 encap_hdr_csum : 1 ; t#__u8 csum_valid : 1 ; t#__u8 __pkt_vlan_present_offset [ 0 ] ; t#__u8 vlan_present : 1 ; t#__u8 csum_complete_sw : 1 ; t#__u8 csum_level : 2 ; t#__u8 csum_not_inet : 1 ; t#__u8 dst_pending_confirm : 1 ; t#__u8 ndisc_nodetype : 2 ; t#__u8 ipvs_property : 1 ; t#__u8 inner_protocol_type : 1 ; t#__u8 remcsum_offload : 1 ; t#__u8 offload_fwd_mark : 1 ; t#__u8 offload_l3_fwd_mark : 1 ; t#__u8 tc_skip_classify : 1 ; t#__u8 tc_at_ingress : 1 ; t#__u8 tc_skip_classify_offload : 1 ; t#__u8 redirected : 1 ; t#__u8 from_ingress : 1 ; t#__u8 gro_skip : 1 ; t#__u8 fast_forwarded : 1 ; t#__u8 fast_xmit : 1 ; t#__u8 is_from_recycler : 1 ; t#__u8 fast_recycled : 1 ; t#__u8 recycled_for_ds : 1 ; t#__u8 fast_qdisc : 1 ; t#__u8 int_pri : 4 ; t#__u16 tc_index ; union { t#__wsum csum ; struct { t#__u16 csum_start ; t#__u16 csum_offset ; } ; } ; t#__u32 priority ; int skb_iif ; t#__u32 hash ; t#__be16 vlan_proto ; t#__u16 vlan_tci ; union { unsigned int napi_id ; unsigned int sender_cpu ; } ; union { t#__u32 mark ; t#__u32 reserved_tailroom ; } ; union { t#__be16 inner_protocol ; t#__u8 inner_ipproto ; } ; t#__u16 inner_transport_header ; t#__u16 inner_network_header ; t#__u16 inner_mac_header ; t#__be16 protocol ; t#__u16 transport_header ; t#__u16 network_header ; t#__u16 mac_header ; t#__u32 headers_end [ 0 ] ; t#__u8 avm_pa [ 256 ] ; t#sk_buff_data_t tail ; t#sk_buff_data_t end ; unsigned char * head , * data ; unsigned int truesize ; t#refcount_t users ; s#skb_ext * extensions ; } 
+override __nla_reserve s#nlattr * __nla_reserve ( s#sk_buff * , int , int ) 
+override __nla_reserve_64bit s#nlattr * __nla_reserve_64bit ( s#sk_buff * , int , int , int ) 
+override __nla_reserve_nohdr void * __nla_reserve_nohdr ( s#sk_buff * , int ) 
+override nla_reserve s#nlattr * nla_reserve ( s#sk_buff * , int , int ) 
+override nla_reserve_64bit s#nlattr * nla_reserve_64bit ( s#sk_buff * , int , int , int ) 
+override nla_reserve_nohdr void * nla_reserve_nohdr ( s#sk_buff * , int ) 
+override __nla_put void __nla_put ( s#sk_buff * , int , int , const void * ) 
+override __nla_put_64bit void __nla_put_64bit ( s#sk_buff * , int , int , const void * , int ) 
+override __nla_put_nohdr void __nla_put_nohdr ( s#sk_buff * , int , const void * ) 
+override nla_put int nla_put ( s#sk_buff * , int , int , const void * ) 
+override nla_put_64bit int nla_put_64bit ( s#sk_buff * , int , int , const void * , int ) 
+override nla_put_nohdr int nla_put_nohdr ( s#sk_buff * , int , const void * ) 
+override nla_append int nla_append ( s#sk_buff * , int , const void * ) 

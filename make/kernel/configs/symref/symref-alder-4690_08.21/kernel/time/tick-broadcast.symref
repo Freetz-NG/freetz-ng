@@ -1,0 +1,2 @@
+override e#tick_broadcast_mode enum tick_broadcast_mode { TICK_BROADCAST_OFF , TICK_BROADCAST_ON , TICK_BROADCAST_FORCE , } 
+override tick_broadcast_control extern void tick_broadcast_control ( e#tick_broadcast_mode ) 

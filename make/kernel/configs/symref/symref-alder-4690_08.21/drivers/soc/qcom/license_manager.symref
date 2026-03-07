@@ -1,0 +1,15 @@
+override e#qmi_elem_type enum qmi_elem_type { QMI_EOTI , QMI_OPT_FLAG , QMI_DATA_LEN , QMI_UNSIGNED_1_BYTE , QMI_UNSIGNED_2_BYTE , QMI_UNSIGNED_4_BYTE , QMI_UNSIGNED_8_BYTE , QMI_SIGNED_2_BYTE_ENUM , QMI_SIGNED_4_BYTE_ENUM , QMI_STRUCT , QMI_STRING , } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override e#qmi_array_type enum qmi_array_type { NO_ARRAY , STATIC_ARRAY , VAR_LEN_ARRAY , } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#qmi_elem_info struct qmi_elem_info { e#qmi_elem_type data_type ; t#u32 elem_len ; t#u32 elem_size ; e#qmi_array_type array_type ; t#u8 tlv_type ; t#u32 offset ; s#qmi_elem_info * ei_array ; } 
+override qmi_lm_feature_list_req_msg_v01_ei s#qmi_elem_info qmi_lm_feature_list_req_msg_v01_ei [ ] 
+override qmi_lm_feature_list_resp_msg_v01_ei s#qmi_elem_info qmi_lm_feature_list_resp_msg_v01_ei [ ] 
+override e#req_type enum req_type { INTERNAL , EXTERNAL , TYPE_MAX } 
+override t#dma_addr_t typedef t#u32 dma_addr_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override lm_get_license void * lm_get_license ( e#req_type , t#dma_addr_t * , t#size_t * , t#dma_addr_t ) 
+override lm_free_license void lm_free_license ( void * , t#dma_addr_t , t#size_t ) 

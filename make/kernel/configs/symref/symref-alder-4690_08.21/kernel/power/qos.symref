@@ -1,0 +1,44 @@
+override pm_qos_request int pm_qos_request ( int ) 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#plist_node struct plist_node { int prio ; s#list_head prio_list ; s#list_head node_list ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#timer_list struct timer_list { s#hlist_node entry ; unsigned long expires ; void ( * function ) ( s#timer_list * ) ; t#u32 flags ; } 
+override s#workqueue_struct struct workqueue_struct { UNKNOWN } 
+override s#delayed_work struct delayed_work { s#work_struct work ; s#timer_list timer ; s#workqueue_struct * wq ; int cpu ; } 
+override s#pm_qos_request struct pm_qos_request { s#plist_node node ; int pm_qos_class ; s#delayed_work work ; } 
+override pm_qos_request_active int pm_qos_request_active ( s#pm_qos_request * ) 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override pm_qos_add_request void pm_qos_add_request ( s#pm_qos_request * , int , t#s32 ) 
+override pm_qos_update_request void pm_qos_update_request ( s#pm_qos_request * , t#s32 ) 
+override pm_qos_remove_request void pm_qos_remove_request ( s#pm_qos_request * ) 
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override pm_qos_add_notifier int pm_qos_add_notifier ( int , s#notifier_block * ) 
+override pm_qos_remove_notifier int pm_qos_remove_notifier ( int , s#notifier_block * ) 
+override s#plist_head struct plist_head { s#list_head node_list ; } 
+override e#pm_qos_type enum pm_qos_type { PM_QOS_UNITIALIZED , PM_QOS_MAX , PM_QOS_MIN , PM_QOS_SUM } 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override s#blocking_notifier_head struct blocking_notifier_head { s#rw_semaphore rwsem ; s#notifier_block * head ; } 
+override s#pm_qos_constraints struct pm_qos_constraints { s#plist_head list ; t#s32 target_value ; t#s32 default_value ; t#s32 no_constraint_value ; e#pm_qos_type type ; s#blocking_notifier_head * notifiers ; } 
+override s#freq_constraints struct freq_constraints { s#pm_qos_constraints min_freq ; s#blocking_notifier_head min_freq_notifiers ; s#pm_qos_constraints max_freq ; s#blocking_notifier_head max_freq_notifiers ; } 
+override e#freq_qos_req_type enum freq_qos_req_type { FREQ_QOS_MIN = 1 , FREQ_QOS_MAX , } 
+override s#freq_qos_request struct freq_qos_request { e#freq_qos_req_type type ; s#plist_node pnode ; s#freq_constraints * qos ; } 
+override freq_qos_add_request int freq_qos_add_request ( s#freq_constraints * , s#freq_qos_request * , e#freq_qos_req_type , t#s32 ) 
+override freq_qos_update_request int freq_qos_update_request ( s#freq_qos_request * , t#s32 ) 
+override freq_qos_remove_request int freq_qos_remove_request ( s#freq_qos_request * ) 
+override freq_qos_add_notifier int freq_qos_add_notifier ( s#freq_constraints * , e#freq_qos_req_type , s#notifier_block * ) 
+override freq_qos_remove_notifier int freq_qos_remove_notifier ( s#freq_constraints * , e#freq_qos_req_type , s#notifier_block * ) 

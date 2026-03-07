@@ -1,0 +1,6 @@
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#syscore_ops struct syscore_ops { s#list_head node ; int ( * suspend ) ( void ) ; void ( * resume ) ( void ) ; void ( * shutdown ) ( void ) ; } 
+override register_syscore_ops extern void register_syscore_ops ( s#syscore_ops * ) 
+override unregister_syscore_ops extern void unregister_syscore_ops ( s#syscore_ops * ) 
+override syscore_suspend extern int syscore_suspend ( void ) 
+override syscore_resume extern void syscore_resume ( void ) 

@@ -1,0 +1,11 @@
+override s#genradix_root struct genradix_root { UNKNOWN } 
+override s#__genradix struct __genradix { s#genradix_root * root ; } 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override __genradix_ptr void * __genradix_ptr ( s#__genradix * , t#size_t ) 
+override t#gfp_t typedef unsigned int gfp_t 
+override __genradix_ptr_alloc void * __genradix_ptr_alloc ( s#__genradix * , t#size_t , t#gfp_t ) 
+override s#genradix_iter struct genradix_iter { t#size_t offset ; t#size_t pos ; } 
+override __genradix_iter_peek void * __genradix_iter_peek ( s#genradix_iter * , s#__genradix * , t#size_t ) 
+override __genradix_prealloc int __genradix_prealloc ( s#__genradix * , t#size_t , t#gfp_t ) 
+override __genradix_free void __genradix_free ( s#__genradix * ) 

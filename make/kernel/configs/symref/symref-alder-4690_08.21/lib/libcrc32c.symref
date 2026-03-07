@@ -1,0 +1,4 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override crc32c extern t#u32 crc32c ( t#u32 , const void * , unsigned int ) 
+override crc32c_impl extern const char * crc32c_impl ( void ) 

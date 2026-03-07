@@ -1,0 +1,15 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#gfp_t typedef unsigned int gfp_t 
+override s#lock_class_key struct lock_class_key { } 
+override __alloc_bucket_spinlocks int __alloc_bucket_spinlocks ( t#spinlock_t * * , unsigned int * , t#size_t , unsigned int , t#gfp_t , const char * , s#lock_class_key * ) 
+override free_bucket_spinlocks void free_bucket_spinlocks ( t#spinlock_t * ) 

@@ -1,0 +1,4 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override copy_to_user_fromio int copy_to_user_fromio ( void * , const volatile void * , t#size_t ) 
+override copy_from_user_toio int copy_from_user_toio ( volatile void * , const void * , t#size_t ) 

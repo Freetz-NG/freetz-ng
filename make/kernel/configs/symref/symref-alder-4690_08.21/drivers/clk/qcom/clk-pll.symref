@@ -1,0 +1,26 @@
+override s#clk_core struct clk_core { UNKNOWN } 
+override s#clk struct clk { UNKNOWN } 
+override s#clk_parent_data struct clk_parent_data { const s#clk_hw * hw ; const char * fw_name ; const char * name ; int index ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#clk_init_data struct clk_init_data { const char * name ; const s#clk_ops * ops ; const char * const * parent_names ; const s#clk_parent_data * parent_data ; const s#clk_hw * * parent_hws ; t#u8 num_parents ; unsigned long flags ; } 
+override s#clk_hw struct clk_hw { s#clk_core * core ; s#clk * clk ; const s#clk_init_data * init ; } 
+override s#clk_rate_request struct clk_rate_request { unsigned long rate ; unsigned long min_rate ; unsigned long max_rate ; unsigned long best_parent_rate ; s#clk_hw * best_parent_hw ; } 
+override s#clk_duty struct clk_duty { unsigned int num ; unsigned int den ; } 
+override s#dentry struct dentry { UNKNOWN } 
+override s#clk_ops struct clk_ops { int ( * prepare ) ( s#clk_hw * ) ; void ( * unprepare ) ( s#clk_hw * ) ; int ( * is_prepared ) ( s#clk_hw * ) ; void ( * unprepare_unused ) ( s#clk_hw * ) ; int ( * enable ) ( s#clk_hw * ) ; void ( * disable ) ( s#clk_hw * ) ; int ( * is_enabled ) ( s#clk_hw * ) ; void ( * disable_unused ) ( s#clk_hw * ) ; int ( * save_context ) ( s#clk_hw * ) ; void ( * restore_context ) ( s#clk_hw * ) ; unsigned long ( * recalc_rate ) ( s#clk_hw * , unsigned long ) ; long ( * round_rate ) ( s#clk_hw * , unsigned long , unsigned long * ) ; int ( * determine_rate ) ( s#clk_hw * , s#clk_rate_request * ) ; int ( * set_parent ) ( s#clk_hw * , t#u8 ) ; t#u8 ( * get_parent ) ( s#clk_hw * ) ; int ( * set_rate ) ( s#clk_hw * , unsigned long , unsigned long ) ; int ( * set_rate_and_parent ) ( s#clk_hw * , unsigned long , unsigned long , t#u8 ) ; unsigned long ( * recalc_accuracy ) ( s#clk_hw * , unsigned long ) ; int ( * get_phase ) ( s#clk_hw * ) ; int ( * set_phase ) ( s#clk_hw * , int ) ; int ( * get_duty_cycle ) ( s#clk_hw * , s#clk_duty * ) ; int ( * set_duty_cycle ) ( s#clk_hw * , s#clk_duty * ) ; void ( * init ) ( s#clk_hw * ) ; void ( * debug_init ) ( s#clk_hw * , s#dentry * ) ; } 
+override clk_pll_ops extern const s#clk_ops clk_pll_ops 
+override clk_pll_vote_ops extern const s#clk_ops clk_pll_vote_ops 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#pll_freq_tbl struct pll_freq_tbl { unsigned long freq ; t#u16 l ; t#u16 m ; t#u16 n ; t#u32 ibits ; } 
+override s#regmap struct regmap { UNKNOWN } 
+override t#bool typedef _Bool bool 
+override s#clk_regmap struct clk_regmap { s#clk_hw hw ; s#regmap * regmap ; unsigned int enable_reg ; unsigned int enable_mask ; t#bool enable_is_inverted ; } 
+override s#clk_pll struct clk_pll { t#u32 l_reg ; t#u32 m_reg ; t#u32 n_reg ; t#u32 config_reg ; t#u32 mode_reg ; t#u32 status_reg ; t#u8 status_bit ; t#u8 post_div_width ; t#u8 post_div_shift ; const s#pll_freq_tbl * freq_tbl ; s#clk_regmap clkr ; } 
+override s#pll_config struct pll_config { t#u16 l ; t#u32 m ; t#u32 n ; t#u32 vco_val ; t#u32 vco_mask ; t#u32 pre_div_val ; t#u32 pre_div_mask ; t#u32 post_div_val ; t#u32 post_div_mask ; t#u32 mn_ena_mask ; t#u32 main_output_mask ; t#u32 aux_output_mask ; } 
+override clk_pll_configure_sr void clk_pll_configure_sr ( s#clk_pll * , s#regmap * , const s#pll_config * , t#bool ) 
+override clk_pll_configure_sr_hpm_lp void clk_pll_configure_sr_hpm_lp ( s#clk_pll * , s#regmap * , const s#pll_config * , t#bool ) 
+override clk_pll_sr2_ops extern const s#clk_ops clk_pll_sr2_ops 

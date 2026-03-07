@@ -1,0 +1,25 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#gfp_t typedef unsigned int gfp_t 
+override s#xarray struct xarray { t#spinlock_t xa_lock ; t#gfp_t xa_flags ; void * xa_head ; } 
+override s#idr struct idr { s#xarray idr_rt ; unsigned int idr_base ; unsigned int idr_next ; } 
+override idr_alloc_u32 int idr_alloc_u32 ( s#idr * , void * , t#u32 * , unsigned long , t#gfp_t ) 
+override idr_alloc int idr_alloc ( s#idr * , void * , int , int , t#gfp_t ) 
+override idr_alloc_cyclic int idr_alloc_cyclic ( s#idr * , void * , int , int , t#gfp_t ) 
+override idr_remove void * idr_remove ( s#idr * , unsigned long ) 
+override idr_find void * idr_find ( const s#idr * , unsigned long ) 
+override idr_for_each int idr_for_each ( const s#idr * , int ( * ) ( int , void * , void * ) , void * ) 
+override idr_get_next_ul void * idr_get_next_ul ( s#idr * , unsigned long * ) 
+override idr_get_next void * idr_get_next ( s#idr * , int * ) 
+override idr_replace void * idr_replace ( s#idr * , void * , unsigned long ) 
+override s#ida struct ida { s#xarray xa ; } 
+override ida_alloc_range int ida_alloc_range ( s#ida * , unsigned int , unsigned int , t#gfp_t ) 
+override ida_free void ida_free ( s#ida * , unsigned int ) 
+override ida_destroy void ida_destroy ( s#ida * ) 

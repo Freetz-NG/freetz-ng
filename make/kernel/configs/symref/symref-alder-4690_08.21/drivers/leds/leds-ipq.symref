@@ -1,0 +1,4 @@
+override ipq_led_set_blink int ipq_led_set_blink ( int , unsigned long , unsigned long ) 
+override ipq_led_set_brightness int ipq_led_set_brightness ( int , unsigned int ) 
+override e#led_source enum led_source { WIFI_2G_0 , WIFI_2G_1 , WIFI_5G_0 , WIFI_5G_1 , LAN0_1000_LNK_ACTIVITY , LAN0_100_LNK_ACTIVITY , LAN0_10_LNK_ACTIVITY , LAN1_1000_LNK_ACTIVITY , LAN1_100_LNK_ACTIVITY , LAN1_10_LNK_ACTIVITY , LAN2_1000_LNK_ACTIVITY , LAN2_100_LNK_ACTIVITY , LAN2_10_LNK_ACTIVITY , LAN3_1000_LNK_ACTIVITY , LAN3_100_LNK_ACTIVITY , LAN3_10_LNK_ACTIVITY , WAN_1000_LNK_ACTIVITY , WAN_100_LNK_ACTIVITY , WAN_10_LNK_ACTIVITY , LEDC_ST_BLINK_0 , LEDC_ST_BLINK_1 , LEDC_ST_BLINK_2 , LEDC_ST_BLINK_3 } 
+override ipq_led_source_select int ipq_led_source_select ( int , e#led_source ) 

@@ -1,0 +1,43 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override strncasecmp extern int strncasecmp ( const char * , const char * , t#size_t ) 
+override strcasecmp extern int strcasecmp ( const char * , const char * ) 
+override strcpy extern char * strcpy ( char * , const char * ) 
+override strncpy extern char * strncpy ( char * , const char * , t#__kernel_size_t ) 
+override strlcpy t#size_t strlcpy ( char * , const char * , t#size_t ) 
+override t#__kernel_ssize_t typedef int __kernel_ssize_t 
+override t#ssize_t typedef t#__kernel_ssize_t ssize_t 
+override strscpy t#ssize_t strscpy ( char * , const char * , t#size_t ) 
+override strscpy_pad t#ssize_t strscpy_pad ( char * , const char * , t#size_t ) 
+override stpcpy char * stpcpy ( char * , const char * ) 
+override strcat extern char * strcat ( char * , const char * ) 
+override strncat extern char * strncat ( char * , const char * , t#__kernel_size_t ) 
+override strlcat extern t#size_t strlcat ( char * , const char * , t#__kernel_size_t ) 
+override strcmp extern int strcmp ( const char * , const char * ) 
+override strncmp extern int strncmp ( const char * , const char * , t#__kernel_size_t ) 
+override strchrnul extern char * strchrnul ( const char * , int ) 
+override strnchr extern char * strnchr ( const char * , t#size_t , int ) 
+override skip_spaces extern char * skip_spaces ( const char * ) 
+override strim extern char * strim ( char * ) 
+override strlen extern t#__kernel_size_t strlen ( const char * ) 
+override strnlen extern t#__kernel_size_t strnlen ( const char * , t#__kernel_size_t ) 
+override strspn extern t#__kernel_size_t strspn ( const char * , const char * ) 
+override strcspn extern t#__kernel_size_t strcspn ( const char * , const char * ) 
+override strpbrk extern char * strpbrk ( const char * , const char * ) 
+override strsep extern char * strsep ( char * * , const char * ) 
+override t#bool typedef _Bool bool 
+override sysfs_streq extern t#bool sysfs_streq ( const char * , const char * ) 
+override match_string int match_string ( const char * const * , t#size_t , const char * ) 
+override __sysfs_match_string int __sysfs_match_string ( const char * const * , t#size_t , const char * ) 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override t#uint16_t typedef t#u16 uint16_t 
+override memset16 extern void * memset16 ( t#uint16_t * , t#uint16_t , t#__kernel_size_t ) 
+override memcmp extern int memcmp ( const void * , const void * , t#__kernel_size_t ) 
+override bcmp extern int bcmp ( const void * , const void * , t#__kernel_size_t ) 
+override memscan extern void * memscan ( void * , int , t#__kernel_size_t ) 
+override strstr extern char * strstr ( const char * , const char * ) 
+override strnstr extern char * strnstr ( const char * , const char * , t#size_t ) 
+override memchr_inv void * memchr_inv ( const void * , int , t#size_t ) 
+override strreplace char * strreplace ( char * , char , char ) 
+override fortify_panic void fortify_panic ( const char * ) 

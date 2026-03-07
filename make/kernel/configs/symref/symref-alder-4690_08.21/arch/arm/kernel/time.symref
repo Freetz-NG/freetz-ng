@@ -1,0 +1,2 @@
+override s#pt_regs struct pt_regs { unsigned long uregs [ 18 ] ; } 
+override profile_pc extern unsigned long profile_pc ( s#pt_regs * ) 

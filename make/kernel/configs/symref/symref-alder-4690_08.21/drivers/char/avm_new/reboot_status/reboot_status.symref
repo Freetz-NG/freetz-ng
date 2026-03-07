@@ -1,0 +1,4 @@
+override e#_avm_reset_status enum _avm_reset_status { RS_UNSPECIFIED , RS_POWERON , RS_SOFTWATCHDOG , RS_NMIWATCHDOG , RS_REBOOT , RS_FIRMWAREUPDATE , RS_SHORTREBOOT , RS_BUSERROR , RS_TEMP_REBOOT , RS_PANIC , RS_OOM , RS_OOPS , RS_DYING_GASP , RS_DOCSIS_LOCAL , RS_DOCSIS_OPERATOR , RS_BOXCHANGE , RS_OPERATOR , } 
+override avm_reset_status extern e#_avm_reset_status avm_reset_status ( void ) 
+override avm_next_reset_status extern e#_avm_reset_status avm_next_reset_status ( void ) 
+override avm_set_reset_status extern void avm_set_reset_status ( e#_avm_reset_status ) 

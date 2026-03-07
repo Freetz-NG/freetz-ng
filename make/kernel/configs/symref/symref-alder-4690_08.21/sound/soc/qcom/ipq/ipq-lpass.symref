@@ -1,0 +1,28 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override ipq_lpass_pcm_reset void ipq_lpass_pcm_reset ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_pcm_reset_release void ipq_lpass_pcm_reset_release ( void * , t#uint32_t , t#uint32_t ) 
+override s#ipq_lpass_pcm_config struct ipq_lpass_pcm_config { t#uint32_t invert_sync ; t#uint32_t sync_src ; t#uint32_t bit_width ; t#uint32_t slot_count ; t#uint32_t sync_type ; t#uint32_t dir ; t#uint32_t pcm_index ; t#uint32_t sync_delay ; t#uint32_t slot_width ; t#uint32_t slot_mask ; t#uint32_t ctrl_data_oe ; } 
+override ipq_lpass_pcm_config void ipq_lpass_pcm_config ( s#ipq_lpass_pcm_config * , void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_pcm_enable void ipq_lpass_pcm_enable ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_pcm_disable void ipq_lpass_pcm_disable ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_pcm_enable_loopback void ipq_lpass_pcm_enable_loopback ( void * , t#uint32_t ) 
+override ipq_lpass_enable_dma_channel void ipq_lpass_enable_dma_channel ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_disable_dma_channel void ipq_lpass_disable_dma_channel ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_dma_clear_interrupt_config void ipq_lpass_dma_clear_interrupt_config ( void * , t#uint32_t , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_dma_disable_interrupt void ipq_lpass_dma_disable_interrupt ( void * , t#uint32_t , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_dma_enable_interrupt void ipq_lpass_dma_enable_interrupt ( void * , t#uint32_t , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_get_dma_fifo_count void ipq_lpass_get_dma_fifo_count ( void * , t#uint32_t * , t#uint32_t , t#uint32_t ) 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#uint8_t typedef t#u8 uint8_t 
+override s#lpass_dma_config struct lpass_dma_config { void * lpaif_base ; t#uint32_t buffer_start_addr ; t#uint32_t dma_int_per_cnt ; t#uint32_t buffer_len ; t#uint8_t burst_size ; t#uint8_t wps_count ; t#uint8_t watermark ; t#uint8_t ifconfig ; t#uint8_t idx ; t#uint8_t dir ; t#uint8_t burst8_en ; t#uint8_t burst16_en ; } 
+override ipq_lpass_config_dma_channel void ipq_lpass_config_dma_channel ( s#lpass_dma_config * ) 
+override ipq_lpass_dma_read_interrupt_status void ipq_lpass_dma_read_interrupt_status ( void * , t#uint32_t , t#uint32_t * ) 
+override ipq_lpass_dma_clear_interrupt void ipq_lpass_dma_clear_interrupt ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_dma_get_curr_addr void ipq_lpass_dma_get_curr_addr ( void * , t#uint32_t , t#uint32_t , t#uint32_t * ) 
+override ipq_lpass_dma_reset void ipq_lpass_dma_reset ( void * , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_set_clk_rate t#uint32_t ipq_lpass_set_clk_rate ( t#uint32_t , t#uint32_t ) 
+override ipq_lpass_lpaif_muxsetup void ipq_lpass_lpaif_muxsetup ( t#uint32_t , t#uint32_t , t#uint32_t , t#uint32_t ) 
+override ipq_lpass_phy_to_virt void * ipq_lpass_phy_to_virt ( t#uint32_t ) 

@@ -1,0 +1,33 @@
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override s#p9_qid struct p9_qid { t#u8 type ; t#u32 version ; t#u64 path ; } 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override t#__kernel_gid32_t typedef unsigned int __kernel_gid32_t 
+override t#gid_t typedef t#__kernel_gid32_t gid_t 
+override t#kgid_t typedef struct { t#gid_t val ; } kgid_t 
+override s#p9_wstat struct p9_wstat { t#u16 size ; t#u16 type ; t#u32 dev ; s#p9_qid qid ; t#u32 mode ; t#u32 atime ; t#u32 mtime ; t#u64 length ; const char * name ; const char * uid ; const char * gid ; const char * muid ; char * extension ; t#kuid_t n_uid ; t#kgid_t n_gid ; t#kuid_t n_muid ; } 
+override p9stat_free void p9stat_free ( s#p9_wstat * ) 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#p9_trans_module struct p9_trans_module { UNKNOWN } 
+override e#p9_trans_status enum p9_trans_status { Connected , BeginDisconnect , Disconnected , Hung , } 
+override s#kmem_cache struct kmem_cache { UNKNOWN } 
+override t#bool typedef _Bool bool 
+override t#gfp_t typedef unsigned int gfp_t 
+override s#xarray struct xarray { t#spinlock_t xa_lock ; t#gfp_t xa_flags ; void * xa_head ; } 
+override s#idr struct idr { s#xarray idr_rt ; unsigned int idr_base ; unsigned int idr_next ; } 
+override s#p9_client struct p9_client { t#spinlock_t lock ; unsigned int msize ; unsigned char proto_version ; s#p9_trans_module * trans_mod ; e#p9_trans_status status ; void * trans ; s#kmem_cache * fcall_cache ; union { struct { int rfd ; int wfd ; } fd ; struct { t#u16 port ; t#bool privport ; } tcp ; } trans_opts ; s#idr fids ; s#idr reqs ; char name [ 64 + 1 ] ; } 
+override p9stat_read int p9stat_read ( s#p9_client * , char * , int , s#p9_wstat * ) 
+override s#p9_dirent struct p9_dirent { s#p9_qid qid ; t#u64 d_off ; unsigned char d_type ; char d_name [ 256 ] ; } 
+override p9dirent_read int p9dirent_read ( s#p9_client * , char * , int , s#p9_dirent * ) 

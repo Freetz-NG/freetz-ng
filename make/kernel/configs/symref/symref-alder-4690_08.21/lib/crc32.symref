@@ -1,0 +1,9 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override crc32_le t#u32 __attribute__ ( ( __pure__ ) ) crc32_le ( t#u32 , unsigned char const * , t#size_t ) 
+override __crc32c_le t#u32 __attribute__ ( ( __pure__ ) ) __crc32c_le ( t#u32 , unsigned char const * , t#size_t ) 
+override crc32_le_shift t#u32 __attribute__ ( ( __const__ ) ) crc32_le_shift ( t#u32 , t#size_t ) 
+override __crc32c_le_shift t#u32 __attribute__ ( ( __const__ ) ) __crc32c_le_shift ( t#u32 , t#size_t ) 
+override crc32_be t#u32 __attribute__ ( ( __pure__ ) ) crc32_be ( t#u32 , unsigned char const * , t#size_t ) 

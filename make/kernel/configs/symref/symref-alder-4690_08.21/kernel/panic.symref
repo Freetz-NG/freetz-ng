@@ -1,0 +1,23 @@
+override panic_timeout extern int panic_timeout 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override s#atomic_notifier_head struct atomic_notifier_head { t#spinlock_t lock ; s#notifier_block * head ; } 
+override panic_notifier_list extern s#atomic_notifier_head panic_notifier_list 
+override panic_blink extern long ( * panic_blink ) ( int ) 
+override s#pt_regs struct pt_regs { unsigned long uregs [ 18 ] ; } 
+override nmi_panic void nmi_panic ( s#pt_regs * , const char * ) 
+override panic __attribute__ ( ( __format__ ( printf , 1 , 2 ) ) ) void panic ( const char * , ... ) 
+override test_taint extern int test_taint ( unsigned ) 
+override e#lockdep_ok enum lockdep_ok { LOCKDEP_STILL_OK , LOCKDEP_NOW_UNRELIABLE } 
+override add_taint extern void add_taint ( unsigned , e#lockdep_ok ) 
+override warn_slowpath_fmt extern __attribute__ ( ( __format__ ( printf , 4 , 5 ) ) ) void warn_slowpath_fmt ( const char * , const int , unsigned , const char * , ... ) 
+override __stack_chk_fail __attribute__ ( ( __externally_visible__ ) ) void __stack_chk_fail ( void ) 

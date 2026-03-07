@@ -1,0 +1,39 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override E#CLK_ALPHA_PLL_TYPE_MAX 10 
+override E#PLL_OFF_MAX_REGS 16 
+override clk_alpha_pll_regs extern const t#u8 clk_alpha_pll_regs [ E#CLK_ALPHA_PLL_TYPE_MAX ] [ E#PLL_OFF_MAX_REGS ] 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#pll_vco struct pll_vco { unsigned long min_freq ; unsigned long max_freq ; t#u32 val ; } 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override s#clk_core struct clk_core { UNKNOWN } 
+override s#clk struct clk { UNKNOWN } 
+override s#clk_rate_request struct clk_rate_request { unsigned long rate ; unsigned long min_rate ; unsigned long max_rate ; unsigned long best_parent_rate ; s#clk_hw * best_parent_hw ; } 
+override s#clk_duty struct clk_duty { unsigned int num ; unsigned int den ; } 
+override s#dentry struct dentry { UNKNOWN } 
+override s#clk_ops struct clk_ops { int ( * prepare ) ( s#clk_hw * ) ; void ( * unprepare ) ( s#clk_hw * ) ; int ( * is_prepared ) ( s#clk_hw * ) ; void ( * unprepare_unused ) ( s#clk_hw * ) ; int ( * enable ) ( s#clk_hw * ) ; void ( * disable ) ( s#clk_hw * ) ; int ( * is_enabled ) ( s#clk_hw * ) ; void ( * disable_unused ) ( s#clk_hw * ) ; int ( * save_context ) ( s#clk_hw * ) ; void ( * restore_context ) ( s#clk_hw * ) ; unsigned long ( * recalc_rate ) ( s#clk_hw * , unsigned long ) ; long ( * round_rate ) ( s#clk_hw * , unsigned long , unsigned long * ) ; int ( * determine_rate ) ( s#clk_hw * , s#clk_rate_request * ) ; int ( * set_parent ) ( s#clk_hw * , t#u8 ) ; t#u8 ( * get_parent ) ( s#clk_hw * ) ; int ( * set_rate ) ( s#clk_hw * , unsigned long , unsigned long ) ; int ( * set_rate_and_parent ) ( s#clk_hw * , unsigned long , unsigned long , t#u8 ) ; unsigned long ( * recalc_accuracy ) ( s#clk_hw * , unsigned long ) ; int ( * get_phase ) ( s#clk_hw * ) ; int ( * set_phase ) ( s#clk_hw * , int ) ; int ( * get_duty_cycle ) ( s#clk_hw * , s#clk_duty * ) ; int ( * set_duty_cycle ) ( s#clk_hw * , s#clk_duty * ) ; void ( * init ) ( s#clk_hw * ) ; void ( * debug_init ) ( s#clk_hw * , s#dentry * ) ; } 
+override s#clk_parent_data struct clk_parent_data { const s#clk_hw * hw ; const char * fw_name ; const char * name ; int index ; } 
+override s#clk_init_data struct clk_init_data { const char * name ; const s#clk_ops * ops ; const char * const * parent_names ; const s#clk_parent_data * parent_data ; const s#clk_hw * * parent_hws ; t#u8 num_parents ; unsigned long flags ; } 
+override s#clk_hw struct clk_hw { s#clk_core * core ; s#clk * clk ; const s#clk_init_data * init ; } 
+override s#regmap struct regmap { UNKNOWN } 
+override t#bool typedef _Bool bool 
+override s#clk_regmap struct clk_regmap { s#clk_hw hw ; s#regmap * regmap ; unsigned int enable_reg ; unsigned int enable_mask ; t#bool enable_is_inverted ; } 
+override s#clk_alpha_pll struct clk_alpha_pll { t#u32 offset ; const t#u8 * regs ; const s#pll_vco * vco_table ; t#size_t num_vco ; t#u8 flags ; s#clk_regmap clkr ; } 
+override s#alpha_pll_config struct alpha_pll_config { t#u32 l ; t#u32 alpha ; t#u32 alpha_hi ; t#u32 config_ctl_val ; t#u32 config_ctl_hi_val ; t#u32 main_output_mask ; t#u32 aux_output_mask ; t#u32 aux2_output_mask ; t#u32 early_output_mask ; t#u32 alpha_en_mask ; t#u32 alpha_mode_mask ; t#u32 pre_div_val ; t#u32 pre_div_mask ; t#u32 post_div_val ; t#u32 post_div_mask ; t#u32 vco_val ; t#u32 vco_mask ; t#u32 test_ctl_val ; t#u32 test_ctl_hi_val ; t#u32 status_reg_val ; t#u32 status_reg_mask ; t#u32 lock_det ; } 
+override clk_alpha_pll_configure void clk_alpha_pll_configure ( s#clk_alpha_pll * , s#regmap * , const s#alpha_pll_config * ) 
+override clk_alpha_pll_ops extern const s#clk_ops clk_alpha_pll_ops 
+override clk_alpha_pll_huayra_ops extern const s#clk_ops clk_alpha_pll_huayra_ops 
+override clk_alpha_pll_brammo_ops extern const s#clk_ops clk_alpha_pll_brammo_ops 
+override clk_alpha_pll_hwfsm_ops extern const s#clk_ops clk_alpha_pll_hwfsm_ops 
+override clk_alpha_pll_stromer_ops extern const s#clk_ops clk_alpha_pll_stromer_ops 
+override clk_alpha_pll_stromer_plus_ops extern const s#clk_ops clk_alpha_pll_stromer_plus_ops 
+override clk_trion_fixed_pll_ops extern const s#clk_ops clk_trion_fixed_pll_ops 
+override clk_alpha_pll_postdiv_ops extern const s#clk_ops clk_alpha_pll_postdiv_ops 
+override clk_alpha_pll_postdiv_ro_ops extern const s#clk_ops clk_alpha_pll_postdiv_ro_ops 
+override clk_fabia_pll_configure void clk_fabia_pll_configure ( s#clk_alpha_pll * , s#regmap * , const s#alpha_pll_config * ) 
+override clk_alpha_pll_fabia_ops extern const s#clk_ops clk_alpha_pll_fabia_ops 
+override clk_alpha_pll_fixed_fabia_ops extern const s#clk_ops clk_alpha_pll_fixed_fabia_ops 
+override clk_trion_pll_postdiv_ops extern const s#clk_ops clk_trion_pll_postdiv_ops 
+override clk_alpha_pll_postdiv_fabia_ops extern const s#clk_ops clk_alpha_pll_postdiv_fabia_ops 

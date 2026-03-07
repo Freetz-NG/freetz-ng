@@ -1,0 +1,3 @@
+override s#fixed_phy_status struct fixed_phy_status { int link ; int speed ; int duplex ; int pause ; int asym_pause ; } 
+override swphy_validate_state int swphy_validate_state ( const s#fixed_phy_status * ) 
+override swphy_read_reg int swphy_read_reg ( int , const s#fixed_phy_status * ) 

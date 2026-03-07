@@ -1,0 +1,3 @@
+override ipq_get_cyclefreq unsigned int ipq_get_cyclefreq ( void ) 
+override ipq_cycles_to_usec unsigned long ipq_cycles_to_usec ( unsigned long ) 
+override ipq_get_cycles unsigned int ipq_get_cycles ( void ) 

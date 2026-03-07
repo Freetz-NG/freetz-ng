@@ -1,0 +1,7 @@
+override _adss_audio_write void _adss_audio_write ( unsigned int , unsigned int , const char * __attribute__ ( ( __unused__ ) ) ) 
+override _adss_audio_read unsigned int _adss_audio_read ( unsigned int , const char * __attribute__ ( ( __unused__ ) ) ) 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override ipq_audio_adss_writel extern void ipq_audio_adss_writel ( t#uint32_t , t#uint32_t ) 
+override ipq_audio_adss_readl extern t#uint32_t ipq_audio_adss_readl ( t#uint32_t ) 

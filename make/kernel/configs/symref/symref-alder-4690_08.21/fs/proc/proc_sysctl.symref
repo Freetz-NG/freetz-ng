@@ -1,0 +1,44 @@
+override sysctl_vals extern const int sysctl_vals [ ] 
+override t#umode_t typedef unsigned short umode_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#__kernel_loff_t typedef long long __kernel_loff_t 
+override t#loff_t typedef t#__kernel_loff_t loff_t 
+override t#proc_handler typedef int proc_handler ( s#ctl_table * , int , void * , t#size_t * , t#loff_t * ) 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#wait_queue_head struct wait_queue_head { t#spinlock_t lock ; s#list_head head ; } 
+override t#wait_queue_head_t typedef s#wait_queue_head wait_queue_head_t 
+override s#ctl_table_poll struct ctl_table_poll { t#atomic_t event ; t#wait_queue_head_t wait ; } 
+override s#ctl_table struct ctl_table { const char * procname ; void * data ; int maxlen ; t#umode_t mode ; s#ctl_table * child ; t#proc_handler * proc_handler ; s#ctl_table_poll * poll ; void * extra1 ; void * extra2 ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#completion struct completion { unsigned int done ; t#wait_queue_head_t wait ; } 
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override s#rb_root struct rb_root { s#rb_node * rb_node ; } 
+override s#ctl_dir struct ctl_dir { s#ctl_table_header header ; s#rb_root root ; } 
+override s#ctl_table_set struct ctl_table_set { int ( * is_seen ) ( s#ctl_table_set * ) ; s#ctl_dir dir ; } 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override t#__kernel_gid32_t typedef unsigned int __kernel_gid32_t 
+override t#gid_t typedef t#__kernel_gid32_t gid_t 
+override t#kgid_t typedef struct { t#gid_t val ; } kgid_t 
+override s#ctl_table_root struct ctl_table_root { s#ctl_table_set default_set ; s#ctl_table_set * ( * lookup ) ( s#ctl_table_root * ) ; void ( * set_ownership ) ( s#ctl_table_header * , s#ctl_table * , t#kuid_t * , t#kgid_t * ) ; int ( * permissions ) ( s#ctl_table_header * , s#ctl_table * ) ; } 
+override s#ctl_node struct ctl_node { s#rb_node node ; s#ctl_table_header * header ; } 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override s#hlist_head struct hlist_head { s#hlist_node * first ; } 
+override s#ctl_table_header struct ctl_table_header { union { struct { s#ctl_table * ctl_table ; int used ; int count ; int nreg ; } ; s#callback_head rcu ; } ; s#completion * unregistering ; s#ctl_table * ctl_table_arg ; s#ctl_table_root * root ; s#ctl_table_set * set ; s#ctl_dir * parent ; s#ctl_node * node ; s#hlist_head inodes ; } 
+override register_sysctl s#ctl_table_header * register_sysctl ( const char * , s#ctl_table * ) 
+override s#ctl_path struct ctl_path { const char * procname ; } 
+override register_sysctl_paths s#ctl_table_header * register_sysctl_paths ( const s#ctl_path * , s#ctl_table * ) 
+override register_sysctl_table s#ctl_table_header * register_sysctl_table ( s#ctl_table * ) 
+override unregister_sysctl_table void unregister_sysctl_table ( s#ctl_table_header * ) 

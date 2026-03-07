@@ -1,0 +1,5 @@
+override simplemempool_alloc_init void * simplemempool_alloc_init ( const char * , unsigned int ) 
+override simplemempool_alloc_exit void simplemempool_alloc_exit ( void * ) 
+override simplemempool_alloc void * simplemempool_alloc ( void * , unsigned int , int , void * ) 
+override simplemempool_free void simplemempool_free ( void * , const void * , void * ) 
+override simplemempool_size int simplemempool_size ( void * , const void * ) 

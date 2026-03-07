@@ -1,0 +1,16 @@
+override simple_strtoull extern unsigned long long simple_strtoull ( const char * , char * * , unsigned int ) 
+override simple_strtoul extern unsigned long simple_strtoul ( const char * , char * * , unsigned int ) 
+override simple_strtol extern long simple_strtol ( const char * , char * * , unsigned int ) 
+override simple_strtoll extern long long simple_strtoll ( const char * , char * * , unsigned int ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#__gnuc_va_list typedef __builtin_va_list __gnuc_va_list 
+override t#va_list typedef t#__gnuc_va_list va_list 
+override vsnprintf extern __attribute__ ( ( __format__ ( printf , 3 , 0 ) ) ) int vsnprintf ( char * , t#size_t , const char * , t#va_list ) 
+override vscnprintf extern __attribute__ ( ( __format__ ( printf , 3 , 0 ) ) ) int vscnprintf ( char * , t#size_t , const char * , t#va_list ) 
+override snprintf extern __attribute__ ( ( __format__ ( printf , 3 , 4 ) ) ) int snprintf ( char * , t#size_t , const char * , ... ) 
+override scnprintf extern __attribute__ ( ( __format__ ( printf , 3 , 4 ) ) ) int scnprintf ( char * , t#size_t , const char * , ... ) 
+override vsprintf extern __attribute__ ( ( __format__ ( printf , 2 , 0 ) ) ) int vsprintf ( char * , const char * , t#va_list ) 
+override sprintf extern __attribute__ ( ( __format__ ( printf , 2 , 3 ) ) ) int sprintf ( char * , const char * , ... ) 
+override vsscanf extern __attribute__ ( ( __format__ ( scanf , 2 , 0 ) ) ) int vsscanf ( const char * , const char * , t#va_list ) 
+override sscanf extern __attribute__ ( ( __format__ ( scanf , 2 , 3 ) ) ) int sscanf ( const char * , const char * , ... ) 

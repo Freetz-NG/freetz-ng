@@ -1,0 +1,84 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override sps_get_bam_debug_info int sps_get_bam_debug_info ( unsigned long , t#u32 , t#u32 , t#u32 , t#u32 ) 
+override t#phys_addr_t typedef t#u32 phys_addr_t 
+override sps_phy2h int sps_phy2h ( t#phys_addr_t , unsigned long * ) 
+override s#sps_mem_buffer struct sps_mem_buffer { void * base ; t#phys_addr_t phys_base ; unsigned long iova ; t#u32 size ; t#u32 min_size ; } 
+override sps_setup_bam2bam_fifo int sps_setup_bam2bam_fifo ( s#sps_mem_buffer * , t#u32 , t#u32 , int ) 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override e#sps_callback_case enum sps_callback_case { SPS_CALLBACK_BAM_ERROR_IRQ = 1 , SPS_CALLBACK_BAM_HRESP_ERR_IRQ , SPS_CALLBACK_BAM_TIMER_IRQ , SPS_CALLBACK_BAM_RES_REQ , SPS_CALLBACK_BAM_RES_REL , SPS_CALLBACK_BAM_POLL , } 
+override s#sps_bam_pipe_sec_config_props struct sps_bam_pipe_sec_config_props { t#u32 pipe_mask ; t#u32 vmid ; } 
+override s#sps_bam_sec_config_props struct sps_bam_sec_config_props { s#sps_bam_pipe_sec_config_props ees [ 4 ] ; } 
+override t#bool typedef _Bool bool 
+override s#sps_bam_props struct sps_bam_props { t#u32 options ; t#phys_addr_t phys_addr ; void * virt_addr ; t#u32 virt_size ; t#u32 irq ; t#u32 num_pipes ; t#u32 summing_threshold ; t#u32 periph_class ; t#u32 periph_dev_id ; t#phys_addr_t periph_phys_addr ; void * periph_virt_addr ; t#u32 periph_virt_size ; t#u32 event_threshold ; t#u32 desc_size ; t#u32 data_size ; t#u32 desc_mem_id ; t#u32 data_mem_id ; void ( * callback ) ( e#sps_callback_case , void * ) ; void * user ; t#u32 manage ; t#u32 restricted_pipes ; t#u32 ee ; t#u32 ipc_loglevel ; t#u32 irq_gen_addr ; t#u32 sec_config ; s#sps_bam_sec_config_props * p_sec_config_props ; t#bool constrained_logging ; t#u32 logging_number ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override s#mutex struct mutex { t#atomic_long_t owner ; t#spinlock_t wait_lock ; s#optimistic_spin_queue osq ; s#list_head wait_list ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#sps_bam struct sps_bam { s#list_head list ; s#sps_bam_props props ; t#u32 state ; s#mutex lock ; void * base ; t#u32 version ; t#spinlock_t isr_lock ; t#spinlock_t connection_lock ; unsigned long irqsave_flags ; t#u32 pipe_active_mask ; t#u32 pipe_remote_mask ; s#sps_pipe * pipes [ 31 ] ; s#list_head pipes_q ; t#u32 irq_from_disabled_pipe ; t#u32 event_trigger_failures ; void * ipc_log0 ; void * ipc_log1 ; void * ipc_log2 ; void * ipc_log3 ; void * ipc_log4 ; t#u32 ipc_loglevel ; t#u8 * desc_cache_pointers [ 31 ] ; } 
+override e#sps_mode enum sps_mode { SPS_MODE_SRC = 0 , SPS_MODE_DEST , } 
+override e#sps_option enum sps_option { SPS_O_DESC_DONE = 0x00000001 , SPS_O_INACTIVE = 0x00000002 , SPS_O_WAKEUP = 0x00000004 , SPS_O_OUT_OF_DESC = 0x00000008 , SPS_O_ERROR = 0x00000010 , SPS_O_EOT = 0x00000020 , SPS_O_RST_ERROR = 0x00000040 , SPS_O_HRESP_ERROR = 0x00000080 , SPS_O_STREAMING = 0x00010000 , SPS_O_IRQ_MTI = 0x00020000 , SPS_O_WRITE_NWD = 0x00040000 , SPS_O_LATE_EOT = 0x00080000 , SPS_O_NO_DISABLE = 0x00800000 , SPS_O_POLL = 0x01000000 , SPS_O_NO_Q = 0x02000000 , SPS_O_FLOWOFF = 0x04000000 , SPS_O_WAKEUP_IS_ONESHOT = 0x08000000 , SPS_O_ACK_TRANSFERS = 0x10000000 , SPS_O_AUTO_ENABLE = 0x20000000 , SPS_O_NO_EP_SYNC = 0x40000000 , SPS_O_HYBRID = 0x80000000 , } 
+override s#sps_connect struct sps_connect { unsigned long source ; unsigned long source_iova ; t#u32 src_pipe_index ; unsigned long destination ; unsigned long dest_iova ; t#u32 dest_pipe_index ; e#sps_mode mode ; t#u32 config ; e#sps_option options ; s#sps_mem_buffer desc ; s#sps_mem_buffer data ; t#u32 event_thresh ; t#u32 lock_group ; t#u32 irq_gen_addr ; t#u32 irq_gen_data ; t#u32 sps_reserved ; } 
+override s#sps_conn_end_pt struct sps_conn_end_pt { unsigned long dev ; t#phys_addr_t bam_phys ; t#u32 pipe_index ; t#u32 event_threshold ; t#u32 lock_group ; void * bam ; } 
+override s#sps_connection struct sps_connection { s#list_head list ; s#sps_conn_end_pt src ; s#sps_conn_end_pt dest ; s#sps_mem_buffer desc ; s#sps_mem_buffer data ; t#u32 config ; void * client_src ; void * client_dest ; int refs ; t#u32 alloc_src_pipe ; t#u32 alloc_dest_pipe ; t#phys_addr_t alloc_desc_base ; t#phys_addr_t alloc_data_base ; } 
+override s#wait_queue_head struct wait_queue_head { t#spinlock_t lock ; s#list_head head ; } 
+override t#wait_queue_head_t typedef s#wait_queue_head wait_queue_head_t 
+override s#completion struct completion { unsigned int done ; t#wait_queue_head_t wait ; } 
+override e#sps_event enum sps_event { SPS_EVENT_INVALID = 0 , SPS_EVENT_EOT , SPS_EVENT_DESC_DONE , SPS_EVENT_OUT_OF_DESC , SPS_EVENT_WAKEUP , SPS_EVENT_FLOWOFF , SPS_EVENT_INACTIVE , SPS_EVENT_ERROR , SPS_EVENT_RST_ERROR , SPS_EVENT_HRESP_ERROR , SPS_EVENT_MAX , } 
+override s#sps_iovec struct sps_iovec { t#u32 addr ; t#u32 size : 16 ; t#u32 flags : 16 ; } 
+override s#sps_event_notify struct sps_event_notify { void * user ; e#sps_event event_id ; union { struct { t#u32 mask ; } irq ; struct { s#sps_iovec iovec ; void * user ; } transfer ; struct { t#u32 status ; } err ; } data ; } 
+override e#sps_trigger enum sps_trigger { SPS_TRIGGER_CALLBACK = 0 , SPS_TRIGGER_WAIT , } 
+override s#sps_bam_event_reg struct sps_bam_event_reg { s#completion * xfer_done ; void ( * callback ) ( s#sps_event_notify * ) ; e#sps_trigger mode ; void * user ; } 
+override E#SPS_EVENT_MAX ( 0 ) + 10 
+override s#sps_q_event struct sps_q_event { s#list_head list ; s#sps_event_notify notify ; } 
+override s#sps_bam_sys_mode struct sps_bam_sys_mode { t#u8 * desc_buf ; t#u32 desc_offset ; t#u32 acked_offset ; t#u8 * desc_cache ; t#u32 cache_offset ; void * * user_ptrs ; s#sps_bam_event_reg event_regs [ ( ( E#SPS_EVENT_MAX ) - 1 ) ] ; s#list_head events_q ; s#sps_q_event event ; int no_queue ; int ack_xfers ; int handler_eot ; } 
+override s#sps_pipe struct sps_pipe { s#list_head list ; t#u32 client_state ; s#sps_bam * bam ; s#sps_connect connect ; const s#sps_connection * map ; t#u32 state ; t#u32 pipe_index ; t#u32 pipe_index_mask ; t#u32 irq_mask ; int polled ; int hybrid ; t#bool late_eot ; t#u32 irq_gen_addr ; e#sps_mode mode ; t#u32 num_descs ; t#u32 desc_size ; int wake_up_is_one_shot ; s#sps_bam_sys_mode sys ; t#bool disconnecting ; } 
+override sps_connect int sps_connect ( s#sps_pipe * , s#sps_connect * ) 
+override sps_disconnect int sps_disconnect ( s#sps_pipe * ) 
+override s#sps_register_event struct sps_register_event { e#sps_option options ; e#sps_trigger mode ; s#completion * xfer_done ; void ( * callback ) ( s#sps_event_notify * ) ; void * user ; } 
+override sps_register_event int sps_register_event ( s#sps_pipe * , s#sps_register_event * ) 
+override sps_flow_on int sps_flow_on ( s#sps_pipe * ) 
+override e#sps_flow_off enum sps_flow_off { SPS_FLOWOFF_FORCED = 0 , SPS_FLOWOFF_GRACEFUL , } 
+override sps_flow_off int sps_flow_off ( s#sps_pipe * , e#sps_flow_off ) 
+override s#sps_transfer struct sps_transfer { t#phys_addr_t iovec_phys ; s#sps_iovec * iovec ; t#u32 iovec_count ; void * user ; } 
+override sps_transfer int sps_transfer ( s#sps_pipe * , s#sps_transfer * ) 
+override sps_transfer_one int sps_transfer_one ( s#sps_pipe * , t#phys_addr_t , t#u32 , void * , t#u32 ) 
+override sps_get_event int sps_get_event ( s#sps_pipe * , s#sps_event_notify * ) 
+override sps_is_pipe_empty int sps_is_pipe_empty ( s#sps_pipe * , t#u32 * ) 
+override sps_get_free_count int sps_get_free_count ( s#sps_pipe * , t#u32 * ) 
+override sps_device_reset int sps_device_reset ( unsigned long ) 
+override sps_get_config int sps_get_config ( s#sps_pipe * , s#sps_connect * ) 
+override sps_set_config int sps_set_config ( s#sps_pipe * , s#sps_connect * ) 
+override e#sps_owner enum sps_owner { SPS_OWNER_LOCAL = 0x1 , SPS_OWNER_REMOTE = 0x2 , } 
+override s#sps_satellite struct sps_satellite { t#phys_addr_t dev ; t#u32 pipe_index ; t#u32 config ; e#sps_option options ; } 
+override sps_set_owner int sps_set_owner ( s#sps_pipe * , e#sps_owner , s#sps_satellite * ) 
+override e#sps_mem enum sps_mem { SPS_MEM_LOCAL = 0 , SPS_MEM_UC , } 
+override sps_alloc_mem int sps_alloc_mem ( s#sps_pipe * , e#sps_mem , s#sps_mem_buffer * ) 
+override sps_free_mem int sps_free_mem ( s#sps_pipe * , s#sps_mem_buffer * ) 
+override sps_get_unused_desc_num int sps_get_unused_desc_num ( s#sps_pipe * , t#u32 * ) 
+override sps_ctrl_bam_dma_clk int sps_ctrl_bam_dma_clk ( t#bool ) 
+override sps_register_bam_device int sps_register_bam_device ( const s#sps_bam_props * , unsigned long * ) 
+override sps_deregister_bam_device int sps_deregister_bam_device ( unsigned long ) 
+override sps_get_iovec int sps_get_iovec ( s#sps_pipe * , s#sps_iovec * ) 
+override e#sps_timer_op enum sps_timer_op { SPS_TIMER_OP_CONFIG = 0 , SPS_TIMER_OP_RESET , SPS_TIMER_OP_READ , } 
+override e#sps_timer_mode enum sps_timer_mode { SPS_TIMER_MODE_ONESHOT = 0 , } 
+override s#sps_timer_ctrl struct sps_timer_ctrl { e#sps_timer_op op ; e#sps_timer_mode mode ; t#u32 timeout_msec ; } 
+override s#sps_timer_result struct sps_timer_result { t#u32 current_timer ; } 
+override sps_timer_ctrl int sps_timer_ctrl ( s#sps_pipe * , s#sps_timer_ctrl * , s#sps_timer_result * ) 
+override sps_pipe_reset int sps_pipe_reset ( unsigned long , t#u32 ) 
+override sps_pipe_disable int sps_pipe_disable ( unsigned long , t#u32 ) 
+override sps_pipe_pending_desc int sps_pipe_pending_desc ( unsigned long , t#u32 , t#bool * ) 
+override sps_bam_process_irq int sps_bam_process_irq ( unsigned long ) 
+override sps_get_bam_addr int sps_get_bam_addr ( unsigned long , t#phys_addr_t * , t#u32 * ) 
+override sps_pipe_inject_zlt int sps_pipe_inject_zlt ( unsigned long , t#u32 ) 
+override sps_alloc_endpoint s#sps_pipe * sps_alloc_endpoint ( void ) 
+override sps_free_endpoint int sps_free_endpoint ( s#sps_pipe * ) 

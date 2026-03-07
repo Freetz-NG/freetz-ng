@@ -1,0 +1,4 @@
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override avm_oom_info_chain_register int avm_oom_info_chain_register ( s#notifier_block * ) 
+override avm_oom_info_chain_unregister int avm_oom_info_chain_unregister ( s#notifier_block * ) 

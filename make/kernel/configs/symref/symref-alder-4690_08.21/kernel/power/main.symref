@@ -1,0 +1,9 @@
+override lock_system_sleep extern void lock_system_sleep ( void ) 
+override unlock_system_sleep extern void unlock_system_sleep ( void ) 
+override ksys_sync_helper extern void ksys_sync_helper ( void ) 
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override register_pm_notifier extern int register_pm_notifier ( s#notifier_block * ) 
+override unregister_pm_notifier extern int unregister_pm_notifier ( s#notifier_block * ) 
+override s#workqueue_struct struct workqueue_struct { UNKNOWN } 
+override pm_wq extern s#workqueue_struct * pm_wq 

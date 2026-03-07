@@ -1,0 +1,13 @@
+override t#__u32 typedef unsigned int __u32 
+override t#__be32 typedef t#__u32 __be32 
+override s#in_addr struct in_addr { t#__be32 s_addr ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#__u16 typedef unsigned short __u16 
+override t#__be16 typedef t#__u16 __be16 
+override s#in6_addr struct in6_addr { union { t#__u8 u6_addr8 [ 16 ] ; t#__be16 u6_addr16 [ 8 ] ; t#__be32 u6_addr32 [ 4 ] ; } in6_u ; } 
+override u#nf_inet_addr union nf_inet_addr { t#__u32 all [ 4 ] ; t#__be32 ip ; t#__be32 ip6 [ 4 ] ; s#in_addr in ; s#in6_addr in6 ; } 
+override ip_set_netmask_map extern const u#nf_inet_addr ip_set_netmask_map [ ] 
+override ip_set_hostmask_map extern const u#nf_inet_addr ip_set_hostmask_map [ ] 
+override t#u32 typedef t#__u32 u32 
+override t#u8 typedef t#__u8 u8 
+override ip_set_range_to_cidr extern t#u32 ip_set_range_to_cidr ( t#u32 , t#u32 , t#u8 * ) 

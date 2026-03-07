@@ -1,0 +1,2 @@
+override suspend_device_irqs extern void suspend_device_irqs ( void ) 
+override resume_device_irqs extern void resume_device_irqs ( void ) 

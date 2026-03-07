@@ -1,0 +1,2 @@
+override p9_error_init int p9_error_init ( void ) 
+override p9_errstr2errno int p9_errstr2errno ( char * , int ) 

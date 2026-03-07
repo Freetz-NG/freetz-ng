@@ -1,0 +1,5 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override s#update_util_data struct update_util_data { void ( * func ) ( s#update_util_data * , t#u64 , unsigned int ) ; } 
+override cpufreq_add_update_util_hook void cpufreq_add_update_util_hook ( int , s#update_util_data * , void ( * ) ( s#update_util_data * , t#u64 , unsigned int ) ) 
+override cpufreq_remove_update_util_hook void cpufreq_remove_update_util_hook ( int ) 

@@ -1,0 +1,2 @@
+override e#tick_broadcast_state enum tick_broadcast_state { TICK_BROADCAST_EXIT , TICK_BROADCAST_ENTER , } 
+override tick_broadcast_oneshot_control extern int tick_broadcast_oneshot_control ( e#tick_broadcast_state ) 

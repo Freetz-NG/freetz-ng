@@ -1,0 +1,1 @@
+override sched_clock extern unsigned long long __attribute__ ( ( __no_instrument_function__ ) ) sched_clock ( void ) 

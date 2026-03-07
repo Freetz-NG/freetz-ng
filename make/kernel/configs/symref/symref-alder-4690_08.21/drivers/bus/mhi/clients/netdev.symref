@@ -1,0 +1,5 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override drop_at_rmnet t#u32 drop_at_rmnet 
+override nr_rmnet_pkts unsigned long long nr_rmnet_pkts 
+override rmnet_rx_bytes unsigned long long rmnet_rx_bytes 

@@ -1,0 +1,78 @@
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override t#int32_t typedef t#s32 int32_t 
+override t#key_serial_t typedef t#int32_t key_serial_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#mutex struct mutex { t#atomic_long_t owner ; t#spinlock_t wait_lock ; s#optimistic_spin_queue osq ; s#list_head wait_list ; } 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override s#key_user struct key_user { s#rb_node node ; s#mutex cons_lock ; t#spinlock_t lock ; t#refcount_t usage ; t#atomic_t nkeys ; t#atomic_t nikeys ; t#kuid_t uid ; int qnkeys ; int qnbytes ; } 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#time64_t typedef t#__s64 time64_t 
+override t#__kernel_gid32_t typedef unsigned int __kernel_gid32_t 
+override t#gid_t typedef t#__kernel_gid32_t gid_t 
+override t#kgid_t typedef struct { t#gid_t val ; } kgid_t 
+override t#uint32_t typedef t#u32 uint32_t 
+override t#key_perm_t typedef t#uint32_t key_perm_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override u#key_payload union key_payload { void * rcu_data0 ; void * data [ 4 ] ; } 
+override s#key_preparsed_payload struct key_preparsed_payload { char * description ; u#key_payload payload ; const void * data ; t#size_t datalen ; t#size_t quotalen ; t#time64_t expiry ; } 
+override t#bool typedef _Bool bool 
+override s#key_match_data struct key_match_data { t#bool ( * cmp ) ( const s#key * , const s#key_match_data * ) ; const void * raw_data ; void * preparsed ; unsigned lookup_type ; } 
+override s#seq_file struct seq_file { UNKNOWN } 
+override t#request_key_actor_t typedef int ( * request_key_actor_t ) ( s#key * , void * ) 
+override t#key_restrict_link_func_t typedef int ( * key_restrict_link_func_t ) ( s#key * , const s#key_type * , const u#key_payload * , s#key * ) 
+override s#key_restriction struct key_restriction { t#key_restrict_link_func_t check ; s#key * key ; s#key_type * keytype ; } 
+override e#kernel_pkey_operation enum kernel_pkey_operation { kernel_pkey_encrypt , kernel_pkey_decrypt , kernel_pkey_sign , kernel_pkey_verify , } 
+override s#kernel_pkey_params struct kernel_pkey_params { s#key * key ; const char * encoding ; const char * hash_algo ; char * info ; t#__u32 in_len ; union { t#__u32 out_len ; t#__u32 in2_len ; } ; e#kernel_pkey_operation op : 8 ; } 
+override s#kernel_pkey_query struct kernel_pkey_query { t#__u32 supported_ops ; t#__u32 key_size ; t#__u16 max_data_size ; t#__u16 max_sig_size ; t#__u16 max_enc_size ; t#__u16 max_dec_size ; } 
+override s#lock_class_key struct lock_class_key { } 
+override s#key_type struct key_type { const char * name ; t#size_t def_datalen ; unsigned int flags ; int ( * vet_description ) ( const char * ) ; int ( * preparse ) ( s#key_preparsed_payload * ) ; void ( * free_preparse ) ( s#key_preparsed_payload * ) ; int ( * instantiate ) ( s#key * , s#key_preparsed_payload * ) ; int ( * update ) ( s#key * , s#key_preparsed_payload * ) ; int ( * match_preparse ) ( s#key_match_data * ) ; void ( * match_free ) ( s#key_match_data * ) ; void ( * revoke ) ( s#key * ) ; void ( * destroy ) ( s#key * ) ; void ( * describe ) ( const s#key * , s#seq_file * ) ; long ( * read ) ( const s#key * , char * , t#size_t ) ; t#request_key_actor_t request_key ; s#key_restriction * ( * lookup_restriction ) ( const char * ) ; int ( * asym_query ) ( const s#kernel_pkey_params * , s#kernel_pkey_query * ) ; int ( * asym_eds_op ) ( s#kernel_pkey_params * , const void * , void * ) ; int ( * asym_verify_signature ) ( s#kernel_pkey_params * , const void * , const void * ) ; s#list_head link ; s#lock_class_key lock_class ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#key_tag struct key_tag { s#callback_head rcu ; t#refcount_t usage ; t#bool removed ; } 
+override s#keyring_index_key struct keyring_index_key { unsigned long hash ; union { struct { t#u16 desc_len ; char desc [ sizeof ( long ) - 2 ] ; } ; unsigned long x ; } ; s#key_type * type ; s#key_tag * domain_tag ; const char * description ; } 
+override s#assoc_array_ptr struct assoc_array_ptr { UNKNOWN } 
+override s#assoc_array struct assoc_array { s#assoc_array_ptr * root ; unsigned long nr_leaves_on_tree ; } 
+override s#key struct key { t#refcount_t usage ; t#key_serial_t serial ; union { s#list_head graveyard_link ; s#rb_node serial_node ; } ; s#rw_semaphore sem ; s#key_user * user ; void * security ; union { t#time64_t expiry ; t#time64_t revoked_at ; } ; t#time64_t last_used_at ; t#kuid_t uid ; t#kgid_t gid ; t#key_perm_t perm ; unsigned short quotalen ; unsigned short datalen ; short state ; unsigned long flags ; union { s#keyring_index_key index_key ; struct { unsigned long hash ; unsigned long len_desc ; s#key_type * type ; s#key_tag * domain_tag ; char * description ; } ; } ; union { u#key_payload payload ; struct { s#list_head name_link ; s#assoc_array keys ; } ; } ; s#key_restriction * restrict_link ; } 
+override s#kernel_cap_struct struct kernel_cap_struct { t#__u32 cap [ 2 ] ; } 
+override t#kernel_cap_t typedef s#kernel_cap_struct kernel_cap_t 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override s#ratelimit_state struct ratelimit_state { t#raw_spinlock_t lock ; int interval ; int burst ; int printed ; int missed ; unsigned long begin ; unsigned long flags ; } 
+override s#user_struct struct user_struct { t#refcount_t __count ; t#atomic_t processes ; t#atomic_t sigpending ; t#atomic_t fanotify_listeners ; t#atomic_long_t epoll_watches ; unsigned long mq_bytes ; unsigned long locked_shm ; unsigned long unix_inflight ; t#atomic_long_t pipe_bufs ; s#hlist_node uidhash_node ; t#kuid_t uid ; t#atomic_long_t locked_vm ; s#ratelimit_state ratelimit ; } 
+override s#user_namespace struct user_namespace { UNKNOWN } 
+override s#group_info struct group_info { t#atomic_t usage ; int ngroups ; t#kgid_t gid [ 0 ] ; } 
+override s#cred struct cred { t#atomic_t usage ; t#kuid_t uid ; t#kgid_t gid ; t#kuid_t suid ; t#kgid_t sgid ; t#kuid_t euid ; t#kgid_t egid ; t#kuid_t fsuid ; t#kgid_t fsgid ; unsigned securebits ; t#kernel_cap_t cap_inheritable ; t#kernel_cap_t cap_permitted ; t#kernel_cap_t cap_effective ; t#kernel_cap_t cap_bset ; t#kernel_cap_t cap_ambient ; unsigned char jit_keyring ; s#key * session_keyring ; s#key * process_keyring ; s#key * thread_keyring ; s#key * request_key_auth ; void * security ; s#user_struct * user ; s#user_namespace * user_ns ; s#group_info * group_info ; union { int non_rcu ; s#callback_head rcu ; } ; } 
+override key_alloc extern s#key * key_alloc ( s#key_type * , const char * , t#kuid_t , t#kgid_t , const s#cred * , t#key_perm_t , unsigned long , s#key_restriction * ) 
+override key_payload_reserve extern int key_payload_reserve ( s#key * , t#size_t ) 
+override key_instantiate_and_link extern int key_instantiate_and_link ( s#key * , const void * , t#size_t , s#key * , s#key * ) 
+override key_reject_and_link extern int key_reject_and_link ( s#key * , unsigned , unsigned , s#key * , s#key * ) 
+override key_put extern void key_put ( s#key * ) 
+override key_set_timeout extern void key_set_timeout ( s#key * , unsigned ) 
+override s#__key_reference_with_attributes struct __key_reference_with_attributes { UNKNOWN } 
+override t#key_ref_t typedef s#__key_reference_with_attributes * key_ref_t 
+override key_create_or_update extern t#key_ref_t key_create_or_update ( t#key_ref_t , const char * , const char * , const void * , t#size_t , t#key_perm_t , unsigned long ) 
+override key_update extern int key_update ( t#key_ref_t , const void * , t#size_t ) 
+override key_revoke extern void key_revoke ( s#key * ) 
+override key_invalidate extern void key_invalidate ( s#key * ) 
+override generic_key_instantiate extern int generic_key_instantiate ( s#key * , s#key_preparsed_payload * ) 
+override register_key_type extern int register_key_type ( s#key_type * ) 
+override unregister_key_type extern void unregister_key_type ( s#key_type * ) 

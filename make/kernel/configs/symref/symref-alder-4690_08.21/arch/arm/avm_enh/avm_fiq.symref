@@ -1,0 +1,13 @@
+override avm_fiq_stack_array unsigned long * avm_fiq_stack_array [ 4 ] 
+override avm_enable_fiq_on int avm_enable_fiq_on ( int , unsigned int ) 
+override avm_disable_fiq_on int avm_disable_fiq_on ( int , unsigned int ) 
+override s#cpumask struct cpumask { unsigned long bits [ ( ( ( 4 ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } 
+override e#irqreturn enum irqreturn { IRQ_NONE = ( 0 << 0 ) , IRQ_HANDLED = ( 1 << 0 ) , IRQ_WAKE_THREAD = ( 1 << 1 ) , } 
+override t#irqreturn_t typedef e#irqreturn irqreturn_t 
+override t#avm_fiq_cb_t typedef t#irqreturn_t ( * avm_fiq_cb_t ) ( int , void * ) 
+override avm_request_fiq_on int avm_request_fiq_on ( const s#cpumask * , unsigned int , t#avm_fiq_cb_t , unsigned long , const char * , void * ) 
+override avm_gic_fiq_setup void avm_gic_fiq_setup ( unsigned int , const s#cpumask * , unsigned int , unsigned int , unsigned int ) 
+override avm_free_fiq_on int avm_free_fiq_on ( int , unsigned int , void * ) 
+override avm_mask_all_fiqs_down extern void avm_mask_all_fiqs_down ( unsigned int , unsigned long * , unsigned long ) 
+override avm_unmask_all_fiqs_up extern void avm_unmask_all_fiqs_up ( unsigned long , unsigned long ) 
+override avm_bust_mask extern void avm_bust_mask ( unsigned int , unsigned long ) 

@@ -1,0 +1,9 @@
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override of_overlay_notifier_register int of_overlay_notifier_register ( s#notifier_block * ) 
+override of_overlay_notifier_unregister int of_overlay_notifier_unregister ( s#notifier_block * ) 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override of_overlay_fdt_apply int of_overlay_fdt_apply ( const void * , t#u32 , int * ) 
+override of_overlay_remove int of_overlay_remove ( int * ) 
+override of_overlay_remove_all int of_overlay_remove_all ( void ) 

@@ -1,0 +1,31 @@
+override s#clk_core struct clk_core { UNKNOWN } 
+override s#clk struct clk { UNKNOWN } 
+override s#clk_rate_request struct clk_rate_request { unsigned long rate ; unsigned long min_rate ; unsigned long max_rate ; unsigned long best_parent_rate ; s#clk_hw * best_parent_hw ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#clk_duty struct clk_duty { unsigned int num ; unsigned int den ; } 
+override s#dentry struct dentry { UNKNOWN } 
+override s#clk_ops struct clk_ops { int ( * prepare ) ( s#clk_hw * ) ; void ( * unprepare ) ( s#clk_hw * ) ; int ( * is_prepared ) ( s#clk_hw * ) ; void ( * unprepare_unused ) ( s#clk_hw * ) ; int ( * enable ) ( s#clk_hw * ) ; void ( * disable ) ( s#clk_hw * ) ; int ( * is_enabled ) ( s#clk_hw * ) ; void ( * disable_unused ) ( s#clk_hw * ) ; int ( * save_context ) ( s#clk_hw * ) ; void ( * restore_context ) ( s#clk_hw * ) ; unsigned long ( * recalc_rate ) ( s#clk_hw * , unsigned long ) ; long ( * round_rate ) ( s#clk_hw * , unsigned long , unsigned long * ) ; int ( * determine_rate ) ( s#clk_hw * , s#clk_rate_request * ) ; int ( * set_parent ) ( s#clk_hw * , t#u8 ) ; t#u8 ( * get_parent ) ( s#clk_hw * ) ; int ( * set_rate ) ( s#clk_hw * , unsigned long , unsigned long ) ; int ( * set_rate_and_parent ) ( s#clk_hw * , unsigned long , unsigned long , t#u8 ) ; unsigned long ( * recalc_accuracy ) ( s#clk_hw * , unsigned long ) ; int ( * get_phase ) ( s#clk_hw * ) ; int ( * set_phase ) ( s#clk_hw * , int ) ; int ( * get_duty_cycle ) ( s#clk_hw * , s#clk_duty * ) ; int ( * set_duty_cycle ) ( s#clk_hw * , s#clk_duty * ) ; void ( * init ) ( s#clk_hw * ) ; void ( * debug_init ) ( s#clk_hw * , s#dentry * ) ; } 
+override s#clk_parent_data struct clk_parent_data { const s#clk_hw * hw ; const char * fw_name ; const char * name ; int index ; } 
+override s#clk_init_data struct clk_init_data { const char * name ; const s#clk_ops * ops ; const char * const * parent_names ; const s#clk_parent_data * parent_data ; const s#clk_hw * * parent_hws ; t#u8 num_parents ; unsigned long flags ; } 
+override s#clk_hw struct clk_hw { s#clk_core * core ; s#clk * clk ; const s#clk_init_data * init ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override clk_mux_val_to_index int clk_mux_val_to_index ( s#clk_hw * , t#u32 * , unsigned int , unsigned int ) 
+override clk_mux_index_to_val unsigned int clk_mux_index_to_val ( t#u32 * , unsigned int , t#u8 ) 
+override clk_mux_ops extern const s#clk_ops clk_mux_ops 
+override clk_mux_ro_ops extern const s#clk_ops clk_mux_ro_ops 
+override s#device struct device { UNKNOWN } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override clk_hw_register_mux_table s#clk_hw * clk_hw_register_mux_table ( s#device * , const char * , const char * const * , t#u8 , unsigned long , void * , t#u8 , t#u32 , t#u8 , t#u32 * , t#spinlock_t * ) 
+override clk_register_mux_table s#clk * clk_register_mux_table ( s#device * , const char * , const char * const * , t#u8 , unsigned long , void * , t#u8 , t#u32 , t#u8 , t#u32 * , t#spinlock_t * ) 
+override clk_register_mux s#clk * clk_register_mux ( s#device * , const char * , const char * const * , t#u8 , unsigned long , void * , t#u8 , t#u8 , t#u8 , t#spinlock_t * ) 
+override clk_hw_register_mux s#clk_hw * clk_hw_register_mux ( s#device * , const char * , const char * const * , t#u8 , unsigned long , void * , t#u8 , t#u8 , t#u8 , t#spinlock_t * ) 
+override clk_unregister_mux void clk_unregister_mux ( s#clk * ) 
+override clk_hw_unregister_mux void clk_hw_unregister_mux ( s#clk_hw * ) 

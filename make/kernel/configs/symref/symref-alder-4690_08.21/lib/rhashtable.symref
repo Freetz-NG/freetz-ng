@@ -1,0 +1,46 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#lockdep_map struct lockdep_map { } 
+override s#rhash_lock_head struct rhash_lock_head { } 
+override s#bucket_table struct bucket_table { unsigned int size ; unsigned int nest ; t#u32 hash_rnd ; s#list_head walkers ; s#callback_head rcu ; s#bucket_table * future_tbl ; s#lockdep_map dep_map ; s#rhash_lock_head * buckets [ ] __attribute__ ( ( __aligned__ ( ( 1 << 6 ) ) ) ) ; } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override t#bool typedef _Bool bool 
+override t#rht_hashfn_t typedef t#u32 ( * rht_hashfn_t ) ( const void * , t#u32 , t#u32 ) 
+override t#rht_obj_hashfn_t typedef t#u32 ( * rht_obj_hashfn_t ) ( const void * , t#u32 , t#u32 ) 
+override s#rhashtable_compare_arg struct rhashtable_compare_arg { s#rhashtable * ht ; const void * key ; } 
+override t#rht_obj_cmpfn_t typedef int ( * rht_obj_cmpfn_t ) ( s#rhashtable_compare_arg * , const void * ) 
+override s#rhashtable_params struct rhashtable_params { t#u16 nelem_hint ; t#u16 key_len ; t#u16 key_offset ; t#u16 head_offset ; unsigned int max_size ; t#u16 min_size ; t#bool automatic_shrinking ; t#rht_hashfn_t hashfn ; t#rht_obj_hashfn_t obj_hashfn ; t#rht_obj_cmpfn_t obj_cmpfn ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override s#mutex struct mutex { t#atomic_long_t owner ; t#spinlock_t wait_lock ; s#optimistic_spin_queue osq ; s#list_head wait_list ; } 
+override s#rhashtable struct rhashtable { s#bucket_table * tbl ; unsigned int key_len ; unsigned int max_elems ; s#rhashtable_params p ; t#bool rhlist ; s#work_struct run_work ; s#mutex mutex ; t#spinlock_t lock ; t#atomic_t nelems ; } 
+override s#rhash_head struct rhash_head { s#rhash_head * next ; } 
+override rhashtable_insert_slow void * rhashtable_insert_slow ( s#rhashtable * , const void * , s#rhash_head * ) 
+override s#rhlist_head struct rhlist_head { s#rhash_head rhead ; s#rhlist_head * next ; } 
+override s#rhashtable_walker struct rhashtable_walker { s#list_head list ; s#bucket_table * tbl ; } 
+override s#rhashtable_iter struct rhashtable_iter { s#rhashtable * ht ; s#rhash_head * p ; s#rhlist_head * list ; s#rhashtable_walker walker ; unsigned int slot ; unsigned int skip ; t#bool end_of_table ; } 
+override rhashtable_walk_enter void rhashtable_walk_enter ( s#rhashtable * , s#rhashtable_iter * ) 
+override rhashtable_walk_exit void rhashtable_walk_exit ( s#rhashtable_iter * ) 
+override rhashtable_walk_start_check int rhashtable_walk_start_check ( s#rhashtable_iter * ) 
+override rhashtable_walk_next void * rhashtable_walk_next ( s#rhashtable_iter * ) 
+override rhashtable_walk_peek void * rhashtable_walk_peek ( s#rhashtable_iter * ) 
+override rhashtable_walk_stop void rhashtable_walk_stop ( s#rhashtable_iter * ) 
+override rhashtable_init int rhashtable_init ( s#rhashtable * , const s#rhashtable_params * ) 
+override s#rhltable struct rhltable { s#rhashtable ht ; } 
+override rhltable_init int rhltable_init ( s#rhltable * , const s#rhashtable_params * ) 
+override rhashtable_free_and_destroy void rhashtable_free_and_destroy ( s#rhashtable * , void ( * ) ( void * , void * ) , void * ) 
+override rhashtable_destroy void rhashtable_destroy ( s#rhashtable * ) 
+override __rht_bucket_nested s#rhash_lock_head * * __rht_bucket_nested ( const s#bucket_table * , unsigned int ) 
+override rht_bucket_nested s#rhash_lock_head * * rht_bucket_nested ( const s#bucket_table * , unsigned int ) 
+override rht_bucket_nested_insert s#rhash_lock_head * * rht_bucket_nested_insert ( s#rhashtable * , s#bucket_table * , unsigned int ) 
