@@ -28,7 +28,7 @@ jobs:
 #     matrix:
 #       fritz: [ "" ]
     runs-on: ubuntu-latest
-#   if: github.repository == 'freetz-ng/freetz-ng'
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     steps:
 
@@ -102,8 +102,6 @@ jobs:
           echo '# FREETZ_DL_IMAGE_AT_LAST is not set'                                                 >> .config
           echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
           echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'    >> .config
-          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
-          echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
           echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'                                               >> .config
           echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config
           echo -n
