@@ -338,6 +338,7 @@ enumerate_mirrors_official() {
 					sites[${#sites[@]}]=https://downloads.sourceforge.net/$subpath
 				done
 			elif [ ${url:0:4} == "@AVM" ]; then
+				sites[${#sites[@]}]=@DLTOKEN/https://api.github.com/repos/Freetz-NG/internal/releases/tags/firmware
 				sites[${#sites[@]}]=https://download.avm.de/fritzbox/$subpath
 				sites[${#sites[@]}]=https://download.avm.de/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/fritzwlan/$subpath
@@ -483,7 +484,7 @@ for i in ${sites[@]}; do
 		if [ "$i" == "${i#@DLTOKEN/}" ]; then
 			do_download "$DL_DIR" "$i" "$DL_FILE" || continue
 		else
-			do_assets "${i#*/}" "$DL_FILE" "$DL_DIR/${opt_out_file:-$DL_FILE}" || continue
+			[ -n "${FREETZ_DLTOKEN}" ] && do_assets "${i#*/}" "$DL_FILE" "$DL_DIR/${opt_out_file:-$DL_FILE}" || continue
 		fi
 
 		local DL_DNF="$DL_DIR/${opt_out_file:-$DL_FILE}"

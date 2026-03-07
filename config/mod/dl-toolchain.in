@@ -8,7 +8,7 @@ config FREETZ_DL_TOOLCHAIN_OVERRIDE
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_SITE
 	string "Download kernel toolchain site"                                       if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default "https://github.com/Freetz-NG/dl-mirror/releases/download/dl-toolchains-${KERNEL_TOOLCHAIN_VERSION}"
+	default "@DLTOKEN/https://api.github.com/repos/Freetz-NG/internal/releases/tags/toolchain"
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_VERSION
 	string "Kernel toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
