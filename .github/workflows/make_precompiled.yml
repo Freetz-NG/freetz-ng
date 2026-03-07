@@ -35,7 +35,7 @@ jobs:
       image: ghcr.io/freetz-ng/generate
       options: --user 1001:1001
     runs-on: ubuntu-latest
-    if: secrets.FREETZ_DLTOKEN != '' || github.event_name == 'workflow_dispatch'
+    if: ${{ secrets.FREETZ_DLTOKEN != '' || github.event_name == 'workflow_dispatch' }}
 
     outputs:
       gitsha: ${{ steps.parse.outputs.gitsha }}
