@@ -43,7 +43,7 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 
 config FREETZ_DL_TARGET_TOOLCHAIN_SITE
 	string "Download target toolchain site"                                       if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default "https://github.com/Freetz-NG/dl-mirror/releases/download/dl-toolchains-${TARGET_TOOLCHAIN_VERSION}"
+	default "@DLTOKEN/https://api.github.com/repos/Freetz-NG/internal/releases/tags/toolchain"
 
 config FREETZ_DL_TARGET_TOOLCHAIN_VERSION
 	string "Target toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
