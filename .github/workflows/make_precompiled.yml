@@ -35,6 +35,7 @@ jobs:
       image: ghcr.io/freetz-ng/generate
       options: --user 1001:1001
     runs-on: ubuntu-latest
+    if: secrets.FREETZ_DLTOKEN != '' || github.event_name == 'workflow_dispatch'
 
     outputs:
       gitsha: ${{ steps.parse.outputs.gitsha }}
@@ -108,7 +109,6 @@ jobs:
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
     name: "${{ matrix.fritz.pkg }} - ${{ matrix.fritz.name }}"
     runs-on: ubuntu-latest
-#   if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
