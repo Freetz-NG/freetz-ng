@@ -66,6 +66,7 @@ Latest changes
   - Build system:
 
   - Host tools:
+    * pseudo 1.9.3
 
   - AVM sources:
 

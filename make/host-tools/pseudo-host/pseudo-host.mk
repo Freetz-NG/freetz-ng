@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.9.2)
+$(call TOOLS_INIT, 1.9.3)
 $(PKG)_SOURCE:=pseudo-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=d1f6552be3213cae42cd36f30df5accb5ec65aef4a193fba1d118415ca524c69
+$(PKG)_HASH:=097a56b64c67b718d95866454fe9ffb00e94b6b96753e06f8eb6082b84a6490e
 $(PKG)_SITE:=https://git.yoctoproject.org/pseudo/snapshot,https://downloads.yoctoproject.org/releases/pseudo
 #$(PKG)_SITE:=git@https://git.yoctoproject.org/git/pseudo
 ### WEBSITE:=https://www.yoctoproject.org/software-item/pseudo/
