@@ -20,6 +20,7 @@ on:
           - "debian-13-latest" #debian:13
           - "ubuntu-22.04-latest" #ubuntu:22.04
           - "ubuntu-24.04-latest" #ubuntu:24.04
+          - "ubuntu-26.04-latest" #ubuntu:26.04
       fos:
         description: "FOS Version to build"
         required: true
@@ -106,6 +107,7 @@ jobs:
             debian-13-latest
             ubuntu-22.04-latest
             ubuntu-24.04-latest
+            ubuntu-26.04-latest
             "
           fi
           echo "oslist<<EOF" >> $GITHUB_OUTPUT
