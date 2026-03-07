@@ -111,7 +111,7 @@ jobs:
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
     name: "${{ matrix.fritz.fos }} - ${{ matrix.fritz.box }}"
     runs-on: ubuntu-latest
-#   if: github.repository == 'freetz-ng/freetz-ng'
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     steps:
 
