@@ -91,8 +91,11 @@ jobs:
       image: ghcr.io/freetz-ng/generate
       options: --user 1001:1001
     runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+
     outputs:
       os: ${{ steps.parse.outputs.os }}
+    
     steps:
       - name: list
         id: list
@@ -132,6 +135,7 @@ jobs:
       image: ghcr.io/freetz-ng/generate
       options: --user 1001:1001
     runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     outputs:
       gitsha: ${{ steps.parse.outputs.gitsha }}
@@ -187,7 +191,6 @@ jobs:
     name: "${{ matrix.docker }}"
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.toolchains != 'yes' }}
-#   if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
@@ -276,8 +279,6 @@ jobs:
           echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
           echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
           echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
-          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
-          echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
           wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
           grep -q '^FREETZ_TYPE_' .config || echo "FREETZ_TYPE_$BOX=y"                                >> .config
           grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo "FREETZ_TYPE_FIRMWARE_$FOS=y"              >> .config
@@ -362,7 +363,6 @@ jobs:
     name: "${{ matrix.docker }} -- ${{ matrix.fritz.name }}"
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.toolchains != 'no' }}
-#   if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
