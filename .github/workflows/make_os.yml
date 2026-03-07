@@ -201,8 +201,7 @@ jobs:
 #         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
 #         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
-#     - &preclone
-#       name: preclone
+#     - name: preclone
 #       uses: actions/checkout@v6
 #       with:
 #         token: ${{ secrets.GITHUB_TOKEN }}
@@ -213,8 +212,7 @@ jobs:
 #           tools/prerequisites
 #         sparse-checkout-cone-mode: false
 
-#     - &install
-#       name: install
+#     - name: install
 #       env:
 #         DEBIAN_FRONTEND: noninteractive
 #       run: |
@@ -222,8 +220,7 @@ jobs:
 #           sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
 #         fi
 #         ./tools/prerequisites install -y
-#     - &locale
-#       name: locale
+#     - name: locale
 #       env:
 #         DEBIAN_FRONTEND: noninteractive
 #       run: |
@@ -235,8 +232,7 @@ jobs:
 #           localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
 #         fi  
 
-      - &clone
-        name: clone
+      - name: clone
         uses: actions/checkout@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -248,8 +244,7 @@ jobs:
           clean: false
           persist-credentials: true
 
-      - &cache_load
-        name: cache_load
+      - name: cache_load
         uses: actions/cache/restore@v5
         if: always()
         with:
@@ -312,8 +307,7 @@ jobs:
           for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O ~/.freetz-signature/$x >/dev/null 2>&1 || rm -f ~/.freetz-signature/$x; done
           echo "################################################################" && ls -l ~/.freetz-signature/
 
-#     - &useradd
-#        name: useradd
+#     - name: useradd
 #        run: |
 #          groupadd freetz -o -g 1001
 #          useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
@@ -380,14 +374,59 @@ jobs:
           echo "fritz_name=$FRITZ_NAME" >> $GITHUB_OUTPUT
           echo "################################################################" && bash -c "echo FRITZ_NAME=$FRITZ_NAME"
       
-#     - *preclone
+#     - name: preclone
+#       uses: actions/checkout@v6
+#       with:
+#         token: ${{ secrets.GITHUB_TOKEN }}
+#         repository: ${{ github.repository }}
+#         ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+#         path: ${{ github.workspace }}
+#         sparse-checkout: |
+#           tools/prerequisites
+#         sparse-checkout-cone-mode: false
 
-#     - *install
-#     - *locale
+#     - name: install
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
+#       run: |
+#         if   [ -x "$(command -v apt)" ]; then 
+#           sed -E -i 's#http://[^[:space:]]*ubuntu\.com/ubuntu#http://mirrors.edge.kernel.org/ubuntu#g' /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources \|| true; 
+#         fi
+#         ./tools/prerequisites install -y
+#     - name: locale
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
+#       run: |
+#         if   [ -x "$(command -v apt)" ]; then 
+#           apt-get update && apt-get install -y locales; 
+#           locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
+#         elif [ -x "$(command -v dnf)" ]; then
+#           dnf -y install glibc-locale-source && \
+#           localedef -i en_US -f UTF-8 en_US.UTF-8 && localedef -i de_DE -f UTF-8 de_DE.UTF-8;
+#         fi  
 
-      - *clone
+      - name: clone
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          set-safe-directory: true
+          repository: ${{ github.repository }}
+          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+          path: ${{ github.workspace }}
+          fetch-depth: 0
+          clean: false
+          persist-credentials: true
 
-      - *cache_load
+      - name: cache_load
+        uses: actions/cache/restore@v5
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/linux-*.tar.xz
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: make_cache
+          restore-keys: make_cache
 
       - name: version
         id: version
@@ -396,7 +435,11 @@ jobs:
           [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
           echo "################################################################" && bash -c "echo VERSION=$VERSION"
 
-#     - *useradd
+#     - name: useradd
+#       run: |
+#         groupadd freetz -o -g 1001
+#         useradd freetz -o -s $(which bash) -d $(pwd) -M -u 1001 -g 1001
+#         chown -R freetz:freetz $(pwd)
 
       - name: generate
         env:
