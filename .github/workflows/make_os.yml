@@ -231,6 +231,7 @@ jobs:
 #       run: |
 #         if   [ -x "$(command -v apt)" ]; then 
 #           apt-get update && apt-get install -y locales; 
+#           ls --version | grep -q uutils && apt-get remove -y --allow-remove-essential coreutils-from-uutils;
 #           locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
 #         elif [ -x "$(command -v dnf)" ]; then
 #           dnf -y install glibc-locale-source && \
@@ -401,6 +402,7 @@ jobs:
 #       run: |
 #         if   [ -x "$(command -v apt)" ]; then 
 #           apt-get update && apt-get install -y locales; 
+#           ls --version | grep -q uutils && apt-get remove -y --allow-remove-essential coreutils-from-uutils;
 #           locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale;
 #         elif [ -x "$(command -v dnf)" ]; then
 #           dnf -y install glibc-locale-source && \
