@@ -3,10 +3,12 @@ ARG BUILD_USR=freetz
 ARG BUILD_GRP=freetz
 ARG BUILD_UID=1001
 ARG BUILD_GID=1001
+ARG BUILD_GCC=10
 
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt-get -y install \
     git bash locales imagemagick netcat curl bsdmainutils xxd libarchive-zip-perl wget \
+    \
     \
     \
     \
