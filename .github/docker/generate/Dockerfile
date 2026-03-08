@@ -6,7 +6,7 @@ ARG BUILD_GID=1001
 
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt-get -y install \
-    git bash locales imagemagick netcat curl bsdmainutils xxd libarchive-zip-perl wget \
+    git bash locales imagemagick netcat-openbsd curl bsdmainutils xxd libarchive-zip-perl wget \
     \
     \
     \
