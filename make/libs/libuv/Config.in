@@ -1,5 +1,6 @@
 config FREETZ_LIB_libuv
 	bool "libuv (libuv.so)"
+	depends on !FREETZ_AVM_UCLIBC_0_9_28 && !FREETZ_AVM_UCLIBC_0_9_29 && !FREETZ_AVM_UCLIBC_0_9_32
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
 	help
