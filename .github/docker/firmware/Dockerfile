@@ -14,7 +14,9 @@ RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade \
     lib32ncurses5-dev gcc-${BUILD_GCC}-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
     netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler libelf-dev patchutils \
     gcc- g++- gcc-multilib- \
- && for a in gcc g++; do update-alternatives --install /usr/bin/$a $a /usr/bin/$a-${BUILD_GCC} 100; done \
+ && for a in gcc g++ cpp; do update-alternatives --install /usr/bin/$a $a /usr/bin/$a-${BUILD_GCC} 100; done \
+ && for a in cc_gcc c++_g++; do export AA=$(echo $a | awk -F'_' '{print $1}') && export BB=$(echo $a | awk -F'_' '{print $2}') \
+    && update-alternatives --install /usr/bin/$AA $AA /usr/bin/$BB 100 && update-alternatives --set $AA /usr/bin/$BB; done \
  && DEBIAN_FRONTEND=noninteractive apt-get -y clean \
  && rm -rf /var/lib/apt/lists/* \
  && locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale \
