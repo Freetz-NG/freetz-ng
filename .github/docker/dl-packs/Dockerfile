@@ -13,7 +13,8 @@ RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade \
     perl libstring-crc32-perl ruby ruby1.9 gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev \
     gcc-${BUILD_GCC}-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl \
     uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler openssl libelf-dev patchutils \
-    $(apt-cache depends build-essential | awk '/Depends:/ {print $2}' | grep -vE 'gcc|g\+\+') gcc- g++- gcc-multilib- \
+    $(apt-cache depends build-essential | awk '/Depends:/ {print $2}' | grep -vE '^(gcc|g\+\+|<)') gcc- g++- gcc-multilib- \
+ && for a in gcc g++; do update-alternatives --install /usr/bin/$a $a /usr/bin/$a-${BUILD_GCC} 100; done \
  && DEBIAN_FRONTEND=noninteractive apt-get -y clean \
  && rm -rf /var/lib/apt/lists/* \
  && locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale \
