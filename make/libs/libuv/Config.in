@@ -1,6 +1,5 @@
 config FREETZ_LIB_libuv
 	bool "libuv (libuv.so)"
-	depends on FREETZ_TARGET_GCC_5_MIN
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
 	help
