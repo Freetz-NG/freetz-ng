@@ -1,4 +1,5 @@
 CCACHE_KERNEL_VERSION:=4.12.3
+# Since version 4.13 is gcc 10 required, ubuntu 20.04 lts has gcc 9.4.0
 CCACHE_KERNEL_SOURCE:=ccache-$(CCACHE_KERNEL_VERSION).tar.xz
 CCACHE_KERNEL_HASH:=c8e3ef79531966ecfa05bd1666c483b473df9af00896935cc468cb5ed573c16e
 CCACHE_KERNEL_SITE:=https://github.com/ccache/ccache/releases/download/v$(CCACHE_KERNEL_VERSION)

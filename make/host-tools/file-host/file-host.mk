@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 5.46)
+$(call TOOLS_INIT, 5.47)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=c9cc77c7c560c543135edc555af609d5619dbef011997e988ce40a3d75d86088
+$(PKG)_HASH:=45672fec165cb4cc1358a2d76b5d57d22876dcb97ab169427ac385cbe1d5597a
 $(PKG)_SITE:=http://ftp.astron.com/pub/file,ftp://ftp.astron.com/pub/file
 ### WEBSITE:=https://www.darwinsys.com/file/
 ### MANPAGE:=https://linux.die.net/man/1/file

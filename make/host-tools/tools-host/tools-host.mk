@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 2026-02-24)
+$(call TOOLS_INIT, 2026-03-07)
 $(PKG)_SOURCE:=tools-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=7b554b0a7b17db1351d0bf1ba4251ca6f8238be3ef0ae485dd33c9b1cb06a585
+$(PKG)_HASH:=4e174bf66b1b7a54c7188b2a5c31b01a8ed7f9a0fe30cfac9089f06aaefc2b62
 $(PKG)_SITE:=@MIRROR/
 ### SUPPORT:=fda77
 

@@ -1,4 +1,4 @@
-# libuv (libuv.so) 1.44.2/1.51.0
+# libuv (libuv.so) 1.44.2/1.52.1
   - Homepage: [https://libuv.org/](https://libuv.org/)
   - Manpage: [https://docs.libuv.org/en/v1.x/](https://docs.libuv.org/en/v1.x/)
   - Changelog: [https://github.com/libuv/libuv/releases](https://github.com/libuv/libuv/releases)

@@ -1,4 +1,4 @@
-# file 5.46
+# file 5.47
   - Homepage: [https://www.darwinsys.com/file/](https://www.darwinsys.com/file/)
   - Manpage: [https://linux.die.net/man/1/file](https://linux.die.net/man/1/file)
   - Changelog: [http://ftp.astron.com/pub/file](http://ftp.astron.com/pub/file)
