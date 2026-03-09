@@ -1,5 +1,5 @@
---- Makefile.in.org	2025-09-15 13:56:03.000000000 +0200
-+++ Makefile.in	2025-09-26 07:31:20.468382300 +0200
+--- Makefile.in
++++ Makefile.in
 @@ -91,9 +91,9 @@
  POST_UNINSTALL = :
  build_triplet = @build@
@@ -11,8 +11,8 @@
 +@WITH_GLOB_TRUE@am__append_3 = 
  check_PROGRAMS = runsuite$(EXEEXT) runtest$(EXEEXT) \
  	runxmlconf$(EXEEXT) testModule$(EXEEXT) testapi$(EXEEXT) \
- 	testchar$(EXEEXT) testdict$(EXEEXT) testlimits$(EXEEXT) \
-@@ -364,7 +364,7 @@
+ 	testcatalog$(EXEEXT) testchar$(EXEEXT) testdict$(EXEEXT) \
+@@ -369,7 +369,7 @@
      n|no|NO) false;; \
      *) (install-info --version) >/dev/null 2>&1;; \
    esac
@@ -21,7 +21,7 @@
  RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
    distclean-recursive maintainer-clean-recursive
  am__recursive_targets = \
-@@ -632,7 +632,7 @@
+@@ -637,7 +637,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  ACLOCAL_AMFLAGS = -I m4
@@ -30,7 +30,7 @@
  	$(am__append_3)
  DIST_SUBDIRS = include . doc example fuzz python
  AM_CPPFLAGS = -I$(builddir)/include -I$(srcdir)/include
-@@ -1758,7 +1758,7 @@
+@@ -1772,7 +1772,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS) $(check_LTLIBRARIES)
  	$(MAKE) $(AM_MAKEFLAGS) check-local
  check: check-recursive
@@ -39,7 +39,7 @@
  		config.h
  install-binPROGRAMS: install-libLTLIBRARIES
  
-@@ -1880,13 +1880,13 @@
+@@ -1895,13 +1895,13 @@
  
  info-am:
  
