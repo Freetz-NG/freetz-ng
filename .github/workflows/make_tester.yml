@@ -173,14 +173,14 @@ jobs:
           path: images/
           if-no-files-found: warn
           retention-days: 1
-          compression-level: 0
+          archive: false
           overwrite: true
           include-hidden-files: false
       - name: link
         if: github.repository != 'freetz-ng/freetz-ng'
         run: |
           echo "##########################################################"
-          FILE="${{ steps.vars.outputs.last }}.zip"
+          FILE="${{ steps.vars.outputs.last }}"
           ARTI="${{ steps.artifact.outputs.artifact-url }}"
           echo "Firmware := $FILE"
           echo "Artifact := $ARTI"
