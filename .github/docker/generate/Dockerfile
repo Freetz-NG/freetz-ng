@@ -3,19 +3,20 @@ ARG BUILD_USR=freetz
 ARG BUILD_GRP=freetz
 ARG BUILD_UID=1001
 ARG BUILD_GID=1001
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN printf "deb http://old-releases.ubuntu.com/ubuntu hirsute main restricted universe multiverse\n" > /etc/apt/sources.list.d/hirsute.list \
  && printf "Package: gcc g++ cpp gcc-multilib\nPin: release n=hirsute,o=Ubuntu\nPin-Priority: 700\n\nPackage: *\nPin: release n=hirsute,o=Ubuntu\nPin-Priority: -10\n" > /etc/apt/preferences.d/hirsute
 
 RUN apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade \
- && DEBIAN_FRONTEND=noninteractive apt-get -y install \
+ && apt-get -y install \
     git bash locales imagemagick netcat-openbsd curl bsdmainutils xxd libarchive-zip-perl wget \
     \
     \
     \
     \
     \
- && DEBIAN_FRONTEND=noninteractive apt-get -y clean \
+ && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/* \
  && locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale \
  && groupadd $BUILD_GRP -o -g $BUILD_GID \

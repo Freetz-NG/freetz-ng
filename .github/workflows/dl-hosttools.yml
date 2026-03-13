@@ -33,8 +33,10 @@ jobs:
 #       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
 #
 #     - name: install
+#       env:
+#         DEBIAN_FRONTEND: noninteractive
 #       run: |
-#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#         apt-get -y install \
 #           locales bash \
 #           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
 #           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
