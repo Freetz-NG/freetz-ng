@@ -92,7 +92,7 @@ Latest changes
   - Libraries:
     * file 5.47
     * FreeType 2.14.2
-    * harfbuzz 13.0.1
+    * harfbuzz 13.1.0
     * libmaxminddb 1.13.3
     * libuv 1.44.2/1.52.1
     * libxml2 2.15.2
