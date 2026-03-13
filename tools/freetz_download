@@ -73,14 +73,14 @@ do_assets() {
 	[ -z "${TAG}" ] && echo "No tag url" 1>&11 && return 1
 	[ -e "${DST}" ] && echo "File already exists" 1>&11 && return 1
 
-	local ASSETS="$(curl -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2022-11-28"  "${TAG}" 2>&12)"
+	local ASSETS="$(curl -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2026-03-10"  "${TAG}" 2>&12)"
 	[ -z "${ASSETS}" ] && echo "Download failed - No ASSETS" 1>&11 && return 1
 	local ASSID="$(echo "${ASSETS}" | grep -B7 "\"${SRC}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
 	[ -z "${ASSID}" ] && echo "Download failed - No ASSID" 1>&11 && return 1
 	echo "Found ASSID:=${ASSID}" 1>&11
 
 	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"${DST}\""; rm \"${DST\" 2>/dev/null; exit 1' TERM INT
-	curl -Lo "${DST}"    -H "Accept: application/octet-stream"     -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2022-11-28"  "${ASS}/${ASSID}" 1>&11 2>&12
+	curl -Lo "${DST}"    -H "Accept: application/octet-stream"     -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2026-03-10"  "${ASS}/${ASSID}" 1>&11 2>&12
 	curl_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
 
