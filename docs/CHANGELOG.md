@@ -87,6 +87,7 @@ Latest changes
     * Iptables 1.4.11.1/1.4.21/1.6.2/1.8.12
     * Python 3.14.3
     * sslh 2.2.4/2.3.1
+    * Tinyproxy 1.11.3
     * Whois 5.6.6
 
   - Libraries:

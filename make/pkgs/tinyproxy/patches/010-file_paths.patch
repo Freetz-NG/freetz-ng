@@ -1,7 +1,7 @@
 --- src/conf.c
 +++ src/conf.c
-@@ -483,8 +483,8 @@
-         conf->errorpages = NULL;
+@@ -487,8 +487,8 @@
+         conf->basicauth_realm = safestrdup (PACKAGE_NAME);
          conf->stathost = safestrdup (TINYPROXY_STATHOST);
          conf->idletimeout = MAX_IDLE_TIME;
 -        conf->logf_name = NULL;

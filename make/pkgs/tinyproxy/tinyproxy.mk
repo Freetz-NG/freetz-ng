@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.11.2)
+$(call PKG_INIT_BIN, 1.11.3)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=6a126880706691c987e2957b1c99b522efb1964a75eb767af4b30aac0b88a26a
+$(PKG)_HASH:=f05644fdf1211ba13754a354bebed909b5b39371b12cce8563c46929a75bedf6
 $(PKG)_SITE:=https://github.com/tinyproxy/tinyproxy/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://tinyproxy.github.io/
 ### MANPAGE:=https://tinyproxy.github.io/#documentation
