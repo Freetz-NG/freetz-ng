@@ -1,11 +1,11 @@
-name: image_dl-packs
+name: github_image
 
 on:
   push:
     branches: [ master ]
     paths:
-      - '.github/workflows/image_dl-packs.yml'
-      - '.github/docker/dl-packs/*'
+      - '.github/workflows/github_image.yml'
+      - '.github/docker/**/**'
   schedule:
     - cron: '45 18 28 * *'
   workflow_dispatch:
@@ -16,17 +16,68 @@ concurrency:
 
 
 jobs:
-  build:
+  matrizifizieren:
     permissions:
       contents: read
-      packages: write
+      pull-requests: read
     runs-on: ubuntu-latest
-    if: github.repository == 'freetz-ng/freetz-ng'
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+
+    outputs:
+      gitsha: ${{ steps.parse.outputs.gitsha }}
+      images: ${{ steps.filter.outputs.changes }}
 
     steps:
 
       - name: checkout
         uses: actions/checkout@v6
+
+      - name: filter
+        uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            dl-packs:
+              - '.github/workflows/${{ github.workflow }}.yml'
+              - '.github/docker/dl-packs/**'
+            firmware:
+              - '.github/workflows/${{ github.workflow }}.yml'
+              - '.github/docker/firmware/**'
+            generate:
+              - '.github/workflows/${{ github.workflow }}.yml'
+              - '.github/docker/generate/**'
+
+      - name: parse
+        id: parse
+        run: |
+          echo "gitsha=\"${{ github.sha }}\"" >> $GITHUB_OUTPUT
+
+      - name: vars
+        id: vars
+        run: |
+          echo "################################################################"
+          echo "IMAGES=${{ steps.filter.outputs.changes }}"
+          echo "################################################################"
+          echo "GITSHA=${{ steps.parse.outputs.gitsha }}"
+
+  build:
+    permissions:
+      contents: read
+      packages: write
+    needs: matrizifizieren
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJson(needs.matrizifizieren.outputs.images) }}
+    runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
 
       - name: prepare
         id: prepare
@@ -34,13 +85,13 @@ jobs:
           OWNER="$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')"
           [ -z "$OWNER" ] && OWNER="$(echo ${{ github.actor }} | tr '[:upper:]' '[:lower:]')"
           [ -n "$OWNER" ] && echo "owner=$OWNER" >> $GITHUB_OUTPUT || exit 1
-          IMAGE="$(echo "${{ github.workflow }}" | sed 's/.*_//')"
+          IMAGE="$(echo "${{ matrix.image }}" | sed 's/.*_//')"
           [ -n "$IMAGE" ] && echo "image=$IMAGE" >> $GITHUB_OUTPUT || exit 1
           for x in Dockerfile entrypoint.sh; do ln -s .github/docker/$IMAGE/$x; done
           echo "################################################################" && echo "URI=$OWNER/$IMAGE"
 
       - name: login
-        if: github.event_name != 'pull_request'
+        if: github.repository == 'freetz-ng/freetz-ng' && github.event_name != 'pull_request'
         uses: docker/login-action@v4
         with:
           registry: ghcr.io
@@ -51,7 +102,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.repository == 'freetz-ng/freetz-ng' && github.event_name != 'pull_request' }}
           tags: ghcr.io/${{ steps.prepare.outputs.owner }}/${{ steps.prepare.outputs.image }}:latest
 
 
