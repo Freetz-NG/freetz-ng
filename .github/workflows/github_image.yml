@@ -6,13 +6,18 @@ on:
     paths:
       - '.github/workflows/github_image.yml'
       - '.github/docker/**/**'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - '.github/docker/**/**'
+      - '!.github/workflows/**'
   schedule:
     - cron: '45 18 28 * *'
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}${{ github.event.pull_request.number && '-' }}${{ github.event.pull_request.number || '' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' && true || true }}
 
 
 jobs:
