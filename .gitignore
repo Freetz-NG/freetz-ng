@@ -27,6 +27,9 @@
 /source
 /toolchain
 
+# ignore macOS metadata files
+.DS_Store
+
 # ignore ide project files
 /.project
 /.vs

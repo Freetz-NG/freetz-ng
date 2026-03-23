@@ -1,0 +1,19 @@
+services:
+  freetz-dev:
+    platform: ${DOCKER_PLATFORM:-linux/amd64}
+    build:
+      context: .
+      dockerfile: docker/debian13/Dockerfile
+      args:
+        USER_ID: ${LOCAL_UID:-1000}
+    image: freetz-ng:debian13-dev
+    container_name: freetz-ng-dev
+    working_dir: /workspace/freetz-ng
+    volumes:
+      - .:/workspace/freetz-ng
+    tty: true
+    stdin_open: true
+    command: >-
+      bash -lc 'mkdir -p "$$HOME/.freetz-dl"
+      && if [ ! -d /workspace/freetz-ng/dl ]; then rm -f /workspace/freetz-ng/dl; ln -s "$$HOME/.freetz-dl" /workspace/freetz-ng/dl; fi
+      && sleep infinity'

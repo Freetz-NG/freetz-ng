@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SRC_DIR="/workspace/freetz-ng"
+CS_DIR="/tmp/freetz-ng-cs"
+
+# Sync current workspace state into a case-sensitive container-local directory.
+mkdir -p "${CS_DIR}"
+rsync -a --delete \
+	--exclude='.git/' \
+	--exclude='source/' \
+	--exclude='toolchain/build/' \
+	--exclude='build/' \
+	--exclude='images/' \
+	"${SRC_DIR}/" "${CS_DIR}/"
+
+cd "${CS_DIR}"
+/usr/bin/make "$@"
+
+# Sync relevant outputs back to the bind-mounted workspace.
+if [ -f .config ]; then
+	cp -f .config "${SRC_DIR}/.config"
+fi
+
+if [ -d images ]; then
+	rsync -a images/ "${SRC_DIR}/images/"
+fi
+
+if [ -d build/modified ]; then
+	rsync -a build/modified/ "${SRC_DIR}/build/modified/"
+fi
