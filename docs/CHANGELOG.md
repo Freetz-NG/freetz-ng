@@ -93,6 +93,7 @@ Latest changes
     * Python 3.14.3
     * sslh 2.2.4/2.3.1
     * Tinyproxy 1.11.3
+    * Tor 0.4.8.23
     * Whois 5.6.6
 
   - Libraries:
