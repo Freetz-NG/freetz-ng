@@ -99,7 +99,7 @@ Latest changes
   - Libraries:
     * expat 2.7.5
     * file 5.47
-    * FreeType 2.14.2
+    * FreeType 2.14.3
     * harfbuzz 13.2.1
     * libmaxminddb 1.13.3
     * libuv 1.44.2/1.52.1
