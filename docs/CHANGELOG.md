@@ -102,6 +102,7 @@ Latest changes
     * FreeType 2.14.3
     * harfbuzz 13.2.1
     * libmaxminddb 1.13.3
+    * libpng 1.6.56
     * libuv 1.44.2/1.52.1
     * libxml2 2.15.2
     * neon 0.30.2/0.37.0
