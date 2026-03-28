@@ -166,7 +166,7 @@ define UNPACK_TARBALL__INT
 	$(if $(filter .Z .taZ,$(3)),                                                                               $(TOOLS_DIR)/uncompress -c $(1)) \
 	$(if $(filter .tar,$(3)),                                                                                               cat           $(1)) \
 	$(if $(filter .zip,$(3)),                                                                                  $(TOOLS_DIR)/unzip $(QUIETSHORT) $(1) -d $(2) $(if $(4),                                        -J $(4)) $(5)) \
-	$(if $(filter .gz .tgz .taz .bzip2 .bz2 .bz .tbz2 .tbz .xz .txz .lz .tlz .lzma .tlzma .Z .taZ .tar,$(3)),| $(TAR)          -x $(VERBOSE)         -C $(2) $(if $(4),--transform='s|^./\+||' --strip-components=$(4)) $(5))
+	$(if $(filter .gz .tgz .taz .bzip2 .bz2 .bz .tbz2 .tbz .xz .txz .lz .tlz .lzma .tlzma .Z .taZ .tar,$(3)),| $(TAR)          -x $(VERBOSE) -C $(2) $(if $(4),--transform='s|^./\+||' --strip-components=$(4)) $(5))
 endef
 
 # $1: path to the file to be unpacked

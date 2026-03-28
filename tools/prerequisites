@@ -110,6 +110,17 @@ install_requisite() {
 	[ ! -e "$PACKAGES/$OSV" ] && echo "Unsupported, file for your Linux version not found: $OSV" && list_linux && exit 1
 
 	vals="$(sed 's/[\t ]*#.*//g' "$PACKAGES/$OSV" | sort | tr '\n' ' ' | sed 's/^ *//;s/  */ /g;s/ *$//')"
+	# Ubuntu/Debian arm64 repositories do not provide i386 multilib packages.
+	if [ "$(dpkg --print-architecture 2>/dev/null)" = "arm64" ]; then
+		filtered=''
+		for pkg in $vals; do
+			case "$pkg" in
+				gcc-multilib|lib32ncurses-dev|lib32stdc++6|lib32z1-dev|libc6-dev-i386) ;;
+				*) filtered="$filtered $pkg" ;;
+			esac
+		done
+		vals="${filtered# }"
+	fi
 	echo -e "\nPackages for '$OSV':\n$vals\n"
 	[ "${ARG:0:1}" == "s" ] && exit 0
 	case "$OSV" in
