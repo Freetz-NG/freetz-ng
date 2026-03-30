@@ -30,12 +30,6 @@ jobs:
     permissions:
       packages: read
       contents: read
-    container:
-      image: ghcr.io/freetz-ng/internal/generate
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
-      options: --user 1001:1001
     runs-on: ubuntu-latest
     if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 

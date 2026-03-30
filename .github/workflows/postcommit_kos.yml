@@ -18,27 +18,29 @@ jobs:
     permissions:
       packages: read
       contents: write
-    container:
-      image: ghcr.io/freetz-ng/internal/generate
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
-      options: --user 1001:1001
     runs-on: ubuntu-latest
     if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
-#     - name: update
-#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
-#
-#     - name: install
-#       run: |
-#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
-#           git locales
-#
-#     - name: locale
-#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+      - name: dependencies-check
+        run: |
+          for cmd in git locales; do
+            if apt list --installed 2>/dev/null | grep -q "^$cmd/"
+            then
+              echo "$cmd is installed"
+            else
+              echo "$cmd is NOT installed" && MISSING_PACKAGES="$MISSING_PACKAGES $cmd"
+            fi
+          done
+          if [ -n "$MISSING_PACKAGES" ]; then
+            echo "The following packages are missing: $MISSING_PACKAGES"
+            echo "Installing missing packages..."
+            sudo apt-get -qq update && DEBIAN_FRONTEND=noninteractive sudo apt-get -y install $MISSING_PACKAGES
+          fi
+
+      - name: locale
+        run: sudo $SHELL -c "locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale"
 
       - name: clone
         uses: actions/checkout@v6
