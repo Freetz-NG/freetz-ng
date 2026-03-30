@@ -24,7 +24,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     outputs:
@@ -61,7 +61,7 @@ jobs:
       fail-fast: false
       matrix:
         image: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
 

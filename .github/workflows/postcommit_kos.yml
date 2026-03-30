@@ -18,7 +18,7 @@ jobs:
     permissions:
       packages: read
       contents: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:

@@ -47,7 +47,7 @@ jobs:
     permissions:
       packages: read
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     outputs:
@@ -109,7 +109,7 @@ jobs:
       matrix:
         fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
     name: "${{ matrix.fritz.fos }} - ${{ matrix.fritz.box }}"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
 
