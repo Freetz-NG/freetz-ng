@@ -63,16 +63,12 @@ jobs:
 ##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
       - name: clone
-        uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          set-safe-directory: true
-          repository: ${{ github.repository }}
-          ref: ${{ github.ref_name }}
-          path: ${{ github.workspace }}
-          fetch-depth: 0
-          clean: false
-          persist-credentials: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
 
       - name: cache
         uses: actions/cache@v5

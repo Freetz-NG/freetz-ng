@@ -51,16 +51,14 @@ jobs:
           delay: "10000"
 
       - name: clone
-        uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          set-safe-directory: true
-          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
-          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
-          path: ${{ github.workspace }}
-          fetch-depth: 0
-          clean: false
-          persist-credentials: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REF_NAME: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE --branch $REF_NAME
 
       - name: parse
         id: parse
@@ -145,16 +143,14 @@ jobs:
 ##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
       - name: clone
-        uses: actions/checkout@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          set-safe-directory: true
-          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
-          ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
-          path: ${{ github.workspace }}
-          fetch-depth: 0
-          clean: false
-          persist-credentials: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REF_NAME: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+          REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE --branch $REF_NAME
 
       - name: cache_load
         uses: actions/cache/restore@v5
