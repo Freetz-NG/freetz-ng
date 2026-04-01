@@ -11,6 +11,7 @@ fi
 if [ "$FREETZ_REMOVE_SAMBA" == "y" -o "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" ]; then
 	echo1 "remove AVM samba/nqcs config"
 	rm_files \
+	  "${FILESYSTEM_MOD_DIR}/bin/samba_config_gen" \
 	  "${FILESYSTEM_MOD_DIR}/sbin/samba_config_gen"
 
 	if [ "$FREETZ_AVM_HAS_SAMBA_SMBD" == "y" ]; then
@@ -23,7 +24,9 @@ if [ "$FREETZ_REMOVE_SAMBA" == "y" -o "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" ]; the
 
 	if [ -n "$SYSTEMD_CORE_MOD_DIR" ]; then
 		echo1 "remove AVM systemd files"
-		rm_files "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.smb2"
+		rm_files \
+		  "${FILESYSTEM_MOD_DIR}/etc/onlinechanged/start_smbd" \
+		  "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.smb2"
 		supervisor_delete_service "smb2"
 	fi
 
