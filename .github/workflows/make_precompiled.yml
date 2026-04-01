@@ -56,7 +56,6 @@ jobs:
           REF_NAME: ${{ github.event.pull_request.head.ref || github.ref_name }}
           REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
-          umask 0022
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE --branch $REF_NAME
 
@@ -148,7 +147,6 @@ jobs:
           REF_NAME: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
           REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
-          umask 0022
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE --branch $REF_NAME
 
