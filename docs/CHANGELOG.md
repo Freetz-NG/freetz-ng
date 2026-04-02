@@ -73,7 +73,7 @@ Latest changes
     * cmake 4.3.1
     * file 5.47
     * meson 1.10.2
-    * pseudo 1.9.3
+    * pseudo 1.9.3 master 414ce2d
     * python3 3.14.3
 
   - AVM sources:
