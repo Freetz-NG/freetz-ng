@@ -101,6 +101,7 @@ Latest changes
     * OpenVPN 2.4.12/2.5.11/2.6.19/2.7.1
     * Python 3.14.3
     * sslh 2.2.4/2.3.1
+    * Stunnel 5.78
     * Tinyproxy 1.11.3
     * Tor 0.4.8.23
     * UnRAR 6.1.7/7.2.5

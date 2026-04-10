@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -7325,7 +7325,7 @@
+@@ -8623,7 +8623,7 @@
  
  
  
@@ -9,7 +9,7 @@
    as_CACHEVAR=`printf "%s\n" "ax_cv_check_cflags__$flag" | sed "$as_sed_sh"`
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts $flag" >&5
  printf %s "checking whether C compiler accepts $flag... " >&6; }
-@@ -7663,7 +7663,7 @@
+@@ -8961,7 +8961,7 @@
  
  
  
