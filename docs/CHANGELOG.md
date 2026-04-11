@@ -71,6 +71,7 @@ Latest changes
     * autoconf 2.73
     * ca-bundle 2026-03-19
     * cmake 4.3.1
+    * dos2unix 7.5.5
     * file 5.47
     * meson 1.10.2
     * openssl 3.5.6
