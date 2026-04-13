@@ -75,9 +75,6 @@ pygments_lang_class = true
 
 [project.markdown_extensions.pymdownx.inlinehilite]
 
-[project.markdown_extensions.pymdownx.snippets]
-auto_append = ["docs/abbreviations.md"]
-
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = "true"
 
