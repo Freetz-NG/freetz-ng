@@ -2,6 +2,7 @@
 echo1 "removing dsld files"
 
 rm_files $(find ${FILESYSTEM_MOD_DIR}/sbin ${FILESYSTEM_MOD_DIR}/lib/modules -name dsld)
+rm_files "${FILESYSTEM_MOD_DIR}/etc/modules-load.d/dsl.conf"
 rm_files "${FILESYSTEM_MOD_DIR}/etc/modules-load.d/dsld.conf"
 
 modsed 's/^ *eval.*dsld.*/echo -n/g' "$FILESYSTEM_MOD_DIR/etc/init.d/rc.net"
