@@ -1,4 +1,4 @@
-$(call PKG_INIT_BIN, 1.0)
+$(call PKG_INIT_BIN, 2.0)
 $(PKG)_CATEGORY:=Unstable
 $(PKG)_STARTLEVEL=20
 
