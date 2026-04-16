@@ -75,7 +75,12 @@ start() {
 		local _bind_enabled="$(modconf value BIND_ENABLED bind 2>/dev/null)"
 		local _dnsmasq_enabled="$(modconf value DNSMASQ_ENABLED dnsmasq 2>/dev/null)"
 		local _dnsmasq_port="$(modconf value DNSMASQ_DNS_PORT dnsmasq 2>/dev/null)"
-		local _dnsmasq_dns_enabled=$([ "$_dnsmasq_enabled" = yes -a "$_dnsmasq_port" -eq 53 ] 2>/dev/null && echo yes || echo no)
+		local _dnsmasq_port_norm=53
+		case "$_dnsmasq_port" in
+			""|*[!0-9]*) ;;
+			*) [ "$_dnsmasq_port" -ge 1 ] && [ "$_dnsmasq_port" -le 65535 ] 2>/dev/null && _dnsmasq_port_norm="$_dnsmasq_port" ;;
+		esac
+		local _dnsmasq_dns_enabled=$([ "$_dnsmasq_enabled" = yes -a "$_dnsmasq_port_norm" = 53 ] && echo yes || echo no)
 		local _unbound_enabled="$(modconf value UNBOUND_ENABLED unbound 2>/dev/null)"
 		if [ "$_resolv_conf_dns" == "127.0.0.1" -a "$_bind_enabled" != yes -a "$_dnsmasq_dns_enabled" != yes -a "$_unbound_enabled" != yes ]; then
 			echo -n "discarded libmultid, no enabled dns server ... "

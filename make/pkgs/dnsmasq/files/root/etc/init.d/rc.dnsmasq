@@ -5,11 +5,31 @@ DAEMON_LONG_NAME=Dnsmasq
 PID_FILE=/var/run/$DAEMON/$DAEMON.pid
 . /etc/init.d/modlibrc
 
+dnsmasq_effective_dns_port() {
+	local port="${DNSMASQ_DNS_PORT:-53}"
+	case "$port" in
+		""|*[!0-9]*)
+			echo 53
+			return
+			;;
+	esac
+	[ "$port" -ge 1 ] && [ "$port" -le 65535 ] 2>/dev/null || {
+		echo 53
+		return
+	}
+	echo "$port"
+}
+
+dnsmasq_owns_dns53() {
+	[ "$(dnsmasq_effective_dns_port)" = "53" ]
+}
 
 [ -e /etc/init.d/rc.rextd ] && MASTER=rextd || MASTER=multid
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 if [ "$FREETZ_AVMDAEMON_DISABLE_DNS" != "y" ]; then
-	[ "$(/etc/init.d/rc.$MASTER status)" != "running" -o "$DNSMASQ_MULTID_RESTART" != "yes" ] && nomultid=y
+	if [ "$(/etc/init.d/rc.$MASTER status)" != "running" ] || [ "$DNSMASQ_MULTID_RESTART" != "yes" ] || ! dnsmasq_owns_dns53; then
+		nomultid=y
+	fi
 else
 	nomultid=y
 fi
@@ -118,7 +138,12 @@ case $1 in
 		;;
 	restart)
 		if [ "$FREETZ_AVMDAEMON_DISABLE_DNS" != "y" ]; then
-			modlib_check_running && nomultid=y
+			if modlib_check_running; then
+				# Keep master restart enabled when dnsmasq is meant to own port 53.
+				if [ "$DNSMASQ_MULTID_RESTART" != "yes" ] || ! dnsmasq_owns_dns53; then
+					nomultid=y
+				fi
+			fi
 		fi
 		modlib_restart
 		;;
