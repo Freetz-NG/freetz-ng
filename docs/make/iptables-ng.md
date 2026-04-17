@@ -1,0 +1,54 @@
+iptables-ng Freetz package
+
+This package provides an advanced web interface for iptables/ip6tables:
+- table and chain discovery (IPv4 + IPv6)
+- module capability hints per table
+- save/restore actions for v4, v6, or both
+- autostart restore via rc.iptables-ng
+- management and optional persistency of ip_forward for network interfaces
+
+Behavior notes:
+- Status (started/stopped) reflects current runtime state only.
+- Automatic/Manual controls startup behavior on boot only.
+- Changing Automatic/Manual does not directly start/stop the module.
+
+Dependencies and constraints:
+- Requires dsld to be disabled/removed (FREETZ_REMOVE_DSLD=y).
+- In menuconfig, this package is selectable only when dsld removal is enabled.
+- You need to use REPLACE_KERNEL in most cases to have a matching Fritzbox Image -> Kernel pair as you need the netfilter modules compiled.
+
+Chain editor input:
+- You can paste full commands with optional binary prefix, for example:
+	- iptables -A INPUT ...
+	- iptables -I INPUT ...
+	- ip6tables -A INPUT ...
+	- -A INPUT ...
+	- -I INPUT ...
+	- -A INPUT ...    
+- The edited chain must match the currently opened chain editor section.
+
+Creator of the package:
+This package has been created by Thomas Toka (https://www.github.com/ThomasToka) after a short dive into freetz-ng.
+
+Motivation for this package:
+When you use the box in ip-client mode, the guestlan has no dhcp. As i have my internet fiber router on another network i need to forward and encapsulate my traffic from the fritzbox to my router and back.
+
+This resulted in a PR and the merge of https://github.com/Freetz-NG/freetz-ng/commit/b51f5d82b25da3e63df27df4cc3b3a021d9cd69a allowing to disable dsld -which controls the AVM-Firewall kernel module (kdsldmod)- on newer boxes as the nameing changed some years ago and so the remove dsld patch was broken.
+Now its possible to use the full power of iptables on the fritzbox.
+All the drama about the "AVM Firwall sometime became a unsolvable iptables breaker" was simply the still running kernel module.
+
+My setup is for example like this:
+Fritzbox in ip client mode: 10.0.0.2
+Gateway ip 10.0.1.1 on the guest device of the Fritzbox (managed by virtualip-ng *)
+Fiber router that manages 10.0.0.0/24 on 10.0.0.1
+Guest vlan on Fritzbox: 10.0.1.0/24
+Dnsmasq manages dhcp and dns for 10.0.1.0/24 with range 10.0.1.20-10.0.1.200
+Iptables rules:
+-P FORWARD ACCEPT
+-A FORWARD -d 10.0.0.1/32 -i guest -o lan -j ACCEPT
+-A FORWARD -d 10.0.0.0/24 -i guest -o lan -j DROP
+-A FORWARD ! -d 10.0.0.0/24 -i guest -o lan -j ACCEPT
+-A FORWARD -d 10.0.1.0/24 -i lan -o guest -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+* virtualip-ng is PRed with #1503.
+

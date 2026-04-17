@@ -1,0 +1,10 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	etc/default.iptables-ng/iptables-ng.cfg
+	etc/init.d/rc.iptables-ng
+	usr/lib/cgi-bin/iptables-ng.cgi
+}
