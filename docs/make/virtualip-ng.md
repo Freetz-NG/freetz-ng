@@ -1,0 +1,67 @@
+Virtualip NG Freetz package
+
+Copyright (C) 2006 Daniel Eiband <eiband@online.de>
+
+This is a package for Freetz: https://freetz.github.io/
+
+This package is based on the original virtualip-cgi script and was rewritten/extended by Thomas Toka https://github.com/ThomasToka
+
+Overview
+virtualip-ng manages additional virtual IP addresses (IPv4 and IPv6) on AVM/Freetz devices.
+It is a rewrite and extension of the former virtualip-cgi module.
+
+What it does
+- Adds and removes virtual IPv4/IPv6 addresses on configured interfaces.
+- Supports multiple entries in one configuration.
+- Supports per-entry state via active/inactive.
+- Shows a live status table for configured entries in WebUI.
+- Integrates with onlinechanged/WLAN events to re-apply addresses when network state changes.
+
+IPv6 support
+- IPv6 entries are configured in the same entries list as IPv4.
+- Entry format for IPv6 is:
+
+interface,ipv6-address,prefix,active|inactive
+
+- Prefix length is required for IPv6 (for example 64).
+- On add, virtualip-ng uses `ip -6 addr add <address>/<prefix> dev <interface>`.
+- If IPv6 is disabled on the target interface, virtualip-ng tries to enable it by writing `0` to `/proc/sys/net/ipv6/conf/<interface>/disable_ipv6` before adding the address.
+- IPv4-only handling like broadcast calculation is not used for IPv6 entries.
+
+Capabilities
+- Delta reconcile on apply/save:
+  - keep unchanged configured active IPs untouched
+  - add missing configured active IPs
+  - remove configured inactive IPs if present
+  - do not touch IPs that are not configured in virtualip-ng
+- Empty list behavior:
+  - no IPs are managed
+  - previously known managed IPs are removed on apply
+- Runtime state handling:
+  - running only if active configured entries are present on interfaces
+  - stopped when no active entries exist or active entries are missing
+
+Configuration format
+The main field is VIRTUALIP_NG_ENTRIES with one entry per line:
+
+interface,ip,netmask-or-prefix,active|inactive
+
+Examples:
+guest,192.168.181.1,255.255.255.0,active
+guest,2001:db8:181::2,64,active
+lan,192.168.182.1,255.255.255.0,active
+lan,fd00::2,64,active
+
+Notes:
+- For IPv4, netmask can be dotted (255.255.255.0) or prefix (24).
+- For IPv6, use prefix length (for example 64); dotted netmasks are IPv4-only.
+- Status is mandatory and must be either active or inactive.
+
+WebUI notes
+- Netzwerkdevices shows current ip a output in a scrollable area.
+- Neu laden refreshes this section on demand.
+- Reload uses the currently active wrapper route and extracts the devices output block from the returned HTML.
+
+Operational notes
+- Start type (automatic/manual) controls autostart behavior.
+- Entry activity (active/inactive) controls whether each configured IP should be present.
