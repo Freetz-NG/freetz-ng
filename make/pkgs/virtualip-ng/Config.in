@@ -1,0 +1,11 @@
+config FREETZ_PACKAGE_VIRTUALIP_NG
+	bool "Virtualip NG"
+	depends on FREETZ_SHOW_EXPERT
+	default n
+	help
+		Creates one or more virtual IPv4/IPv6 addresses on selected interfaces.
+
+		This package is a maintained NG variant derived from the former
+		virtualip-cgi module and provides a web configuration page for
+		interface, IP/netmask-or-prefix entries, autostart and timing controls.
+

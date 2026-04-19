@@ -1,0 +1,30 @@
+#!/bin/sh
+. /mod/etc/conf/virtualip-ng.cfg
+[ "$VIRTUALIP_NG_ENABLED" != "yes" ] && exit 0
+
+: ${VIRTUALIP_NG_ONLINE_DELAY_SECS:=25}
+: ${VIRTUALIP_NG_ONLINE_RETRY_SECS:=15}
+: ${VIRTUALIP_NG_WLAN_DELAY_SECS:=8}
+: ${VIRTUALIP_NG_WLAN_RETRY_SECS:=20}
+ONLINE_READY_FILE=/var/run/virtualip_ng.online_ready
+
+case "$1" in
+	online*)
+		rm -f "$ONLINE_READY_FILE"
+		(
+			sleep "$VIRTUALIP_NG_ONLINE_DELAY_SECS"
+			/mod/etc/init.d/rc.virtualip-ng start
+			sleep "$VIRTUALIP_NG_ONLINE_RETRY_SECS"
+			[ "$(/mod/etc/init.d/rc.virtualip-ng status)" = "running" ] || /mod/etc/init.d/rc.virtualip-ng start
+			touch "$ONLINE_READY_FILE"
+		) &
+		;;
+	wlan_on*)
+		(
+			sleep "$VIRTUALIP_NG_WLAN_DELAY_SECS"
+			[ "$(/mod/etc/init.d/rc.virtualip-ng status)" = "running" ] || /mod/etc/init.d/rc.virtualip-ng start
+			sleep "$VIRTUALIP_NG_WLAN_RETRY_SECS"
+			[ "$(/mod/etc/init.d/rc.virtualip-ng status)" = "running" ] || /mod/etc/init.d/rc.virtualip-ng start
+		) &
+		;;
+esac

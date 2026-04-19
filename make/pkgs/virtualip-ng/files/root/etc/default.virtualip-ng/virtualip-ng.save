@@ -1,0 +1,18 @@
+apply_changes() { :; }
+
+pkg_apply_save() {
+	local new_enabled
+
+	new_enabled=$(echo "$settings" | sed -ne "/VIRTUALIP_NG_ENABLED/s/VIRTUALIP_NG_ENABLED='\(.*\)'/\1/p")
+	[ -n "$new_enabled" ] || new_enabled="$VIRTUALIP_NG_ENABLED"
+
+	if [ "$new_enabled" = "yes" ]; then
+		/mod/etc/init.d/rc.virtualip-ng restart
+	else
+		/mod/etc/init.d/rc.virtualip-ng stop || true
+	fi
+}
+
+pkg_apply_def() {
+	/mod/etc/init.d/rc.virtualip-ng stop || true
+}
