@@ -1,0 +1,961 @@
+#!/bin/sh
+
+DAEMON=virtualip_ng
+CONF_NAME=virtualip-ng
+. /etc/init.d/modlibrc
+STATE_FILE="/var/run/${DAEMON}.state"
+STARTING_FILE="/var/run/${DAEMON}.starting"
+STARTUP_WAIT_SECS=${STARTUP_WAIT_SECS:-30}
+INTERFACE_READY_WAIT_SECS=${INTERFACE_READY_WAIT_SECS:-20}
+INTERFACE_IPV4_WAIT_SECS=${INTERFACE_IPV4_WAIT_SECS:-12}
+INTERFACE_IPV4_WAIT_IFACES=${INTERFACE_IPV4_WAIT_IFACES:-lan}
+RACE_RETRY_DELAY_SECS=${RACE_RETRY_DELAY_SECS:-${VIRTUALIP_NG_RACE_RETRY_DELAY_SECS:-3}}
+BOOT_START=${BOOT_START:-0}
+
+ENTRY_IFACE=""
+ENTRY_IP=""
+ENTRY_MASK=""
+ENTRY_ACTIVE="active"
+VIRTUALIP_NG_FAMILY="4"
+
+dbglog() {
+	[ "$VIRTUALIP_NG_DEBUG" = "yes" ] && loglib_system "$DAEMON" "$*"
+}
+
+errlog() {
+	loglib_system "$DAEMON" "$*"
+}
+
+log_interface_snapshot() {
+	local ifname="$1"
+	local link_state
+	local ipv4_state
+	local ipv6_state
+
+	link_state="$(ip -o link show dev "$ifname" 2>/dev/null)"
+	[ -n "$link_state" ] || link_state="missing"
+	ipv4_state="$(ip -o -4 addr show dev "$ifname" 2>/dev/null)"
+	[ -n "$ipv4_state" ] || ipv4_state="none"
+	ipv6_state="$(ip -o -6 addr show dev "$ifname" scope global 2>/dev/null)"
+	[ -n "$ipv6_state" ] || ipv6_state="none"
+
+	errlog "snapshot $ifname link: $link_state"
+	errlog "snapshot $ifname ipv4: $ipv4_state"
+	errlog "snapshot $ifname ipv6: $ipv6_state"
+}
+
+ipv4bcast () {
+	local IP1=${1%%.*.*.*}
+	local IP2=${1#*.};	IP2=${IP2%%.*.*}
+	local IP3=${1#*.*.};	IP3=${IP3%%.*}
+	local IP4=${1#*.*.*.}
+	local NM1=${2%%.*.*.*}
+	local NM2=${2#*.};	NM2=${NM2%%.*.*}
+	local NM3=${2#*.*.};	NM3=${NM3%%.*}
+	local NM4=${2#*.*.*.}
+	local IIP=$(($IP1 << 24 | $IP2 << 16 | $IP3 << 8 | $IP4))
+	local INM=$(($NM1 << 24 | $NM2 << 16 | $NM3 << 8 | $NM4))
+	local IBC=$((${IIP} | ~${INM}))
+	printf "%u.%u.%u.%u" $((${IBC} >> 24 & 0xFF)) $((${IBC} >> 16 & 0xFF)) \
+		$((${IBC} >> 8 & 0xFF)) $((${IBC} & 0xFF))
+}
+
+netmask_to_prefix() {
+	local NM1=${1%%.*.*.*}
+	local NM2=${1#*.}; NM2=${NM2%%.*.*}
+	local NM3=${1#*.*.}; NM3=${NM3%%.*}
+	local NM4=${1#*.*.*.}
+	local INM=$(($NM1 << 24 | $NM2 << 16 | $NM3 << 8 | $NM4))
+	local prefix=0
+
+	while [ "$INM" -ne 0 ]; do
+		prefix=$(($prefix + ($INM & 1)))
+		INM=$(($INM >> 1))
+	done
+
+	echo "$prefix"
+}
+
+ip_family_of_address() {
+	case "$1" in
+		*:* )
+			echo "6"
+			;;
+		* )
+			echo "4"
+			;;
+	esac
+}
+
+mask_to_prefix() {
+	local ipaddr="$1"
+	local mask="$2"
+	local family
+
+	family="$(ip_family_of_address "$ipaddr")"
+	if [ "$family" = "6" ]; then
+		echo "$mask" | grep -Eq '^[0-9]{1,3}$' || return 1
+		[ "$mask" -ge 0 ] && [ "$mask" -le 128 ] || return 1
+		echo "$mask"
+		return 0
+	fi
+
+	if echo "$mask" | grep -Eq '^[0-9]{1,2}$'; then
+		[ "$mask" -ge 0 ] && [ "$mask" -le 32 ] || return 1
+		echo "$mask"
+		return 0
+	fi
+
+	echo "$mask" | grep -Eq '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' || return 1
+	netmask_to_prefix "$mask"
+}
+
+interface_exists() {
+	ip link show dev "$1" > /dev/null 2>&1
+}
+
+interface_is_up() {
+	ip link show dev "$1" 2>/dev/null | grep -Eq "<[^>]*UP[^>]*>"
+}
+
+interface_is_oper_ready() {
+	# Some WLAN interfaces report UP in flags while still being operationally DOWN.
+	ip -o link show dev "$1" 2>/dev/null | grep -Eq 'state (UP|UNKNOWN)'
+}
+
+interface_has_ipv4() {
+	ip -o -4 addr show dev "$1" 2>/dev/null | grep -q .
+}
+
+ensure_interface_ipv6_enabled() {
+	local ifname="$1"
+	local knob="/proc/sys/net/ipv6/conf/${ifname}/disable_ipv6"
+	local cur
+
+	[ -r "$knob" ] || return 0
+	cur="$(cat "$knob" 2>/dev/null)"
+	[ "$cur" = "0" ] && return 0
+
+	echo 0 > "$knob" 2>/dev/null || {
+		errlog "ipv6 enable failed: could not set ${knob}=0"
+		return 1
+	}
+
+	dbglog "ipv6 enabled on interface '$ifname'"
+	return 0
+}
+
+interface_should_wait_for_ipv4() {
+	local ifname="$1"
+	local item
+	local wait_ifaces
+
+	[ -n "$INTERFACE_IPV4_WAIT_IFACES" ] || return 1
+	wait_ifaces=$(echo "$INTERFACE_IPV4_WAIT_IFACES" | tr ',' ' ')
+	for item in $wait_ifaces; do
+		[ "$item" = "$ifname" ] && return 0
+	done
+	return 1
+}
+
+ip_on_interface() {
+	local ifname="$1"
+	local ipaddr="$2"
+	local mask="$3"
+	local prefix
+	local family
+	local famopt="-4"
+
+	prefix="$(mask_to_prefix "$ipaddr" "$mask" 2>/dev/null)" || return 1
+	family="$(ip_family_of_address "$ipaddr")"
+	[ "$family" = "6" ] && famopt="-6"
+	ip -o "$famopt" addr show dev "$ifname" to "$ipaddr/$prefix" 2>/dev/null | grep -q .
+}
+
+wait_for_interface() {
+	local ifname="$1"
+	local timeout="$2"
+	dbglog "waiting for interface '$ifname' up to ${timeout}s"
+
+	while [ "$timeout" -gt 0 ]; do
+		if interface_exists "$ifname"; then
+			dbglog "interface '$ifname' appeared"
+			return 0
+		fi
+		sleep 1
+		timeout=$((timeout - 1))
+	done
+
+	dbglog "interface '$ifname' did not appear in time"
+	return 1
+}
+
+wait_for_interface_ready() {
+	local ifname="$1"
+	local timeout="$2"
+
+	while [ "$timeout" -gt 0 ]; do
+		if interface_exists "$ifname" && interface_is_up "$ifname" && interface_is_oper_ready "$ifname"; then
+			return 0
+		fi
+		sleep 1
+		timeout=$((timeout - 1))
+	done
+
+	return 1
+}
+
+wait_for_interface_ipv4() {
+	local ifname="$1"
+	local timeout="$2"
+	local total_timeout="$2"
+	local waited=0
+
+	while [ "$timeout" -gt 0 ]; do
+		if interface_exists "$ifname" && interface_is_up "$ifname" && interface_has_ipv4 "$ifname"; then
+			dbglog "start wait done: interface '$ifname' has IPv4 after ${waited}s"
+			return 0
+		fi
+		dbglog "start wait retry: interface '$ifname' has no IPv4 yet (${waited}s/${total_timeout}s)"
+		sleep 1
+		timeout=$((timeout - 1))
+		waited=$((waited + 1))
+	done
+
+	dbglog "start wait timeout: interface '$ifname' has no IPv4 after ${total_timeout}s"
+
+	return 1
+}
+
+add_virtualip_with_verify() {
+	local attempts=3
+	local wait_after_add=1
+	local first_race_log=1
+	local famopt="-4"
+	local ip_err=""
+
+	[ "$VIRTUALIP_NG_FAMILY" = "6" ] && famopt="-6"
+	if [ "$VIRTUALIP_NG_FAMILY" = "6" ]; then
+		ensure_interface_ipv6_enabled "$VIRTUALIP_NG_INTERFACE" || true
+	fi
+
+	while [ "$attempts" -gt 0 ]; do
+		if [ "$VIRTUALIP_NG_FAMILY" = "6" ]; then
+			ip_err="$(ip "$famopt" addr add "$VIRTUALIP_NG_IP/$VIRTUALIP_NG_PREFIX" dev "$VIRTUALIP_NG_INTERFACE" 2>&1)"
+		else
+			ip_err="$(ip "$famopt" addr add "$VIRTUALIP_NG_IP/$VIRTUALIP_NG_PREFIX" broadcast "$VIRTUALIP_NG_BROADCAST" dev "$VIRTUALIP_NG_INTERFACE" 2>&1)"
+		fi
+		exitval=$?
+		if [ "$exitval" -eq 0 ]; then
+			sleep "$wait_after_add"
+			if ip_on_interface "$VIRTUALIP_NG_INTERFACE" "$VIRTUALIP_NG_IP" "$VIRTUALIP_NG_PREFIX"; then
+				return 0
+			fi
+			if [ "$first_race_log" -eq 1 ]; then
+				errlog "start race: ip add returned success but $VIRTUALIP_NG_IP disappeared from $VIRTUALIP_NG_INTERFACE"
+				log_interface_snapshot "$VIRTUALIP_NG_INTERFACE"
+				first_race_log=0
+			else
+				dbglog "start race retry: $VIRTUALIP_NG_IP still missing on $VIRTUALIP_NG_INTERFACE"
+			fi
+			# Try to clear stale kernel state before retry.
+			ip "$famopt" addr del "$VIRTUALIP_NG_IP/$VIRTUALIP_NG_PREFIX" dev "$VIRTUALIP_NG_INTERFACE" > /dev/null 2>&1
+			dbglog "start race backoff: waiting ${RACE_RETRY_DELAY_SECS}s before retry"
+			sleep "$RACE_RETRY_DELAY_SECS"
+		elif [ "$exitval" -ne 2 ]; then
+			[ -n "$ip_err" ] && errlog "ip add error: $ip_err"
+			# Exit code 2 is usually "already exists"; all other errors should fail fast.
+			return "$exitval"
+		else
+			[ -n "$ip_err" ] && dbglog "ip add already-exists: $ip_err"
+		fi
+
+		attempts=$((attempts - 1))
+		sleep 1
+	done
+
+	if ip_on_interface "$VIRTUALIP_NG_INTERFACE" "$VIRTUALIP_NG_IP" "$VIRTUALIP_NG_PREFIX"; then
+		return 0
+	fi
+
+	return 1
+}
+
+is_virtualip_active() {
+	ip_on_interface "$VIRTUALIP_NG_INTERFACE" "$VIRTUALIP_NG_IP" "$VIRTUALIP_NG_PREFIX"
+}
+
+normalize_entry_active() {
+	local raw
+	raw="$(echo "$1" | tr 'A-Z' 'a-z' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+	case "$raw" in
+		active|inactive)
+			echo "$raw"
+			;;
+		*)
+			echo ""
+			;;
+	esac
+}
+
+parse_entry_line() {
+	local line="$1"
+	local require_status="${2:-0}"
+	local ifname=""
+	local ip=""
+	local mask=""
+	local active_raw=""
+	local active=""
+
+	case "$line" in
+		*\|*)
+			IFS='|' read -r ifname ip mask active_raw <<-EOF
+			$line
+			EOF
+			;;
+		*,*,*)
+			IFS=',' read -r ifname ip mask active_raw <<-EOF
+			$line
+			EOF
+			;;
+		*)
+			set -- $line
+			if [ "$require_status" -eq 1 ]; then
+				[ "$#" -ge 4 ] || return 1
+			else
+				[ "$#" -ge 3 ] || return 1
+			fi
+			ifname="$1"
+			ip="$2"
+			mask="$3"
+			active_raw="$4"
+			;;
+		esac
+
+	ifname=$(echo "$ifname" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+	ip=$(echo "$ip" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+	mask=$(echo "$mask" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+	active_raw=$(echo "$active_raw" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+	if [ "$require_status" -eq 1 ]; then
+		active=$(normalize_entry_active "$active_raw")
+		[ -n "$active" ] || return 1
+	else
+		if [ -n "$active_raw" ]; then
+			active=$(normalize_entry_active "$active_raw")
+			[ -n "$active" ] || return 1
+		else
+			active="active"
+		fi
+	fi
+
+	[ -n "$ifname" ] && [ -n "$ip" ] && [ -n "$mask" ] || return 1
+	ENTRY_IFACE="$ifname"
+	ENTRY_IP="$ip"
+	ENTRY_MASK="$mask"
+	ENTRY_ACTIVE="$active"
+	return 0
+}
+
+build_config_entries_file() {
+	local outfile="$1"
+	local line
+	local valid=0
+
+	: > "$outfile"
+
+	while IFS= read -r line; do
+		line=$(echo "$line" | tr -d '\r')
+		case "$line" in
+			""|\#*)
+				continue
+				;;
+		esac
+		if parse_entry_line "$line" 1; then
+			echo "$ENTRY_IFACE|$ENTRY_IP|$ENTRY_MASK|$ENTRY_ACTIVE" >> "$outfile"
+			valid=$((valid + 1))
+		else
+			errlog "ignoring invalid entry line: $line"
+		fi
+	done <<-EOF
+	$(printf '%s\n' "$VIRTUALIP_NG_ENTRIES")
+	EOF
+
+	return "$valid"
+}
+
+build_state_entries_file() {
+	local outfile="$1"
+	local line
+
+	: > "$outfile"
+
+	[ -r "$STATE_FILE" ] || return 1
+
+	while IFS= read -r line; do
+		line=$(echo "$line" | tr -d '\r')
+		parse_entry_line "$line" || continue
+		echo "$ENTRY_IFACE|$ENTRY_IP|$ENTRY_MASK" >> "$outfile"
+	done < "$STATE_FILE"
+
+	[ -s "$outfile" ]
+}
+
+save_virtualip_state() {
+	printf '%s\n' "$1" > "$STATE_FILE"
+}
+
+load_virtualip_state() {
+	[ -r "$STATE_FILE" ]
+}
+
+clear_virtualip_state() {
+	rm -f "$STATE_FILE"
+}
+
+normalize_legacy_default_config() {
+	local legacy_default_no_flag="guest,192.168.181.1,255.255.255.0"
+	local legacy_default_active="guest,192.168.181.1,255.255.255.0,active"
+	local current_entries="$VIRTUALIP_NG_ENTRIES"
+	local desired_entries="guest,192.168.181.1,255.255.255.0,inactive"
+	local changed=0
+
+	if [ "$current_entries" = "$legacy_default_no_flag" ] || [ "$current_entries" = "$legacy_default_active" ]; then
+		VIRTUALIP_NG_ENTRIES="$desired_entries"
+		changed=1
+	fi
+
+	if [ "$changed" -eq 1 ] && [ "$VIRTUALIP_NG_ENABLED" = "yes" ]; then
+		VIRTUALIP_NG_ENABLED="no"
+	fi
+
+	if [ "$changed" -eq 1 ]; then
+		errlog "migrating legacy defaults to manual+inactive"
+		modconf set virtualip-ng VIRTUALIP_NG_ENTRIES="$VIRTUALIP_NG_ENTRIES" > /dev/null 2>&1 || true
+		modconf set virtualip-ng VIRTUALIP_NG_ENABLED="$VIRTUALIP_NG_ENABLED" > /dev/null 2>&1 || true
+		modconf save virtualip-ng > /dev/null 2>&1 || true
+	fi
+}
+
+entry_was_managed_before() {
+	local ifname="$1"
+	local ip="$2"
+	local mask="$3"
+
+	[ -r "$STATE_FILE" ] || return 1
+	grep -Fqx "$ifname|$ip|$mask" "$STATE_FILE"
+}
+
+start() {
+	local entries_file
+	local entries_count=0
+	local line
+	local failed=0
+	local added_entries=""
+	local line_broadcast=""
+	local line_prefix=""
+	local line_family=""
+	local line_was_managed=0
+
+	entries_file="$(mktemp /tmp/virtualip_ng.entries.XXXXXX)" || {
+		errlog "start failed: cannot create temporary entries file"
+		echo 'failed.'
+		return 1
+	}
+
+	echo -n 'Setting up virtual IP address ... '
+	dbglog "start requested: entries configured, boot=$BOOT_START"
+
+	build_config_entries_file "$entries_file"
+	entries_count=$?
+	if [ "$entries_count" -eq 0 ]; then
+		dbglog "start noop: no configured entries"
+		clear_virtualip_state
+		rm -f "$entries_file"
+		echo 'done.'
+		return 0
+	fi
+
+	while IFS= read -r line; do
+		parse_entry_line "$line" || continue
+		if [ "$ENTRY_ACTIVE" != "active" ]; then
+			dbglog "start skip: $ENTRY_IP on $ENTRY_IFACE is configured inactive"
+			continue
+		fi
+		line_was_managed=0
+		if entry_was_managed_before "$ENTRY_IFACE" "$ENTRY_IP" "$ENTRY_MASK"; then
+			line_was_managed=1
+		fi
+
+		line_prefix="$(mask_to_prefix "$ENTRY_IP" "$ENTRY_MASK" 2>/dev/null)" || {
+			errlog "start failed: invalid mask/prefix '$ENTRY_MASK' for $ENTRY_IP on $ENTRY_IFACE"
+			failed=1
+			continue
+		}
+		line_family="$(ip_family_of_address "$ENTRY_IP")"
+
+		if ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$line_prefix"; then
+			dbglog "start skip: $ENTRY_IP already on $ENTRY_IFACE"
+			added_entries="${added_entries}${ENTRY_IFACE}|${ENTRY_IP}|${ENTRY_MASK}\n"
+			continue
+		fi
+
+		if ! interface_exists "$ENTRY_IFACE"; then
+			if [ "$BOOT_START" -eq 1 ] && wait_for_interface "$ENTRY_IFACE" "$STARTUP_WAIT_SECS"; then
+				:
+			else
+				errlog "start failed: interface '$ENTRY_IFACE' missing"
+				log_interface_snapshot "$ENTRY_IFACE"
+				failed=1
+				continue
+			fi
+		fi
+
+		if ! interface_is_up "$ENTRY_IFACE"; then
+			ip link set dev "$ENTRY_IFACE" up > /dev/null 2>&1 || {
+				errlog "start failed: could not bring '$ENTRY_IFACE' up"
+				log_interface_snapshot "$ENTRY_IFACE"
+				failed=1
+				continue
+			}
+		fi
+
+		if ! wait_for_interface_ready "$ENTRY_IFACE" "$INTERFACE_READY_WAIT_SECS"; then
+			errlog "start deferred: interface '$ENTRY_IFACE' not ready after ${INTERFACE_READY_WAIT_SECS}s"
+			log_interface_snapshot "$ENTRY_IFACE"
+			failed=1
+			continue
+		fi
+
+		if [ "$line_family" = "4" ] && interface_should_wait_for_ipv4 "$ENTRY_IFACE" && ! interface_has_ipv4 "$ENTRY_IFACE"; then
+			dbglog "start waiting: interface '$ENTRY_IFACE' has no IPv4 yet (up to ${INTERFACE_IPV4_WAIT_SECS}s)"
+			wait_for_interface_ipv4 "$ENTRY_IFACE" "$INTERFACE_IPV4_WAIT_SECS" || true
+			if ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$line_prefix"; then
+				dbglog "start skip after wait: $ENTRY_IP already on $ENTRY_IFACE"
+				added_entries="${added_entries}${ENTRY_IFACE}|${ENTRY_IP}|${ENTRY_MASK}\n"
+				continue
+			fi
+		elif [ "$line_family" = "4" ] && ! interface_should_wait_for_ipv4 "$ENTRY_IFACE" && ! interface_has_ipv4 "$ENTRY_IFACE"; then
+			dbglog "start no-base-ipv4-wait: interface '$ENTRY_IFACE' is not in INTERFACE_IPV4_WAIT_IFACES ($INTERFACE_IPV4_WAIT_IFACES)"
+		fi
+
+		VIRTUALIP_NG_INTERFACE="$ENTRY_IFACE"
+		VIRTUALIP_NG_IP="$ENTRY_IP"
+		VIRTUALIP_NG_NETMASK="$ENTRY_MASK"
+		VIRTUALIP_NG_FAMILY="$line_family"
+		if [ "$line_family" = "4" ]; then
+			line_broadcast=$(ipv4bcast "$ENTRY_IP" "$ENTRY_MASK")
+		else
+			line_broadcast=""
+		fi
+		VIRTUALIP_NG_BROADCAST="$line_broadcast"
+		VIRTUALIP_NG_PREFIX="$line_prefix"
+
+		add_virtualip_with_verify
+		exitval=$?
+		if [ "$exitval" -eq 0 ]; then
+			if [ "$line_was_managed" -eq 1 ]; then
+				dbglog "start re-added: $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+			else
+				dbglog "start added: $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+			fi
+			added_entries="${added_entries}${ENTRY_IFACE}|${ENTRY_IP}|${ENTRY_MASK}\n"
+		else
+			errlog "start failed: ip addr add returned $exitval for $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+			log_interface_snapshot "$ENTRY_IFACE"
+			failed=1
+		fi
+	done < "$entries_file"
+
+	if [ -n "$added_entries" ]; then
+		save_virtualip_state "$(printf '%b' "$added_entries")"
+	else
+		clear_virtualip_state
+	fi
+
+	rm -f "$entries_file"
+
+	if [ "$failed" -eq 0 ]; then
+		echo 'done.'
+	else
+		echo 'failed.'
+		return 1
+	fi
+
+	return 0
+}
+
+reconcile_config() {
+	local entries_file
+	local entries_count=0
+	local line
+	local failed=0
+	local managed_entries=""
+	local line_broadcast=""
+	local line_prefix=""
+	local line_family=""
+	local state_entries_file
+
+	entries_file="$(mktemp /tmp/virtualip_ng.reconcile.XXXXXX)" || {
+		errlog "reconcile failed: cannot create temporary entries file"
+		echo 'failed.'
+		return 1
+	}
+
+	echo -n 'Reconciling virtual IP addresses ... '
+	dbglog "reconcile requested: applying configured desired state"
+
+	build_config_entries_file "$entries_file"
+	entries_count=$?
+	if [ "$entries_count" -eq 0 ]; then
+		dbglog "reconcile purge: no configured entries, removing previously managed known IPs"
+		state_entries_file="$(mktemp /tmp/virtualip_ng.reconcile.state.XXXXXX)" || {
+			errlog "reconcile failed: cannot create temporary state entries file"
+			rm -f "$entries_file"
+			echo 'failed.'
+			return 1
+		}
+
+		if build_state_entries_file "$state_entries_file"; then
+			while IFS= read -r line; do
+				parse_entry_line "$line" || continue
+
+				if ! interface_exists "$ENTRY_IFACE"; then
+					dbglog "reconcile purge skip: interface '$ENTRY_IFACE' missing"
+					continue
+				fi
+
+				line_prefix="$(mask_to_prefix "$ENTRY_IP" "$ENTRY_MASK" 2>/dev/null)" || {
+					errlog "reconcile purge skip: invalid mask/prefix '$ENTRY_MASK' for $ENTRY_IP on $ENTRY_IFACE"
+					continue
+				}
+				line_family="$(ip_family_of_address "$ENTRY_IP")"
+
+				if ! ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$line_prefix"; then
+					dbglog "reconcile purge skip: $ENTRY_IP already absent on $ENTRY_IFACE"
+					continue
+				fi
+
+				ip -"$line_family" addr del "$ENTRY_IP/$line_prefix" dev "$ENTRY_IFACE" > /dev/null 2>&1
+				exitval=$?
+				if [ "$exitval" -eq 0 ]; then
+					dbglog "reconcile purge remove: removed $ENTRY_IP/$line_prefix from $ENTRY_IFACE"
+				else
+					errlog "reconcile purge failed: ip addr del returned $exitval for $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+					log_interface_snapshot "$ENTRY_IFACE"
+					failed=1
+				fi
+			done < "$state_entries_file"
+		fi
+
+		rm -f "$state_entries_file" "$entries_file"
+		clear_virtualip_state
+
+		if [ "$failed" -eq 0 ]; then
+			echo 'done.'
+		else
+			echo 'failed.'
+			return 1
+		fi
+
+		return 0
+	fi
+
+	while IFS= read -r line; do
+		parse_entry_line "$line" || continue
+		line_prefix="$(mask_to_prefix "$ENTRY_IP" "$ENTRY_MASK" 2>/dev/null)" || {
+			errlog "reconcile failed: invalid mask/prefix '$ENTRY_MASK' for $ENTRY_IP on $ENTRY_IFACE"
+			failed=1
+			continue
+		}
+		line_family="$(ip_family_of_address "$ENTRY_IP")"
+
+		if [ "$ENTRY_ACTIVE" = "active" ]; then
+			if ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$line_prefix"; then
+				dbglog "reconcile keep: $ENTRY_IP already present on $ENTRY_IFACE"
+				managed_entries="${managed_entries}${ENTRY_IFACE}|${ENTRY_IP}|${ENTRY_MASK}\n"
+				continue
+			fi
+
+			if ! interface_exists "$ENTRY_IFACE"; then
+				errlog "reconcile failed: interface '$ENTRY_IFACE' missing for active entry"
+				log_interface_snapshot "$ENTRY_IFACE"
+				failed=1
+				continue
+			fi
+
+			if ! interface_is_up "$ENTRY_IFACE"; then
+				ip link set dev "$ENTRY_IFACE" up > /dev/null 2>&1 || {
+					errlog "reconcile failed: could not bring '$ENTRY_IFACE' up"
+					log_interface_snapshot "$ENTRY_IFACE"
+					failed=1
+					continue
+				}
+			fi
+
+			if ! wait_for_interface_ready "$ENTRY_IFACE" "$INTERFACE_READY_WAIT_SECS"; then
+				errlog "reconcile deferred: interface '$ENTRY_IFACE' not ready after ${INTERFACE_READY_WAIT_SECS}s"
+				log_interface_snapshot "$ENTRY_IFACE"
+				failed=1
+				continue
+			fi
+
+			if [ "$line_family" = "4" ] && interface_should_wait_for_ipv4 "$ENTRY_IFACE" && ! interface_has_ipv4 "$ENTRY_IFACE"; then
+				dbglog "reconcile waiting: interface '$ENTRY_IFACE' has no IPv4 yet (up to ${INTERFACE_IPV4_WAIT_SECS}s)"
+				wait_for_interface_ipv4 "$ENTRY_IFACE" "$INTERFACE_IPV4_WAIT_SECS" || true
+				if ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$line_prefix"; then
+					dbglog "reconcile keep after wait: $ENTRY_IP now present on $ENTRY_IFACE"
+					managed_entries="${managed_entries}${ENTRY_IFACE}|${ENTRY_IP}|${ENTRY_MASK}\n"
+					continue
+				fi
+			elif [ "$line_family" = "4" ] && ! interface_should_wait_for_ipv4 "$ENTRY_IFACE" && ! interface_has_ipv4 "$ENTRY_IFACE"; then
+				dbglog "reconcile no-base-ipv4-wait: interface '$ENTRY_IFACE' is not in INTERFACE_IPV4_WAIT_IFACES ($INTERFACE_IPV4_WAIT_IFACES)"
+			fi
+
+			VIRTUALIP_NG_INTERFACE="$ENTRY_IFACE"
+			VIRTUALIP_NG_IP="$ENTRY_IP"
+			VIRTUALIP_NG_NETMASK="$ENTRY_MASK"
+			VIRTUALIP_NG_FAMILY="$line_family"
+			if [ "$line_family" = "4" ]; then
+				line_broadcast=$(ipv4bcast "$ENTRY_IP" "$ENTRY_MASK")
+			else
+				line_broadcast=""
+			fi
+			VIRTUALIP_NG_BROADCAST="$line_broadcast"
+			VIRTUALIP_NG_PREFIX="$line_prefix"
+
+			add_virtualip_with_verify
+			exitval=$?
+			if [ "$exitval" -eq 0 ]; then
+				dbglog "reconcile add: ensured $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+				managed_entries="${managed_entries}${ENTRY_IFACE}|${ENTRY_IP}|${ENTRY_MASK}\n"
+			else
+				errlog "reconcile failed: ip addr add returned $exitval for $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+				log_interface_snapshot "$ENTRY_IFACE"
+				failed=1
+			fi
+		else
+			if ! interface_exists "$ENTRY_IFACE"; then
+				dbglog "reconcile skip inactive: interface '$ENTRY_IFACE' missing"
+				continue
+			fi
+
+			if ! ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$line_prefix"; then
+				dbglog "reconcile keep inactive: $ENTRY_IP already absent on $ENTRY_IFACE"
+				continue
+			fi
+
+			ip -"$line_family" addr del "$ENTRY_IP/$line_prefix" dev "$ENTRY_IFACE" > /dev/null 2>&1
+			exitval=$?
+			if [ "$exitval" -eq 0 ]; then
+				dbglog "reconcile remove: removed inactive $ENTRY_IP/$line_prefix from $ENTRY_IFACE"
+			else
+				errlog "reconcile failed: ip addr del returned $exitval for inactive $ENTRY_IP/$line_prefix on $ENTRY_IFACE"
+				log_interface_snapshot "$ENTRY_IFACE"
+				failed=1
+			fi
+		fi
+	done < "$entries_file"
+
+	rm -f "$entries_file"
+
+	if [ -n "$managed_entries" ]; then
+		save_virtualip_state "$(printf '%b' "$managed_entries")"
+	else
+		clear_virtualip_state
+	fi
+
+	if [ "$failed" -eq 0 ]; then
+		echo 'done.'
+	else
+		echo 'failed.'
+		return 1
+	fi
+
+	return 0
+}
+
+stop() {
+	local state_entries_file
+	local entries_file
+	local line
+	local source_label="config"
+	local had_running=0
+	local failed=0
+	local stop_prefix=""
+	local stop_family=""
+
+	state_entries_file="$(mktemp /tmp/virtualip_ng.state.XXXXXX)" || {
+		errlog "stop failed: cannot create temporary state file"
+		echo 'failed.'
+		return 1
+	}
+	entries_file="$(mktemp /tmp/virtualip_ng.stop.XXXXXX)" || {
+		rm -f "$state_entries_file"
+		errlog "stop failed: cannot create temporary entries file"
+		echo 'failed.'
+		return 1
+	}
+
+	if build_state_entries_file "$state_entries_file"; then
+		cp "$state_entries_file" "$entries_file"
+		source_label="state"
+	else
+		build_config_entries_file "$entries_file" > /dev/null 2>&1 || true
+	fi
+
+	echo -n 'Removing virtual IP address ... '
+	dbglog "stop requested: using $source_label entries"
+
+	while IFS= read -r line; do
+		parse_entry_line "$line" || continue
+		stop_prefix="$(mask_to_prefix "$ENTRY_IP" "$ENTRY_MASK" 2>/dev/null)" || continue
+		stop_family="$(ip_family_of_address "$ENTRY_IP")"
+
+		if ! interface_exists "$ENTRY_IFACE"; then
+			dbglog "stop skip: interface '$ENTRY_IFACE' missing"
+			continue
+		fi
+
+		if ! ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$stop_prefix"; then
+			continue
+		fi
+
+		had_running=1
+		ip -"$stop_family" addr del "$ENTRY_IP/$stop_prefix" dev "$ENTRY_IFACE" > /dev/null 2>&1
+		exitval=$?
+		if [ "$exitval" -eq 0 ]; then
+			dbglog "stop succeeded: removed $ENTRY_IP/$stop_prefix from $ENTRY_IFACE"
+		else
+			errlog "stop failed: ip addr del returned $exitval for $ENTRY_IP/$stop_prefix on $ENTRY_IFACE"
+			log_interface_snapshot "$ENTRY_IFACE"
+			failed=1
+		fi
+	done < "$entries_file"
+
+	rm -f "$state_entries_file" "$entries_file"
+	clear_virtualip_state
+
+	if [ "$had_running" -eq 0 ] && [ "$failed" -eq 0 ]; then
+		echo 'not running.'
+		return 1
+	fi
+
+	if [ "$failed" -eq 0 ]; then
+		echo 'done.'
+	else
+		echo 'failed.'
+		return 1
+	fi
+
+	return 0
+}
+
+case $1 in
+	""|load)
+		BOOT_START=1
+		normalize_legacy_default_config
+		modreg cgi 'virtualip-ng' 'Virtualip NG'
+		modreg daemon -r rc.virtualip-ng -p virtualip-ng virtualip-ng
+
+		if [ "$VIRTUALIP_NG_ENABLED" != "yes" ]; then
+			echo "$DAEMON is disabled" 1>&2
+			exit 1
+		fi
+
+		# Do boot start asynchronously to avoid blocking mod/webif initialization.
+		dbglog "load: scheduling async initial start"
+		(
+			echo "$$" > "$STARTING_FILE"
+			trap 'rm -f "$STARTING_FILE"' EXIT
+
+			BOOT_START=1 "$0" start || true
+
+			# Keep one delayed retry on boot for setups where no onlinechanged event is emitted.
+			if [ "$($0 status 2>/dev/null)" != "running" ]; then
+				retry_secs="${VIRTUALIP_NG_ONLINE_RETRY_SECS:-15}"
+				dbglog "load: scheduling one boot retry in ${retry_secs}s"
+				sleep "$retry_secs"
+				BOOT_START=1 "$0" start || true
+			fi
+		) &
+		;;
+	start)
+		start || exit $?
+		;;
+
+	stop)
+		stop || exit $?
+		;;
+	unload)
+		modunreg daemon virtualip-ng virtualip-ng
+		modunreg cgi 'virtualip-ng'
+		stop || exit $?
+		;;
+	restart)
+		modlib_loadconfig
+		reconcile_config || exit $?
+		;;
+	multid|rextd)
+		# AVM network daemon restart hook (e.g. after WLAN config changes)
+		[ "$VIRTUALIP_NG_ENABLED" = "yes" ] || exit 0
+		dbglog "triggered by $1 daemon restart"
+		start || true
+		;;
+	status)
+		status_entries_file="$(mktemp /tmp/virtualip_ng.status.XXXXXX)" || {
+			echo 'stopped'
+			exit 1
+		}
+		build_config_entries_file "$status_entries_file"
+		status_count=$?
+		if [ "$status_count" -eq 0 ]; then
+			rm -f "$status_entries_file"
+			echo 'stopped'
+			exit 1
+		fi
+		status_running=1
+		status_active_count=0
+		while IFS= read -r line; do
+			parse_entry_line "$line" || continue
+			if [ "$ENTRY_ACTIVE" != "active" ]; then
+				continue
+			fi
+			status_active_count=$((status_active_count + 1))
+			status_prefix="$(mask_to_prefix "$ENTRY_IP" "$ENTRY_MASK" 2>/dev/null)" || {
+				status_running=0
+				break
+			}
+			if ! ip_on_interface "$ENTRY_IFACE" "$ENTRY_IP" "$status_prefix"; then
+				status_running=0
+				break
+			fi
+		done < "$status_entries_file"
+		rm -f "$status_entries_file"
+		if [ "$status_active_count" -eq 0 ]; then
+			echo 'stopped'
+		elif [ -r "$STARTING_FILE" ]; then
+			status_starting_pid="$(sed -n '1p' "$STARTING_FILE" 2>/dev/null)"
+			if [ -n "$status_starting_pid" ] && kill -0 "$status_starting_pid" 2>/dev/null; then
+				echo 'running'
+				exit 0
+			fi
+			rm -f "$STARTING_FILE"
+			if [ "$status_running" -eq 1 ]; then
+				echo 'running'
+			else
+				echo 'stopped'
+			fi
+		elif [ "$status_running" -eq 1 ]; then
+			echo 'running'
+		else
+			echo 'stopped'
+		fi
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|multid|rextd|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0
