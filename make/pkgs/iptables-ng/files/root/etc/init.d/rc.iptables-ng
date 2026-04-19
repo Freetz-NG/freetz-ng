@@ -1,0 +1,345 @@
+#!/bin/sh
+
+DAEMON=iptables_ng
+. /etc/init.d/modlibrc
+
+SAVEFILE_V4=/var/tmp/flash/iptables_ng_rules.v4
+SAVEFILE_V6=/var/tmp/flash/iptables_ng_rules.v6
+FWD_PERSIST_FILE=/var/tmp/flash/iptables_ng_forwarding.conf
+STATUSFILE=/var/run/iptables_ng.applied
+
+load_runtime_config() {
+	# Try to load persisted config when available; keep boot-safe fallback to package defaults.
+	[ -x /usr/bin/modconf ] && /usr/bin/modconf load iptables_ng >/dev/null 2>&1 || true
+	if [ -r /mod/etc/conf/iptables_ng.cfg ]; then
+		. /mod/etc/conf/iptables_ng.cfg
+	elif [ -r /mod/etc/default.iptables_ng/iptables_ng.cfg ]; then
+		. /mod/etc/default.iptables_ng/iptables_ng.cfg
+	elif [ -r /etc/default.iptables_ng/iptables_ng.cfg ]; then
+		. /etc/default.iptables_ng/iptables_ng.cfg
+	fi
+
+	: ${IPTABLES_NG_ENABLED:=no}
+	: ${IPTABLES_NG_AUTOSAVE_ON_STOP:=no}
+	: ${IPTABLES_NG_MODSAVE_ON_SAVE:=no}
+}
+
+ensure_mod_paths() {
+	# modreg validates files below /mod, ensure the real CGI and rc-script paths are visible there.
+	mkdir -p /mod/usr/lib/cgi-bin /mod/etc/init.d
+	[ -e /mod/usr/lib/cgi-bin/iptables_ng.cgi ] || ln -sf /usr/lib/cgi-bin/iptables_ng.cgi /mod/usr/lib/cgi-bin/iptables_ng.cgi
+	[ -e /mod/etc/init.d/rc.iptables-ng ] || ln -sf /etc/init.d/rc.iptables-ng /mod/etc/init.d/rc.iptables-ng
+	[ -e /mod/etc/default.iptables_ng ] || ln -sf /etc/default.iptables_ng /mod/etc/default.iptables_ng
+	mkdir -p /mod/etc/conf
+	# Restore config from persisted diff (canonical modconf path).
+	[ -x /usr/bin/modconf ] && /usr/bin/modconf load iptables_ng >/dev/null 2>&1 || true
+	if [ ! -r /mod/etc/conf/iptables_ng.cfg ] && [ -r /etc/default.iptables_ng/iptables_ng.cfg ]; then
+		cat /etc/default.iptables_ng/iptables_ng.cfg > /mod/etc/conf/iptables_ng.cfg
+	fi
+}
+
+ensure_rule_files() {
+	mkdir -p /var/tmp/flash
+	[ -r "$SAVEFILE_V4" ] || : > "$SAVEFILE_V4"
+	[ -r "$SAVEFILE_V6" ] || : > "$SAVEFILE_V6"
+}
+
+run_modsave_flash() {
+	if command -v modsave >/dev/null 2>&1; then
+		modsave flash >/dev/null 2>&1
+		return $?
+	fi
+	[ -x /usr/bin/modsave ] || return 1
+	/usr/bin/modsave flash >/dev/null 2>&1
+	return $?
+}
+
+modprobe_list() {
+	local mod
+	for mod in $*; do
+		modprobe "$mod" >/dev/null 2>&1 || true
+	done
+}
+
+load_modules() {
+	modprobe_list $IPTABLES_NG_MODULES_V4
+	modprobe_list $IPTABLES_NG_MODULES_V6
+	# Common matches used in saved rules (e.g. -m conntrack) should not block restore.
+	modprobe_list nf_conntrack xt_conntrack xt_state
+}
+
+save_v4() {
+	command -v iptables-save >/dev/null 2>&1 || {
+		echo "ipv4: iptables-save missing" >&2
+		return 2
+	}
+	iptables-save > "$SAVEFILE_V4" || {
+		echo "ipv4: save failed" >&2
+		return 1
+	}
+	return 0
+}
+
+save_v6() {
+	command -v ip6tables-save >/dev/null 2>&1 || {
+		echo "ipv6: ip6tables-save missing" >&2
+		return 2
+	}
+	ip6tables-save > "$SAVEFILE_V6" || {
+		echo "ipv6: save failed" >&2
+		return 1
+	}
+	return 0
+}
+
+restore_v4() {
+	[ -s "$SAVEFILE_V4" ] || return 2
+	command -v iptables-restore >/dev/null 2>&1 || {
+		echo "ipv4: iptables-restore missing" >&2
+		return 1
+	}
+	iptables-restore < "$SAVEFILE_V4" || {
+		echo "ipv4: restore failed" >&2
+		return 1
+	}
+	return 0
+}
+
+restore_v6() {
+	[ -s "$SAVEFILE_V6" ] || return 2
+	command -v ip6tables-restore >/dev/null 2>&1 || {
+		echo "ipv6: ip6tables-restore missing" >&2
+		return 1
+	}
+	ip6tables-restore < "$SAVEFILE_V6" || {
+		echo "ipv6: restore failed" >&2
+		return 1
+	}
+	return 0
+}
+
+flush_v4() {
+	command -v iptables >/dev/null 2>&1 || return 2
+	local t c
+	for t in filter nat mangle raw security; do
+		iptables -t "$t" -F >/dev/null 2>&1 || true
+		iptables -t "$t" -X >/dev/null 2>&1 || true
+		for c in INPUT FORWARD OUTPUT PREROUTING POSTROUTING; do
+			iptables -t "$t" -P "$c" ACCEPT >/dev/null 2>&1 || true
+		done
+	done
+	return 0
+}
+
+flush_v6() {
+	command -v ip6tables >/dev/null 2>&1 || return 2
+	local t c
+	for t in filter nat mangle raw security; do
+		ip6tables -t "$t" -F >/dev/null 2>&1 || true
+		ip6tables -t "$t" -X >/dev/null 2>&1 || true
+		for c in INPUT FORWARD OUTPUT PREROUTING POSTROUTING; do
+			ip6tables -t "$t" -P "$c" ACCEPT >/dev/null 2>&1 || true
+		done
+	done
+	return 0
+}
+
+save_rules() {
+	local family="${1:-all}"
+	local rc4 rc6
+	case "$family" in
+		all)
+			save_v4; rc4=$?
+			save_v6; rc6=$?
+			# hard failure if any save command was present but failed
+			[ "$rc4" -eq 1 ] && return 1
+			[ "$rc6" -eq 1 ] && return 1
+			# fail if nothing could be saved
+			[ "$rc4" -eq 2 ] && [ "$rc6" -eq 2 ] && return 1
+			return 0
+			;;
+		ipv4|v4)
+			save_v4
+			[ $? -eq 0 ] || return 1
+			return 0
+			;;
+		ipv6|v6)
+			save_v6
+			[ $? -eq 0 ] || return 1
+			return 0
+			;;
+		*)
+			echo "invalid family: $family" >&2
+			return 1
+			;;
+	esac
+}
+
+restore_rules() {
+	local family="${1:-all}"
+	local rc4 rc6
+	case "$family" in
+		all)
+			restore_v4; rc4=$?
+			restore_v6; rc6=$?
+			# hard failure only if both families really failed.
+			# If one family succeeds/skips and the other fails, keep startup usable.
+			[ "$rc4" -eq 1 ] && [ "$rc6" -eq 1 ] && return 1
+			# success if at least one restore succeeded or skipped
+			return 0
+			;;
+		ipv4|v4)
+			restore_v4
+			case $? in
+				0|2) return 0 ;;
+				*) return 1 ;;
+			esac
+			;;
+		ipv6|v6)
+			restore_v6
+			case $? in
+				0|2) return 0 ;;
+				*) return 1 ;;
+			esac
+			;;
+		*)
+			echo "invalid family: $family" >&2
+			return 1
+			;;
+	esac
+}
+
+flush_rules() {
+	local family="${1:-all}"
+	local rc4 rc6
+	case "$family" in
+		all)
+			flush_v4; rc4=$?
+			flush_v6; rc6=$?
+			[ "$rc4" -eq 1 ] && return 1
+			[ "$rc6" -eq 1 ] && return 1
+			return 0
+			;;
+		ipv4|v4)
+			flush_v4
+			[ $? -eq 1 ] && return 1
+			return 0
+			;;
+		ipv6|v6)
+			flush_v6
+			[ $? -eq 1 ] && return 1
+			return 0
+			;;
+		*)
+			echo "invalid family: $family" >&2
+			return 1
+			;;
+		esac
+}
+
+apply_persistent_forwarding() {
+	local family ifn val p
+	[ -r "$FWD_PERSIST_FILE" ] || return 0
+	while IFS=' ' read -r family ifn val _; do
+		[ -n "$family" ] || continue
+		case "$family" in
+			ipv4) p="/proc/sys/net/ipv4/conf/$ifn/forwarding" ;;
+			ipv6) p="/proc/sys/net/ipv6/conf/$ifn/forwarding" ;;
+			*) continue ;;
+		esac
+		case "$ifn" in
+			*[!A-Za-z0-9_.:-]*|"") continue ;;
+		esac
+		case "$val" in
+			0|1) ;;
+			*) continue ;;
+		esac
+		[ -w "$p" ] || continue
+		echo "$val" > "$p" || true
+	done < "$FWD_PERSIST_FILE"
+	return 0
+}
+
+start() {
+	load_runtime_config
+	ensure_rule_files
+	load_modules
+	restore_rules all
+	[ $? -eq 0 ] || return 1
+	apply_persistent_forwarding || true
+	touch "$STATUSFILE"
+	return 0
+}
+
+stop() {
+	load_runtime_config
+	if [ "$IPTABLES_NG_AUTOSAVE_ON_STOP" = "yes" ]; then
+		save_rules all || true
+		if [ "$IPTABLES_NG_MODSAVE_ON_SAVE" = "yes" ]; then
+			run_modsave_flash || true
+		fi
+	fi
+	flush_rules all || true
+	rm -f "$STATUSFILE"
+	return 0
+}
+
+case "$1" in
+	""|load)
+		ensure_mod_paths
+		modlib_defaults
+		load_runtime_config
+		modreg pkg iptables_ng 'Iptables NG'
+		modreg conf iptables_ng _index 'Settings'
+		modreg daemon -n 'Iptables NG' -r rc.iptables-ng -p iptables_ng iptables-ng
+		ensure_rule_files
+		case "$IPTABLES_NG_ENABLED" in
+			yes)
+				if ! start >/tmp/iptables_ng_start.log 2>&1; then
+					echo "Iptables NG autostart failed: $(tr '\n' ' ' </tmp/iptables_ng_start.log)" >&2
+				fi
+				;;
+			inetd)
+				# Not an inetd-managed service; treat as enabled for backward compatibility.
+				if ! start >/tmp/iptables_ng_start.log 2>&1; then
+					echo "Iptables NG autostart failed: $(tr '\n' ' ' </tmp/iptables_ng_start.log)" >&2
+				fi
+				;;
+			*)
+				echo "Iptables NG is disabled/manual." >&2
+				;;
+		esac
+		;;
+	unload)
+		modunreg daemon iptables-ng iptables_ng
+		modunreg conf iptables_ng _index
+		modunreg pkg iptables_ng
+		stop
+		;;
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		stop
+		start
+		;;
+	status)
+		# Report only runtime state. Startup mode (automatic/manual) is independent.
+		[ -e "$STATUSFILE" ] && echo running || echo stopped
+		;;
+	save)
+		save_rules "$2"
+		;;
+	restore)
+		restore_rules "$2"
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status|save [all|ipv4|ipv6]|restore [all|ipv4|ipv6]]" >&2
+		exit 1
+		;;
+esac
+
+exit 0
