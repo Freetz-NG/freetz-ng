@@ -26,7 +26,7 @@ if FREETZ_PACKAGE_SQLITE
 		bool "build with readline support"
 		select FREETZ_LIB_libreadline
 		select FREETZ_LIB_libncurses
-		default n
+		default y
 		help
 			This option causes command line client to be built with readline and history support.
 
