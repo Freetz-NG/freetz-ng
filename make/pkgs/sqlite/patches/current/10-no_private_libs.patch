@@ -6,6 +6,5 @@
  Version: @PACKAGE_VERSION@
 -Libs: -L${libdir} -lsqlite3
 -Libs.private: @LDFLAGS_MATH@ @LDFLAGS_ZLIB@ @LDFLAGS_DLOPEN@ @LDFLAGS_PTHREAD@ @LDFLAGS_ICU@
--Cflags: -I${includedir}
 +Libs: -L${libdir} @LDFLAGS_MATH@ @LDFLAGS_ZLIB@ @LDFLAGS_DLOPEN@ @LDFLAGS_PTHREAD@ @LDFLAGS_ICU@ -lsqlite3
-+Cflags: -I${includedir} -D_REENTRANT -D_GNU_SOURCE
+ Cflags: -I${includedir}
