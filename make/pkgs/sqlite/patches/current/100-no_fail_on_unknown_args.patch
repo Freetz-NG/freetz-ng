@@ -1,0 +1,11 @@
+--- autosetup/autosetup
++++ autosetup/autosetup
+@@ -648,7 +648,7 @@
+ 		if {[opt-bool option-checking]} {
+ 			foreach o [dict keys $::autosetup(getopt)] {
+ 				if {$o ni $::autosetup(options)} {
+-					user-error "Unknown option --$o"
++					user-notice "Unknown option --$o"
+ 				}
+ 			}
+ 		}

@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libsqlite3
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libsqlite3.so.0.8.6
+		 ${FREETZ_LIBRARY_DIR}/libsqlite3.so.x.x.x
 

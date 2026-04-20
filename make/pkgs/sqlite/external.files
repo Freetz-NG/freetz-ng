@@ -1,3 +1,5 @@
+[ "$FREETZ_LIB_librrd_WITH_VERSION_ABANDON" == "y" ] && ELIBVER="0.8.6" || ELIBVER="3.53.0"
+
 [ "$EXTERNAL_FREETZ_PACKAGE_SQLITE" == "y" ] && EXTERNAL_FILES+=" /usr/bin/sqlite3"
-[ "$EXTERNAL_FREETZ_LIB_libsqlite3" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libsqlite3.so.0.8.6"
+[ "$EXTERNAL_FREETZ_LIB_libsqlite3" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libsqlite3.so.$ELIBVER""
 
