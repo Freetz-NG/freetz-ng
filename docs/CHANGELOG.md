@@ -133,9 +133,9 @@ Latest changes
     * libcap-ng 0.9.3
     * libexif 0.6.26
     * libmaxminddb 1.13.3
-    * libpng 1.6.57
+    * libpng 1.6.58
     * libuv 1.44.2/1.52.1
-    * libxml2 2.15.2
+    * libxml2 2.15.3
     * MbedTLS 2.7.19/2.28.10/3.6.6
     * neon 0.30.2/0.37.0
     * pango 1.57.1
