@@ -37,7 +37,7 @@ ifneq ($(strip $(FREETZ_PACKAGE_SQLITE_WITH_READLINE)),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-readline
 else
 $(PKG)_CONFIGURE_OPTIONS += --enable-readline
-ifeq ($(strip $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON)),y)
+ifneq ($(strip $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_OPTIONS += --with-readline-cflags="-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include"
 $(PKG)_CONFIGURE_OPTIONS += --with-readline-ldflags="-L$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib -lreadline"
 endif
