@@ -5,9 +5,10 @@ $(PKG)_SITE:=http://www.ex-parrot.com/pdw/$(pkg)/download
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)
 
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./ ./config)
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
-$(PKG)_DEPENDS_ON += ncurses libpcap
+$(PKG)_DEPENDS_ON += config-host ncurses libpcap
 $(PKG)_LIBS := -lpcap -lm  -lncurses -lpthread
 
 $(PKG)_CONFIGURE_OPTIONS += --with-libpcap="$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pcap"
