@@ -1,7 +1,7 @@
 $(call PKG_INIT_BIN, 1.0)
 ### STEWARD:=ThomasToka
 
-$(PKG)_CATEGORY:=Unstable
+$(PKG)_CATEGORY:=V
 $(PKG)_STARTLEVEL=20
 
 

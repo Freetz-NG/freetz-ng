@@ -775,6 +775,27 @@ reconcile_config() {
 	return 0
 }
 
+start_async_boot() {
+	local retry_secs
+	local mypid="$$"
+
+	echo "$mypid" > "$STARTING_FILE"
+
+	BOOT_START=1 start || true
+
+	# Keep one delayed retry on boot for setups where no onlinechanged event is emitted.
+	if [ "$("$0" status 2>/dev/null)" != "running" ]; then
+		retry_secs="${VIRTUALIP_NG_ONLINE_RETRY_SECS:-15}"
+		dbglog "async start: scheduling one boot retry in ${retry_secs}s"
+		sleep "$retry_secs"
+		BOOT_START=1 start || true
+	fi
+
+	if [ -r "$STARTING_FILE" ] && [ "$(sed -n '1p' "$STARTING_FILE" 2>/dev/null)" = "$mypid" ]; then
+		rm -f "$STARTING_FILE"
+	fi
+}
+
 stop() {
 	local state_entries_file
 	local entries_file
@@ -865,20 +886,10 @@ case $1 in
 
 		# Do boot start asynchronously to avoid blocking mod/webif initialization.
 		dbglog "load: scheduling async initial start"
-		(
-			echo "$$" > "$STARTING_FILE"
-			trap 'rm -f "$STARTING_FILE"' EXIT
-
-			BOOT_START=1 "$0" start || true
-
-			# Keep one delayed retry on boot for setups where no onlinechanged event is emitted.
-			if [ "$($0 status 2>/dev/null)" != "running" ]; then
-				retry_secs="${VIRTUALIP_NG_ONLINE_RETRY_SECS:-15}"
-				dbglog "load: scheduling one boot retry in ${retry_secs}s"
-				sleep "$retry_secs"
-				BOOT_START=1 "$0" start || true
-			fi
-		) &
+		nohup "$0" async-start 0</dev/null 1>/dev/null 2>&1 &
+		;;
+	async-start)
+		start_async_boot
 		;;
 	start)
 		start || exit $?
@@ -953,7 +964,7 @@ case $1 in
 		fi
 		;;
 	*)
-		echo "Usage: $0 [load|unload|start|stop|restart|multid|rextd|status]" 1>&2
+		echo "Usage: $0 [load|unload|start|async-start|stop|restart|multid|rextd|status]" 1>&2
 		exit 1
 		;;
 esac
