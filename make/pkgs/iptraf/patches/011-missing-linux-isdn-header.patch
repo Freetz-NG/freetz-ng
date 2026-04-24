@@ -1,0 +1,73 @@
+--- src/packet.c
++++ src/packet.c
+@@ -36,7 +36,22 @@
+ #include <linux/if_ether.h>
+ #include <linux/netdevice.h>
+ #include <linux/if_tr.h>
+-#include <linux/isdn.h>
++#if defined(__has_include)
++# if __has_include(<linux/isdn.h>)
++#  include <linux/isdn.h>
++#  define IPTRAF_HAVE_LINUX_ISDN_H 1
++# endif
++#else
++# include <linux/isdn.h>
++# define IPTRAF_HAVE_LINUX_ISDN_H 1
++#endif
++#ifndef ISDN_NET_ENCAP_RAWIP
++# define ISDN_NET_ENCAP_RAWIP 0
++#endif
++#ifndef ISDN_NET_ENCAP_CISCOHDLC
++# define ISDN_NET_ENCAP_CISCOHDLC 1
++#endif
++#ifndef IPTRAF_HAVE_LINUX_ISDN_H
++# define IPTRAF_HAVE_LINUX_ISDN_H 0
++#endif
+ #include <linux/sockios.h>
+ #include <msgboxes.h>
+ #include "deskman.h"
+--- src/isdntab.c
++++ src/isdntab.c
+@@ -20,7 +20,26 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/ioctl.h>
+-#include <linux/isdn.h>
++#if defined(__has_include)
++# if __has_include(<linux/isdn.h>)
++#  include <linux/isdn.h>
++#  define IPTRAF_HAVE_LINUX_ISDN_H 1
++# endif
++#else
++# include <linux/isdn.h>
++# define IPTRAF_HAVE_LINUX_ISDN_H 1
++#endif
++#ifndef IPTRAF_HAVE_LINUX_ISDN_H
++# define IPTRAF_HAVE_LINUX_ISDN_H 0
++#endif
++#ifndef ISDN_NET_ENCAP_RAWIP
++# define ISDN_NET_ENCAP_RAWIP 0
++#endif
++#ifndef ISDN_NET_ENCAP_CISCOHDLC
++# define ISDN_NET_ENCAP_CISCOHDLC 1
++#endif
++#if !IPTRAF_HAVE_LINUX_ISDN_H
++typedef struct { char name[10]; unsigned int p_encap; } isdn_net_ioctl_cfg;
++# define IIOCNETGCF 0
++#endif
+ #include "isdntab.h"
+@@ -41,8 +60,13 @@
+ 
+     strcpy(isdn_cfg.name, ifname);
+-    ioctl(isdn_fd, IIOCNETGCF, &isdn_cfg);
+-    new_entry->encap = isdn_cfg.p_encap;
++#if IPTRAF_HAVE_LINUX_ISDN_H
++    ioctl(isdn_fd, IIOCNETGCF, &isdn_cfg);
++    new_entry->encap = isdn_cfg.p_encap;
++#else
++    (void)isdn_fd;
++    new_entry->encap = ISDN_NET_ENCAP_RAWIP;
++#endif
+ }
+ 
+ struct isdntabent *isdn_table_lookup(struct isdntab *list, char *ifname,
