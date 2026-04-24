@@ -1,6 +1,6 @@
 --- src/packet.c
 +++ src/packet.c
-@@ -36,7 +36,22 @@
+@@ -36,7 +36,24 @@
  #include <linux/if_ether.h>
  #include <linux/netdevice.h>
  #include <linux/if_tr.h>
@@ -28,7 +28,7 @@
  #include "deskman.h"
 --- src/isdntab.c
 +++ src/isdntab.c
-@@ -20,7 +20,26 @@
+@@ -20,5 +20,26 @@
  #include <stdlib.h>
  #include <string.h>
  #include <sys/ioctl.h>

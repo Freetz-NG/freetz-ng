@@ -1,0 +1,46 @@
+--- support/winops.c
++++ support/winops.c
+@@ -27,34 +27,25 @@
+ void tx_colorwin(WINDOW * win)
+ {
+     int ctr;
+-    char *blankpad;
+-    blankpad = (char *) malloc(sizeof(char) * (COLS + 1));
++    int maxy, maxx;
+ 
+-    strcpy(blankpad, "");
+-
+-    for (ctr = 0; ctr <= win->_maxx; ctr++) {
+-	strcat(blankpad, " ");
+-    }
++    getmaxyx(win, maxy, maxx);
+ 
+     scrollok(win, 0);
+-    for (ctr = 0; ctr <= win->_maxy; ctr++) {
+-	wmove(win, ctr, 0);
+-	wprintw(win, "%s", blankpad);
++    for (ctr = 0; ctr <= maxy; ctr++) {
++        mvwhline(win, ctr, 0, 32, maxx + 1);
+     }
+     scrollok(win, 1);
+-    free(blankpad);
+ }
+ 
+ void tx_wcoloreol(WINDOW *win)
+ {
+-    int y, x;
+     int cury, curx;
+-    char sp_buf[10];
+-    
++    int maxx;
++
+     getyx(win, cury, curx);
+-    getmaxyx(win, y, x);
+-    sprintf(sp_buf, "%%%dc", x - curx - 1);
++    maxx = getmaxx(win);
+     scrollok(win, 0);
+-    wprintw(win, sp_buf, ' ');
++    if (curx <= maxx)
++        whline(win, 32, maxx - curx + 1);
+ }
+-
