@@ -78,6 +78,7 @@ Latest changes
     * openssl 3.5.6
     * pseudo 1.9.5
     * python3 3.14.4
+    * sed 4.10
 
   - AVM sources:
 

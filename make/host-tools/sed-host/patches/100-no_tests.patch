@@ -1,0 +1,11 @@
+--- Makefile.in
++++ Makefile.in
+@@ -3280,7 +3280,7 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-SUBDIRS = po . gnulib-tests
++SUBDIRS = po .
+ 
+ # This applies to all parts: gnulib, sed, testsuites
+ AM_CPPFLAGS = -I$(top_srcdir) \
