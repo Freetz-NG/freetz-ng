@@ -1,4 +1,4 @@
-# sed 4.9
+# sed 4.10
   - Homepage: [https://www.gnu.org/software/sed/](https://www.gnu.org/software/sed/)
   - Manpage: [https://sed.sourceforge.io/#docs](https://sed.sourceforge.io/#docs)
   - Changelog: [https://git.savannah.gnu.org/cgit/sed.git/refs/tags](https://git.savannah.gnu.org/cgit/sed.git/refs/tags)
