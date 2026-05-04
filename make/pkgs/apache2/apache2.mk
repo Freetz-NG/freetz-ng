@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.4.66)
+$(call PKG_INIT_BIN, 2.4.67)
 $(PKG)_SOURCE:=httpd-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=94d7ff2b42acbb828e870ba29e4cbad48e558a79c623ad3596e4116efcfea25a
+$(PKG)_HASH:=66cd206637b0d5c446fa7dabe75fe03525da8fb55855876c46288cd88b136aa4
 $(PKG)_SITE:=@APACHE/httpd
 ### WEBSITE:=https://httpd.apache.org/
 ### MANPAGE:=https://httpd.apache.org/docs/2.4/

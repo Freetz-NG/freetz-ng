@@ -1,8 +1,8 @@
 --- configure
 +++ configure
-@@ -28828,7 +28828,7 @@
+@@ -28967,7 +28967,7 @@
  
-   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for OpenSSL" >&5
+   { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking for OpenSSL" >&5
  printf %s "checking for OpenSSL... " >&6; }
 -if test ${ac_cv_openssl+y}
 +if false
