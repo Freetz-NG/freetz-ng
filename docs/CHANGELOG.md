@@ -121,7 +121,7 @@ Latest changes
     * SQLite 3.40.1/3.53.0
     * tinc 1.0.37/1.1pre18
     * Tinyproxy 1.11.3
-    * Tor 0.4.8.24
+    * Tor 0.4.8.25
     * Tree 1.8.0/2.3.2
     * Unbound 1.25.0
     * UnRAR 6.1.7/7.2.5
