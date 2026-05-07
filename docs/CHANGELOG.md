@@ -101,6 +101,7 @@ Latest changes
     * Dropbear 2026.90
     * Git 2.26.2/2.53.0
     * htop 1.0.3/3.5.1
+    * htpdate 2.0.2
     * ImageMagick 7.1.0-62/7.1.2-21
     * iPerf3 3.3/3.21
     * LCD4linux 63fffafb
