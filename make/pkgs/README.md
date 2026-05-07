@@ -360,7 +360,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[htop 1.0.3/3.5.1 (binary only)](../../docs/make/htop.md)<a id='htop'></a>**<br>
     htop is a more powerful alternative to top, using ncurses.
 
-  * **[htpdate 2.0.1](../../docs/make/htpdate.md)<a id='htpdate'></a>**<br>
+  * **[htpdate 2.0.2](../../docs/make/htpdate.md)<a id='htpdate'></a>**<br>
     The HTTP Time Protocol (HTP) is used to synchronize a computer's time with web servers as reference time source. Htpdate will synchronize your computer's time by extracting timestamps from HTTP headers found in web server responses. Htpdate can be used as a daemon, to keep your computer synchronized. WWW: http://www.clevervest.com/htp/ Manpage: http://linux.die.net/man/8/htpdate This package automatically removes AVM'S chronyd if necessary.
 
   * **<u>httpry 0.1.8 - DEPRECATED</u><a id='httpry'></a>**<br>
