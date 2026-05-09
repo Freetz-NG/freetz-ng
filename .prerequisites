@@ -53,10 +53,11 @@ header      ncurses.h
 header      zlib.h
 header      sys/acl.h
 header      sys/capability.h
-header      uuid/uuid.h            FREETZ_AVM_HAS_FWLAYOUT_5 FREETZ_HOSTTOOLS_BUILD
-header      gnutls/gnutls.h        FREETZ_AVM_HAS_FWLAYOUT_5 FREETZ_HOSTTOOLS_BUILD
+header      uuid/uuid.h            FREETZ_HOSTTOOLS_BUILD FREETZ_AVM_HAS_FWLAYOUT_5
+header      gnutls/gnutls.h        FREETZ_HOSTTOOLS_BUILD FREETZ_AVM_HAS_FWLAYOUT_5
 header      readline/readline.h    FREETZ_PACKAGE_GDB_HOST
 header      sqlite3.h              FREETZ_ROOTEMU_PSEUDO
 lib         libsqlite3.so          FREETZ_ROOTEMU_PSEUDO
+lib32       libatomic.so           FREETZ_HOSTTOOLS_BUILD  # yf-akcarea + pseudo + fakeroot
 pkgconf     libzstd.pc             FREETZ_TOOLCHAIN_CCACHE
 
