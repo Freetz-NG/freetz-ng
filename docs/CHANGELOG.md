@@ -76,7 +76,7 @@ Latest changes
     * kconfig 7.0
     * meson 1.11.1
     * openssl 3.5.6
-    * pseudo 1.9.5
+    * pseudo 1.9.6
     * python3 3.14.4
     * sed 4.10
 
