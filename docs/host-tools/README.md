@@ -116,7 +116,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[python3-attrs 25.4.0](python3-attrs-host.md)<a id='python3-attrs-host'></a>**<br>
 
-  * **[python3 3.14.4](python3-host.md)<a id='python3-host'></a>**<br>
+  * **[python3 3.14.5](python3-host.md)<a id='python3-host'></a>**<br>
 
   * **[python3-jsonschema 4.25.1](python3-jsonschema-host.md)<a id='python3-jsonschema-host'></a>**<br>
 
