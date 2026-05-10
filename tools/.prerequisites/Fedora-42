@@ -22,8 +22,6 @@ inkscape
 javapackages-tools
 kmod
 libacl-devel
-libatomic
-libatomic.i686
 libattr-devel
 libcap-devel
 libgcc
