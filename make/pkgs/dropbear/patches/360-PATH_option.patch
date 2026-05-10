@@ -43,7 +43,7 @@
  #ifdef SO_BINDTODEVICE
  					"-l <interface>\n"
  					"		interface to bind on\n"
-@@ -147,6 +149,7 @@
+@@ -148,6 +150,7 @@
  #endif
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
@@ -51,7 +51,7 @@
  					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
  					DEFAULT_MAX_DURATION);
  }
-@@ -194,6 +197,7 @@
+@@ -196,6 +199,7 @@
  	svr_opts.delay_hostkey = 0;
  	svr_opts.pidfile = expand_homedir_path(DROPBEAR_PIDFILE);
  	svr_opts.authorized_keys_dir = "~/.ssh";
@@ -59,7 +59,7 @@
  #if DROPBEAR_SVR_LOCALANYFWD
  	svr_opts.nolocaltcp = 0;
  #endif
-@@ -312,6 +316,9 @@
+@@ -314,6 +318,9 @@
  				case 'P':
  					next = &svr_opts.pidfile;
  					break;
@@ -69,7 +69,7 @@
  #ifdef SO_BINDTODEVICE
  				case 'l':
  					next = &svr_opts.interface;
-@@ -443,6 +450,10 @@
+@@ -448,6 +455,10 @@
  	}
  #endif
  

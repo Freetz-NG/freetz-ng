@@ -2,7 +2,7 @@ comment "Dropbear (not available, needs replace kernel for pty-support)"
 	depends on !FREETZ_REPLACE_KERNEL && !FREETZ_AVM_HAS_PTY_SUPPORT && !FREETZ_SHOW_EXPERT
 
 config FREETZ_PACKAGE_DROPBEAR
-	bool "Dropbear 2026.90"
+	bool "Dropbear 2026.91"
 	depends on FREETZ_REPLACE_KERNEL || FREETZ_AVM_HAS_PTY_SUPPORT || FREETZ_SHOW_EXPERT
 	select FREETZ_LIB_libutil if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default y

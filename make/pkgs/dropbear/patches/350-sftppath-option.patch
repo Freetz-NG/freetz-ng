@@ -35,7 +35,7 @@
  					"-F		Don't fork into background\n"
  					"-e		Pass on server process environment to child process\n"
  #ifdef DISABLE_SYSLOG
-@@ -138,6 +142,9 @@
+@@ -139,6 +143,9 @@
  #if DROPBEAR_ED25519
  					ED25519_PRIV_FILENAME,
  #endif
@@ -45,7 +45,7 @@
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
  					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
-@@ -163,6 +170,9 @@
+@@ -165,6 +172,9 @@
  
  
  	/* see printhelp() for options */
@@ -55,7 +55,7 @@
  	svr_opts.bannerfile = NULL;
  	svr_opts.banner = NULL;
  	svr_opts.forced_command = NULL;
-@@ -245,6 +255,11 @@
+@@ -247,6 +257,11 @@
  				case 'R':
  					svr_opts.delay_hostkey = 1;
  					break;
@@ -67,7 +67,7 @@
  				case 'F':
  					svr_opts.forkbg = 0;
  					break;
-@@ -422,6 +437,12 @@
+@@ -427,6 +442,12 @@
  		svr_opts.portcount = 1;
  	}
  

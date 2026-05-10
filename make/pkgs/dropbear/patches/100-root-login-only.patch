@@ -20,7 +20,7 @@
  #ifdef HAVE_GETGROUPLIST
  					"-G		Restrict logins to members of specified group\n"
  #endif
-@@ -167,6 +168,7 @@
+@@ -169,6 +170,7 @@
  	svr_opts.forced_command = NULL;
  	svr_opts.forkbg = 1;
  	svr_opts.norootlogin = 0;
@@ -28,7 +28,7 @@
  #ifdef HAVE_GETGROUPLIST
  	svr_opts.restrict_group = NULL;
  	svr_opts.restrict_group_gid = 0;
-@@ -312,6 +314,9 @@
+@@ -314,6 +316,9 @@
  				case 'w':
  					svr_opts.norootlogin = 1;
  					break;
