@@ -221,8 +221,6 @@ wird. Die folgende Anleitung benötigt für
 -   **bison** - YACC-kompatibler Parser-Generator
 -   **patch** - Programm, um Patches anzuwenden
 -   **texinfo** - Online-/Druck-Doku aus gemeinsamer Quelle erzeugen
--   **tofrodos** - Dateiumwandlung DOS ↔ UNIX (für was wird das
-    benötigt?)
 -   **gettext** - Texte in Programmen internationalisieren
 -   **pkg-config** - Hilfstool welches zum Bauen von Binaries und
     Libraries nötig ist
