@@ -98,6 +98,7 @@ Latest changes
     * CA-bundle 2026-03-19
     * Curl 8.12.1/8.20.0
     * davfs2 1.5.2/1.7.3
+    * Dnsmasq 2.80/2.92rel2
     * Dropbear 2026.91
     * Git 2.26.2/2.53.0
     * htop 1.0.3/3.5.1
