@@ -1,6 +1,6 @@
-CCACHE_KERNEL_VERSION:=4.13.5
+CCACHE_KERNEL_VERSION:=4.13.6
 CCACHE_KERNEL_SOURCE:=ccache-$(CCACHE_KERNEL_VERSION).tar.xz
-CCACHE_KERNEL_HASH:=7a8945f4ac7d4bb79c0055cd3db7857a6934c2b7ab3d80bb11a0f5271e36fd94
+CCACHE_KERNEL_HASH:=a7de667ca08cf67c3c8af9f213f6aa701a1188a2b3163fb74483858ce5e79fbb
 CCACHE_KERNEL_SITE:=https://github.com/ccache/ccache/releases/download/v$(CCACHE_KERNEL_VERSION)
 ### WEBSITE:=https://ccache.dev/
 ### MANPAGE:=https://ccache.dev/documentation.html
