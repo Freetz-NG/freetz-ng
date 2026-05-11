@@ -1,4 +1,4 @@
-# expat: libexpat (libexpat.so) 2.7.5/2.8.0
+# expat: libexpat (libexpat.so) 2.7.5/2.8.1
   - Homepage: [https://libexpat.github.io/](https://libexpat.github.io/)
   - Manpage: [https://libexpat.github.io/doc/](https://libexpat.github.io/doc/)
   - Changelog: [https://github.com/libexpat/libexpat/blob/master/expat/Changes](https://github.com/libexpat/libexpat/blob/master/expat/Changes)
