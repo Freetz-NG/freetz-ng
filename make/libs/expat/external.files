@@ -1,4 +1,4 @@
-[ "$FREETZ_LIB_libexpat_WITH_VERSION_ABANDON" == "y" ] && ELIBVER="1.11.3" || ELIBVER="1.12.0"
+[ "$FREETZ_LIB_libexpat_WITH_VERSION_ABANDON" == "y" ] && ELIBVER="1.11.3" || ELIBVER="1.12.1"
 
-[ "$EXTERNAL_FREETZ_LIB_libexpat" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libexpat.so.1.12.0"
+[ "$EXTERNAL_FREETZ_LIB_libexpat" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libexpat.so.$ELIBVER"
 
