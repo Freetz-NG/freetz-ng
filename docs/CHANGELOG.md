@@ -68,6 +68,7 @@ Latest changes
     * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.57
 
   - Host tools:
+    * busybox 1.38.0
     * autoconf 2.73
     * ca-bundle 2026-05-14
     * cmake 4.3.2
@@ -95,6 +96,7 @@ Latest changes
     * Bftpd 6.6
     * BIND 9.11.37/9.20.22
     * Binutils 2.46.0
+    * BusyBox 1.27.2/1.38.0
     * CA-bundle 2026-05-14
     * Curl 8.12.1/8.20.0
     * davfs2 1.5.2/1.7.3

@@ -967,7 +967,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  	 && xstate->magic.b16[0] == XZ_MAGIC1
  	) {
 @@ -207,6 +218,7 @@
- 	if (fail_if_not_compressed)
+ 	if (die_if_not_compressed)
  		bb_simple_error_msg_and_die("no gzip"
  			IF_FEATURE_SEAMLESS_BZ2("/bzip2")
 +			IF_FEATURE_SEAMLESS_LZ("/lzip")
@@ -2424,7 +2424,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  //config:	help
  //config:	With this option tar can automatically detect compressed
  //config:	tarballs. Currently it works only on files (not pipes etc).
-@@ -743,6 +743,7 @@
+@@ -744,6 +744,7 @@
  //usage:	IF_FEATURE_SEAMLESS_GZ("z")
  //usage:	IF_FEATURE_SEAMLESS_XZ("J")
  //usage:	IF_FEATURE_SEAMLESS_BZ2("j")
@@ -2432,7 +2432,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  //usage:	"a"
  //usage:	IF_FEATURE_TAR_CREATE("h")
  //usage:	IF_FEATURE_TAR_NOPRESERVE_TIME("m")
-@@ -782,6 +783,9 @@
+@@ -783,6 +784,9 @@
  //usage:	IF_FEATURE_SEAMLESS_BZ2(
  //usage:     "\n	-j	(De)compress using bzip2"
  //usage:	)
@@ -2442,7 +2442,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  //usage:	IF_FEATURE_SEAMLESS_LZMA(
  //usage:	IF_FEATURE_TAR_LONG_OPTIONS(
  //usage:     "\n	--lzma	(De)compress using lzma"
-@@ -822,7 +826,8 @@
+@@ -823,7 +827,8 @@
  	IF_FEATURE_TAR_FROM(     OPTBIT_EXCLUDE_FROM,)
  	IF_FEATURE_SEAMLESS_GZ(  OPTBIT_GZIP        ,)
  	IF_FEATURE_SEAMLESS_XZ(  OPTBIT_XZ          ,)
@@ -2452,7 +2452,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  	OPTBIT_AUTOCOMPRESS_BY_EXT,
  	IF_FEATURE_TAR_NOPRESERVE_TIME(OPTBIT_NOPRESERVE_TIME,)
  #if ENABLE_FEATURE_TAR_LONG_OPTIONS
-@@ -850,6 +855,7 @@
+@@ -851,6 +856,7 @@
  	OPT_EXCLUDE_FROM = IF_FEATURE_TAR_FROM(     (1 << OPTBIT_EXCLUDE_FROM)) + 0, // X
  	OPT_GZIP         = IF_FEATURE_SEAMLESS_GZ(  (1 << OPTBIT_GZIP        )) + 0, // z
  	OPT_XZ           = IF_FEATURE_SEAMLESS_XZ(  (1 << OPTBIT_XZ          )) + 0, // J
@@ -2460,7 +2460,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  	OPT_COMPRESS     = IF_FEATURE_SEAMLESS_Z(   (1 << OPTBIT_COMPRESS    )) + 0, // Z
  	OPT_AUTOCOMPRESS_BY_EXT = 1 << OPTBIT_AUTOCOMPRESS_BY_EXT,                   // a
  	OPT_NOPRESERVE_TIME  = IF_FEATURE_TAR_NOPRESERVE_TIME((1 << OPTBIT_NOPRESERVE_TIME)) + 0, // m
-@@ -861,7 +867,7 @@
+@@ -862,7 +868,7 @@
  	OPT_NOPRESERVE_PERM  = IF_FEATURE_TAR_LONG_OPTIONS((1 << OPTBIT_NOPRESERVE_PERM)) + 0, // no-same-permissions
  	OPT_OVERWRITE        = IF_FEATURE_TAR_LONG_OPTIONS((1 << OPTBIT_OVERWRITE      )) + 0, // overwrite
  
@@ -2469,7 +2469,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  };
  #if ENABLE_FEATURE_TAR_LONG_OPTIONS
  static const char tar_longopts[] ALIGN1 =
-@@ -891,6 +897,9 @@
+@@ -892,6 +898,9 @@
  # if ENABLE_FEATURE_SEAMLESS_GZ
  	"gzip\0"                No_argument       "z"
  # endif
@@ -2479,7 +2479,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  # if ENABLE_FEATURE_SEAMLESS_XZ
  	"xz\0"                  No_argument       "J"
  # endif
-@@ -996,6 +1005,7 @@
+@@ -997,6 +1006,7 @@
  		IF_FEATURE_TAR_FROM(     "T:*X:*")
  		IF_FEATURE_SEAMLESS_GZ(  "z"     )
  		IF_FEATURE_SEAMLESS_XZ(  "J"     )
@@ -2487,7 +2487,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  		IF_FEATURE_SEAMLESS_Z(   "Z"     )
  		"a"
  		IF_FEATURE_TAR_NOPRESERVE_TIME("m")
-@@ -1045,6 +1055,7 @@
+@@ -1046,6 +1056,7 @@
  	showopt(OPT_EXCLUDE_FROM    );
  	showopt(OPT_GZIP            );
  	showopt(OPT_XZ              );
@@ -2495,7 +2495,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  	showopt(OPT_COMPRESS        );
  	showopt(OPT_AUTOCOMPRESS_BY_EXT);
  	showopt(OPT_NOPRESERVE_TIME );
-@@ -1202,6 +1213,8 @@
+@@ -1206,6 +1217,8 @@
  			zipMode = "gzip";
  		if (opt & OPT_BZIP2)
  			zipMode = "bzip2";
@@ -2504,7 +2504,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  		if (opt & OPT_LZMA)
  			zipMode = "lzma";
  		if (opt & OPT_XZ)
-@@ -1238,6 +1251,10 @@
+@@ -1242,6 +1255,10 @@
  			USE_FOR_MMU(IF_FEATURE_SEAMLESS_BZ2(xformer = unpack_bz2_stream;))
  			USE_FOR_NOMMU(xformer_prog = "bunzip2";)
  		}
@@ -2695,7 +2695,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  char get_header_tar_lzma(archive_handle_t *archive_handle) FAST_FUNC;
  char get_header_tar_xz(archive_handle_t *archive_handle) FAST_FUNC;
  
-@@ -252,6 +257,7 @@
+@@ -253,6 +258,7 @@
  IF_DESKTOP(long long) int unpack_Z_stream(transformer_state_t *xstate) FAST_FUNC;
  IF_DESKTOP(long long) int unpack_gz_stream(transformer_state_t *xstate) FAST_FUNC;
  IF_DESKTOP(long long) int unpack_bz2_stream(transformer_state_t *xstate) FAST_FUNC;
@@ -2705,7 +2705,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  
 --- include/libbb.h
 +++ include/libbb.h
-@@ -1005,6 +1005,7 @@
+@@ -1103,6 +1103,7 @@
  #define SEAMLESS_COMPRESSION (0 \
   || ENABLE_FEATURE_SEAMLESS_XZ \
   || ENABLE_FEATURE_SEAMLESS_LZMA \
@@ -2713,7 +2713,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
   || ENABLE_FEATURE_SEAMLESS_BZ2 \
   || ENABLE_FEATURE_SEAMLESS_GZ \
   || ENABLE_FEATURE_SEAMLESS_Z)
-@@ -1551,6 +1552,7 @@
+@@ -1694,6 +1695,7 @@
  /* Don't need IF_xxx() guard for these */
  int gunzip_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
  int bunzip2_main(int argc, char **argv) MAIN_EXTERNALLY_VISIBLE;
@@ -2723,8 +2723,8 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
  void bb_displayroutes(int noresolve, int netstatfmt) FAST_FUNC;
 --- miscutils/man.c
 +++ miscutils/man.c
-@@ -180,6 +180,11 @@
- 	if (run_pipe(filename_with_zext, man, level))
+@@ -192,6 +192,11 @@
+ 	if (run_man_pipe(filename_with_zext, man, level))
  		return 1;
  #endif
 +#if ENABLE_FEATURE_SEAMLESS_LZ
@@ -2734,7 +2734,7 @@ Taken from http://download.savannah.gnu.org/releases/lzip/busybox/
 +#endif
  #if ENABLE_FEATURE_SEAMLESS_BZ2
  	strcpy(ext, "bz2");
- 	if (run_pipe(filename_with_zext, man, level))
+ 	if (run_man_pipe(filename_with_zext, man, level))
 --- scripts/fix_ws.sh
 +++ scripts/fix_ws.sh
 @@ -19,6 +19,7 @@

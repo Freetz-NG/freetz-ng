@@ -1,8 +1,8 @@
 --- libbb/appletlib.c
 +++ libbb/appletlib.c
-@@ -174,11 +174,19 @@
- 	xfunc_die();
+@@ -176,11 +176,19 @@
  }
+ #endif
  
 -int FAST_FUNC find_applet_by_name(const char *name)
 +int FAST_FUNC find_applet_by_name(const char *original_name)

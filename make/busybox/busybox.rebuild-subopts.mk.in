@@ -6,7 +6,7 @@ ifeq ($(strip $(FREETZ_BUSYBOX__VERSION_V127)),y)
 include $(MAKE_DIR)/busybox/busybox.rebuild-subopts.mk.in.1_27
 endif
 
-ifeq ($(strip $(FREETZ_BUSYBOX__VERSION_V137)),y)
-include $(MAKE_DIR)/busybox/busybox.rebuild-subopts.mk.in.1_37
+ifeq ($(strip $(FREETZ_BUSYBOX__VERSION_V138)),y)
+include $(MAKE_DIR)/busybox/busybox.rebuild-subopts.mk.in.1_38
 endif
 

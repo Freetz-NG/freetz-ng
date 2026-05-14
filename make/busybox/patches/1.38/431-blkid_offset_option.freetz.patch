@@ -61,8 +61,8 @@
 +int add_to_uuid_cache(const char *device, uint64_t off);
 --- util-linux/volume_id/volume_id_internal.h
 +++ util-linux/volume_id/volume_id_internal.h
-@@ -86,7 +86,7 @@
- };
+@@ -100,7 +100,7 @@
+ #define MIN_VALID_FS_SIZE 1024
  
  struct volume_id* FAST_FUNC volume_id_open_node(int fd);
 -int FAST_FUNC volume_id_probe_all(struct volume_id *id, /*uint64_t off,*/ uint64_t size);
@@ -70,7 +70,7 @@
  void FAST_FUNC free_volume_id(struct volume_id *id);
  
  /* util.h */
-@@ -152,7 +152,7 @@
+@@ -166,7 +166,7 @@
  
  //int FAST_FUNC volume_id_probe_intel_software_raid(struct volume_id *id /*,uint64_t off*/, uint64_t size);
  
@@ -79,7 +79,7 @@
  
  //int FAST_FUNC volume_id_probe_lsi_mega_raid(struct volume_id *id /*,uint64_t off*/, uint64_t size);
  
-@@ -169,62 +169,62 @@
+@@ -183,62 +183,62 @@
  
  /* FS */
  
@@ -179,50 +179,51 @@
  
  static const raid_probe_fptr raid1[] ALIGN_PTR = {
  #if ENABLE_FEATURE_VOLUMEID_LINUXRAID
-@@ -178,14 +178,14 @@
+@@ -178,7 +178,7 @@
  #endif
  };
  
 -int FAST_FUNC volume_id_probe_all(struct volume_id *id, /*uint64_t off,*/ uint64_t size)
 +int FAST_FUNC volume_id_probe_all(struct volume_id *id, uint64_t off, uint64_t size)
  {
+ 	int retval = 0;
  	unsigned i;
- 
+@@ -186,7 +186,7 @@
  	/* probe for raid first, cause fs probes may be successful on raid members */
  	if (size) {
  		for (i = 0; i < ARRAY_SIZE(raid1); i++) {
 -			if (raid1[i](id, /*off,*/ size) == 0)
 +			if (raid1[i](id, off, size) == 0)
  				goto ret;
- 			if (id->error)
- 				goto ret;
-@@ -193,7 +193,7 @@
+ 			//if (id->known_size < MIN_VALID_FS_SIZE)
+ 			//	goto ret_bad;
+@@ -196,7 +196,7 @@
  	}
  
  	for (i = 0; i < ARRAY_SIZE(raid2); i++) {
 -		if (raid2[i](id /*,off*/) == 0)
 +		if (raid2[i](id, off) == 0)
  			goto ret;
- 		if (id->error)
- 			goto ret;
-@@ -201,7 +201,7 @@
+ 		//if (id->known_size < MIN_VALID_FS_SIZE)
+ 		//	goto ret_bad;
+@@ -204,7 +204,7 @@
  
  	/* signature in the first block, only small buffer needed */
  	for (i = 0; i < ARRAY_SIZE(fs1); i++) {
 -		if (fs1[i](id /*,off*/) == 0)
 +		if (fs1[i](id, off) == 0)
  			goto ret;
- 		if (id->error)
- 			goto ret;
-@@ -211,7 +211,7 @@
+ 		//if (id->known_size < MIN_VALID_FS_SIZE)
+ 		//	goto ret_bad;
+@@ -214,7 +214,7 @@
  	volume_id_get_buffer(id, 0, SB_BUFFER_SIZE);
  
  	for (i = 0; i < ARRAY_SIZE(fs2); i++) {
 -		if (fs2[i](id /*,off*/) == 0)
 +		if (fs2[i](id, off) == 0)
  			goto ret;
- 		if (id->error)
- 			goto ret;
+ 		//if (id->known_size < MIN_VALID_FS_SIZE)
+ 		//	goto ret_bad;
 --- util-linux/volume_id/get_devname.c
 +++ util-linux/volume_id/get_devname.c
 @@ -26,13 +26,14 @@
@@ -252,8 +253,8 @@
 +get_label_uuid(int fd, char **label, char **uuid, const char **type, uint64_t off)
  {
  	int rv = 1;
- 	uint64_t size;
-@@ -52,7 +53,7 @@
+ 	/* BLKGETSIZE64 takes pointer to uint64_t, not ullong */
+@@ -53,7 +54,7 @@
  	if (ioctl(/*vid->*/fd, BLKGETSIZE64, &size) != 0)
  		size = 0;
  
@@ -262,7 +263,7 @@
  		goto ret;
  
  	if (vid->label[0] != '\0' || vid->uuid[0] != '\0'
-@@ -77,7 +78,7 @@
+@@ -78,7 +79,7 @@
  
  /* NB: we take ownership of (malloc'ed) label and uuid */
  static void
@@ -271,7 +272,7 @@
  {
  	struct uuidCache_s *last;
  
-@@ -96,6 +97,7 @@
+@@ -97,6 +98,7 @@
  	last->label = label;
  	last->uc_uuid = uuid;
  	IF_FEATURE_BLKID_TYPE(last->type = type;)
@@ -279,7 +280,7 @@
  }
  
  /* If get_label_uuid() on device_name returns success,
-@@ -122,7 +124,7 @@
+@@ -123,7 +125,7 @@
  	if (major(statbuf->st_rdev) == 2)
  		return TRUE;
  
@@ -288,7 +289,7 @@
  
  	return TRUE;
  }
-@@ -235,7 +237,10 @@
+@@ -236,7 +238,10 @@
  
  	uc = uuidcache_init(scan_devices);
  	while (uc) {
@@ -300,7 +301,7 @@
  		if (uc->label[0])
  			printf(" LABEL=\"%s\"", uc->label);
  		if (uc->uc_uuid[0])
-@@ -249,7 +254,7 @@
+@@ -250,7 +255,7 @@
  	}
  }
  
@@ -309,7 +310,7 @@
  {
  	char *uuid = uuid; /* for compiler */
  	char *label = label;
-@@ -263,9 +268,9 @@
+@@ -264,9 +269,9 @@
  		return 0;
  
  	/* get_label_uuid() closes fd in all cases (success & failure) */

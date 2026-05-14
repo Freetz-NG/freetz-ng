@@ -6,7 +6,7 @@ if FREETZ_BUSYBOX__VERSION_V127
 source "make/busybox/Config.in.busybox.1_27"
 endif # FREETZ_BUSYBOX__VERSION_V127 #
 
-if FREETZ_BUSYBOX__VERSION_V137
-source "make/busybox/Config.in.busybox.1_37"
-endif # FREETZ_BUSYBOX__VERSION_V137 #
+if FREETZ_BUSYBOX__VERSION_V138
+source "make/busybox/Config.in.busybox.1_38"
+endif # FREETZ_BUSYBOX__VERSION_V138 #
 

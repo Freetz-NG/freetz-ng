@@ -1,6 +1,6 @@
 --- archival/libarchive/data_extract_all.c
 +++ archival/libarchive/data_extract_all.c
-@@ -156,6 +156,7 @@
+@@ -168,6 +168,7 @@
  			free(dst_nameN);
  		}
  #endif
@@ -8,7 +8,7 @@
  		break;
  	}
  	case S_IFDIR:
-@@ -214,7 +215,7 @@
+@@ -225,7 +226,7 @@
  		bb_simple_error_msg_and_die("unrecognized file type");
  	}
  

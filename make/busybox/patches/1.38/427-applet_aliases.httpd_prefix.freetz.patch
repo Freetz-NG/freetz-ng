@@ -1,6 +1,6 @@
 --- libbb/appletlib.c
 +++ libbb/appletlib.c
-@@ -188,6 +188,12 @@
+@@ -190,6 +190,12 @@
  		name = unaliased_name;
  	}
  

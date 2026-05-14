@@ -1,6 +1,6 @@
 --- util-linux/mount.c
 +++ util-linux/mount.c
-@@ -1359,7 +1359,7 @@
+@@ -1365,7 +1365,7 @@
  	intr = 0;
  	posix = 0;
  	nocto = 0;

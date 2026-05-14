@@ -1,6 +1,6 @@
 --- util-linux/volume_id/get_devname.c
 +++ util-linux/volume_id/get_devname.c
-@@ -263,6 +263,9 @@
+@@ -264,6 +264,9 @@
  #endif
  	int fd;
  

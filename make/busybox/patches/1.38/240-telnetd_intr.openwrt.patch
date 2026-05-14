@@ -1,10 +1,10 @@
 --- networking/telnetd.c
 +++ networking/telnetd.c
-@@ -516,6 +516,7 @@
+@@ -921,6 +921,7 @@
  
  	/* Restore default signal handling ASAP */
  	bb_signals((1 << SIGCHLD) + (1 << SIGPIPE), SIG_DFL);
 +	signal(SIGINT, SIG_DFL);
  
- 	pid = getpid();
- 
+ 	/* Make new session and process group */
+ 	//pid = getpid(); // redundant, setsid gives us our pid

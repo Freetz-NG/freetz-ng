@@ -6,15 +6,15 @@
 
 choice
 	prompt "BusyBox version"
-	default FREETZ_BUSYBOX__VERSION_V137
+	default FREETZ_BUSYBOX__VERSION_V138
 	default FREETZ_BUSYBOX__VERSION_V127
 
 	config FREETZ_BUSYBOX__VERSION_V127
 		bool "1.27.2"
 		depends on FREETZ_KERNEL_VERSION_2_MAX
 
-	config FREETZ_BUSYBOX__VERSION_V137
-		bool "1.37.0"
+	config FREETZ_BUSYBOX__VERSION_V138
+		bool "1.38.0"
 		depends on FREETZ_KERNEL_VERSION_3_MIN
 
 endchoice # "BusyBox version" #
@@ -22,7 +22,7 @@ endchoice # "BusyBox version" #
 config FREETZ_BUSYBOX__VERSION_STRING
 	string
 	default "1.27.2" if FREETZ_BUSYBOX__VERSION_V127
-	default "1.37.0" if FREETZ_BUSYBOX__VERSION_V137
+	default "1.38.0" if FREETZ_BUSYBOX__VERSION_V138
 
 config FREETZ_BUSYBOX__RECOMMENDED
 	bool "recommended - DEVELOPER" if FREETZ_SHOW_DEVELOPER

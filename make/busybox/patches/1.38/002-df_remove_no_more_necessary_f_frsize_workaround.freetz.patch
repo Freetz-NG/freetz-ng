@@ -1,6 +1,6 @@
 --- coreutils/df.c
 +++ coreutils/df.c
-@@ -249,11 +249,14 @@
+@@ -252,11 +252,14 @@
  			bb_simple_perror_msg(mount_point);
  			goto set_error;
  		}

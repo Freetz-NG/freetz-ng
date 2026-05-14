@@ -1,6 +1,6 @@
 --- scripts/trylink
 +++ scripts/trylink
-@@ -127,7 +127,7 @@
+@@ -148,7 +148,7 @@
  fi
  
  # Sanitize lib list (dups, extra spaces etc)
