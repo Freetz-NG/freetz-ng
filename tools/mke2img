@@ -156,7 +156,9 @@ main() {
     # set a reproducible uuid and last-check date
     if [ -n "$SOURCE_DATE_EPOCH" ]; then
         local UUID=''
-        if   [ -x "$TOOLS/python2" ]; then
+        if   [ -x "$TOOLS/uuidgen" ]; then
+             UUID="$($TOOLS/uuidgen --sha1 --namespace @dns --name "freetz-$SOURCE_DATE_EPOCH")"
+        elif [ -x "$TOOLS/python2" ]; then
              UUID="$($TOOLS/python2 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
         elif [ -x "$TOOLS/python3" ]; then
              UUID="$($TOOLS/python3 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
