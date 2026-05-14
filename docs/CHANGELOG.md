@@ -103,6 +103,7 @@ Latest changes
     * Dnsmasq 2.80/2.92rel2
     * Dropbear 2026.91
     * Git 2.26.2/2.53.0
+    * HAProxy 2.6.29
     * htop 1.0.3/3.5.1
     * htpdate 2.0.2
     * ImageMagick 7.1.0-62/7.1.2-21
