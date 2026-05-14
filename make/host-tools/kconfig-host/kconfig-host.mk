@@ -22,6 +22,9 @@ $(PKG)_TARGET_ALL := $(join $(KCONFIG_HOST_TARGET_ARG),$(patsubst %,--%,$(KCONFI
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_KCONFIG_OLDSCHOOL),,buttons)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_KCONFIG_OLDSCHOOL
 
+$(PKG)_CFLAGS := -Iscripts/include
+$(PKG)_CFLAGS += -Wno-discarded-qualifiers
+
 
 define $(PKG)_CUSTOM_UNPACK
 	tar -C $(TOOLS_SOURCE_DIR) $(VERBOSE) -xf $(DL_DIR)/$($(PKG)_SOURCE)
@@ -33,7 +36,7 @@ $(TOOLS_CONFIGURED_NOP)
 
 $($(PKG)_TARGET_PRG:%=$($(PKG)_DIR)/scripts/kconfig/%): $($(PKG)_DIR)/.unpacked
 	$(TOOLS_SUBMAKE) -C $(KCONFIG_HOST_DIR) \
-		HOST_EXTRACFLAGS="-Iscripts/include" \
+		HOST_EXTRACFLAGS="$(KCONFIG_HOST_CFLAGS)" \
 		HOSTPKG_CONFIG="pkgconf" \
 		$(subst --$(notdir $@),,$(filter %--$(notdir $@),$(KCONFIG_HOST_TARGET_ALL))) \
 		$(SILENT)
