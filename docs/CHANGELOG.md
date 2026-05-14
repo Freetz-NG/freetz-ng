@@ -69,7 +69,7 @@ Latest changes
 
   - Host tools:
     * autoconf 2.73
-    * ca-bundle 2026-03-19
+    * ca-bundle 2026-05-14
     * cmake 4.3.2
     * dos2unix 7.5.5
     * file 5.47
@@ -95,7 +95,7 @@ Latest changes
     * Bftpd 6.6
     * BIND 9.11.37/9.20.22
     * Binutils 2.46.0
-    * CA-bundle 2026-03-19
+    * CA-bundle 2026-05-14
     * Curl 8.12.1/8.20.0
     * davfs2 1.5.2/1.7.3
     * Dnsmasq 2.80/2.92rel2
