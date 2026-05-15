@@ -158,6 +158,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[uimg 871930d](uimg-host.md)<a id='uimg-host'></a>**<br>
 
+  * **[util-linux 2.42](util-linux-host.md)<a id='util-linux-host'></a>**<br>
+
 ### W
 
   * **[wget 1.25.0](wget-host.md)<a id='wget-host'></a>**<br>
