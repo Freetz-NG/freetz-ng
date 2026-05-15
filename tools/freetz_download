@@ -15,6 +15,7 @@
 CHECKSUM_ALGOS[32]="md5"
 CHECKSUM_ALGOS[40]="sha1"
 CHECKSUM_ALGOS[64]="sha256"
+CHECKSUM_ALGOS[96]="sha384"
 CHECKSUM_ALGOS[128]="sha512"
 
 FREETZ_BASE_DIR_FOUND="${FREETZ_BASE_DIR:-.}"
@@ -44,7 +45,7 @@ Usage: freetz_download (-?|--help) | [-d|--delete-on-trap] [-n|--no-append-serve
     download-dir  - target directory for download file
     filename      - download file name
     main-url      - url without filename for primary download
-    checksum      - file checksum (supported algorithms: md5, sha1, sha256, sha512)
+    checksum      - file checksum (supported algorithms: md5, sha1, sha256, sha384, sha512)
     -?, --help    - print this help text
 
 Examples:
