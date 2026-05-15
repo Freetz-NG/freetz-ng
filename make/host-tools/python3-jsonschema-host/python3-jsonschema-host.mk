@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 4.25.1)
+$(call TOOLS_INIT, 4.26.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=jsonschema-$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=e4a9655ce0da0c0b67a085847e00a3a51449e1157f4f75e9fb5aa545e122eb85
+$(PKG)_HASH:=0c26707e2efad8aa1bfc5b7ce170f3fccc2e4918ff85989ba9ffa9facb2be326
 $(PKG)_SITE:=https://github.com/python-jsonschema/jsonschema/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://pypi.org/project/jsonschema
 ### MANPAGE:=https://python-jsonschema.readthedocs.io
