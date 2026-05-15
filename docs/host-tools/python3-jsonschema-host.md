@@ -1,4 +1,4 @@
-# python3-jsonschema 4.25.1
+# python3-jsonschema 4.26.0
   - Homepage: [https://pypi.org/project/jsonschema](https://pypi.org/project/jsonschema)
   - Manpage: [https://python-jsonschema.readthedocs.io](https://python-jsonschema.readthedocs.io)
   - Changelog: [https://github.com/python-jsonschema/jsonschema/releases](https://github.com/python-jsonschema/jsonschema/releases)

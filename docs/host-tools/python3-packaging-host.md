@@ -1,4 +1,4 @@
-# python3-packaging 25.0
+# python3-packaging 26.2
   - Homepage: [https://pypi.org/project/packaging/](https://pypi.org/project/packaging/)
   - Manpage: [https://packaging.pypa.io/](https://packaging.pypa.io/)
   - Changelog: [https://github.com/pypa/packaging/releases](https://github.com/pypa/packaging/releases)

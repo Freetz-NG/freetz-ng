@@ -1,4 +1,4 @@
-# python3-attrs 25.4.0
+# python3-attrs 26.1.0
   - Homepage: [https://pypi.org/project/attrs/](https://pypi.org/project/attrs/)
   - Manpage: [https://www.attrs.org/](https://www.attrs.org/)
   - Changelog: [https://github.com/python-attrs/attrs/releases](https://github.com/python-attrs/attrs/releases)

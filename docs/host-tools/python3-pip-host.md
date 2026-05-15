@@ -1,4 +1,4 @@
-# python3-pip 25.3
+# python3-pip 26.1.1
   - Homepage: [https://pypi.org/project/pip/](https://pypi.org/project/pip/)
   - Manpage: [https://pip.pypa.io/](https://pip.pypa.io/)
   - Changelog: [https://pypi.org/project/pip/#history](https://pypi.org/project/pip/#history)
