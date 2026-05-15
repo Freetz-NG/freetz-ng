@@ -106,7 +106,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[prelink 20131005](prelink-host.md)<a id='prelink-host'></a>**<br>
 
-  * **[pseudo 1.9.6](pseudo-host.md)<a id='pseudo-host'></a>**<br>
+  * **[pseudo 1.9.7](pseudo-host.md)<a id='pseudo-host'></a>**<br>
 
   * **[python2 2.7.18](python2-host.md)<a id='python2-host'></a>**<br>
 
