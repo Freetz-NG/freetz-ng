@@ -81,6 +81,7 @@ Latest changes
     * python3 3.14.5
     * python3-attrs 26.1.0
     * python3-jsonschema 4.26.0
+    * python3-packaging 26.2
     * sed 4.10
     * uboot 2026.04
     * util-linux 2.42
