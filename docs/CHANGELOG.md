@@ -80,6 +80,7 @@ Latest changes
     * pseudo 1.9.6
     * python3 3.14.5
     * sed 4.10
+    * uboot 2026.04
     * util-linux 2.42
 
   - AVM sources:
