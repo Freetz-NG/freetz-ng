@@ -1,9 +1,9 @@
-$(call TOOLS_INIT, 25.3)
+$(call TOOLS_INIT, 26.1.1)
 #
 $(PKG)_SOURCE_DOWNLOAD_NAME:=pip-$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=8d0538dbbd7babbd207f261ed969c65de439f6bc9e5dbd3b3b9a77f25d95f343
-$(PKG)_SITE:=http://download.openpkg.org/components/cache/python-setup,https://distfiles.macports.org/py-pip,https://files.pythonhosted.org/packages/fe/6e/74a3f0179a4a73a53d66ce57fdb4de0080a8baa1de0063de206d6167acc2
+$(PKG)_HASH:=d36762751d156a4ee895de8af39aa0abeeeb577f93a2eca6ab62467bbf0f8a78
+$(PKG)_SITE:=http://download.openpkg.org/components/cache/python-setup,https://distfiles.macports.org/py-pip,https://files.pythonhosted.org/packages/b6/48/cb9b7a682f6fe01a4221e1728941dd4ac3cd9090a17db3779d6ff490b602
 ### WEBSITE:=https://pypi.org/project/pip/
 ### MANPAGE:=https://pip.pypa.io/
 ### CHANGES:=https://pypi.org/project/pip/#history
