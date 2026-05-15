@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 25.4.0)
+$(call TOOLS_INIT, 26.1.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=2bff06c2afd09911e10e8ab8126ae0eeb3d13b7fed5db66bf7e021682cc2d9f0
+$(PKG)_HASH:=ea97d5c2b587bd038d7f4a32483b1a08c7a04770b1391180117530541918b18b
 $(PKG)_SITE:=https://github.com/python-attrs/attrs/archive/refs/tags
 ### WEBSITE:=https://pypi.org/project/attrs/
 ### MANPAGE:=https://www.attrs.org/
