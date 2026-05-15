@@ -155,23 +155,9 @@ main() {
 
     # set a reproducible uuid and last-check date
     if [ -n "$SOURCE_DATE_EPOCH" ]; then
-        local UUID=''
-        if   [ -x "$TOOLS/uuidgen" ]; then
-             UUID="$($TOOLS/uuidgen --sha1 --namespace @dns --name "freetz-$SOURCE_DATE_EPOCH")"
-        elif [ -x "$TOOLS/python2" ]; then
-             UUID="$($TOOLS/python2 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
-        elif [ -x "$TOOLS/python3" ]; then
-             UUID="$($TOOLS/python3 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
-        elif command -v python3 >/dev/null; then
-             UUID="$(python3 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
-        elif command -v python2 >/dev/null; then
-             UUID="$(python2 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
-        elif command -v uuidgen >/dev/null; then
-             UUID="$(uuidgen --sha1 --namespace @dns --name "freetz-$SOURCE_DATE_EPOCH")"
-        fi
-        [ -z "$UUID" ] && echo "Failed, python2(-host), python3(-host) or uuidgen is required to generate the UUID." && exit 1
+        # command -v python >/dev/null && UUID="$(python -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
         $TOOLS/tune2fs \
-          -U "$UUID" \
+          -U "$(uuidgen --sha1 --namespace @dns --name "freetz-$SOURCE_DATE_EPOCH")" \
           -T "$(date -d@"$SOURCE_DATE_EPOCH" "+%Y%m%d%H%M%S")" \
           "${image}"
     fi
