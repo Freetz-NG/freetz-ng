@@ -77,7 +77,7 @@ Latest changes
     * kconfig 7.0
     * meson 1.11.1
     * openssl 3.5.6
-    * pseudo 1.9.6
+    * pseudo 1.9.7
     * python3 3.14.5
     * sed 4.10
     * uboot 2026.04
