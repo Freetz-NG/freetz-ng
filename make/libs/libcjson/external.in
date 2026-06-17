@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libcjson
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libcjson
+	bool "libcjson"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libcjson.so.1.7.15

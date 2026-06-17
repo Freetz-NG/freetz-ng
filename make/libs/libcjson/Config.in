@@ -1,0 +1,5 @@
+config FREETZ_LIB_libcjson
+	bool "libcjson"
+	default n
+	help
+		cJSON library

@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_LIB_libcjson" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libcjson.so.1.7.15"

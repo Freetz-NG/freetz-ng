@@ -1,0 +1,3 @@
+ifeq ($(strip $(FREETZ_LIB_libcjson)),y)
+LIBS+=libcjson
+endif
