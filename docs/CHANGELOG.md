@@ -76,7 +76,9 @@ Latest changes
     * fakeroot 1.38.1
     * file 5.47
     * kconfig 7.1
+    * libcjson 1.7.5
     * meson 1.11.1
+    * mosquitto 2.1.2
     * openssl 3.5.7
     * pseudo 1.9.7
     * python3 3.14.6

@@ -1,6 +1,6 @@
 --- lib/thread_mosq.c
 +++ lib/thread_mosq.c
-@@ -44,7 +44,9 @@
+@@ -51,7 +51,9 @@
  	mosq->threaded = mosq_ts_self;
  	if(!COMPAT_pthread_create(&mosq->thread_id, NULL, mosquitto__thread_main, mosq)){
  #if defined(__linux__)

@@ -1,7 +1,8 @@
 config FREETZ_PACKAGE_MOSQUITTO
-	bool "Mosquitto 2.0.22 - DEPRECATED"
+	bool "Mosquitto 2.1.2"
 	default n
 	depends on FREETZ_TARGET_IPV6_SUPPORT
+	select FREETZ_LIB_libcjson
 	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB && !FREETZ_PACKAGE_MOSQUITTO_PASSWD)
 	help
 		Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements
