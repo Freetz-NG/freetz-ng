@@ -30,7 +30,7 @@ jobs:
     if: ${{ github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Install dependencies
         run: pip install -r "${{ env.ZENSICAL_REQUIREMENTS_FILE }}"
       - name: Setup Pages
