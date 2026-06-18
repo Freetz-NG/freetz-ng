@@ -1,0 +1,26 @@
+--- libcommon/random_common.c	2026-06-15 15:21:56.319689971 +0000
++++ libcommon/random_common.c	2026-06-15 15:21:56.319689971 +0000
+@@ -17,6 +17,8 @@
+ */
+ 
+ #include "config.h"
++#include <fcntl.h>
++#include <unistd.h>
+ #include <stdlib.h> /* Keep this here to allow glibc detection */
+ 
+ #ifdef WIN32
+@@ -66,7 +68,13 @@
+ 
+ 	CryptReleaseContext(provider, 0);
+ #else
+-#  error "No suitable random function found."
++	int fd = open("/dev/urandom", O_RDONLY);
++	if(fd != -1){
++		if(read(fd, bytes, (size_t)count) == (ssize_t)count){
++			rc = MOSQ_ERR_SUCCESS;
++		}
++		close(fd);
++	}
+ #endif
+ 	return rc;
+ }
