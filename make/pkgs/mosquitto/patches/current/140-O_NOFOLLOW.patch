@@ -1,0 +1,29 @@
+--- libcommon/file_common.c
++++ libcommon/file_common.c
+@@ -168,7 +168,26 @@
+ 
+ 		int open_flags = 0;
+ 		if(!getenv("MOSQUITTO_UNSAFE_ALLOW_SYMLINKS")){
++#ifdef O_NOFOLLOW
+ 			open_flags |= O_NOFOLLOW;
++#else
++			/*
++			 * lstat() fallback for systems without O_NOFOLLOW
++			 * (e.g. uClibc < 1.0).  Note: this introduces a
++			 * TOCTOU (time-of-check-time-of-use) window
++			 * between lstat() and the subsequent open().
++			 * On platforms that define O_NOFOLLOW, the
++			 * kernel performs the symlink check atomically
++			 * during open().
++			 */
++			{
++				struct stat lst;
++				if(lstat(path, &lst) == 0 && S_ISLNK(lst.st_mode)){
++					errno = ELOOP;
++					return NULL;
++				}
++			}
++#endif
+ 		}
+ 		for(size_t i = 0; i<strlen(mode); i++){
+ 			if(mode[i] == 'r'){
