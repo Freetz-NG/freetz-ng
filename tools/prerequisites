@@ -3,6 +3,7 @@ SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname ${SCRIPT%/*})"
 PACKAGES="$PARENT/tools/.prerequisites"
 [ -x "$(command -v sudo)" ] && SUDO="sudo" || SUDO=""
+[ -x "$(command -v apt)"  ] && APT="apt"   || APT="apt-get"
 
 
 check_requisite() {
@@ -118,10 +119,10 @@ install_requisite() {
 	echo -e "\nPackages for '$OSV':\n$vals\n"
 	[ "${ARG:0:1}" == "s" ] && exit 0
 	case "$OSV" in
-		Fedora*)                                       $SUDO dnf --refresh  install $DOY $vals || exit 1 ;;
-		Debian*|Devuan*|LMDE*) $SUDO apt-get update && $SUDO apt            install $DOY $vals || exit 1 ;;
-		Ubuntu*|Mint*)         $SUDO apt-get update && $SUDO apt-get        install $DOY $vals || exit 1 ;;
-		*)                     echo 'No known installer'                                       && exit 1 ;;
+		Fedora*)                                    $SUDO dnf --refresh  install $DOY $vals || exit 1 ;;
+		Debian*|Devuan*|LMDE*) $SUDO $APT update && $SUDO $APT           install $DOY $vals || exit 1 ;;
+		Ubuntu*|Mint*)         $SUDO $APT update && $SUDO $APT           install $DOY $vals || exit 1 ;;
+		*)                     echo 'No known installer'                                    && exit 1 ;;
 	esac
 	exit 0
 }
