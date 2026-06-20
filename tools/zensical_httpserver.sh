@@ -17,13 +17,14 @@ install_python() {
 	local SUDO DOY="$1"
 	local OSV="$(detect_linux)"
 	[ -z "$OSV" ] && echo 'Can not detect your Linux version, failed.' && exit 1
-	[ -x "$(command -v sudo)" ] && SUDO="sudo"
+	[ -x "$(command -v sudo)" ] && SUDO="sudo" || SUDO=""
+	[ -x "$(command -v apt)"  ] && APT="apt"   || APT="apt-get"
 
 	case "${OSV##*/}" in
-		Fedora*)                                       $SUDO dnf --refresh  install $DOY python3 python3-pip python3-virtualenv || exit 1 ;;
-		Debian*|Devuan*|LMDE*) $SUDO apt-get update && $SUDO apt            install $DOY python3 python3-pip python3-venv       || exit 1 ;;
-		Ubuntu*|Mint*)         $SUDO apt-get update && $SUDO apt-get        install $DOY python3 python3-pip python3-venv       || exit 1 ;;
-		*)                     echo 'You Linux distribution is not yet supported'                                               && exit 1 ;;
+		Fedora*)                                    $SUDO dnf --refresh  install $DOY python3 python3-pip python3-virtualenv || exit 1 ;;
+		Debian*|Devuan*|LMDE*) $SUDO $APT update && $SUDO $APT           install $DOY python3 python3-pip python3-venv       || exit 1 ;;
+		Ubuntu*|Mint*)         $SUDO $APT update && $SUDO $APT           install $DOY python3 python3-pip python3-venv       || exit 1 ;;
+		*)                     echo 'You Linux distribution is not yet supported'                                            && exit 1 ;;
 	esac
 }
 
