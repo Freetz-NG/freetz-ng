@@ -20,9 +20,10 @@ on:
         required: true
         default: "dropbear"
 
-#concurrency:
-# group: ${{ github.workflow }}${{ github.event.pull_request.number && '-' }}${{ github.event.pull_request.number || '' }}
-# cancel-in-progress: ${{ github.event_name == 'pull_request' && true || false }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  queue: ${{ github.event_name != 'pull_request' && 'max' || 'single' }}
 
 jobs:
 
@@ -44,11 +45,6 @@ jobs:
       matrix: ${{ steps.parse.outputs.matrix }}
 
     steps:
-
-      - uses: ahmadnassri/action-workflow-queue@v1
-        with:
-          timeout: "18000000"
-          delay: "10000"
 
       - name: clone
         env:
