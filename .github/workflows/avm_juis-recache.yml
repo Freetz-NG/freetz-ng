@@ -97,7 +97,7 @@ jobs:
 #         ASSID="$(echo "$ASSETS" | grep -B7 "\"key\": *\"${CACHE_KEY}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
 #         curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2026-03-10"  "https://api.github.com/repos/${{ github.repository }}/actions/caches/$ASSID" && echo "Deleted ASSID=${ASSID:-null} ..." || true
       - name: cache_save
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@v6
         if: always()
         with:
           path: /tmp/.freetz-juis
