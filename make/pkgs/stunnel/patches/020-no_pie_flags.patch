@@ -1,20 +1,20 @@
---- configure
-+++ configure
-@@ -8623,7 +8623,7 @@
+--- configure	2026-06-16 13:40:21.000000000 +0200
++++ configure	2026-06-29 22:13:44.336311832 +0200
+@@ -8918,7 +8918,7 @@
  
  
  
 -for flag in -fPIE; do
-++false && for flag in -fPIE; do
-   as_CACHEVAR=`printf "%s\n" "ax_cv_check_cflags__$flag" | sed "$as_sed_sh"`
- { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts $flag" >&5
- printf %s "checking whether C compiler accepts $flag... " >&6; }
-@@ -8961,7 +8961,7 @@
++false && for flag in -fPIE; do
+   as_CACHEVAR=`printf '%s\n' "ax_cv_check_cflags__$flag" | sed "$as_sed_sh"`
+ { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking whether the C compiler accepts $flag" >&5
+ printf %s "checking whether the C compiler accepts $flag... " >&6; }
+@@ -9268,7 +9268,7 @@
  
  
  
 -for flag in -fPIE -pie; do
-++false && for flag in -fPIE -pie; do
-   as_CACHEVAR=`printf "%s\n" "ax_cv_check_ldflags__$flag" | sed "$as_sed_sh"`
- { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether the linker accepts $flag" >&5
++false && for flag in -fPIE -pie; do
+   as_CACHEVAR=`printf '%s\n' "ax_cv_check_ldflags__$flag" | sed "$as_sed_sh"`
+ { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking whether the linker accepts $flag" >&5
  printf %s "checking whether the linker accepts $flag... " >&6; }

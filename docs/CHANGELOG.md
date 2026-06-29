@@ -140,7 +140,7 @@ Latest changes
     * radvd 1.9.3/2.21
     * rsync 3.4.1/3.4.4
     * sslh 2.2.4/2.3.1
-    * Stunnel 5.78
+    * Stunnel 5.79
     * SQLite 3.40.1/3.53.1
     * tinc 1.0.37/1.1pre18
     * Tinyproxy 1.11.3
