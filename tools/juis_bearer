@@ -3,6 +3,7 @@
 # by cuma, 2026
 
 MYPWD="$(dirname $(realpath $0))"
+[ -z "$HOME" ] && HOME="$(awk -F: -v uid="$(id -u)" '$3==uid {print $6}' /etc/passwd 2>/dev/null)"
 [ -e '/etc/.freetz-ng-version' ] && BASE="${HOME:-$(echo ~)}" || BASE="$(dirname $MYPWD)"
 DATA="$BASE/.juis_bearer"
 CERT="$DATA/cert"
