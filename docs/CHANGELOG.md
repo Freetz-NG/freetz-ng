@@ -176,7 +176,7 @@ Latest changes
     * libzip 1.11.4
     * MbedTLS 2.7.19/2.28.10/3.6.6
     * neon 0.30.2/0.37.0
-    * pango 1.57.1
+    * pango 1.58.0
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
