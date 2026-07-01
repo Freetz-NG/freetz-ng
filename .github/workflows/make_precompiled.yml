@@ -1,7 +1,7 @@
 name: make_precompiled
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [ master ]
     paths:
       - 'make/pkgs/**'
@@ -22,8 +22,8 @@ on:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.run_attempt >= 2 && github.run_id || github.run_attempt }} 
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-  queue: ${{ github.event_name != 'pull_request' && 'max' || 'single' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request_target' }}
+  queue: ${{ github.event_name != 'pull_request_target' && 'max' || 'single' }}
 
 jobs:
 
@@ -49,19 +49,26 @@ jobs:
       - name: clone
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REF_NAME: ${{ github.event.pull_request.head.ref || github.ref_name }}
-          REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          REPOSITORY: ${{ github.repository }}
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
-          git checkout $REF_NAME
+
+      - name: post_clone
+        run: |
+          if [ -n "${{ github.event.pull_request.number }}" ]; then
+            git fetch origin "pull/${{ github.event.pull_request.number }}/head"
+            git checkout FETCH_HEAD
+          else
+            git checkout ${{ github.ref_name }}
+          fi
 
       - name: parse
         id: parse
         run: |
           pkg="$(echo "${{ github.event.inputs.bump }}" | sed 's/ //g')"
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          if [ "${{ github.event_name }}" = "pull_request" ]; then \
+          if [ "${{ github.event_name }}" = "pull_request_target" ]; then \
             BASE_SHA="${{ github.event.pull_request.base.sha }}"; \
             HEAD_SHA="${{ github.event.pull_request.head.sha }}"; \
           else \
@@ -142,7 +149,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REF_NAME: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
-          REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          REPOSITORY: ${{ github.repository }}
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
