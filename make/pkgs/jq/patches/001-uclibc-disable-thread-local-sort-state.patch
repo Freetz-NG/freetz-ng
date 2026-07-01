@@ -1,0 +1,19 @@
+--- src/jv_aux.c
++++ src/jv_aux.c
+@@ -24,15 +24,9 @@
+   int too_deep;
+ };
+ 
+-#ifdef _MSC_VER
+-static __declspec(thread) struct sort_cmp_state sort_cmp_state;
+-#else
+-#ifdef HAVE___THREAD
+-static __thread struct sort_cmp_state sort_cmp_state;
+-#else
++#if 1
+ static struct sort_cmp_state sort_cmp_state;
+ #endif
+-#endif
+ 
+ static jv parse_slice(jv j, jv slice, int* pstart, int* pend) {
+   // Array slices
