@@ -15,9 +15,9 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}${{ github.event.pull_request.number && '-' }}${{ github.event.pull_request.number || '' }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' && false || true }}
-
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.run_attempt >= 2 && github.run_id || github.run_attempt }} 
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  queue: ${{ github.event_name != 'pull_request' && 'max' || 'single' }}
 
 jobs:
   matrizifizieren:
