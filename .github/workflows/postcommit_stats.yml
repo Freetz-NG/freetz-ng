@@ -23,6 +23,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
+  queue: single
 
 jobs:
   build:
