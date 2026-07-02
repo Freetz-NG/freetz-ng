@@ -5,6 +5,11 @@ on:
     types: opened
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   build:
     permissions:
