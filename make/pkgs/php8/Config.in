@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PHP8
-	bool "PHP8 (binary only)"
+	bool "PHP8 8.3.31/8.4.22/8.5.7 (binary only)"
 	select FREETZ_PACKAGE_PHP8_cgi
 	select FREETZ_LIB_libonig
 	select FREETZ_LIB_libxml2

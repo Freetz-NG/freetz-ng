@@ -1,24 +1,17 @@
-PHP8_VERSION_83 := 8.3.31
-PHP8_HASH_83    := 66410cee07f4b2baeb0843140bb2a2b52ef930b5cf9b3d6e6d158b33aae8fa37
-PHP8_VERSION_84 := 8.4.22
-PHP8_HASH_84    := 696c0f6ad92e94c59059c1eb6e300842b8d050934226efcdf00f2a413cb083cf
-PHP8_VERSION_85 := 8.5.7
-PHP8_HASH_85    := 01ba2ed1c2658dacf91bebc8be6a4885f69b811c7993831fc48e26107ab29985
-
-PHP8_VERSION := $(if $(FREETZ_PACKAGE_PHP8_VERSION_85),$(PHP8_VERSION_85),$(if $(FREETZ_PACKAGE_PHP8_VERSION_84),$(PHP8_VERSION_84),$(PHP8_VERSION_83)))
-PHP8_HASH    := $(if $(FREETZ_PACKAGE_PHP8_VERSION_85),$(PHP8_HASH_85),$(if $(FREETZ_PACKAGE_PHP8_VERSION_84),$(PHP8_HASH_84),$(PHP8_HASH_83)))
-
-$(call PKG_INIT_BIN, $(PHP8_VERSION))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_PHP8_VERSION_85),8.5.7,$(if $(FREETZ_PACKAGE_PHP8_VERSION_84),8.4.22,8.3.31)))
 $(PKG)_SOURCE:=php-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=$(PHP8_HASH)
+$(PKG)_HASH_83:=66410cee07f4b2baeb0843140bb2a2b52ef930b5cf9b3d6e6d158b33aae8fa37
+$(PKG)_HASH_84:=696c0f6ad92e94c59059c1eb6e300842b8d050934226efcdf00f2a413cb083cf
+$(PKG)_HASH_85:=01ba2ed1c2658dacf91bebc8be6a4885f69b811c7993831fc48e26107ab29985
+$(PKG)_HASH:=$(if $(FREETZ_PACKAGE_PHP8_VERSION_85),$(PHP8_HASH_85),$(if $(FREETZ_PACKAGE_PHP8_VERSION_84),$(PHP8_HASH_84),$(PHP8_HASH_83)))
 $(PKG)_SITE:=https://www.php.net/distributions,https://de.php.net/distributions,https://de2.php.net/distributions
 ### WEBSITE:=https://www.php.net
 ### MANPAGE:=https://www.php.net/docs.php
 ### CHANGES:=https://github.com/php/php-src/releases
 ### CVSREPO:=https://github.com/php/php-src
 
-PHP8_CGI_NAME := $(if $(FREETZ_PACKAGE_PHP5_cgi)$(FREETZ_PACKAGE_PHP_cgi),php8-cgi,php-cgi)
-PHP8_CLI_NAME := $(if $(FREETZ_PACKAGE_PHP5_cli)$(FREETZ_PACKAGE_PHP_cli),php8,php)
+$(PKG)_CGI_NAME := $(if $(FREETZ_PACKAGE_PHP5_cgi)$(FREETZ_PACKAGE_PHP_cgi),php8-cgi,php-cgi)
+$(PKG)_CLI_NAME := $(if $(FREETZ_PACKAGE_PHP5_cli)$(FREETZ_PACKAGE_PHP_cli),php8,php)
 
 $(PKG)_BINARY              := $($(PKG)_DIR)/sapi/cgi/php-cgi
 $(PKG)_TARGET_BINARY       := $($(PKG)_DEST_DIR)/usr/bin/$(PHP8_CGI_NAME)
