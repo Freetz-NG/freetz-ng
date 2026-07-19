@@ -1,0 +1,24 @@
+#!/bin/sh
+
+DAEMON=php8
+
+
+case $1 in
+	""|load)
+		[ ! -d /tmp/flash/$DAEMON ] && mkdir -p /tmp/flash/$DAEMON
+		[ ! -e /tmp/flash/$DAEMON/php.ini ] && cat /mod/etc/default.$DAEMON/php.ini > /tmp/flash/$DAEMON/php.ini
+
+		modreg daemon --hide $DAEMON
+		modreg file $DAEMON config 'php.ini' 0 "php8_config"
+		;;
+	unload)
+		modunreg file $DAEMON
+		modunreg daemon $DAEMON
+		;;
+	*)
+		echo "Usage: $0 [load|unload]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

@@ -1,0 +1,11 @@
+if [ "$FREETZ_PACKAGE_PHP5_cgi" = "y" ]; then
+	[ "$EXTERNAL_FREETZ_PACKAGE_PHP8_cgi" = "y" ] && EXTERNAL_FILES+=" /usr/bin/php8-cgi"
+else
+	[ "$EXTERNAL_FREETZ_PACKAGE_PHP8_cgi" = "y" ] && EXTERNAL_FILES+=" /usr/bin/php-cgi"
+fi
+if [ "$FREETZ_PACKAGE_PHP5_cli" = "y" ]; then
+	[ "$EXTERNAL_FREETZ_PACKAGE_PHP8_cli" = "y" ] && EXTERNAL_FILES+=" /usr/bin/php8"
+else
+	[ "$EXTERNAL_FREETZ_PACKAGE_PHP8_cli" = "y" ] && EXTERNAL_FILES+=" /usr/bin/php"
+fi
+[ "$EXTERNAL_FREETZ_PACKAGE_PHP8_apxs2" = "y" ] && EXTERNAL_FILES+=" /usr/lib/apache2/libphp.so"

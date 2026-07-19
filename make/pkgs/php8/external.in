@@ -1,0 +1,32 @@
+config EXTERNAL_FREETZ_PACKAGE_PHP8
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_PHP8
+	bool "PHP8"
+	default n
+
+if EXTERNAL_FREETZ_PACKAGE_PHP8
+
+config EXTERNAL_FREETZ_PACKAGE_PHP8_cgi
+	depends on FREETZ_PACKAGE_PHP8_cgi
+	bool "PHP CGI"
+	default y
+	help
+		externals the following file(s):
+		 /usr/bin/php-cgi  (or php8-cgi if PHP5-CGI is also active)
+
+config EXTERNAL_FREETZ_PACKAGE_PHP8_cli
+	depends on FREETZ_PACKAGE_PHP8_cli
+	bool "PHP CLI"
+	default y
+	help
+		externals the following file(s):
+		 /usr/bin/php  (or php8 if PHP5-CLI is also active)
+
+config EXTERNAL_FREETZ_PACKAGE_PHP8_apxs2
+	depends on FREETZ_PACKAGE_PHP8_apxs2
+	bool "Apache2 module"
+	default y
+	help
+		externals the following file(s):
+		 /usr/lib/apache2/libphp.so
+
+endif # EXTERNAL_FREETZ_PACKAGE_PHP8

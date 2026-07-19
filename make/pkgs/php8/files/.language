@@ -1,0 +1,8 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+        etc/default.php8/php8_config.def
+}

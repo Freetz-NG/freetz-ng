@@ -1,0 +1,204 @@
+config FREETZ_PACKAGE_PHP8
+	bool "PHP8 (binary only)"
+	select FREETZ_PACKAGE_PHP8_cgi
+	select FREETZ_LIB_libonig
+	select FREETZ_LIB_libxml2
+	select FREETZ_LIB_libxml2_WITH_HTML
+	select FREETZ_LIB_libxml2_WITH_RELAXNG
+	default n
+	help
+		PHP: Hypertext Preprocessor
+
+		PHP is a widely-used general-purpose scripting language that is especially
+		suited for Web development and can be embedded into HTML. Much of its syntax
+		is borrowed from C, Java and Perl with a couple of unique PHP-specific features
+		thrown in. The goal of the language is to allow web developers to write
+		dynamically generated pages quickly.
+
+if FREETZ_PACKAGE_PHP8
+
+	choice
+		prompt "Version"
+
+		config FREETZ_PACKAGE_PHP8_VERSION_83
+			bool "8.3"
+
+		config FREETZ_PACKAGE_PHP8_VERSION_84
+			bool "8.4"
+
+		config FREETZ_PACKAGE_PHP8_VERSION_85
+			bool "8.5"
+
+	endchoice
+
+menu "Binaries"
+
+config FREETZ_PACKAGE_PHP8_cgi
+	bool "PHP CGI"
+	select FREETZ_LIB_libdl   if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libpcre2
+	default y
+
+config FREETZ_PACKAGE_PHP8_cli
+	bool "PHP CLI"
+	select FREETZ_LIB_libdl   if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libpcre2
+	default n
+
+config FREETZ_PACKAGE_PHP8_apxs2
+	bool "Apache2 module"
+	depends on !FREETZ_PACKAGE_PHP5_apxs2 && !FREETZ_PACKAGE_PHP_apxs2
+	select FREETZ_LIB_libapr_WITH_DSO
+	select FREETZ_LIB_libpcre2
+	select FREETZ_LIB_libcurl            if FREETZ_PACKAGE_PHP8_WITH_CURL
+	select FREETZ_LIB_libxml2            if FREETZ_PACKAGE_PHP8_WITH_LIBXML
+	select FREETZ_LIB_libiconv           if FREETZ_PACKAGE_PHP8_WITH_LIBICONV
+	select FREETZ_LIB_libsqlite3         if FREETZ_PACKAGE_PHP8_WITH_SQLITE3
+	select FREETZ_LIB_libcrypto          if FREETZ_PACKAGE_PHP8_WITH_SSL
+	select FREETZ_LIB_libssl             if FREETZ_PACKAGE_PHP8_WITH_SSL
+	select FREETZ_LIB_libz               if FREETZ_PACKAGE_PHP8_WITH_ZLIB
+	default n
+
+endmenu
+
+menu "PHP features"
+
+config FREETZ_PACKAGE_PHP8_WITH_CURL
+	bool "build with CURL support"
+	select FREETZ_LIB_libcurl
+	default n
+	help
+		This option enables the CURL support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_FILEINFO
+	bool "build with FILEINFO support"
+	default n
+	help
+		This option enables the FILEINFO support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_FTP
+	bool "build with FTP support"
+	depends on !FREETZ_PACKAGE_PHP8_VERSION_85
+	default n
+	help
+		This option enables the FTP support for PHP.
+		Note: The FTP extension was removed in PHP 8.5.
+
+config FREETZ_PACKAGE_PHP8_WITH_GD
+	bool "build with GD support"
+	select FREETZ_LIB_libpng16
+	default n
+	help
+		This option enables the bundled GD support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_GETTEXT
+	bool "build with gettext support"
+	select FREETZ_LIB_libintl
+	default n
+	help
+		This option enables the gettext support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_ICONV
+	bool "build with ICONV support"
+	select FREETZ_PACKAGE_PHP8_WITH_LIBICONV if FREETZ_TARGET_UCLIBC_0_9_28
+	default n
+	help
+		This option enables the ICONV support for PHP
+
+	config FREETZ_PACKAGE_PHP8_WITH_LIBICONV
+		bool "prefer libiconv to libc"
+		depends on FREETZ_PACKAGE_PHP8_WITH_ICONV
+		depends on FREETZ_TARGET_UCLIBC_0_9_28
+		select FREETZ_LIB_libiconv
+		default n
+		help
+			This option causes PHP to use libiconv implementation of iconv function
+			instead of the libc one. Select this option if you need more charsets
+			than supported by libc (ISO-8859-1 and UTF-8 only) or your application
+			relies on libiconv specific features like TRANSLIT, IGNORE, etc.
+
+config FREETZ_PACKAGE_PHP8_WITH_LIBXML
+	bool "build with XML support"
+	select FREETZ_LIB_libxml2
+	select FREETZ_LIB_libxml2_WITH_HTML
+	select FREETZ_LIB_libxml2_WITH_RELAXNG
+	default n
+	help
+		This option enables the XML, DOM, SimpleXML, XMLReader and XMLWriter
+		support for PHP.
+		Note: libxml2 is always linked into PHP regardless of this setting,
+		as PHP's core requires it internally. Disabling this option only
+		omits the higher-level XML extension APIs.
+
+config FREETZ_PACKAGE_PHP8_WITH_PCNTL
+	bool "build with PCNTL support"
+	default n
+	help
+		This option enables the PCNTL support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_SESSION
+	bool "build with SESSION support"
+	default n
+	help
+		This option enables the SESSION support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_SOCKETS
+	bool "build with SOCKETS support"
+	default n
+	help
+		This option enables the SOCKETS support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_SQLITE3
+	bool "build with SQLite (v3) support"
+	select FREETZ_LIB_libsqlite3
+	default n
+	help
+		This option enables the SQLite (v3) support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_SSL
+	bool "build with SSL support"
+	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libssl
+	default n
+	help
+		This option enables the SSL support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_SYSVIPC
+	bool "build with SYSVIPC support"
+	default n
+	help
+		This option enables the SYSVIPC support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_ZLIB
+	bool "build with ZLIB support"
+	select FREETZ_LIB_libz
+	default n
+	help
+		This option enables the ZLIB support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_ZIP
+	bool "build with ZIP support"
+	select FREETZ_LIB_libzip
+	select FREETZ_PACKAGE_PHP8_WITH_ZLIB
+	default n
+	help
+		This option enables the ZIP support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_FFI
+	bool "build with FFI support"
+	select FREETZ_LIB_libffi
+	default n
+	help
+		This option enables the Foreign Function Interface (FFI) support for PHP
+
+config FREETZ_PACKAGE_PHP8_WITH_MYSQLI
+	bool "build with MySQLi/PDO_MySQL support (mysqlnd)"
+	default n
+	help
+		Enables the mysqli and PDO_MySQL extensions using the bundled
+		mysqlnd driver. No external MySQL library is required.
+		For SSL-encrypted connections, also enable SSL support.
+
+endmenu
+
+endif # FREETZ_PACKAGE_PHP8
