@@ -68,7 +68,7 @@ if FREETZ_PACKAGE_PHP
 		select FREETZ_LIB_libz               if FREETZ_PACKAGE_PHP_WITH_ZLIB
 		default n
 		help
-			Not availabe for php5 as current libcurl, libgd and libxml versions are incompatible
+			Not available for php5 as current libcurl, libgd and libxml versions are incompatible
 
 	endmenu
 
@@ -198,7 +198,7 @@ if FREETZ_PACKAGE_PHP
 			default n
 			help
 				This option enables the XML support for PHP
-				Not availabe for php5 as current libxml version is incompatible
+				Not available for php5 as current libxml version is incompatible
 
 		config FREETZ_PACKAGE_PHP_WITH_ZLIB
 			bool "build with ZLIB support"
