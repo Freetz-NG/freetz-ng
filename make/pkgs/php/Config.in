@@ -202,11 +202,17 @@ if FREETZ_PACKAGE_PHP
 				This option enables the SQLite (v3) support for PHP
 
 		comment "SSL support needs OpenSSL 1.0 or older"
-			depends on !FREETZ_OPENSSL_VERSION_10_MAX
+		depends on FREETZ_PACKAGE_PHP_RELEASE_5X
+		depends on !FREETZ_OPENSSL_VERSION_10_MAX
+
+		comment "SSL support needs OpenSSL 1.1 - 3.5"
+		depends on FREETZ_PACKAGE_PHP_RELEASE_8X
+		depends on ! (FREETZ_OPENSSL_VERSION_11_MIN && FREETZ_OPENSSL_VERSION_35_MAX)
 
 		config FREETZ_PACKAGE_PHP_WITH_SSL
 			bool "build with SSL support"
-			depends on FREETZ_OPENSSL_VERSION_10_MAX
+			depends on (FREETZ_PACKAGE_PHP_RELEASE_8X && FREETZ_OPENSSL_VERSION_11_MIN && FREETZ_OPENSSL_VERSION_35_MAX || \
+			            FREETZ_PACKAGE_PHP_RELEASE_5X && FREETZ_OPENSSL_VERSION_10_MAX)
 			select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_PHP_STATIC
 			select FREETZ_LIB_libssl    if !FREETZ_PACKAGE_PHP_STATIC
 			default n
