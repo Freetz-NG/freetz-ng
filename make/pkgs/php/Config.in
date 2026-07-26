@@ -14,36 +14,43 @@ config FREETZ_PACKAGE_PHP
 if FREETZ_PACKAGE_PHP
 
 	choice
-		prompt "Version"
-#			default FREETZ_PACKAGE_PHP_VERSION_85
-#			default FREETZ_PACKAGE_PHP_VERSION_84
-#			default FREETZ_PACKAGE_PHP_VERSION_83
-			default FREETZ_PACKAGE_PHP_VERSION_56
+		prompt "Release"
+#			default FREETZ_PACKAGE_PHP_RELEASE_8X
+			default FREETZ_PACKAGE_PHP_RELEASE_5X
 
-		config FREETZ_PACKAGE_PHP_VERSION_56
-			bool "5.6.40 - DEPRECATED"
+		config FREETZ_PACKAGE_PHP_RELEASE_5X
+			bool "5.X.X - DEPRECATED"
 			depends on FREETZ_TARGET_BITS_32
 
-		config FREETZ_PACKAGE_PHP_VERSION_83
-			bool "8.3.32 - EXPERIMENTAL"
+		config FREETZ_PACKAGE_PHP_RELEASE_8X
+			bool "8.X.X - EXPERIMENTAL"
 			select FREETZ_PACKAGE_PHP_WITH_LIBXML
 			select FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
 			select FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
 			select FREETZ_PACKAGE_PHP_WITH_LIBONIG
+
+	endchoice
+
+	choice
+		prompt "Version"
+
+		# Release 5
+		config FREETZ_PACKAGE_PHP_VERSION_56
+			bool "5.6.40"
+			depends on FREETZ_PACKAGE_PHP_RELEASE_5X
+
+		# Release 8
+		config FREETZ_PACKAGE_PHP_VERSION_83
+			bool "8.3.32"
+			depends on FREETZ_PACKAGE_PHP_RELEASE_8X
 
 		config FREETZ_PACKAGE_PHP_VERSION_84
-			bool "8.4.23 - EXPERIMENTAL"
-			select FREETZ_PACKAGE_PHP_WITH_LIBXML
-			select FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
-			select FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
-			select FREETZ_PACKAGE_PHP_WITH_LIBONIG
+			bool "8.4.23"
+			depends on FREETZ_PACKAGE_PHP_RELEASE_8X
 
 		config FREETZ_PACKAGE_PHP_VERSION_85
-			bool "8.5.8 - EXPERIMENTAL"
-			select FREETZ_PACKAGE_PHP_WITH_LIBXML
-			select FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
-			select FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
-			select FREETZ_PACKAGE_PHP_WITH_LIBONIG
+			bool "8.5.8"
+			depends on FREETZ_PACKAGE_PHP_RELEASE_8X
 
 	endchoice
 
@@ -66,7 +73,7 @@ if FREETZ_PACKAGE_PHP
 
 	config FREETZ_PACKAGE_PHP_apxs2
 		bool "Apache2 module"
-		depends on !FREETZ_PACKAGE_PHP_VERSION_56
+		depends on !FREETZ_PACKAGE_PHP_RELEASE_5X
 		depends on FREETZ_OPENSSL_VERSION_10_MAX
 		select FREETZ_LIB_libapr_WITH_DSO
 		select FREETZ_LIB_libpcre
@@ -88,7 +95,7 @@ if FREETZ_PACKAGE_PHP
 
 		config FREETZ_PACKAGE_PHP_WITH_CURL
 			bool "build with CURL support"
-			depends on !FREETZ_PACKAGE_PHP_VERSION_56
+			depends on !FREETZ_PACKAGE_PHP_RELEASE_5X
 			select FREETZ_LIB_libcurl if ! FREETZ_PACKAGE_PHP_STATIC
 			default n
 			help
@@ -109,7 +116,7 @@ if FREETZ_PACKAGE_PHP
 
 		config FREETZ_PACKAGE_PHP_WITH_GD
 			bool "build with GD support"
-			depends on !FREETZ_PACKAGE_PHP_VERSION_56
+			depends on !FREETZ_PACKAGE_PHP_RELEASE_5X
 			select FREETZ_LIB_libgd if ! FREETZ_PACKAGE_PHP_STATIC
 			default n
 			help
@@ -205,7 +212,7 @@ if FREETZ_PACKAGE_PHP
 
 		config FREETZ_PACKAGE_PHP_WITH_LIBXML
 			bool "build with XML support"
-			depends on !FREETZ_PACKAGE_PHP_VERSION_56
+			depends on !FREETZ_PACKAGE_PHP_RELEASE_5X
 			select FREETZ_LIB_libxml2 if ! FREETZ_PACKAGE_PHP_STATIC
 			default n
 			help
@@ -230,7 +237,7 @@ if FREETZ_PACKAGE_PHP
 
 		config FREETZ_PACKAGE_PHP_WITH_LIBONIG
 			bool "build with ONIG support"
-			depends on !FREETZ_PACKAGE_PHP_VERSION_56
+			depends on !FREETZ_PACKAGE_PHP_RELEASE_5X
 			select FREETZ_LIB_libonig if ! FREETZ_PACKAGE_PHP_STATIC
 			default n
 			help
