@@ -1,0 +1,11 @@
+--- ext/standard/dns.c
++++ ext/standard/dns.c
+@@ -345,7 +345,7 @@
+  *   __libc_res_nsend()   in resolv/res_send.c
+  * */
+ 
+-#if defined(__GLIBC__) && !defined(HAVE_DEPRECATED_DNS_FUNCS)
++#if defined(__GLIBC__) && !defined(__UCLIBC__) && !defined(HAVE_DEPRECATED_DNS_FUNCS)
+ #define php_dns_free_res(__res__) _php_dns_free_res(__res__)
+ static void _php_dns_free_res(struct __res_state *res) { /* {{{ */
+ 	int ns;
