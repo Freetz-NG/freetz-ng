@@ -26,12 +26,24 @@ if FREETZ_PACKAGE_PHP
 
 		config FREETZ_PACKAGE_PHP_VERSION_83
 			bool "8.3.32 - EXPERIMENTAL"
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
+			select FREETZ_PACKAGE_PHP_WITH_LIBONIG
 
 		config FREETZ_PACKAGE_PHP_VERSION_84
 			bool "8.4.23 - EXPERIMENTAL"
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
+			select FREETZ_PACKAGE_PHP_WITH_LIBONIG
 
 		config FREETZ_PACKAGE_PHP_VERSION_85
 			bool "8.5.8 - EXPERIMENTAL"
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
+			select FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
+			select FREETZ_PACKAGE_PHP_WITH_LIBONIG
 
 	endchoice
 
@@ -199,6 +211,31 @@ if FREETZ_PACKAGE_PHP
 			help
 				This option enables the XML support for PHP
 				Not available for php5 as current libxml version is incompatible
+
+			config FREETZ_PACKAGE_PHP_WITH_LIBXML_HTML
+				bool "XML support with HTML"
+				depends on FREETZ_PACKAGE_PHP_WITH_LIBXML
+				select FREETZ_LIB_libxml2_WITH_HTML if ! FREETZ_PACKAGE_PHP_STATIC
+				default n
+				help
+					This option enables the XML support with HTML for PHP
+
+			config FREETZ_PACKAGE_PHP_WITH_LIBXML_RELAXNG
+				bool "XML support with RELAXNG"
+				depends on FREETZ_PACKAGE_PHP_WITH_LIBXML
+				select FREETZ_LIB_libxml2_WITH_RELAXNG if ! FREETZ_PACKAGE_PHP_STATIC
+				default n
+				help
+					This option enables the XML support with RELAXNG for PHP
+
+		config FREETZ_PACKAGE_PHP_WITH_LIBONIG
+			bool "build with ONIG support"
+			depends on !FREETZ_PACKAGE_PHP_VERSION_56
+			select FREETZ_LIB_libonig if ! FREETZ_PACKAGE_PHP_STATIC
+			default n
+			help
+				This option enables the ONIG support for PHP
+				Not available for php5 as libonig is not necessary
 
 		config FREETZ_PACKAGE_PHP_WITH_ZLIB
 			bool "build with ZLIB support"
