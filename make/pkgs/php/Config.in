@@ -272,6 +272,15 @@ if FREETZ_PACKAGE_PHP
 			default n
 			help
 				This option enables the ZIP support for PHP
+		
+		config FREETZ_PACKAGE_PHP_WITH_FFI
+			bool "build with FFI support"
+			depends on !FREETZ_PACKAGE_PHP_RELEASE_5X
+			select FREETZ_LIB_libffi if ! FREETZ_PACKAGE_PHP_STATIC
+			default n
+			help
+				This option enables the Foreign Function Interface (FFI) support for PHP
+				Not available for php5 as libffi is incompatible
 
 	endmenu
 
