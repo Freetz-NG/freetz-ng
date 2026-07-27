@@ -282,6 +282,20 @@ if FREETZ_PACKAGE_PHP
 				This option enables the Foreign Function Interface (FFI) support for PHP
 				Not available for php5 as libffi is incompatible
 
+		config FREETZ_PACKAGE_PHP_WITH_MYSQLND_MYSQLI
+			bool "build with MySQLi support"
+			default n
+			help
+				Enables the mysqli extensions 
+				For SSL-encrypted connections, also enable SSL support.
+
+		config FREETZ_PACKAGE_PHP_WITH_MYSQLND_PDO
+			bool "build with PDO MySQL support"
+			default n
+			help
+				Enables the PDO MySQL driver
+				For SSL-encrypted connections, also enable SSL support.
+
 	endmenu
 
 	config FREETZ_PACKAGE_PHP_STATIC
