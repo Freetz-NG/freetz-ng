@@ -152,7 +152,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-zip
 endif
 
 
-ifneq ($(strip $(FREETZ_PACKAGE_PHP_VERSION_56)),y)
+ifneq ($(strip $(FREETZ_PACKAGE_PHP_RELEASE_5X)),y)
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_LIBONIG)),y)
 $(PKG)_DEPENDS_ON += libonig
