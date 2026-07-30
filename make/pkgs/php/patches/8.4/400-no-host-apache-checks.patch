@@ -1,0 +1,20 @@
+--- sapi/apache2handler/config.m4
++++ sapi/apache2handler/config.m4
+@@ -33,7 +33,7 @@
+ 
+   APXS_INCLUDEDIR=$($APXS -q INCLUDEDIR)
+   APXS_HTTPD=$($APXS -q SBINDIR)/$($APXS -q TARGET)
+-  AS_IF([test ! -x "$APXS_HTTPD"], [AC_MSG_ERROR(m4_text_wrap([
++  AS_IF([false], [AC_MSG_ERROR(m4_text_wrap([
+     $APXS_HTTPD executable not found. Please, install Apache HTTP Server
+     command-line utility.
+   ]))])
+@@ -120,7 +120,7 @@
+       -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1
+     ])
+ 
+-  AS_IF([$APXS_HTTPD -V 2>/dev/null | grep 'threaded:.*yes' >/dev/null 2>&1], [
++  AS_IF([false], [
+     APACHE_THREADED_MPM=yes
+     enable_zts=yes
+   ], [APACHE_THREADED_MPM=no])
