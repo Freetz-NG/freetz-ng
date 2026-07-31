@@ -66,6 +66,7 @@ $(BINUTILS_DIR1)/.configured: $(BINUTILS_DIR)/.unpacked
 		--target=$(REAL_GNU_TARGET_NAME) \
 		--disable-multilib \
 		--disable-libssp \
+		--disable-gprofng \
 		$(DISABLE_NLS) \
 		--disable-werror \
 		$(SILENT) \
