@@ -206,6 +206,13 @@ isFreetzType() {
 	return 1
 }
 
+isFreetzFwmodColor() {
+	for i; do
+		eval [ \"\$FREETZ_FWMOD_COLOR_$i\" == y ] && return 0
+	done
+	return 1
+}
+
 # little helper function used by many patches (maybe this should be sourced out)
 rm_files() {
 	for file in "$@"; do
@@ -315,6 +322,35 @@ mod_del_area() {
 	[ $? -ne 0 ] && error 1 "mod_del_area: error in sed expression"
 }
 
+# Set default color output settings, if not specified in config file
+init_freetz_fwmod_colors() {
+	: ${FREETZ_FWMOD_COLOR_BOLD:='\033[1m'}
+	: ${FREETZ_FWMOD_COLOR_RESET:='\033[0m'}
+
+	: ${FREETZ_FWMOD_COLOR_BLUE_FONT:='\033[94m'}
+	: ${FREETZ_FWMOD_COLOR_BLUE_BG:='\033[44m'}
+	: ${FREETZ_FWMOD_COLOR_YELLOW_FONT:='\033[33m'}
+	: ${FREETZ_FWMOD_COLOR_YELLOW_BG:='\033[43m'}
+	: ${FREETZ_FWMOD_COLOR_RED_FONT:='\033[0;31m'}
+	: ${FREETZ_FWMOD_COLOR_RED_BG:='\033[41m'}
+	: ${FREETZ_FWMOD_COLOR_GREEN_FONT:='\033[0;32m'}
+	: ${FREETZ_FWMOD_COLOR_GREEN_BG:='\033[42m'}
+
+	if isFreetzFwmodColor USE_BG; then
+		FREETZ_FWMOD_COLOR_BLUE="${FREETZ_FWMOD_COLOR_BLUE_BG}"
+		FREETZ_FWMOD_COLOR_YELLOW="${FREETZ_FWMOD_COLOR_YELLOW_BG}"
+		FREETZ_FWMOD_COLOR_RED="${FREETZ_FWMOD_COLOR_RED_BG}"
+		FREETZ_FWMOD_COLOR_GREEN="${FREETZ_FWMOD_COLOR_GREEN_BG}"
+	else
+		FREETZ_FWMOD_COLOR_BLUE="${FREETZ_FWMOD_COLOR_BLUE_FONT}"
+		FREETZ_FWMOD_COLOR_YELLOW="${FREETZ_FWMOD_COLOR_YELLOW_FONT}"
+		FREETZ_FWMOD_COLOR_RED="${FREETZ_FWMOD_COLOR_RED_FONT}"
+		FREETZ_FWMOD_COLOR_GREEN="${FREETZ_FWMOD_COLOR_GREEN_FONT}"
+	fi
+}
+
+init_freetz_fwmod_colors
+
 # General printing (info messages, warnings and errors)
 echoX() {
 	# If an error occurs because a parameter starting with "-" (but none of the
@@ -339,16 +375,16 @@ echoX() {
 			l) no_indent=1 ;;
 			p) prefix="$OPTARG" ;;
 			n) no_newline=-n ;;
-			b) bold='\033[1m'; unbold='\033[0m' ;;
-			h) [ "$FREETZ_VERBOSITY_LEVEL" -ge 2 ] && colour='\033[94m' && uncolour='\033[m' ;;
-			c) colour='\033[33m'; uncolour='\033[m' ;; # ANSI brown/yellow
+			b) bold="$FREETZ_FWMOD_COLOR_BOLD"; unbold="$FREETZ_FWMOD_COLOR_RESET" ;;
+			h) [ "$FREETZ_VERBOSITY_LEVEL" -ge 2 ] && colour="$FREETZ_FWMOD_COLOR_BLUE" && uncolour="$FREETZ_FWMOD_COLOR_RESET" ;;
+			c) colour="$FREETZ_FWMOD_COLOR_YELLOW"; uncolour="$FREETZ_FWMOD_COLOR_RESET" ;; # ANSI brown/yellow
 			?) break ;; # unknown parameter -> stop option parsing
 		esac
 	done
 	shift $((OPTIND-1))
 
 	[ $no_indent ] && indent=
-	[ "$FREETZ_VERBOSITY_LEVEL" -ge 2 -a "$STEP" == "2" -a -z "$indent" -a -z "$bold" -a -z "$colour" ] && colour='\033[94m' && uncolour='\033[m' # ANSI blue
+	[ "$FREETZ_VERBOSITY_LEVEL" -ge 2 -a "$STEP" == "2" -a -z "$indent" -a -z "$bold" -a -z "$colour" ] && colour="$FREETZ_FWMOD_COLOR_BLUE" && uncolour="$FREETZ_FWMOD_COLOR_RESET" # ANSI blue
 	echo -e $no_newline "${indent}${bold}${colour}${prefix}$*${uncolour}${unbold}"
 }
 

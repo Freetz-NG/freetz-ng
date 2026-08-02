@@ -237,6 +237,11 @@ sed -nr 's/^([^=]+)=(.*)/: ${\1:=\2}/p' "$DOT_CONFIG" > "$DOT_CONFIG.fwmod"
 source "$DOT_CONFIG.fwmod"
 rm "$DOT_CONFIG.fwmod"
 
+# Reinitialize fwmod colors after config has been loaded.
+# This ensures the USE_BG option is applied even when the config
+# is sourced after tools/freetz_functions.
+init_freetz_fwmod_colors 2>/dev/null || true
+
 # Verbosity level of fwmod
 FREETZ_VERBOSITY_LEVEL="$FREETZ_VERBOSITY_FWMOD"
 # Set default verbosity level, just in case none was defined in the (possibly
@@ -286,8 +291,8 @@ fi
 # $3 (key) public key, format: "EXPONENTxMODULUS". If no EXPONENT is given, default 010001 will be used (as in all images at the moment)
 validate_signature() {
 	echo -n "checking signature: "
-	[ "$1" != "1" ] && echo -e "\033[1;33mdisabled\033[0m" &&  return
-	[ -z "$3" ] && echo -e "\033[1;34munknown\033[0m" &&  error 1 "no public key available to validate signature"
+	[ "$1" != "1" ] && echo -e "${FREETZ_FWMOD_COLOR_YELLOW}disabled${FREETZ_FWMOD_COLOR_RESET}" &&  return
+	[ -z "$3" ] && echo -e "${FREETZ_FWMOD_COLOR_BLUE}unknown${FREETZ_FWMOD_COLOR_RESET}" &&  error 1 "no public key available to validate signature"
 	# var
 	local TMP="$(mktemp -dt freetz-sig-XXX)"
 	local MOD="${3#*x}"
@@ -297,7 +302,7 @@ validate_signature() {
 		echo -e "$MOD\n$EXP" > "$TMP/sig"
 		${TOOLS_DIR}/yf/signimage/yf_check_signature "$2" -a "$TMP/sig" 2> "$TMP/out"
 		RET=$?
-		[ $RET -ne 0 ] && echo -e "\033[0;31mfailed\033[0m" && cat "$TMP/out"
+		[ $RET -ne 0 ] && echo -e "${FREETZ_FWMOD_COLOR_RED}failed${FREETZ_FWMOD_COLOR_RESET}" && cat "$TMP/out"
 		rm -rf "$TMP"
 		[ $RET -ne 0 ] && error $RET "image could not be verified with public key"
 	else
@@ -333,9 +338,9 @@ validate_signature() {
 		# clr
 		rm -rf "$TMP"
 		# act
-		[ "$RET" != "0" ] && echo -e "\033[0;31mfailed\033[0m\nOpenSSL: $VAL" && error 1 "image could not be verified with public key"
+		[ "$RET" != "0" ] && echo -e "${FREETZ_FWMOD_COLOR_RED}failed${FREETZ_FWMOD_COLOR_RESET}\nOpenSSL: $VAL" && error 1 "image could not be verified with public key"
 	fi
-	echo -e "\033[0;32mvalid\033[0m"
+	echo -e "${FREETZ_FWMOD_COLOR_GREEN}valid${FREETZ_FWMOD_COLOR_RESET}"
 }
 # validate_signature only
 [ $DO_VALIDATE -eq 1 -a $(($DO_UNPACK + $DO_MOD + $DO_PACK + $DO_ZIP)) -eq 0 ] && validate_signature "$DO_VALIDATE" "$FIRMWARE" "$FIRMWARE_PUB" && exit 0

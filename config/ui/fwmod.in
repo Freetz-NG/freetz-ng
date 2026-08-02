@@ -5,6 +5,23 @@ menu "Firmware packaging (fwmod) options"
 		depends on FREETZ_FWMOD_SKIP_UNPACK
 		depends on !FREETZ_FWMOD_SKIP_ALL
 
+
+	choice
+		prompt "Color Options"
+		default FREETZ_FWMOD_COLOR_USE_FONT
+
+		config FREETZ_FWMOD_COLOR_USE_FONT
+			bool "Use Font Color"
+			help
+				Recommended for Dark Terminal Themes
+
+		config FREETZ_FWMOD_COLOR_USE_BG
+			bool "Use Background Color"
+			help
+				Recommended for Light Terminal Themes
+	
+	endchoice
+
 	config FREETZ_FWMOD_SKIP_ALL
 		bool
 		depends on FREETZ_FWMOD_SKIP_UNPACK && FREETZ_FWMOD_SKIP_MODIFY && FREETZ_FWMOD_SKIP_PACK && !FREETZ_FWMOD_USBROOT && !FREETZ_FWMOD_NFSROOT
