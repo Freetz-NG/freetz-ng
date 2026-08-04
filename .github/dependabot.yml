@@ -9,7 +9,7 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "pip"
-    directory: "/"
+    directory: "/docs/"
     schedule:
       interval: "daily"
 

@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Install dependencies
-        run: pip install -r ./.zensical.txt
+        run: pip install -r "./docs/requirements.txt"
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Build with Zensical
