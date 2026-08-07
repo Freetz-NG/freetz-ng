@@ -132,7 +132,7 @@ Latest changes
     * ltrace 0.7.3-git/0.8.1
     * mini-snmpd 1.7/2.0
     * Minicom 2.11.1
-    * Mosquitto 2.0.22/2.1.2
+    * Mosquitto 2.0.23/2.1.2
     * Nano 9.2
     * Nmap 4.76/5.51/7.99
     * OpenSSH 9.3p2/10.4p1
