@@ -1,9 +1,9 @@
-comment "Tor (not available, needs OpenSSL 1.0 or newer)"
-	depends on !FREETZ_OPENSSL_VERSION_10_MIN
+comment "Tor (not available, needs OpenSSL 1.1 or newer)"
+	depends on !FREETZ_OPENSSL_VERSION_11_MIN
 
 config FREETZ_PACKAGE_TOR
 	bool "Tor 0.4.9.11"
-	depends on FREETZ_OPENSSL_VERSION_10_MIN
+	depends on FREETZ_OPENSSL_VERSION_11_MIN
 	select FREETZ_LIB_libm               if !FREETZ_PACKAGE_TOR_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libevent           if !FREETZ_PACKAGE_TOR_STATIC
 	select FREETZ_LIB_libcrypto          if !FREETZ_PACKAGE_TOR_STATIC
