@@ -1,6 +1,6 @@
---- configure	2026-06-16 13:40:21.000000000 +0200
-+++ configure	2026-06-29 22:21:15.964175560 +0200
-@@ -18698,7 +18698,7 @@
+--- configure
++++ configure
+@@ -18713,7 +18713,7 @@
  
  { printf '%s\n' "$as_me:${as_lineno-$LINENO}: **************************************** PTY device files" >&5
  printf '%s\n' "$as_me: **************************************** PTY device files" >&6;}
@@ -9,7 +9,7 @@
      as_ac_File=`printf '%s\n' "ac_cv_file_"/dev/ptmx"" | sed "$as_sed_sh"`
  { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking for \"/dev/ptmx\"" >&5
  printf %s "checking for \"/dev/ptmx\"... " >&6; }
-@@ -18759,7 +18759,7 @@
+@@ -18774,7 +18774,7 @@
  { printf '%s\n' "$as_me:${as_lineno-$LINENO}: **************************************** entropy sources" >&5
  printf '%s\n' "$as_me: **************************************** entropy sources" >&6;}
  
