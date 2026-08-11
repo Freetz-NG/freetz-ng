@@ -1,4 +1,4 @@
-[ "$FREETZ_LIB_libglib_2_VERSION_ABANDON" == "y" ] && ELIBVER="0.3200.4" || ELIBVER="0.8800.0"
+[ "$FREETZ_LIB_libglib_2_VERSION_ABANDON" == "y" ] && ELIBVER="0.3200.4" || ELIBVER="0.8800.3"
 
 [ "$EXTERNAL_FREETZ_LIB_libgio_2"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgio-2.0.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_libglib_2"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libglib-2.0.so.$ELIBVER"

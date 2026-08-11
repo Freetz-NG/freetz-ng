@@ -65,7 +65,7 @@ choice
 		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_LIB_libglib_2_WITH_VERSION_CURRENT
-		bool "2.88.0"
+		bool "2.88.3"
 		depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 endchoice

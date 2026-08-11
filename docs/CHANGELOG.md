@@ -168,7 +168,7 @@ Latest changes
     * file 5.47
     * FreeType 2.14.3
     * gettext 1.0
-    * GLib2 2.32.4/2.88.0
+    * GLib2 2.32.4/2.88.3
     * harfbuzz 14.3.0
     * libcap 2.49/2.78
     * libcap-ng 0.9.3
