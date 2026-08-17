@@ -143,7 +143,7 @@ Latest changes
     * Mosquitto 2.0.23/2.1.2
     * Nano 9.2
     * Nmap 4.76/5.51/7.99
-    * OpenSSH 9.3p2/10.4p1
+    * OpenSSH 9.3p2/10.5p1
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.21/3.5.7
     * OpenVPN 2.4.12/2.5.11/2.6.22/2.7.6
     * PatchELF 0.19.1
