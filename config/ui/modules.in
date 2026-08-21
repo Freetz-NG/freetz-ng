@@ -181,6 +181,22 @@ endmenu # crypto
 
 menu "drivers"
 
+config FREETZ_MODULE_input_core
+    bool "input-core.ko"
+    default n
+
+config FREETZ_MODULE_usbhid
+    bool "usbhid.ko"
+    default n
+
+config FREETZ_MODULE_hid
+    bool "hid.ko"
+    default n
+
+config FREETZ_MODULE_hid_generic
+	bool "hid_generic.ko"
+	default n
+
 config FREETZ_MODULE_bfusb
 	bool "bfusb.ko"
 	depends on !FREETZ_AVM_HAS_BT_HCIBFUSB_BUILTIN
