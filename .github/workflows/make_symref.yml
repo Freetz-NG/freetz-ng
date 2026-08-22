@@ -176,11 +176,12 @@ jobs:
           echo "##########################################################" && echo -n "Lines=" && wc -l .config
 
       - name: generate
+        id: generate
         env:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
           make olddefconfig kernel-symref
-          [ -e symref-*.tar.lzma ] || echo "ABORT=true" >> "$GITHUB_ENV"
+          [ -e symref-*.tar.lzma ] || echo "ABORT=true" >> "$GITHUB_OUTPUT"
 
       - name: git-diff
         run: |
@@ -188,7 +189,7 @@ jobs:
           git diff --no-prefix
 
       - name: result
-        if: env.ABORT != 'true'
+        if: steps.generate.outputs.ABORT != 'true'
         run: |
           echo "##########################################################"
           ls -lL symref-*.tar.lzma
@@ -215,7 +216,7 @@ jobs:
 
       - name: release
         uses: ncipollo/release-action@v1
-        if: env.ABORT != 'true' && github.repository == 'freetz-ng/freetz-ng'
+        if: steps.generate.outputs.ABORT != 'true' && github.repository == 'freetz-ng/freetz-ng'
         with:
           owner: Freetz-NG
           repo: freetz-ng
