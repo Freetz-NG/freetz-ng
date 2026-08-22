@@ -217,18 +217,18 @@ jobs:
         uses: ncipollo/release-action@v1
         if: env.ABORT != 'true' && github.repository == 'freetz-ng/freetz-ng'
         with:
-          owner: Freetz-NG
-          repo: freetz-ng
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
           tag: kernel-symrefs
           name: kernel-symrefs
           body: These files are internally used!
-          draft: true
           prerelease: true
           allowUpdates: true
           removeArtifacts: false
           artifacts: "symref-*.tar.lzma"
           token: ${{ secrets.GITHUB_TOKEN }}
-          replacesArtifacts: false
-          artifactErrorsFailBuild: false
+          replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          draft: true
 
 
