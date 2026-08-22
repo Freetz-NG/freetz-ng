@@ -181,7 +181,7 @@ jobs:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
           make olddefconfig kernel-symref
-          [ -e symref-*.tar.lzma ] || echo "ABORT=true" >> "$GITHUB_OUTPUT"
+          [ -e symref-*.tar.lzma ] && echo "ABORT=false" >> "$GITHUB_OUTPUT" || echo "ABORT=true" >> "$GITHUB_OUTPUT" 
 
       - name: git-diff
         run: |
