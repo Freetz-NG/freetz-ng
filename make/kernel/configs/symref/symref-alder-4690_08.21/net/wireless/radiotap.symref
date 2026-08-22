@@ -1,0 +1,16 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#uint8_t typedef t#u8 uint8_t 
+override t#__u16 typedef unsigned short __u16 
+override t#__le16 typedef t#__u16 __le16 
+override t#__u32 typedef unsigned int __u32 
+override t#__le32 typedef t#__u32 __le32 
+override s#ieee80211_radiotap_header struct ieee80211_radiotap_header { t#uint8_t it_version ; t#uint8_t it_pad ; t#__le16 it_len ; t#__le32 it_present ; } 
+override s#radiotap_align_size struct radiotap_align_size { t#uint8_t align : 4 , size : 4 ; } 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override s#ieee80211_radiotap_namespace struct ieee80211_radiotap_namespace { const s#radiotap_align_size * align_size ; int n_bits ; t#uint32_t oui ; t#uint8_t subns ; } 
+override s#ieee80211_radiotap_vendor_namespaces struct ieee80211_radiotap_vendor_namespaces { const s#ieee80211_radiotap_namespace * ns ; int n_ns ; } 
+override s#ieee80211_radiotap_iterator struct ieee80211_radiotap_iterator { s#ieee80211_radiotap_header * _rtheader ; const s#ieee80211_radiotap_vendor_namespaces * _vns ; const s#ieee80211_radiotap_namespace * current_namespace ; unsigned char * _arg , * _next_ns_data ; t#__le32 * _next_bitmap ; unsigned char * this_arg ; int this_arg_index ; int this_arg_size ; int is_radiotap_ns ; int _max_length ; int _arg_index ; t#uint32_t _bitmap_shifter ; int _reset_on_ext ; } 
+override ieee80211_radiotap_iterator_init int ieee80211_radiotap_iterator_init ( s#ieee80211_radiotap_iterator * , s#ieee80211_radiotap_header * , int , const s#ieee80211_radiotap_vendor_namespaces * ) 
+override ieee80211_radiotap_iterator_next int ieee80211_radiotap_iterator_next ( s#ieee80211_radiotap_iterator * ) 

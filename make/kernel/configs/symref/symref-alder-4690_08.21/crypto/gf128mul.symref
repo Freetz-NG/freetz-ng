@@ -1,0 +1,17 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#__le64 typedef t#__u64 __le64 
+override t#le128 typedef struct { t#__le64 b , a ; } le128 
+override gf128mul_x8_ble void gf128mul_x8_ble ( t#le128 * , const t#le128 * ) 
+override t#__be64 typedef t#__u64 __be64 
+override t#be128 typedef struct { t#__be64 a , b ; } be128 
+override gf128mul_lle void gf128mul_lle ( t#be128 * , const t#be128 * ) 
+override gf128mul_bbe void gf128mul_bbe ( t#be128 * , const t#be128 * ) 
+override s#gf128mul_4k struct gf128mul_4k { t#be128 t [ 256 ] ; } 
+override s#gf128mul_64k struct gf128mul_64k { s#gf128mul_4k * t [ 16 ] ; } 
+override gf128mul_init_64k_bbe s#gf128mul_64k * gf128mul_init_64k_bbe ( const t#be128 * ) 
+override gf128mul_free_64k void gf128mul_free_64k ( s#gf128mul_64k * ) 
+override gf128mul_64k_bbe void gf128mul_64k_bbe ( t#be128 * , const s#gf128mul_64k * ) 
+override gf128mul_init_4k_lle s#gf128mul_4k * gf128mul_init_4k_lle ( const t#be128 * ) 
+override gf128mul_init_4k_bbe s#gf128mul_4k * gf128mul_init_4k_bbe ( const t#be128 * ) 
+override gf128mul_4k_lle void gf128mul_4k_lle ( t#be128 * , const s#gf128mul_4k * ) 
+override gf128mul_4k_bbe void gf128mul_4k_bbe ( t#be128 * , const s#gf128mul_4k * ) 

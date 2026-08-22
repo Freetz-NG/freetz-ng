@@ -1,0 +1,1 @@
+override pm_power_off extern void ( * pm_power_off ) ( void ) 

@@ -1,0 +1,4 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#crypto_authenc_keys struct crypto_authenc_keys { const t#u8 * authkey ; const t#u8 * enckey ; unsigned int authkeylen ; unsigned int enckeylen ; } 
+override crypto_authenc_extractkeys int crypto_authenc_extractkeys ( s#crypto_authenc_keys * , const t#u8 * , unsigned int ) 

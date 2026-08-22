@@ -1,0 +1,62 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override e#OID enum OID { OID_id_dsa_with_sha1 , OID_id_dsa , OID_id_ecdsa_with_sha1 , OID_id_ecPublicKey , OID_rsaEncryption , OID_md2WithRSAEncryption , OID_md3WithRSAEncryption , OID_md4WithRSAEncryption , OID_sha1WithRSAEncryption , OID_sha256WithRSAEncryption , OID_sha384WithRSAEncryption , OID_sha512WithRSAEncryption , OID_sha224WithRSAEncryption , OID_data , OID_signed_data , OID_email_address , OID_contentType , OID_messageDigest , OID_signingTime , OID_smimeCapabilites , OID_smimeAuthenticatedAttrs , OID_md2 , OID_md4 , OID_md5 , OID_msIndirectData , OID_msStatementType , OID_msSpOpusInfo , OID_msPeImageDataObjId , OID_msIndividualSPKeyPurpose , OID_msOutlookExpress , OID_certAuthInfoAccess , OID_sha1 , OID_sha256 , OID_sha384 , OID_sha512 , OID_sha224 , OID_commonName , OID_surname , OID_countryName , OID_locality , OID_stateOrProvinceName , OID_organizationName , OID_organizationUnitName , OID_title , OID_description , OID_name , OID_givenName , OID_initials , OID_generationalQualifier , OID_subjectKeyIdentifier , OID_keyUsage , OID_subjectAltName , OID_issuerAltName , OID_basicConstraints , OID_crlDistributionPoints , OID_certPolicies , OID_authorityKeyIdentifier , OID_extKeyUsage , OID_gostCPSignA , OID_gostCPSignB , OID_gostCPSignC , OID_gost2012PKey256 , OID_gost2012PKey512 , OID_gost2012Digest256 , OID_gost2012Digest512 , OID_gost2012Signature256 , OID_gost2012Signature512 , OID_gostTC26Sign256A , OID_gostTC26Sign256B , OID_gostTC26Sign256C , OID_gostTC26Sign256D , OID_gostTC26Sign512A , OID_gostTC26Sign512B , OID_gostTC26Sign512C , OID__NR } 
+override t#bool typedef _Bool bool 
+override s#public_key struct public_key { void * key ; t#u32 keylen ; e#OID algo ; void * params ; t#u32 paramlen ; t#bool key_is_private ; const char * id_type ; const char * pkey_algo ; } 
+override s#asymmetric_key_id struct asymmetric_key_id { unsigned short len ; unsigned char data [ ] ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#public_key_signature struct public_key_signature { s#asymmetric_key_id * auth_ids [ 2 ] ; t#u8 * s ; t#u8 * digest ; t#u32 s_size ; t#u32 digest_size ; const char * pkey_algo ; const char * hash_algo ; const char * encoding ; } 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#time64_t typedef t#__s64 time64_t 
+override s#x509_certificate struct x509_certificate { s#x509_certificate * next ; s#x509_certificate * signer ; s#public_key * pub ; s#public_key_signature * sig ; char * issuer ; char * subject ; s#asymmetric_key_id * id ; s#asymmetric_key_id * skid ; t#time64_t valid_from ; t#time64_t valid_to ; const void * tbs ; unsigned tbs_size ; unsigned raw_sig_size ; const void * raw_sig ; const void * raw_serial ; unsigned raw_serial_size ; unsigned raw_issuer_size ; const void * raw_issuer ; const void * raw_subject ; unsigned raw_subject_size ; unsigned raw_skid_size ; const void * raw_skid ; unsigned index ; t#bool seen ; t#bool verified ; t#bool self_signed ; t#bool unsupported_key ; t#bool unsupported_sig ; t#bool blacklisted ; } 
+override s#pkcs7_signed_info struct pkcs7_signed_info { s#pkcs7_signed_info * next ; s#x509_certificate * signer ; unsigned index ; t#bool unsupported_crypto ; t#bool blacklisted ; const void * msgdigest ; unsigned msgdigest_len ; unsigned authattrs_len ; const void * authattrs ; unsigned long aa_set ; t#time64_t signing_time ; s#public_key_signature * sig ; } 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override s#pkcs7_message struct pkcs7_message { s#x509_certificate * certs ; s#x509_certificate * crl ; s#pkcs7_signed_info * signed_infos ; t#u8 version ; t#bool have_authattrs ; e#OID data_type ; t#size_t data_len ; t#size_t data_hdrlen ; const void * data ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override t#int32_t typedef t#s32 int32_t 
+override t#key_serial_t typedef t#int32_t key_serial_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override s#key_user struct key_user { UNKNOWN } 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override t#__kernel_gid32_t typedef unsigned int __kernel_gid32_t 
+override t#gid_t typedef t#__kernel_gid32_t gid_t 
+override t#kgid_t typedef struct { t#gid_t val ; } kgid_t 
+override t#uint32_t typedef t#u32 uint32_t 
+override t#key_perm_t typedef t#uint32_t key_perm_t 
+override u#key_payload union key_payload { void * rcu_data0 ; void * data [ 4 ] ; } 
+override s#key_preparsed_payload struct key_preparsed_payload { char * description ; u#key_payload payload ; const void * data ; t#size_t datalen ; t#size_t quotalen ; t#time64_t expiry ; } 
+override s#key_match_data struct key_match_data { t#bool ( * cmp ) ( const s#key * , const s#key_match_data * ) ; const void * raw_data ; void * preparsed ; unsigned lookup_type ; } 
+override s#seq_file struct seq_file { UNKNOWN } 
+override t#request_key_actor_t typedef int ( * request_key_actor_t ) ( s#key * , void * ) 
+override t#key_restrict_link_func_t typedef int ( * key_restrict_link_func_t ) ( s#key * , const s#key_type * , const u#key_payload * , s#key * ) 
+override s#key_restriction struct key_restriction { t#key_restrict_link_func_t check ; s#key * key ; s#key_type * keytype ; } 
+override e#kernel_pkey_operation enum kernel_pkey_operation { kernel_pkey_encrypt , kernel_pkey_decrypt , kernel_pkey_sign , kernel_pkey_verify , } 
+override s#kernel_pkey_params struct kernel_pkey_params { s#key * key ; const char * encoding ; const char * hash_algo ; char * info ; t#__u32 in_len ; union { t#__u32 out_len ; t#__u32 in2_len ; } ; e#kernel_pkey_operation op : 8 ; } 
+override s#kernel_pkey_query struct kernel_pkey_query { t#__u32 supported_ops ; t#__u32 key_size ; t#__u16 max_data_size ; t#__u16 max_sig_size ; t#__u16 max_enc_size ; t#__u16 max_dec_size ; } 
+override s#lock_class_key struct lock_class_key { } 
+override s#key_type struct key_type { const char * name ; t#size_t def_datalen ; unsigned int flags ; int ( * vet_description ) ( const char * ) ; int ( * preparse ) ( s#key_preparsed_payload * ) ; void ( * free_preparse ) ( s#key_preparsed_payload * ) ; int ( * instantiate ) ( s#key * , s#key_preparsed_payload * ) ; int ( * update ) ( s#key * , s#key_preparsed_payload * ) ; int ( * match_preparse ) ( s#key_match_data * ) ; void ( * match_free ) ( s#key_match_data * ) ; void ( * revoke ) ( s#key * ) ; void ( * destroy ) ( s#key * ) ; void ( * describe ) ( const s#key * , s#seq_file * ) ; long ( * read ) ( const s#key * , char * , t#size_t ) ; t#request_key_actor_t request_key ; s#key_restriction * ( * lookup_restriction ) ( const char * ) ; int ( * asym_query ) ( const s#kernel_pkey_params * , s#kernel_pkey_query * ) ; int ( * asym_eds_op ) ( s#kernel_pkey_params * , const void * , void * ) ; int ( * asym_verify_signature ) ( s#kernel_pkey_params * , const void * , const void * ) ; s#list_head link ; s#lock_class_key lock_class ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#key_tag struct key_tag { s#callback_head rcu ; t#refcount_t usage ; t#bool removed ; } 
+override s#keyring_index_key struct keyring_index_key { unsigned long hash ; union { struct { t#u16 desc_len ; char desc [ sizeof ( long ) - 2 ] ; } ; unsigned long x ; } ; s#key_type * type ; s#key_tag * domain_tag ; const char * description ; } 
+override s#assoc_array_ptr struct assoc_array_ptr { UNKNOWN } 
+override s#assoc_array struct assoc_array { s#assoc_array_ptr * root ; unsigned long nr_leaves_on_tree ; } 
+override s#key struct key { t#refcount_t usage ; t#key_serial_t serial ; union { s#list_head graveyard_link ; s#rb_node serial_node ; } ; s#rw_semaphore sem ; s#key_user * user ; void * security ; union { t#time64_t expiry ; t#time64_t revoked_at ; } ; t#time64_t last_used_at ; t#kuid_t uid ; t#kgid_t gid ; t#key_perm_t perm ; unsigned short quotalen ; unsigned short datalen ; short state ; unsigned long flags ; union { s#keyring_index_key index_key ; struct { unsigned long hash ; unsigned long len_desc ; s#key_type * type ; s#key_tag * domain_tag ; char * description ; } ; } ; union { u#key_payload payload ; struct { s#list_head name_link ; s#assoc_array keys ; } ; } ; s#key_restriction * restrict_link ; } 
+override pkcs7_validate_trust extern int pkcs7_validate_trust ( s#pkcs7_message * , s#key * ) 

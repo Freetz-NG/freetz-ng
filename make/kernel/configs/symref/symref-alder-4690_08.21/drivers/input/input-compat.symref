@@ -1,0 +1,20 @@
+override t#__kernel_ulong_t typedef unsigned long __kernel_ulong_t 
+override t#__u16 typedef unsigned short __u16 
+override t#__s32 typedef __signed__ int __s32 
+override s#input_event struct input_event { t#__kernel_ulong_t __sec ; t#__kernel_ulong_t __usec ; t#__u16 type ; t#__u16 code ; t#__s32 value ; } 
+override input_event_from_user int input_event_from_user ( const char * , s#input_event * ) 
+override input_event_to_user int input_event_to_user ( char * , const s#input_event * ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override t#__s16 typedef __signed__ short __s16 
+override s#ff_trigger struct ff_trigger { t#__u16 button ; t#__u16 interval ; } 
+override s#ff_replay struct ff_replay { t#__u16 length ; t#__u16 delay ; } 
+override s#ff_envelope struct ff_envelope { t#__u16 attack_length ; t#__u16 attack_level ; t#__u16 fade_length ; t#__u16 fade_level ; } 
+override s#ff_constant_effect struct ff_constant_effect { t#__s16 level ; s#ff_envelope envelope ; } 
+override s#ff_ramp_effect struct ff_ramp_effect { t#__s16 start_level ; t#__s16 end_level ; s#ff_envelope envelope ; } 
+override t#__u32 typedef unsigned int __u32 
+override s#ff_periodic_effect struct ff_periodic_effect { t#__u16 waveform ; t#__u16 period ; t#__s16 magnitude ; t#__s16 offset ; t#__u16 phase ; s#ff_envelope envelope ; t#__u32 custom_len ; t#__s16 * custom_data ; } 
+override s#ff_condition_effect struct ff_condition_effect { t#__u16 right_saturation ; t#__u16 left_saturation ; t#__s16 right_coeff ; t#__s16 left_coeff ; t#__u16 deadband ; t#__s16 center ; } 
+override s#ff_rumble_effect struct ff_rumble_effect { t#__u16 strong_magnitude ; t#__u16 weak_magnitude ; } 
+override s#ff_effect struct ff_effect { t#__u16 type ; t#__s16 id ; t#__u16 direction ; s#ff_trigger trigger ; s#ff_replay replay ; union { s#ff_constant_effect constant ; s#ff_ramp_effect ramp ; s#ff_periodic_effect periodic ; s#ff_condition_effect condition [ 2 ] ; s#ff_rumble_effect rumble ; } u ; } 
+override input_ff_effect_from_user int input_ff_effect_from_user ( const char * , t#size_t , s#ff_effect * ) 

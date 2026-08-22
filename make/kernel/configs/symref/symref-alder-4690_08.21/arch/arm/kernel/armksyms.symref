@@ -1,0 +1,85 @@
+override s#arm_delay_ops extern struct arm_delay_ops { void ( * delay ) ( unsigned long ) ; void ( * const_udelay ) ( unsigned long ) ; void ( * udelay ) ( unsigned long ) ; unsigned long ticks_per_jiffy ; } 
+override arm_delay_ops extern s#arm_delay_ops arm_delay_ops 
+override t#__u32 typedef unsigned int __u32 
+override t#__wsum typedef t#__u32 __wsum 
+override csum_partial t#__wsum csum_partial ( const void * , int , t#__wsum ) 
+override csum_partial_copy_from_user t#__wsum csum_partial_copy_from_user ( const void * , void * , int , t#__wsum , int * ) 
+override csum_partial_copy_nocheck t#__wsum csum_partial_copy_nocheck ( const void * , void * , int , t#__wsum ) 
+override t#__u8 typedef unsigned char __u8 
+override t#__u16 typedef unsigned short __u16 
+override t#__be16 typedef t#__u16 __be16 
+override t#__be32 typedef t#__u32 __be32 
+override s#in6_addr struct in6_addr { union { t#__u8 u6_addr8 [ 16 ] ; t#__be16 u6_addr16 [ 8 ] ; t#__be32 u6_addr32 [ 4 ] ; } in6_u ; } 
+override __csum_ipv6_magic extern t#__wsum __csum_ipv6_magic ( const s#in6_addr * , const s#in6_addr * , t#__be32 , t#__be32 , t#__wsum ) 
+override __raw_readsb void __raw_readsb ( const volatile void * , void * , int ) 
+override __raw_readsw void __raw_readsw ( const volatile void * , void * , int ) 
+override __raw_readsl void __raw_readsl ( const volatile void * , void * , int ) 
+override __raw_writesb void __raw_writesb ( volatile void * , const void * , int ) 
+override __raw_writesw void __raw_writesw ( volatile void * , const void * , int ) 
+override __raw_writesl void __raw_writesl ( volatile void * , const void * , int ) 
+override strchr extern char * strchr ( const char * , int ) 
+override strrchr extern char * strrchr ( const char * , int ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override memset extern void * memset ( void * , int , t#__kernel_size_t ) 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override __memset32 extern void * __memset32 ( t#uint32_t * , t#uint32_t , t#__kernel_size_t ) 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#uint64_t typedef t#u64 uint64_t 
+override __memset64 extern void * __memset64 ( t#uint64_t * , t#uint32_t , t#__kernel_size_t , t#uint32_t ) 
+override memcpy extern void * memcpy ( void * , const void * , t#__kernel_size_t ) 
+override memmove extern void * memmove ( void * , const void * , t#__kernel_size_t ) 
+override memchr extern void * memchr ( const void * , int , t#__kernel_size_t ) 
+override t#size_t typedef t#__kernel_size_t size_t 
+override mmioset void mmioset ( void * , unsigned int , t#size_t ) 
+override mmiocpy void mmiocpy ( void * , const void * , t#size_t ) 
+override copy_page extern void copy_page ( void * , const void * ) 
+override arm_copy_from_user extern unsigned long arm_copy_from_user ( void * , const void * , unsigned long ) 
+override arm_copy_to_user extern unsigned long arm_copy_to_user ( void * , const void * , unsigned long ) 
+override arm_clear_user extern unsigned long arm_clear_user ( void * , unsigned long ) 
+override __get_user_1 extern int __get_user_1 ( void * ) 
+override __get_user_2 extern int __get_user_2 ( void * ) 
+override __get_user_4 extern int __get_user_4 ( void * ) 
+override __get_user_8 extern int __get_user_8 ( void * ) 
+override __put_user_1 extern int __put_user_1 ( void * , unsigned int ) 
+override __put_user_2 extern int __put_user_2 ( void * , unsigned int ) 
+override __put_user_4 extern int __put_user_4 ( void * , unsigned int ) 
+override __put_user_8 extern int __put_user_8 ( void * , unsigned long long ) 
+override __ashldi3 extern void __ashldi3 ( void ) 
+override __ashrdi3 extern void __ashrdi3 ( void ) 
+override __divsi3 extern void __divsi3 ( void ) 
+override __lshrdi3 extern void __lshrdi3 ( void ) 
+override __modsi3 extern void __modsi3 ( void ) 
+override __muldi3 extern void __muldi3 ( void ) 
+override __ucmpdi2 extern void __ucmpdi2 ( void ) 
+override __udivsi3 extern void __udivsi3 ( void ) 
+override __umodsi3 extern void __umodsi3 ( void ) 
+override __do_div64 extern void __do_div64 ( void ) 
+override __bswapsi2 extern void __bswapsi2 ( void ) 
+override __bswapdi2 extern void __bswapdi2 ( void ) 
+override __aeabi_idiv extern void __aeabi_idiv ( void ) 
+override __aeabi_idivmod extern void __aeabi_idivmod ( void ) 
+override __aeabi_lasr extern void __aeabi_lasr ( void ) 
+override __aeabi_llsl extern void __aeabi_llsl ( void ) 
+override __aeabi_llsr extern void __aeabi_llsr ( void ) 
+override __aeabi_lmul extern void __aeabi_lmul ( void ) 
+override __aeabi_uidiv extern void __aeabi_uidiv ( void ) 
+override __aeabi_uidivmod extern void __aeabi_uidivmod ( void ) 
+override __aeabi_ulcmp extern void __aeabi_ulcmp ( void ) 
+override _set_bit extern void _set_bit ( int , volatile unsigned long * ) 
+override _test_and_set_bit extern int _test_and_set_bit ( int , volatile unsigned long * ) 
+override _clear_bit extern void _clear_bit ( int , volatile unsigned long * ) 
+override _test_and_clear_bit extern int _test_and_clear_bit ( int , volatile unsigned long * ) 
+override _change_bit extern void _change_bit ( int , volatile unsigned long * ) 
+override _test_and_change_bit extern int _test_and_change_bit ( int , volatile unsigned long * ) 
+override _find_first_zero_bit_le extern int _find_first_zero_bit_le ( const unsigned long * , unsigned ) 
+override _find_next_zero_bit_le extern int _find_next_zero_bit_le ( const unsigned long * , int , int ) 
+override _find_first_bit_le extern int _find_first_bit_le ( const unsigned long * , unsigned ) 
+override _find_next_bit_le extern int _find_next_bit_le ( const unsigned long * , int , int ) 
+override __pv_phys_pfn_offset extern unsigned long __pv_phys_pfn_offset 
+override __pv_offset extern t#u64 __pv_offset 
+override s#arm_smccc_res struct arm_smccc_res { unsigned long a0 ; unsigned long a1 ; unsigned long a2 ; unsigned long a3 ; } 
+override s#arm_smccc_quirk struct arm_smccc_quirk { int id ; union { unsigned long a6 ; } state ; } 
+override __arm_smccc_smc void __arm_smccc_smc ( unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , s#arm_smccc_res * , s#arm_smccc_quirk * ) 
+override __arm_smccc_hvc void __arm_smccc_hvc ( unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , unsigned long , s#arm_smccc_res * , s#arm_smccc_quirk * ) 

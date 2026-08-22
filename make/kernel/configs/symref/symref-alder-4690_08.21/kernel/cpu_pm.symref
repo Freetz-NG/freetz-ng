@@ -1,0 +1,8 @@
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override cpu_pm_register_notifier int cpu_pm_register_notifier ( s#notifier_block * ) 
+override cpu_pm_unregister_notifier int cpu_pm_unregister_notifier ( s#notifier_block * ) 
+override cpu_pm_enter int cpu_pm_enter ( void ) 
+override cpu_pm_exit int cpu_pm_exit ( void ) 
+override cpu_cluster_pm_enter int cpu_cluster_pm_enter ( void ) 
+override cpu_cluster_pm_exit int cpu_cluster_pm_exit ( void ) 

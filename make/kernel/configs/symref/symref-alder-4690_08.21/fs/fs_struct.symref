@@ -1,0 +1,2 @@
+override unshare_fs_struct extern int unshare_fs_struct ( void ) 
+override current_umask extern int current_umask ( void ) 

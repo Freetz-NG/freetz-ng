@@ -1,0 +1,3 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override lzo1x_decompress_safe int lzo1x_decompress_safe ( const unsigned char * , t#size_t , unsigned char * , t#size_t * ) 

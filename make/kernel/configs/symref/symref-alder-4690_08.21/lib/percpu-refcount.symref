@@ -1,0 +1,15 @@
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override t#percpu_ref_func_t typedef void ( percpu_ref_func_t ) ( s#percpu_ref * ) 
+override t#bool typedef _Bool bool 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#percpu_ref struct percpu_ref { t#atomic_long_t count ; unsigned long percpu_count_ptr ; t#percpu_ref_func_t * release ; t#percpu_ref_func_t * confirm_switch ; t#bool force_atomic : 1 ; t#bool allow_reinit : 1 ; s#callback_head rcu ; } 
+override t#gfp_t typedef unsigned int gfp_t 
+override percpu_ref_init int percpu_ref_init ( s#percpu_ref * , t#percpu_ref_func_t * , unsigned int , t#gfp_t ) 
+override percpu_ref_exit void percpu_ref_exit ( s#percpu_ref * ) 
+override percpu_ref_switch_to_atomic void percpu_ref_switch_to_atomic ( s#percpu_ref * , t#percpu_ref_func_t * ) 
+override percpu_ref_switch_to_atomic_sync void percpu_ref_switch_to_atomic_sync ( s#percpu_ref * ) 
+override percpu_ref_switch_to_percpu void percpu_ref_switch_to_percpu ( s#percpu_ref * ) 
+override percpu_ref_kill_and_confirm void percpu_ref_kill_and_confirm ( s#percpu_ref * , t#percpu_ref_func_t * ) 
+override percpu_ref_reinit void percpu_ref_reinit ( s#percpu_ref * ) 
+override percpu_ref_resurrect void percpu_ref_resurrect ( s#percpu_ref * ) 

@@ -1,0 +1,11 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override msm_dump_table_version extern t#uint32_t msm_dump_table_version ( void ) 
+override e#msm_dump_table_ids enum msm_dump_table_ids { MSM_DUMP_TABLE_APPS , MSM_DUMP_TABLE_MAX = 0x130 , } 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#uint64_t typedef t#u64 uint64_t 
+override s#msm_dump_entry struct msm_dump_entry { t#uint32_t id ; char name [ 32 ] ; t#uint32_t type ; t#uint64_t addr ; } 
+override msm_dump_data_register extern int msm_dump_data_register ( e#msm_dump_table_ids , s#msm_dump_entry * ) 
+override msm_dump_data_unregister extern int msm_dump_data_unregister ( e#msm_dump_table_ids , int ) 

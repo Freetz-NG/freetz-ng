@@ -1,0 +1,2 @@
+override s#cpumask struct cpumask { unsigned long bits [ ( ( ( 4 ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } 
+override avm_rte_ipi_trigger extern int avm_rte_ipi_trigger ( const s#cpumask * , unsigned int ) 

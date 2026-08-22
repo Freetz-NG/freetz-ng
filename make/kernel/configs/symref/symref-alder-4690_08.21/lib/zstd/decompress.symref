@@ -1,0 +1,44 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override ZSTD_DCtxWorkspaceBound t#size_t ZSTD_DCtxWorkspaceBound ( void ) 
+override s#ZSTD_DCtx_s struct ZSTD_DCtx_s { UNKNOWN } 
+override t#ZSTD_DCtx typedef s#ZSTD_DCtx_s ZSTD_DCtx 
+override ZSTD_initDCtx t#ZSTD_DCtx * ZSTD_initDCtx ( void * , t#size_t ) 
+override ZSTD_decompressDCtx t#size_t ZSTD_decompressDCtx ( t#ZSTD_DCtx * , void * , t#size_t , const void * , t#size_t ) 
+override ZSTD_decompress_usingDict t#size_t ZSTD_decompress_usingDict ( t#ZSTD_DCtx * , void * , t#size_t , const void * , t#size_t , const void * , t#size_t ) 
+override ZSTD_DDictWorkspaceBound t#size_t ZSTD_DDictWorkspaceBound ( void ) 
+override s#ZSTD_DDict_s struct ZSTD_DDict_s { UNKNOWN } 
+override t#ZSTD_DDict typedef s#ZSTD_DDict_s ZSTD_DDict 
+override ZSTD_initDDict t#ZSTD_DDict * ZSTD_initDDict ( const void * , t#size_t , void * , t#size_t ) 
+override ZSTD_decompress_usingDDict t#size_t ZSTD_decompress_usingDDict ( t#ZSTD_DCtx * , void * , t#size_t , const void * , t#size_t , const t#ZSTD_DDict * ) 
+override ZSTD_DStreamWorkspaceBound t#size_t ZSTD_DStreamWorkspaceBound ( t#size_t ) 
+override s#ZSTD_DStream_s struct ZSTD_DStream_s { UNKNOWN } 
+override t#ZSTD_DStream typedef s#ZSTD_DStream_s ZSTD_DStream 
+override ZSTD_initDStream t#ZSTD_DStream * ZSTD_initDStream ( t#size_t , void * , t#size_t ) 
+override ZSTD_initDStream_usingDDict t#ZSTD_DStream * ZSTD_initDStream_usingDDict ( t#size_t , const t#ZSTD_DDict * , void * , t#size_t ) 
+override ZSTD_resetDStream t#size_t ZSTD_resetDStream ( t#ZSTD_DStream * ) 
+override s#ZSTD_outBuffer_s struct ZSTD_outBuffer_s { void * dst ; t#size_t size ; t#size_t pos ; } 
+override t#ZSTD_outBuffer typedef s#ZSTD_outBuffer_s ZSTD_outBuffer 
+override s#ZSTD_inBuffer_s struct ZSTD_inBuffer_s { const void * src ; t#size_t size ; t#size_t pos ; } 
+override t#ZSTD_inBuffer typedef s#ZSTD_inBuffer_s ZSTD_inBuffer 
+override ZSTD_decompressStream t#size_t ZSTD_decompressStream ( t#ZSTD_DStream * , t#ZSTD_outBuffer * , t#ZSTD_inBuffer * ) 
+override ZSTD_DStreamInSize t#size_t ZSTD_DStreamInSize ( void ) 
+override ZSTD_DStreamOutSize t#size_t ZSTD_DStreamOutSize ( void ) 
+override ZSTD_findFrameCompressedSize t#size_t ZSTD_findFrameCompressedSize ( const void * , t#size_t ) 
+override ZSTD_getFrameContentSize unsigned long long ZSTD_getFrameContentSize ( const void * , t#size_t ) 
+override ZSTD_findDecompressedSize unsigned long long ZSTD_findDecompressedSize ( const void * , t#size_t ) 
+override ZSTD_isFrame unsigned int ZSTD_isFrame ( const void * , t#size_t ) 
+override ZSTD_getDictID_fromDict unsigned int ZSTD_getDictID_fromDict ( const void * , t#size_t ) 
+override ZSTD_getDictID_fromDDict unsigned int ZSTD_getDictID_fromDDict ( const t#ZSTD_DDict * ) 
+override ZSTD_getDictID_fromFrame unsigned int ZSTD_getDictID_fromFrame ( const void * , t#size_t ) 
+override t#ZSTD_frameParams typedef struct { unsigned long long frameContentSize ; unsigned int windowSize ; unsigned int dictID ; unsigned int checksumFlag ; } ZSTD_frameParams 
+override ZSTD_getFrameParams t#size_t ZSTD_getFrameParams ( t#ZSTD_frameParams * , const void * , t#size_t ) 
+override ZSTD_decompressBegin t#size_t ZSTD_decompressBegin ( t#ZSTD_DCtx * ) 
+override ZSTD_decompressBegin_usingDict t#size_t ZSTD_decompressBegin_usingDict ( t#ZSTD_DCtx * , const void * , t#size_t ) 
+override ZSTD_copyDCtx void ZSTD_copyDCtx ( t#ZSTD_DCtx * , const t#ZSTD_DCtx * ) 
+override ZSTD_nextSrcSizeToDecompress t#size_t ZSTD_nextSrcSizeToDecompress ( t#ZSTD_DCtx * ) 
+override ZSTD_decompressContinue t#size_t ZSTD_decompressContinue ( t#ZSTD_DCtx * , void * , t#size_t , const void * , t#size_t ) 
+override t#ZSTD_nextInputType_e typedef enum { ZSTDnit_frameHeader , ZSTDnit_blockHeader , ZSTDnit_block , ZSTDnit_lastBlock , ZSTDnit_checksum , ZSTDnit_skippableFrame } ZSTD_nextInputType_e 
+override ZSTD_nextInputType t#ZSTD_nextInputType_e ZSTD_nextInputType ( t#ZSTD_DCtx * ) 
+override ZSTD_decompressBlock t#size_t ZSTD_decompressBlock ( t#ZSTD_DCtx * , void * , t#size_t , const void * , t#size_t ) 
+override ZSTD_insertBlock t#size_t ZSTD_insertBlock ( t#ZSTD_DCtx * , const void * , t#size_t ) 

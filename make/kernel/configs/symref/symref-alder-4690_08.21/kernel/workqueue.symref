@@ -1,0 +1,46 @@
+override s#workqueue_struct struct workqueue_struct { UNKNOWN } 
+override system_wq extern s#workqueue_struct * system_wq 
+override system_highpri_wq extern s#workqueue_struct * system_highpri_wq 
+override system_long_wq extern s#workqueue_struct * system_long_wq 
+override system_unbound_wq extern s#workqueue_struct * system_unbound_wq 
+override system_freezable_wq extern s#workqueue_struct * system_freezable_wq 
+override system_power_efficient_wq extern s#workqueue_struct * system_power_efficient_wq 
+override system_freezable_power_efficient_wq extern s#workqueue_struct * system_freezable_power_efficient_wq 
+override t#bool typedef _Bool bool 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override queue_work_on extern t#bool queue_work_on ( int , s#workqueue_struct * , s#work_struct * ) 
+override queue_work_node extern t#bool queue_work_node ( int , s#workqueue_struct * , s#work_struct * ) 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#timer_list struct timer_list { s#hlist_node entry ; unsigned long expires ; void ( * function ) ( s#timer_list * ) ; t#u32 flags ; } 
+override delayed_work_timer_fn void delayed_work_timer_fn ( s#timer_list * ) 
+override s#delayed_work struct delayed_work { s#work_struct work ; s#timer_list timer ; s#workqueue_struct * wq ; int cpu ; } 
+override queue_delayed_work_on extern t#bool queue_delayed_work_on ( int , s#workqueue_struct * , s#delayed_work * , unsigned long ) 
+override mod_delayed_work_on extern t#bool mod_delayed_work_on ( int , s#workqueue_struct * , s#delayed_work * , unsigned long ) 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#rcu_work struct rcu_work { s#work_struct work ; s#callback_head rcu ; s#workqueue_struct * wq ; } 
+override queue_rcu_work extern t#bool queue_rcu_work ( s#workqueue_struct * , s#rcu_work * ) 
+override flush_workqueue extern void flush_workqueue ( s#workqueue_struct * ) 
+override drain_workqueue extern void drain_workqueue ( s#workqueue_struct * ) 
+override flush_work extern t#bool flush_work ( s#work_struct * ) 
+override cancel_work_sync extern t#bool cancel_work_sync ( s#work_struct * ) 
+override flush_delayed_work extern t#bool flush_delayed_work ( s#delayed_work * ) 
+override flush_rcu_work extern t#bool flush_rcu_work ( s#rcu_work * ) 
+override cancel_delayed_work extern t#bool cancel_delayed_work ( s#delayed_work * ) 
+override cancel_delayed_work_sync extern t#bool cancel_delayed_work_sync ( s#delayed_work * ) 
+override s#execute_work struct execute_work { s#work_struct work ; } 
+override execute_in_process_context int execute_in_process_context ( t#work_func_t , s#execute_work * ) 
+override alloc_workqueue s#workqueue_struct * alloc_workqueue ( const char * , unsigned int , int , ... ) 
+override destroy_workqueue extern void destroy_workqueue ( s#workqueue_struct * ) 
+override workqueue_set_max_active extern void workqueue_set_max_active ( s#workqueue_struct * , int ) 
+override current_work extern s#work_struct * current_work ( void ) 
+override workqueue_congested extern t#bool workqueue_congested ( int , s#workqueue_struct * ) 
+override work_busy extern unsigned int work_busy ( s#work_struct * ) 
+override set_worker_desc extern __attribute__ ( ( __format__ ( printf , 1 , 2 ) ) ) void set_worker_desc ( const char * , ... ) 
+override work_on_cpu long work_on_cpu ( int , long ( * ) ( void * ) , void * ) 
+override work_on_cpu_safe long work_on_cpu_safe ( int , long ( * ) ( void * ) , void * ) 

@@ -1,0 +1,11 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#sha256_state struct sha256_state { t#u32 state [ 32 / 4 ] ; t#u64 count ; t#u8 buf [ 64 ] ; } 
+override sha256_update extern int sha256_update ( s#sha256_state * , const t#u8 * , unsigned int ) 
+override sha224_update extern int sha224_update ( s#sha256_state * , const t#u8 * , unsigned int ) 
+override sha256_final extern int sha256_final ( s#sha256_state * , t#u8 * ) 
+override sha224_final extern int sha224_final ( s#sha256_state * , t#u8 * ) 

@@ -1,0 +1,11 @@
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override capilib_new_ncci void capilib_new_ncci ( s#list_head * , t#u16 , t#u32 , t#u32 ) 
+override capilib_free_ncci void capilib_free_ncci ( s#list_head * , t#u16 , t#u32 ) 
+override capilib_release_appl void capilib_release_appl ( s#list_head * , t#u16 ) 
+override capilib_release void capilib_release ( s#list_head * ) 
+override capilib_data_b3_req t#u16 capilib_data_b3_req ( s#list_head * , t#u16 , t#u32 , t#u16 ) 
+override capilib_data_b3_conf void capilib_data_b3_conf ( s#list_head * , t#u16 , t#u32 , t#u16 ) 

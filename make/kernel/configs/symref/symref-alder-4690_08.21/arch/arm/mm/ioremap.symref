@@ -1,0 +1,18 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#pteval_t typedef t#u32 pteval_t 
+override t#pmdval_t typedef t#u32 pmdval_t 
+override s#mem_type struct mem_type { t#pteval_t prot_pte ; t#pteval_t prot_pte_s2 ; t#pmdval_t prot_l1 ; t#pmdval_t prot_sect ; unsigned int domain ; } 
+override ioremap_page extern int ioremap_page ( unsigned long , unsigned long , const s#mem_type * ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override __arm_ioremap_pfn extern void * __arm_ioremap_pfn ( unsigned long , unsigned long , t#size_t , unsigned int ) 
+override t#phys_addr_t typedef t#u32 phys_addr_t 
+override t#resource_size_t typedef t#phys_addr_t resource_size_t 
+override ioremap void * ioremap ( t#resource_size_t , t#size_t ) 
+override ioremap_cache void * ioremap_cache ( t#resource_size_t , t#size_t ) 
+override ioremap_cached void * ioremap_cached ( t#resource_size_t , t#size_t ) 
+override ioremap_wc void * ioremap_wc ( t#resource_size_t , t#size_t ) 
+override iounmap void iounmap ( volatile void * ) 
+override pci_ioremap_io extern int pci_ioremap_io ( unsigned int , t#phys_addr_t ) 
+override pci_remap_cfgspace void * pci_remap_cfgspace ( t#resource_size_t , t#size_t ) 

@@ -1,0 +1,8 @@
+override capi_oslib_trace_mode int capi_oslib_trace_mode 
+override s#__f struct __f { unsigned nfuncs ; void ( * sched_ctrl ) ( unsigned ) ; void ( * wakeup_ctrl ) ( unsigned ) ; } 
+override t#functions_p typedef s#__f * functions_p 
+override s#__cb struct __cb { unsigned int controllers ; unsigned ( * cm_start ) ( void ) ; char * ( * cm_init ) ( unsigned , unsigned ) ; int ( * cm_activate ) ( void ) ; int ( * cm_exit ) ( void ) ; unsigned ( * cm_handle_events ) ( void ) ; int ( * cm_schedule ) ( void ) ; void ( * cm_timer_irq_control ) ( unsigned ) ; void ( * cm_register_ca_functions ) ( t#functions_p ) ; unsigned ( * check_controller ) ( unsigned , unsigned * ) ; unsigned ( * cm_bufsize ) ( void ) ; unsigned ( * cm_ctrl_tasklet ) ( unsigned int ) ; unsigned char * ( * cm_getprofile ) ( unsigned int ) ; void * ( * lib_heap_init ) ( void * , unsigned ) ; void ( * lib_heap_exit ) ( void * ) ; void * ( * lib_heap_alloc ) ( void * , unsigned ) ; void ( * lib_heap_free ) ( void * , void * ) ; } 
+override t#lib_callback_t typedef s#__cb lib_callback_t 
+override avm_stack_detach int avm_stack_detach ( t#lib_callback_t * ) 
+override s#_stack_init_params struct _stack_init_params { int io_addr ; int irq_num ; int dect_hw ; int dect_on ; int local_ec ; int debug_mode ; int trace_mode ; } 
+override avm_stack_attach int avm_stack_attach ( t#lib_callback_t * , s#_stack_init_params * ) 

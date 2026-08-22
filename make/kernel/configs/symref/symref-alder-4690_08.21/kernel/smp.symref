@@ -1,0 +1,20 @@
+override t#smp_call_func_t typedef void ( * smp_call_func_t ) ( void * ) 
+override smp_call_function_single int smp_call_function_single ( int , t#smp_call_func_t , void * , int ) 
+override s#llist_node struct llist_node { s#llist_node * next ; } 
+override s#__call_single_data struct __call_single_data { s#llist_node llist ; t#smp_call_func_t func ; void * info ; unsigned int flags ; } 
+override smp_call_function_single_async int smp_call_function_single_async ( int , s#__call_single_data * ) 
+override s#cpumask struct cpumask { unsigned long bits [ ( ( ( 4 ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } 
+override smp_call_function_any int smp_call_function_any ( const s#cpumask * , t#smp_call_func_t , void * , int ) 
+override t#bool typedef _Bool bool 
+override smp_call_function_many void smp_call_function_many ( const s#cpumask * , t#smp_call_func_t , void * , t#bool ) 
+override smp_call_function void smp_call_function ( t#smp_call_func_t , void * , int ) 
+override setup_max_cpus extern unsigned int setup_max_cpus 
+override nr_cpu_ids extern unsigned int nr_cpu_ids 
+override on_each_cpu void on_each_cpu ( t#smp_call_func_t , void * , int ) 
+override on_each_cpu_mask void on_each_cpu_mask ( const s#cpumask * , t#smp_call_func_t , void * , t#bool ) 
+override t#gfp_t typedef unsigned int gfp_t 
+override on_each_cpu_cond_mask void on_each_cpu_cond_mask ( t#bool ( * ) ( int , void * ) , t#smp_call_func_t , void * , t#bool , t#gfp_t , const s#cpumask * ) 
+override on_each_cpu_cond void on_each_cpu_cond ( t#bool ( * ) ( int , void * ) , t#smp_call_func_t , void * , t#bool , t#gfp_t ) 
+override kick_all_cpus_sync void kick_all_cpus_sync ( void ) 
+override wake_up_all_idle_cpus void wake_up_all_idle_cpus ( void ) 
+override smp_call_on_cpu int smp_call_on_cpu ( unsigned int , int ( * ) ( void * ) , void * , t#bool ) 

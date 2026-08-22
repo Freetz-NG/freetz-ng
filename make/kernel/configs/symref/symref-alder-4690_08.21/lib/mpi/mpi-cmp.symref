@@ -1,0 +1,6 @@
+override t#mpi_limb_t typedef unsigned long int mpi_limb_t 
+override s#gcry_mpi struct gcry_mpi { int alloced ; int nlimbs ; int nbits ; int sign ; unsigned flags ; t#mpi_limb_t * d ; } 
+override t#MPI typedef s#gcry_mpi * MPI 
+override t#ulong typedef unsigned long ulong 
+override mpi_cmp_ui int mpi_cmp_ui ( t#MPI , t#ulong ) 
+override mpi_cmp int mpi_cmp ( t#MPI , t#MPI ) 

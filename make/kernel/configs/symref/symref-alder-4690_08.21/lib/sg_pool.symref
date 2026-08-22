@@ -1,0 +1,7 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#dma_addr_t typedef t#u32 dma_addr_t 
+override s#scatterlist struct scatterlist { unsigned long page_link ; unsigned int offset ; unsigned int length ; t#dma_addr_t dma_address ; } 
+override s#sg_table struct sg_table { s#scatterlist * sgl ; unsigned int nents ; unsigned int orig_nents ; } 
+override sg_free_table_chained void sg_free_table_chained ( s#sg_table * , unsigned ) 
+override sg_alloc_table_chained int sg_alloc_table_chained ( s#sg_table * , int , s#scatterlist * , unsigned ) 

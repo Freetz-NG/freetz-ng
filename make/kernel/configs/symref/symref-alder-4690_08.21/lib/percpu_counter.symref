@@ -1,0 +1,23 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#s64 typedef t#__s64 s64 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override s#percpu_counter struct percpu_counter { t#raw_spinlock_t lock ; t#s64 count ; s#list_head list ; t#s32 * counters ; } 
+override percpu_counter_set void percpu_counter_set ( s#percpu_counter * , t#s64 ) 
+override percpu_counter_add_batch void percpu_counter_add_batch ( s#percpu_counter * , t#s64 , t#s32 ) 
+override __percpu_counter_sum t#s64 __percpu_counter_sum ( s#percpu_counter * ) 
+override t#gfp_t typedef unsigned int gfp_t 
+override s#lock_class_key struct lock_class_key { } 
+override __percpu_counter_init int __percpu_counter_init ( s#percpu_counter * , t#s64 , t#gfp_t , s#lock_class_key * ) 
+override percpu_counter_destroy void percpu_counter_destroy ( s#percpu_counter * ) 
+override percpu_counter_batch extern int percpu_counter_batch 
+override __percpu_counter_compare int __percpu_counter_compare ( s#percpu_counter * , t#s64 , t#s32 ) 

@@ -1,0 +1,36 @@
+override t#gfp_t typedef unsigned int gfp_t 
+override radix_tree_preload int radix_tree_preload ( t#gfp_t ) 
+override radix_tree_maybe_preload int radix_tree_maybe_preload ( t#gfp_t ) 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#xarray struct xarray { t#spinlock_t xa_lock ; t#gfp_t xa_flags ; void * xa_head ; } 
+override radix_tree_insert int radix_tree_insert ( s#xarray * , unsigned long , void * ) 
+override radix_tree_lookup_slot void * * radix_tree_lookup_slot ( const s#xarray * , unsigned long ) 
+override radix_tree_lookup void * radix_tree_lookup ( const s#xarray * , unsigned long ) 
+override radix_tree_replace_slot void radix_tree_replace_slot ( s#xarray * , void * * , void * ) 
+override radix_tree_tag_set void * radix_tree_tag_set ( s#xarray * , unsigned long , unsigned int ) 
+override radix_tree_tag_clear void * radix_tree_tag_clear ( s#xarray * , unsigned long , unsigned int ) 
+override radix_tree_tag_get int radix_tree_tag_get ( const s#xarray * , unsigned long , unsigned int ) 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#xa_node struct xa_node { unsigned char shift ; unsigned char offset ; unsigned char count ; unsigned char nr_values ; s#xa_node * parent ; s#xarray * array ; union { s#list_head private_list ; s#callback_head callback_head ; } ; void * slots [ ( 1UL << ( 0 ? 4 : 6 ) ) ] ; union { unsigned long tags [ 3 ] [ ( ( ( ( 1UL << ( 0 ? 4 : 6 ) ) ) + ( 32 ) - 1 ) / ( 32 ) ) ] ; unsigned long marks [ 3 ] [ ( ( ( ( 1UL << ( 0 ? 4 : 6 ) ) ) + ( 32 ) - 1 ) / ( 32 ) ) ] ; } ; } 
+override s#radix_tree_iter struct radix_tree_iter { unsigned long index ; unsigned long next_index ; unsigned long tags ; s#xa_node * node ; } 
+override radix_tree_iter_resume void * * radix_tree_iter_resume ( void * * , s#radix_tree_iter * ) 
+override radix_tree_next_chunk void * * radix_tree_next_chunk ( const s#xarray * , s#radix_tree_iter * , unsigned ) 
+override radix_tree_gang_lookup unsigned int radix_tree_gang_lookup ( const s#xarray * , void * * , unsigned long , unsigned int ) 
+override radix_tree_gang_lookup_tag unsigned int radix_tree_gang_lookup_tag ( const s#xarray * , void * * , unsigned long , unsigned int , unsigned int ) 
+override radix_tree_gang_lookup_tag_slot unsigned int radix_tree_gang_lookup_tag_slot ( const s#xarray * , void * * * , unsigned long , unsigned int , unsigned int ) 
+override radix_tree_iter_delete void radix_tree_iter_delete ( s#xarray * , s#radix_tree_iter * , void * * ) 
+override radix_tree_delete_item void * radix_tree_delete_item ( s#xarray * , unsigned long , void * ) 
+override radix_tree_delete void * radix_tree_delete ( s#xarray * , unsigned long ) 
+override radix_tree_tagged int radix_tree_tagged ( const s#xarray * , unsigned int ) 
+override idr_preload void idr_preload ( t#gfp_t ) 
+override s#idr struct idr { s#xarray idr_rt ; unsigned int idr_base ; unsigned int idr_next ; } 
+override idr_destroy void idr_destroy ( s#idr * ) 

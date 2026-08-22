@@ -1,0 +1,10 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override crypto_aes_sbox extern const t#u8 crypto_aes_sbox [ ] 
+override crypto_aes_inv_sbox extern const t#u8 crypto_aes_inv_sbox [ ] 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#crypto_aes_ctx struct crypto_aes_ctx { t#u32 key_enc [ ( ( 15 * 16 ) / sizeof ( u32 ) ) ] ; t#u32 key_dec [ ( ( 15 * 16 ) / sizeof ( u32 ) ) ] ; t#u32 key_length ; } 
+override aes_expandkey int aes_expandkey ( s#crypto_aes_ctx * , const t#u8 * , unsigned int ) 
+override aes_encrypt void aes_encrypt ( const s#crypto_aes_ctx * , t#u8 * , const t#u8 * ) 
+override aes_decrypt void aes_decrypt ( const s#crypto_aes_ctx * , t#u8 * , const t#u8 * ) 

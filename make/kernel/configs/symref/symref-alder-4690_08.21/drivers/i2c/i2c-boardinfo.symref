@@ -1,0 +1,16 @@
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override __i2c_board_lock extern s#rw_semaphore __i2c_board_lock 
+override __i2c_board_list extern s#list_head __i2c_board_list 
+override __i2c_first_dynamic_bus_num extern int __i2c_first_dynamic_bus_num 

@@ -1,0 +1,5 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#minmax_sample struct minmax_sample { t#u32 t ; t#u32 v ; } 
+override s#minmax struct minmax { s#minmax_sample s [ 3 ] ; } 
+override minmax_running_max t#u32 minmax_running_max ( s#minmax * , t#u32 , t#u32 , t#u32 ) 

@@ -1,0 +1,15 @@
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#async_cookie_t typedef t#u64 async_cookie_t 
+override t#async_func_t typedef void ( * async_func_t ) ( void * , t#async_cookie_t ) 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#async_domain struct async_domain { s#list_head pending ; unsigned registered : 1 ; } 
+override async_schedule_node_domain t#async_cookie_t async_schedule_node_domain ( t#async_func_t , void * , int , s#async_domain * ) 
+override async_schedule_node t#async_cookie_t async_schedule_node ( t#async_func_t , void * , int ) 
+override async_synchronize_full extern void async_synchronize_full ( void ) 
+override async_unregister_domain void async_unregister_domain ( s#async_domain * ) 
+override async_synchronize_full_domain extern void async_synchronize_full_domain ( s#async_domain * ) 
+override async_synchronize_cookie_domain extern void async_synchronize_cookie_domain ( t#async_cookie_t , s#async_domain * ) 
+override async_synchronize_cookie extern void async_synchronize_cookie ( t#async_cookie_t ) 
+override t#bool typedef _Bool bool 
+override current_is_async extern t#bool current_is_async ( void ) 

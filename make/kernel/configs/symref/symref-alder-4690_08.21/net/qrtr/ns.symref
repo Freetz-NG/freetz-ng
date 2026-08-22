@@ -1,0 +1,2 @@
+override qrtr_ns_init void qrtr_ns_init ( void ) 
+override qrtr_ns_remove void qrtr_ns_remove ( void ) 

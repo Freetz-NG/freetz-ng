@@ -1,0 +1,21 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#net_device struct net_device { UNKNOWN } 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#mdio_if_info struct mdio_if_info { int prtad ; t#u32 mmds ; unsigned mode_support ; s#net_device * dev ; int ( * mdio_read ) ( s#net_device * , int , int , t#u16 ) ; int ( * mdio_write ) ( s#net_device * , int , int , t#u16 , t#u16 ) ; } 
+override mdio45_probe extern int mdio45_probe ( s#mdio_if_info * , int ) 
+override t#bool typedef _Bool bool 
+override mdio_set_flag extern int mdio_set_flag ( const s#mdio_if_info * , int , int , t#u16 , int , t#bool ) 
+override mdio45_links_ok extern int mdio45_links_ok ( const s#mdio_if_info * , t#u32 ) 
+override mdio45_nway_restart extern int mdio45_nway_restart ( const s#mdio_if_info * ) 
+override t#__u8 typedef unsigned char __u8 
+override s#ethtool_cmd struct ethtool_cmd { t#__u32 cmd ; t#__u32 supported ; t#__u32 advertising ; t#__u16 speed ; t#__u8 duplex ; t#__u8 port ; t#__u8 phy_address ; t#__u8 transceiver ; t#__u8 autoneg ; t#__u8 mdio_support ; t#__u32 maxtxpkt ; t#__u32 maxrxpkt ; t#__u16 speed_hi ; t#__u8 eth_tp_mdix ; t#__u8 eth_tp_mdix_ctrl ; t#__u32 lp_advertising ; t#__u32 reserved [ 2 ] ; } 
+override mdio45_ethtool_gset_npage extern void mdio45_ethtool_gset_npage ( const s#mdio_if_info * , s#ethtool_cmd * , t#u32 , t#u32 ) 
+override t#__s8 typedef __signed__ char __s8 
+override s#ethtool_link_settings struct ethtool_link_settings { t#__u32 cmd ; t#__u32 speed ; t#__u8 duplex ; t#__u8 port ; t#__u8 phy_address ; t#__u8 autoneg ; t#__u8 mdio_support ; t#__u8 eth_tp_mdix ; t#__u8 eth_tp_mdix_ctrl ; t#__s8 link_mode_masks_nwords ; t#__u8 transceiver ; t#__u8 reserved1 [ 3 ] ; t#__u32 reserved [ 7 ] ; t#__u32 link_mode_masks [ 0 ] ; } 
+override E#__ETHTOOL_LINK_MODE_MASK_NBITS ( 68 ) + 1 
+override s#ethtool_link_ksettings struct ethtool_link_ksettings { s#ethtool_link_settings base ; struct { unsigned long supported [ ( ( ( E#__ETHTOOL_LINK_MODE_MASK_NBITS ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; unsigned long advertising [ ( ( ( E#__ETHTOOL_LINK_MODE_MASK_NBITS ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; unsigned long lp_advertising [ ( ( ( E#__ETHTOOL_LINK_MODE_MASK_NBITS ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } link_modes ; } 
+override mdio45_ethtool_ksettings_get_npage extern void mdio45_ethtool_ksettings_get_npage ( const s#mdio_if_info * , s#ethtool_link_ksettings * , t#u32 , t#u32 ) 
+override s#mii_ioctl_data struct mii_ioctl_data { t#__u16 phy_id ; t#__u16 reg_num ; t#__u16 val_in ; t#__u16 val_out ; } 
+override mdio_mii_ioctl extern int mdio_mii_ioctl ( const s#mdio_if_info * , s#mii_ioctl_data * , int ) 

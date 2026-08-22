@@ -1,0 +1,5 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__kernel_dev_t typedef t#u32 __kernel_dev_t 
+override t#dev_t typedef t#__kernel_dev_t dev_t 
+override name_to_dev_t extern t#dev_t name_to_dev_t ( const char * ) 

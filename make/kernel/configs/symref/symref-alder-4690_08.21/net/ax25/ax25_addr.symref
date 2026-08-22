@@ -1,0 +1,7 @@
+override t#ax25_address typedef struct { char ax25_call [ 7 ] ; } ax25_address 
+override ax25_bcast extern const t#ax25_address ax25_bcast 
+override ax25_defaddr extern const t#ax25_address ax25_defaddr 
+override null_ax25_address extern const t#ax25_address null_ax25_address 
+override ax2asc char * ax2asc ( char * , const t#ax25_address * ) 
+override asc2ax void asc2ax ( t#ax25_address * , const char * ) 
+override ax25cmp int ax25cmp ( const t#ax25_address * , const t#ax25_address * ) 

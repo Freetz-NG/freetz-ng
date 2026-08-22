@@ -1,0 +1,1 @@
+override gic_trigger_irq void gic_trigger_irq ( unsigned int , unsigned int ) 

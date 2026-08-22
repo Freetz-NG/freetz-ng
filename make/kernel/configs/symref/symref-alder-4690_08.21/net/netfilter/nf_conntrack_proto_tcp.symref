@@ -1,0 +1,2 @@
+override nf_ct_tcp_no_window_check int nf_ct_tcp_no_window_check __attribute__ ( ( __section__ ( ".data..read_mostly" ) ) ) 
+override nf_ct_tcp_be_liberal int nf_ct_tcp_be_liberal 

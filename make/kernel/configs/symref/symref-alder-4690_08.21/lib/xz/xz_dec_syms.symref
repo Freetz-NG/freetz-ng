@@ -1,0 +1,16 @@
+override s#xz_dec struct xz_dec { UNKNOWN } 
+override e#xz_mode enum xz_mode { XZ_SINGLE , XZ_PREALLOC , XZ_DYNALLOC } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override xz_dec_init extern s#xz_dec * xz_dec_init ( e#xz_mode , t#uint32_t ) 
+override xz_dec_reset extern void xz_dec_reset ( s#xz_dec * ) 
+override e#xz_ret enum xz_ret { XZ_OK , XZ_STREAM_END , XZ_UNSUPPORTED_CHECK , XZ_MEM_ERROR , XZ_MEMLIMIT_ERROR , XZ_FORMAT_ERROR , XZ_OPTIONS_ERROR , XZ_DATA_ERROR , XZ_BUF_ERROR } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#uint8_t typedef t#u8 uint8_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override s#xz_buf struct xz_buf { const t#uint8_t * in ; t#size_t in_pos ; t#size_t in_size ; t#uint8_t * out ; t#size_t out_pos ; t#size_t out_size ; } 
+override xz_dec_run extern e#xz_ret xz_dec_run ( s#xz_dec * , s#xz_buf * ) 
+override xz_dec_end extern void xz_dec_end ( s#xz_dec * ) 

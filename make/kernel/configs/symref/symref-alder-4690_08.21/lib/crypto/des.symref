@@ -1,0 +1,12 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#des_ctx struct des_ctx { t#u32 expkey [ 32 ] ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override des_expand_key int des_expand_key ( s#des_ctx * , const t#u8 * , unsigned int ) 
+override des_encrypt void des_encrypt ( const s#des_ctx * , t#u8 * , const t#u8 * ) 
+override des_decrypt void des_decrypt ( const s#des_ctx * , t#u8 * , const t#u8 * ) 
+override s#des3_ede_ctx struct des3_ede_ctx { t#u32 expkey [ ( 3 * 32 ) ] ; } 
+override des3_ede_expand_key int des3_ede_expand_key ( s#des3_ede_ctx * , const t#u8 * , unsigned int ) 
+override des3_ede_encrypt void des3_ede_encrypt ( const s#des3_ede_ctx * , t#u8 * , const t#u8 * ) 
+override des3_ede_decrypt void des3_ede_decrypt ( const s#des3_ede_ctx * , t#u8 * , const t#u8 * ) 

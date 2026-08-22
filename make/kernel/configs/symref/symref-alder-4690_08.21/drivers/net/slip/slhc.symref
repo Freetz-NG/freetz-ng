@@ -1,0 +1,19 @@
+override t#__u8 typedef unsigned char __u8 
+override t#byte_t typedef t#__u8 byte_t 
+override t#bool typedef _Bool bool 
+override t#__u16 typedef unsigned short __u16 
+override t#__be16 typedef t#__u16 __be16 
+override t#__sum16 typedef t#__u16 __sum16 
+override t#__u32 typedef unsigned int __u32 
+override t#__be32 typedef t#__u32 __be32 
+override s#iphdr struct iphdr { t#__u8 ihl : 4 , version : 4 ; t#__u8 tos ; t#__be16 tot_len ; t#__be16 id ; t#__be16 frag_off ; t#__u8 ttl ; t#__u8 protocol ; t#__sum16 check ; t#__be32 saddr ; t#__be32 daddr ; } 
+override s#tcphdr struct tcphdr { t#__be16 source ; t#__be16 dest ; t#__be32 seq ; t#__be32 ack_seq ; t#__u16 res1 : 4 , doff : 4 , fin : 1 , syn : 1 , rst : 1 , psh : 1 , ack : 1 , urg : 1 , ece : 1 , cwr : 1 ; t#__be16 window ; t#__sum16 check ; t#__be16 urg_ptr ; } 
+override s#cstate struct cstate { t#byte_t cs_this ; t#bool initialized ; s#cstate * next ; s#iphdr cs_ip ; s#tcphdr cs_tcp ; unsigned char cs_ipopt [ 64 ] ; unsigned char cs_tcpopt [ 64 ] ; int cs_hsize ; } 
+override t#int32 typedef t#__u32 int32 
+override s#slcompress struct slcompress { s#cstate * tstate ; s#cstate * rstate ; t#byte_t tslot_limit ; t#byte_t rslot_limit ; t#byte_t xmit_oldest ; t#byte_t xmit_current ; t#byte_t recv_current ; t#byte_t flags ; t#int32 sls_o_nontcp ; t#int32 sls_o_tcp ; t#int32 sls_o_uncompressed ; t#int32 sls_o_compressed ; t#int32 sls_o_searches ; t#int32 sls_o_misses ; t#int32 sls_i_uncompressed ; t#int32 sls_i_compressed ; t#int32 sls_i_error ; t#int32 sls_i_tossed ; t#int32 sls_i_runt ; t#int32 sls_i_badcheck ; } 
+override slhc_init s#slcompress * slhc_init ( int , int ) 
+override slhc_free void slhc_free ( s#slcompress * ) 
+override slhc_remember int slhc_remember ( s#slcompress * , unsigned char * , int ) 
+override slhc_compress int slhc_compress ( s#slcompress * , unsigned char * , int , unsigned char * , unsigned char * * , int ) 
+override slhc_uncompress int slhc_uncompress ( s#slcompress * , unsigned char * , int ) 
+override slhc_toss int slhc_toss ( s#slcompress * ) 

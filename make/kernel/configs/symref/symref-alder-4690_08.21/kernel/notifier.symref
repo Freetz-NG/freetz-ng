@@ -1,0 +1,59 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override t#notifier_fn_t typedef int ( * notifier_fn_t ) ( s#notifier_block * , unsigned long , void * ) 
+override s#notifier_block struct notifier_block { t#notifier_fn_t notifier_call ; s#notifier_block * next ; int priority ; } 
+override s#atomic_notifier_head struct atomic_notifier_head { t#spinlock_t lock ; s#notifier_block * head ; } 
+override atomic_notifier_chain_register extern int atomic_notifier_chain_register ( s#atomic_notifier_head * , s#notifier_block * ) 
+override atomic_notifier_chain_unregister extern int atomic_notifier_chain_unregister ( s#atomic_notifier_head * , s#notifier_block * ) 
+override __atomic_notifier_call_chain extern int __atomic_notifier_call_chain ( s#atomic_notifier_head * , unsigned long , void * , int , int * ) 
+override atomic_notifier_call_chain extern int atomic_notifier_call_chain ( s#atomic_notifier_head * , unsigned long , void * ) 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override s#blocking_notifier_head struct blocking_notifier_head { s#rw_semaphore rwsem ; s#notifier_block * head ; } 
+override blocking_notifier_chain_register extern int blocking_notifier_chain_register ( s#blocking_notifier_head * , s#notifier_block * ) 
+override blocking_notifier_chain_cond_register extern int blocking_notifier_chain_cond_register ( s#blocking_notifier_head * , s#notifier_block * ) 
+override blocking_notifier_chain_unregister extern int blocking_notifier_chain_unregister ( s#blocking_notifier_head * , s#notifier_block * ) 
+override __blocking_notifier_call_chain extern int __blocking_notifier_call_chain ( s#blocking_notifier_head * , unsigned long , void * , int , int * ) 
+override blocking_notifier_call_chain extern int blocking_notifier_call_chain ( s#blocking_notifier_head * , unsigned long , void * ) 
+override s#raw_notifier_head struct raw_notifier_head { s#notifier_block * head ; } 
+override raw_notifier_chain_register extern int raw_notifier_chain_register ( s#raw_notifier_head * , s#notifier_block * ) 
+override raw_notifier_chain_unregister extern int raw_notifier_chain_unregister ( s#raw_notifier_head * , s#notifier_block * ) 
+override __raw_notifier_call_chain extern int __raw_notifier_call_chain ( s#raw_notifier_head * , unsigned long , void * , int , int * ) 
+override raw_notifier_call_chain extern int raw_notifier_call_chain ( s#raw_notifier_head * , unsigned long , void * ) 
+override s#mutex struct mutex { t#atomic_long_t owner ; t#spinlock_t wait_lock ; s#optimistic_spin_queue osq ; s#list_head wait_list ; } 
+override s#srcu_node struct srcu_node { t#spinlock_t lock ; unsigned long srcu_have_cbs [ 4 ] ; unsigned long srcu_data_have_cbs [ 4 ] ; unsigned long srcu_gp_seq_needed_exp ; s#srcu_node * srcu_parent ; int grplo ; int grphi ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#rcu_segcblist struct rcu_segcblist { s#callback_head * head ; s#callback_head * * tails [ 4 ] ; unsigned long gp_seq [ 4 ] ; long len ; long len_lazy ; t#u8 enabled ; t#u8 offloaded ; } 
+override t#bool typedef _Bool bool 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override s#timer_list struct timer_list { s#hlist_node entry ; unsigned long expires ; void ( * function ) ( s#timer_list * ) ; t#u32 flags ; } 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override s#srcu_data struct srcu_data { unsigned long srcu_lock_count [ 2 ] ; unsigned long srcu_unlock_count [ 2 ] ; t#spinlock_t lock __attribute__ ( ( __aligned__ ( 1 << ( 6 ) ) ) ) ; s#rcu_segcblist srcu_cblist ; unsigned long srcu_gp_seq_needed ; unsigned long srcu_gp_seq_needed_exp ; t#bool srcu_cblist_invoking ; s#timer_list delay_work ; s#work_struct work ; s#callback_head srcu_barrier_head ; s#srcu_node * mynode ; unsigned long grpmask ; int cpu ; s#srcu_struct * ssp ; } 
+override s#wait_queue_head struct wait_queue_head { t#spinlock_t lock ; s#list_head head ; } 
+override t#wait_queue_head_t typedef s#wait_queue_head wait_queue_head_t 
+override s#completion struct completion { unsigned int done ; t#wait_queue_head_t wait ; } 
+override s#workqueue_struct struct workqueue_struct { UNKNOWN } 
+override s#delayed_work struct delayed_work { s#work_struct work ; s#timer_list timer ; s#workqueue_struct * wq ; int cpu ; } 
+override s#srcu_struct struct srcu_struct { s#srcu_node node [ 1 ] ; s#srcu_node * level [ 1 + 1 ] ; s#mutex srcu_cb_mutex ; t#spinlock_t lock ; s#mutex srcu_gp_mutex ; unsigned int srcu_idx ; unsigned long srcu_gp_seq ; unsigned long srcu_gp_seq_needed ; unsigned long srcu_gp_seq_needed_exp ; unsigned long srcu_last_gp_end ; s#srcu_data * sda ; unsigned long srcu_barrier_seq ; s#mutex srcu_barrier_mutex ; s#completion srcu_barrier_completion ; t#atomic_t srcu_barrier_cpu_cnt ; s#delayed_work work ; } 
+override s#srcu_notifier_head struct srcu_notifier_head { s#mutex mutex ; s#srcu_struct srcu ; s#notifier_block * head ; } 
+override srcu_notifier_chain_register extern int srcu_notifier_chain_register ( s#srcu_notifier_head * , s#notifier_block * ) 
+override srcu_notifier_chain_unregister extern int srcu_notifier_chain_unregister ( s#srcu_notifier_head * , s#notifier_block * ) 
+override __srcu_notifier_call_chain extern int __srcu_notifier_call_chain ( s#srcu_notifier_head * , unsigned long , void * , int , int * ) 
+override srcu_notifier_call_chain extern int srcu_notifier_call_chain ( s#srcu_notifier_head * , unsigned long , void * ) 
+override srcu_init_notifier_head extern void srcu_init_notifier_head ( s#srcu_notifier_head * ) 
+override register_die_notifier int register_die_notifier ( s#notifier_block * ) 
+override unregister_die_notifier int unregister_die_notifier ( s#notifier_block * ) 

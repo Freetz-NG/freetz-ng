@@ -1,0 +1,2 @@
+override t#bool typedef _Bool bool 
+override __check_object_size extern void __check_object_size ( const void * , unsigned long , t#bool ) 

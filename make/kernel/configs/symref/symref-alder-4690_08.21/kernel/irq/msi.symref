@@ -1,0 +1,4 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#msi_msg struct msi_msg { t#u32 address_lo ; t#u32 address_hi ; t#u32 data ; } 
+override get_cached_msi_msg void get_cached_msi_msg ( unsigned int , s#msi_msg * ) 

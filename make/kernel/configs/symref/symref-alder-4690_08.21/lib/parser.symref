@@ -1,0 +1,16 @@
+override s#match_token struct match_token { int token ; const char * pattern ; } 
+override t#match_table_t typedef s#match_token match_table_t [ ] 
+override t#substring_t typedef struct { char * from ; char * to ; } substring_t 
+override match_token int match_token ( char * , const t#match_table_t , t#substring_t [ ] ) 
+override match_int int match_int ( t#substring_t * , int * ) 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override match_u64 int match_u64 ( t#substring_t * , t#u64 * ) 
+override match_octal int match_octal ( t#substring_t * , int * ) 
+override match_hex int match_hex ( t#substring_t * , int * ) 
+override t#bool typedef _Bool bool 
+override match_wildcard t#bool match_wildcard ( const char * , const char * ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override match_strlcpy t#size_t match_strlcpy ( char * , const t#substring_t * , t#size_t ) 
+override match_strdup char * match_strdup ( const t#substring_t * ) 

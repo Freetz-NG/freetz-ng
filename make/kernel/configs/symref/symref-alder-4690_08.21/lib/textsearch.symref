@@ -1,0 +1,146 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override s#ts_state struct ts_state { unsigned int offset ; char cb [ 40 ] ; } 
+override s#ts_config struct ts_config { s#ts_ops * ops ; int flags ; unsigned int ( * get_next_block ) ( unsigned int , const t#u8 * * , s#ts_config * , s#ts_state * ) ; void ( * finish ) ( s#ts_config * , s#ts_state * ) ; } 
+override t#gfp_t typedef unsigned int gfp_t 
+override e#module_state enum module_state { MODULE_STATE_LIVE , MODULE_STATE_COMING , MODULE_STATE_GOING , MODULE_STATE_UNFORMED , } 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override s#spinlock struct spinlock { union { s#raw_spinlock rlock ; } ; } 
+override t#spinlock_t typedef s#spinlock spinlock_t 
+override s#kobj_uevent_env struct kobj_uevent_env { char * argv [ 3 ] ; char * envp [ 32 ] ; int envp_idx ; char buf [ 2048 ] ; int buflen ; } 
+override s#kset_uevent_ops struct kset_uevent_ops { int ( * const filter ) ( s#kset * , s#kobject * ) ; const char * ( * const name ) ( s#kset * , s#kobject * ) ; int ( * const uevent ) ( s#kset * , s#kobject * , s#kobj_uevent_env * ) ; } 
+override s#kset struct kset { s#list_head list ; t#spinlock_t list_lock ; s#kobject kobj ; const s#kset_uevent_ops * uevent_ops ; } 
+override t#__kernel_ssize_t typedef int __kernel_ssize_t 
+override t#ssize_t typedef t#__kernel_ssize_t ssize_t 
+override t#umode_t typedef unsigned short umode_t 
+override s#attribute struct attribute { const char * name ; t#umode_t mode ; } 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override s#sysfs_ops struct sysfs_ops { t#ssize_t ( * show ) ( s#kobject * , s#attribute * , char * ) ; t#ssize_t ( * store ) ( s#kobject * , s#attribute * , const char * , t#size_t ) ; } 
+override s#file struct file { UNKNOWN } 
+override t#__kernel_loff_t typedef long long __kernel_loff_t 
+override t#loff_t typedef t#__kernel_loff_t loff_t 
+override s#rb_node struct rb_node { unsigned long __rb_parent_color ; s#rb_node * rb_right ; s#rb_node * rb_left ; } 
+override s#rb_root struct rb_root { s#rb_node * rb_node ; } 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#pmdval_t typedef t#u32 pmdval_t 
+override t#pgd_t typedef t#pmdval_t pgd_t [ 2 ] 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override t#atomic_long_t typedef t#atomic_t atomic_long_t 
+override s#optimistic_spin_queue struct optimistic_spin_queue { t#atomic_t tail ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#rw_semaphore struct rw_semaphore { t#atomic_long_t count ; t#atomic_long_t owner ; s#optimistic_spin_queue osq ; t#raw_spinlock_t wait_lock ; s#list_head wait_list ; } 
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#s64 typedef t#__s64 s64 
+override t#atomic64_t typedef struct { t#s64 counter ; } atomic64_t 
+override E#NR_MM_COUNTERS 4 
+override s#mm_rss_stat struct mm_rss_stat { t#atomic_long_t count [ E#NR_MM_COUNTERS ] ; } 
+override s#linux_binfmt struct linux_binfmt { UNKNOWN } 
+override t#mm_context_t typedef struct { t#atomic64_t id ; unsigned int vmalloc_seq ; unsigned long sigpage ; unsigned long vdso ; } mm_context_t 
+override s#task_struct struct task_struct { UNKNOWN } 
+override s#core_thread struct core_thread { s#task_struct * task ; s#core_thread * next ; } 
+override s#wait_queue_head struct wait_queue_head { t#spinlock_t lock ; s#list_head head ; } 
+override t#wait_queue_head_t typedef s#wait_queue_head wait_queue_head_t 
+override s#completion struct completion { unsigned int done ; t#wait_queue_head_t wait ; } 
+override s#core_state struct core_state { t#atomic_t nr_threads ; s#core_thread dumper ; s#completion startup ; } 
+override s#user_namespace struct user_namespace { UNKNOWN } 
+override s#uprobes_state struct uprobes_state { } 
+override t#work_func_t typedef void ( * work_func_t ) ( s#work_struct * ) 
+override s#work_struct struct work_struct { t#atomic_long_t data ; s#list_head entry ; t#work_func_t func ; } 
+override s#mm_struct struct mm_struct { struct { s#vm_area_struct * mmap ; s#rb_root mm_rb ; t#u64 vmacache_seqnum ; unsigned long ( * get_unmapped_area ) ( s#file * , unsigned long , unsigned long , unsigned long , unsigned long ) ; unsigned long mmap_base ; unsigned long mmap_legacy_base ; unsigned long task_size ; unsigned long highest_vm_end ; t#pgd_t * pgd ; t#atomic_t membarrier_state ; t#atomic_t mm_users ; t#atomic_t mm_count ; t#atomic_long_t pgtables_bytes ; int map_count ; t#spinlock_t page_table_lock ; s#rw_semaphore mmap_sem ; s#list_head mmlist ; unsigned long hiwater_rss ; unsigned long hiwater_vm ; unsigned long total_vm ; unsigned long locked_vm ; t#atomic64_t pinned_vm ; unsigned long data_vm ; unsigned long exec_vm ; unsigned long stack_vm ; unsigned long def_flags ; t#spinlock_t arg_lock ; unsigned long start_code , end_code , start_data , end_data ; unsigned long start_brk , brk , start_stack ; unsigned long arg_start , arg_end , env_start , env_end ; unsigned long saved_auxv [ ( 2 * ( 0 + 20 + 1 ) ) ] ; s#mm_rss_stat rss_stat ; s#linux_binfmt * binfmt ; t#mm_context_t context ; unsigned long flags ; s#core_state * core_state ; s#task_struct * owner ; s#user_namespace * user_ns ; s#file * exe_file ; t#atomic_t tlb_flush_pending ; s#uprobes_state uprobes_state ; s#work_struct async_put_work ; } __attribute__ ( ( __designated_init__ ) ) ; unsigned long cpu_bitmap [ ] ; } 
+override t#pteval_t typedef t#u32 pteval_t 
+override t#pgprot_t typedef t#pteval_t pgprot_t 
+override s#anon_vma struct anon_vma { UNKNOWN } 
+override s#vm_operations_struct struct vm_operations_struct { UNKNOWN } 
+override s#vm_userfaultfd_ctx struct vm_userfaultfd_ctx { } 
+override s#vm_area_struct struct vm_area_struct { unsigned long vm_start ; unsigned long vm_end ; s#vm_area_struct * vm_next , * vm_prev ; s#rb_node vm_rb ; unsigned long rb_subtree_gap ; s#mm_struct * vm_mm ; t#pgprot_t vm_page_prot ; unsigned long vm_flags ; struct { s#rb_node rb ; unsigned long rb_subtree_last ; } shared ; s#list_head anon_vma_chain ; s#anon_vma * anon_vma ; const s#vm_operations_struct * vm_ops ; unsigned long vm_pgoff ; s#file * vm_file ; void * vm_private_data ; s#vm_userfaultfd_ctx vm_userfaultfd_ctx ; } 
+override s#bin_attribute struct bin_attribute { s#attribute attr ; t#size_t size ; void * private ; t#ssize_t ( * read ) ( s#file * , s#kobject * , s#bin_attribute * , char * , t#loff_t , t#size_t ) ; t#ssize_t ( * write ) ( s#file * , s#kobject * , s#bin_attribute * , char * , t#loff_t , t#size_t ) ; int ( * mmap ) ( s#file * , s#kobject * , s#bin_attribute * , s#vm_area_struct * ) ; } 
+override s#attribute_group struct attribute_group { const char * name ; t#umode_t ( * is_visible ) ( s#kobject * , s#attribute * , int ) ; t#umode_t ( * is_bin_visible ) ( s#kobject * , s#bin_attribute * , int ) ; s#attribute * * attrs ; s#bin_attribute * * bin_attrs ; } 
+override e#kobj_ns_type enum kobj_ns_type { KOBJ_NS_TYPE_NONE = 0 , KOBJ_NS_TYPE_NET , KOBJ_NS_TYPES } 
+override t#bool typedef _Bool bool 
+override s#sock struct sock { UNKNOWN } 
+override s#kobj_ns_type_operations struct kobj_ns_type_operations { e#kobj_ns_type type ; t#bool ( * current_may_mount ) ( void ) ; void * ( * grab_current_ns ) ( void ) ; const void * ( * netlink_ns ) ( s#sock * ) ; const void * ( * initial_ns ) ( void ) ; void ( * drop_ns ) ( void * ) ; } 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override t#__kernel_gid32_t typedef unsigned int __kernel_gid32_t 
+override t#gid_t typedef t#__kernel_gid32_t gid_t 
+override t#kgid_t typedef struct { t#gid_t val ; } kgid_t 
+override s#kobj_type struct kobj_type { void ( * release ) ( s#kobject * ) ; const s#sysfs_ops * sysfs_ops ; s#attribute * * default_attrs ; const s#attribute_group * * default_groups ; const s#kobj_ns_type_operations * ( * child_ns_type ) ( s#kobject * ) ; const void * ( * namespace ) ( s#kobject * ) ; void ( * get_ownership ) ( s#kobject * , t#kuid_t * , t#kgid_t * ) ; } 
+override s#xarray struct xarray { t#spinlock_t xa_lock ; t#gfp_t xa_flags ; void * xa_head ; } 
+override s#idr struct idr { s#xarray idr_rt ; unsigned int idr_base ; unsigned int idr_next ; } 
+override s#seq_file struct seq_file { UNKNOWN } 
+override s#kernfs_syscall_ops struct kernfs_syscall_ops { int ( * show_options ) ( s#seq_file * , s#kernfs_root * ) ; int ( * mkdir ) ( s#kernfs_node * , const char * , t#umode_t ) ; int ( * rmdir ) ( s#kernfs_node * ) ; int ( * rename ) ( s#kernfs_node * , s#kernfs_node * , const char * ) ; int ( * show_path ) ( s#seq_file * , s#kernfs_node * , s#kernfs_root * ) ; } 
+override s#kernfs_root struct kernfs_root { s#kernfs_node * kn ; unsigned int flags ; s#idr ino_idr ; t#u32 last_ino ; t#u32 next_generation ; s#kernfs_syscall_ops * syscall_ops ; s#list_head supers ; t#wait_queue_head_t deactivate_waitq ; } 
+override s#kernfs_elem_dir struct kernfs_elem_dir { unsigned long subdirs ; s#rb_root children ; s#kernfs_root * root ; } 
+override s#kernfs_elem_symlink struct kernfs_elem_symlink { s#kernfs_node * target_kn ; } 
+override s#mutex struct mutex { t#atomic_long_t owner ; t#spinlock_t wait_lock ; s#optimistic_spin_queue osq ; s#list_head wait_list ; } 
+override s#kernfs_open_file struct kernfs_open_file { s#kernfs_node * kn ; s#file * file ; s#seq_file * seq_file ; void * priv ; s#mutex mutex ; s#mutex prealloc_mutex ; int event ; s#list_head list ; char * prealloc_buf ; t#size_t atomic_write_len ; t#bool mmapped : 1 ; t#bool released : 1 ; const s#vm_operations_struct * vm_ops ; } 
+override t#__poll_t typedef unsigned __poll_t 
+override s#poll_table_struct struct poll_table_struct { UNKNOWN } 
+override s#kernfs_ops struct kernfs_ops { int ( * open ) ( s#kernfs_open_file * ) ; void ( * release ) ( s#kernfs_open_file * ) ; int ( * seq_show ) ( s#seq_file * , void * ) ; void * ( * seq_start ) ( s#seq_file * , t#loff_t * ) ; void * ( * seq_next ) ( s#seq_file * , void * , t#loff_t * ) ; void ( * seq_stop ) ( s#seq_file * , void * ) ; t#ssize_t ( * read ) ( s#kernfs_open_file * , char * , t#size_t , t#loff_t ) ; t#size_t atomic_write_len ; t#bool prealloc ; t#ssize_t ( * write ) ( s#kernfs_open_file * , char * , t#size_t , t#loff_t ) ; t#__poll_t ( * poll ) ( s#kernfs_open_file * , s#poll_table_struct * ) ; int ( * mmap ) ( s#kernfs_open_file * , s#vm_area_struct * ) ; } 
+override s#kernfs_open_node struct kernfs_open_node { UNKNOWN } 
+override s#kernfs_elem_attr struct kernfs_elem_attr { const s#kernfs_ops * ops ; s#kernfs_open_node * open ; t#loff_t size ; s#kernfs_node * notify_next ; } 
+override u#kernfs_node_id union kernfs_node_id { struct { t#u32 ino ; t#u32 generation ; } ; t#u64 id ; } 
+override s#kernfs_iattrs struct kernfs_iattrs { UNKNOWN } 
+override s#kernfs_node struct kernfs_node { t#atomic_t count ; t#atomic_t active ; s#kernfs_node * parent ; const char * name ; s#rb_node rb ; const void * ns ; unsigned int hash ; union { s#kernfs_elem_dir dir ; s#kernfs_elem_symlink symlink ; s#kernfs_elem_attr attr ; } ; void * priv ; u#kernfs_node_id id ; unsigned short flags ; t#umode_t mode ; s#kernfs_iattrs * iattr ; } 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override s#kref struct kref { t#refcount_t refcount ; } 
+override s#kobject struct kobject { const char * name ; s#list_head entry ; s#kobject * parent ; s#kset * kset ; s#kobj_type * ktype ; s#kernfs_node * sd ; s#kref kref ; unsigned int state_initialized : 1 ; unsigned int state_in_sysfs : 1 ; unsigned int state_add_uevent_sent : 1 ; unsigned int state_remove_uevent_sent : 1 ; unsigned int uevent_suppress : 1 ; } 
+override s#module_param_attrs struct module_param_attrs { UNKNOWN } 
+override s#module_kobject struct module_kobject { s#kobject kobj ; s#module * mod ; s#kobject * drivers_dir ; s#module_param_attrs * mp ; s#completion * kobj_completion ; } 
+override s#module_attribute struct module_attribute { s#attribute attr ; t#ssize_t ( * show ) ( s#module_attribute * , s#module_kobject * , char * ) ; t#ssize_t ( * store ) ( s#module_attribute * , s#module_kobject * , const char * , t#size_t ) ; void ( * setup ) ( s#module * , const char * ) ; int ( * test ) ( s#module * ) ; void ( * free ) ( s#module * ) ; } 
+override s#kernel_symbol struct kernel_symbol { unsigned long value ; const char * name ; const char * namespace ; } 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override s#kernel_param_ops struct kernel_param_ops { unsigned int flags ; int ( * set ) ( const char * , const s#kernel_param * ) ; int ( * get ) ( char * , const s#kernel_param * ) ; void ( * free ) ( void * ) ; } 
+override t#__s8 typedef __signed__ char __s8 
+override t#s8 typedef t#__s8 s8 
+override s#kparam_string struct kparam_string { unsigned int maxlen ; char * string ; } 
+override s#kparam_array struct kparam_array { unsigned int max ; unsigned int elemsize ; unsigned int * num ; const s#kernel_param_ops * ops ; void * elem ; } 
+override s#kernel_param struct kernel_param { const char * name ; s#module * mod ; const s#kernel_param_ops * ops ; const t#u16 perm ; t#s8 level ; t#u8 flags ; union { void * arg ; const s#kparam_string * str ; const s#kparam_array * arr ; } ; } 
+override s#exception_table_entry struct exception_table_entry { UNKNOWN } 
+override s#latch_tree_node struct latch_tree_node { s#rb_node node [ 2 ] ; } 
+override s#mod_tree_node struct mod_tree_node { s#module * mod ; s#latch_tree_node node ; } 
+override s#module_layout struct module_layout { void * base ; unsigned int size ; unsigned int text_size ; unsigned int ro_size ; unsigned int ro_after_init_size ; s#mod_tree_node mtn ; } 
+override s#unwind_table struct unwind_table { UNKNOWN } 
+override E#ARM_SEC_MAX 7 
+override t#Elf32_Word typedef t#__u32 Elf32_Word 
+override t#Elf32_Addr typedef t#__u32 Elf32_Addr 
+override t#Elf32_Off typedef t#__u32 Elf32_Off 
+override s#elf32_shdr struct elf32_shdr { t#Elf32_Word sh_name ; t#Elf32_Word sh_type ; t#Elf32_Word sh_flags ; t#Elf32_Addr sh_addr ; t#Elf32_Off sh_offset ; t#Elf32_Word sh_size ; t#Elf32_Word sh_link ; t#Elf32_Word sh_info ; t#Elf32_Word sh_addralign ; t#Elf32_Word sh_entsize ; } 
+override s#plt_entries struct plt_entries { t#u32 ldr [ ( ( 1 << 6 ) / sizeof ( u32 ) ) ] ; t#u32 lit [ ( ( 1 << 6 ) / sizeof ( u32 ) ) ] ; } 
+override s#mod_plt_sec struct mod_plt_sec { s#elf32_shdr * plt ; s#plt_entries * plt_ent ; int plt_count ; } 
+override s#mod_arch_specific struct mod_arch_specific { s#unwind_table * unwind [ E#ARM_SEC_MAX ] ; s#mod_plt_sec core ; s#mod_plt_sec init ; } 
+override s#bug_entry struct bug_entry { unsigned long bug_addr ; const char * file ; unsigned short line ; unsigned short flags ; } 
+override t#Elf32_Half typedef t#__u16 Elf32_Half 
+override s#elf32_sym struct elf32_sym { t#Elf32_Word st_name ; t#Elf32_Addr st_value ; t#Elf32_Word st_size ; unsigned char st_info ; unsigned char st_other ; t#Elf32_Half st_shndx ; } 
+override t#Elf32_Sym typedef s#elf32_sym Elf32_Sym 
+override s#mod_kallsyms struct mod_kallsyms { t#Elf32_Sym * symtab ; unsigned int num_symtab ; char * strtab ; char * typetab ; } 
+override s#module_sect_attrs struct module_sect_attrs { UNKNOWN } 
+override s#module_notes_attrs struct module_notes_attrs { UNKNOWN } 
+override s#srcu_node struct srcu_node { t#spinlock_t lock ; unsigned long srcu_have_cbs [ 4 ] ; unsigned long srcu_data_have_cbs [ 4 ] ; unsigned long srcu_gp_seq_needed_exp ; s#srcu_node * srcu_parent ; int grplo ; int grphi ; } 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override s#rcu_segcblist struct rcu_segcblist { s#callback_head * head ; s#callback_head * * tails [ 4 ] ; unsigned long gp_seq [ 4 ] ; long len ; long len_lazy ; t#u8 enabled ; t#u8 offloaded ; } 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override s#timer_list struct timer_list { s#hlist_node entry ; unsigned long expires ; void ( * function ) ( s#timer_list * ) ; t#u32 flags ; } 
+override s#srcu_data struct srcu_data { unsigned long srcu_lock_count [ 2 ] ; unsigned long srcu_unlock_count [ 2 ] ; t#spinlock_t lock __attribute__ ( ( __aligned__ ( 1 << ( 6 ) ) ) ) ; s#rcu_segcblist srcu_cblist ; unsigned long srcu_gp_seq_needed ; unsigned long srcu_gp_seq_needed_exp ; t#bool srcu_cblist_invoking ; s#timer_list delay_work ; s#work_struct work ; s#callback_head srcu_barrier_head ; s#srcu_node * mynode ; unsigned long grpmask ; int cpu ; s#srcu_struct * ssp ; } 
+override s#workqueue_struct struct workqueue_struct { UNKNOWN } 
+override s#delayed_work struct delayed_work { s#work_struct work ; s#timer_list timer ; s#workqueue_struct * wq ; int cpu ; } 
+override s#srcu_struct struct srcu_struct { s#srcu_node node [ 1 ] ; s#srcu_node * level [ 1 + 1 ] ; s#mutex srcu_cb_mutex ; t#spinlock_t lock ; s#mutex srcu_gp_mutex ; unsigned int srcu_idx ; unsigned long srcu_gp_seq ; unsigned long srcu_gp_seq_needed ; unsigned long srcu_gp_seq_needed_exp ; unsigned long srcu_last_gp_end ; s#srcu_data * sda ; unsigned long srcu_barrier_seq ; s#mutex srcu_barrier_mutex ; s#completion srcu_barrier_completion ; t#atomic_t srcu_barrier_cpu_cnt ; s#delayed_work work ; } 
+override s#module struct module { e#module_state state ; s#list_head list ; char name [ ( 64 - sizeof ( unsigned long ) ) ] ; s#module_kobject mkobj ; s#module_attribute * modinfo_attrs ; const char * version ; const char * srcversion ; s#kobject * holders_dir ; const s#kernel_symbol * syms ; const t#s32 * crcs ; unsigned int num_syms ; s#mutex param_lock ; s#kernel_param * kp ; unsigned int num_kp ; unsigned int num_gpl_syms ; const s#kernel_symbol * gpl_syms ; const t#s32 * gpl_crcs ; t#bool using_gplonly_symbols ; t#bool async_probe_requested ; const s#kernel_symbol * gpl_future_syms ; const t#s32 * gpl_future_crcs ; unsigned int num_gpl_future_syms ; unsigned int num_exentries ; s#exception_table_entry * extable ; int ( * init ) ( void ) ; s#module_layout core_layout __attribute__ ( ( __aligned__ ( ( 1 << 6 ) ) ) ) ; s#module_layout init_layout ; s#mod_arch_specific arch ; unsigned long taints ; unsigned num_bugs ; s#list_head bug_list ; s#bug_entry * bug_table ; s#mod_kallsyms * kallsyms ; s#mod_kallsyms core_kallsyms ; s#module_sect_attrs * sect_attrs ; s#module_notes_attrs * notes_attrs ; char * args ; void * percpu ; unsigned int percpu_size ; unsigned int num_srcu_structs ; s#srcu_struct * * srcu_struct_ptrs ; s#list_head source_list ; s#list_head target_list ; void ( * exit ) ( void ) ; t#atomic_t refcnt ; } 
+override s#ts_ops struct ts_ops { const char * name ; s#ts_config * ( * init ) ( const void * , unsigned int , t#gfp_t , int ) ; unsigned int ( * find ) ( s#ts_config * , s#ts_state * ) ; void ( * destroy ) ( s#ts_config * ) ; void * ( * get_pattern ) ( s#ts_config * ) ; unsigned int ( * get_pattern_len ) ( s#ts_config * ) ; s#module * owner ; s#list_head list ; } 
+override textsearch_register extern int textsearch_register ( s#ts_ops * ) 
+override textsearch_unregister extern int textsearch_unregister ( s#ts_ops * ) 
+override textsearch_find_continuous extern unsigned int textsearch_find_continuous ( s#ts_config * , s#ts_state * , const void * , unsigned int ) 
+override textsearch_prepare extern s#ts_config * textsearch_prepare ( const char * , const void * , unsigned int , t#gfp_t , int ) 
+override textsearch_destroy extern void textsearch_destroy ( s#ts_config * ) 

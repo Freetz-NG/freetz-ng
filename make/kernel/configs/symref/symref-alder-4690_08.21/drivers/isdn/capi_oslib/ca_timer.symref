@@ -1,0 +1,9 @@
+override CA_TIMER_NEW int CA_TIMER_NEW ( unsigned int ) 
+override CA_TIMER_DELETE void CA_TIMER_DELETE ( void ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override e#CA_RESTARTTIMER enum CA_RESTARTTIMER { CA_TIMER_END = 0 , CA_TIMER_RESTART = 1 } 
+override CA_TIMER_START unsigned int CA_TIMER_START ( unsigned int , unsigned int , t#size_t , e#CA_RESTARTTIMER ( * ) ( t#size_t ) ) 
+override CA_TIMER_STOP int CA_TIMER_STOP ( unsigned int ) 
+override CA_MSEC unsigned int CA_MSEC ( void ) 
+override CA_MSEC64 unsigned long long CA_MSEC64 ( void ) 

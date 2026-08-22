@@ -1,0 +1,16 @@
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override e#_avm_logger_flag enum _avm_logger_flag { logger_no_printk_trace = 0x1 << 0 , logger_log_cr_dir = 0x1 << 1 , logger_log_sd_dir = 0x1 << 2 , } 
+override avm_logger_create void * avm_logger_create ( t#size_t , const char * , e#_avm_logger_flag ) 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override s#__raw_tickets struct __raw_tickets { t#u16 owner ; t#u16 next ; } 
+override t#arch_spinlock_t typedef struct { union { t#u32 slock ; s#__raw_tickets tickets ; } ; } arch_spinlock_t 
+override s#raw_spinlock struct raw_spinlock { t#arch_spinlock_t raw_lock ; } 
+override t#raw_spinlock_t typedef s#raw_spinlock raw_spinlock_t 
+override s#ratelimit_state struct ratelimit_state { t#raw_spinlock_t lock ; int interval ; int burst ; int printed ; int missed ; unsigned long begin ; unsigned long flags ; } 
+override avm_logger_ratelimit int avm_logger_ratelimit ( void * , s#ratelimit_state * , const char * ) 
+override avm_logger_printk __attribute__ ( ( __format__ ( printf , 2 , 3 ) ) ) int avm_logger_printk ( void * , const char * , ... ) 
+override avm_logger_close void avm_logger_close ( void * ) 

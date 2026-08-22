@@ -1,0 +1,2 @@
+override t#bool typedef _Bool bool 
+override can_do_mlock extern t#bool can_do_mlock ( void ) 

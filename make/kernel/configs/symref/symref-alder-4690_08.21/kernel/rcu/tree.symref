@@ -1,0 +1,24 @@
+override rcu_scheduler_active extern int rcu_scheduler_active 
+override rcu_get_gp_kthreads_prio int rcu_get_gp_kthreads_prio ( void ) 
+override rcu_get_gp_seq unsigned long rcu_get_gp_seq ( void ) 
+override rcu_exp_batches_completed unsigned long rcu_exp_batches_completed ( void ) 
+override e#rcutorture_type enum rcutorture_type { RCU_FLAVOR , RCU_TASKS_FLAVOR , RCU_TRIVIAL_FLAVOR , SRCU_FLAVOR , INVALID_RCU_FLAVOR } 
+override rcutorture_get_gp_data void rcutorture_get_gp_data ( e#rcutorture_type , int * , unsigned long * ) 
+override t#bool typedef _Bool bool 
+override rcu_is_watching t#bool rcu_is_watching ( void ) 
+override rcu_force_quiescent_state void rcu_force_quiescent_state ( void ) 
+override s#callback_head struct callback_head { s#callback_head * next ; void ( * func ) ( s#callback_head * ) ; } 
+override t#rcu_callback_t typedef void ( * rcu_callback_t ) ( s#callback_head * ) 
+override call_rcu void call_rcu ( s#callback_head * , t#rcu_callback_t ) 
+override kfree_call_rcu void kfree_call_rcu ( s#callback_head * , t#rcu_callback_t ) 
+override synchronize_rcu void synchronize_rcu ( void ) 
+override get_state_synchronize_rcu unsigned long get_state_synchronize_rcu ( void ) 
+override cond_synchronize_rcu void cond_synchronize_rcu ( unsigned long ) 
+override rcu_barrier void rcu_barrier ( void ) 
+override rcu_jiffies_till_stall_check int rcu_jiffies_till_stall_check ( void ) 
+override show_rcu_gp_kthreads void show_rcu_gp_kthreads ( void ) 
+override rcu_fwd_progress_check void rcu_fwd_progress_check ( unsigned long ) 
+override synchronize_rcu_expedited void synchronize_rcu_expedited ( void ) 
+override rcu_note_context_switch void rcu_note_context_switch ( t#bool ) 
+override __rcu_read_lock void __rcu_read_lock ( void ) 
+override __rcu_read_unlock void __rcu_read_unlock ( void ) 

@@ -1,0 +1,3 @@
+override t#cpu_stop_fn_t typedef int ( * cpu_stop_fn_t ) ( void * ) 
+override s#cpumask struct cpumask { unsigned long bits [ ( ( ( 4 ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } 
+override stop_machine int stop_machine ( t#cpu_stop_fn_t , void * , const s#cpumask * ) 

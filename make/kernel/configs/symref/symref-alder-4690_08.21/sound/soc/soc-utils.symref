@@ -1,0 +1,9 @@
+override snd_soc_calc_frame_size int snd_soc_calc_frame_size ( int , int , int ) 
+override t#__u32 typedef unsigned int __u32 
+override s#snd_mask struct snd_mask { t#__u32 bits [ ( 256 + 31 ) / 32 ] ; } 
+override s#snd_interval struct snd_interval { unsigned int min , max ; unsigned int openmin : 1 , openmax : 1 , integer : 1 , empty : 1 ; } 
+override t#snd_pcm_uframes_t typedef unsigned long snd_pcm_uframes_t 
+override s#snd_pcm_hw_params struct snd_pcm_hw_params { unsigned int flags ; s#snd_mask masks [ 2 - 0 + 1 ] ; s#snd_mask mres [ 5 ] ; s#snd_interval intervals [ 19 - 8 + 1 ] ; s#snd_interval ires [ 9 ] ; unsigned int rmask ; unsigned int cmask ; unsigned int info ; unsigned int msbits ; unsigned int rate_num ; unsigned int rate_den ; t#snd_pcm_uframes_t fifo_size ; unsigned char reserved [ 64 ] ; } 
+override snd_soc_params_to_frame_size int snd_soc_params_to_frame_size ( s#snd_pcm_hw_params * ) 
+override snd_soc_calc_bclk int snd_soc_calc_bclk ( int , int , int , int ) 
+override snd_soc_params_to_bclk int snd_soc_params_to_bclk ( s#snd_pcm_hw_params * ) 

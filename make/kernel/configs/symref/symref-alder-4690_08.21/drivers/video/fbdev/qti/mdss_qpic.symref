@@ -1,0 +1,6 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override qpic_send_pkt int qpic_send_pkt ( t#u32 , t#u8 * , t#u32 ) 
+override qpic_read_data t#u32 qpic_read_data ( t#u32 , t#u32 ) 

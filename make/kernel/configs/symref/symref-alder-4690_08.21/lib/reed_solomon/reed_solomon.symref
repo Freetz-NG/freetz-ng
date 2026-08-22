@@ -1,0 +1,15 @@
+override t#__u16 typedef unsigned short __u16 
+override t#u16 typedef t#__u16 u16 
+override t#uint16_t typedef t#u16 uint16_t 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#rs_codec struct rs_codec { int mm ; int nn ; t#uint16_t * alpha_to ; t#uint16_t * index_of ; t#uint16_t * genpoly ; int nroots ; int fcr ; int prim ; int iprim ; int gfpoly ; int ( * gffunc ) ( int ) ; int users ; s#list_head list ; } 
+override s#rs_control struct rs_control { s#rs_codec * codec ; t#uint16_t buffers [ 0 ] ; } 
+override free_rs void free_rs ( s#rs_control * ) 
+override t#gfp_t typedef unsigned int gfp_t 
+override init_rs_gfp s#rs_control * init_rs_gfp ( int , int , int , int , int , t#gfp_t ) 
+override init_rs_non_canonical s#rs_control * init_rs_non_canonical ( int , int ( * ) ( int ) , int , int , int ) 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#uint8_t typedef t#u8 uint8_t 
+override encode_rs8 int encode_rs8 ( s#rs_control * , t#uint8_t * , int , t#uint16_t * , t#uint16_t ) 
+override decode_rs8 int decode_rs8 ( s#rs_control * , t#uint8_t * , t#uint16_t * , int , t#uint16_t * , int , int * , t#uint16_t , t#uint16_t * ) 

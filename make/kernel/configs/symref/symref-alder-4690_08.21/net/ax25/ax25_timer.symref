@@ -1,0 +1,5 @@
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#timer_list struct timer_list { s#hlist_node entry ; unsigned long expires ; void ( * function ) ( s#timer_list * ) ; t#u32 flags ; } 
+override ax25_display_timer unsigned long ax25_display_timer ( s#timer_list * ) 

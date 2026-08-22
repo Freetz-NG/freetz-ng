@@ -1,0 +1,11 @@
+override s#__key_reference_with_attributes struct __key_reference_with_attributes { UNKNOWN } 
+override t#key_ref_t typedef s#__key_reference_with_attributes * key_ref_t 
+override t#__s32 typedef __signed__ int __s32 
+override t#s32 typedef t#__s32 s32 
+override t#int32_t typedef t#s32 int32_t 
+override t#key_serial_t typedef t#int32_t key_serial_t 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override t#key_perm_t typedef t#uint32_t key_perm_t 
+override lookup_user_key extern t#key_ref_t lookup_user_key ( t#key_serial_t , unsigned long , t#key_perm_t ) 

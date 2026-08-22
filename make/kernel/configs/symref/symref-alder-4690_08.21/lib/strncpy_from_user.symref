@@ -1,0 +1,1 @@
+override strncpy_from_user extern long strncpy_from_user ( char * , const char * , long ) 

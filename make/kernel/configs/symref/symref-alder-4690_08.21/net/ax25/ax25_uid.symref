@@ -1,0 +1,12 @@
+override ax25_uid_policy extern int ax25_uid_policy 
+override s#hlist_node struct hlist_node { s#hlist_node * next , * * pprev ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#refcount_struct struct refcount_struct { t#atomic_t refs ; } 
+override t#refcount_t typedef s#refcount_struct refcount_t 
+override t#__kernel_uid32_t typedef unsigned int __kernel_uid32_t 
+override t#uid_t typedef t#__kernel_uid32_t uid_t 
+override t#kuid_t typedef struct { t#uid_t val ; } kuid_t 
+override t#ax25_address typedef struct { char ax25_call [ 7 ] ; } ax25_address 
+override s#ax25_uid_assoc struct ax25_uid_assoc { s#hlist_node uid_node ; t#refcount_t refcount ; t#kuid_t uid ; t#ax25_address call ; } 
+override t#ax25_uid_assoc typedef s#ax25_uid_assoc ax25_uid_assoc 
+override ax25_findbyuid t#ax25_uid_assoc * ax25_findbyuid ( t#kuid_t ) 

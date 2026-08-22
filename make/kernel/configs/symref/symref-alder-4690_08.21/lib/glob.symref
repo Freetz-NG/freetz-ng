@@ -1,0 +1,2 @@
+override t#bool typedef _Bool bool 
+override glob_match t#bool __attribute__ ( ( __pure__ ) ) glob_match ( char const * , char const * ) 

@@ -1,0 +1,2 @@
+override __readwrite_bug extern void __readwrite_bug ( const char * ) 
+override __div0 void __div0 ( void ) 

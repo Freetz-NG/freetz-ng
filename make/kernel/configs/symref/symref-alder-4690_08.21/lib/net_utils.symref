@@ -1,0 +1,4 @@
+override t#bool typedef _Bool bool 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override mac_pton t#bool mac_pton ( const char * , t#u8 * ) 

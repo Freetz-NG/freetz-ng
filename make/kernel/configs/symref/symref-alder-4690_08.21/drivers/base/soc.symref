@@ -1,0 +1,5 @@
+override s#soc_device struct soc_device { UNKNOWN } 
+override s#soc_device_attribute struct soc_device_attribute { const char * machine ; const char * family ; const char * revision ; const char * serial_number ; const char * oem_id ; const char * prod_id ; const char * soc_id ; const void * data ; } 
+override soc_device_register s#soc_device * soc_device_register ( s#soc_device_attribute * ) 
+override soc_device_unregister void soc_device_unregister ( s#soc_device * ) 
+override soc_device_match const s#soc_device_attribute * soc_device_match ( const s#soc_device_attribute * ) 

@@ -1,0 +1,7 @@
+override s#cpumask struct cpumask { unsigned long bits [ ( ( ( 4 ) + ( ( sizeof ( long ) * 8 ) ) - 1 ) / ( ( sizeof ( long ) * 8 ) ) ) ] ; } 
+override cpumask_next unsigned int cpumask_next ( int , const s#cpumask * ) 
+override cpumask_next_and int cpumask_next_and ( int , const s#cpumask * , const s#cpumask * ) 
+override cpumask_any_but int cpumask_any_but ( const s#cpumask * , unsigned int ) 
+override t#bool typedef _Bool bool 
+override cpumask_next_wrap extern int cpumask_next_wrap ( int , const s#cpumask * , int , t#bool ) 
+override cpumask_local_spread unsigned int cpumask_local_spread ( unsigned int , int ) 

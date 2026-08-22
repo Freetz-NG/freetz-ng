@@ -1,0 +1,20 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#uint32_t typedef t#u32 uint32_t 
+override s#xxh32_state struct xxh32_state { t#uint32_t total_len_32 ; t#uint32_t large_len ; t#uint32_t v1 ; t#uint32_t v2 ; t#uint32_t v3 ; t#uint32_t v4 ; t#uint32_t mem32 [ 4 ] ; t#uint32_t memsize ; } 
+override xxh32_copy_state void xxh32_copy_state ( s#xxh32_state * , const s#xxh32_state * ) 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#uint64_t typedef t#u64 uint64_t 
+override s#xxh64_state struct xxh64_state { t#uint64_t total_len ; t#uint64_t v1 ; t#uint64_t v2 ; t#uint64_t v3 ; t#uint64_t v4 ; t#uint64_t mem64 [ 4 ] ; t#uint32_t memsize ; } 
+override xxh64_copy_state void xxh64_copy_state ( s#xxh64_state * , const s#xxh64_state * ) 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override xxh32 t#uint32_t xxh32 ( const void * , t#size_t , t#uint32_t ) 
+override xxh64 t#uint64_t xxh64 ( const void * , t#size_t , t#uint64_t ) 
+override xxh32_reset void xxh32_reset ( s#xxh32_state * , t#uint32_t ) 
+override xxh64_reset void xxh64_reset ( s#xxh64_state * , t#uint64_t ) 
+override xxh32_update int xxh32_update ( s#xxh32_state * , const void * , t#size_t ) 
+override xxh32_digest t#uint32_t xxh32_digest ( const s#xxh32_state * ) 
+override xxh64_update int xxh64_update ( s#xxh64_state * , const void * , t#size_t ) 
+override xxh64_digest t#uint64_t xxh64_digest ( const s#xxh64_state * ) 

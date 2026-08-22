@@ -1,0 +1,4 @@
+override t#__s64 __extension__ typedef __signed__ long long __s64 
+override t#time64_t typedef t#__s64 time64_t 
+override s#tm struct tm { int tm_sec ; int tm_min ; int tm_hour ; int tm_mday ; int tm_mon ; long tm_year ; int tm_wday ; int tm_yday ; } 
+override time64_to_tm void time64_to_tm ( t#time64_t , int , s#tm * ) 

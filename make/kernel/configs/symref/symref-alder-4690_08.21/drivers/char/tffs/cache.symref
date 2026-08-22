@@ -1,0 +1,11 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override t#uint8_t typedef t#u8 uint8_t 
+override t#__kernel_size_t typedef unsigned int __kernel_size_t 
+override t#size_t typedef t#__kernel_size_t size_t 
+override e#tffs3_handle_mode enum tffs3_handle_mode { tffs3_mode_read , tffs3_mode_write , tffs3_mode_panic , } 
+override s#tffs_core_handle struct tffs_core_handle { void * core_priv ; unsigned int id ; e#tffs3_handle_mode mode ; t#size_t max_segment_size ; } 
+override e#tffs3_notify_event enum tffs3_notify_event { tffs3_notify_clear , tffs3_notify_update , tffs3_notify_reinit } 
+override t#tffs3_notify_fn typedef void ( * tffs3_notify_fn ) ( void * , unsigned int , e#tffs3_notify_event ) 
+override s#tffs_module struct tffs_module { void * priv ; char * name ; int ( * setup ) ( s#tffs_module * ) ; int ( * read ) ( s#tffs_module * , void * , t#uint8_t * , t#size_t * ) ; int ( * write ) ( s#tffs_module * , void * , const t#uint8_t * , t#size_t , t#size_t * , unsigned int ) ; void * ( * open ) ( s#tffs_module * , s#tffs_core_handle * ) ; int ( * close ) ( s#tffs_module * , void * ) ; int ( * cleanup ) ( s#tffs_module * , void * ) ; int ( * reindex ) ( s#tffs_module * ) ; int ( * info ) ( s#tffs_module * , unsigned int * ) ; int ( * register_notify ) ( s#tffs_module * , void * , t#tffs3_notify_fn ) ; int ( * remove_notify ) ( s#tffs_module * , void * , t#tffs3_notify_fn ) ; } 
+override TFFS3_CACHE_Configure extern int TFFS3_CACHE_Configure ( s#tffs_module * , s#tffs_module * ) 

@@ -1,0 +1,8 @@
+override os_trigger_scheduler void os_trigger_scheduler ( void ) 
+override os_disable_scheduler void os_disable_scheduler ( void ) 
+override e#_tasklet_control enum _tasklet_control { tasklet_control_enter_critical = 0 , tasklet_control_leave_critical = 1 } 
+override capi_oslib_init_tasklet_control void capi_oslib_init_tasklet_control ( void ( * ) ( e#_tasklet_control ) ) 
+override EnterCritical void EnterCritical ( void ) 
+override _EnterCritical void _EnterCritical ( char * , int ) 
+override LeaveCritical void LeaveCritical ( void ) 
+override _LeaveCritical void _LeaveCritical ( char * , int ) 

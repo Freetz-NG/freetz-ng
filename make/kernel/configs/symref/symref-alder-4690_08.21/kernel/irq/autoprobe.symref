@@ -1,0 +1,3 @@
+override probe_irq_on extern unsigned long probe_irq_on ( void ) 
+override probe_irq_mask extern unsigned int probe_irq_mask ( unsigned long ) 
+override probe_irq_off extern int probe_irq_off ( unsigned long ) 

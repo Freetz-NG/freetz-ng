@@ -1,0 +1,11 @@
+override zlib_deflate_workspacesize extern int zlib_deflate_workspacesize ( int , int ) 
+override t#Byte typedef unsigned char Byte 
+override t#uLong typedef unsigned long uLong 
+override s#internal_state struct internal_state { int dummy ; } 
+override s#z_stream_s struct z_stream_s { const t#Byte * next_in ; t#uLong avail_in ; t#uLong total_in ; t#Byte * next_out ; t#uLong avail_out ; t#uLong total_out ; char * msg ; s#internal_state * state ; void * workspace ; int data_type ; t#uLong adler ; t#uLong reserved ; } 
+override t#z_stream typedef s#z_stream_s z_stream 
+override t#z_streamp typedef t#z_stream * z_streamp 
+override zlib_deflate extern int zlib_deflate ( t#z_streamp , int ) 
+override zlib_deflateInit2 extern int zlib_deflateInit2 ( t#z_streamp , int , int , int , int , int ) 
+override zlib_deflateEnd extern int zlib_deflateEnd ( t#z_streamp ) 
+override zlib_deflateReset extern int zlib_deflateReset ( t#z_streamp ) 

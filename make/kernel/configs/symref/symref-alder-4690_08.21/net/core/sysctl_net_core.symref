@@ -1,0 +1,2 @@
+override sysctl_fb_tunnels_only_for_init_net extern int sysctl_fb_tunnels_only_for_init_net 
+override sysctl_devconf_inherit_init_net extern int sysctl_devconf_inherit_init_net 

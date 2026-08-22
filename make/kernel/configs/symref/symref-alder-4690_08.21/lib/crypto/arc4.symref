@@ -1,0 +1,7 @@
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override s#arc4_ctx struct arc4_ctx { t#u32 S [ 256 ] ; t#u32 x , y ; } 
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override arc4_setkey int arc4_setkey ( s#arc4_ctx * , const t#u8 * , unsigned int ) 
+override arc4_crypt void arc4_crypt ( s#arc4_ctx * , t#u8 * , const t#u8 * , unsigned int ) 

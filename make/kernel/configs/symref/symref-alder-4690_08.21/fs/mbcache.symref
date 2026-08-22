@@ -1,0 +1,20 @@
+override s#mb_cache struct mb_cache { UNKNOWN } 
+override t#gfp_t typedef unsigned int gfp_t 
+override t#__u32 typedef unsigned int __u32 
+override t#u32 typedef t#__u32 u32 
+override t#__u64 __extension__ typedef unsigned long long __u64 
+override t#u64 typedef t#__u64 u64 
+override t#bool typedef _Bool bool 
+override mb_cache_entry_create int mb_cache_entry_create ( s#mb_cache * , t#gfp_t , t#u32 , t#u64 , t#bool ) 
+override s#list_head struct list_head { s#list_head * next , * prev ; } 
+override s#hlist_bl_node struct hlist_bl_node { s#hlist_bl_node * next , * * pprev ; } 
+override t#atomic_t typedef struct { int counter ; } atomic_t 
+override s#mb_cache_entry struct mb_cache_entry { s#list_head e_list ; s#hlist_bl_node e_hash_list ; t#atomic_t e_refcnt ; t#u32 e_key ; t#u32 e_referenced : 1 ; t#u32 e_reusable : 1 ; t#u64 e_value ; } 
+override __mb_cache_entry_free void __mb_cache_entry_free ( s#mb_cache_entry * ) 
+override mb_cache_entry_find_first s#mb_cache_entry * mb_cache_entry_find_first ( s#mb_cache * , t#u32 ) 
+override mb_cache_entry_find_next s#mb_cache_entry * mb_cache_entry_find_next ( s#mb_cache * , s#mb_cache_entry * ) 
+override mb_cache_entry_get s#mb_cache_entry * mb_cache_entry_get ( s#mb_cache * , t#u32 , t#u64 ) 
+override mb_cache_entry_delete void mb_cache_entry_delete ( s#mb_cache * , t#u32 , t#u64 ) 
+override mb_cache_entry_touch void mb_cache_entry_touch ( s#mb_cache * , s#mb_cache_entry * ) 
+override mb_cache_create s#mb_cache * mb_cache_create ( int ) 
+override mb_cache_destroy void mb_cache_destroy ( s#mb_cache * ) 

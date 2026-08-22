@@ -1,0 +1,6 @@
+override e#system_states extern enum system_states { SYSTEM_BOOTING , SYSTEM_SCHEDULING , SYSTEM_RUNNING , SYSTEM_HALT , SYSTEM_POWER_OFF , SYSTEM_RESTART , SYSTEM_SUSPEND , } 
+override system_state extern e#system_states system_state 
+override t#bool typedef _Bool bool 
+override static_key_initialized extern t#bool static_key_initialized 
+override reset_devices extern unsigned int reset_devices 
+override loops_per_jiffy extern unsigned long loops_per_jiffy 

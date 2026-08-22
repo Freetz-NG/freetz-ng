@@ -1,0 +1,3 @@
+override t#__u8 typedef unsigned char __u8 
+override t#u8 typedef t#__u8 u8 
+override md5_zero_message_hash extern const t#u8 md5_zero_message_hash [ 16 ] 
