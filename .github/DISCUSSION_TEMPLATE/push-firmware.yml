@@ -1,0 +1,166 @@
+title: "[push_firmware] "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Problem mit `tools/push_firmware`
+
+        Bitte fülle das Formular möglichst vollständig aus.
+
+        **Besonders wichtig für die Fehlersuche:**
+        - die verwendete `.config` als Datei anhängen
+        - die vollständige Ausgabe von `push_firmware` angeben
+        - Gerät und FRITZ!OS-Version angeben
+
+  - type: input
+    id: device
+    attributes:
+      label: FRITZ!Box / Gerät
+      description: Welches Gerät soll geflasht werden?
+      placeholder: "z. B. FRITZ!Box 7590"
+    validations:
+      required: true
+
+  - type: input
+    id: fritzos
+    attributes:
+      label: FRITZ!OS-Version
+      placeholder: "z. B. 8.00"
+    validations:
+      required: true
+
+  - type: input
+    id: freetz-version
+    attributes:
+      label: Freetz-NG Version / Commit
+      description: "z. B. Ausgabe von: git rev-parse --short HEAD"
+      placeholder: "z. B. abc1234"
+    validations:
+      required: true
+
+  - type: input
+    id: build-system
+    attributes:
+      label: Build-System
+      description: Betriebssystem bzw. Umgebung, in der Freetz-NG gebaut wurde.
+      placeholder: "z. B. Debian 12 / Ubuntu 24.04 / Docker"
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Freetz-NG `.config`
+      description: |
+        **Bitte unbedingt die verwendete `.config` als Datei anhängen.**
+
+        Die Datei befindet sich im Hauptverzeichnis deines Freetz-NG-Builds.
+        Du kannst sie per Drag & Drop in dieses Feld ziehen.
+
+        Bitte keinen Screenshot der `.config` verwenden.
+      placeholder: |
+        .config hier anhängen ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: Verwendeter `push_firmware`-Befehl
+      description: Bitte den vollständigen Befehl angeben.
+      placeholder: |
+        tools/push_firmware
+
+        oder z. B.
+        tools/push_firmware ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Vollständige Ausgabe
+      description: |
+        Bitte die vollständige Konsolenausgabe von `push_firmware` einfügen.
+        Nicht nur die letzte Fehlermeldung.
+      placeholder: |
+        $ tools/push_firmware
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Was passiert beim Ausführen von `push_firmware`?
+      placeholder: |
+        Beschreibe möglichst genau:
+        - Wo bricht der Vorgang ab?
+        - Welche Fehlermeldung erscheint?
+        - Startet die FRITZ!Box neu?
+        - Ist die Box danach noch erreichbar?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Erwartetes Verhalten
+      description: Was sollte stattdessen passieren?
+      placeholder: |
+        Das Freetz-NG-Image sollte erfolgreich auf die FRITZ!Box übertragen
+        und anschließend gestartet werden.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: tests
+    attributes:
+      label: Bereits ausprobiert
+      options:
+        - label: push_firmware erneut ausgeführt
+          required: false
+        - label: push_firmware ohne zusätzliche Parameter getestet
+          required: false
+        - label: anderes Freetz-NG-Image getestet
+          required: false
+        - label: AVM-Recovery durchgeführt
+          required: false
+        - label: anderes LAN-Kabel getestet
+          required: false
+
+  - type: textarea
+    id: more_tests
+    attributes:
+      label: 🔧 Noch mehr ausprobiert
+      description: Welche weiteren Lösungsversuche wurden bereits durchgeführt?
+      placeholder: |
+        - ...
+        - ...
+        - ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Weitere Informationen
+      description: Weitere Logs, Screenshots oder Informationen.
+      placeholder: |
+        Weitere Informationen ...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checkliste
+      options:
+        - label: Ich habe die vollständige Ausgabe von `push_firmware` angegeben.
+          required: true
+        - label: Ich habe die verwendete `.config` als Datei angehängt.
+          required: true
+        - label: Ich habe nach bereits vorhandenen Discussions zu diesem Problem gesucht.
+          required: true

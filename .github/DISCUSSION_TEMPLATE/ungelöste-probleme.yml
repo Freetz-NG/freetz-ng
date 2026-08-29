@@ -1,0 +1,176 @@
+title: "[Problem] "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Ungelöstes Problem
+
+        Du hast ein Problem mit Freetz-NG, für das du bisher keine Lösung gefunden hast?
+        Beschreibe das Problem bitte möglichst vollständig, damit andere Nutzer bei der Fehlersuche helfen können.
+
+        **Bitte vorher prüfen:**
+        - Wurde das Problem bereits in den Discussions oder Issues beschrieben?
+        - Verwendest du eine möglichst aktuelle Freetz-NG-Version?
+        - Hast du die verfügbaren Dokumentationen und bekannten Probleme geprüft?
+
+  - type: input
+    id: freetz-version
+    attributes:
+      label: Freetz-NG-Version
+      description: Welche Freetz-NG-Version bzw. welchen Commit verwendest du?
+      placeholder: "z. B. master / Commit abc1234"
+    validations:
+      required: true
+
+  - type: input
+    id: fritzbox-model
+    attributes:
+      label: FRITZ!Box-Modell
+      description: Welches FRITZ!Box-Modell ist betroffen?
+      placeholder: "z. B. FRITZ!Box 7590"
+    validations:
+      required: true
+
+  - type: input
+    id: firmware-version
+    attributes:
+      label: FRITZ!OS-Version
+      description: Welche originale FRITZ!OS-Version läuft auf der Box?
+      placeholder: "z. B. 8.20"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: problem-area
+    attributes:
+      label: Betroffener Bereich
+      description: Welcher Bereich von Freetz-NG ist hauptsächlich betroffen?
+      options:
+        - Build / Freetz-NG-Image
+        - Installation / Flashen
+        - Netzwerk
+        - WLAN
+        - Telefonie / DECT
+        - DSL / WAN
+        - USB
+        - Pakete / Add-ons
+        - Webinterface
+        - Dienste
+        - Kernel / Treiber
+        - Boot / Recovery
+        - Sonstiges
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-theory-description
+    attributes:
+      label: Erwartetes Verhalten
+      description: Was genau funktioniert nicht? Was erwartest du?
+      placeholder: |
+        ...
+
+        Tatsächliches Verhalten:
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-real-description
+    attributes:
+      label: Tatsächliches Verhalten
+      description: Was genau funktioniert nicht? Was passiert stattdessen?
+      placeholder: |
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Schritte zur Reproduktion
+      description: Wie lässt sich das Problem reproduzieren?
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevante Logs / Fehlermeldungen
+      description: Füge relevante Logausgaben oder Fehlermeldungen ein. Bitte persönliche Daten, Passwörter und öffentliche IP-Adressen entfernen.
+      placeholder: |
+        ```
+        Hier Logs oder Fehlermeldungen einfügen
+        ```
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: troubleshooting
+    attributes:
+      label: Bereits getestete Lösungsansätze
+      description: Was hast du bereits ausprobiert und mit welchem Ergebnis?
+      placeholder: |
+        - Ansatz 1: ...
+          Ergebnis: ...
+
+        - Ansatz 2: ...
+          Ergebnis: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Freetz-NG `.config`
+      description: |
+        **Sollte es sich um ein Freetz Build Problen handeln, dann unbedingt die verwendete `.config` als Datei anhängen.**
+
+        Die Datei befindet sich im Hauptverzeichnis deines Freetz-NG-Builds.
+        Du kannst sie per Drag & Drop in dieses Feld ziehen.
+
+        Bitte keinen Screenshot der `.config` verwenden.
+      placeholder: |
+        .config hier anhängen ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: settings
+    attributes:
+      label: Weitere relevante Konfiguration
+      description: Falls relevant, füge die betroffenen Einstellungen oder Konfigurationsausschnitte ein.
+      placeholder: |
+        ```
+        Relevante Konfiguration
+        ```
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Weitere Informationen
+      description: Alles Weitere, was bei der Analyse helfen könnte.
+      placeholder: "Weitere Informationen, Links, Screenshots oder Hinweise ..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Vor dem Absenden
+      options:
+        - label: Ich habe nach bereits vorhandenen Discussions/Issues zu diesem Problem gesucht.
+          required: true
+        - label: Ich habe keine vertraulichen Daten, Passwörter oder Zugangsdaten veröffentlicht.
+          required: true
+        - label: Ich habe die verfügbaren Informationen möglichst vollständig angegeben.
+          required: true
