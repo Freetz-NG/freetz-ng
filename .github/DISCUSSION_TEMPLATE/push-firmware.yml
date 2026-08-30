@@ -4,29 +4,29 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Problem mit `tools/push_firmware`
+        ## Problem with `tools/push_firmware`
 
-        Bitte fülle das Formular möglichst vollständig aus.
+        Please fill out the form as completely as possible.
 
-        **Besonders wichtig für die Fehlersuche:**
-        - die verwendete `.config` als Datei anhängen
-        - die vollständige Ausgabe von `push_firmware` angeben
-        - Gerät und FRITZ!OS-Version angeben
+        **Especially important for troubleshooting:**
+        - attach the `.config` used as a file
+        - provide the complete output of `push_firmware`
+        - specify the device and FRITZ!OS version
 
   - type: input
     id: device
     attributes:
-      label: FRITZ!Box / Gerät
-      description: Welches Gerät soll geflasht werden?
-      placeholder: "z. B. FRITZ!Box 7590"
+      label: FRITZ!Box / Device
+      description: Which device are you trying to flash?
+      placeholder: "e.g. FRITZ!Box 7590"
     validations:
       required: true
 
   - type: input
     id: fritzos
     attributes:
-      label: FRITZ!OS-Version
-      placeholder: "z. B. 8.00"
+      label: FRITZ!OS Version
+      placeholder: "e.g. 8.00"
     validations:
       required: true
 
@@ -34,17 +34,17 @@ body:
     id: freetz-version
     attributes:
       label: Freetz-NG Version / Commit
-      description: "z. B. Ausgabe von: git rev-parse --short HEAD"
-      placeholder: "z. B. abc1234"
+      description: "e.g. output of: git rev-parse --short HEAD"
+      placeholder: "e.g. abc1234"
     validations:
       required: true
 
   - type: input
     id: build-system
     attributes:
-      label: Build-System
-      description: Betriebssystem bzw. Umgebung, in der Freetz-NG gebaut wurde.
-      placeholder: "z. B. Debian 12 / Ubuntu 24.04 / Docker"
+      label: Build System
+      description: Operating system or environment in which Freetz-NG was built.
+      placeholder: "e.g. Debian 12 / Ubuntu 24.04 / Docker"
     validations:
       required: true
 
@@ -53,26 +53,26 @@ body:
     attributes:
       label: Freetz-NG `.config`
       description: |
-        **Bitte unbedingt die verwendete `.config` als Datei anhängen.**
+        **Please make sure to attach the `.config` file used for the build.**
 
-        Die Datei befindet sich im Hauptverzeichnis deines Freetz-NG-Builds.
-        Du kannst sie per Drag & Drop in dieses Feld ziehen.
+        The file is located in the root directory of your Freetz-NG build.
+        You can drag and drop the file into this field.
 
-        Bitte keinen Screenshot der `.config` verwenden.
+        Please do not provide a screenshot of the `.config` file.
       placeholder: |
-        .config hier anhängen ...
+        Attach the `.config` file here ...
     validations:
       required: true
 
   - type: textarea
     id: command
     attributes:
-      label: Verwendeter `push_firmware`-Befehl
-      description: Bitte den vollständigen Befehl angeben.
+      label: "`push_firmware` Command Used"
+      description: Please provide the complete command.
       placeholder: |
         tools/push_firmware
 
-        oder z. B.
+        or e.g.
         tools/push_firmware ...
     validations:
       required: true
@@ -80,10 +80,10 @@ body:
   - type: textarea
     id: output
     attributes:
-      label: Vollständige Ausgabe
+      label: Complete Output
       description: |
-        Bitte die vollständige Konsolenausgabe von `push_firmware` einfügen.
-        Nicht nur die letzte Fehlermeldung.
+        Please provide the complete console output of `push_firmware`.
+        Do not provide only the final error message.
       placeholder: |
         $ tools/push_firmware
         ...
@@ -94,48 +94,48 @@ body:
     id: problem
     attributes:
       label: Problem
-      description: Was passiert beim Ausführen von `push_firmware`?
+      description: What happens when running `push_firmware`?
       placeholder: |
-        Beschreibe möglichst genau:
-        - Wo bricht der Vorgang ab?
-        - Welche Fehlermeldung erscheint?
-        - Startet die FRITZ!Box neu?
-        - Ist die Box danach noch erreichbar?
+        Describe the problem as precisely as possible:
+        - Where does the process stop?
+        - What error message is displayed?
+        - Does the FRITZ!Box reboot?
+        - Is the box still reachable afterwards?
     validations:
       required: true
 
   - type: textarea
     id: expected
     attributes:
-      label: Erwartetes Verhalten
-      description: Was sollte stattdessen passieren?
+      label: Expected Behavior
+      description: What should happen instead?
       placeholder: |
-        Das Freetz-NG-Image sollte erfolgreich auf die FRITZ!Box übertragen
-        und anschließend gestartet werden.
+        The Freetz-NG image should be successfully transferred to the FRITZ!Box
+        and then booted.
     validations:
       required: false
 
   - type: checkboxes
     id: tests
     attributes:
-      label: Bereits ausprobiert
+      label: Already Tried
       options:
-        - label: push_firmware erneut ausgeführt
+        - label: Ran push_firmware again
           required: false
-        - label: push_firmware ohne zusätzliche Parameter getestet
+        - label: Tested push_firmware without additional parameters
           required: false
-        - label: anderes Freetz-NG-Image getestet
+        - label: Tested a different Freetz-NG image
           required: false
-        - label: AVM-Recovery durchgeführt
+        - label: Performed an AVM recovery
           required: false
-        - label: anderes LAN-Kabel getestet
+        - label: Tested a different LAN cable
           required: false
 
   - type: textarea
     id: more_tests
     attributes:
-      label: 🔧 Noch mehr ausprobiert
-      description: Welche weiteren Lösungsversuche wurden bereits durchgeführt?
+      label: Other Things Tried
+      description: What other troubleshooting steps have already been performed?
       placeholder: |
         - ...
         - ...
@@ -146,21 +146,21 @@ body:
   - type: textarea
     id: additional
     attributes:
-      label: ℹ️ Weitere Informationen
-      description: Weitere Logs, Screenshots oder Informationen.
+      label: Additional Information
+      description: Additional logs, screenshots, or other information.
       placeholder: |
-        Weitere Informationen ...
+        Additional information ...
     validations:
       required: false
 
   - type: checkboxes
     id: checks
     attributes:
-      label: Checkliste
+      label: Checklist
       options:
-        - label: Ich habe die vollständige Ausgabe von `push_firmware` angegeben.
+        - label: I have provided the complete output of `push_firmware`.
           required: true
-        - label: Ich habe die verwendete `.config` als Datei angehängt.
+        - label: I have attached the `.config` used as a file.
           required: true
-        - label: Ich habe nach bereits vorhandenen Discussions zu diesem Problem gesucht.
+        - label: I have searched for existing Discussions about this issue.
           required: true

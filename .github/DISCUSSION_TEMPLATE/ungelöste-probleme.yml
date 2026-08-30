@@ -4,74 +4,74 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Ungelöstes Problem
+        ## Unresolved Problem
 
-        Du hast ein Problem mit Freetz-NG, für das du bisher keine Lösung gefunden hast?
-        Beschreibe das Problem bitte möglichst vollständig, damit andere Nutzer bei der Fehlersuche helfen können.
+        Do you have a problem with Freetz-NG for which you have not yet found a solution?
+        Please describe the problem as completely as possible so that other users can help with troubleshooting.
 
-        **Bitte vorher prüfen:**
-        - Wurde das Problem bereits in den Discussions oder Issues beschrieben?
-        - Verwendest du eine möglichst aktuelle Freetz-NG-Version?
-        - Hast du die verfügbaren Dokumentationen und bekannten Probleme geprüft?
+        **Please check beforehand:**
+        - Has the problem already been described in the Discussions or Issues?
+        - Are you using the most recent Freetz-NG version possible?
+        - Have you checked the available documentation and known issues?
 
   - type: input
     id: freetz-version
     attributes:
-      label: Freetz-NG-Version
-      description: Welche Freetz-NG-Version bzw. welchen Commit verwendest du?
-      placeholder: "z. B. master / Commit abc1234"
+      label: Freetz-NG Version
+      description: Which Freetz-NG version or commit are you using?
+      placeholder: "e.g. master / commit abc1234"
     validations:
       required: true
 
   - type: input
     id: fritzbox-model
     attributes:
-      label: FRITZ!Box-Modell
-      description: Welches FRITZ!Box-Modell ist betroffen?
-      placeholder: "z. B. FRITZ!Box 7590"
+      label: FRITZ!Box Model
+      description: Which FRITZ!Box model is affected?
+      placeholder: "e.g. FRITZ!Box 7590"
     validations:
       required: true
 
   - type: input
     id: firmware-version
     attributes:
-      label: FRITZ!OS-Version
-      description: Welche originale FRITZ!OS-Version läuft auf der Box?
-      placeholder: "z. B. 8.20"
+      label: FRITZ!OS Version
+      description: Which original FRITZ!OS version is running on the box?
+      placeholder: "e.g. 8.20"
     validations:
       required: true
 
   - type: dropdown
     id: problem-area
     attributes:
-      label: Betroffener Bereich
-      description: Welcher Bereich von Freetz-NG ist hauptsächlich betroffen?
+      label: Affected Area
+      description: Which area of Freetz-NG is primarily affected?
       options:
-        - Build / Freetz-NG-Image
-        - Installation / Flashen
-        - Netzwerk
-        - WLAN
-        - Telefonie / DECT
+        - Build / Freetz-NG Image
+        - Installation / Flashing
+        - Network
+        - Wi-Fi
+        - Telephony / DECT
         - DSL / WAN
         - USB
-        - Pakete / Add-ons
-        - Webinterface
-        - Dienste
-        - Kernel / Treiber
+        - Packages / Add-ons
+        - Web Interface
+        - Services
+        - Kernel / Drivers
         - Boot / Recovery
-        - Sonstiges
+        - Other
     validations:
       required: true
 
   - type: textarea
     id: problem-theory-description
     attributes:
-      label: Erwartetes Verhalten
-      description: Was genau funktioniert nicht? Was erwartest du?
+      label: Expected Behavior
+      description: What exactly is not working? What did you expect to happen?
       placeholder: |
         ...
 
-        Tatsächliches Verhalten:
+        Actual behavior:
         ...
     validations:
       required: true
@@ -79,8 +79,8 @@ body:
   - type: textarea
     id: problem-real-description
     attributes:
-      label: Tatsächliches Verhalten
-      description: Was genau funktioniert nicht? Was passiert stattdessen?
+      label: Actual Behavior
+      description: What exactly is not working? What happens instead?
       placeholder: |
         ...
     validations:
@@ -89,8 +89,8 @@ body:
   - type: textarea
     id: reproduction
     attributes:
-      label: Schritte zur Reproduktion
-      description: Wie lässt sich das Problem reproduzieren?
+      label: Steps to Reproduce
+      description: How can the problem be reproduced?
       placeholder: |
         1. ...
         2. ...
@@ -101,11 +101,11 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Relevante Logs / Fehlermeldungen
-      description: Füge relevante Logausgaben oder Fehlermeldungen ein. Bitte persönliche Daten, Passwörter und öffentliche IP-Adressen entfernen.
+      label: Relevant Logs / Error Messages
+      description: Include relevant log output or error messages. Please remove personal data, passwords, and public IP addresses.
       placeholder: |
         ```
-        Hier Logs oder Fehlermeldungen einfügen
+        Insert logs or error messages here
         ```
       render: text
     validations:
@@ -114,14 +114,14 @@ body:
   - type: textarea
     id: troubleshooting
     attributes:
-      label: Bereits getestete Lösungsansätze
-      description: Was hast du bereits ausprobiert und mit welchem Ergebnis?
+      label: Troubleshooting Steps Already Tried
+      description: What have you already tried and what was the result?
       placeholder: |
-        - Ansatz 1: ...
-          Ergebnis: ...
+        - Approach 1: ...
+          Result: ...
 
-        - Ansatz 2: ...
-          Ergebnis: ...
+        - Approach 2: ...
+          Result: ...
     validations:
       required: true
 
@@ -130,25 +130,25 @@ body:
     attributes:
       label: Freetz-NG `.config`
       description: |
-        **Sollte es sich um ein Freetz Build Problen handeln, dann unbedingt die verwendete `.config` als Datei anhängen.**
+        **If this is a Freetz build problem, please make sure to attach the `.config` file that was used.**
 
-        Die Datei befindet sich im Hauptverzeichnis deines Freetz-NG-Builds.
-        Du kannst sie per Drag & Drop in dieses Feld ziehen.
+        The file is located in the root directory of your Freetz-NG build.
+        You can drag and drop the file into this field.
 
-        Bitte keinen Screenshot der `.config` verwenden.
+        Please do not provide a screenshot of the `.config` file.
       placeholder: |
-        .config hier anhängen ...
+        Attach the `.config` file here ...
     validations:
       required: false
 
   - type: textarea
     id: settings
     attributes:
-      label: Weitere relevante Konfiguration
-      description: Falls relevant, füge die betroffenen Einstellungen oder Konfigurationsausschnitte ein.
+      label: Other Relevant Configuration
+      description: If relevant, include the affected settings or configuration snippets.
       placeholder: |
         ```
-        Relevante Konfiguration
+        Relevant configuration
         ```
       render: text
     validations:
@@ -157,20 +157,20 @@ body:
   - type: textarea
     id: additional-info
     attributes:
-      label: Weitere Informationen
-      description: Alles Weitere, was bei der Analyse helfen könnte.
-      placeholder: "Weitere Informationen, Links, Screenshots oder Hinweise ..."
+      label: Additional Information
+      description: Anything else that could help with the analysis.
+      placeholder: "Additional information, links, screenshots, or notes ..."
     validations:
       required: false
 
   - type: checkboxes
     id: checks
     attributes:
-      label: Vor dem Absenden
+      label: Before Submitting
       options:
-        - label: Ich habe nach bereits vorhandenen Discussions/Issues zu diesem Problem gesucht.
+        - label: I have searched for existing Discussions/Issues related to this problem.
           required: true
-        - label: Ich habe keine vertraulichen Daten, Passwörter oder Zugangsdaten veröffentlicht.
+        - label: I have not published any confidential data, passwords, or credentials.
           required: true
-        - label: Ich habe die verfügbaren Informationen möglichst vollständig angegeben.
+        - label: I have provided the available information as completely as possible.
           required: true
