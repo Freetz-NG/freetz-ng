@@ -1,4 +1,4 @@
-# HarfBuzz (libharfbuzz.so) 14.3.1
+# HarfBuzz (libharfbuzz.so) 14.4.0
   - Homepage: [https://harfbuzz.github.io/](https://harfbuzz.github.io/)
   - Manpage: [https://github.com/harfbuzz/harfbuzz/wiki](https://github.com/harfbuzz/harfbuzz/wiki)
   - Changelog: [https://github.com/harfbuzz/harfbuzz/releases](https://github.com/harfbuzz/harfbuzz/releases)
