@@ -1,8 +1,8 @@
 --- Makefile.am
 +++ Makefile.am
-@@ -70,8 +70,8 @@
+@@ -95,8 +95,8 @@
  
- bin_SCRIPTS = curl-config
+ TAGS_DEPENDENCIES = $(CURL_ETAGS_FILES)
  
 -SUBDIRS = lib docs src scripts
 -DIST_SUBDIRS = $(SUBDIRS) tests projects include docs
@@ -11,7 +11,7 @@
  
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
-@@ -146,14 +146,11 @@
+@@ -174,14 +174,11 @@
  else
  install-data-hook:
  	(cd include && $(MAKE) install)
@@ -28,10 +28,10 @@
  	@echo "generating a fresh ca-bundle.crt"
 --- Makefile.in
 +++ Makefile.in
-@@ -488,8 +488,8 @@
- EXTRA_DIST = CHANGES.md COPYING RELEASE-NOTES Dockerfile .clang-tidy.yml .editorconfig $(CMAKE_DIST)
- DISTCLEANFILES = buildinfo.txt
- bin_SCRIPTS = curl-config
+@@ -513,8 +513,8 @@
+ 
+ ETAGS_ARGS = $(CURL_ETAGS_FILES)
+ TAGS_DEPENDENCIES = $(CURL_ETAGS_FILES)
 -SUBDIRS = lib docs src scripts
 -DIST_SUBDIRS = $(SUBDIRS) tests projects include docs
 +SUBDIRS = lib      src scripts
@@ -39,17 +39,3 @@
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
  all: all-recursive
-@@ -1102,13 +1102,10 @@
- @BUILD_DOCS_TRUE@	(cd docs/libcurl && $(MAKE) install)
- @BUILD_DOCS_FALSE@install-data-hook:
- @BUILD_DOCS_FALSE@	(cd include && $(MAKE) install)
--@BUILD_DOCS_FALSE@	(cd docs && $(MAKE) install)
- 
- # We extend the standard uninstall with a custom hook:
- uninstall-hook:
- 	(cd include && $(MAKE) uninstall)
--	(cd docs && $(MAKE) uninstall)
--	(cd docs/libcurl && $(MAKE) uninstall)
- 
- ca-bundle: $(srcdir)/scripts/mk-ca-bundle.pl
- 	@echo "generating a fresh ca-bundle.crt"
