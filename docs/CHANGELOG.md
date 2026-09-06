@@ -129,7 +129,7 @@ Latest changes
     * HAProxy 2.6.29
     * htop 1.0.3/3.5.3
     * htpdate 2.0.2
-    * ImageMagick 7.1.0-62/7.1.2-30
+    * ImageMagick 7.1.0-62/7.1.2-31
     * iPerf3 3.3/3.21
     * jq 1.8.2
     * juis_bearer 1.0
