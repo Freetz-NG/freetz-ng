@@ -1,6 +1,6 @@
 --- crypto/hmac/hmac.c
 +++ crypto/hmac/hmac.c
-@@ -275,3 +275,12 @@
+@@ -277,3 +277,12 @@
  {
      return ctx->md;
  }

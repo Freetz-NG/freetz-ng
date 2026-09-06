@@ -83,7 +83,7 @@ Latest changes
     * libtool 2.6.2
     * meson 1.12.0
     * mklibs 0.1.46
-    * openssl 3.5.7
+    * openssl 3.5.8
     * patchelf 0.14.5/0.19.1
     * patch 2.8
     * pkgconf 3.0.1
@@ -145,7 +145,7 @@ Latest changes
     * Nano 9.2
     * Nmap 4.76/5.51/7.991
     * OpenSSH 9.3p2/10.5p1
-    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.21/3.5.7
+    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.8
     * OpenVPN 2.4.12/2.5.11/2.6.22/2.7.7
     * PatchELF 0.19.1
     * PCSC-lite 1.9.5/2.5.1
