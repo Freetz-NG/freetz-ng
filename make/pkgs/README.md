@@ -625,7 +625,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[OpenSSH 9.3p2/10.5p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
-  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.21/3.5.7 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
+  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.8 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
   * **[OpenVPN 2.4.12/2.5.11/2.6.22/2.7.7](../../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
