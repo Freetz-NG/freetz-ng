@@ -14,8 +14,17 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    allow:
+      - dependency-name: "zensical"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+    ignore:
+      - dependency-name: "zensical"
+        update-types:
+          - "version-update:semver-patch"
     cooldown:
       include:
         - "zensical"
-      default-days: 17
+      default-days: 90
 
