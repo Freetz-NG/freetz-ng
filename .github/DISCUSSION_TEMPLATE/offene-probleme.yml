@@ -4,7 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Unresolved Problem
+        ## Open Problem
 
         Do you have a problem with Freetz-NG for which you have not yet found a solution?
         Please describe the problem as completely as possible so that other users can help with troubleshooting.
@@ -128,7 +128,7 @@ body:
   - type: textarea
     id: config
     attributes:
-      label: Freetz-NG `.config`
+      label: Freetz-NG ".config"
       description: |
         **If this is a Freetz build problem, please make sure to attach the `.config` file that was used.**
 
@@ -137,7 +137,7 @@ body:
 
         Please do not provide a screenshot of the `.config` file.
       placeholder: |
-        Attach the `.config` file here ...
+        Attach the ".config" file here ...
     validations:
       required: false
 

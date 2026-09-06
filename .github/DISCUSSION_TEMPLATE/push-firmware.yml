@@ -51,7 +51,7 @@ body:
   - type: textarea
     id: config
     attributes:
-      label: Freetz-NG `.config`
+      label: Freetz-NG ".config"
       description: |
         **Please make sure to attach the `.config` file used for the build.**
 
@@ -60,14 +60,14 @@ body:
 
         Please do not provide a screenshot of the `.config` file.
       placeholder: |
-        Attach the `.config` file here ...
+        Attach the ".config" file here ...
     validations:
       required: true
 
   - type: textarea
     id: command
     attributes:
-      label: "`push_firmware` Command Used"
+      label: '"push_firmware" Command Used'
       description: Please provide the complete command.
       placeholder: |
         tools/push_firmware
@@ -94,7 +94,7 @@ body:
     id: problem
     attributes:
       label: Problem
-      description: What happens when running `push_firmware`?
+      description: What happens when running "push_firmware"?
       placeholder: |
         Describe the problem as precisely as possible:
         - Where does the process stop?
@@ -158,9 +158,9 @@ body:
     attributes:
       label: Checklist
       options:
-        - label: I have provided the complete output of `push_firmware`.
+        - label: I have provided the complete output of "push_firmware".
           required: true
-        - label: I have attached the `.config` used as a file.
+        - label: I have attached the ".config" used as a file.
           required: true
         - label: I have searched for existing Discussions about this issue.
           required: true
