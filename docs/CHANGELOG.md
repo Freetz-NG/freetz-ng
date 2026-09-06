@@ -176,7 +176,7 @@ Latest changes
     * XZ 5.8.3
 
   - Libraries:
-    * expat 2.7.5/2.8.3
+    * expat 2.7.5/2.8.4
     * FreeType 2.14.3
     * gettext 1.0
     * GLib2 2.32.4/2.88.3

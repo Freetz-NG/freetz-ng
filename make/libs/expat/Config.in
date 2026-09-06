@@ -19,7 +19,7 @@ config FREETZ_LIB_libexpat
 			depends on FREETZ_TARGET_GCC_5_MAX
 
 		config FREETZ_LIB_libexpat_WITH_VERSION_CURRENT
-			bool "2.8.3"
+			bool "2.8.4"
 			depends on !FREETZ_TARGET_GCC_5_MAX
 
 	endchoice
