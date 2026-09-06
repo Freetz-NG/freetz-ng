@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_NMAP
-	bool "Nmap 4.76/5.51/7.99 (binary only)"
+	bool "Nmap 4.76/5.51/7.991 (binary only)"
 	select FREETZ_LIB_STDCXXLIB          if !FREETZ_PACKAGE_NMAP_STATIC
 	select FREETZ_LIB_libm               if !FREETZ_PACKAGE_NMAP_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libdl              if !FREETZ_PACKAGE_NMAP_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -33,7 +33,7 @@ if FREETZ_PACKAGE_NMAP
 			select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 
 		config FREETZ_PACKAGE_NMAP_VERSION_7
-			bool "7.99"
+			bool "7.991"
 			depends on !FREETZ_TARGET_GCC_9_MAX
 			select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 			select FREETZ_PACKAGE_NMAP_WITH_SHARED_OPENSSL
