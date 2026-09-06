@@ -238,7 +238,9 @@ function get_token() {
 	chmod 600 "$AUTH/$HWR"
 
 	# request
-	local client_id="$(openssl x509 -inform pem -noout -in "$PEMS/$HWR.pem" -subject | sed 's/.*CN=//;s/://g;s/[, ].*//')"
+	local client_id="$(openssl x509 -inform pem -noout -in "$PEMS/$HWR.pem" -subject | sed 's/ *= */=/g;s/.*CN=//;s/://g;s/[, ].*//')"
+	# Example OpenSSL 3.0: subject=C=DE, O=AVM GmbH Berlin, OU=AVM GmbH Berlin, CN=ab:cd:ef:12:34:56
+	# Example OpenSSL 3.5: subject=C = DE, O = AVM GmbH Berlin, OU = AVM GmbH Berlin, CN = ab:cd:ef:12:34:56
 	curl "$URL_TOKEN" \
 	  --silent \
 	  --request "POST" \
@@ -353,7 +355,7 @@ function check_avm() {
 
 	echo
 	echo "Details"
-	openssl x509 -inform DER -noout -in <(echo "$DER" | base64 -d) -modulus -ext subjectAltName -serial -subject -issuer -startdate -enddate
+	openssl x509 -inform DER -noout -in <(echo "$DER" | base64 -d) -modulus -ext subjectAltName -serial -subject -issuer -startdate -enddate | sed 's/ *= */=/g'
 
 	echo
 	echo "subjectAltName"
