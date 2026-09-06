@@ -1,4 +1,4 @@
-# Nmap 4.76/5.51/7.99 (binary only)
+# Nmap 4.76/5.51/7.991 (binary only)
   - Homepage: [https://nmap.org/](https://nmap.org/)
   - Manpage: [https://nmap.org/docs.html](https://nmap.org/docs.html)
   - Changelog: [https://nmap.org/changelog.html](https://nmap.org/changelog.html)
