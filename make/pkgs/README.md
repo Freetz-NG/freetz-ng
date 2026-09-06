@@ -497,7 +497,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[minisatip 1.0.4/1.3.6 (binary only) - DEPRECATED](../../docs/make/minisatip.md)<a id='minisatip'></a>**<br>
     Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.
 
-  * **[mini-snmpd 1.7/2.0 (binary only)](../../docs/make/mini-snmpd.md)<a id='mini-snmpd'></a>**<br>
+  * **[mini-snmpd 1.7/2.1 (binary only)](../../docs/make/mini-snmpd.md)<a id='mini-snmpd'></a>**<br>
     This program is an SNMP server for "embedded systems". The advantage in comparison to other products is the low usage of system resources.
 
   * **[mod: Freetz(-MOD)](../../docs/make/mod.md)<a id='mod'></a>**<br>
