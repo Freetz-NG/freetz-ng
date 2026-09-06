@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -15599,6 +15599,7 @@
+@@ -16772,6 +16772,7 @@
  rm -f core conftest.err conftest.$ac_objext conftest.beam \
      conftest$ac_exeext conftest.$ac_ext
  
@@ -8,7 +8,7 @@
  # Check for the availability of libz (aka zlib)
  
         for ac_header in zlib.h
-@@ -15650,8 +15651,10 @@
+@@ -16823,8 +16824,10 @@
  then :
    HAVE_LIBZ=1
  fi
@@ -19,7 +19,7 @@
  # Check for the availability of libbz2. Originally we just used AC_CHECK_LIB,
  # as for libz. However, this had the following problem, diagnosed and fixed by
  # a user:
-@@ -15712,6 +15715,7 @@
+@@ -16885,6 +16888,7 @@
  rm -f core conftest.err conftest.$ac_objext conftest.beam \
      conftest$ac_exeext conftest.$ac_ext
  LIBS="$OLD_LIBS"

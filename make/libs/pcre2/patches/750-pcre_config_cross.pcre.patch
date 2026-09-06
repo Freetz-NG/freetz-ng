@@ -9,7 +9,7 @@
  
  cflags="[--cflags]"
  libs=
-@@ -30,16 +32,16 @@
+@@ -30,15 +32,15 @@
  libR=
  case `uname -s` in
    *SunOS*)
@@ -23,14 +23,21 @@
  esac
  
  libS=
--if test @libdir@ != /usr/lib ; then
--  libS=-L@libdir@
-+if test ${libdir} != /usr/lib ; then
-+  libS=-L${libdir}
- fi
+-case "@libdir@" in
++case "${libdir}" in
+   # system locations on Linux, no -L needed
+   /usr/lib|/usr/lib32|/usr/lib64|/usr/lib/*-gnu*)
+   ;;
+@@ -48,7 +50,7 @@
+   /usr/lib/64|/usr/lib/amd*|/usr/lib/sparc*|/usr/lib/ppc*)
+   ;;
+   *)
+-  libS="-L@libdir@"
++  libS="-L${libdir}"
+   ;;
+ esac
  
- while test $# -gt 0; do
-@@ -69,15 +71,15 @@
+@@ -79,15 +81,15 @@
        echo @PACKAGE_VERSION@
        ;;
      --cflags)

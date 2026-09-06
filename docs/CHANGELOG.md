@@ -200,6 +200,7 @@ Latest changes
     * mpfr 4.2.2
     * neon 0.30.2/0.37.0
     * pango 1.58.2
+    * pcre2 10.48
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.

@@ -4,7 +4,7 @@ config EXTERNAL_FREETZ_LIB_libpcre2
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpcre2-8.so.0.15.0
+		 ${FREETZ_LIBRARY_DIR}/libpcre2-8.so.0.16.0
 
 config EXTERNAL_FREETZ_LIB_libpcre2_posix
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpcre2_posix
