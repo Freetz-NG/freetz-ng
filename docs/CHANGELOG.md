@@ -72,7 +72,7 @@ Latest changes
     * busybox 1.38.0
     * autoconf 2.73
     * ca-bundle 2026-08-13
-    * cmake 4.4.2
+    * cmake 4.4.3
     * config 4286648
     * dos2unix 7.5.6
     * dtc 1.8.1
