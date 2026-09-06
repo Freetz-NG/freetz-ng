@@ -39,3 +39,17 @@
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
  all: all-recursive
+@@ -1130,13 +1130,10 @@
+ @BUILD_DOCS_TRUE@	(cd docs/libcurl && $(MAKE) install)
+ @BUILD_DOCS_FALSE@install-data-hook:
+ @BUILD_DOCS_FALSE@	(cd include && $(MAKE) install)
+-@BUILD_DOCS_FALSE@	(cd docs && $(MAKE) install)
+ 
+ # We extend the standard uninstall with a custom hook:
+ uninstall-hook:
+ 	(cd include && $(MAKE) uninstall)
+-	(cd docs && $(MAKE) uninstall)
+-	(cd docs/libcurl && $(MAKE) uninstall)
+ 
+ ca-bundle: $(srcdir)/scripts/mk-ca-bundle.pl
+ 	@echo "generating a fresh ca-bundle.crt"
