@@ -193,7 +193,7 @@ Latest changes
     * libusb(-compat) 0.1.12/0.1.9
     * libusb1 1.0.23/1.0.30
     * libuv 1.44.2/1.52.1
-    * libxml2 2.15.3
+    * libxml2 2.15.4
     * libzip 1.11.4
     * MbedTLS 2.7.19/2.28.10/3.6.7
     * mpc 1.4.1
