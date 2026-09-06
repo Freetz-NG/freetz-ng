@@ -239,8 +239,8 @@ function get_token() {
 
 	# request
 	local client_id="$(openssl x509 -inform pem -noout -in "$PEMS/$HWR.pem" -subject | sed 's/ *= */=/g;s/.*CN=//;s/://g;s/[, ].*//')"
-	# Example OpenSSL 3.0: subject=C=DE, O=AVM GmbH Berlin, OU=AVM GmbH Berlin, CN=ab:cd:ef:12:34:56
-	# Example OpenSSL 3.5: subject=C = DE, O = AVM GmbH Berlin, OU = AVM GmbH Berlin, CN = ab:cd:ef:12:34:56
+	# Example OpenSSL 3.5: subject=C=DE, O=AVM GmbH Berlin, OU=AVM GmbH Berlin, CN=ab:cd:ef:12:34:56
+	# Example OpenSSL 3.0: subject=C = DE, O = AVM GmbH Berlin, OU = AVM GmbH Berlin, CN = ab:cd:ef:12:34:56
 	curl "$URL_TOKEN" \
 	  --silent \
 	  --request "POST" \
