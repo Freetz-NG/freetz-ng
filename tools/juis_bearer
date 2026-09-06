@@ -32,7 +32,7 @@ Usage: $0 [ export_tgz <tgz|hwr> | check_avm <pem|der|tgz|hwr> | kids_update <tg
 	s|show_auth	shows bearer from token of an avmzertifikate/hwr
 
   first step (on a fritzbox):
-	e|export_tgz	shows a bas64 encoded avmzertifikate/hwr to import
+	e|export_tgz	shows a bas64 encoded avmzertifikate/hwr to import on pc
 
   manual (by user):
 	c|check_avm	checks an certificate/avmzertifikate/hwr without import
@@ -42,7 +42,7 @@ Usage: $0 [ export_tgz <tgz|hwr> | check_avm <pem|der|tgz|hwr> | kids_update <tg
   additional:
 	On a fritzbox and without tgz/hwr parameters 'avmzertifikate' are used.
 
-	To use on computer import: "base64 /proc/avm/calib/avmzertifikate"
+	To use on computer import: "base64 /proc/avm/calib/avmzertifikate -w120"
 	After import, tools/juis_check uses it for this HWR.
 
 	This script needs openssl and curl for juis, optional jq and xxd to debug.

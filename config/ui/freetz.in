@@ -246,7 +246,7 @@ if FREETZ_ADD_JUIS_CHECK
 				default n
 				help
 					This selects jq and xxd which could be used for
-					 - kid handling
+					 - kid (key-id) handling
 					 - signature validation
 
 endif # FREETZ_ADD_JUIS_CHECK
