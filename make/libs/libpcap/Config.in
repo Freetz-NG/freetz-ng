@@ -16,7 +16,7 @@ config FREETZ_LIB_libpcap
 			depends on FREETZ_TARGET_GCC_4_MAX
 
 		config FREETZ_LIB_libpcap_WITH_VERSION_CURRENT
-			bool "1.10.6"
+			bool "1.10.7"
 			depends on FREETZ_TARGET_GCC_5_MIN
 
 	endchoice

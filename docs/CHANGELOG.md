@@ -189,6 +189,7 @@ Latest changes
     * libexif 0.6.26
     * libffi 3.8.0
     * libmaxminddb 1.13.3
+    * libpcap 1.1.1/1.10.7
     * libpng 1.6.58
     * libusb(-compat) 0.1.12/0.1.9
     * libusb1 1.0.23/1.0.30
