@@ -163,7 +163,7 @@ Latest changes
     * tinc 1.0.37/1.1pre18
     * Tinyproxy 1.11.3
     * tmux 3.7c
-    * Tor 0.4.8.25/0.4.9.11
+    * Tor 0.4.8.25/0.4.9.12
     * Transmission 3.00/4.1.3
     * Tree 1.8.0/2.3.2
     * uMurmur 0.2.20/0.4.1
