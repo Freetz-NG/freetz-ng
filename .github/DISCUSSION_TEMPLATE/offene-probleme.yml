@@ -67,7 +67,7 @@ body:
     id: problem-theory-description
     attributes:
       label: Expected Behavior
-      description: What exactly is not working? What did you expect to happen?
+      description: What did you expect to happen?
       placeholder: |
         ...
 
@@ -80,7 +80,7 @@ body:
     id: problem-real-description
     attributes:
       label: Actual Behavior
-      description: What exactly is not working? What happens instead?
+      description: What happens instead?
       placeholder: |
         ...
     validations:
