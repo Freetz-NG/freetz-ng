@@ -17,8 +17,8 @@ body:
   - type: input
     id: freetz-version
     attributes:
-      label: Freetz-NG Version
-      description: Which Freetz-NG version or commit are you using?
+      label: 'Freetz-NG Version'
+      description: 'Which Freetz-NG version or commit are you using?'
       placeholder: "e.g. master / commit abc1234"
     validations:
       required: true
@@ -26,8 +26,8 @@ body:
   - type: input
     id: fritzbox-model
     attributes:
-      label: FRITZ!Box Model
-      description: Which FRITZ!Box model is affected?
+      label: 'FRITZ!Box Model'
+      description: 'Which FRITZ!Box model is affected?'
       placeholder: "e.g. FRITZ!Box 7590"
     validations:
       required: true
@@ -35,8 +35,8 @@ body:
   - type: input
     id: firmware-version
     attributes:
-      label: FRITZ!OS Version
-      description: Which original FRITZ!OS version is running on the box?
+      label: 'FRITZ!OS Version'
+      description: 'Which original FRITZ!OS version is running on the box?'
       placeholder: "e.g. 8.20"
     validations:
       required: true
@@ -44,8 +44,8 @@ body:
   - type: dropdown
     id: problem-area
     attributes:
-      label: Affected Area
-      description: Which area of Freetz-NG is primarily affected?
+      label: 'Affected Area'
+      description: 'Which area of Freetz-NG is primarily affected?'
       options:
         - Build / Freetz-NG Image
         - Installation / Flashing
@@ -66,8 +66,8 @@ body:
   - type: textarea
     id: problem-theory-description
     attributes:
-      label: Expected Behavior
-      description: What did you expect to happen?
+      label: 'Expected Behavior'
+      description: 'What did you expect to happen?'
       placeholder: |
         ...
 
@@ -79,8 +79,8 @@ body:
   - type: textarea
     id: problem-real-description
     attributes:
-      label: Actual Behavior
-      description: What happens instead?
+      label: 'Actual Behavior'
+      description: 'What happens instead?'
       placeholder: |
         ...
     validations:
@@ -89,8 +89,8 @@ body:
   - type: textarea
     id: reproduction
     attributes:
-      label: Steps to Reproduce
-      description: How can the problem be reproduced?
+      label: 'Steps to Reproduce'
+      description: 'How can the problem be reproduced?'
       placeholder: |
         1. ...
         2. ...
@@ -101,8 +101,8 @@ body:
   - type: textarea
     id: logs
     attributes:
-      label: Relevant Logs / Error Messages
-      description: Include relevant log output or error messages. Please remove personal data, passwords, and public IP addresses.
+      label: 'Relevant Logs / Error Messages'
+      description: 'Include relevant log output or error messages. Please remove personal data, passwords, and public IP addresses.'
       placeholder: |
         ```
         Insert logs or error messages here
@@ -114,8 +114,8 @@ body:
   - type: textarea
     id: troubleshooting
     attributes:
-      label: Troubleshooting Steps Already Tried
-      description: What have you already tried and what was the result?
+      label: 'Troubleshooting Steps Already Tried'
+      description: 'What have you already tried and what was the result?'
       placeholder: |
         - Approach 1: ...
           Result: ...
@@ -128,7 +128,7 @@ body:
   - type: textarea
     id: config
     attributes:
-      label: Freetz-NG ".config"
+      label: 'Freetz-NG ".config"'
       description: |
         **If this is a Freetz build problem, please make sure to attach the `.config` file that was used.**
 
@@ -144,8 +144,8 @@ body:
   - type: textarea
     id: settings
     attributes:
-      label: Other Relevant Configuration
-      description: If relevant, include the affected settings or configuration snippets.
+      label: 'Other Relevant Configuration'
+      description: 'If relevant, include the affected settings or configuration snippets.'
       placeholder: |
         ```
         Relevant configuration
@@ -157,8 +157,8 @@ body:
   - type: textarea
     id: additional-info
     attributes:
-      label: Additional Information
-      description: Anything else that could help with the analysis.
+      label: 'Additional Information'
+      description: 'Anything else that could help with the analysis.'
       placeholder: "Additional information, links, screenshots, or notes ..."
     validations:
       required: false
@@ -166,7 +166,7 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: Before Submitting
+      label: 'Before Submitting'
       options:
         - label: I have searched for existing Discussions/Issues related to this problem.
           required: true

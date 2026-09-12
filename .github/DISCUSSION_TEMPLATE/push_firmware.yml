@@ -16,8 +16,8 @@ body:
   - type: input
     id: device
     attributes:
-      label: FRITZ!Box / Device
-      description: Which device are you trying to flash?
+      label: 'FRITZ!Box / Device'
+      description: 'Which device are you trying to flash?'
       placeholder: "e.g. FRITZ!Box 7590"
     validations:
       required: true
@@ -25,7 +25,7 @@ body:
   - type: input
     id: fritzos
     attributes:
-      label: FRITZ!OS Version
+      label: 'FRITZ!OS Version'
       placeholder: "e.g. 8.00"
     validations:
       required: true
@@ -33,8 +33,8 @@ body:
   - type: input
     id: freetz-version
     attributes:
-      label: Freetz-NG Version / Commit
-      description: "e.g. output of: git rev-parse --short HEAD"
+      label: 'Freetz-NG Version / Commit'
+      description: 'e.g. output of: git rev-parse --short HEAD'
       placeholder: "e.g. abc1234"
     validations:
       required: true
@@ -42,8 +42,8 @@ body:
   - type: input
     id: build-system
     attributes:
-      label: Build System
-      description: Operating system or environment in which Freetz-NG was built.
+      label: 'Build System'
+      description: 'Operating system or environment in which Freetz-NG was built.'
       placeholder: "e.g. Debian 12 / Ubuntu 24.04 / Docker"
     validations:
       required: true
@@ -51,7 +51,7 @@ body:
   - type: textarea
     id: config
     attributes:
-      label: Freetz-NG ".config"
+      label: 'Freetz-NG ".config"'
       description: |
         **Please make sure to attach the `.config` file used for the build.**
 
@@ -68,7 +68,7 @@ body:
     id: command
     attributes:
       label: '"push_firmware" Command Used'
-      description: Please provide the complete command.
+      description: 'Please provide the complete command.'
       placeholder: |
         tools/push_firmware
 
@@ -80,7 +80,7 @@ body:
   - type: textarea
     id: output
     attributes:
-      label: Complete Output
+      label: 'Complete Output'
       description: |
         Please provide the complete console output of `push_firmware`.
         Do not provide only the final error message.
@@ -93,8 +93,8 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What happens when running "push_firmware"?
+      label: 'Problem'
+      description: 'What happens when running "push_firmware"?'
       placeholder: |
         Describe the problem as precisely as possible:
         - Where does the process stop?
@@ -107,8 +107,8 @@ body:
   - type: textarea
     id: expected
     attributes:
-      label: Expected Behavior
-      description: What should happen instead?
+      label: 'Expected Behavior'
+      description: 'What should happen instead?'
       placeholder: |
         The Freetz-NG image should be successfully transferred to the FRITZ!Box
         and then booted.
@@ -118,7 +118,7 @@ body:
   - type: checkboxes
     id: tests
     attributes:
-      label: Already Tried
+      label: 'Already Tried'
       options:
         - label: Ran push_firmware again
           required: false
@@ -134,8 +134,8 @@ body:
   - type: textarea
     id: more_tests
     attributes:
-      label: Other Things Tried
-      description: What other troubleshooting steps have already been performed?
+      label: 'Other Things Tried'
+      description: 'What other troubleshooting steps have already been performed?'
       placeholder: |
         - ...
         - ...
@@ -146,8 +146,8 @@ body:
   - type: textarea
     id: additional
     attributes:
-      label: Additional Information
-      description: Additional logs, screenshots, or other information.
+      label: 'Additional Information'
+      description: 'Additional logs, screenshots, or other information.'
       placeholder: |
         Additional information ...
     validations:
@@ -156,7 +156,7 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: Checklist
+      label: 'Checklist'
       options:
         - label: I have provided the complete output of "push_firmware".
           required: true
