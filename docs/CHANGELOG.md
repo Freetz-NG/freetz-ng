@@ -161,7 +161,7 @@ Latest changes
     * Smartmontools 7.2/7.5
     * sslh 2.2.4/2.3.1
     * strace 4.9/5.0/7.2
-    * Stunnel 5.80
+    * Stunnel 5.82
     * SQLite 3.40.1/3.53.4
     * tinc 1.0.37/1.1pre18
     * Tinyproxy 1.11.3
