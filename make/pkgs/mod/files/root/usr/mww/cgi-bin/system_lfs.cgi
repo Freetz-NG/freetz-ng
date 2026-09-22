@@ -86,8 +86,14 @@ CACHE="/tmp/.lfs.caching"
 OUTER="/tmp/.lfs.reserve"
 INNER="/tmp/.lfs.wrapper"
 fitmnt() {
-	MTD_DEAD="$(sed -n "s,:.*fit$LFS_DEAD.*,,p" /proc/mtd)"
-	[ -z "$MTD_DEAD" ] && MTD_DEAD="disk/by-partlabel/fit$LFS_DEAD"
+	case "$LFS_DEAD" in
+		fit[01]) FIT_LABEL="$LFS_DEAD" ;;
+		[01]) FIT_LABEL="fit$LFS_DEAD" ;;
+		*) FIT_LABEL="$LFS_DEAD" ;;
+	esac
+	MTD_DEAD="$(sed -n -e "s|^mtd\([0-9]\{1,2\}\): .*\"${FIT_LABEL}\".*|mtd\1|p" /proc/mtd)"
+	[ -z "$MTD_DEAD" ] && MTD_DEAD="$(sed -n -e "s|^mtd\([0-9]\{1,2\}\): .*${FIT_LABEL}.*|mtd\1|p" /proc/mtd)"
+	[ -z "$MTD_DEAD" ] && MTD_DEAD="disk/by-partlabel/${FIT_LABEL}"
 	tail -c +73 /dev/$MTD_DEAD | fitdump --output $DUMPS --nodenames -
 	for PART in $DUMPS/*.image; do
 		PART="${PART##*/}"
@@ -129,8 +135,14 @@ resunm() {
 # SWITCHABLE="y"
 if [ -x "$(which bootslotctl)" ]; then
 	. /bin/env.mod.rcconf avm  # CONFIG_ENVIRONMENT_PATH
-	LFS_LIVE="$(bootslotctl get_active)"
-	LFS_DEAD="$(bootslotctl get_other)"
+	normalize_slot() {
+		case "$1" in
+			fit[01]) echo "${1#fit}" ;;
+			*) echo "$1" ;;
+		esac
+	}
+	LFS_LIVE="$(normalize_slot "$(bootslotctl get_active 2>/dev/null)")"
+	LFS_DEAD="$(normalize_slot "$(bootslotctl get_other 2>/dev/null)")"
 	NEXT="$LFS_LIVE"
 	[ "$LFS_LIVE" == "$LFS_DEAD" ] && LFS_LIVE="$(( ($LFS_LIVE+1) %2 ))"  # && SWITCHABLE="n"
 	[ "$VISUALIZE" != "yes" ] || PRIB="$(imginfo /)"
