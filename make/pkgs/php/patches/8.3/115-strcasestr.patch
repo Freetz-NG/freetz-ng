@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -36483,6 +36483,8 @@
+@@ -37622,6 +37622,8 @@
      libmagic/readcdf.c libmagic/softmagic.c libmagic/der.c \
      libmagic/buffer.c libmagic/is_csv.c"
  
@@ -9,8 +9,8 @@
    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for strcasestr" >&5
  printf %s "checking for strcasestr... " >&6; }
    if test "$cross_compiling" = yes
-@@ -100983,6 +100985,7 @@
-      ;;
+@@ -103572,6 +103574,7 @@
+ esac ;;
  esac
  fi
 +fi
