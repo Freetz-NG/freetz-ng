@@ -86,6 +86,7 @@ Latest changes
 
   - Libraries:
     * harfbuzz 14.5.1
+    * libpng 1.6.59
     * pcre2 10.49
 
   - Firmware updates:
