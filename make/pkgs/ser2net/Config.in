@@ -1,8 +1,14 @@
 config FREETZ_PACKAGE_SER2NET
-	bool "ser2net 3.5.4 - DEPRECATED"
+	bool "ser2net 4.6.8"
 	default n
+	select FREETZ_LIB_libgensio
+	select FREETZ_LIB_libgensioosh
+	select FREETZ_LIB_libgensiomdns
+	select FREETZ_LIB_libyaml
+	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	help
 		Ser2net is a program for allowing network connections to serial
 		ports. It supports RFC 2217 (remote control of serial port
-		parameters), but you must have a complient client.
+		parameters), but you must have a compliant client.
+		Configuration uses YAML format (ser2net.yaml).
 

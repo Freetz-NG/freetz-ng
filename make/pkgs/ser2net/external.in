@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_PACKAGE_SER2NET
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_SER2NET
+	bool "ser2net"
+	default n
+	help
+		externals the following file(s):
+		 /usr/sbin/ser2net

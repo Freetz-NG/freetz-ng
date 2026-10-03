@@ -1,4 +1,10 @@
-#CONTROLPORT:localhost,2000
-#2001:telnet:60:/dev/ttyUSB0:19200 NONE 1STOPBIT 8DATABITS
-#2002:raw:60:/dev/ttyUSB1:19200 NONE 1STOPBIT 8DATABITS
-
+%YAML 1.1
+---
+# ser2net configuration - see ser2net.yaml(5) for documentation
+#
+# Example: serial port accessible via TCP port 2001 with telnet/RFC2217
+#connection: &con00
+#  accepter: telnet(rfc2217),tcp,2001
+#  connector: serialdev,/dev/ttyUSB0,9600n81,local
+#
+define: &confver 1.0

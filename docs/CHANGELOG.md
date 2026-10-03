@@ -83,8 +83,10 @@ Latest changes
     * ImageMagick 7.1.0-62/7.1.2-32
     * iPerf3 3.3/3.22
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9
+    * ser2net 4.6.8
 
   - Libraries:
+    * gensio 2.8.15
     * harfbuzz 14.5.1
     * libpng 1.6.59
     * pcre2 10.49

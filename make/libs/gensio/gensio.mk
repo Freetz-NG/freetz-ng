@@ -1,0 +1,82 @@
+$(call PKG_INIT_LIB, 2.8.15)
+$(PKG)_LIB_VERSION:=10.3.3
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=1cfa7d6ef19b8d98808b1f4bce225454781299f885815c22ab59d85585f54ee3
+$(PKG)_SITE:=https://github.com/cminyard/$(pkg)/releases/download/v$($(PKG)_VERSION)
+### WEBSITE:=https://github.com/cminyard/gensio
+### CHANGES:=https://github.com/cminyard/gensio/releases
+### CVSREPO:=https://github.com/cminyard/gensio
+
+$(PKG)_BINARY:=$($(PKG)_DIR)/lib/.libs/libgensio.so.$($(PKG)_LIB_VERSION)
+$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio.so.$($(PKG)_LIB_VERSION)
+$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libgensio.so.$($(PKG)_LIB_VERSION)
+
+$(PKG)_OSH_BINARY:=$($(PKG)_DIR)/lib/.libs/libgensioosh.so.$($(PKG)_LIB_VERSION)
+$(PKG)_OSH_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensioosh.so.$($(PKG)_LIB_VERSION)
+$(PKG)_OSH_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libgensioosh.so.$($(PKG)_LIB_VERSION)
+
+$(PKG)_MDNS_BINARY:=$($(PKG)_DIR)/lib/.libs/libgensiomdns.so.$($(PKG)_LIB_VERSION)
+$(PKG)_MDNS_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensiomdns.so.$($(PKG)_LIB_VERSION)
+$(PKG)_MDNS_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libgensiomdns.so.$($(PKG)_LIB_VERSION)
+
+$(PKG)_CONFIGURE_OPTIONS += --disable-doc
+$(PKG)_CONFIGURE_OPTIONS += --with-glib=no
+$(PKG)_CONFIGURE_OPTIONS += --with-tcl=no
+$(PKG)_CONFIGURE_OPTIONS += --with-swig=no
+$(PKG)_CONFIGURE_OPTIONS += --with-cplusplus=no
+$(PKG)_CONFIGURE_OPTIONS += --with-sctp=no
+$(PKG)_CONFIGURE_OPTIONS += --with-ssl=no
+$(PKG)_CONFIGURE_OPTIONS += --with-certauth=no
+$(PKG)_CONFIGURE_OPTIONS += --with-tcp-wrappers=no
+$(PKG)_CONFIGURE_OPTIONS += --with-all-gensios=yes
+$(PKG)_CONFIGURE_OPTIONS += --enable-shared
+$(PKG)_CONFIGURE_OPTIONS += --enable-static
+
+
+$(PKG_SOURCE_DOWNLOAD)
+$(PKG_UNPACKED)
+$(PKG_CONFIGURED_CONFIGURE)
+
+$($(PKG)_BINARY) $($(PKG)_OSH_BINARY) $($(PKG)_MDNS_BINARY): $($(PKG)_DIR)/.configured
+	$(SUBMAKE) -C $(GENSIO_DIR)/lib
+
+$($(PKG)_STAGING_BINARY) $($(PKG)_OSH_STAGING_BINARY) $($(PKG)_MDNS_STAGING_BINARY): $($(PKG)_BINARY) $($(PKG)_OSH_BINARY) $($(PKG)_MDNS_BINARY)
+	mkdir -p $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/gensio/$($(PKG)_VERSION)
+	$(SUBMAKE) -C $(GENSIO_DIR)/lib \
+		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		install
+	$(SUBMAKE) -C $(GENSIO_DIR)/include \
+		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		install
+	$(PKG_FIX_LIBTOOL_LA) \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio*.la \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libgensio*.pc
+
+$($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
+	$(INSTALL_LIBRARY_STRIP)
+
+$($(PKG)_OSH_TARGET_BINARY): $($(PKG)_OSH_STAGING_BINARY)
+	$(INSTALL_LIBRARY_STRIP)
+
+$($(PKG)_MDNS_TARGET_BINARY): $($(PKG)_MDNS_STAGING_BINARY)
+	$(INSTALL_LIBRARY_STRIP)
+
+$(pkg): $($(PKG)_STAGING_BINARY)
+
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_OSH_TARGET_BINARY) $($(PKG)_MDNS_TARGET_BINARY)
+
+
+$(pkg)-clean:
+	-$(SUBMAKE) -C $(GENSIO_DIR)/lib clean
+	$(RM) -r \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio*.so* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio*.la \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libgensio*.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/gensio
+
+$(pkg)-uninstall:
+	$(RM) $(GENSIO_TARGET_DIR)/libgensio*.so* \
+		$(GENSIO_TARGET_DIR)/libgensioosh*.so* \
+		$(GENSIO_TARGET_DIR)/libgensiomdns*.so*
+
+$(PKG_FINISH)

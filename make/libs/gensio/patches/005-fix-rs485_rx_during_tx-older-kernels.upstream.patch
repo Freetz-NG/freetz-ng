@@ -1,0 +1,35 @@
+fix RS485 option "rx_during_tx" on kernels lacking the constant
+
+gensio's configure only checks for the TIOCSRS485 declaration
+(AC_CHECK_DECLS([TIOCSRS485], ...)), so the RS485 block in
+lib/os_osops.c is compiled on every kernel that provides that ioctl
+(mainline since 2.6.33).  Inside it, the "rx_during_tx" option uses
+SER_RS485_RX_DURING_TX unguarded, but the constant only exists since
+Linux 3.7, so kernels 2.6.33..3.6 fail to build gensio with:
+
+  os_osops.c:3021: error: 'SER_RS485_RX_DURING_TX' undeclared
+
+The very next option, "terminate_bus", is already wrapped in
+#ifdef SER_RS485_TERMINATE_BUS - do the same for "rx_during_tx" and
+guard the whole else-if branch, which keeps the option chain valid in
+every macro combination.  On kernels without the constant the option
+is rejected as unsupported instead of breaking the build.
+
+On Freetz this hits exactly the x86 cable boxes (6490, 6590) whose
+kernels are 2.6.39.x: new enough for TIOCSRS485, old enough to lack
+the constant.  All other targets either predate TIOCSRS485 (the whole
+RS485 block is compiled out) or have the constant (kernel >= 3.7).
+
+--- a/lib/os_osops.c
++++ b/lib/os_osops.c
+@@ -3017,8 +3017,10 @@
+ 	    t->rs485.flags |= SER_RS485_RTS_ON_SEND;
+ 	} else if (strcmp(argv[i], "rts_after_send") == 0) {
+ 	    t->rs485.flags |= SER_RS485_RTS_AFTER_SEND;
++#ifdef SER_RS485_RX_DURING_TX
+ 	} else if (strcmp(argv[i], "rx_during_tx") == 0) {
+ 	    t->rs485.flags |= SER_RS485_RX_DURING_TX;
++#endif
+ #ifdef SER_RS485_TERMINATE_BUS
+ 	} else if (strcmp(argv[i], "terminate_bus") == 0) {
+ 	    t->rs485.flags |= SER_RS485_TERMINATE_BUS;

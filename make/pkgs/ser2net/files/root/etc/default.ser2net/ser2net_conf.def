@@ -1,6 +1,6 @@
-CAPTION='ser2net.conf'
-DESCRIPTION="Syntax: <tt>&lt;TCP port&gt;:&lt;state&gt;:&lt;timeout&gt;:&lt;device&gt;:&lt;options&gt;</tt><br>
-$(lang de:"Dokumentation" en:"Documentation"): <a target=blank href=https://github.com/cminyard/ser2net/blob/3.5.x/ser2net.conf>https://github.com/cminyard/ser2net/blob/3.5.x/ser2net.conf</a>"
+CAPTION='ser2net.yaml'
+DESCRIPTION="Syntax: YAML (ser2net.yaml v1 format)<br>
+$(lang de:"Dokumentation" en:"Documentation"): <a target=blank href=https://github.com/cminyard/ser2net/blob/master/ser2net.yaml.5>https://github.com/cminyard/ser2net/blob/master/ser2net.yaml.5</a>"
 
 CONFIG_FILE='/tmp/flash/ser2net/ser2net.conf'
 CONFIG_SAVE='modsave flash; killall -0 ser2net && /mod/etc/init.d/rc.ser2net restart'

@@ -1,0 +1,3 @@
+ifneq (,$(strip $(filter y,$(FREETZ_LIB_libgensio) $(FREETZ_LIB_libgensioosh) $(FREETZ_LIB_libgensiomdns))))
+LIBS+=gensio
+endif

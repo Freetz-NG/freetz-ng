@@ -1,0 +1,28 @@
+config FREETZ_LIB_libgensio
+	bool "libgensio (libgensio.so)"
+	depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
+	select FREETZ_LIB_libgensioosh
+	select FREETZ_LIB_libgensiomdns
+	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	default n
+	help
+		Gensio - a library for abstracting stream I/O. Provides network
+		and serial I/O with support for TCP, UDP, serial devices, telnet,
+		SSL/TLS, and more.
+
+config FREETZ_LIB_libgensioosh
+	bool "libgensioosh (libgensioosh.so)"
+	depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
+	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	default n
+	help
+		Gensio OS helper library - provides OS abstraction functions.
+
+config FREETZ_LIB_libgensiomdns
+	bool "libgensiomdns (libgensiomdns.so)"
+	depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
+	select FREETZ_LIB_libgensioosh
+	default n
+	help
+		Gensio mDNS library - provides mDNS service discovery support.
+
