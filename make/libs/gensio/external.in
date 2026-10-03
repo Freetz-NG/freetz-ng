@@ -1,0 +1,24 @@
+config EXTERNAL_FREETZ_LIB_libgensio
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgensio
+	bool "libgensio"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libgensio.so.10.3.3
+
+config EXTERNAL_FREETZ_LIB_libgensioosh
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgensioosh
+	bool "libgensioosh"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libgensioosh.so.10.3.3
+
+config EXTERNAL_FREETZ_LIB_libgensiomdns
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgensiomdns
+	bool "libgensiomdns"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libgensiomdns.so.10.3.3
+

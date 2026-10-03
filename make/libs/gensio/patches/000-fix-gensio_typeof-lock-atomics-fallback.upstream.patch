@@ -1,0 +1,41 @@
+fix lock-based atomics: gensio_typeof() applied '->val' twice
+
+The lock-based gensio_atomic_* fallback (used when neither C11
+atomics nor GCC __atomic builtins are available, e.g. GCC 4.6 /
+old MIPS targets with --std=gnu99) expands gensio_typeof((a)->val),
+but gensio_typeof() already appends ->val to its argument, yielding
+__typeof__(((a)->val)->val), i.e. '->' applied to an unsigned int:
+
+  error: invalid type argument of '->' (have 'unsigned int')
+
+reported from every gensio_refcount_* function that uses
+gensio_atomic_inc/dec_if_nz (gensio_refcount.h:41 et al).
+
+All call sites pass the value expression (a)->val, and the
+non-typeof fallback (gensio_typeof(x) -> long) also expects a value
+expression, so the typeof branches must be typeof(a)/__typeof__(a).
+Call sites and all four branches are consistent afterwards; the
+stdatomic and __atomic branches do not use gensio_typeof at all and
+are unaffected.  Upstream bug, present in 2.8.15 and 3.0.4.
+
+--- a/include/gensio/gensio_atomics.h
++++ b/include/gensio/gensio_atomics.h
+@@ -36,15 +36,15 @@
+
+ #if defined(__cplusplus) && __cplusplus >= 202302L
+ /* c++ doesn't define __STDC_VERSION__ */
+-#define gensio_typeof(a) typeof((a)->val)
++#define gensio_typeof(a) typeof(a)
+
+ #elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L
+ /* For C only. */
+-#define gensio_typeof(a) typeof((a)->val)
++#define gensio_typeof(a) typeof(a)
+
+ #elif defined(__GNUC__) || defined(_MSC_VER)
+ /* Use the built-in GCC one that always works with gcc and MSC. */
+-#define gensio_typeof(a) __typeof__((a)->val)
++#define gensio_typeof(a) __typeof__(a)
+
+ #else
+ /* Just use the largest possible value. */

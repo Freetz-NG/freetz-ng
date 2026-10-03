@@ -1,0 +1,3 @@
+[ "$EXTERNAL_FREETZ_LIB_libgensio" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgensio.so.10.3.3"
+[ "$EXTERNAL_FREETZ_LIB_libgensioosh" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgensioosh.so.10.3.3"
+[ "$EXTERNAL_FREETZ_LIB_libgensiomdns" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgensiomdns.so.10.3.3"
