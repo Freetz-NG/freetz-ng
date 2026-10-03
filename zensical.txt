@@ -1,2 +1,2 @@
-zensical==0.0.59
+zensical==0.0.67
 
