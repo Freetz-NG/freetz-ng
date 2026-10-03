@@ -1,0 +1,71 @@
+title: "[Wish] "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Wishlist
+
+        Please describe your request as clearly as possible. Explain which problem
+        it would solve or which use case it would enable.
+        Requests can be discussed, but implementation is not guaranteed.
+
+  - type: textarea
+    id: wish
+    attributes:
+      label: 'What would you like to see?'
+      description: 'Describe the feature or change you would like as clearly as possible.'
+      placeholder: |
+        I would like ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 'What problem would this solve?'
+      description: 'What would be the specific benefit of implementing this request?'
+      placeholder: |
+        Currently ...
+        With this change, I could ...
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: 'Affected device / FRITZ!OS'
+      description: 'If relevant, which device and FRITZ!OS version does this request concern?'
+      placeholder: "e.g. FRITZ!Box 7590 with FRITZ!OS 8.20"
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 'Possible implementation or alternatives'
+      description: 'Do you have ideas for implementation or know of a workaround?'
+      placeholder: |
+        ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: 'Additional information'
+      description: 'Additional links, examples, or notes.'
+      placeholder: |
+        ...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 'Before submitting'
+      options:
+        - label: I have searched for similar discussions and requests.
+          required: true
+        - label: I have not shared any confidential information, passwords, or credentials.
+          required: true
