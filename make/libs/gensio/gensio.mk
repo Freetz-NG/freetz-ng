@@ -35,11 +35,7 @@ $($(PKG)_BUILD_BINARIES): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(GENSIO_DIR)/lib
 
 $($(PKG)_STAGING_BINARIES): $($(PKG)_BUILD_BINARIES)
-	mkdir -p $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/gensio/
-	$(SUBMAKE) -C $(GENSIO_DIR)/lib \
-		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
-		install
-	$(SUBMAKE) -C $(GENSIO_DIR)/include \
+	$(SUBMAKE) -C $(GENSIO_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
