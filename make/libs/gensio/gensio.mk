@@ -7,21 +7,11 @@ $(PKG)_SITE:=https://github.com/cminyard/$(pkg)/releases/download/v$($(PKG)_VERS
 ### CHANGES:=https://github.com/cminyard/gensio/releases
 ### CVSREPO:=https://github.com/cminyard/gensio
 
-$(PKG)_BINARY:=$($(PKG)_DIR)/lib/.libs/libgensio.so.$($(PKG)_LIB_VERSION)
-$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio.so.$($(PKG)_LIB_VERSION)
-$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libgensio.so.$($(PKG)_LIB_VERSION)
-
-$(PKG)_OSH_BINARY:=$($(PKG)_DIR)/lib/.libs/libgensioosh.so.$($(PKG)_LIB_VERSION)
-$(PKG)_OSH_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensioosh.so.$($(PKG)_LIB_VERSION)
-$(PKG)_OSH_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libgensioosh.so.$($(PKG)_LIB_VERSION)
-
-$(PKG)_MDNS_BINARY:=$($(PKG)_DIR)/lib/.libs/libgensiomdns.so.$($(PKG)_LIB_VERSION)
-$(PKG)_MDNS_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensiomdns.so.$($(PKG)_LIB_VERSION)
-$(PKG)_MDNS_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libgensiomdns.so.$($(PKG)_LIB_VERSION)
-
-$(PKG)_BUILD_BINARIES:=$($(PKG)_BINARY) $($(PKG)_OSH_BINARY) $($(PKG)_MDNS_BINARY)
-$(PKG)_STAGING_BINARIES:=$($(PKG)_STAGING_BINARY) $($(PKG)_OSH_STAGING_BINARY) $($(PKG)_MDNS_STAGING_BINARY)
-$(PKG)_TARGET_BINARIES:=$($(PKG)_TARGET_BINARY) $($(PKG)_OSH_TARGET_BINARY) $($(PKG)_MDNS_TARGET_BINARY)
+$(PKG)_LIBRARIES_SHORT   := gensio gensioosh gensiomdns
+$(PKG)_LIBRARIES_FILES   := $($(PKG)_LIBRARIES_SHORT:%=lib%.so.$($(PKG)_LIB_VERSION))
+$(PKG)_BUILD_BINARIES    := $($(PKG)_LIBRARIES_FILES:%=$($(PKG)_DIR)/lib/.libs/%)
+$(PKG)_STAGING_BINARIES  := $($(PKG)_LIBRARIES_FILES:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
+$(PKG)_TARGET_BINARIES   := $($(PKG)_LIBRARIES_FILES:%=$($(PKG)_TARGET_DIR)/%)
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-doc
 $(PKG)_CONFIGURE_OPTIONS += --with-glib=no
@@ -56,13 +46,7 @@ $($(PKG)_STAGING_BINARIES): $($(PKG)_BUILD_BINARIES)
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio*.la \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libgensio*.pc
 
-$($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
-	$(INSTALL_LIBRARY_STRIP)
-
-$($(PKG)_OSH_TARGET_BINARY): $($(PKG)_OSH_STAGING_BINARY)
-	$(INSTALL_LIBRARY_STRIP)
-
-$($(PKG)_MDNS_TARGET_BINARY): $($(PKG)_MDNS_STAGING_BINARY)
+$($(PKG)_TARGET_BINARIES): $($(PKG)_TARGET_DIR)/lib%.so.$($(PKG)_LIB_VERSION): $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib%.so.$($(PKG)_LIB_VERSION)
 	$(INSTALL_LIBRARY_STRIP)
 
 $(pkg): $($(PKG)_STAGING_BINARIES)
