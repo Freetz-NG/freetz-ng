@@ -35,7 +35,10 @@ $($(PKG)_BUILD_BINARIES): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(GENSIO_DIR)/lib
 
 $($(PKG)_STAGING_BINARIES): $($(PKG)_BUILD_BINARIES)
-	$(SUBMAKE) -C $(GENSIO_DIR) \
+	$(SUBMAKE) -C $(GENSIO_DIR)/lib \
+		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		install
+	$(SUBMAKE) -C $(GENSIO_DIR)/include \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
@@ -55,7 +58,6 @@ $(pkg)-clean:
 	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio*.so* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgensio*.la \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/gensio \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libgensio*.pc \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/gensio
 
