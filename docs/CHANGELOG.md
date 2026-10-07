@@ -104,6 +104,7 @@ Latest changes
     * libconfuse 3.4
     * libpng 1.6.59
     * pcre2 10.49
+    * utf8proc 2.12.0
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
