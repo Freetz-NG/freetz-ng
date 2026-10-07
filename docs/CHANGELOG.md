@@ -90,6 +90,7 @@ Latest changes
     * endlessh 1.1
     * ImageMagick 7.1.0-62/7.1.2-32
     * iPerf3 3.3/3.22
+    * lsof 4.99.7
     * OpenSSH 9.3p2/10.6p1
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9
     * OpenVPN 2.4.12/2.5.11/2.6.23/2.7.8
