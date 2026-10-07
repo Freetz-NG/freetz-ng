@@ -71,6 +71,7 @@ Latest changes
     * cmake 4.4.4
     * openssl 3.5.9
     * python3 3.14.8
+    * U-Boot 2026.10
 
   - AVM sources:
     * 1700     8.26 - 5.15.176
