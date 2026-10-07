@@ -42,9 +42,9 @@ left alone to keep the change to one concern.
 
 Upstream: https://github.com/cminyard/gensio/pull/102
 
---- a/lib/Makefile.am
-+++ b/lib/Makefile.am
-@@ -391,6 +391,7 @@
+--- lib/Makefile.am
++++ lib/Makefile.am
+@@ -449,6 +449,7 @@
  endif
  
  install-exec-hook:
@@ -52,9 +52,9 @@ Upstream: https://github.com/cminyard/gensio/pull/102
  	@(cd $(DESTDIR)$(gensiolibexecdir) && $(RM) -f $(gensiolibexec_LTLIBRARIES))
  	@(cd $(DESTDIR)$(gensiolibexecdir) && $(RM) -f $(xgensio_libs))
  
---- a/lib/Makefile.in
-+++ b/lib/Makefile.in
-@@ -2333,6 +2333,7 @@
+--- lib/Makefile.in
++++ lib/Makefile.in
+@@ -2574,6 +2574,7 @@
  .PHONY gensiolibexec-dummyprereq:
  
  install-exec-hook:

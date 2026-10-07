@@ -1,4 +1,4 @@
-$(call TOOLS_INIT, $(if $(FREETZ_TOOLS_PATCHELF_VERSION_ABANDON),0.14.5,0.19.1))
+$(call TOOLS_INIT, $(if $(FREETZ_TOOLS_PATCHELF_VERSION_ABANDON),0.14.5,0.19.2))
 # remove patchelf-target-host when fixed !
 # BE(?) broken since
 # "Rework file shifting to avoid sections crossing multiple segments"
@@ -14,10 +14,10 @@ $(call TOOLS_INIT, $(if $(FREETZ_TOOLS_PATCHELF_VERSION_ABANDON),0.14.5,0.19.1))
 # readelf: Error: the PHDR segment is not covered by a LOAD segment
 $(PKG)_SOURCE:=patchelf-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH_ABANDON:=b9a46f2989322eb89fa4f6237e20836c57b455aa43a32545ea093b431d982f5c
-$(PKG)_HASH_CURRENT:=2cce01de93653829f6ab68a20c2ec275e1c00a946110704a27e928d2e6e88716
+$(PKG)_HASH_CURRENT:=d4ad9a4e5c689e09119ce2f30a94b0e8b4f98c78590123ea21665e34c6928801
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_TOOLS_PATCHELF_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/NixOS/patchelf/releases/download/$($(PKG)_VERSION)
-### VERSION:=0.14.5/0.19.1
+### VERSION:=0.14.5/0.19.2
 ### WEBSITE:=https://opencollective.com/nixos
 ### MANPAGE:=https://sources.debian.org/patches/patchelf/
 ### CHANGES:=https://github.com/NixOS/patchelf/releases

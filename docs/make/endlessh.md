@@ -1,4 +1,4 @@
-# endlessh 1.0
+# endlessh 1.1
   - Homepage: [https://github.com/skeeto/endlessh](https://github.com/skeeto/endlessh)
   - Manpage: [https://github.com/skeeto/endlessh?tab=readme-ov-file](https://github.com/skeeto/endlessh?tab=readme-ov-file)
   - Changelog: [https://github.com/skeeto/endlessh/releases](https://github.com/skeeto/endlessh/releases)

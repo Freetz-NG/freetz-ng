@@ -1,4 +1,4 @@
-# gensio: libgensio (libgensio.so) 2.8.15
+# gensio: libgensio (libgensio.so) 3.0.4
   - Homepage: [https://github.com/cminyard/gensio](https://github.com/cminyard/gensio)
   - Changelog: [https://github.com/cminyard/gensio/releases](https://github.com/cminyard/gensio/releases)
   - Repository: [https://github.com/cminyard/gensio](https://github.com/cminyard/gensio)

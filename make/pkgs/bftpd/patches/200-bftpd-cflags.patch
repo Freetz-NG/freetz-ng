@@ -1,7 +1,7 @@
 --- Makefile.in
 +++ Makefile.in
 @@ -1,8 +1,8 @@
- VERSION=6.6
+ VERSION=6.7
 -CC?=@CC@
 +CC=@CC@
  INSTALL=@INSTALL@

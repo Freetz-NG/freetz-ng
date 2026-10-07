@@ -4,7 +4,7 @@ config EXTERNAL_FREETZ_LIB_libgensio
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libgensio.so.10.3.3
+		 ${FREETZ_LIBRARY_DIR}/libgensio.so.14.2.0
 
 config EXTERNAL_FREETZ_LIB_libgensioosh
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgensioosh
@@ -12,7 +12,7 @@ config EXTERNAL_FREETZ_LIB_libgensioosh
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libgensioosh.so.10.3.3
+		 ${FREETZ_LIBRARY_DIR}/libgensioosh.so.14.2.0
 
 config EXTERNAL_FREETZ_LIB_libgensiomdns
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgensiomdns
@@ -20,5 +20,5 @@ config EXTERNAL_FREETZ_LIB_libgensiomdns
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libgensiomdns.so.10.3.3
+		 ${FREETZ_LIBRARY_DIR}/libgensiomdns.so.14.2.0
 

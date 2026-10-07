@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 2026.07)
+$(call TOOLS_INIT, 2026.10)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=u-boot-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=21463d6d4498768d01fa192f6027468c04480d0daa99cd546f9a75a4d9ec353c
+$(PKG)_HASH:=f943a88389c8fd70a6b0d061a88267465e143c7ca6ea2b75837ab20f5b60c739
 $(PKG)_SITE:=https://github.com/u-boot/u-boot/archive/refs/tags
 ### CHANGES:=https://github.com/u-boot/u-boot/tags
 ### CVSREPO:=https://github.com/u-boot/u-boot

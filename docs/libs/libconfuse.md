@@ -1,4 +1,4 @@
-# libconfuse (libconfuse.so) 3.3
+# libconfuse (libconfuse.so) 3.4
   - Homepage: [https://www.nongnu.org/confuse/](https://www.nongnu.org/confuse/)
   - Manpage: [https://www.nongnu.org/confuse/manual/](https://www.nongnu.org/confuse/manual/)
   - Changelog: [https://github.com/libconfuse/libconfuse/releases](https://github.com/libconfuse/libconfuse/releases)
