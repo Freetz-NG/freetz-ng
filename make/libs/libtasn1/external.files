@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_LIB_libtasn1" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libtasn1.so.6.6.3"
+[ "$EXTERNAL_FREETZ_LIB_libtasn1" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libtasn1.so.6.6.5"
 
