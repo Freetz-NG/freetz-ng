@@ -102,6 +102,7 @@ Latest changes
     * gensio 3.0.4
     * harfbuzz 14.6.0
     * libconfuse 3.4
+    * libpcap 1.11.0
     * libpng 1.6.59
     * pcre2 10.49
 
