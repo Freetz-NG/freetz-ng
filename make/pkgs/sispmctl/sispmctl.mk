@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 3.1)
+$(call PKG_INIT_BIN, 4.12)
 $(PKG)_SOURCE:=sispmctl-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=e9a99cc81ef0a93f3484e5093efd14d93cc967221fcd22c151f0bea32eb91da7
+$(PKG)_HASH:=e757863a4838da6e1ca72a57adc5aca6fc47ffbddc72a69052d8abd743d57082
 $(PKG)_SITE:=@SF/sispmctl
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/sispmctl
@@ -12,6 +12,7 @@ $(PKG)_DEPENDS_ON += libusb0
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./admin)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_SISPMCTL_WEB),--with-webdir=/usr/share/sispmctl,--enable-webless)
+$(PKG)_CONFIGURE_OPTIONS += --enable-all-static
 
 $(PKG)_REBUILD_SUBOPTS += $(LIBUSB0_REBUILD_SUBOPTS)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_SISPMCTL_WEB

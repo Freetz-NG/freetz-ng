@@ -97,6 +97,7 @@ Latest changes
     * PHP 5.6.40/8.2.34/8.3.35/8.4.26/8.5.11
     * procps-ng 4.0.7
     * rpcbind 1.3.1
+    * sispmctl 4.12
     * tcpdump 4.99.7
     * Tor 0.4.8.25/0.4.9.14
     * Vim 9.2.1169
