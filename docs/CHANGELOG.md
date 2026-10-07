@@ -70,6 +70,7 @@ Latest changes
   - Host tools:
     * cmake 4.4.4
     * openssl 3.5.9
+    * patchelf 0.14.5/0.19.2
     * python3 3.14.8
 
   - AVM sources:
