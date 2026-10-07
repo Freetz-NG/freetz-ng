@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,10.5p1))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,10.6p1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=200ebe147f6cb3f101fd0cdf9e02442af7ddca298dffd9f456878e7ccac676e8
-$(PKG)_HASH_CURRENT:=d44d28a839ea9daf969cc69150fde59910b2b39361dad81a3bd6cbd19218db11
+$(PKG)_HASH_CURRENT:=a9dc9565dffe8640f64d863cd29a32bc4a3dbdec0566a7fc44c5d6ee767d5f39
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable,$(PKG)_SITE:=https://mirror.planetunix.net/pub/OpenBSD/OpenSSH/portable
 ### WEBSITE:=https://www.openssh.com/
