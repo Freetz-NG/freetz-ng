@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libconfuse
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libconfuse.so.2.1.0
+		 ${FREETZ_LIBRARY_DIR}/libconfuse.so.2.2.0
 

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 6.6)
+$(call PKG_INIT_BIN, 6.7)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=a867ba93a608cccb60944e1fae00e52b463f416b09235f87a31c023b296ac12e
+$(PKG)_HASH:=40317957c3667fded7541ff4b0f44328573827ef0315519a44ca1b627f5eafb2
 $(PKG)_SITE:=@SF/bftpd
 ### WEBSITE:=https://bftpd.sourceforge.net/
 ### MANPAGE:=https://bftpd.sourceforge.net/documents.html

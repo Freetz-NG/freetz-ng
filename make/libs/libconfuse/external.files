@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_LIB_libconfuse" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libconfuse.so.2.1.0"
+[ "$EXTERNAL_FREETZ_LIB_libconfuse" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libconfuse.so.2.2.0"
 
