@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.0.6)
+$(call PKG_INIT_BIN, 4.0.7)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=67bea6fbc3a42a535a0230c9e891e5ddfb4d9d39422d46565a2990d1ace15216
+$(PKG)_HASH:=9d2021f47a4501c667862c9942a92d1953694b21d11bcd1702e83eb594e3d67d
 $(PKG)_SITE:=@SF/procps-ng/Production
 ### WEBSITE:=https://gitlab.com/procps-ng/procps
 ### MANPAGE:=https://linux.die.net/man/1/ps

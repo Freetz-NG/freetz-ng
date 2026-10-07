@@ -84,12 +84,16 @@ Latest changes
     * Bftpd 6.7
     * ImageMagick 7.1.0-62/7.1.2-32
     * iPerf3 3.3/3.22
+    * OpenSSH 9.3p2/10.6p1
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9
+    * Patchelf 0.19.2
+    * procps-ng 4.0.7
 
   - Libraries:
     * expat 2.7.5/2.9.0
     * gensio 2.8.15
     * harfbuzz 14.6.0
+    * libconfuse 3.4
     * libpng 1.6.59
     * pcre2 10.49
 
