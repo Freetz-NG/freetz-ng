@@ -84,6 +84,7 @@ Latest changes
     * ImageMagick 7.1.0-62/7.1.2-32
     * iPerf3 3.3/3.22
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9
+    * PHP 5.6.40/8.2.34/8.3.35/8.4.26/8.5.11
 
   - Libraries:
     * expat 2.7.5/2.9.0
