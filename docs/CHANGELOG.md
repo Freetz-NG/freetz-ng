@@ -89,6 +89,7 @@ Latest changes
     * expat 2.7.5/2.9.0
     * gensio 2.8.15
     * harfbuzz 14.6.0
+    * libconfuse 3.4
     * libpng 1.6.59
     * pcre2 10.49
 
