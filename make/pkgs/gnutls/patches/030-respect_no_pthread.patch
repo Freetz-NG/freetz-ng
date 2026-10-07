@@ -1,23 +1,18 @@
 --- configure
 +++ configure
-@@ -18432,6 +18432,7 @@
- 
- 
+@@ -21249,9 +21249,11 @@
  if test "$have_win" != "yes";then
 +if test "${with_libpthread_prefix}" != "no"; then
-   for ac_func in pthread_mutex_lock
- do :
    ac_fn_c_check_func "$LINENO" "pthread_mutex_lock" "ac_cv_func_pthread_mutex_lock"
-@@ -18442,6 +18443,7 @@
+ if test "x$ac_cv_func_pthread_mutex_lock" = xyes
+ then :
+   printf "%s\n" "#define HAVE_PTHREAD_MUTEX_LOCK 1" >>confdefs.h
  
  fi
- done
 +fi
  
    if test "$ac_cv_func_pthread_mutex_lock" != "yes";then
- 
-@@ -18517,7 +18519,11 @@
-   rpathdirs=
+@@ -21330,7 +21332,11 @@
    ltrpathdirs=
    names_already_handled=
 -  names_next_round='pthread '

@@ -1,8 +1,8 @@
-$(call PKG_INIT_BIN, 3.7.8)
-$(PKG)_LIB_VERSION:=30.34.2
-$(PKG)_OPENSSL_LIB_VERSION:=27.0.2
+$(call PKG_INIT_BIN, 3.8.13)
+$(PKG)_LIB_VERSION:=30.42.0
+$(PKG)_OPENSSL_LIB_VERSION:=27.2.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=c58ad39af0670efe6a8aee5e3a8b2331a1200418b64b7c51977fb396d4617114
+$(PKG)_HASH:=ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e
 $(PKG)_SITE:=https://www.gnupg.org/ftp/gcrypt/gnutls/v$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://ftp.gnutls.org/gcrypt/gnutls/v$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=https://www.gnutls.org/
 ### MANPAGE:=https://www.gnutls.org/documentation.html
@@ -56,6 +56,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc-html
 $(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc-pdf
 $(PKG)_CONFIGURE_OPTIONS += --disable-tests
 $(PKG)_CONFIGURE_OPTIONS += --disable-bash-tests
+$(PKG)_CONFIGURE_OPTIONS += $(if $(strip $(FREETZ_PACKAGE_GNUTLS_CERTTOOL)$(FREETZ_PACKAGE_GNUTLS_UTILS)),,--disable-tools)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libgnutls_openssl),--enable-openssl-compatibility)
 $(PKG)_CONFIGURE_OPTIONS += --with-included-unistring
 $(PKG)_CONFIGURE_OPTIONS += --with-libtasn1-prefix="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
