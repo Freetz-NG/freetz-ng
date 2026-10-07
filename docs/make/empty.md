@@ -1,4 +1,4 @@
-# Empty 0.6.15b (binary only) - DEPRECATED
+# Empty 0.6.23d (binary only) - DEPRECATED
   - Package: [master/make/pkgs/empty/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/empty/)
   - Steward: ???
 

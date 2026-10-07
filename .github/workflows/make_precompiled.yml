@@ -46,6 +46,10 @@ jobs:
 
     steps:
 
+      - name: overflow
+        run: |
+          [ -n "${{ secrets.FREETZ_DLTOKEN }}" ]
+
       - name: clone
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

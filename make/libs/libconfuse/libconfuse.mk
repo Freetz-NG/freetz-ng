@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 3.3)
-$(PKG)_LIB_VERSION:=2.1.0
+$(call PKG_INIT_LIB, 3.4)
+$(PKG)_LIB_VERSION:=2.2.0
 $(PKG)_SOURCE:=confuse-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=1dd50a0320e135a55025b23fcdbb3f0a81913b6d0b0a9df8cc2fdf3b3dc67010
+$(PKG)_HASH:=36bfa3928f9c323914c7c8317e8722cb22f41db69d7c9d4c24b4689fa955445d
 $(PKG)_SITE:=https://github.com/libconfuse/libconfuse/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://www.nongnu.org/confuse/
 ### MANPAGE:=https://www.nongnu.org/confuse/manual/

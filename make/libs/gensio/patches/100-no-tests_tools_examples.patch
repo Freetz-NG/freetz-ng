@@ -1,11 +1,11 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -469,7 +469,7 @@
+@@ -477,7 +477,7 @@
  top_srcdir = @top_srcdir@
  ACLOCAL_AMFLAGS = -I m4
  SUBDIRS = lib $(SWIG_DIR) $(CPLUSPLUS_DIR) include $(GLIB_DIR) \
 -	$(TCL_DIR) tests tools examples $(am__append_1)
 +	$(TCL_DIR)                      $(am__append_1)
  DIST_SUBDIRS = lib swig c++ include glib tcl tests tools examples man
- EXTRA_DIST = README.rst reconf ISSUES TODO
+ EXTRA_DIST = README.rst reconf ISSUES TODO FSK-SOAPY.rst
  
