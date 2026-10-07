@@ -55,7 +55,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. Bash also incorporates useful features from the Korn and C shells (ksh and csh).(roundabout 540K minimal and 840K full featured)
      - [Bash als Loginshell](../../docs/make/bash.md#bash-als-loginshell)
 
-  * **[Bftpd 6.6](../../docs/make/bftpd.md)<a id='bftpd'></a>**<br>
+  * **[Bftpd 6.7](../../docs/make/bftpd.md)<a id='bftpd'></a>**<br>
     Small FTP Server
      - [Zusätzliche Benutzer einrichten](../../docs/make/bftpd.md#zusätzliche-benutzer-einrichten)
      - [Bestehende (persistente) Benutzer modifizieren](../../docs/make/bftpd.md#bestehende-persistente-benutzer-modifizieren)
@@ -622,13 +622,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Fehlerbehebung](../../docs/make/openntpd.md#fehlerbehebung)
      - [Alternative](../../docs/make/openntpd.md#alternative)
 
-  * **[OpenSSH 9.3p2/10.5p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 9.3p2/10.6p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
   * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
-  * **[OpenVPN 2.4.12/2.5.11/2.6.23/2.7.7](../../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
+  * **[OpenVPN 2.4.12/2.5.11/2.6.23/2.7.8](../../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
      - [Häufige Fragen / Howto](../../docs/make/openvpn.md#häufige-fragen--howto)
      - [Konfigurationsanleitung](../../docs/make/openvpn.md#konfigurationsanleitung)
@@ -657,7 +657,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
     A set of tools for reading and converting Fritz!Box phone book to such (easy parseable) formats like: - .csv (comma-separated values), or - .tsv (tab-separated values).
 
-  * **[PHP 5.6.40/8.2.33/8.3.35/8.4.26/8.5.11 (binary only)](../../docs/make/php.md)<a id='php'></a>**<br>
+  * **[PHP 5.6.40/8.2.34/8.3.35/8.4.26/8.5.11 (binary only)](../../docs/make/php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
      - [Memory usage](../../docs/make/php.md#memory-usage)
 
@@ -708,7 +708,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Installation](../../docs/make/privoxy.md#installation)
      - [Diskussion](../../docs/make/privoxy.md#diskussion)
 
-  * **[procps-ng 4.0.6 (binaries only)](../../docs/make/procps-ng.md)<a id='procps-ng'></a>**<br>
+  * **[procps-ng 4.0.7 (binaries only)](../../docs/make/procps-ng.md)<a id='procps-ng'></a>**<br>
     procps-ng - /proc filesystem utilities This package provides the full versions of procps utilities with the suffix "-ng" to avoid conflicts with BusyBox versions.
      - [Process Information](../../docs/make/procps-ng.md#process-information)
      - [Memory and System Information](../../docs/make/procps-ng.md#memory-and-system-information)
@@ -970,7 +970,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[tmux 3.7c (binary only)](../../docs/make/tmux.md)<a id='tmux'></a>**<br>
     tmux, a BSD-licensed alternative to GNU screen. Uses ncurses.
 
-  * **[Tor 0.4.8.25/0.4.9.13](../../docs/make/tor.md)<a id='tor'></a>**<br>
+  * **[Tor 0.4.8.25/0.4.9.14](../../docs/make/tor.md)<a id='tor'></a>**<br>
     The Onion Router Anonymous Internet communication system.
      - [Tor als Proxy benutzen](../../docs/make/tor.md#tor-als-proxy-benutzen)
      - [Tor und Privoxy](../../docs/make/tor.md#tor-und-privoxy)
@@ -1151,7 +1151,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Sicherheitshinweis](../../docs/make/nano-shell.md#sicherheitshinweis)
      - [Benutzung](../../docs/make/nano-shell.md#benutzung)
 
-  * **[PatchELF 0.19.1 (binary only)](../../docs/make/patchelf.md)<a id='patchelf'></a>**<br>
+  * **[PatchELF 0.19.2 (binary only)](../../docs/make/patchelf.md)<a id='patchelf'></a>**<br>
     Modifies existing ELF executables and libraries. Can change the interpreter, RPATH, and other ELF metadata.
 
   * **[pciutils 3.1.7 (binary only) - DEPRECATED](../../docs/make/pciutils.md)<a id='pciutils'></a>**<br>

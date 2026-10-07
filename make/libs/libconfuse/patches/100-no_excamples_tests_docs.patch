@@ -1,6 +1,6 @@
 --- Makefile.am
 +++ Makefile.am
-@@ -11,7 +11,7 @@
+@@ -10,7 +10,7 @@
  if ENABLE_EXAMPLES
    EXAMPLES      += examples
  endif
@@ -11,7 +11,7 @@
  BORLAND_FILES         = cfgtest.bpf cfgtest.bpr config.h confuse.bpg libConfuse.bpf libConfuse.bpr
 --- Makefile.in
 +++ Makefile.in
-@@ -393,7 +393,7 @@
+@@ -396,7 +396,7 @@
  doc_DATA = README.md AUTHORS LICENSE ChangeLog.md
  EXTRA_DIST = README.md LICENSE ChangeLog.md libconfuse.spec.in libconfuse.spec
  EXAMPLES = $(am__append_1)

@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 2.8.15)
-$(PKG)_LIB_VERSION:=10.3.3
+$(call PKG_INIT_LIB, 3.0.4)
+$(PKG)_LIB_VERSION:=14.2.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=1cfa7d6ef19b8d98808b1f4bce225454781299f885815c22ab59d85585f54ee3
+$(PKG)_HASH:=e28c24fc5d9f3cb90005bc008fec8bb8eedce503753024ab650bed0ac250cbe3
 $(PKG)_SITE:=https://github.com/cminyard/$(pkg)/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://github.com/cminyard/gensio
 ### CHANGES:=https://github.com/cminyard/gensio/releases
@@ -16,6 +16,7 @@ $(PKG)_TARGET_BINARIES   := $($(PKG)_LIBRARIES_FILES:%=$($(PKG)_TARGET_DIR)/%)
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
+$(PKG)_CONFIGURE_OPTIONS += --disable-debug
 $(PKG)_CONFIGURE_OPTIONS += --disable-doc
 
 $(PKG)_CONFIGURE_OPTIONS += --with-all-gensios=no
@@ -24,6 +25,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-serialdev=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-telnet=yes
 
 $(PKG)_CONFIGURE_OPTIONS += --with-cplusplus=no
+$(PKG)_CONFIGURE_OPTIONS += --with-libsoapy=no
 $(PKG)_CONFIGURE_OPTIONS += --with-glib=no
 $(PKG)_CONFIGURE_OPTIONS += --with-tcl=no
 $(PKG)_CONFIGURE_OPTIONS += --with-swig=no

@@ -20,9 +20,9 @@ kernels are 2.6.39.x: new enough for TIOCSRS485, old enough to lack
 the constant.  All other targets either predate TIOCSRS485 (the whole
 RS485 block is compiled out) or have the constant (kernel >= 3.7).
 
---- a/lib/os_osops.c
-+++ b/lib/os_osops.c
-@@ -3017,8 +3017,10 @@
+--- lib/os_osops.c
++++ lib/os_osops.c
+@@ -3015,8 +3015,10 @@
  	    t->rs485.flags |= SER_RS485_RTS_ON_SEND;
  	} else if (strcmp(argv[i], "rts_after_send") == 0) {
  	    t->rs485.flags |= SER_RS485_RTS_AFTER_SEND;

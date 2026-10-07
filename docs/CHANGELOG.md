@@ -70,7 +70,9 @@ Latest changes
   - Host tools:
     * cmake 4.4.4
     * openssl 3.5.9
+    * patchelf 0.14.5/0.19.2
     * python3 3.14.8
+    * U-Boot 2026.10
 
   - AVM sources:
     * 1700     8.26 - 5.15.176
@@ -81,15 +83,23 @@ Latest changes
 
   - Packages:
     * Apache2 2.4.69
+    * Bftpd 6.7
     * Empty 0.6.23d
     * ImageMagick 7.1.0-62/7.1.2-32
     * iPerf3 3.3/3.22
+    * OpenSSH 9.3p2/10.6p1
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9
+    * OpenVPN 2.4.12/2.5.11/2.6.23/2.7.8
+    * Patchelf 0.19.2
+    * PHP 5.6.40/8.2.34/8.3.35/8.4.26/8.5.11
+    * procps-ng 4.0.7
+    * Tor 0.4.8.25/0.4.9.14
 
   - Libraries:
     * expat 2.7.5/2.9.0
-    * gensio 2.8.15
+    * gensio 3.0.4
     * harfbuzz 14.6.0
+    * libconfuse 3.4
     * libpng 1.6.59
     * pcre2 10.49
 

@@ -42,7 +42,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bash 3.2.57 (binary only) - DEPRECATED](bash.md)<a id='bash'></a>**<br>
     Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. Bash also incorporates useful features from the Korn and C shells (ksh and csh).(roundabout 540K minimal and 840K full featured)
 
-  * **[Bftpd 6.6](bftpd.md)<a id='bftpd'></a>**<br>
+  * **[Bftpd 6.7](bftpd.md)<a id='bftpd'></a>**<br>
     Small FTP Server
 
   * **<u>bfusb: AVM BlueFRITZ! USB stick support (binary only)</u><a id='bfusb'></a>**<br>
@@ -475,13 +475,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Openntpd 3.9p1 - DEPRECATED](openntpd.md)<a id='openntpd'></a>**<br>
     OpenNTPD is a FREE, easy to use implementation of the Network Time Protocol. This package automatically removes AVM'S chronyd if necessary.
 
-  * **[OpenSSH 9.3p2/10.5p1](openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 9.3p2/10.6p1](openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
   * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9 (binary only)](openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
-  * **[OpenVPN 2.4.12/2.5.11/2.6.23/2.7.7](openvpn.md)<a id='openvpn'></a>**<br>
+  * **[OpenVPN 2.4.12/2.5.11/2.6.23/2.7.8](openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
 
 ### P
@@ -498,7 +498,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
     A set of tools for reading and converting Fritz!Box phone book to such (easy parseable) formats like: - .csv (comma-separated values), or - .tsv (tab-separated values).
 
-  * **[PHP 5.6.40/8.2.33/8.3.35/8.4.26/8.5.11 (binary only)](php.md)<a id='php'></a>**<br>
+  * **[PHP 5.6.40/8.2.34/8.3.35/8.4.26/8.5.11 (binary only)](php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
 
   * **[Pingtunnel 0.72 - DEPRECATED](pingtunnel.md)<a id='pingtunnel'></a>**<br>
@@ -525,7 +525,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Privoxy 4.1.0](privoxy.md)<a id='privoxy'></a>**<br>
     Privoxy is a web proxy with advanced filtering capabilities for protecting privacy, modifying web page data, managing cookies, controlling access, and removing ads, banners, pop-ups and other obnoxious Internet junk. It can also be used together with Tor Proxy to forward HTTP traffic to Tor as described in the Tor documentation. Open http://config.privoxy.org/show-status for details.
 
-  * **[procps-ng 4.0.6 (binaries only)](procps-ng.md)<a id='procps-ng'></a>**<br>
+  * **[procps-ng 4.0.7 (binaries only)](procps-ng.md)<a id='procps-ng'></a>**<br>
     procps-ng - /proc filesystem utilities This package provides the full versions of procps utilities with the suffix "-ng" to avoid conflicts with BusyBox versions.
 
   * **[ProxyChains-NG 4.17](proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
@@ -731,7 +731,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[tmux 3.7c (binary only)](tmux.md)<a id='tmux'></a>**<br>
     tmux, a BSD-licensed alternative to GNU screen. Uses ncurses.
 
-  * **[Tor 0.4.8.25/0.4.9.13](tor.md)<a id='tor'></a>**<br>
+  * **[Tor 0.4.8.25/0.4.9.14](tor.md)<a id='tor'></a>**<br>
     The Onion Router Anonymous Internet communication system.
 
   * **[Transmission 3.00/4.1.3 (binary only)](transmission.md)<a id='transmission'></a>**<br>
@@ -855,7 +855,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Nano Shell 0.1 (binary only) - DEPRECATED](nano-shell.md)<a id='nano-shell'></a>**<br>
     Remotely execute arbitrary shell commands via URLs This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
 
-  * **[PatchELF 0.19.1 (binary only)](patchelf.md)<a id='patchelf'></a>**<br>
+  * **[PatchELF 0.19.2 (binary only)](patchelf.md)<a id='patchelf'></a>**<br>
     Modifies existing ELF executables and libraries. Can change the interpreter, RPATH, and other ELF metadata.
 
   * **[pciutils 3.1.7 (binary only) - DEPRECATED](pciutils.md)<a id='pciutils'></a>**<br>

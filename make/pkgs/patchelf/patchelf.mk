@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 0.19.1)
+$(call PKG_INIT_BIN, 0.19.2)
 $(PKG)_SOURCE:=patchelf-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=2cce01de93653829f6ab68a20c2ec275e1c00a946110704a27e928d2e6e88716
+$(PKG)_HASH:=d4ad9a4e5c689e09119ce2f30a94b0e8b4f98c78590123ea21665e34c6928801
 $(PKG)_SITE:=https://github.com/NixOS/patchelf/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://github.com/NixOS/patchelf
 ### MANPAGE:=https://github.com/NixOS/patchelf/blob/master/README.md
