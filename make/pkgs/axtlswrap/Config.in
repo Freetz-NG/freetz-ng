@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_AXTLSWRAP
 	depends on FREETZ_REAL_DEVELOPER_ONLY
-	bool "axTLS wrapper 2.1.3 (binary only) - DEPRECATED"
+	bool "axTLS wrapper 2.1.5 (binary only) - DEPRECATED"
 	default n
 
