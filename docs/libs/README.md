@@ -55,7 +55,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[gettext (libintl.so) 1.0](gettext.md)<a id='gettext'></a>**<br>
     GNU Internationalization library
 
-  * **[glib2: libglib (libglib-2.0.so) 2.32.4/2.90.0](glib2.md)<a id='glib2'></a>**<br>
+  * **[glib2: libglib (libglib-2.0.so) 2.32.4/2.90.1](glib2.md)<a id='glib2'></a>**<br>
     GLib is a library containing many useful C routines for things such as trees, hashes, and lists.
 
   * **[gmp: GNU MP Bignum Library (libgmp.so) 6.3.0](gmp.md)<a id='gmp'></a>**<br>
@@ -203,7 +203,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libosip2 (libosip2.so) 3.5.0](libosip2.md)<a id='libosip2'></a>**<br>
     GNU oSIP library, a Session Initiation Protocol (SIP) implementation.
 
-  * **[libpcap (libpcap.so) 1.1.1/1.10.7](libpcap.md)<a id='libpcap'></a>**<br>
+  * **[libpcap (libpcap.so) 1.1.1/1.11.0](libpcap.md)<a id='libpcap'></a>**<br>
     libpcap is a system-independent interface for user-level packet capture. libpcap provides a portable framework for low-level network monitoring. Applications include network statistics collection, security monitoring, network debugging, etc.
 
   * **[libpng: PNG library (libpng.so) 1.6.59](libpng.md)<a id='libpng'></a>**<br>
@@ -366,7 +366,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[udns: libudns (libudns.so) 0.4](udns.md)<a id='udns'></a>**<br>
     UDNS is a stub DNS resolver library with ability to perform both syncronous and asyncronous DNS queries.
 
-  * **[utf8proc (libutf8proc.so) 2.7.0](utf8proc.md)<a id='utf8proc'></a>**<br>
+  * **[utf8proc (libutf8proc.so) 2.12.0](utf8proc.md)<a id='utf8proc'></a>**<br>
     a clean C library for processing UTF-8 Unicode data: normalization, case-folding, graphemes, and more
 
 ### Y

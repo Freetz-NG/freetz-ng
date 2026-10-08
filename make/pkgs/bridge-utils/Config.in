@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_BRIDGE_UTILS
-	bool "bridge-utils 1.4 (binary only) - DEPRECATED"
+	bool "bridge-utils 1.5 (binary only) - DEPRECATED"
 	default n
 	help
 		This package contains utilities for configuring the Linux ethernet

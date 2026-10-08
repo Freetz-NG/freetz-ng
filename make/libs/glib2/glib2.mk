@@ -1,12 +1,12 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),2.32.4,2.90.0))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),0.3200.4,0.9000.0)
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),2.32.4,2.90.1))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),0.3200.4,0.9000.1)
 $(PKG)_MAJOR_VERSION:=2.0
 $(PKG)_SOURCE:=glib-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=a5d742a4fda22fb6975a8c0cfcd2499dd1c809b8afd4ef709bda4d11b167fae2
-$(PKG)_HASH_CURRENT:=17d15cac2af80a33271127408e0abc2748eb297c595c2a26409e81e14e7d1b8f
+$(PKG)_HASH_CURRENT:=93c941aa17d5eb1d53fe838365f29a8b4e539c222a256d974ec8f30fc413e396
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://download.gnome.org/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://ftp.gnome.org/pub/gnome/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
-### VERSION:=2.32.4/2.90.0
+### VERSION:=2.32.4/2.90.1
 ### WEBSITE:=https://www.gnu.org/software/libc/
 ### MANPAGE:=https://docs.gtk.org/glib/
 ### CHANGES:=https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS

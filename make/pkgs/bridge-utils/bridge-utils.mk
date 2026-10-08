@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN,1.4)
+$(call PKG_INIT_BIN,1.5)
 $(PKG)_SOURCE:=bridge-utils-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=876975e9bcc302aa8b829161ea3348b12b9b879f1db0dc98feaed8d0e5dd5933
+$(PKG)_HASH:=42f9e5fb8f6c52e63a98a43b81bd281c227c529f194913e1c51ec48a393b6688
 $(PKG)_SITE:=@SF/bridge
 $(PKG)_BINARY:=$($(PKG)_DIR)/brctl/brctl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/sbin/brctl
