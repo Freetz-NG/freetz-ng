@@ -84,6 +84,7 @@ Latest changes
   - Packages:
     * Apache2 2.4.69
     * Bftpd 6.7
+    * bridge-utils 1.5
     * Empty 0.6.23d
     * endlessh 1.1
     * ImageMagick 7.1.0-62/7.1.2-32
@@ -94,6 +95,8 @@ Latest changes
     * Patchelf 0.19.2
     * PHP 5.6.40/8.2.34/8.3.35/8.4.26/8.5.11
     * procps-ng 4.0.7
+    * rpcbind 1.3.1
+    * tcpdump 4.99.7
     * Tor 0.4.8.25/0.4.9.14
     * Vim 9.2.1169
 
@@ -103,8 +106,10 @@ Latest changes
     * GLib2 2.32.4/2.90.1
     * harfbuzz 14.6.0
     * libconfuse 3.4
+    * libpcap 1.11.0
     * libpng 1.6.59
     * pcre2 10.49
+    * utf8proc 2.12.0
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.

@@ -66,7 +66,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[br2684ctl (binary only) - DEPRECATED](br2684ctl.md)<a id='br2684ctl'></a>**<br>
     ATM Ethernet bridging configuration utility
 
-  * **[bridge-utils 1.4 (binary only) - DEPRECATED](bridge-utils.md)<a id='bridge-utils'></a>**<br>
+  * **[bridge-utils 1.5 (binary only) - DEPRECATED](bridge-utils.md)<a id='bridge-utils'></a>**<br>
     This package contains utilities for configuring the Linux ethernet bridge. The Linux ethernet bridge can be used for connecting multiple ethernet devices together. The connection is fully transparent: hosts connected to one ethernet device see hosts connected to the other ethernet devices directly. Authors: Lennert Buytenhek <buytenh@gnu.org>
 
   * **[bvi 1.5.0 (binary only)](bvi.md)<a id='bvi'></a>**<br>
@@ -596,7 +596,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>ripmime 1.2.16.21 (binary only) - DEPRECATED</u><a id='ripmime'></a>**<br>
     ripmime is an utility to decode and extract the parts of mime-formatted mails.
 
-  * **[RPCBind 1.2.7 (binary only)](rpcbind.md)<a id='rpcbind'></a>**<br>
+  * **[RPCBind 1.3.1 (binary only)](rpcbind.md)<a id='rpcbind'></a>**<br>
     The rpcbind utility is a server that converts RPC program numbers into universal addresses.
 
   * **[RRDtool 1.2.30/1.11.0 (binary only)](rrdtool.md)<a id='rrdtool'></a>**<br>
@@ -705,7 +705,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### T
 
-  * **[tcpdump 4.1.1/4.99.6 (binary only)](tcpdump.md)<a id='tcpdump'></a>**<br>
+  * **[tcpdump 4.1.1/4.99.7 (binary only)](tcpdump.md)<a id='tcpdump'></a>**<br>
     Network monitoring and data acquisition tool
 
   * **<u>tcpproxy 2.0.0-beta15 (binary only) - DEPRECATED</u><a id='tcpproxy'></a>**<br>

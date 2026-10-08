@@ -93,7 +93,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Obtain IP configuration via DHCP](../../docs/make/br2684ctl.md#obtain-ip-configuration-via-dhcp)
      - [Debuging the DHCP process](../../docs/make/br2684ctl.md#debuging-the-dhcp-process)
 
-  * **[bridge-utils 1.4 (binary only) - DEPRECATED](../../docs/make/bridge-utils.md)<a id='bridge-utils'></a>**<br>
+  * **[bridge-utils 1.5 (binary only) - DEPRECATED](../../docs/make/bridge-utils.md)<a id='bridge-utils'></a>**<br>
     This package contains utilities for configuring the Linux ethernet bridge. The Linux ethernet bridge can be used for connecting multiple ethernet devices together. The connection is fully transparent: hosts connected to one ethernet device see hosts connected to the other ethernet devices directly. Authors: Lennert Buytenhek <buytenh@gnu.org>
 
   * **[bvi 1.5.0 (binary only)](../../docs/make/bvi.md)<a id='bvi'></a>**<br>
@@ -796,7 +796,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>ripmime 1.2.16.21 (binary only) - DEPRECATED</u><a id='ripmime'></a>**<br>
     ripmime is an utility to decode and extract the parts of mime-formatted mails.
 
-  * **[RPCBind 1.2.7 (binary only)](../../docs/make/rpcbind.md)<a id='rpcbind'></a>**<br>
+  * **[RPCBind 1.3.1 (binary only)](../../docs/make/rpcbind.md)<a id='rpcbind'></a>**<br>
     The rpcbind utility is a server that converts RPC program numbers into universal addresses.
 
   * **[RRDtool 1.2.30/1.11.0 (binary only)](../../docs/make/rrdtool.md)<a id='rrdtool'></a>**<br>
@@ -938,7 +938,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### T
 
-  * **[tcpdump 4.1.1/4.99.6 (binary only)](../../docs/make/tcpdump.md)<a id='tcpdump'></a>**<br>
+  * **[tcpdump 4.1.1/4.99.7 (binary only)](../../docs/make/tcpdump.md)<a id='tcpdump'></a>**<br>
     Network monitoring and data acquisition tool
      - [Warning](../../docs/make/tcpdump.md#warning)
 

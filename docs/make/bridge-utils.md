@@ -1,4 +1,4 @@
-# bridge-utils 1.4 (binary only) - DEPRECATED
+# bridge-utils 1.5 (binary only) - DEPRECATED
   - Package: [master/make/pkgs/bridge-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bridge-utils/)
   - Steward: ???
 

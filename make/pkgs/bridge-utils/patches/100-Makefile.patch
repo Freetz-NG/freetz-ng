@@ -1,5 +1,5 @@
---- libbridge/Makefile.in	2006-09-09 07:30:31.000000000 +0200
-+++ libbridge/Makefile.in	2007-09-25 13:27:29.000000000 +0200
+--- libbridge/Makefile.in
++++ libbridge/Makefile.in
 @@ -1,11 +1,13 @@
  
 -KERNEL_HEADERS=-I@KERNEL_HEADERS@
@@ -16,18 +16,18 @@
  
  prefix=@prefix@
  exec_prefix=@exec_prefix@
-@@ -37,8 +39,5 @@
+@@ -34,8 +36,7 @@
  	$(RANLIB) $@
  
  %.o: %.c libbridge.h libbridge_private.h
 -	$(CC) $(CFLAGS) $(INCLUDE) -c $<
++	$(CC) $(CFLAGS) -c $<
  
  libbridge_compat.o:	libbridge_compat.c if_index.c
--	$(CC) $(CFLAGS) -c libbridge_compat.c
+ 	$(CC) $(CFLAGS) -c libbridge_compat.c
 -
-diff
---- brctl/Makefile.in	2006-09-09 07:30:31.000000000 +0200
-+++ brctl/Makefile.in	2007-09-25 13:28:46.000000000 +0200
+--- brctl/Makefile.in
++++ brctl/Makefile.in
 @@ -1,10 +1,11 @@
  
 -KERNEL_HEADERS=-I@KERNEL_HEADERS@
@@ -43,17 +43,18 @@ diff
  LIBS= -L ../libbridge -lbridge @LIBS@
  
  prefix=@prefix@
-@@ -37,7 +38,6 @@
+@@ -37,8 +38,7 @@
  	$(CC) $(LDFLAGS) $(brctl_OBJECTS) $(LIBS) -o brctl
  
  %.o: %.c brctl.h
 -	$(CC) $(CFLAGS) $(INCLUDE) -c $< 
++	$(CC) $(CFLAGS) -c $<
  
  clean:
  	rm -f *.o brctl core
-diff
---- Makefile.in	2006-09-09 07:30:31.000000000 +0200
-+++ Makefile.in	2007-09-25 16:19:09.000000000 +0200
+-
+--- Makefile.in
++++ Makefile.in
 @@ -14,10 +14,10 @@
  SUBDIRS=libbridge brctl doc
  
@@ -67,4 +68,8 @@ diff
  
  distclean:	clean
  	rm -f config.log
-diff
+@@ -32,4 +32,3 @@
+ 
+ install:
+ 	for x in $(SUBDIRS); do $(MAKE) $(MFLAGS) -C $$x install; done
+-
