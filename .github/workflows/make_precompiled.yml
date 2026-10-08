@@ -1,12 +1,12 @@
 name: make_precompiled
 
 on:
-  pull_request:
-    branches: [ master ]
-    paths:
-      - 'make/pkgs/**'
-      - 'make/libs/**'
-      - '!.github/**'
+# pull_request:
+#   branches: [ master ]
+#   paths:
+#     - 'make/pkgs/**'
+#     - 'make/libs/**'
+#     - '!.github/**'
   push:
     branches: [ master ]
     paths:
@@ -45,10 +45,6 @@ jobs:
       matrix: ${{ steps.parse.outputs.matrix }}
 
     steps:
-
-      - name: overflow
-        run: |
-          [ -n "${{ secrets.FREETZ_DLTOKEN }}" ]
 
       - name: clone
         env:

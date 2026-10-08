@@ -1,4 +1,4 @@
-# utf8proc (libutf8proc.so) 2.7.0
+# utf8proc (libutf8proc.so) 2.12.0
   - Homepage: [https://juliastrings.github.io/utf8proc/](https://juliastrings.github.io/utf8proc/)
   - Manpage: [https://juliastrings.github.io/utf8proc/doc/](https://juliastrings.github.io/utf8proc/doc/)
   - Changelog: [https://juliastrings.github.io/utf8proc/releases/](https://juliastrings.github.io/utf8proc/releases/)

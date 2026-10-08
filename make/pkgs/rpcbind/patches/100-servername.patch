@@ -3,7 +3,7 @@
 
 --- src/rpcbind.c
 +++ src/rpcbind.c
-@@ -132,7 +132,7 @@
+@@ -133,7 +133,7 @@
  char *udp_uaddr;	/* Universal UDP address */
  char *tcp_uaddr;	/* Universal TCP address */
  #endif
