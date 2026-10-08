@@ -1,7 +1,6 @@
 --- Modules/socketmodule.c
 +++ Modules/socketmodule.c
-@@ -250,7 +250,12 @@
- #ifdef HAVE_SYS_SOCKET_H
+@@ -251,6 +251,11 @@
  #include <sys/socket.h>
  #endif
  
