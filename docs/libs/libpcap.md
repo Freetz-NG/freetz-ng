@@ -1,4 +1,4 @@
-# libpcap (libpcap.so) 1.1.1/1.10.7
+# libpcap (libpcap.so) 1.1.1/1.11.0
   - Homepage: [https://www.tcpdump.org](https://www.tcpdump.org)
   - Manpage: [https://www.tcpdump.org/manpages/pcap-filter.7.html](https://www.tcpdump.org/manpages/pcap-filter.7.html)
   - Changelog: [https://github.com/the-tcpdump-group/libpcap/blob/master/CHANGES](https://github.com/the-tcpdump-group/libpcap/blob/master/CHANGES)
