@@ -161,7 +161,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libgd (libgd.so) 2.3.3](libgd.md)<a id='libgd'></a>**<br>
     GD is an open source code library for the dynamic creation of images by programmers. GD creates PNG, JPEG and GIF images, among other formats. GD is commonly used to generate charts, graphics, thumbnails, and most anything else, on the fly.
 
-  * **[libgpg-error: GnuPG error library (libgpg-error.so) 1.47](libgpg-error.md)<a id='libgpg-error'></a>**<br>
+  * **[libgpg-error: GnuPG error library (libgpg-error.so) 1.61](libgpg-error.md)<a id='libgpg-error'></a>**<br>
     Libgpg-error is a small library that defines common error values for all GnuPG components. Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt, Libksba, DirMngr, Pinentry, SmartCard Daemon and possibly more in the future.
 
   * **[libgsm (libgsm.so) 1.0.13](libgsm.md)<a id='libgsm'></a>**<br>
