@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 4.19.0)
-$(PKG)_LIB_VERSION:=6.6.3
+$(call PKG_INIT_LIB, 4.21.0)
+$(PKG)_LIB_VERSION:=6.6.5
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=1613f0ac1cf484d6ec0ce3b8c06d56263cc7242f1c23b30d82d23de345a63f7a
+$(PKG)_HASH:=1d8a444a223cc5464240777346e125de51d8e6abf0b8bac742ac84609167dc87
 $(PKG)_SITE:=@GNU/$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/libtasn1/
 ### MANPAGE:=https://www.gnu.org/software/libtasn1//manual/

@@ -1,22 +1,28 @@
 --- Makefile.am
 +++ Makefile.am
-@@ -28,7 +28,7 @@
- 	windows/test-tree/test-tree.vcproj windows/libtasn14win.mk
- EXTRA_DIST += cfg.mk maint.mk CONTRIBUTING.md README.md
+@@ -30,13 +30,12 @@
+ EXTRA_DIST += CONTRIBUTING.md NEWS.md README.md
+ EXTRA_DIST += COPYING.LESSERv2
  
--SUBDIRS = lib src fuzz tests
+-SUBDIRS = lib src
 +SUBDIRS = lib
  
  if ENABLE_DOC
  SUBDIRS += doc examples
+ endif
+ 
+-SUBDIRS += fuzz tests
+ 
+ ABIDW_COMMON = --no-show-locs --no-corpus-path
+ ABIGNORE_FILE = "$(top_srcdir)/devel/libtasn1.abignore"
 --- Makefile.in
 +++ Makefile.in
-@@ -1483,7 +1483,7 @@
+@@ -1628,7 +1628,7 @@
  	windows/test-tree/test-tree.vcproj windows/libtasn14win.mk \
- 	cfg.mk maint.mk CONTRIBUTING.md README.md \
- 	$(top_srcdir)/.version
--SUBDIRS = lib src fuzz tests $(am__append_1)
-+SUBDIRS = lib                $(am__append_1)
- @CODE_COVERAGE_ENABLED_TRUE@GITIGNOREFILES := $(GITIGNOREFILES) $(CODE_COVERAGE_OUTPUT_FILE) $(CODE_COVERAGE_OUTPUT_DIRECTORY)
- @CODE_COVERAGE_ENABLED_TRUE@code_coverage_v_lcov_cap = $(code_coverage_v_lcov_cap_$(V))
- @CODE_COVERAGE_ENABLED_TRUE@code_coverage_v_lcov_cap_ = $(code_coverage_v_lcov_cap_$(AM_DEFAULT_VERBOSITY))
+ 	cfg.mk maint.mk CONTRIBUTING.md NEWS.md README.md \
+ 	COPYING.LESSERv2 $(top_srcdir)/.version
+-SUBDIRS = lib src $(am__append_1) fuzz tests
++SUBDIRS = lib $(am__append_1)
+ ABIDW_COMMON = --no-show-locs --no-corpus-path
+ ABIGNORE_FILE = "$(top_srcdir)/devel/libtasn1.abignore"
+ LIBGNUTLS_ABI_LAST_FILE = "$(top_srcdir)/devel/libtasn1-latest-$$(uname -m).abi"
