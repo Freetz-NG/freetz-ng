@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.10.2)
-$(PKG)_LIB_VERSION:=20.4.2
+$(call PKG_INIT_LIB, 1.12.4)
+$(PKG)_LIB_VERSION:=20.8.9
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=3b9c02a004b68c256add99701de00b383accccf37177e0d6c58289664cce0c03
+$(PKG)_HASH:=d77f68f48879510e79a2f65977ccc68981781ea0923e5bdffac2a193ea3d660e
 $(PKG)_SITE:=https://gnupg.org/ftp/gcrypt/libgcrypt,ftp://ftp.gnupg.org/gcrypt/libgcrypt
 ### WEBSITE:=https://gnupg.org/software/libgcrypt/
 ### CHANGES:=https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=blob;f=NEWS

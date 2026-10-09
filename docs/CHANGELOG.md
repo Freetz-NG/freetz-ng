@@ -108,6 +108,8 @@ Latest changes
     * GLib2 2.32.4/2.90.1
     * harfbuzz 14.6.0
     * libconfuse 3.4
+    * libgcrypt 1.12.4
+    * libgpg-error 1.61
     * libpcap 1.11.0
     * libpng 1.6.59
     * pcre2 10.49

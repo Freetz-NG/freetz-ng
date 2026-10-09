@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libgcrypt
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libgcrypt.so.20.4.2
+		 ${FREETZ_LIBRARY_DIR}/libgcrypt.so.20.8.9
 
