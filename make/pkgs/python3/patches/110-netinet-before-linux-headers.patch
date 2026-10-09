@@ -1,0 +1,14 @@
+--- Modules/socketmodule.c
++++ Modules/socketmodule.c
+@@ -251,6 +251,11 @@
+ #include <sys/socket.h>
+ #endif
+ 
++#ifdef __linux__
++/* Make Linux UAPI headers see libc's definitions before they are included. */
++#include <netinet/in.h>
++#endif
++
+ #ifdef HAVE_NET_IF_H
+ #include <net/if.h>
+ #endif
