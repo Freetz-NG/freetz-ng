@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.47)
-$(PKG)_LIB_VERSION:=0.34.0
+$(call PKG_INIT_LIB, 1.61)
+$(PKG)_LIB_VERSION:=0.42.1
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb
+$(PKG)_HASH:=7a85413f2bc354f4f8aa832b718af122e48965e9e0eb9012ee659c13c6385c93
 $(PKG)_SITE:=https://gnupg.org/ftp/gcrypt/libgpg-error,ftp://ftp.gnupg.org/gcrypt/libgpg-error
 ### WEBSITE:=https://gnupg.org/software/libgpg-error/
 ### CHANGES:=https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob;f=NEWS
@@ -59,4 +59,3 @@ $(pkg)-uninstall:
 	$(RM) $(LIBGPG_ERROR_TARGET_DIR)/libgpg-error*.so*
 
 $(PKG_FINISH)
-

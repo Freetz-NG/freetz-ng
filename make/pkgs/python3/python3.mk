@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 3.14.3)
+$(call PKG_INIT_BIN, 3.14.8)
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=a97d5549e9ad81fe17159ed02c68774ad5d266c72f8d9a0b5a9c371fe85d902b
+$(PKG)_HASH:=c2215904f02b175596dc49351585104f4bc20341e1c47378b26a2c274360ce73
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.python.org/
 ### MANPAGE:=https://docs.python.org/3/
@@ -60,12 +60,15 @@ $(PKG)_CONFIGURE_ENV += ac_cv_have_long_long_format=yes
 $(PKG)_CONFIGURE_ENV += ac_cv_buggy_getaddrinfo=no
 $(PKG)_CONFIGURE_ENV += ac_cv_file__dev_ptmx=no
 $(PKG)_CONFIGURE_ENV += ac_cv_file__dev_ptc=no
+# CPython 3.14 builds this module even when process_vm_readv is unavailable.
+$(PKG)_CONFIGURE_ENV += py_cv_module__remote_debugging=n/a
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-test-modules
 $(PKG)_CONFIGURE_OPTIONS += --with-system-expat
 $(PKG)_CONFIGURE_OPTIONS += --with-build-python=$(abspath $(TOOLS_DIR)/path/python3)
 $(PKG)_CONFIGURE_OPTIONS += --with-ensurepip=no
+$(PKG)_CONFIGURE_OPTIONS += --without-remote-debug
 $(PKG)_CONFIGURE_OPTIONS += --enable-ipv6
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PYTHON3_STATIC),--disable-shared,--enable-shared)
 

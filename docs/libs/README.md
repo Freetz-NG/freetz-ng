@@ -155,13 +155,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libgcc_s (libgcc_s.so) 1](libgcc_s.md)<a id='libgcc-s'></a>**<br>
     GCC low-level runtime library GCC provides a low-level runtime library, `libgcc.a' or `libgcc_s.so.1' on some platforms. GCC generates calls to routines in this library automatically, whenever it needs to perform some operation that is too complicated to emit inline code for. Most of the routines in libgcc handle arithmetic operations that the target processor cannot perform directly. This includes integer multiply and divide on some machines, and all floating-point operations on other machines. libgcc also includes routines for exception handling, and a handful of miscellaneous operations.
 
-  * **[libgcrypt: GnuPG crypto library (libgcrypt.so) 1.10.2](libgcrypt.md)<a id='libgcrypt'></a>**<br>
+  * **[libgcrypt: GnuPG crypto library (libgcrypt.so) 1.12.4](libgcrypt.md)<a id='libgcrypt'></a>**<br>
     Libgcrypt is a general-purpose cryptographic library based on the code from GnuPG. It provides functions for all cryptographic building blocks: symmetric ciphers (AES, DES, Blowfish, CAST5, Twofish, and Arcfour), hash algorithms (MD4, MD5, RIPE-MD160, SHA-1, and TIGER-192), MACs (HMAC for all hash algorithms), public key algorithms (RSA, ElGamal, and DSA), large integer functions, random numbers, and a lot of supporting functions.
 
   * **[libgd (libgd.so) 2.3.3](libgd.md)<a id='libgd'></a>**<br>
     GD is an open source code library for the dynamic creation of images by programmers. GD creates PNG, JPEG and GIF images, among other formats. GD is commonly used to generate charts, graphics, thumbnails, and most anything else, on the fly.
 
-  * **[libgpg-error: GnuPG error library (libgpg-error.so) 1.47](libgpg-error.md)<a id='libgpg-error'></a>**<br>
+  * **[libgpg-error: GnuPG error library (libgpg-error.so) 1.61](libgpg-error.md)<a id='libgpg-error'></a>**<br>
     Libgpg-error is a small library that defines common error values for all GnuPG components. Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt, Libksba, DirMngr, Pinentry, SmartCard Daemon and possibly more in the future.
 
   * **[libgsm (libgsm.so) 1.0.13](libgsm.md)<a id='libgsm'></a>**<br>
@@ -218,7 +218,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libsynce (libsynce.so) 0.10.0](libsynce.md)<a id='libsynce'></a>**<br>
     A helper library for SynCE, a framework to sync WinCE devices
 
-  * **[libtasn1: GNU ASN1 library (libtasn1.so) 4.19.0](libtasn1.md)<a id='libtasn1'></a>**<br>
+  * **[libtasn1: GNU ASN1 library (libtasn1.so) 4.21.0](libtasn1.md)<a id='libtasn1'></a>**<br>
     A small ASN.1 library.
 
   * **[libtirpc (libtirpc.so) 1.3.8](libtirpc.md)<a id='libtirpc'></a>**<br>

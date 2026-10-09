@@ -1,18 +1,18 @@
 --- configure
 +++ configure
-@@ -13604,6 +13604,7 @@
+@@ -15050,6 +15050,7 @@
  fi
- { $as_echo "$as_me:${as_lineno-$LINENO}: result: $acl_cv_rpath" >&5
- $as_echo "$acl_cv_rpath" >&6; }
+ { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $acl_cv_rpath" >&5
+ printf "%s\n" "$acl_cv_rpath" >&6; }
 +if false; then
    wl="$acl_cv_wl"
    acl_libext="$acl_cv_libext"
    acl_shlibext="$acl_cv_shlibext"
-@@ -13613,6 +13614,7 @@
+@@ -15059,6 +15060,7 @@
    acl_hardcode_libdir_separator="$acl_cv_hardcode_libdir_separator"
    acl_hardcode_direct="$acl_cv_hardcode_direct"
    acl_hardcode_minus_L="$acl_cv_hardcode_minus_L"
 +fi
      # Check whether --enable-rpath was given.
- if test "${enable_rpath+set}" = set; then :
-   enableval=$enable_rpath; :
+ if test ${enable_rpath+y}
+ then :
