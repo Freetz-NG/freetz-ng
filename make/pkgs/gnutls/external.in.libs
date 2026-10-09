@@ -1,16 +1,31 @@
-config EXTERNAL_FREETZ_LIB_libgnutls
-	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgnutls
-	bool "libgnutls"
+config EXTERNAL_FREETZ_LIB_libgnutls_abandon
+	depends on FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON && EXTERNAL_ENABLED && FREETZ_LIB_libgnutls
+	bool "libgnutls_abandon"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libgnutls.so.30.34.2
+
+config EXTERNAL_FREETZ_LIB_libgnutls_current
+	depends on FREETZ_PACKAGE_GNUTLS_VERSION_CURRENT && EXTERNAL_ENABLED && FREETZ_LIB_libgnutls
+	bool "libgnutls_current"
 	default n
 	help
 		externals the following file(s):
 		 ${FREETZ_LIBRARY_DIR}/libgnutls.so.30.42.0
 
-config EXTERNAL_FREETZ_LIB_libgnutls_openssl
-	depends on EXTERNAL_ENABLED && FREETZ_LIB_libgnutls_openssl
-	bool "libgnutls-openssl"
+config EXTERNAL_FREETZ_LIB_libgnutls_openssl_abandon
+	depends on FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON && EXTERNAL_ENABLED && FREETZ_LIB_libgnutls_openssl
+	bool "libgnutls-openssl_abandon"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libgnutls-openssl.so.27.0.2
+
+config EXTERNAL_FREETZ_LIB_libgnutls_openssl_current
+	depends on FREETZ_PACKAGE_GNUTLS_VERSION_CURRENT && EXTERNAL_ENABLED && FREETZ_LIB_libgnutls_openssl
+	bool "libgnutls-openssl_current"
 	default n
 	help
 		externals the following file(s):
 		 ${FREETZ_LIBRARY_DIR}/libgnutls-openssl.so.27.2.0
-

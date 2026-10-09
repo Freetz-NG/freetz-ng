@@ -1,6 +1,8 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_GNUTLS_CERTTOOL"  == "y" ] && EXTERNAL_FILES+=" /usr/bin/certtool"
 [ "$EXTERNAL_FREETZ_PACKAGE_GNUTLS_UTILS"     == "y" ] && EXTERNAL_FILES+=" /usr/bin/gnutls-cli /usr/bin/gnutls-serv /usr/bin/psktool /usr/bin/srptool"
 
-[ "$EXTERNAL_FREETZ_LIB_libgnutls"            == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgnutls.so.30.42.0"
-[ "$EXTERNAL_FREETZ_LIB_libgnutls_openssl"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgnutls-openssl.so.27.2.0"
+[ "$EXTERNAL_FREETZ_LIB_libgnutls_abandon"            == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgnutls.so.30.34.2"
+[ "$EXTERNAL_FREETZ_LIB_libgnutls_openssl_abandon"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgnutls-openssl.so.27.0.2"
 
+[ "$EXTERNAL_FREETZ_LIB_libgnutls_current"            == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgnutls.so.30.42.0"   
+[ "$EXTERNAL_FREETZ_LIB_libgnutls_openssl_current"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libgnutls-openssl.so.27.2.0"

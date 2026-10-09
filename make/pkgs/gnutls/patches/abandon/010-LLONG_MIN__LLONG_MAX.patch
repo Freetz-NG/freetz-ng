@@ -1,0 +1,10 @@
+--- configure
++++ configure
+@@ -5027,6 +5027,7 @@
+ ## Main body of script. ##
+ ## -------------------- ##
+ 
++CFLAGS="$CFLAGS -std=c99" # needed for LLONG_MIN/LLONG_MAX
+ ac_ext=c
+ ac_cpp='$CPP $CPPFLAGS'
+ ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'

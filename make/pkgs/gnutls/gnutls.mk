@@ -1,8 +1,10 @@
-$(call PKG_INIT_BIN, 3.8.13)
-$(PKG)_LIB_VERSION:=30.42.0
-$(PKG)_OPENSSL_LIB_VERSION:=27.2.0
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON),3.7.8,3.8.13))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON),30.34.2,30.42.0)
+$(PKG)_OPENSSL_LIB_VERSION:=$(if $(FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON),27.0.2,27.2.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e
+$(PKG)_HASH_ABANDON:=c58ad39af0670efe6a8aee5e3a8b2331a1200418b64b7c51977fb396d4617114
+$(PKG)_HASH_CURRENT:=ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://www.gnupg.org/ftp/gcrypt/gnutls/v$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://ftp.gnutls.org/gcrypt/gnutls/v$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=https://www.gnutls.org/
 ### MANPAGE:=https://www.gnutls.org/documentation.html
@@ -10,6 +12,8 @@ $(PKG)_SITE:=https://www.gnupg.org/ftp/gcrypt/gnutls/v$(call GET_MAJOR_VERSION,$
 ### CVSREPO:=https://gitlab.com/gnutls/gnutls
 
 $(PKG)_CATEGORY_LIBS:=Crypto & SSL##GnuTLS
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_GNUTLS_VERSION_ABANDON),abandon,current)
 
 $(PKG)_CERTTOOL := certtool
 $(PKG)_UTILS := gnutls-cli gnutls-serv psktool srptool
