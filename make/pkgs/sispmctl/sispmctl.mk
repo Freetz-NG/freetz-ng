@@ -12,6 +12,7 @@ $(PKG)_DEPENDS_ON += libusb0
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./admin)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_SISPMCTL_WEB),--with-webdir=/usr/share/sispmctl,--enable-webless)
+$(PKG)_CONFIGURE_OPTIONS += --enable-all-static
 
 $(PKG)_REBUILD_SUBOPTS += $(LIBUSB0_REBUILD_SUBOPTS)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_SISPMCTL_WEB
