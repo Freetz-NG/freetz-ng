@@ -1,6 +1,8 @@
 --- configure
 +++ configure
-@@ -21249,9 +21249,11 @@
+@@ -21246,12 +21246,14 @@
+ 
+ 
  if test "$have_win" != "yes";then
 +if test "${with_libpthread_prefix}" != "no"; then
    ac_fn_c_check_func "$LINENO" "pthread_mutex_lock" "ac_cv_func_pthread_mutex_lock"
@@ -12,7 +14,9 @@
 +fi
  
    if test "$ac_cv_func_pthread_mutex_lock" != "yes";then
-@@ -21330,7 +21332,11 @@
+ 
+@@ -21328,7 +21330,11 @@
+   rpathdirs=
    ltrpathdirs=
    names_already_handled=
 -  names_next_round='pthread '
