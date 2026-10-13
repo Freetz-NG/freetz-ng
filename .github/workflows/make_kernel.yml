@@ -7,6 +7,7 @@ on:
       - '.github/workflows/make_kernel.yml'
   schedule:
     - cron: '00 15 28 * *'
+      timezone: "Europe/Berlin"
   workflow_dispatch:
     inputs:
       fos:

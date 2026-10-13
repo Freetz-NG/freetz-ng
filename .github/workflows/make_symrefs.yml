@@ -7,6 +7,7 @@ on:
       - '.github/workflows/make_symrefs.yml'
   schedule:
     - cron: '00 15 14 * *'
+      timezone: "Europe/Berlin"
   workflow_dispatch:
     inputs:
       fos:

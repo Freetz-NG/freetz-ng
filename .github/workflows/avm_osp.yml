@@ -8,6 +8,7 @@ on:
       - 'docs/osp/generate.sh'
   schedule:
     - cron: '30 05 * * 1-6'
+      timezone: "Europe/Berlin"
   workflow_dispatch:
 
 concurrency:

@@ -8,6 +8,7 @@ on:
       - 'docs/ftp/generate.sh'
   schedule:
     - cron: '00 15 * * 1-5'
+      timezone: "Europe/Berlin"
   workflow_dispatch:
 
 concurrency:
