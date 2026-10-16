@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 2.14.3)
-$(PKG)_LIB_VERSION:=6.20.6
+$(call PKG_INIT_LIB, 2.15.0)
+$(PKG)_LIB_VERSION:=6.20.7
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=36bc4f1cc413335368ee656c42afca65c5a3987e8768cc28cf11ba775e785a5f
+$(PKG)_HASH:=93cd47eb719c325107f2d3cf087d06299e944c3b48a40b55537302304dea1dd5
 $(PKG)_SITE:=@SF/freetype
 ### WEBSITE:=https://freetype.org
 ### MANPAGE:=https://freetype.org/freetype2/docs/documentation.html
