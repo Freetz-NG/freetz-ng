@@ -1,0 +1,5 @@
+--- linux-5.4/Makefile
++++ linux-5.4/Makefile
+@@ -7,0 +8,2 @@
++
++SHELL := bash

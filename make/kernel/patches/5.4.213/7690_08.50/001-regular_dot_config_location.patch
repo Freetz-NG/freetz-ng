@@ -1,0 +1,4 @@
+--- linux-5.4/.kernelvariables
++++ linux-5.4/.kernelvariables
+@@ -32 +31,0 @@
+-export AVM_KCONFIG_CONFIG = avm/conf/linux-5.4.miami

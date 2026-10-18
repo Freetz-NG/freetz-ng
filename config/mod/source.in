@@ -4,6 +4,8 @@
 
 config FREETZ_REPLACE_KERNEL_AVAILABLE
 	def_bool y
+	# Matching sources alone do not establish replacement-kernel compatibility.
+	depends on !FREETZ_AVM_SOURCE_7690_08_50
 	depends on !FREETZ_TYPE_FIRMWARE_UNTESTED
 	depends on !FREETZ_REPLACE_KERNEL_DISABLED
 
@@ -39,6 +41,8 @@ config FREETZ_REPLACE_MODULE_AVAILABLE
 	def_bool y
 	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	depends on !FREETZ_TYPE_FIRMWARE_UNTESTED # nobody ever used this device
+	# 7690 8.50 sources have no Module.symvers; original symbol CRCs are unverified.
+	depends on !(FREETZ_TYPE_7690 && FREETZ_AVM_VERSION_08_5X)
 	depends on !FREETZ_AVM_SOURCE_6360_05_29  # 05.2X-final 6360 (needs to be fixed, hardcoded paths, svn, ...)
 	depends on !FREETZ_AVM_SOURCE_7580_06_53  # 06.5X-final 7580 (needs to be fixed, opcode not supported on this processor)
 	depends on !FREETZ_AVM_SOURCE_7539_07_57  # 07_5X-final 7539 (corrupt)
@@ -47,6 +51,8 @@ config FREETZ_REPLACE_MODULE_AVAILABLE
 
 config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	def_bool y
+	# Use the original source archive instead of a vanilla-to-AVM diff.
+	depends on !FREETZ_AVM_SOURCE_7690_08_50
 	depends on !(FREETZ_KERNEL_VERSION_4_1_38   && FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_BCM63138)                                  # 07_1X-final  7581+7582           (07.18)
 	depends on !(FREETZ_KERNEL_VERSION_4_4_60   && FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MAPLE)                                     # 07_2X-final  7510+1209           (07.30)
 	depends on !(FREETZ_KERNEL_VERSION_5_15_215 && FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_PUMA7)                                     # 08_4X-inhaus 6699                (08.40)

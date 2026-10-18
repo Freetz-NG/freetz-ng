@@ -58,6 +58,11 @@ ifeq ($(strip $(FREETZ_KERNEL_VERSION_4_4_MIN)),y)
 KERNEL_COMMON_MAKE_OPTIONS += HOSTCFLAGS="$(HOSTCFLAGS) -DOPENSSL_ENGINE_STUBS"
 endif
 
+# Direct AVM archives use the same checked download and unpack helpers.
+KERNEL_AVM_SOURCE:=$(call qstrip,$(FREETZ_DL_KERNEL_AVM_SOURCE))
+KERNEL_AVM_SITE:=$(call qstrip,$(FREETZ_DL_KERNEL_AVM_SITE))
+KERNEL_AVM_HASH:=$(call qstrip,$(FREETZ_DL_KERNEL_AVM_HASH))
+
 KERNEL_VANILLA_SOURCE:=$(call qstrip,$(FREETZ_DL_KERNEL_VANILLA_SOURCE))
 KERNEL_VANILLA_HASH:=$(call qstrip,$(FREETZ_DL_KERNEL_VANILLA_HASH))
 KERNEL_VANILLA_SITE:=@KERNEL/linux/kernel/v$(call qstrip,$(FREETZ_KERNEL_VANILLA_DLDIR)),@MIRROR
@@ -72,6 +77,12 @@ KERNEL_SYMREFS_SITE:=@MIRROR
 
 KERNEL_ECHO_TYPE:=KRN
 
+
+ifneq ($(KERNEL_AVM_SOURCE),)
+$(DL_DIR)/$(KERNEL_AVM_SOURCE): | $(DL_DIR)
+	@$(call _ECHO,downloading,$(KERNEL_ECHO_TYPE))
+	$(DL_TOOL) $(DL_DIR) $(KERNEL_AVM_SOURCE) $(KERNEL_AVM_SITE) $(KERNEL_AVM_HASH) $(SILENT)
+endif
 
 $(DL_DIR)/$(KERNEL_VANILLA_SOURCE): | $(DL_DIR)
 	@$(call _ECHO,downloading,$(KERNEL_ECHO_TYPE))
@@ -93,7 +104,7 @@ endif
 # options have changed. The safest way to achieve this is by starting over
 # with the source directory.
 kernel-unpacked: $(KERNEL_DIR)/.unpacked
-$(KERNEL_DIR)/.unpacked: $(DL_DIR)/$(KERNEL_VANILLA_SOURCE)
+$(KERNEL_DIR)/.unpacked: $(DL_DIR)/$(if $(KERNEL_AVM_SOURCE),$(KERNEL_AVM_SOURCE),$(KERNEL_VANILLA_SOURCE))
 $(KERNEL_DIR)/.unpacked: $(if $(FREETZ_KERNEL_AVMDIFF_AVAILABLE),$(DL_DIR)/$(KERNEL_AVMDIFF_SOURCE))
 $(KERNEL_DIR)/.unpacked: $(if $(KERNEL_SYMREFS_AVAILABLE),$(DL_DIR)/$(KERNEL_SYMREFS_SOURCE))
 $(KERNEL_DIR)/.unpacked: | $(UNPACK_TARBALL_PREREQUISITES)
@@ -104,7 +115,12 @@ $(KERNEL_DIR)/.unpacked:
 	$(RM) -r $(KERNEL_DIR)
 	mkdir -p $(KERNEL_SOURCE_DIR)
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
+ifneq ($(KERNEL_AVM_SOURCE),)
+	# The supported AVM archive stores the kernel below ./sources/kernel/linux/.
+	@$(call UNPACK_TARBALL,$(DL_DIR)/$(KERNEL_AVM_SOURCE),$(KERNEL_SOURCE_DIR),3,./sources/kernel/linux)
+else
 	@$(call UNPACK_TARBALL,$(DL_DIR)/$(KERNEL_VANILLA_SOURCE),$(KERNEL_SOURCE_DIR),1)
+endif
 	@$(call _ECHO,patching,$(KERNEL_ECHO_TYPE))
 	@echo "" $(SILENT)
 ifeq ($(strip $(FREETZ_KERNEL_AVMDIFF_AVAILABLE)),y)

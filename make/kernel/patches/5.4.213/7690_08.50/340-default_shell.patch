@@ -1,0 +1,5 @@
+--- linux-5.4/GNUmakefile
++++ linux-5.4/GNUmakefile
+@@ -12,0 +13,2 @@
++
++SHELL := bash
