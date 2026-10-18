@@ -345,9 +345,16 @@ $(eval $(call REPLACE_LIBTOOL__INT2,$(1),$(2),$(3)))
 endef
 
 define INSTALL_BINARY_STRIP
-$(INSTALL_FILE) \
-[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" != "y" ] || ! $(TARGET_READELF) -l $@ | grep -q INTERP || $(PATCHELF_TARGET) --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 $@; \
-$(TARGET_STRIP) $@;
+install_binary_fail() { status=$$?; rm -f "$@"; exit $$status; }; \
+mkdir -p $(dir $@) || exit $$?; \
+cp $< $@ || install_binary_fail; \
+if [ "$(FREETZ_SEPARATE_AVM_UCLIBC)" = "y" ]; then \
+	elf_headers="$$( $(TARGET_READELF) -l $@ )" || install_binary_fail; \
+	if printf '%s\n' "$$elf_headers" | grep -q INTERP; then \
+		$(PATCHELF_TARGET) --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 $@ || install_binary_fail; \
+	fi; \
+fi; \
+$(TARGET_STRIP) $@ || install_binary_fail;
 endef
 define INSTALL_LIBRARY__INT
 chmod 755 $<; \
@@ -569,6 +576,11 @@ endef
 
 # PKG_FINISH: Finalise packages (general functionality + call to type specifics)
 define PKG_FINISH__INT
+
+# Installation may patch ELF interpreters, including when only a component is built.
+ifeq ($(strip $(FREETZ_SEPARATE_AVM_UCLIBC)),y)
+$($(PKG)_DIR)/.configured: | patchelf-target-host
+endif
 
 # tools dont like -precompiled postfix because of precompiled
 $(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN)  $(patsubst %-host-precompiled,%-host,$(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON)))
