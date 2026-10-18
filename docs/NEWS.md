@@ -1,5 +1,9 @@
 # Neuigkeiten
 
+### 2026-10-18
+Im menuconfig können bereits manche Fritzos 8.5x ausgwählt werden. Diese sind NICHT GETESTET.<br>
+Außerdem passen viele Patches noch nicht und brechen ab. Workaround: Problem beheben oder Patch deselektieren!<br>
+
 ### 2026-09-29
 AVM hat die Recovery für 1700, 2700 und 5690xgs gepimpt.
 Diese unterstützen nun U-Boot und recovern via IPv6.<br>

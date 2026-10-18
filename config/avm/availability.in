@@ -613,7 +613,6 @@ config FREETZ_AVM_HAS_FIRMWARE_08_5X_INHAUS
 	default y
 	depends on \
 		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
-			FREETZ_TYPE_5630_NIX || \
 			FREETZ_TYPE_5630_XGS || \
 			FREETZ_TYPE_6700 || \
 			FREETZ_TYPE_6835 || \
@@ -634,8 +633,10 @@ config FREETZ_AVM_HAS_FIRMWARE_08_5X
 	default y
 	depends on \
 		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_5630_NIX || \
+			FREETZ_TYPE_5690_NIX || \
 			FREETZ_TYPE_7690 || \
-			FREETZ_TYPE_xxxx \
+			FREETZ_TYPE_GATE \
 		)) \
 		|| \
 		( FREETZ_TYPE_LANG_DE && ( \
