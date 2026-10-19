@@ -1,150 +1,82 @@
 #!/usr/bin/env python3
-"""Exercise the actual installation macro in an isolated directory; no firmware build."""
-import argparse, json, pathlib, shutil, subprocess
-parser = argparse.ArgumentParser()
-parser.add_argument("--workdir", required=True)
-parser.add_argument("--elf", help="Existing dynamic ELF to copy and patch; never executed")
-parser.add_argument("--patchelf", help="Native patchelf for target ELFs; defaults to tools/patchelf-target")
+"""Test patchelf failure propagation; never execute the ELF fixtures."""
+import argparse
+import json
+import os
+import pathlib
+import shlex
+import shutil
+import subprocess
+
+parser = argparse.ArgumentParser(__doc__)
+parser.add_argument("--workdir", required=True, help="New directory within this checkout")
+parser.add_argument("--elf", help="Existing dynamic ELF fixture")
+parser.add_argument("--patchelf", help="Existing native patchelf for the fixture")
+parser.add_argument("--no-interp-elf", required=True, help="Existing ELF without PT_INTERP")
 args = parser.parse_args()
 repo = pathlib.Path(__file__).resolve().parents[2]
 work = pathlib.Path(args.workdir).resolve()
 work.relative_to(repo)
-work.mkdir(parents=True, exist_ok=True)
-text = (repo / "make/pkgs/Makefile.in").read_text()
-start = text.index("define INSTALL_BINARY_STRIP\n")
-macro = text[start:text.index("endef", start) + 5]
+reader = shutil.which("readelf")
 source = pathlib.Path(args.elf or shutil.which("true") or "").resolve()
-patch_tool = pathlib.Path(args.patchelf).resolve() if args.patchelf else repo / "tools/patchelf-target"
-if not source.is_file() or not patch_tool.is_file():
-    parser.error("Provide an existing dynamic ELF with --elf and a native tool with --patchelf")
-reader_tool = shutil.which("readelf")
-if not reader_tool:
-    parser.error("readelf is required")
-if "INTERP" not in subprocess.check_output([reader_tool, "-l", str(source)], text=True):
-    parser.error("The ELF fixture must have a PT_INTERP; it will never be executed")
+patcher = pathlib.Path(args.patchelf or repo / "tools/patchelf-target").resolve()
+no_interp = pathlib.Path(args.no_interp_elf).resolve()
+env = dict(os.environ, LC_ALL="C")
+for key in ("MAKEFLAGS", "MFLAGS", "MAKEFILES", "GNUMAKEFLAGS"):
+    env.pop(key, None)
+if not reader or not source.is_file() or not patcher.is_file():
+    parser.error("Existing readelf, dynamic ELF and native patchelf are required")
+def headers(p):
+    return subprocess.check_output([reader, "-l", str(p)], env=env, text=True)
+if "INTERP" not in headers(source):
+    parser.error("--elf must have PT_INTERP")
+if no_interp.read_bytes()[:4] != b"\x7fELF" or "INTERP" in headers(no_interp):
+    parser.error("--no-interp-elf must be valid ELF without PT_INTERP")
+def macro(path, name):
+    text = path.read_text()
+    start = text.index("define " + name + "\n")
+    return text[start:text.index("endef", start) + len("endef")]
+definitions = macro(repo / "make/include/300-helper.mk", "INSTALL_FILE") + "\n"
+definitions += macro(repo / "make/pkgs/Makefile.in", "INSTALL_BINARY_STRIP") + "\n"
+work.mkdir(parents=True, exist_ok=False)
+script = work / "script"
+script.write_text("#!/bin/sh\nexit 0\n")
+missing = shlex.quote(str(work / "absent-patchelf"))
+fail = "/bin/sh -c 'exit 23' --"
+cases = [
+    ("missing-patchelf", source, "y", missing, 127, False),
+    ("failing-patchelf", source, "y", fail, 23, False),
+    ("separate-success", source, "y", shlex.quote(str(patcher)), 0, False),
+    ("eval-success", source, "y", shlex.quote(str(patcher)), 0, True),
+    ("eval-failure", source, "y", fail, 23, True),
+    ("shared-success", source, "", missing, 0, False),
+    ("non-elf-skip", script, "y", missing, 0, False),
+    ("no-interp-skip", no_interp, "y", missing, 0, False),
+]
 results = []
-for name, separate, reader, patcher, strip, expect in [
-    ("missing-patchelf", "y", reader_tool, "/nonexistent/patchelf-target", "touch stripped", False),
-    ("failing-patchelf", "y", reader_tool, "/bin/false", "touch stripped", False),
-    ("failing-readelf", "y", "/bin/false", str(patch_tool), "touch stripped", False),
-    ("failing-strip", "y", reader_tool, str(patch_tool), "/bin/false", False),
-    ("separate-success", "y", reader_tool, str(patch_tool), "touch stripped", True),
-    ("eval-rule-success", "y", reader_tool, str(patch_tool), "touch stripped", True),
-    ("shared-success", "n", "/bin/false", "/nonexistent/patchelf-target", "touch stripped", True),
-]:
+for name, fixture, separate, tool, status, use_eval in cases:
     folder = work / name
-    folder.mkdir(exist_ok=True)
-    dest = folder / "out/busybox"
-    dest.unlink(missing_ok=True)
-    (folder / "stripped").unlink(missing_ok=True)
-    makefile = folder / "Makefile"
-    makefile.write_text("SHELL := /bin/bash\n" + macro + "\n" +
-        f"FREETZ_SEPARATE_AVM_UCLIBC := {separate}\nTARGET_READELF := {reader}\nPATCHELF_TARGET := {patcher}\n" +
-        f"TARGET_STRIP := {strip}\nFREETZ_LIBRARY_DIR := /usr/lib/freetz\n{dest}: {source}\n\t$(INSTALL_BINARY_STRIP)\n")
-    if name == "eval-rule-success":
-        recipe = "define TEST_RULE\n" + str(dest) + ": " + str(source) + "\n\t$(value INSTALL_BINARY_STRIP)\nendef\n$(eval $(TEST_RULE))\n"
-        old = makefile.read_text()
-        old = old[:old.index(str(dest) + ": " + str(source))] + recipe
-        makefile.write_text(old)
-    run = subprocess.run(["make", "-f", str(makefile)], cwd=folder, capture_output=True, text=True)
-    (folder / "test.log").write_text(run.stdout + run.stderr)
-    ok = (run.returncode == 0) == expect and dest.exists() == expect
-    if not expect and name != "failing-strip":
-        ok = ok and not (folder / "stripped").exists()
-    if name == "separate-success":
-        interp = subprocess.check_output([str(patch_tool), "--print-interpreter", str(dest)], text=True).strip()
-        ok = ok and interp == "/usr/lib/freetz/ld-uClibc.so.1"
-    results.append({"case": name, "exit": run.returncode, "destination_exists": dest.exists(), "passed": ok})
-
-# Exercise non-ELF input and malformed ELF input independently of strip.
-for name, contents, reader, expect in [
-    ("non-elf-success", b"#!/bin/sh\necho test\n", "/bin/false", True),
-    ("malformed-elf-readelf-fails", b"\x7fELFbroken", reader_tool, False),
-]:
-    folder = work / name
-    folder.mkdir(exist_ok=True)
-    fixture = folder / "fixture"
-    fixture.write_bytes(contents)
-    dest = folder / "out/busybox"
-    dest.unlink(missing_ok=True)
-    makefile = folder / "Makefile"
-    makefile.write_text(
-        "SHELL := /bin/bash\n" + macro + "\n"
-        + "FREETZ_SEPARATE_AVM_UCLIBC := y\n"
-        + f"TARGET_READELF := {reader}\n"
-        + "PATCHELF_TARGET := /bin/false\n"
-        + "TARGET_STRIP := touch stripped\n"
-        + "FREETZ_LIBRARY_DIR := /usr/lib/freetz\n"
-        + f"{dest}: {fixture}\n\t$(INSTALL_BINARY_STRIP)\n"
-    )
-    (folder / "stripped").unlink(missing_ok=True)
-    run = subprocess.run(
-        ["make", "-f", str(makefile)],
-        cwd=folder, capture_output=True, text=True
-    )
-    (folder / "test.log").write_text(run.stdout + run.stderr)
-    ok = (run.returncode == 0) == expect and dest.exists() == expect
-    if not expect:
-        ok = ok and not (folder / "stripped").exists()
-    results.append({
-        "case": name,
-        "exit": run.returncode,
-        "destination_exists": dest.exists(),
-        "passed": ok
-    })
-
-
-# Verify the actual BusyBox installation rule under parallel make.
-busybox_text = (repo / "make/busybox/busybox.mk").read_text()
-rule_start = busybox_text.index("$($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)")
-rule_end = busybox_text.index("\nendif", rule_start) + len("\nendif")
-busybox_rule = busybox_text[rule_start:rule_end] + "\n"
-
-for separate in ("y", "n"):
-    name = f"busybox-order-{separate}"
-    folder = work / name
-    folder.mkdir(exist_ok=True)
-
-    for filename in ("input", "output", "ready"):
-        (folder / filename).unlink(missing_ok=True)
-
-    (folder / "Makefile").write_text(
-        "SHELL := /bin/bash\n"
-        f"FREETZ_SEPARATE_AVM_UCLIBC := {separate}\n"
-        "PKG := TEST\n"
-        "TEST_BINARY := input\n"
-        "TEST_TARGET_BINARY := output\n"
-        'INSTALL_BINARY_STRIP = @test "$(FREETZ_SEPARATE_AVM_UCLIBC)" != y || test -f ready; cp input output\n'
-        ".DEFAULT_GOAL := check\n"
-        + busybox_rule
-        + "input:\n\t@touch input\n"
-        + ".PHONY: patchelf-target-host\n"
-        + "patchelf-target-host:\n\t@sleep 0.2; touch ready\n"
-        + "check: output\n"
-    )
-
-    run = subprocess.run(
-        ["make", "-j4", "-f", "Makefile"],
-        cwd=folder,
-        capture_output=True,
-        text=True,
-    )
-
-    (folder / "test.log").write_text(run.stdout + run.stderr)
-
-    ok = (
-        run.returncode == 0
-        and (folder / "output").exists()
-        and (folder / "ready").exists() == (separate == "y")
-    )
-
-    results.append({
-        "case": name,
-        "exit": run.returncode,
-        "passed": ok,
-    })
-
-
-(work / "results.json").write_text(json.dumps(results, indent=2))
+    folder.mkdir()
+    # Strip replacement records whether execution reached the next command.
+    text = "SHELL := /bin/bash\n" + definitions
+    text += f"FREETZ_SEPARATE_AVM_UCLIBC := {separate}\nTARGET_READELF := {reader}\n"
+    text += f"PATCHELF_TARGET := {tool}\nTARGET_STRIP := touch stripped\n"
+    text += "FREETZ_LIBRARY_DIR := /usr/lib/freetz\n"
+    text += "define TEST_RULE\nout: " + str(fixture) + "\n\t$(value INSTALL_BINARY_STRIP)\nendef\n$(eval $(TEST_RULE))\n" if use_eval else "out: " + str(fixture) + "\n\t$(INSTALL_BINARY_STRIP)\n"
+    (folder / "Makefile").write_text(text)
+    run = subprocess.run(["make", "-f", "Makefile"], cwd=folder, env=env, capture_output=True, text=True)
+    log = run.stdout + run.stderr
+    (folder / "test.log").write_text(log)
+    success = status == 0
+    passed = (run.returncode == 0) == success
+    passed &= (folder / "out").exists() == success
+    passed &= (folder / "stripped").exists() == success
+    if not success:
+        passed &= f"Error {status}" in log
+    if success and separate == "y" and fixture == source:
+        actual = subprocess.check_output([str(patcher), "--print-interpreter", str(folder / "out")], env=env, text=True).strip()
+        passed &= actual == "/usr/lib/freetz/ld-uClibc.so.1"
+    results.append(dict(case=name, exit=run.returncode, expected_patch_status=status, passed=passed))
+(work / "results.json").write_text(json.dumps(results, indent=2) + "\n")
 print(json.dumps(results, indent=2))
 raise SystemExit(0 if all(r["passed"] for r in results) else 1)

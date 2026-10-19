@@ -70,10 +70,6 @@ $($(PKG)_BINARY).links: $($(PKG)_BINARY)
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)
 
-ifeq ($(strip $(FREETZ_SEPARATE_AVM_UCLIBC)),y)
-$($(PKG)_TARGET_BINARY): | patchelf-target-host
-endif
-
 $($(PKG)_TARGET_BINARY).links: $($(PKG)_BINARY).links
 	cat $(BUSYBOX_BINARY).links | sed -r -e 's,/($(if $(FREETZ_PACKAGE_BASH),bash|)$(if $(FREETZ_AVM_HAS_REBOOT_SCRIPT),reboot|)$(if $(FREETZ_AVM_HAS_IP_BINARY),ip|)blkid|wget)$$,/\1-busybox,g' > $(BUSYBOX_TARGET_BINARY).links
 
