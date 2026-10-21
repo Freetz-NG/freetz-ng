@@ -1,15 +1,15 @@
 --- configure
 +++ configure
-@@ -64560,8 +64560,10 @@
- $as_echo_n "checking for working ttyname_r() implementation... " >&6; }
-   if test "$cross_compiling" = yes; then :
+@@ -68472,8 +68472,10 @@
+   if test "$cross_compiling" = yes
+ then :
  
--    { $as_echo "$as_me:${as_lineno-$LINENO}: result: no, cannot detect working ttyname_r() when cross compiling. posix_ttyname() will be thread-unsafe" >&5
--$as_echo "no, cannot detect working ttyname_r() when cross compiling. posix_ttyname() will be thread-unsafe" >&6; }
-+#evaluated by running test program on target platform
-+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-+printf "%s\n" "yes" >&6; }
-+printf "%s\n" "#define HAVE_TTYNAME_R 1" >>confdefs.h
+-    { printf '%s\n' "$as_me:${as_lineno-$LINENO}: result: no, cannot detect working ttyname_r() when cross compiling. posix_ttyname() will be thread-unsafe" >&5
+-printf '%s\n' "no, cannot detect working ttyname_r() when cross compiling. posix_ttyname() will be thread-unsafe" >&6; }
++# evaluated by running test program on target platform
++{ printf '%s\n' "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++printf '%s\n' "yes" >&6; }
++printf '%s\n' "#define HAVE_TTYNAME_R 1" >>confdefs.h
  
- else
-   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ else case e in #(
+   e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext

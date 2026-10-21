@@ -1,17 +1,17 @@
 --- configure
 +++ configure
-@@ -33931,6 +33931,8 @@
+@@ -37143,6 +37143,8 @@
      libmagic/readcdf.c libmagic/softmagic.c libmagic/der.c \
      libmagic/buffer.c libmagic/is_csv.c"
  
-+# strcasestr is avaliable in all versions of uClibc since 0.9.28, no need to check
++# strcasestr is available in all versions of uClibc since 0.9.28, no need to check
 +if false; then
-   { $as_echo "$as_me:${as_lineno-$LINENO}: checking for strcasestr" >&5
- $as_echo_n "checking for strcasestr... " >&6; }
-   if test "$cross_compiling" = yes; then :
-@@ -33983,6 +33985,7 @@
- rm -f core *.core core.conftest.* gmon.out bb.out conftest$ac_exeext \
-   conftest.$ac_objext conftest.beam conftest.$ac_ext
+   { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking for strcasestr" >&5
+ printf %s "checking for strcasestr... " >&6; }
+   if test "$cross_compiling" = yes
+@@ -37199,6 +37201,7 @@
+   conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+ esac
  fi
 +fi
  
