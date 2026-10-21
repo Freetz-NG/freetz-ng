@@ -8,7 +8,7 @@ on:
       - 'docs/juis/generate.sh'
   schedule:
     - cron: '30 16 * * 1-5'
-      timezone: "Asia/Dhaka"
+      timezone: "Etc/GMT-5"
   workflow_dispatch:
 
 concurrency:
