@@ -1,3 +1,16 @@
+# Original AVM sources where no mirror-hosted vanilla-to-AVM diff exists yet.
+config FREETZ_DL_KERNEL_AVM_SOURCE
+	string
+	default "source-files-FRITZ.Box_7690-miami-08.50.tar.gz" if FREETZ_AVM_SOURCE_7690_08_50
+
+config FREETZ_DL_KERNEL_AVM_SITE
+	string
+	default "https://osp.avm.de/fritzbox/fritzbox-7690" if FREETZ_AVM_SOURCE_7690_08_50
+
+config FREETZ_DL_KERNEL_AVM_HASH
+	string
+	default "c8f4e410347a92b33796d411e314341e81cb451bd935057aeaabfb775a6bacaf" if FREETZ_AVM_SOURCE_7690_08_50
+
 
 config FREETZ_DL_KERNEL_OVERRIDE
 	bool "Override kernel options" if FREETZ_SHOW_EXPERT

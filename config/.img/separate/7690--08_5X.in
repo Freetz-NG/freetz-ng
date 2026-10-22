@@ -255,4 +255,3 @@ config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 
 endif
-
