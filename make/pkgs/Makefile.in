@@ -346,7 +346,7 @@ endef
 
 define INSTALL_BINARY_STRIP
 $(INSTALL_FILE) \
-[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" != "y" ] || ! $(TARGET_READELF) -l $@ | grep -q INTERP || $(PATCHELF_TARGET) --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 $@; \
+[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" != "y" ] || ! $(TARGET_READELF) -l $@ | grep -q INTERP || $(PATCHELF_TARGET) --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 $@ || { status=$$?; rm -f "$@"; exit $$status; }; \
 $(TARGET_STRIP) $@;
 endef
 define INSTALL_LIBRARY__INT
