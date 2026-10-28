@@ -47,7 +47,7 @@ clear_hosts() {
 
 config() {
 	local NEW OLD="$(cat /tmp/cron.d/$DAEMON 2>/dev/null)"
-	if [ "$ADDHOLE_CRON_ENABLED" == "yes" -a -n "$ADDHOLE_CRON_TIMEM" -a -n "ADDHOLE_CRON_TIMEH" -a -n "ADDHOLE_CRON_WEEKD" ]; then
+	if [ "$ADDHOLE_CRON_ENABLED" == "yes" -a -n "$ADDHOLE_CRON_TIMEM" -a -n "$ADDHOLE_CRON_TIMEH" -a -n "$ADDHOLE_CRON_WEEKD" ]; then
 		NEW="$ADDHOLE_CRON_TIMEM $ADDHOLE_CRON_TIMEH * * $ADDHOLE_CRON_WEEKD  /mod/etc/init.d/rc.addhole download quiet"
 	fi
 	if [ "$OLD" != "$NEW" ] ; then
