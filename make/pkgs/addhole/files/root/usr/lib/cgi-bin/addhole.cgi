@@ -14,6 +14,8 @@ sec_end
 
 sec_begin "$(lang de:"Wartung" en:"Maintenance")"
 
+let INIT_WINDOW_WIDTH=$MOD_CGI_WIDTH+78
+
 cat << EOF
 <p>
 <input type="button" value="$(lang de:"Hosts jetzt herunterladen" en:"Download hosts now")" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) window.open('$(href extra addhole download)','$(lang de:"Lade Hosts herunterladen" en:"Downloading hosts now")','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" />
