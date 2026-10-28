@@ -2,7 +2,7 @@ CAPTION="Addhole: $(lang de:"Eigene Hosts" en:"Other hosts")"
 DESCRIPTION="$(lang de:"Zus&auml;tzlich zu blockierende Hostnamen, einer pro Zeile, ohne IPs" en:"Additional host names to block, one per line, without IPs")."
 
 CONFIG_FILE='/tmp/flash/addhole/addhole.cfg'
-CONFIG_SAVE='/mod/etc/init.d/rc.addhole download other'
+CONFIG_SAVE='modsave flash; /mod/etc/init.d/rc.addhole download other'
 CONFIG_TYPE='text'
 
 TEXT_ROWS=40

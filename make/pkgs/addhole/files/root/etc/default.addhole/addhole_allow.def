@@ -2,7 +2,7 @@ CAPTION="Addhole: $(lang de:"Ausnahmen" en:"Exceptions")"
 DESCRIPTION="$(lang de:"Diese Hostnamen werden nicht blockiert, einer pro Zeile, ohne IPs" en:"These hosts will not be blocked, one per line, without IPs")."
 
 CONFIG_FILE='/tmp/flash/addhole/allow.txt'
-CONFIG_SAVE='/mod/etc/init.d/rc.addhole download other'
+CONFIG_SAVE='modsave flash; /mod/etc/init.d/rc.addhole download other'
 CONFIG_TYPE='text'
 
 TEXT_ROWS=40
