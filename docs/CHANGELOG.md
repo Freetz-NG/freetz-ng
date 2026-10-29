@@ -123,7 +123,7 @@ Latest changes
     * Subversion 1.9.12/1.15.0
     * tcpdump 4.99.7
     * tmux 3.8
-    * Tor 0.4.8.25/0.4.9.14
+    * Tor 0.4.8.25/0.4.9.15
     * Transmission 3.00/4.1.4
     * Unbound 1.26.2
     * Vim 9.2.1169
