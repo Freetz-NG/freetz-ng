@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.0.17)
+$(call PKG_INIT_LIB, 1.0.18)
 $(PKG)_LIB_VERSION:=0.4.0
 $(PKG)_SOURCE:=fribidi-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=6949dcde27d41cebad1fd741fcafc36d55a1020d2d872d4a6eb3914caabbada2
+$(PKG)_HASH:=1de5e8073d035388b71d0b2d452b1da1f8caeea8a7702997b401fe1b6250727f
 $(PKG)_SITE:=https://github.com/fribidi/fribidi/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://github.com/fribidi/fribidi
 ### MANPAGE:=https://github.com/fribidi/fribidi/wiki
