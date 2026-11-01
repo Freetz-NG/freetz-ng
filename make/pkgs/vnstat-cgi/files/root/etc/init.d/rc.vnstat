@@ -45,8 +45,8 @@ config_vns1() {
 config_vns2() {
 	local dbiflist
 
-	#initialize sqlite, maybe import old v1 databases
-	if [ ! -e /var/lib/vnstat/vnstat.db ]; then
+	# initialize sqlite, maybe import old v1 databases, this also cleans dirty unmount
+	if [ ! -e /var/lib/vnstat/vnstat.db ] || [ -e /var/lib/vnstat/vnstat.db-journal ]; then
 		vnstatd --initdb --config "$DAEMON_CFGFILE"
 	fi
 	dbiflist="$(vnstat --dbiflist 1 --config "$DAEMON_CFGFILE")"
@@ -103,8 +103,8 @@ config() {
 
 stop_status() {
 	kill -9 "$(cat $HTTPD_PID_VNS 2>/dev/null)" 2>/dev/null
-	[ -x /mod/etc/init.d/rc.inetd ] && /mod/etc/init.d/rc.inetd config vnstat >/dev/null
-	modunreg status vnstat stats
+	[ -x /mod/etc/init.d/rc.inetd ] && /mod/etc/init.d/rc.inetd config $DAEMON >/dev/null
+	modunreg status $DAEMON stats
 }
 
 start() {
@@ -117,8 +117,8 @@ start() {
 		webcfg-vns -P $HTTPD_PID_VNS
 	fi
 	modlib_startdaemon $DAEMON_BIN -s -d --config $DAEMON_CFGFILE
-	[ -x /mod/etc/init.d/rc.inetd ] && /mod/etc/init.d/rc.inetd config vnstat
-	modreg status vnstat vnstat stats
+	[ -x /mod/etc/init.d/rc.inetd ] && /mod/etc/init.d/rc.inetd config $DAEMON
+	modreg status $DAEMON "$DAEMON_LONG_NAME" stats
 }
 
 stop_pre() {
