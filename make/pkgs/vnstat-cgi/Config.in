@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_VNSTAT_CGI
-	bool "vnstat Webinterface"
+	bool "vnStat Webinterface"
 	depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 	select FREETZ_PACKAGE_VNSTAT
 	select FREETZ_PACKAGE_VNSTAT_CLI

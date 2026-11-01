@@ -30,9 +30,8 @@ $(lang de:"Zu &uuml;berwachende Interfaces" en:"Interfaces for monitoring"):&nbs
 <input type="text" name="interfaces" size="55" maxlength="255" value="$(html "$VNSTAT_INTERFACES")">
 <br>
 <font size=-2>
-$(lang de:"Verf&uuml;gbare Interfaces" en:"Available interfaces")
-:&nbsp;$(vnstat --iflist | sed 's/.*: //;s/ ([^)]*)//g')
-$(lang de:" - leer lassen f&uuml;r alle" en:" - leave empty for all")
+$(lang de:"Verf&uuml;gbare Interfaces (leer lassen f&uuml;r alle)" en:"Available interfaces (leave empty for all)"):<br>
+$(vnstat --iflist | sed 's/.*: //;s/ ([^)]*)//g')
 </font>
 </p>
 EOF

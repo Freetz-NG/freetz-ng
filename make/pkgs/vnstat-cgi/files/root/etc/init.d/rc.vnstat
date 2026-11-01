@@ -1,11 +1,93 @@
 #!/bin/sh
 
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+[ "$FREETZ_PACKAGE_VNSTAT_VERSION_ABANDON" == "y" ] && CONF_VER="vns1" || CONF_VER="vns2"
+
 DAEMON=vnstat
 DAEMON_BIN=vnstatd
-DAEMON_LONG_NAME=VNstat
+DAEMON_LONG_NAME="vnStat"
+DAEMON_CFGFILE=/tmp/flash/$DAEMON/$DAEMON.conf
 . /etc/init.d/modlibrc
 
 HTTPD_PID_VNS=/var/run/httpd_vns.pid
+
+config_vns1() {
+	if [ -z "$VNSTAT_INTERFACES" ]; then
+		VNSTAT_INTERFACES="$(vnstat --iflist | sed 's/.*: //;s/ ([^)]*)//g')"
+	else
+		#delete unused databases
+		for dbfile in $(ls -A /var/lib/vnstat/ 2>/dev/null); do
+			useif="no"
+			for ifname in $VNSTAT_INTERFACES; do
+				[ "$ifname" = "$dbfile" ] && useif="yes"
+				[ ".$ifname" = "$dbfile" ] && useif="yes"
+			done
+			if [ "$useif" = "no" ]; then
+				rm -f /var/lib/vnstat/$dbfile
+				rm -f /var/lib/vnstat/.$dbfile
+			fi
+		done
+	fi
+
+	#create new databeses
+	for ifname in $VNSTAT_INTERFACES; do
+		vnstat -u -i $ifname --config $DAEMON_CFGFILE >/dev/null
+		if [ $? -ne 0 ]; then
+			echo 'failed.'
+			vnstat -u -i $ifname --config $DAEMON_CFGFILE
+			ret=$?
+			echo 'Is your USB-device yet available?'
+			exit $ret
+		fi
+	done
+}
+
+config_vns2() {
+	local dbiflist
+
+	#initialize sqlite, maybe import old v1 databases
+	if [ ! -e /var/lib/vnstat/vnstat.db ]; then
+		vnstatd --initdb --config "$DAEMON_CFGFILE"
+	fi
+	dbiflist="$(vnstat --dbiflist 1 --config "$DAEMON_CFGFILE")"
+
+	# warn about old databases, should be imported
+	if ls -A /var/lib/vnstat/ 2>/dev/null | grep -qv '^vnstat\.db'; then
+		echo 'old unused v1 files detected in /var/lib/vnstat/ ...'
+	fi
+
+	if [ -z "$VNSTAT_INTERFACES" ]; then
+		VNSTAT_INTERFACES="$(vnstat --iflist | sed 's/.*: //;s/ ([^)]*)//g')"
+	else
+		#delete unused database entries
+		for dbnif in $dbiflist; do
+			useif="no"
+			for ifname in $VNSTAT_INTERFACES; do
+				[ "$ifname" = "$dbnif" ] && useif="yes"
+			done
+			if [ "$useif" = "no" ]; then
+				vnstat --remove --force -i "$dbnif" --config "$DAEMON_CFGFILE"
+			fi
+		done
+	fi
+
+	#create new database entries
+	for ifname in $VNSTAT_INTERFACES; do
+		useif="no"
+		for dbnif in $dbiflist; do
+			[ "$ifname" = "$dbnif" ] && useif="yes"
+		done
+		[ "$useif" = "yes" ] && continue
+		vnstat --add -i "$ifname" --config "$DAEMON_CFGFILE" >/dev/null
+		if [ $? -ne 0 ]; then
+			echo 'failed.'
+			vnstat --add -i "$ifname" --config "$DAEMON_CFGFILE"
+			ret=$?
+			echo 'Is your USB-device yet available?'
+			exit $ret
+		fi
+	done
+}
 
 config() {
 	local SUBDAEMON=vns
@@ -16,33 +98,7 @@ config() {
 	rm -rf /var/lib/vnstat 2>/dev/null
 	ln -s "$VNSTAT_DBDIR" /var/lib/vnstat
 
-	if [ -z "$VNSTAT_INTERFACES" ]; then
-		VNSTAT_INTERFACES=$(ifconfig | grep "^\w" | sed 's/ .*//g' | grep -v ':')
-	else
-		#delete unused databases
-		for dbfile in $(ls -A /var/lib/vnstat/ 2>/dev/null); do
-			useif=no
-			for ifname in $VNSTAT_INTERFACES; do
-				[ "$ifname" = "$dbfile" -o ".$ifname" = "$dbfile" ] && useif=yes
-			done
-			if [ "$useif" = no ]; then
-				rm -rf /var/lib/vnstat/$dbfile
-				rm -rf /var/lib/vnstat/.$dbfile
-			fi
-		done
-	fi
-
-	#create new databeses
-	for ifname in $VNSTAT_INTERFACES; do
-		vnstat -u -i $ifname --config /tmp/flash/vnstat/vnstat.conf >/dev/null
-		if [ $? -ne 0 ]; then
-			echo 'failed.'
-			vnstat -u -i $ifname --config /tmp/flash/vnstat/vnstat.conf
-			ret=$?
-			echo 'Is your USB-device yet available?'
-			exit $ret
-		fi
-	done
+	config_$CONF_VER
 }
 
 stop_status() {
@@ -60,7 +116,7 @@ start() {
 		fi
 		webcfg-vns -P $HTTPD_PID_VNS
 	fi
-	modlib_startdaemon $DAEMON_BIN -s -d --config /tmp/flash/vnstat/vnstat.conf
+	modlib_startdaemon $DAEMON_BIN -s -d --config $DAEMON_CFGFILE
 	[ -x /mod/etc/init.d/rc.inetd ] && /mod/etc/init.d/rc.inetd config vnstat
 	modreg status vnstat vnstat stats
 }
@@ -77,7 +133,9 @@ case $1 in
 		modlib_add_httpd_symlink vns
 
 		[ ! -d "/tmp/flash/vnstat" ] && mkdir -p /tmp/flash/vnstat
-		[ ! -e "/tmp/flash/vnstat/vnstat.conf" ] && /mod/etc/default.vnstat/vnstat_conf > /tmp/flash/vnstat/vnstat.conf
+		[ ! -L "$DAEMON_CFGFILE" ] && [ -s "$DAEMON_CFGFILE" ] && mv "$DAEMON_CFGFILE" "/tmp/flash/vnstat/vnstat-vns1.conf"  # compat
+		ln -sf "vnstat-$CONF_VER.conf" "$DAEMON_CFGFILE"
+		[ ! -e "$DAEMON_CFGFILE" ] && "/mod/etc/default.vnstat/vnstat_$CONF_VER" > "$DAEMON_CFGFILE"
 
 		modreg file $DAEMON conf 'vnstat.conf' 1 "vnstat_conf"
 		modreg cgi $DAEMON "$DAEMON_LONG_NAME"

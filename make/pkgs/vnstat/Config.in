@@ -24,7 +24,6 @@ if FREETZ_PACKAGE_VNSTAT
 
 		config FREETZ_PACKAGE_VNSTAT_VERSION_CURRENT
 			bool "2.13"
-			depends on !FREETZ_PACKAGE_VNSTAT_CGI
 			select FREETZ_LIB_libsqlite3
 			help
 				This version uses a shared sqlite database for all network interfaces.
@@ -33,7 +32,7 @@ if FREETZ_PACKAGE_VNSTAT
 
 	config FREETZ_PACKAGE_VNSTAT_CLI
 		bool "vnstat cli"
-		default n
+		default y
 		help
 			This is a command line tool for:
 			 - managing monitored interfaces

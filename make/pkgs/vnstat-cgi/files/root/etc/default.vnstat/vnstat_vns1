@@ -1,11 +1,11 @@
 #!/bin/sh
 
 cat <<EOF
-# vnStat 1.10 config file
+# vnStat 1.18 config file
 ##
 
-# default interface
-Interface "eth0"
+# default interface (empty = automatic selection for database queries)
+Interface "fritzbox"
 
 ### The DatabaseDir should NOT be changed here, use the Freetz-Webinterface!
 
@@ -63,7 +63,7 @@ QueryMode 0
 ### You have to set CheckDiskSpace to 0 if you would like to save your databases to /tmp/!
 
 # filesystem disk space check (1 = enabled, 0 = disabled)
-CheckDiskSpace 1
+CheckDiskSpace 0
 
 # database file locking (1 = enabled, 0 = disabled)
 UseFileLocking 1

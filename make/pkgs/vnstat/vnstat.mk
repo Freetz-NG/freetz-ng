@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://humdi.net/vnstat
 ### MANPAGE:=https://humdi.net/vnstat/man/
 ### CHANGES:=https://humdi.net/vnstat/CHANGES
 ### CVSREPO:=https://github.com/vergoh/vnstat
+### STEWARD:=fda77
 
 $(PKG)_BINARIES_ALL := vnstat vnstatd vnstati
 $(PKG)_BINARIES := $(filter-out $(if $(FREETZ_PACKAGE_VNSTAT_CLI),,vnstat) $(if $(FREETZ_PACKAGE_VNSTAT_DAEMON),,vnstatd) $(if $(FREETZ_PACKAGE_VNSTAT_IMAGE),,vnstati),$($(PKG)_BINARIES_ALL))
