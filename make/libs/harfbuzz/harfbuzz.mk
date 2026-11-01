@@ -18,8 +18,11 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME_LONG)
 
 $(PKG)_DEPENDS_ON += meson-host
 $(PKG)_DEPENDS_ON += freetype
+$(PKG)_DEPENDS_ON += libstdcxx
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
+
+$(PKG)_CONFIGURE_PRE_CMDS += $(SED) -i "s!$(TARGET_CXX)!$(TARGET_CXX_GNU)!g" meson.freetz;
 
 $(PKG)_CONFIGURE_OPTIONS += -D buildtype=release
 $(PKG)_CONFIGURE_OPTIONS += -D benchmark=disabled
