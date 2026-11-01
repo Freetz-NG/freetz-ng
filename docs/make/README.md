@@ -988,7 +988,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Transmission CGI</u><a id='transmission'></a>**<br>
     Provides a simple configuration interface for transmission-daemon.
 
-  * **<u>vnstat-cgi: vnstat Webinterface</u><a id='vnstat'></a>**<br>
+  * **<u>vnstat-cgi: vnStat Webinterface</u><a id='vnstat'></a>**<br>
     Lets you view graphically the output of vnStat.
 
   * **<u>wol-cgi: Wake-on-LAN (WoL) CGI</u><a id='wol'></a>**<br>

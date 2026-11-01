@@ -1046,6 +1046,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[vnStat 1.18/2.13 (binary only)](../../docs/make/vnstat.md)<a id='vnstat'></a>**<br>
     vnStat is a console-based network traffic monitor. It keeps a log of hourly, daily and monthly network traffic for the selected interface(s). However, it isn't a packet sniffer. The traffic information is analyzed from the proc(5) filesystem. That way vnStat can be used even without root permissions.
+     - [Wechsel von v1 zu v2](../../docs/make/vnstat.md#wechsel-von-v1-zu-v2)
+     - [Wechsel von v2 auf v1](../../docs/make/vnstat.md#wechsel-von-v2-auf-v1)
 
   * **[Vpnc 0.5.3 - DEPRECATED](../../docs/make/vpnc.md)<a id='vpnc'></a>**<br>
     Cisco IPSec VPN Client
@@ -1374,7 +1376,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Transmission CGI</u><a id='transmission'></a>**<br>
     Provides a simple configuration interface for transmission-daemon.
 
-  * **<u>vnstat-cgi: vnstat Webinterface</u><a id='vnstat'></a>**<br>
+  * **<u>vnstat-cgi: vnStat Webinterface</u><a id='vnstat'></a>**<br>
     Lets you view graphically the output of vnStat.
 
   * **<u>wol-cgi: Wake-on-LAN (WoL) CGI</u><a id='wol'></a>**<br>
