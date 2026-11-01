@@ -15,6 +15,9 @@ kex_algorithms() {
 		echo dsa
 	fi
 	echo ed25519
+	if [ "$FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON" != y ]; then
+		echo mldsa44-ed25519
+	fi
 }
 
 gen_key() {

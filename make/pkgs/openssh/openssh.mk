@@ -46,6 +46,7 @@ $(PKG)_EXCLUDED += $(addprefix usr/sbin/,$(filter-out $($(PKG)_SBIN_BINARIES_INC
 $(PKG)_EXCLUDED += $(addprefix usr/lib/,$(filter-out $($(PKG)_LIB_BINARIES_INCLUDED),$($(PKG)_LIB_BINARIES)))
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_OPENSSH_sshd),,etc/default.openssh etc/init.d/rc.openssh usr/lib/cgi-bin/openssh.cgi)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO),etc/default.openssh/rsa_key.def etc/default.openssh/dsa_key.def)
+$(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),etc/default.openssh/mldsa44-ed25519_key.def)
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-etc-default-login
 $(PKG)_CONFIGURE_OPTIONS += --disable-lastlog

@@ -1,0 +1,7 @@
+CAPTION='OpenSSH: Private mldsa44-Ed25519 Host Key'
+DESCRIPTION="$(lang de:"Hier muss der private mldsa44-Ed25519 Host Schl&uuml;ssel eingetragen werden. Du kannst einen solchen Schl&uuml;ssel wie folgt generieren:<br>/usr/bin/ssh-keygen -t mldsa44-ed25519 -f mldsa44-ed25519_host_key -N \"\"<br>Kopiere den Inhalt der neu erzeugten Datei mldsa44-ed25519_host_key in diese Box.<br><strong>L&ouml;sche die lokale Kopie der Datei mldsa44-ed25519_host_key nachdem du den Inhalt in diese Box eingef&uuml;gt hast!</strong><br>Wenn diese Box leer ist, wird ein neuer mldsa44-Ed25519 Host Key automatisch erzeugt, falls ssh-keygen auf dem System ist." en:"Here you have to add the private mldsa44-Ed25519 Host Key. You can add such a key as follows:<br>/usr/bin/ssh-keygen -t mldsa44-ed25519 -f mldsa44-ed25519_host_key -N \"\"<br>Copy the contents of the newly generated file mldsa44-ed25519_host_key into this box.<br><strong>Delete your local copy of the file mldsa44-ed25519_host_key after copying the contents into this box!</strong><br>If this box is empty, a new mldsa44-Ed25519 host key is generated automatically if ssh-keygen is found on the System.")"
+
+CONFIG_FILE='/tmp/flash/openssh/mldsa44-ed25519_host_key'
+CONFIG_SAVE='chmod 600 /tmp/flash/openssh/mldsa44-ed25519_host_key; modsave flash'
+CONFIG_TYPE='text'
+
