@@ -1,0 +1,16 @@
+--- a/src/gssl/gssl_openssl.cpp
++++ b/src/gssl/gssl_openssl.cpp
+@@ -293,7 +293,13 @@
+ 	if( (flags&3U) == 2U )
+ 		m_ssl_ctx = SSL_CTX_new(SSLv23_method()) ;
+ 	else if( (flags&3U) == 3U )
++	{
++#if defined(OPENSSL_NO_SSL3) || defined(OPENSSL_NO_SSL3_METHOD)
++		throw Error( "SSLv3 is not supported by this OpenSSL build" ) ;
++#else
+ 		m_ssl_ctx = SSL_CTX_new(SSLv3_method()) ;
++#endif
++	}
+ 	else
+ 		m_ssl_ctx = SSL_CTX_new(TLSv1_method()) ;
+ 
