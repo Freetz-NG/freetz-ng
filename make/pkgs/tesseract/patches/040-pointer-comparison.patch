@@ -1,0 +1,49 @@
+--- a/ccutil/ambigs.cpp
++++ b/ccutil/ambigs.cpp
+@@ -210,7 +210,7 @@
+   char *token;
+   char *next_token;
+   if (!(token = strtok_r(buffer, kAmbigDelimiters, &next_token)) ||
+-      !sscanf(token, "%d", TestAmbigPartSize) || TestAmbigPartSize <= 0) {
++      !sscanf(token, "%d", TestAmbigPartSize) || *TestAmbigPartSize <= 0) {
+     if (debug_level) tprintf(kIllegalMsg, line_num);
+     return false;
+   }
+--- a/textord/topitch.cpp
++++ b/textord/topitch.cpp
+@@ -1432,7 +1432,7 @@
+   if (blob_it.empty ())
+     return space_size * 10;
+ #ifndef GRAPHICS_DISABLED
+-  if (testing_on && to_win > 0) {
++  if (testing_on && to_win != NULL) {
+     blob_box = blob_it.data ()->bounding_box ();
+     projection->plot (to_win, projection_left,
+       row->intercept (), 1.0f, -1.0f, ScrollView::CORAL);
+@@ -1481,7 +1481,7 @@
+       tprintf ("\n");
+     }
+ #ifndef GRAPHICS_DISABLED
+-    if (textord_show_fixed_cuts && blob_count > 0 && to_win > 0)
++    if (textord_show_fixed_cuts && blob_count > 0 && to_win != NULL)
+       plot_fp_cells2(to_win, ScrollView::GOLDENROD, row, &seg_list);
+ #endif
+     seg_it.set_to_list (&seg_list);
+@@ -1571,7 +1571,7 @@
+     return initial_pitch * 10;
+   }
+ #ifndef GRAPHICS_DISABLED
+-  if (testing_on && to_win > 0) {
++  if (testing_on && to_win != NULL) {
+     projection->plot (to_win, projection_left,
+       row->intercept (), 1.0f, -1.0f, ScrollView::CORAL);
+   }
+@@ -1607,7 +1607,7 @@
+     tprintf ("\n");
+   }
+ #ifndef GRAPHICS_DISABLED
+-  if (textord_show_fixed_cuts && blob_count > 0 && to_win > 0)
++  if (textord_show_fixed_cuts && blob_count > 0 && to_win != NULL)
+     plot_fp_cells2(to_win, ScrollView::GOLDENROD, row, &seg_list);
+ #endif
+   seg_it.set_to_list (&seg_list);
