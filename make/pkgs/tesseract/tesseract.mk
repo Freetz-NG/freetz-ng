@@ -21,13 +21,14 @@ $(PKG)_LIBRARY_BUILD_DIR:=$($(PKG)_DIR)/api/.libs/$($(PKG)_LIBNAME)
 $(PKG)_LIBRARY_STAGING_DIR:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
 $(PKG)_LIBRARY_TARGET_DIR:=$($(PKG)_TARGET_LIBDIR)/$($(PKG)_LIBNAME)
 
+$(PKG)_DEPENDS_ON += config-host
 $(PKG)_DEPENDS_ON += libstdcxx leptonica
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
 $(PKG)_EXCLUDED += $($(PKG)_TOOLS_EXCLUDED:%=usr/bin/%)
 
 # remove optimization flags
 $(PKG)_CONFIGURE_PRE_CMDS += $(foreach flag,-O[0-9],$(SED) -i -r -e 's,(C(XX|PP)?FLAGS="[^"]*)$(flag)(( [^"]*)?"),\1\3,g' ./configure;)
-
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./config/)
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 $(PKG)_CONFIGURE_ENV += CXX="$(TARGET_CXX_GNU)"
