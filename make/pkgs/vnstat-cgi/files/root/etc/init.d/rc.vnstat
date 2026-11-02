@@ -35,9 +35,8 @@ config_vns1() {
 		if [ $? -ne 0 ]; then
 			echo 'failed.'
 			vnstat -u -i $ifname --config $DAEMON_CFGFILE
-			ret=$?
 			echo 'Is your USB-device yet available?'
-			exit $ret
+			exit 1
 		fi
 	done
 }
@@ -66,6 +65,7 @@ config_vns2() {
 				[ "$ifname" = "$dbnif" ] && useif="yes"
 			done
 			if [ "$useif" = "no" ]; then
+				vnstat --remove --force -i "$dbnif" --config "$DAEMON_CFGFILE" >/dev/null || \
 				vnstat --remove --force -i "$dbnif" --config "$DAEMON_CFGFILE"
 			fi
 		done
@@ -78,15 +78,16 @@ config_vns2() {
 			[ "$ifname" = "$dbnif" ] && useif="yes"
 		done
 		[ "$useif" = "yes" ] && continue
-		vnstat --add -i "$ifname" --config "$DAEMON_CFGFILE" >/dev/null
-		if [ $? -ne 0 ]; then
-			echo 'failed.'
-			vnstat --add -i "$ifname" --config "$DAEMON_CFGFILE"
-			ret=$?
-			echo 'Is your USB-device yet available?'
-			exit $ret
-		fi
+		vnstat --add -i "$ifname" --config "$DAEMON_CFGFILE" >/dev/null || \
+		vnstat --add -i "$ifname" --config "$DAEMON_CFGFILE"
 	done
+
+	# check existing database file
+	if [ ! -s /var/lib/vnstat/vnstat.db ]; then
+		echo 'failed.'
+		echo 'Is your USB-device yet available?'
+		exit 1
+	fi
 }
 
 config() {

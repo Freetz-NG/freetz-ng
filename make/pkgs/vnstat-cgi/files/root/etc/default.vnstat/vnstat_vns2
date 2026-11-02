@@ -33,7 +33,7 @@ TXHourCharacter   "t"
 # how units are prefixed when traffic is shown
 # 0 = IEC standard prefixes (KiB/MiB/GiB/TiB)
 # 1 = old style binary prefixes (KB/MB/GB/TB)
-UnitMode 0
+UnitMode 1
 
 # output style
 # 0 = minimal & narrow, 1 = bar column visible
