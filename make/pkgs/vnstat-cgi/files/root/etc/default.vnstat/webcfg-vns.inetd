@@ -1,5 +1,5 @@
 . /mod/etc/conf/vnstat.cfg
-inetdcfg_desc="VNstat"
+inetdcfg_desc="vnStat"
 inetdcfg_port=$VNSTAT_WEB_PORT
 inetdcfg_sock=stream
 inetdcfg_proto=tcp$1
