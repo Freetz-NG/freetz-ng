@@ -11,9 +11,12 @@ TEMPDIR=/tmp/vnstat
 mkdir -p $TEMPDIR
 
 gen_pic() {
-	local range="$2"
-	[ "$FREETZ_PACKAGE_VNSTAT_VERSION_ABANDON" != "y" ] && [ "$range" = "top10" ] && range="top 10"
-	$_NICE vnstati -i $1 --$range -o $TEMPDIR/$1-$2.png --config /tmp/flash/vnstat/vnstat.conf
+	local dark range="$2"
+	if [ "$FREETZ_PACKAGE_VNSTAT_VERSION_ABANDON" != "y" ]; then
+		[ "$range" = "top10" ] && range="top 10"
+		[ "$VNSTAT_DARK_MODE" = "yes" ] && dark='--invert-colors'
+	fi
+	$_NICE vnstati -i $1 --$range -o $TEMPDIR/$1-$2.png --config /tmp/flash/vnstat/vnstat.conf $dark
 	echo "<p><img src=\"/vnspix/$1-$2.png$NOCACHE\" alt=\"vnStat: $2 of $1\" border=\"0\"/></p>"
 }
 
