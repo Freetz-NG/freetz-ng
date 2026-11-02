@@ -131,7 +131,7 @@ Latest changes
     * vnStat 1.18/2.13
 
   - Libraries:
-    * expat 2.7.5/2.9.0
+    * expat 2.7.5/2.10.0
     * FreeType 2.15.0
     * fribidi 1.0.18
     * gensio 3.0.4
