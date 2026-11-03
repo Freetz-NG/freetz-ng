@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_RSYNC
-	bool "rsync 3.4.1/3.5.1"
+	bool "rsync 3.4.1/3.5.2"
 	select FREETZ_LIB_libpopt
 	select FREETZ_LIB_libz
 	default n
@@ -18,7 +18,7 @@ if FREETZ_PACKAGE_RSYNC
 #			depends on  (FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 
 		config FREETZ_PACKAGE_RSYNC_VERSION_CURRENT
-			bool "3.5.1 (AI slop)"
+			bool "3.5.2 (AI slop)"
 			depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 
 	endchoice

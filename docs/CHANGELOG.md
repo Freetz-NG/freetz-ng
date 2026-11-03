@@ -117,6 +117,7 @@ Latest changes
     * procps-ng 4.0.7
     * Python3 3.14.8
     * rpcbind 1.3.1
+    * rsync 3.4.1/3.5.2
     * ser2net 3.5.4/4.6.8
     * sispmctl 4.12
     * strace 4.9/5.0/7.3
