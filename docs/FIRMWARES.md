@@ -176,6 +176,7 @@ Currently supported devices and firmwares
     - 279.08.25 rev134496 {ALL} [Smart24 P2 NL1]
   * __Fritz!Box 5690 XGS (UNTESTED)__
     - 295.08.25 rev133396 {ALL} [Smart24 P2 NL1]
+    - 295.08.51 rev137972 {ALL} [MyFRITZOS P1]
 
 ### Fritz!Box Cable (63xx/64xx/65xx/66xx)
 

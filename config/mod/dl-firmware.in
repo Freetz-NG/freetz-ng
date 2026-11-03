@@ -547,6 +547,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_5690_Pro-08.25.image"                                                      if FREETZ_TYPE_5690_PRO                          && FREETZ_TYPE_FIRMWARE_08_2X
 	#
 	default "FRITZ.Box_5690_XGS-08.25.image"                                                      if FREETZ_TYPE_5690_XGS                          && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Box_5690_XGS-08.51.image"                                                      if FREETZ_TYPE_5690_XGS                          && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Repeater_6000-07.31-V2.image/FRITZ.Repeater_6000-07.31.image"                  if FREETZ_TYPE_6000                              && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Repeater_6000-07.58.image"                                                     if FREETZ_TYPE_6000                              && FREETZ_TYPE_FIRMWARE_07_5X
