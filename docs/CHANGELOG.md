@@ -103,7 +103,7 @@ Latest changes
     * FFmpeg 5.1.10/7.1.5
     * Git 2.26.2/2.56.0
     * GnuTLS 3.7.11/3.8.13
-    * ImageMagick 7.1.0-62/7.1.2-34
+    * ImageMagick 7.1.0-62/7.1.2-35
     * iPerf3 3.3/3.22
     * lsof 4.99.7
     * Lua 5.1.5/5.5.1
