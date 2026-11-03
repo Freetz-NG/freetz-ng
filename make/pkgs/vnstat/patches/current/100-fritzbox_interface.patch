@@ -1,43 +1,43 @@
 # Portiert von codex auf vnstat v2
 --- src/ifinfo.c
 +++ src/ifinfo.c
-@@ -1,6 +1,8 @@
- #include "common.h"
+@@ -2,6 +2,8 @@
  #include "ibw.h"
  #include "ifinfo.h"
-+
-+int readfritzbox(const char *iface);
  
++int readfritzbox(const char *iface);
++
  int getifinfo(const char *iface)
  {
-@@ -48,6 +50,13 @@
- 		ifinfo.timestamp = time(NULL);
+ 	char inface[MAXIFLEN];
+@@ -49,6 +51,13 @@
  		return 1;
  	}
-+
+ 
 +	/* START - FRITZBOX READ */
 +	if (strcmp(inface, "fritzbox") == 0 && readfritzbox(inface) == 1) {
 +		ifinfo.timestamp = time(NULL);
 +		return 1;
 +	}
 +	/* END - FRITZBOX READ */
- 
++
  #elif defined(BSD_VNSTAT)
  	if (readifaddrs(inface) == 1) {
-@@ -133,6 +142,13 @@
- 	const struct dirent *di;
+ 		ifinfo.timestamp = time(NULL);
+@@ -134,6 +143,13 @@
  	char procline[512];
  	uint32_t bwlimit = 0;
-+
+ 
 +	/* START - FRITZBOX ADD INTERFACE */
 +	char iffb[] = "fritzbox";
 +	if (!iflistadd(ifl, iffb, 0, 0)) {
 +		panicexit(__FILE__, __LINE__);
 +	}
 +	/* END - FRITZBOX ADD INTERFACE */
- 
++
  	if ((fp = fopen(PROCNETDEV, "r")) != NULL) {
  
+ 		/* make list of interfaces */
 @@ -270,6 +286,83 @@
  	return 1;
  }
@@ -124,7 +124,7 @@
  	FILE *fp;
 --- src/daemon.c
 +++ src/daemon.c
-@@ -573,6 +573,23 @@
+@@ -600,6 +600,23 @@
  		return 0;
  	}
  

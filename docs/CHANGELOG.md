@@ -128,7 +128,7 @@ Latest changes
     * Transmission 3.00/4.1.4
     * Unbound 1.26.2
     * Vim 9.2.1169
-    * vnStat 1.18/2.13
+    * vnStat 1.18/2.14
 
   - Libraries:
     * expat 2.7.5/2.10.0
