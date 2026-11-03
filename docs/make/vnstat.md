@@ -1,4 +1,4 @@
-# vnStat 1.18/2.13 (binary only)
+# vnStat 1.18/2.14 (binary only)
   - Homepage: [https://humdi.net/vnstat/](https://humdi.net/vnstat/)
   - Manpage: [https://humdi.net/vnstat/man/](https://humdi.net/vnstat/man/)
   - Changelog: [https://humdi.net/vnstat/CHANGES](https://humdi.net/vnstat/CHANGES)
