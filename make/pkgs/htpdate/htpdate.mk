@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 2.0.2)
+$(call PKG_INIT_BIN, 2.1.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=3f5effa9355db140ef8ace6d17800d48815d1afdcef9d1096510451839dd8de4
+$(PKG)_HASH:=92a787338666d02d5b871444de5b0d5128f789d041342204f9c9837309da8080
 $(PKG)_SITE:=https://github.com/twekkel/htpdate/archive/refs/tags,https://www.vervest.org/htp/archive/c
 ### WEBSITE:=https://www.vervest.org/htp/
 ### MANPAGE:=https://www.vervest.org/htp/?FAQ
