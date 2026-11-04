@@ -2100,7 +2100,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 			FILESYSTEM_LIMIT="$(sed -nr 's/^filesystem_size=(.*)/\1/p' ${FIRMWARE_DIR}/var/install)"
 			[ "$FREETZ_AVM_HAS_FWLAYOUT_3" == "y" ] && FILESYSTEM_LIMIT="$(sed -nr 's/^ATOM_filesystem_size=(.*)/\1/p' ${FIRMWARE_DIR}/var/install)"
 			[ "$FREETZ_AVM_HAS_FWLAYOUT_4" == "y" ] && FILESYSTEM_LIMIT="72"  # https://bitbucket.org/fesc2000/ffritz/src/6591/README-6591.md
-			[ "$FREETZ_AVM_HAS_FWLAYOUT_5" == "y" ] && FILESYSTEM_LIMIT="$(sed -rn 's/.*ubimkvol.*avm_filesys_0.* (.*)MiB.*/\1/p' ${FILESYSTEM_DIR}/etc/init.d/flash_update)"
+			[ "$FREETZ_AVM_HAS_FWLAYOUT_5" == "y" ] && FILESYSTEM_LIMIT="$(sed -rn 's/.*ubimkvol.*avm_filesys_0.* (.*)MiB.*/\1/p' ${FILESYSTEM_DIR}/etc/init.d/flash_update 2>/dev/null)"
 			[ "$FREETZ_AVM_HAS_FIT_FS_SIZE" -gt 0 ] 2>/dev/null && FILESYSTEM_LIMIT="$FREETZ_AVM_HAS_FIT_FS_SIZE"
 			[ "$FILESYSTEM_LIMIT" -le 1024 ] 2>/dev/null && FILESYSTEM_LIMIT="$(( $FILESYSTEM_LIMIT *1024*1024 ))"
 			[ "$FILESYSTEM_LIMIT" -le 0 ] 2>/dev/null && FILESYSTEM_LIMIT=""
