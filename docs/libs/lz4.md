@@ -1,4 +1,4 @@
-# LZ4 (liblz4.so) 1.10.0
+# LZ4 (liblz4.so) 1.11.0
   - Homepage: [http://www.lz4.org](http://www.lz4.org)
   - Manpage: [https://github.com/lz4/lz4/wiki](https://github.com/lz4/lz4/wiki)
   - Changelog: [https://github.com/lz4/lz4/releases](https://github.com/lz4/lz4/releases)
