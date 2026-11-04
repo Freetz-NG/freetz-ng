@@ -678,6 +678,7 @@ Currently supported devices and firmwares
     - 253.07.31 rev109964 {ALL} [PSQ19P2NL4]
     - 253.07.58 rev113014 {ALL} [MOVE21NL1]
     - 253.08.25 rev133938 {ALL} [Smart24 P2 NL1]
+    - 253.08.51 rev138141 {ALL} [MyFRITZOS P1]
 
   * __Fritz!Repeater 6700 Pro (UNTESTED)__
     - 315.08.40 rev136004 {ALL} [MyFRITZOS P1] (Inhaus)
