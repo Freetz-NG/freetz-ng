@@ -141,7 +141,6 @@ esac
 
 #AARCH64
 [ "$new" == "new" ] && [ "$a6" == "a6" ] && dltc "FREETZ_TYPE_5690_XGS    FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
-[ "$new" == "new" ] && [ "$a6" == "a6" ] && dltc "FREETZ_TYPE_5690_XGS    FREETZ_TYPE_FIRMWARE_08_5X"        # SEPARATE
 
 #ARMEB
 [ "$old" == "old" ] && [ "$a5" == "a5" ] && dltc "FREETZ_TYPE_6360        FREETZ_TYPE_FIRMWARE_06_5X"
