@@ -1,8 +1,9 @@
-$(call PKG_INIT_LIB, 1.10.0)
+$(call PKG_INIT_LIB, 1.11.0)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
+$(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b
-$(PKG)_SITE:=https://github.com/lz4/lz4/releases/download/v$($(PKG)_VERSION)
+$(PKG)_HASH:=247e5fa64da5f7b75ee3dd3bed484076396c9ebe8254d9ccf693eb62800c5e26
+$(PKG)_SITE:=https://github.com/lz4/lz4/archive/refs/tags,https://github.com/lz4/lz4/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=http://www.lz4.org
 ### MANPAGE:=https://github.com/lz4/lz4/wiki
 ### CHANGES:=https://github.com/lz4/lz4/releases

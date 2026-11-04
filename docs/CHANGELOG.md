@@ -146,6 +146,7 @@ Latest changes
     * libpng 1.6.59
     * libtasn1 4.21.0
     * libzip 1.12.1
+    * lz4 1.11.0
     * pcre2 10.49
     * utf8proc 2.12.0
 

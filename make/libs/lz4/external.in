@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_liblz4
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/liblz4.so.1.10.0
+		 ${FREETZ_LIBRARY_DIR}/liblz4.so.1.11.0
 
