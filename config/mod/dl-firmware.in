@@ -313,7 +313,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox-7620/{deutschland,other}/fritz.os,@AVM/7620"                                                if FREETZ_TYPE_7620
 	#
-	default "@AVM/fritzbox-7630/{deutschland,other}/fritz.os,@AVM/7630"                                                if FREETZ_TYPE_7630
+	default "@AVM/fritzbox-7630/{deutschland,other}/fritz.os,@AVM/7630"                                                if FREETZ_TYPE_7630_V1
 	#
 	default "@AVM/fritzbox-7632/{deutschland,other}/fritz.os,@AVM/7632"                                                if FREETZ_TYPE_7632
 	#
@@ -874,8 +874,8 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_7620-08.26.image"                                                          if FREETZ_TYPE_7620                              && FREETZ_TYPE_FIRMWARE_08_2X
 	#
-	default "FRITZ.Box_7630-08.25.image"                                                          if FREETZ_TYPE_7630                              && FREETZ_TYPE_FIRMWARE_08_2X
-	default "FRITZ.Box_7630-08.51.image"                                                          if FREETZ_TYPE_7630                              && FREETZ_TYPE_FIRMWARE_08_5X
+	default "FRITZ.Box_7630-08.25.image"                                                          if FREETZ_TYPE_7630_V1                           && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Box_7630-08.51.image"                                                          if FREETZ_TYPE_7630_V1                           && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Box_7632-08.25.image"                                                          if FREETZ_TYPE_7632                              && FREETZ_TYPE_FIRMWARE_08_2X
 	default "FRITZ.Box_7632-08.51.image"                                                          if FREETZ_TYPE_7632                              && FREETZ_TYPE_FIRMWARE_08_5X

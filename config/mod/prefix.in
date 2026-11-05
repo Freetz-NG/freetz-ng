@@ -135,7 +135,7 @@ config FREETZ_TYPE_PREFIX
 	default "7590"              if FREETZ_TYPE_7590_W5
 	default "7590_AX"           if FREETZ_TYPE_7590_W6
 	default "7620"              if FREETZ_TYPE_7620
-	default "7630"              if FREETZ_TYPE_7630
+	default "7630"              if FREETZ_TYPE_7630_V1
 	default "7632"              if FREETZ_TYPE_7632
 	default "7682"              if FREETZ_TYPE_7682
 	default "7690"              if FREETZ_TYPE_7690
