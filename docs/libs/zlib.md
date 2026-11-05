@@ -1,4 +1,4 @@
-# Zlib (libz.so) 1.3.2
+# Zlib (libz.so) 1.4
   - Homepage: [https://www.zlib.net/](https://www.zlib.net/)
   - Manpage: [https://www.zlib.net/manual.html](https://www.zlib.net/manual.html)
   - Changelog: [https://www.zlib.net/](https://www.zlib.net/)
