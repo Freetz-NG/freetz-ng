@@ -145,6 +145,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - MHW 07.02: [07.02.04.32.avm.de.upd](http://download.avm.de/dect/0702/FW_04.32/07.02.04.32.avm.de.upd)
   - MHW 07.03: [07.03.04.25.avm.de.upd](http://download.avm.de/dect/0703/move21/07.03.04.25.avm.de.upd)
   - MHW 07.04: [07.04.04.32.avm.de.upd](http://download.avm.de/dect/0704/FW_04.32/07.04.04.32.avm.de.upd)
+  - MHW 07.06: [07.06.04.33.avm.de.upd](http://download.avm.de/dect/0706/FW_04.33/07.06.04.33.avm.de.upd)
   - MHW 08.01: [08.01.04.93.avm.de.upd](http://download.avm.de/dect/0801/move21/08.01.04.93.avm.de.upd)
   - MHW 08.02: [08.02.04.94.avm.de.upd](http://download.avm.de/dect/0802/move21/08.02.04.94.avm.de.upd)
   - MHW 08.03: [08.03.04.94.avm.de.upd](http://download.avm.de/dect/0803/move21/08.03.04.94.avm.de.upd)
