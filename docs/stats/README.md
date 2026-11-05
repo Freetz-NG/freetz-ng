@@ -24,7 +24,7 @@
 </tbody></table>
 </details>
 
-<details><summary>140 verschiedene HWR</summary>
+<details><summary>141 verschiedene HWR</summary>
 
 <table>
 <caption style='background-color:gray'>&nbsp;</caption>
@@ -159,6 +159,7 @@
 <tr><td>FRITZ!Repeater 2700</td><td>301</td></tr>
 <tr><td>FRITZ!Box 5630</td><td>302</td></tr>
 <tr><td>FRITZ!Box 7632</td><td>303</td></tr>
+<tr><td>FRITZ!Box 7630</td><td>304</td></tr>
 <tr><td>FRITZ!Repeater 1610 Outdoor</td><td>305</td></tr>
 <tr><td>FRITZ!Box 6825 4G</td><td>306</td></tr>
 <tr><td>FRITZ!Box 4630</td><td>307</td></tr>
@@ -173,7 +174,7 @@
 </tbody></table>
 </details>
 
-<details><summary>141 verschiedene Produkte</summary>
+<details><summary>142 verschiedene Produkte</summary>
 
 <table>
 <caption style='background-color:gray'>&nbsp;</caption>
@@ -302,6 +303,7 @@
 <tr><td>FRITZ!Repeater 2700</td><td>Fritz_Box_HW301</td></tr>
 <tr><td>FRITZ!Box 5630</td><td>Fritz_Box_HW302</td></tr>
 <tr><td>FRITZ!Box 7632</td><td>Fritz_Box_HW303</td></tr>
+<tr><td>FRITZ!Box 7630</td><td>Fritz_Box_HW304</td></tr>
 <tr><td>FRITZ!Repeater 1610 Outdoor</td><td>Fritz_Box_HW305</td></tr>
 <tr><td>FRITZ!Box 6825 4G</td><td>Fritz_Box_HW306</td></tr>
 <tr><td>FRITZ!Box 4630</td><td>Fritz_Box_HW307</td></tr>
@@ -1089,7 +1091,7 @@
 <tr><td>FRITZ!Box 6690 Pro</td><td>FREETZ_TYPE_6690_PRO</td></tr>
 </tbody></table>
 <table>
-<caption style='background-color:gray'>Gen5: fit-boot (33)</caption>
+<caption style='background-color:gray'>Gen5: fit-boot (34)</caption>
 <thead><tr><th style='width:450px'>Name</th><th style='width:300px'>Symbol</th></tr></thead>
 <tbody>
 <tr><td>FRITZ!Box 4050</td><td>FREETZ_TYPE_4050</td></tr>
@@ -1111,6 +1113,7 @@
 <tr><td>FRITZ!Box 7530 AX</td><td>FREETZ_TYPE_7530_W6_V1</td></tr>
 <tr><td>FRITZ!Box 7530 AX</td><td>FREETZ_TYPE_7530_W6_V2</td></tr>
 <tr><td>FRITZ!Box 7620</td><td>FREETZ_TYPE_7620</td></tr>
+<tr><td>FRITZ!Box 7630</td><td>FREETZ_TYPE_7630_V1</td></tr>
 <tr><td>FRITZ!Box 7632</td><td>FREETZ_TYPE_7632</td></tr>
 <tr><td>FRITZ!Box 7682</td><td>FREETZ_TYPE_7682</td></tr>
 <tr><td>FRITZ!Box 7690</td><td>FREETZ_TYPE_7690</td></tr>
