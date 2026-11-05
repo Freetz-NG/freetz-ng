@@ -26,8 +26,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzSmart
     - deutschland: [FRITZ.Box_4060-08.25.image](https://download.avm.de/fritzbox/fritzbox-4060/deutschland/fritz.os/FRITZ.Box_4060-08.25.image)
     - other: [FRITZ.Box_4060-08.25.image](https://download.avm.de/fritzbox/fritzbox-4060/other/fritz.os/FRITZ.Box_4060-08.25.image)
   * fritzbox-4630/
-    - deutschland: [FRITZ.Box_4630-08.25.image](https://download.avm.de/fritzbox/fritzbox-4630/deutschland/fritz.os/FRITZ.Box_4630-08.25.image)
-    - other: [FRITZ.Box_4630-08.25.image](https://download.avm.de/fritzbox/fritzbox-4630/other/fritz.os/FRITZ.Box_4630-08.25.image)
+    - deutschland: [FRITZ.Box_4630-08.51.image](https://download.avm.de/fritzbox/fritzbox-4630/deutschland/fritz.os/FRITZ.Box_4630-08.51.image)
+    - other: [FRITZ.Box_4630-08.51.image](https://download.avm.de/fritzbox/fritzbox-4630/other/fritz.os/FRITZ.Box_4630-08.51.image)
   * fritzbox-4690/
     - deutschland: [FRITZ.Box_4690-08.25.image](https://download.avm.de/fritzbox/fritzbox-4690/deutschland/fritz.os/FRITZ.Box_4690-08.25.image)
     - other: [FRITZ.Box_4690-08.25.image](https://download.avm.de/fritzbox/fritzbox-4690/other/fritz.os/FRITZ.Box_4690-08.25.image)
@@ -195,8 +195,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzSmart
   * fritzbox-7620/
     - deutschland: [FRITZ.Box_7620-08.26.image](https://download.avm.de/fritzbox/fritzbox-7620/deutschland/fritz.os/FRITZ.Box_7620-08.26.image)
   * fritzbox-7630/
-    - deutschland: [FRITZ.Box_7630-08.25.image](https://download.avm.de/fritzbox/fritzbox-7630/deutschland/fritz.os/FRITZ.Box_7630-08.25.image)
-    - other: [FRITZ.Box_7630-08.25.image](https://download.avm.de/fritzbox/fritzbox-7630/other/fritz.os/FRITZ.Box_7630-08.25.image)
+    - deutschland: [FRITZ.Box_7630-08.51.image](https://download.avm.de/fritzbox/fritzbox-7630/deutschland/fritz.os/FRITZ.Box_7630-08.51.image)
+    - other: [FRITZ.Box_7630-08.51.image](https://download.avm.de/fritzbox/fritzbox-7630/other/fritz.os/FRITZ.Box_7630-08.51.image)
   * fritzbox-7632/
     - deutschland: [FRITZ.Box_7632-08.51.image](https://download.avm.de/fritzbox/fritzbox-7632/deutschland/fritz.os/FRITZ.Box_7632-08.51.image)
     - other: [FRITZ.Box_7632-08.51.image](https://download.avm.de/fritzbox/fritzbox-7632/other/fritz.os/FRITZ.Box_7632-08.51.image)
@@ -207,8 +207,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzSmart
     - deutschland: [FRITZ.Box_7690-08.50.image](https://download.avm.de/fritzbox/fritzbox-7690/deutschland/fritz.os/FRITZ.Box_7690-08.50.image)
     - other: [FRITZ.Box_7690-08.50.image](https://download.avm.de/fritzbox/fritzbox-7690/other/fritz.os/FRITZ.Box_7690-08.50.image)
   * fritzbox-dsl-fiber-7-90/
-    - deutschland: [FRITZ.Box_DSL_Fiber_7-90-08.47.image](https://download.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/deutschland/fritz.os/FRITZ.Box_DSL_Fiber_7-90-08.47.image)
-    - other: [FRITZ.Box_DSL_Fiber_7-90-08.47.image](https://download.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/other/fritz.os/FRITZ.Box_DSL_Fiber_7-90-08.47.image)
+    - deutschland: [FRITZ.Box_DSL_Fiber_7-90-08.51.image](https://download.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/deutschland/fritz.os/FRITZ.Box_DSL_Fiber_7-90-08.51.image)
+    - other: [FRITZ.Box_DSL_Fiber_7-90-08.51.image](https://download.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/other/fritz.os/FRITZ.Box_DSL_Fiber_7-90-08.51.image)
 
 ### FritzPowerline
   * fritzpowerline-1000e/
