@@ -648,7 +648,7 @@ config FREETZ_AVM_HAS_FIRMWARE_08_5X
 		)) \
 		|| \
 		( FREETZ_TYPE_LANG_DE && ( \
-			FREETZ_TYPE_xxxx \
+			FREETZ_TYPE_6670 \
 		))
 
 config FREETZ_AVM_HAS_FIRMWARE_08_5X_PLUS

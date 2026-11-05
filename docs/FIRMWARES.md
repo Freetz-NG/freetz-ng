@@ -225,6 +225,7 @@ Currently supported devices and firmwares
     - 284.07.63 rev113732 {GER} [FCS23]
     - 284.08.03 rev118552 {GER} [Smart24 P1 FCS]
     - 284.08.25 rev132295 {GER} [Smart24 P2 NL1]
+    - 284.08.51 rev137879 {GER} [MyFRITZOS P1]
   * __Fritz!Box 6690 Cable__
     - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
     - 267.07.57 rev109915 {GER} [MOVE21NL1]
