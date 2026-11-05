@@ -123,6 +123,7 @@ Currently supported devices and firmwares
   * __Fritz!Box 4690__
     - 291.08.03 rev118786 {ALL} [Smart24 P1 FCS]
     - 291.08.25 rev134165 {ALL} [Smart24 P2 NL1]
+    - 291.08.51 rev137966 {ALL} [MyFRITZOS P1]
 
 ### Fritz!Box Fon (50xx/51xx)
 
