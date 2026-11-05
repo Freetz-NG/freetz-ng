@@ -41,7 +41,7 @@ cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; d
 
 
 #dect
-seq="$((for x in $(seq 1 13); do seq ${x}01 ${x}05; done; seq 406 409; seq 606 619) | sort -n)"
+seq="$((for x in $(seq 1 13); do seq ${x}01 ${x}05; done; seq 606 619; seq 706 709) | sort -n)"
 
 #dect-rel
 echo -e '\n### Dect-Release ###############################################'
