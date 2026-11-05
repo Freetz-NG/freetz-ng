@@ -199,7 +199,7 @@ image() {
 		SIZE_F1="$(stat -c %s ${d}/filesystem.image 2>/dev/null || echo -n '-1')"
 
 		# get additional details
-		[ -e ./var/content ] && grep '^Releasecycle=' ./var/content >> "$nfo"
+		[ -e ./var/content ] && cat ./var/content >> "$nfo"
 
 		# re-splitting only for single + ram
 		if [ "$FLV_DUAL" != "1" ] && [ "$FLV_UIMG" != "1" ] && [ "$FLV_FIT" != "1" ]; then
