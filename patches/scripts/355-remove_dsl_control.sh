@@ -1,7 +1,11 @@
-[ "$FREETZ_REMOVE_DSL_CONTROL" == "y" ] || return 0
-echo1 "removing dsl_control"
+[ "$FREETZ_REMOVE_DSL_CONTROL" == "y" ] || [ "$FREETZ_REMOVE_DSL_DAEMON" == "y" ] || return 0
+
+[ "$FREETZ_REMOVE_DSL_CONTROL" == "y" ] && echo1 "removing dsl_control"
+[ "$FREETZ_REMOVE_DSL_DAEMON" == "y" ] && echo1 "removing dsl_daemon"
 
 for files in \
+  usr/sbin/dsl_daemon \
+  usr/sbin/control_pmi \
   usr/sbin/vr10/dsl_control \
   usr/sbin/dsl_control \
   usr/sbin/dsl_pipe \

@@ -112,7 +112,18 @@ config FREETZ_REMOVE_DSL_CONTROL
 	help
 		Removes /usr/sbin/dsl_control. This saves about
 		540-669 KB of uncompressed data size.
-		Select this only if you don't use the the DSL modem. See
+		Select this only if you don't use the DSL modem. See
+		https://web.archive.org/20200701000000/wehavemorefun.de/fritzbox/Dsl_control
+
+config FREETZ_REMOVE_DSL_DAEMON
+	bool "Remove dsl_daemon"
+	depends on FREETZ_AVM_HAS_DSL_DAEMON && \
+			FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
+	default n
+	help
+		Removes /usr/sbin/dsl_daemon, the successor of dsl_control. This saves about
+		1500 KB of uncompressed data size.
+		Select this only if you don't use the DSL modem. For dsl_control see
 		https://web.archive.org/20200701000000/wehavemorefun.de/fritzbox/Dsl_control
 
 config FREETZ_REMOVE_DSLD
