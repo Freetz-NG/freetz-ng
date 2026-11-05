@@ -73,7 +73,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 261: [FRITZ.Box_4060-08.25.image](http://download.avm.de/fritzbox/fritzbox-4060/deutschland/fritz.os/FRITZ.Box_4060-08.25.image)
   - HWR 262: [FRITZ.Box_6850_LTE-08.25.image](http://download.avm.de/fritzbox/fritzbox-6850-lte/deutschland/fritz.os/FRITZ.Box_6850_LTE-08.25.image)
   - HWR 263: [FRITZ.Repeater_600v2-08.25.image](http://download.avm.de/fritzwlan/fritzrepeater-600v2/deutschland/fritz.os/FRITZ.Repeater_600v2-08.25.image)
-  - HWR 267: [FRITZ.Box_6690_Cable-08.25.image](http://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-08.25.image)
+  - HWR 267: [FRITZ.Box_6690_Cable-08.51.image](http://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-08.51.image)
   - HWR 268: [FRITZ.Repeater_1200_AX-08.25.image](http://download.avm.de/fritzwlan/fritzrepeater-1200-ax/deutschland/fritz.os/FRITZ.Repeater_1200_AX-08.25.image)
   - HWR 270: [FRITZ.Repeater_3000_AX-08.26.image](https://download.avm.de/fritzwlan/fritzmesh-set-4200/other/fritz.os/FRITZ.Repeater_3000_AX-08.26.image)
   - HWR 271: [FRITZ.Box_7510-08.26.image](http://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-08.26.image)
