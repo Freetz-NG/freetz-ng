@@ -200,6 +200,7 @@ image() {
 
 		# get additional details
 		[ -e ./var/content ] && cat ./var/content >> "$nfo"
+		echo -e '\n################################' >> "$nfo"
 
 		# re-splitting only for single + ram
 		if [ "$FLV_DUAL" != "1" ] && [ "$FLV_UIMG" != "1" ] && [ "$FLV_FIT" != "1" ]; then
