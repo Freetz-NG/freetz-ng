@@ -875,6 +875,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7620-08.26.image"                                                          if FREETZ_TYPE_7620                              && FREETZ_TYPE_FIRMWARE_08_2X
 	#
 	default "FRITZ.Box_7630-08.25.image"                                                          if FREETZ_TYPE_7630                              && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Box_7630-08.51.image"                                                          if FREETZ_TYPE_7630                              && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Box_7632-08.25.image"                                                          if FREETZ_TYPE_7632                              && FREETZ_TYPE_FIRMWARE_08_2X
 	default "FRITZ.Box_7632-08.51.image"                                                          if FREETZ_TYPE_7632                              && FREETZ_TYPE_FIRMWARE_08_5X

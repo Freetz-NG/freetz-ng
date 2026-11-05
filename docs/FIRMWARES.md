@@ -560,6 +560,7 @@ Currently supported devices and firmwares
     - 310.08.26 rev134699 {ALL} [Smart24 P2 NL1]
   * __Fritz!Box 7630 (UNTESTED)__
     - 304.08.25 rev134148 {ALL} [Smart24 P2 NL1]
+    - 304.08.51 rev137939 {ALL} [MyFRITZOS P1]
   * __Fritz!Box 7632 (UNTESTED)__
     - 303.08.25 rev134495 {ALL} [Smart24 P2 NL1]
     - 303.08.51 rev137938 {ALL} [MyFRITZOS P1]
