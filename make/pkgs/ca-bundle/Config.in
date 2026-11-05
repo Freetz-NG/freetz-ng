@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_CA_BUNDLE
-	bool "CA-bundle 2026-10-20"
+	bool "CA-bundle 2026-11-05"
 	default n
 	help
 		The Mozilla CA certificate store in PEM format,

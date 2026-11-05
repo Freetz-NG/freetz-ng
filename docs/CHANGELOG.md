@@ -68,7 +68,7 @@ Latest changes
     * ccache 4.14.2
 
   - Host tools:
-    * ca-bundle 2026-10-20
+    * ca-bundle 2026-11-05
     * cmake 4.4.5
     * kconfig 7.3
     * openssl 3.5.9
@@ -96,7 +96,7 @@ Latest changes
     * BIND 9.11.37/9.20.30
     * Bftpd 6.7
     * bridge-utils 1.7.1
-    * CA-bundle 2026-10-20
+    * CA-bundle 2026-11-05
     * Curl 8.12.1/8.23.0
     * Empty 0.6.23d
     * endlessh 1.1
