@@ -149,6 +149,7 @@ Latest changes
     * lz4 1.11.0
     * pcre2 10.49
     * utf8proc 2.12.0
+    * zlib 1.4
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
