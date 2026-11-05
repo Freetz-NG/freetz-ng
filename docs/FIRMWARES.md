@@ -110,6 +110,7 @@ Currently supported devices and firmwares
     - 287.07.58 rev115740 {ALL} [MOVE21NL1]
     - 287.08.02 rev118032 {ALL} [Smart24 P1 FCS]
     - 287.08.25 rev134116 {ALL} [Smart24 P2 NL1]
+    - 287.08.51 rev137945 {ALL} [MyFRITZOS P1]
 
   * __Fritz!Box 4060__
     - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
