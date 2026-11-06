@@ -2,7 +2,7 @@ if FREETZ_TYPE_1750 && FREETZ_AVM_VERSION_07_2X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 1750E"
+	default "FRITZ!Box WLAN Repeater 1750E"
 
 config FREETZ_AVM_PROP_MAJOR
 	string

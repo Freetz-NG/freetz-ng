@@ -163,7 +163,7 @@ endif
 if FREETZ_TYPE_0310_V1 && FREETZ_AVM_VERSION_07_1X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 310"
+	default "FRITZ!Box WLAN Repeater 310"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "122"
@@ -280,7 +280,7 @@ endif
 if FREETZ_TYPE_0310_V2 && FREETZ_AVM_VERSION_07_1X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 310"
+	default "FRITZ!Box WLAN Repeater 310 "
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "143"
@@ -720,7 +720,7 @@ endif
 if FREETZ_TYPE_0450 && FREETZ_AVM_VERSION_07_1X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 450E"
+	default "FRITZ!Box WLAN Repeater 450E"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "128"
@@ -2127,7 +2127,7 @@ endif
 if FREETZ_TYPE_0600_V2 && FREETZ_AVM_VERSION_07_5X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Repeater 600"
+	default "FRITZ!Repeater 600v2"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "263"
@@ -2363,7 +2363,7 @@ endif
 if FREETZ_TYPE_1160 && FREETZ_AVM_VERSION_07_1X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 1160"
+	default "FRITZ!Box WLAN Repeater 1160"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "144"
@@ -5800,7 +5800,7 @@ endif
 if FREETZ_TYPE_1750 && FREETZ_AVM_VERSION_07_1X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 1750E"
+	default "FRITZ!Box WLAN Repeater 1750E"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "134"
@@ -5919,7 +5919,7 @@ endif
 if FREETZ_TYPE_1750 && FREETZ_AVM_VERSION_07_2X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 1750E"
+	default "FRITZ!Box WLAN Repeater 1750E"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "134"
@@ -48462,7 +48462,7 @@ endif
 if FREETZ_TYPE_7520_V2 && FREETZ_AVM_VERSION_07_2X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7520"
+	default "FRITZ!Box 7520 B"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "276"
@@ -48637,7 +48637,7 @@ endif
 if FREETZ_TYPE_7520_V2 && FREETZ_AVM_VERSION_07_5X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7520"
+	default "FRITZ!Box 7520 B"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "276"

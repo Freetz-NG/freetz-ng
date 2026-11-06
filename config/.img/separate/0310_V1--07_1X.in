@@ -2,7 +2,7 @@ if FREETZ_TYPE_0310_V1 && FREETZ_AVM_VERSION_07_1X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 310"
+	default "FRITZ!Box WLAN Repeater 310"
 
 config FREETZ_AVM_PROP_MAJOR
 	string

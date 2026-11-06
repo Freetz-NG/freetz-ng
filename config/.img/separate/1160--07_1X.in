@@ -2,7 +2,7 @@ if FREETZ_TYPE_1160 && FREETZ_AVM_VERSION_07_1X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!WLAN Repeater 1160"
+	default "FRITZ!Box WLAN Repeater 1160"
 
 config FREETZ_AVM_PROP_MAJOR
 	string

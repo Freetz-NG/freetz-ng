@@ -2,7 +2,7 @@ if FREETZ_TYPE_0600_V2 && FREETZ_AVM_VERSION_07_5X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Repeater 600"
+	default "FRITZ!Repeater 600v2"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
