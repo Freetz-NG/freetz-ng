@@ -530,7 +530,7 @@
 </tbody></table>
 </details>
 
-<details><summary>430 verschiedene Images</summary>
+<details><summary>431 verschiedene Images</summary>
 
 <table>
 <caption style='background-color:gray'>&nbsp;</caption>
@@ -617,6 +617,7 @@
 <tr><td>FRITZ.Repeater_3000_AX-07.58.image</td><td>FREETZ_TYPE_3000_W6 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_5X</td></tr>
 <tr><td>FRITZ.Repeater_3000_AX-08.03.image</td><td>FREETZ_TYPE_3000_W6 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_0X</td></tr>
 <tr><td>FRITZ.Repeater_3000_AX-08.26.image</td><td>FREETZ_TYPE_3000_W6 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
+<tr><td>FRITZ.Repeater_3000_AX-08.51.image</td><td>FREETZ_TYPE_3000_W6 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_5X</td></tr>
 <tr><td>fritz.box_wlan_3030.21.04.34.image</td><td>FREETZ_TYPE_3030 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_04_XX</td></tr>
 <tr><td>fritz.box_wlan_3130.44.04.34.image</td><td>FREETZ_TYPE_3130 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_04_XX</td></tr>
 <tr><td>fritz.box_wlan_3131.50.04.57.image</td><td>FREETZ_TYPE_3131 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_04_XX</td></tr>
