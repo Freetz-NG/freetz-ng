@@ -4,6 +4,7 @@
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
 check "$VNSTAT_DARK_MODE" yes:dark_mode
+check "$VNSTAT_TRANS_BGD" yes:trans_bgd
 check "$VNSTAT_WEBENABLED" yes:webenabled
 check "$VNSTAT_WEB_AUTH" yes:web_auth
 check "$VNSTAT_WEB_INETD" yes:web_inetd
@@ -43,6 +44,10 @@ cat << EOF
 <p>
 <input type="hidden" name="dark_mode" value="no">
 <input id="d0" type="checkbox" name="dark_mode" value="yes"$dark_mode_chk><label for="d0">$(lang de:"Grafiken im dunklen Modus anzeigen" en:"Display graphics in dark mode")</label>
+</p>
+<p>
+<input type="hidden" name="trans_bgd" value="no">
+<input id="t0" type="checkbox" name="trans_bgd" value="yes"$trans_bgd_chk><label for="t0">$(lang de:"Grafiken mit transparentem Hintergrund" en:"Graphics with transparent background")</label>
 </p>
 EOF
 fi

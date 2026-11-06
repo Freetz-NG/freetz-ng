@@ -9,7 +9,7 @@
 [![vnStat screenshot](../screenshots/281_md.png)](../screenshots/281.png)
 
 ### Dunkler Modus von v2
-Den dunklen Modus gibt es nur mit v2. Zusammen mit dem dunklen Freetz-Skin sollte in der vnstat.conf `TransparentBg 1` gesetzt werden.
+Den dunklen Modus gibt es nur mit v2. Zusammen mit dem dunklen Freetz-Skin sollte `transparenter Hintergrund` gesetzt werden.
 
 ### Migration
 Vor einem Wechsel zwischen den beiden Versionen sollte ein Backup erstellt werden!
