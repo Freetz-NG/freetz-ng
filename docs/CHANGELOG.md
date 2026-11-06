@@ -111,7 +111,7 @@ Latest changes
     * Lua 5.1.5/5.5.1
     * Nano 9.2/9.3
     * Nmap 4.76/5.51/7.993
-    * OpenSSH 9.3p2/10.6p1
+    * OpenSSH 9.3p2/10.6p2
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.22/3.5.9
     * OpenVPN 2.4.12/2.5.11/2.6.23/2.7.9
     * Patchelf 0.19.3
