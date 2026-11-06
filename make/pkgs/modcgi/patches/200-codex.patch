@@ -1,0 +1,178 @@
+# modcgi
+#
+# - Uninitialisierter next-Zeiger in ParseVars: IsVar/FreeVars verfolgen
+#   ungueltige Heap-Zeiger. Absturz mit und ohne ASan reproduziert.
+# - Verkuerzte POST-Daten: bisher wurden nicht initialisierte Heap-Bytes
+#   weitergeparst. Mit vorbelegtem Speicher nachgewiesen. Jetzt Abbruch
+#   ohne Variablenausgabe oder anschliessende Auswertung von PATH_INFO.
+# - Fehlende/ungueltige CONTENT_LENGTH: NULL-Zugriff, atoi-Ueberlauf und
+#   unbegrenzte Allokationen. Jetzt strikte Pruefung und Groessenlimit.
+# - ctype-Aufrufe mit negativen char-Werten: undefiniertes Verhalten.
+#
+# Neue POST-Obergrenze: 1 MiB. Groessere Formulare werden abgelehnt.
+# Bei Bedarf mit -DMODCGI_MAX_POST_SIZE=<Bytes> in CFLAGS anpassen.
+#
+#
+diff --git proccgi/proccgi/proccgi.c proccgi/proccgi/proccgi.c
+--- proccgi/proccgi/proccgi.c
++++ proccgi/proccgi/proccgi.c
+@@ -21,6 +21,13 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <memory.h>
++#include <errno.h>
++
++/* Bound allocations controlled by a client's Content-Length header.
++ * Override at build time with -DMODCGI_MAX_POST_SIZE=<bytes> if needed. */
++#ifndef MODCGI_MAX_POST_SIZE
++#define MODCGI_MAX_POST_SIZE (1024UL * 1024)
++#endif
+ 
+ /*
+  * Single linked string list
+@@ -60,8 +67,9 @@
+ char *
+ LoadInput (void)
+ {
+-  char *result, *method, *p;
+-  int length, ts;
++  char *result, *method, *p, *end;
++  unsigned long length;
++  size_t ts;
+ 
+   if ((method = getenv ("REQUEST_METHOD")) == NULL) {
+     return NULL;
+@@ -74,18 +82,37 @@
+       result = FP_strdup (p);
+   }
+   else if (strcmp (method, "POST") == 0) {
+-    if ((length = atoi (getenv ("CONTENT_LENGTH"))) <= 0)
+-      return NULL;
++    /* Reject missing, malformed and overflowing lengths before allocation. */
++    p = getenv ("CONTENT_LENGTH");
++    if (p == NULL || *p < '0' || *p > '9') {
++      fprintf (stderr, "invalid CONTENT_LENGTH\n");
++      exit (1);
++    }
++
++    errno = 0;
++    length = strtoul (p, &end, 10);
++    if (errno == ERANGE || *end != '\0') {
++      fprintf (stderr, "invalid CONTENT_LENGTH\n");
++      exit (1);
++    }
++    if (length > MODCGI_MAX_POST_SIZE || length >= (size_t) -1) {
++      fprintf (stderr, "POST data too large (limit %lu bytes)\n",
++               (unsigned long) MODCGI_MAX_POST_SIZE);
++      exit (1);
++    }
+ 
+     if ((result = malloc (length + 1)) == NULL) {
+-      fprintf (stderr, "out of memory allocating %d bytes\n",
++      fprintf (stderr, "out of memory allocating %lu bytes\n",
+ 	       length);
+-      return NULL;
++      exit (1);
+     }
+ 
+     if ((ts = fread (result, sizeof (char), length, stdin)) < length) {
+-      fprintf (stderr, "error reading post data, %d bytes read, %d expected\n",
+-	       ts, length);
++      fprintf (stderr, "error reading post data, %lu bytes read, %lu expected\n",
++	       (unsigned long) ts, length);
++      /* Do not parse uninitialized heap bytes or fall back to PATH_INFO. */
++      free (result);
++      exit (1);
+     }
+     result[length] = '\0';
+   }
+@@ -98,6 +125,7 @@
+ 
+ /*
+  * Parse + and %XX in CGI data
++ * ctype arguments must be unsigned char values, also for non-ASCII input.
+  */
+ 
+ char *
+@@ -108,24 +136,24 @@
+   if (instring == NULL)
+     return instring;
+ 
+-  while (isspace (*ptr1))
++  while (isspace ((unsigned char) *ptr1))
+     ptr1++;
+ 
+   while (*ptr1) {
+     if (*ptr1 == '+') {
+       ptr1++; *ptr2++=' ';
+     }
+-    else if (*ptr1 == '%' && isxdigit (*(ptr1+1)) && isxdigit (*(ptr1+2))) {
++    else if (*ptr1 == '%' && isxdigit ((unsigned char) *(ptr1+1)) && isxdigit ((unsigned char) *(ptr1+2))) {
+       ptr1++;
+-      *ptr2    = ((*ptr1>='0'&&*ptr1<='9')?(*ptr1-'0'):((char)toupper(*ptr1)-'A'+10)) << 4;
++      *ptr2    = ((*ptr1>='0'&&*ptr1<='9')?(*ptr1-'0'):((char)toupper((unsigned char)*ptr1)-'A'+10)) << 4;
+       ptr1++;
+-      *ptr2++ |= ((*ptr1>='0'&&*ptr1<='9')?(*ptr1-'0'):((char)toupper(*ptr1)-'A'+10));
++      *ptr2++ |= ((*ptr1>='0'&&*ptr1<='9')?(*ptr1-'0'):((char)toupper((unsigned char)*ptr1)-'A'+10));
+       ptr1++;
+     }
+     else 
+       *ptr2++ = *ptr1++;
+   }
+-  while (ptr2>instring && isspace(*(ptr2-1)))
++  while (ptr2>instring && isspace((unsigned char)*(ptr2-1)))
+     ptr2--;
+ 
+   *ptr2 = '\0';
+@@ -157,14 +185,17 @@
+       return NULL;
+     }
+ 
++    /* IsVar and FreeVars must stop at the last node, not follow heap data. */
++    newv->next = NULL;
++
+     if ((newv->str = FP_strdup (ptr)) == NULL)
+       return NULL;
+ 
+     {
+       size_t len = strlen (newv->str);
+       for (i = 0; i < len; i++) {
+-        if (isalnum (newv->str[i]))
+-          newv->str[i] = toupper (newv->str[i]);
++        if (isalnum ((unsigned char) newv->str[i]))
++          newv->str[i] = toupper ((unsigned char) newv->str[i]);
+         else if (newv->str[i] == '-')
+           newv->str[i] = '_';
+         else if (newv->str[i] != '_') {
+@@ -260,9 +291,9 @@
+    * values
+    */
+ 
+-  if (!isalpha(*ptr) && *ptr != '_') {free (data); return;}
++  if (!isalpha((unsigned char)*ptr) && *ptr != '_') {free (data); return;}
+   ptr++;
+-  while (isalnum(*ptr) || *ptr == '_') ptr++;
++  while (isalnum((unsigned char)*ptr) || *ptr == '_') ptr++;
+   if (*ptr != '=') {free (data); return;}
+ 
+   *ptr = '\0';
+@@ -271,7 +302,7 @@
+   {
+     size_t len = strlen(data);
+     for (i = 0; i < len; i++)
+-      data[i] = toupper (data[i]);
++      data[i] = toupper ((unsigned char) data[i]);
+   }
+ 
+   if (IsVar (data, list) == 0)
+@@ -364,8 +395,8 @@
+     {
+       size_t len = strlen (prefix);
+       for (i = 0; i < len; i++) {
+-        if (isalnum (prefix[i]))
+-          prefix[i] = toupper (prefix[i]);
++        if (isalnum ((unsigned char) prefix[i]))
++          prefix[i] = toupper ((unsigned char) prefix[i]);
+         else if (prefix[i] == '-')
+           prefix[i] = '_';
+         else if (prefix[i] != '_') {
