@@ -53158,6 +53158,8 @@ config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_HAS_CTLMGR_CTL
 	def_bool y
+config FREETZ_AVM_HAS_DSL_DAEMON
+	def_bool y
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
 	def_bool y
 config FREETZ_AVM_HAS_DSLD
