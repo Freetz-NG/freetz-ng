@@ -85,6 +85,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_4050-08.02.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4050/source-files-FRITZ.Box_4050-08.02.tar.gz)
     - [source-files-FRITZ.Box_4050-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4050/source-files-FRITZ.Box_4050-08.21.tar.gz)
     - [source-files-FRITZ.Box_4050-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4050/source-files-FRITZ.Box_4050-08.25.tar.gz)
+    - [source-files-FRITZ.Box_4050-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4050/source-files-FRITZ.Box_4050-08.51.tar.gz)
   * fritzbox-4060/
     - [source-files-FRITZ.Box_4060-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4060/source-files-FRITZ.Box_4060-07.29.tar.gz)
     - [source-files-FRITZ.Box_4060-07.30.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4060/source-files-FRITZ.Box_4060-07.30.tar.gz)
@@ -95,10 +96,12 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
   * fritzbox-4630/
     - [source-files-FRITZ.Box_4630-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4630/source-files-FRITZ.Box_4630-08.21.tar.gz)
     - [source-files-FRITZ.Box_4630-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4630/source-files-FRITZ.Box_4630-08.25.tar.gz)
+    - [source-files-FRITZ.Box_4630-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4630/source-files-FRITZ.Box_4630-08.51.tar.gz)
   * fritzbox-4690/
     - [source-files-FRITZ.Box_4690-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4690/source-files-FRITZ.Box_4690-08.03.tar.gz)
     - [source-files-FRITZ.Box_4690-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4690/source-files-FRITZ.Box_4690-08.21.tar.gz)
     - [source-files-FRITZ.Box_4690-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4690/source-files-FRITZ.Box_4690-08.25.tar.gz)
+    - [source-files-FRITZ.Box_4690-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4690/source-files-FRITZ.Box_4690-08.51.tar.gz)
   * fritzbox-5490/
     - [source-files-FRITZ.Box_5490-06.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5490/source-files-FRITZ.Box_5490-06.51.tar.gz)
     - [source-files-FRITZ.Box_5490-06.52.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5490/source-files-FRITZ.Box_5490-06.52.tar.gz)
@@ -170,6 +173,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
   * fritzbox-5690-xgs/
     - [source-files-FRITZ.Box_5690_XGS-airoha01-08.20.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-xgs/source-files-FRITZ.Box_5690_XGS-airoha01-08.20.tar.gz)
     - [source-files-FRITZ.Box_5690_XGS-airoha01-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-xgs/source-files-FRITZ.Box_5690_XGS-airoha01-08.25.tar.gz)
+    - [source-files-FRITZ.Box_5690_XGS-airoha01-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-xgs/source-files-FRITZ.Box_5690_XGS-airoha01-08.51.tar.gz)
   * fritzbox-6360/
     - [fritzbox6360-source-files-04.91.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6360/fritzbox6360-source-files-04.91.tar.gz)
     - [fritzbox6360-source-files-05.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6360/fritzbox6360-source-files-05.29.tar.gz)
@@ -288,6 +292,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_6670_Cable-armp7-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-08.03.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-armp7-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-08.21.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-armp7-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-08.25.tar.gz)
+    - [source-files-FRITZ.Box_6670_Cable-armp7-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-08.51.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-atomp7-07.61.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-07.61.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-atomp7-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-07.62.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-atomp7-07.63.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-07.63.tar.gz)
@@ -296,6 +301,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_6670_Cable-atomp7-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-08.03.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-atomp7-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-08.21.tar.gz)
     - [source-files-FRITZ.Box_6670_Cable-atomp7-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-08.25.tar.gz)
+    - [source-files-FRITZ.Box_6670_Cable-atomp7-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-08.51.tar.gz)
   * fritzbox-6690-cable/
     - [source-files-FRITZ.Box_6690_Cable-armp7-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-07.29.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-armp7-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-07.50.tar.gz)
@@ -306,6 +312,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_6690_Cable-armp7-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-08.03.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-armp7-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-08.21.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-armp7-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-08.25.tar.gz)
+    - [source-files-FRITZ.Box_6690_Cable-armp7-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-08.51.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-atomp7-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-07.29.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-atomp7-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-07.50.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-atomp7-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-07.56.tar.gz)
@@ -315,6 +322,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_6690_Cable-atomp7-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-08.03.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-atomp7-08.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-08.21.tar.gz)
     - [source-files-FRITZ.Box_6690_Cable-atomp7-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-08.25.tar.gz)
+    - [source-files-FRITZ.Box_6690_Cable-atomp7-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-atomp7-08.51.tar.gz)
   * fritzbox-6690-pro/
     - [source-files-FRITZ.Box_6690_Pro-armp7-08.26.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-pro/source-files-FRITZ.Box_6690_Pro-armp7-08.26.tar.gz)
     - [source-files-FRITZ.Box_6690_Pro-atomp7-08.26.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-pro/source-files-FRITZ.Box_6690_Pro-atomp7-08.26.tar.gz)
@@ -580,8 +588,12 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_7620-miami-08.26.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7620/source-files-FRITZ.Box_7620-miami-08.26.tar.gz)
   * fritzbox-7630/
     - [source-files-FRITZ.Box_7630-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7630/source-files-FRITZ.Box_7630-08.25.tar.gz)
+    - [source-files-FRITZ.Box_7630-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7630/source-files-FRITZ.Box_7630-08.51.tar.gz)
+  * fritzbox-7630-b/
+    - [source-files-FRITZ.Box_7630_B-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7630-b/source-files-FRITZ.Box_7630_B-08.51.tar.gz)
   * fritzbox-7632/
     - [source-files-FRITZ.Box_7632-08.25.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7632/source-files-FRITZ.Box_7632-08.25.tar.gz)
+    - [source-files-FRITZ.Box_7632-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7632/source-files-FRITZ.Box_7632-08.51.tar.gz)
   * fritzbox-7682/
     - [source-files-FRITZ.Box_7682-alder-08.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7682/source-files-FRITZ.Box_7682-alder-08.01.tar.gz)
     - [source-files-FRITZ.Box_7682-alder-08.02.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7682/source-files-FRITZ.Box_7682-alder-08.02.tar.gz)
@@ -598,7 +610,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Box_7690-miami-08.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7690/source-files-FRITZ.Box_7690-miami-08.50.tar.gz)
   * fritzbox-dsl-fiber-7-90/
     - [source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.47.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.47.tar.gz)
-    - [source-files-FRITZ.Box_DSL_Fiber_7-90-rtl9601-08.47.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-rtl9601-08.47.tar.gz)
+    - [source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.51.tar.gz)
 
 ### FritzDect
   * fritzsmart-gateway/
