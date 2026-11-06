@@ -144,7 +144,7 @@
 <tr><td>FRITZ!Powerline 1240 AX</td><td>275</td></tr>
 <tr><td>FRITZ!Box 7520 B</td><td>276</td></tr>
 <tr><td>FRITZ!Box 6860 5G</td><td>277</td></tr>
-<tr><td>FRITZ!Box 7530 AX</td><td>278</td></tr>
+<tr><td>FRITZ!Box 7530 AX B</td><td>278</td></tr>
 <tr><td>FRITZ!Box 5690 Pro</td><td>279</td></tr>
 <tr><td>FRITZ!Box 6670 Cable</td><td>284</td></tr>
 <tr><td>FRITZ!Box 7690</td><td>285</td></tr>
@@ -171,7 +171,7 @@
 <tr><td>FRITZ!Box 6860 5G v2</td><td>314</td></tr>
 <tr><td>FRITZ!Repeater 6700 Pro</td><td>315</td></tr>
 <tr><td>FRITZ!Box DSL/Fiber 7-90</td><td>316</td></tr>
-<tr><td>FRITZ!Box 7630</td><td>319</td></tr>
+<tr><td>FRITZ!Box 7630 B</td><td>319</td></tr>
 </tbody></table>
 </details>
 
@@ -289,7 +289,7 @@
 <tr><td>FRITZ!Powerline 1240 AX</td><td>Fritz_Box_HW275</td></tr>
 <tr><td>FRITZ!Box 7520 B</td><td>Fritz_Box_HW276</td></tr>
 <tr><td>FRITZ!Box 6860 5G</td><td>Fritz_Box_HW277</td></tr>
-<tr><td>FRITZ!Box 7530 AX</td><td>Fritz_Box_HW278</td></tr>
+<tr><td>FRITZ!Box 7530 AX B</td><td>Fritz_Box_HW278</td></tr>
 <tr><td>FRITZ!Box 5690 Pro</td><td>Fritz_Box_HW279</td></tr>
 <tr><td>FRITZ!Box 6670 Cable</td><td>Fritz_Box_HW284</td></tr>
 <tr><td>FRITZ!Box 7690</td><td>Fritz_Box_HW285</td></tr>
@@ -316,7 +316,7 @@
 <tr><td>FRITZ!Box 6860 5G v2</td><td>Fritz_Box_HW314</td></tr>
 <tr><td>FRITZ!Repeater 6700 Pro</td><td>Fritz_Box_HW315</td></tr>
 <tr><td>FRITZ!Box DSL/Fiber 7-90</td><td>Fritz_Box_HW316</td></tr>
-<tr><td>FRITZ!Box 7630</td><td>Fritz_Box_HW319</td></tr>
+<tr><td>FRITZ!Box 7630 B</td><td>Fritz_Box_HW319</td></tr>
 <tr><td>FRITZ!WLAN Repeater 300E</td><td>Fritz_Box_Neon</td></tr>
 <tr><td>FRITZ!Box 6360 Cable</td><td>Fritz_Box_Puma</td></tr>
 <tr><td>FRITZ!Box SL WLAN</td><td>Fritz_Box_SL_WLAN</td></tr>
@@ -1115,10 +1115,10 @@
 <tr><td>FRITZ!Box 6860 5G v2</td><td>FREETZ_TYPE_6860_V2</td></tr>
 <tr><td>FRITZ!Box 7510</td><td>FREETZ_TYPE_7510</td></tr>
 <tr><td>FRITZ!Box 7530 AX</td><td>FREETZ_TYPE_7530_W6_V1</td></tr>
-<tr><td>FRITZ!Box 7530 AX</td><td>FREETZ_TYPE_7530_W6_V2</td></tr>
+<tr><td>FRITZ!Box 7530 AX B</td><td>FREETZ_TYPE_7530_W6_V2</td></tr>
 <tr><td>FRITZ!Box 7620</td><td>FREETZ_TYPE_7620</td></tr>
 <tr><td>FRITZ!Box 7630</td><td>FREETZ_TYPE_7630_V1</td></tr>
-<tr><td>FRITZ!Box 7630</td><td>FREETZ_TYPE_7630_V2</td></tr>
+<tr><td>FRITZ!Box 7630 B</td><td>FREETZ_TYPE_7630_V2</td></tr>
 <tr><td>FRITZ!Box 7632</td><td>FREETZ_TYPE_7632</td></tr>
 <tr><td>FRITZ!Box 7682</td><td>FREETZ_TYPE_7682</td></tr>
 <tr><td>FRITZ!Box 7690</td><td>FREETZ_TYPE_7690</td></tr>
