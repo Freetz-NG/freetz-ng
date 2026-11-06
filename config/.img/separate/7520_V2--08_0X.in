@@ -2,7 +2,7 @@ if FREETZ_TYPE_7520_V2 && FREETZ_AVM_VERSION_08_0X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7520"
+	default "FRITZ!Box 7520 B"
 
 config FREETZ_AVM_PROP_MAJOR
 	string

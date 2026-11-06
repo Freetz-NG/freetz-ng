@@ -2244,7 +2244,7 @@ endif
 if FREETZ_TYPE_0600_V2 && FREETZ_AVM_VERSION_08_2X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Repeater 600"
+	default "FRITZ!Repeater 600v2"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "263"
@@ -48816,7 +48816,7 @@ endif
 if FREETZ_TYPE_7520_V2 && FREETZ_AVM_VERSION_08_0X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7520"
+	default "FRITZ!Box 7520 B"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "276"
@@ -48995,7 +48995,7 @@ endif
 if FREETZ_TYPE_7520_V2 && FREETZ_AVM_VERSION_08_2X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7520"
+	default "FRITZ!Box 7520 B"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "276"
@@ -51471,7 +51471,7 @@ endif
 if FREETZ_TYPE_7530_W6_V2 && FREETZ_AVM_VERSION_08_0X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7530 AX"
+	default "FRITZ!Box 7530 AX B"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "278"
@@ -59436,7 +59436,7 @@ endif
 if FREETZ_TYPE_7630_V2 && FREETZ_AVM_VERSION_08_5X
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7630"
+	default "FRITZ!Box 7630 B"
 config FREETZ_AVM_PROP_MAJOR
 	string
 	default "319"
