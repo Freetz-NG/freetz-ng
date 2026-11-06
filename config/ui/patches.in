@@ -118,7 +118,11 @@ config FREETZ_REMOVE_DSL_CONTROL
 config FREETZ_REMOVE_DSL_DAEMON
 	bool "Remove dsl_daemon"
 	depends on FREETZ_AVM_HAS_DSL_DAEMON && \
-			FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
+		( \
+			FREETZ_REMOVE_ANNEX_A_FIRMWARE || \
+			FREETZ_REMOVE_ANNEX_B_FIRMWARE || \
+			FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME \
+		)
 	default n
 	help
 		Removes /usr/sbin/dsl_daemon, the successor of dsl_control. This saves about
