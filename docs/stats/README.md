@@ -84,7 +84,7 @@
 <tr><td>FRITZ!Box 7369</td><td>191</td></tr>
 <tr><td>FRITZ!Box 7272</td><td>192</td></tr>
 <tr><td>FRITZ!Box 3390</td><td>193</td></tr>
-<tr><td>FRITZ!WLAN Repeater 310</td><td>194</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 310</td><td>194</td></tr>
 <tr><td>FRITZ!Box 6842 LTE</td><td>195</td></tr>
 <tr><td>FRITZ!Box Fon WLAN 7360</td><td>196</td></tr>
 <tr><td>FRITZ!Box WLAN 3270 v3 Edition Italia</td><td>197</td></tr>
@@ -98,8 +98,8 @@
 <tr><td>FRITZ!Box 3490</td><td>212</td></tr>
 <tr><td>FRITZ!Box 6490 Cable</td><td>213</td></tr>
 <tr><td>FRITZ!Box 6820 LTE</td><td>214</td></tr>
-<tr><td>FRITZ!WLAN Repeater 310</td><td>215</td></tr>
-<tr><td>FRITZ!WLAN Repeater 1160</td><td>216</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 310</td><td>215</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 1160</td><td>216</td></tr>
 <tr><td>FRITZ!Box 7430</td><td>218</td></tr>
 <tr><td>FRITZ!Box 4020</td><td>219</td></tr>
 <tr><td>FRITZ!Box 6590 Cable</td><td>220</td></tr>
@@ -134,7 +134,7 @@
 <tr><td>FRITZ!Box 7583 VDSL</td><td>260</td></tr>
 <tr><td>FRITZ!Box 4060</td><td>261</td></tr>
 <tr><td>FRITZ!Box 6850 LTE</td><td>262</td></tr>
-<tr><td>FRITZ!Repeater 600</td><td>263</td></tr>
+<tr><td>FRITZ!Repeater 600v2</td><td>263</td></tr>
 <tr><td>FRITZ!Smart Gateway</td><td>265</td></tr>
 <tr><td>FRITZ!Box 6690 Cable</td><td>267</td></tr>
 <tr><td>FRITZ!Repeater 1200 AX</td><td>268</td></tr>
@@ -142,7 +142,7 @@
 <tr><td>FRITZ!Box 7510</td><td>271</td></tr>
 <tr><td>FRITZ!Box 5590 Fiber</td><td>272</td></tr>
 <tr><td>FRITZ!Powerline 1240 AX</td><td>275</td></tr>
-<tr><td>FRITZ!Box 7520</td><td>276</td></tr>
+<tr><td>FRITZ!Box 7520 B</td><td>276</td></tr>
 <tr><td>FRITZ!Box 6860 5G</td><td>277</td></tr>
 <tr><td>FRITZ!Box 7530 AX</td><td>278</td></tr>
 <tr><td>FRITZ!Box 5690 Pro</td><td>279</td></tr>
@@ -229,7 +229,7 @@
 <tr><td>FRITZ!Box 7369</td><td>Fritz_Box_HW191</td></tr>
 <tr><td>FRITZ!Box 7272</td><td>Fritz_Box_HW192</td></tr>
 <tr><td>FRITZ!Box 3390</td><td>Fritz_Box_HW193</td></tr>
-<tr><td>FRITZ!WLAN Repeater 310</td><td>Fritz_Box_HW194</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 310</td><td>Fritz_Box_HW194</td></tr>
 <tr><td>FRITZ!Box 6842 LTE</td><td>Fritz_Box_HW195</td></tr>
 <tr><td>FRITZ!Box Fon WLAN 7360</td><td>Fritz_Box_HW196</td></tr>
 <tr><td>FRITZ!Box WLAN 3270 v3 Edition Italia</td><td>Fritz_Box_HW197</td></tr>
@@ -243,8 +243,8 @@
 <tr><td>FRITZ!Box 3490</td><td>Fritz_Box_HW212</td></tr>
 <tr><td>FRITZ!Box 6490 Cable</td><td>Fritz_Box_HW213</td></tr>
 <tr><td>FRITZ!Box 6820 LTE</td><td>Fritz_Box_HW214</td></tr>
-<tr><td>FRITZ!WLAN Repeater 310</td><td>Fritz_Box_HW215</td></tr>
-<tr><td>FRITZ!WLAN Repeater 1160</td><td>Fritz_Box_HW216</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 310</td><td>Fritz_Box_HW215</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 1160</td><td>Fritz_Box_HW216</td></tr>
 <tr><td>FRITZ!Box 7430</td><td>Fritz_Box_HW218</td></tr>
 <tr><td>FRITZ!Box 4020</td><td>Fritz_Box_HW219</td></tr>
 <tr><td>FRITZ!Box 6590 Cable</td><td>Fritz_Box_HW220</td></tr>
@@ -279,7 +279,7 @@
 <tr><td>FRITZ!Box 7583 VDSL</td><td>Fritz_Box_HW260</td></tr>
 <tr><td>FRITZ!Box 4060</td><td>Fritz_Box_HW261</td></tr>
 <tr><td>FRITZ!Box 6850 LTE</td><td>Fritz_Box_HW262</td></tr>
-<tr><td>FRITZ!Repeater 600</td><td>Fritz_Box_HW263</td></tr>
+<tr><td>FRITZ!Repeater 600v2</td><td>Fritz_Box_HW263</td></tr>
 <tr><td>FRITZ!Smart Gateway</td><td>Fritz_Box_HW265</td></tr>
 <tr><td>FRITZ!Box 6690 Cable</td><td>Fritz_Box_HW267</td></tr>
 <tr><td>FRITZ!Repeater 1200 AX</td><td>Fritz_Box_HW268</td></tr>
@@ -287,7 +287,7 @@
 <tr><td>FRITZ!Box 7510</td><td>Fritz_Box_HW271</td></tr>
 <tr><td>FRITZ!Box 5590 Fiber</td><td>Fritz_Box_HW272</td></tr>
 <tr><td>FRITZ!Powerline 1240 AX</td><td>Fritz_Box_HW275</td></tr>
-<tr><td>FRITZ!Box 7520</td><td>Fritz_Box_HW276</td></tr>
+<tr><td>FRITZ!Box 7520 B</td><td>Fritz_Box_HW276</td></tr>
 <tr><td>FRITZ!Box 6860 5G</td><td>Fritz_Box_HW277</td></tr>
 <tr><td>FRITZ!Box 7530 AX</td><td>Fritz_Box_HW278</td></tr>
 <tr><td>FRITZ!Box 5690 Pro</td><td>Fritz_Box_HW279</td></tr>
@@ -1017,6 +1017,9 @@
 <tr><td>FRITZ!Box WLAN 3170</td><td>FREETZ_TYPE_3170</td></tr>
 <tr><td>FRITZ!Box WLAN 3270</td><td>FREETZ_TYPE_3270_V2</td></tr>
 <tr><td>FRITZ!Box WLAN 3270 v3 Edition Italia</td><td>FREETZ_TYPE_3270_V3</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 1160</td><td>FREETZ_TYPE_1160</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 310</td><td>FREETZ_TYPE_0310_V1</td></tr>
+<tr><td>FRITZ!Box WLAN Repeater 310</td><td>FREETZ_TYPE_0310_V2</td></tr>
 <tr><td>FRITZ!Fon 7150</td><td>FREETZ_TYPE_7150</td></tr>
 <tr><td>FRITZ!Powerline 1240E</td><td>FREETZ_TYPE_1240_W5</td></tr>
 <tr><td>FRITZ!Powerline 1260E</td><td>FREETZ_TYPE_1260_V1</td></tr>
@@ -1024,11 +1027,8 @@
 <tr><td>FRITZ!Powerline 546E</td><td>FREETZ_TYPE_0546</td></tr>
 <tr><td>FRITZ!Repeater 2400</td><td>FREETZ_TYPE_2400_W5</td></tr>
 <tr><td>FRITZ!Repeater 600</td><td>FREETZ_TYPE_0600_V1</td></tr>
-<tr><td>FRITZ!WLAN Repeater 1160</td><td>FREETZ_TYPE_1160</td></tr>
 <tr><td>FRITZ!WLAN Repeater 1750E</td><td>FREETZ_TYPE_1750</td></tr>
 <tr><td>FRITZ!WLAN Repeater 300E</td><td>FREETZ_TYPE_0300</td></tr>
-<tr><td>FRITZ!WLAN Repeater 310</td><td>FREETZ_TYPE_0310_V1</td></tr>
-<tr><td>FRITZ!WLAN Repeater 310</td><td>FREETZ_TYPE_0310_V2</td></tr>
 <tr><td>FRITZ!WLAN Repeater 450E</td><td>FREETZ_TYPE_0450</td></tr>
 <tr><td>FRITZ!WLAN Repeater DVB-C</td><td>FREETZ_TYPE_1759</td></tr>
 <tr><td>FRITZ!WLAN Repeater N/G</td><td>FREETZ_TYPE_WRNG</td></tr>
@@ -1060,7 +1060,7 @@
 <tr><td>FRITZ!Box 7430</td><td>FREETZ_TYPE_7430</td></tr>
 <tr><td>FRITZ!Box 7490</td><td>FREETZ_TYPE_7490</td></tr>
 <tr><td>FRITZ!Box 7520</td><td>FREETZ_TYPE_7520_V1</td></tr>
-<tr><td>FRITZ!Box 7520</td><td>FREETZ_TYPE_7520_V2</td></tr>
+<tr><td>FRITZ!Box 7520 B</td><td>FREETZ_TYPE_7520_V2</td></tr>
 <tr><td>FRITZ!Box 7530</td><td>FREETZ_TYPE_7530_W5</td></tr>
 <tr><td>FRITZ!Box 7560</td><td>FREETZ_TYPE_7560</td></tr>
 <tr><td>FRITZ!Box 7580</td><td>FREETZ_TYPE_7580</td></tr>
@@ -1074,7 +1074,7 @@
 <tr><td>FRITZ!Powerline 1260</td><td>FREETZ_TYPE_1260_V2</td></tr>
 <tr><td>FRITZ!Repeater 1200</td><td>FREETZ_TYPE_1200_W5</td></tr>
 <tr><td>FRITZ!Repeater 3000</td><td>FREETZ_TYPE_3000_W5</td></tr>
-<tr><td>FRITZ!Repeater 600</td><td>FREETZ_TYPE_0600_V2</td></tr>
+<tr><td>FRITZ!Repeater 600v2</td><td>FREETZ_TYPE_0600_V2</td></tr>
 </tbody></table>
 <table>
 <caption style='background-color:gray'>Gen3: dual-boot (3)</caption>
