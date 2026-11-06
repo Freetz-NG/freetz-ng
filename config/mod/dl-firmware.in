@@ -442,6 +442,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Repeater_3000_AX-07.58.image"                                                  if FREETZ_TYPE_3000_W6                           && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Repeater_3000_AX-08.03.image"                                                  if FREETZ_TYPE_3000_W6                           && FREETZ_TYPE_FIRMWARE_08_0X
 	default "FRITZ.Repeater_3000_AX-08.26.image"                                                  if FREETZ_TYPE_3000_W6                           && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Repeater_3000_AX-08.51.image"                                                  if FREETZ_TYPE_3000_W6                           && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "fritz.box_wlan_3030.21.04.34.image"                                                  if FREETZ_TYPE_3030                              && FREETZ_TYPE_FIRMWARE_04_XX
 	#
