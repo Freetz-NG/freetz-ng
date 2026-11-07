@@ -20,27 +20,29 @@ jobs:
     permissions:
       packages: read
       contents: write
-    container:
-      image: ghcr.io/freetz-ng/internal/generate
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
-      options: --user 1001:1001
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-slim
     if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
 #     - name: update
 #       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
-#
-#     - name: install
-#       run: |
-#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
-#           git locales
-#
-#     - name: locale
-#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: install
+        env:
+          PACKAGES: git locales
+        run: |
+          missing=()
+          for package in $PACKAGES; do
+            dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q 'install ok installed' || missing+=("$package")
+          done
+          if [ "${#missing[@]}" -gt 0 ]; then
+            sudo apt-get update -qq >/dev/null 2>&1
+            sudo DEBIAN_FRONTEND=noninteractive apt-get -y install "${missing[@]}"
+          fi
+
+      - name: locale
+        run: sudo $SHELL -c "locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale"
 
       - name: clone
         env:
