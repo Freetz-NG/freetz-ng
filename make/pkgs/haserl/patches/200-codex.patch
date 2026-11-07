@@ -15,6 +15,12 @@
 #   des temporaeren Argumentvektors gelesen (Use-after-free behoben).
 # - Datei-/FIFO-Uploads: Teilweise write()-Ergebnisse und EINTR werden
 #   vollstaendig abgearbeitet, statt den restlichen Datenblock zu verlieren.
+# - myputenv: Vorhandene Werte werden im bestehenden Listenknoten ersetzt.
+#   So bleiben Listenanfang und Verkettung erhalten; Use-after-free beim
+#   Ersetzen des ersten Eintrags wird verhindert.
+# - Lua-Fehlermeldungen: Der Meldungstext wird mit festem "%s"-Format
+#   ausgegeben, statt als Formatstring ausgewertet zu werden
+#   (Format-String-Luecke behoben).
 #
 #
 diff --git a/src/haserl.c b/src/haserl.c
@@ -38,6 +44,22 @@ diff --git a/src/haserl.c b/src/haserl.c
  	{
  	  if (array == 1)
  	    {
+@@ -277,12 +277,10 @@
+ 	      free (entry);
+ 	      entry = temp;
+ 	    }
+-	  /* delete the old entry */
++	  /* replace the old value */
+ 	  free (cur->buf);
+-	  if (prev != NULL)
+-	    prev->next = cur->next;
+-	  free (cur);
+-	  cur = prev;
++	  cur->buf = entry;
++	  return (cur);
+ 	}			/* end if found a matching key */
+       prev = cur;
+       if (cur)
 @@ -802,8 +802,6 @@ main (int argc, char *argv[])
  
        parseCommandLine (av2c, av2);
@@ -155,3 +177,15 @@ diff --git a/src/sliding_buffer.c b/src/sliding_buffer.c
    sbuf->len = len;
    sbuf->ptr += sbuf->len;
    return (sbuf->eof) ? (-1) : (0);
+diff --git a/src/h_lua.c b/src/h_lua.c
+--- a/src/h_lua.c
++++ b/src/h_lua.c
+@@ -100,7 +100,7 @@
+       const char *msg = lua_tostring (lua_vm, -1);
+       if (msg == NULL)
+ 	msg = "(error object is not a string)";
+-      die_with_message (NULL, NULL, msg);
++      die_with_message (NULL, NULL, "%s", msg);
+     }
+ }
+ 
