@@ -1,0 +1,157 @@
+# Haserl
+#
+# - myputenv: Die Array-Erkennung las bei leeren oder einstelligen
+#   Parameternamen vor dem String. Der Vergleich mit vorhandenen Eintraegen
+#   konnte ueber deren Stringende hinauslesen. Laengenpruefung und strncmp
+#   verhindern diese ungueltigen Speicherzugriffe.
+# - Multipart: Bei einer Boundary in Anfuehrungszeichen wurde ein Index aus
+#   CONTENT_TYPE fuer den kuerzeren Boundary-Puffer weiterverwendet. Der
+#   Suchlauf beginnt jetzt am richtigen Offset innerhalb dieses Puffers.
+# - Sliding Buffer: Vergleiche bleiben innerhalb der eingelesenen Daten;
+#   das letzte moegliche Trefferfenster wird beruecksichtigt. Am Dateiende
+#   werden nur tatsaechlich vorhandene Bytes zurueckgegeben. Ein fuer den
+#   vorhandenen Puffer zu langes Trennmuster wird mit Fehler abgewiesen.
+# - Kombinierte Interpreterargumente: Der Skriptname wird vor dem Freigeben
+#   des temporaeren Argumentvektors gelesen (Use-after-free behoben).
+# - Datei-/FIFO-Uploads: Teilweise write()-Ergebnisse und EINTR werden
+#   vollstaendig abgearbeitet, statt den restlichen Datenblock zu verlieren.
+#
+#
+diff --git a/src/haserl.c b/src/haserl.c
+--- a/src/haserl.c
++++ b/src/haserl.c
+@@ -236,7 +236,7 @@ myputenv (list_t * cur, char *str, char *prefix)
+   keylen = (size_t) (temp - str);
+ 
+   /* is this an array */
+-  if (memcmp (str + keylen - 2, "[]", 2) == 0)
++  if (keylen >= 2 && memcmp (str + keylen - 2, "[]", 2) == 0)
+     {
+       keylen = keylen - 2;
+       array = 1;
+@@ -263,7 +263,7 @@ myputenv (list_t * cur, char *str, char *prefix)
+   len = keylen + strlen (prefix) + 1;
+   while (cur != NULL)
+     {
+-      if (memcmp (cur->buf, entry, len) == 0)
++      if (strncmp (cur->buf, entry, len) == 0)
+ 	{
+ 	  if (array == 1)
+ 	    {
+@@ -802,8 +802,6 @@ main (int argc, char *argv[])
+ 
+       parseCommandLine (av2c, av2);
+       free (av);
+-      if (av2 != argv)
+-	free (av2);
+ 
+       if (optind < av2c)
+ 	{
+@@ -814,6 +812,9 @@ main (int argc, char *argv[])
+ 	  die_with_message (NULL, NULL, "No script file specified");
+ 	}
+ 
++      if (av2 != argv)
++	free (av2);
++
+       break;
+     }
+ 
+diff --git a/src/rfc2388.c b/src/rfc2388.c
+--- a/src/rfc2388.c
++++ b/src/rfc2388.c
+@@ -33,6 +33,7 @@
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <errno.h>
+ 
+ #if HAVE_SIGNAL_H
+ #include <signal.h>
+@@ -365,12 +366,17 @@ mime_var_writer (mime_var_t * obj, char *str, int len)
+     mime_var_open_target (obj);
+ 
+   /* if we have an open file, write the chunk */
+-  if (obj->fh > 0)
++  while (obj->fh > 0 && len > 0)
+     {
+       err = write (obj->fh, str, len);
++      if (err > 0)
++	{
++	  str += err;
++	  len -= err;
++	}
+       /* if there was an error, invert the filehandle; we need the
+          handle for later when we close it */
+-      if (err == -1)
++      else if (err == 0 || errno != EINTR)
+ 	{
+ 	  obj->fh = abs (obj->fh) * -1;
+ 	}
+@@ -427,6 +433,7 @@ rfc2388_handler (list_t * env)
+   memcpy (boundary + 4, str + i, strlen (str + i) + 1);
+   if ((i > 0) && (str[i - 1] == '"'))
+     {
++      i = 4;
+       while ((boundary[i]) && (boundary[i] != '"'))
+ 	i++;
+       boundary[i] = '\0';
+diff --git a/src/sliding_buffer.c b/src/sliding_buffer.c
+--- a/src/sliding_buffer.c
++++ b/src/sliding_buffer.c
+@@ -75,6 +75,9 @@ s_buffer_read (sliding_buffer_t * sbuf, char *matchstr)
+   int len, pos;
+   int r;
+ 
++  if (strlen (matchstr) >= sbuf->maxsize)
++    die_with_message (NULL, NULL, "Invalid delimiter length");
++
+   /*
+    * if eof and ptr ran off the buffer, then we are done 
+    */
+@@ -87,7 +90,7 @@ s_buffer_read (sliding_buffer_t * sbuf, char *matchstr)
+    * if need to fill the buffer, do so 
+    */
+   if ((sbuf->bufsize == 0) ||
+-      (sbuf->ptr >= (sbuf->buf + sbuf->bufsize - strlen (matchstr))))
++      (sbuf->bufsize - (size_t) (sbuf->ptr - sbuf->buf) <= strlen (matchstr)))
+     {
+       len = sbuf->bufsize - (sbuf->ptr - sbuf->buf);
+       if (len)
+@@ -128,16 +131,12 @@ s_buffer_read (sliding_buffer_t * sbuf, char *matchstr)
+    * look for the matchstr 
+    */
+   pos = 0;
+-  len = sbuf->bufsize - (int) (sbuf->ptr - sbuf->buf) - strlen (matchstr);
+-  /* a malicious client can send a matchstr longer than the actual content body 
+-     do not allow reads beyond the buffer limits
+-  */
+-  len = ( len < 0 ) ? 0 : len;
++  len = (int) (sbuf->bufsize - (sbuf->ptr - sbuf->buf)) - (int) strlen (matchstr);
+ 
+   /* if have a matchstr, look for it, otherwise return the chunk */
+   if ( strlen(matchstr) > 0 )  {
+ 
+-	  while (memcmp (matchstr, sbuf->ptr + pos, strlen (matchstr)) && (pos < len))
++	  while ((pos <= len) && memcmp (matchstr, sbuf->ptr + pos, strlen (matchstr)))
+ 	    {
+ 	      pos++;
+ 	    }
+@@ -145,7 +144,7 @@ s_buffer_read (sliding_buffer_t * sbuf, char *matchstr)
+ 	  /*
+ 	   * if we found it 
+ 	   */
+-	  if (pos < len)
++	  if (pos <= len)
+ 	    {
+ 	      sbuf->len = pos;
+ 	      sbuf->segment = sbuf->ptr;
+@@ -164,6 +163,8 @@ s_buffer_read (sliding_buffer_t * sbuf, char *matchstr)
+    * ran off the end, didn't find the matchstr
+    */
+   sbuf->segment = sbuf->ptr;
++  if (len < 0)
++    len = 0;
+   sbuf->len = len;
+   sbuf->ptr += sbuf->len;
+   return (sbuf->eof) ? (-1) : (0);
