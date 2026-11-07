@@ -9,10 +9,11 @@
  am__haserl_SOURCES_DIST = common.c common.h sliding_buffer.c \
  	sliding_buffer.h h_error.c h_error.h h_script.c h_script.h \
  	rfc2388.c rfc2388.h h_bash.c h_bash.h h_lua_common.c \
-@@ -807,16 +807,16 @@
+@@ -806,17 +806,10 @@
+ .PRECIOUS: Makefile
  
  
- # lua2c_LIBS ?= -llua -ldl -lm
+-# lua2c_LIBS ?= -llua -ldl -lm
 -@USE_LUA_TRUE@lua2c_LDFLAGS ?= -Wl,-E
 -@USE_LUA_TRUE@lua2c:	lua2c.c
 -@USE_LUA_TRUE@	$(CC_FOR_BUILD) $(CFLAGS) $(LUA_CFLAGS) $(LDFLAGS) $(lua2c_LDFLAGS) \
@@ -23,16 +24,10 @@
 -@USE_LUA_TRUE@		rm $@; \
 -@USE_LUA_TRUE@		exit 1 ;\
 -@USE_LUA_TRUE@	fi
-+#lua2c_LDFLAGS ?= -Wl,-E
-+#lua2c:	lua2c.c
-+#(CC_FOR_BUILD) $(CFLAGS) $(LUA_CFLAGS) $(LDFLAGS) $(lua2c_LDFLAGS) \
-+#		-o $@ $^ $(LIBS) $(LUA_LIBS)
-+
-+#haserl_lualib.inc : haserl_lualib.lua lua2c
-+#	if ! ./lua2c haserl_lualib haserl_lualib.lua >$@; then \
-+#		rm $@; \
-+#		exit 1 ;\
-+#	fi
++@USE_LUA_TRUE@haserl_lualib.inc : haserl_lualib.lua
++@USE_LUA_TRUE@	{ echo 'static const unsigned char haserl_lualib[] = {'; \
++@USE_LUA_TRUE@	  od -An -v -tu1 "$<" | sed 's/[0-9][0-9]*/&,/g'; \
++@USE_LUA_TRUE@	  echo '};'; } >"$@"
  
  @USE_LUA_TRUE@h_lua_common.c : haserl_lualib.inc
  

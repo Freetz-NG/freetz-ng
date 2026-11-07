@@ -16,7 +16,6 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_liblua_WITH_VERSION_ABANDON
 
 ifeq ($(strip $(FREETZ_PACKAGE_HASERL_WITH_LUA)),y)
 $(PKG)_DEPENDS_ON += lua
-$(PKG)_CONDITIONAL_PATCHES+=lua-$(if $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),abandon,current)
 $(PKG)_CONFIGURE_OPTIONS += --enable-luashell
 $(PKG)_CONFIGURE_OPTIONS += --enable-luacshell
 $(PKG)_CONFIGURE_OPTIONS += --with-lua
