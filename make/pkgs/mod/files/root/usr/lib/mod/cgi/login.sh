@@ -11,7 +11,7 @@ local idfile="/tmp/$SID.webcfg"
 if [ -z "$SID" ] || [ $lastacc -gt $MOD_HTTPD_SESSIONTIMEOUT ]; then
 	isauth="0";
 	[ -n "$SID" ] && [ -e "$idfile" ] && rm "$idfile"
-	SENDSID="$(echo -n "$(date +%s)" | md5sum | sed 's/[ ]*-//')"
+	SENDSID="$( (date "+%s";echo "$$";cat /etc/.freetz-ng-version /proc/avm/calib/avmzertifikate /proc/sys/urlader/environment 2>/dev/null) | md5sum | sed 's/ *-//')"
 	return 1;
 else
 	touch "$idfile"
