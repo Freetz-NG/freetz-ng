@@ -611,6 +611,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
   * fritzbox-dsl-fiber-7-90/
     - [source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.47.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.47.tar.gz)
     - [source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-miami-08.51.tar.gz)
+    - [source-files-FRITZ.Box_DSL_Fiber_7-90-rtl9601-08.47.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-rtl9601-08.47.tar.gz)
+    - [source-files-FRITZ.Box_DSL_Fiber_7-90-rtl9601-08.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-dsl-fiber-7-90/source-files-FRITZ.Box_DSL_Fiber_7-90-rtl9601-08.51.tar.gz)
 
 ### FritzDect
   * fritzsmart-gateway/
@@ -662,7 +664,6 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
     - [source-files-FRITZ.Repeater_3000-08.20.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-08.20.tar.gz)
     - [source-files-FRITZ.Repeater_3000-08.25.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-08.25.tar.gz)
   * fritzrepeater-3000-ax/
-    - [source-files-FRITZ.Repeater_3000_AX-08.20.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-08.20.tar.gz)
     - [source-files-FRITZ.Repeater_3000_AX-08.25.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-08.25.tar.gz)
   * fritzrepeater-600/
     - [source-files-FRITZ.Repeater_600-08.20.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-600/source-files-FRITZ.Repeater_600-08.20.tar.gz)
