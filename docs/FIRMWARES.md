@@ -663,6 +663,7 @@ Currently supported devices and firmwares
     - 296.08.51 rev138181 {ALL} [MyFRITZOS P1]
   * __Fritz!Repeater 1610 Outdoor (UNTESTED)__
     - 305.08.25 rev134317 {ALL} [Smart24 P2 NL1]
+    - 305.08.51 rev138182 {ALL} [MyFRITZOS P1]
   * __Fritz!Repeater 1700__
     - 290.08.07 rev128069 {ALL} [Smart24 P1 FCS]
     - 290.08.26 rev136867 {ALL} [Smart24 P2 NL1]
