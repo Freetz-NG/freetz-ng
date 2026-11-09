@@ -656,6 +656,7 @@ Currently supported devices and firmwares
     - 268.07.31 rev108167 {ALL} [PSQ19P2NL4]
     - 268.07.58 rev113012 {ALL} [MOVE21NL1]
     - 268.08.25 rev133939 {ALL} [Smart24 P2 NL1]
+    - 268.08.51 rev138180 {ALL} [MyFRITZOS P1]
   * __Fritz!Repeater 1200 AX v2 (UNTESTED)__
     - 296.08.03 rev120165 {ALL} [Smart24 P1 FCS]
     - 296.08.26 rev135004 {ALL} [Smart24 P2 NL1]
