@@ -65,7 +65,7 @@ Latest changes
 ### devel
 
   - Build system:
-    * ccache 4.14.2
+    * ccache 4.14.3
 
   - Host tools:
     * ca-bundle 2026-11-05
