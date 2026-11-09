@@ -530,7 +530,7 @@
 </tbody></table>
 </details>
 
-<details><summary>431 verschiedene Images</summary>
+<details><summary>434 verschiedene Images</summary>
 
 <table>
 <caption style='background-color:gray'>&nbsp;</caption>
@@ -574,8 +574,10 @@
 <tr><td>FRITZ.Repeater_1200_AX-07.31.image</td><td>FREETZ_TYPE_1200_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_2X</td></tr>
 <tr><td>FRITZ.Repeater_1200_AX-07.58.image</td><td>FREETZ_TYPE_1200_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_5X</td></tr>
 <tr><td>FRITZ.Repeater_1200_AX-08.25.image</td><td>FREETZ_TYPE_1200_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
+<tr><td>FRITZ.Repeater_1200_AX-08.51.image</td><td>FREETZ_TYPE_1200_W6_V1 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_5X</td></tr>
 <tr><td>FRITZ.Repeater_1200_AX_v2-08.03.image</td><td>FREETZ_TYPE_1200_W6_V2 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_0X</td></tr>
 <tr><td>FRITZ.Repeater_1200_AX_v2-08.26.image</td><td>FREETZ_TYPE_1200_W6_V2 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
+<tr><td>FRITZ.Repeater_1200_AX_v2-08.51.image</td><td>FREETZ_TYPE_1200_W6_V2 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_5X</td></tr>
 <tr><td>FRITZ.Powerline_1240E.06.92.image</td><td>FREETZ_TYPE_1240_W5 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_06_9X</td></tr>
 <tr><td>FRITZ.Powerline_1240E.150.07.01.image</td><td>FREETZ_TYPE_1240_W5 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_0X</td></tr>
 <tr><td>FRITZ.Powerline_1240E.150.07.16.image</td><td>FREETZ_TYPE_1240_W5 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_1X</td></tr>
@@ -590,6 +592,7 @@
 <tr><td>FRITZ.Powerline_1260.249.07.58.image</td><td>FREETZ_TYPE_1260_V2 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_07_5X</td></tr>
 <tr><td>FRITZ.Powerline_1260.249.08.25.image</td><td>FREETZ_TYPE_1260_V2 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
 <tr><td>FRITZ.Repeater_1610_Outdoor-08.25.image</td><td>FREETZ_TYPE_1610 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
+<tr><td>FRITZ.Repeater_1610_Outdoor-08.51.image</td><td>FREETZ_TYPE_1610 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_5X</td></tr>
 <tr><td>FRITZ.Repeater_1700-08.07.image</td><td>FREETZ_TYPE_1700 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_0X</td></tr>
 <tr><td>FRITZ.Repeater_1700-08.26.image</td><td>FREETZ_TYPE_1700 &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_08_2X</td></tr>
 <tr><td>FRITZ.Box_WLAN_Repeater_1750E.134.06.32.image</td><td>(FREETZ_TYPE_1750 &vert;&vert;<br> FREETZ_TYPE_1759_1750) &amp;&amp;<br> FREETZ_TYPE_FIRMWARE_06_2X</td></tr>
