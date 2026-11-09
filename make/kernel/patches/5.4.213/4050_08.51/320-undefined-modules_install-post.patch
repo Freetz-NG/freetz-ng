@@ -1,0 +1,14 @@
+--- linux-5.4/GNUmakefile
++++ linux-5.4/GNUmakefile
+@@ -182,10 +182,10 @@
+ _kernelrelease = $(file <$(addsuffix /,$(firstword $(O) $(KBUILD_OUTPUT)))include/config/kernel.release)
+ _modlib = $(INSTALL_MOD_PATH)/lib/modules/$(_kernelrelease)
+ 
+-ifneq ($(is-oot-kmod),)
+ non-default-targets += modules_install.post
+ .PHONY: modules_install.post
+ modules_install.post: FORCE modules_install
++ifneq ($(is-oot-kmod),)
+ 	$(call kmod-move-files-to-dot-dir,\
+ 		$(filter-out %/modules.builtin %/modules.builtin.bin,\
+ 			$(wildcard $(_modlib)/modules.* $(_modlib)/Module.*)))
