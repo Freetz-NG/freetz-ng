@@ -1,0 +1,10 @@
+--- linux-5.4/.kernelvariables
++++ linux-5.4/.kernelvariables
+@@ -29,7 +29,6 @@
+ 
+ EXTRA_CFLAGS = 
+ 
+-export AVM_KCONFIG_CONFIG = avm/conf/linux-5.4.airoha01
+ 
+ # Enable reproducibility by setting 'reproducibility' to any nonempty value;
+ # defaults of KBUILD_BUILD_* and SOURCE_DATE_EPOCH match the variables that

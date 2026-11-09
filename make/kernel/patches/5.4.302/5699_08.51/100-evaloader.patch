@@ -1,0 +1,15 @@
+--- linux-5.4/arch/arm64/Makefile
++++ linux-5.4/arch/arm64/Makefile
+@@ -63,6 +63,12 @@
+ KBUILD_CFLAGS	+= $(call cc-option,-mabi=lp64)
+ KBUILD_AFLAGS	+= $(call cc-option,-mabi=lp64)
+ 
++vmlinux.bin: vmlinux
++	$(CROSS_COMPILE)objcopy --remove-section .note.gnu.build-id -S -O binary $< $@
++
++vmlinux.lzma: vmlinux.bin
++	$$FREETZ_BASE_DIR/tools/lzma e -lc3 -lp0 -pb2 $< $@
++
+ ifeq ($(CONFIG_STACKPROTECTOR_PER_TASK),y)
+ prepare: stack_protector_prepare
+ stack_protector_prepare: prepare0
