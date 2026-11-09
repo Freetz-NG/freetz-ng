@@ -1,0 +1,11 @@
+--- linux-5.4/Makefile
++++ linux-5.4/Makefile
+@@ -6,6 +6,8 @@
+ NAME = Kleptomaniac Octopus
+ 
+ 
++SHELL := bash
++
+ # *DOCUMENTATION*
+ # To see a list of typical targets execute "make help"
+ # More info can be located in ./README
