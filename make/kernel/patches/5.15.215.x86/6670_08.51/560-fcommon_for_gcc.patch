@@ -1,0 +1,11 @@
+--- linux-5.15/scripts/dtc/Makefile
++++ linux-5.15/scripts/dtc/Makefile
+@@ -16,7 +16,7 @@
+ fdtoverlay-objs	:= $(libfdt) fdtoverlay.o util.o
+ 
+ # Source files need to get at the userspace version of libfdt_env.h to compile
+-HOST_EXTRACFLAGS += -I $(srctree)/$(src)/libfdt
++HOST_EXTRACFLAGS += -I $(srctree)/$(src)/libfdt -fcommon
+ 
+ ifeq ($(shell $(HOSTPKG_CONFIG) --exists yaml-0.1 2>/dev/null && echo yes),)
+ ifneq ($(CHECK_DT_BINDING)$(CHECK_DTBS),)

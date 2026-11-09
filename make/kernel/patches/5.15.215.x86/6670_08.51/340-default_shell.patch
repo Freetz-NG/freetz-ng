@@ -1,0 +1,11 @@
+--- linux-5.15/GNUmakefile
++++ linux-5.15/GNUmakefile
+@@ -11,6 +11,8 @@
+ 
+ .DEFAULT_GOAL := recurse-wo-goal
+ 
++SHELL := bash
++
+ KBUILD_OUTPUT ?= $(O)
+ KCONFIG_CONFIG ?= $(if $(KBUILD_OUTPUT),$(KBUILD_OUTPUT)/).config
+ 

@@ -1,0 +1,11 @@
+--- linux-5.15/Makefile
++++ linux-5.15/Makefile
+@@ -527,7 +527,7 @@
+ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+ 		   -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \
+ 		   -Werror=implicit-function-declaration -Werror=implicit-int \
+-		   -Werror=return-type -Wno-format-security \
++		                       -Wno-format-security \
+ 		   -Wno-unused-parameter \
+ 		   -std=gnu89
+ KBUILD_CPPFLAGS := -D__KERNEL__

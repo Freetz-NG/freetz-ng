@@ -1,0 +1,11 @@
+--- linux-5.15/Makefile
++++ linux-5.15/Makefile
+@@ -5,6 +5,8 @@
+ EXTRAVERSION =
+ NAME = Trick or Treat
+ 
++SHELL := bash
++
+ # *DOCUMENTATION*
+ # To see a list of typical targets execute "make help"
+ # More info can be located in ./README

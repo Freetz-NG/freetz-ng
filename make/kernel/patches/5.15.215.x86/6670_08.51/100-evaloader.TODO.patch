@@ -1,0 +1,15 @@
+--- linux-5.15/arch/x86/Makefile
++++ linux-5.15/arch/x86/Makefile
+@@ -257,6 +257,12 @@
+ # KBUILD_IMAGE specify target image being built
+ KBUILD_IMAGE := $(boot)/bzImage
+ 
++vmlinux.bin: vmlinux
++	$(CROSS_COMPILE)objcopy --remove-section .note.gnu.build-id -S -O binary $< $@
++
++vmlinux.lzma: vmlinux.bin
++	$$FREETZ_BASE_DIR/tools/lzma e -lc3 -lp0 -pb2 $< $@
++
+ bzImage: vmlinux
+ ifeq ($(CONFIG_X86_DECODER_SELFTEST),y)
+ 	$(Q)$(MAKE) $(build)=arch/x86/tools posttest
