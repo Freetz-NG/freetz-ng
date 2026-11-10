@@ -18,10 +18,7 @@ if [ "$result" -ne 0 ]; then
 else
 	echo "<h1>$(lang de:"Passwort erfolgreich ge&auml;ndert." en:"New password set.")</h1>"
 	echo -n "$MOD_CGI_PASSWORD" | md5sum | sed 's/ .*//' > /tmp/flash/mod/webmd5
-	modsave flash >/dev/null
 	rm /tmp/*.webcfg
-	echo "<p>$(lang de:"Starte Weboberfl&auml;che neu ..." en:"Restarting webcfg ...")</p>"
-	nohup /mod/etc/init.d/rc.webcfg restart >/dev/null 2>&1 &
 
 	#XMail admin account
 	if [ -x /usr/lib/MailRoot/bin/XMCrypt ]; then
@@ -33,22 +30,23 @@ else
 				echo 'ERROR: No encrypted Password received from XMCrypt,'
 				echo '       Password for XMail control not changed !!!'
 			else
-				(
-					sed -e "/\"$MOD_HTTPD_USER\"/d" $XMAIL_MAILLOCATION/ctrlaccounts.tab
-					echo -e "\"$MOD_HTTPD_USER\"\t\"$xmcryptpass\""
-				) > $XMAIL_MAILLOCATION/ctrlaccounts.tab
+				sed -i -e "/\"$MOD_HTTPD_USER\"/d" $XMAIL_MAILLOCATION/ctrlaccounts.tab 2>/dev/null
+				echo -e "\"$MOD_HTTPD_USER\"\t\"$xmcryptpass\"" >> $XMAIL_MAILLOCATION/ctrlaccounts.tab
 
 				#/mod/etc/init.d/rc.xmail restart
 
 				#PHPXmail server.php
-				[ -d /usr/mww/phpxmail ] && (
-					[ -e /tmp/flash/phpxmail/servers.php ] && sed -e \
-					"/^.*\t\(127\.0\.0\.1\|localhost\)\t.*\t$MOD_HTTPD_USER\t/d" /tmp/flash/phpxmail/servers.php
-					echo -e "$(lang de:"Lokale" en:"Local") Fritz!Box\t127.0.0.1\t6017\t$MOD_HTTPD_USER\t$xmcryptpass\t0"
-				) >/tmp/flash/phpxmail/servers.php && modsave flash > /dev/null
+				if [ -d /usr/mww/phpxmail ]; then
+					sed -i -e "/^.*\t\(127\.0\.0\.1\|localhost\)\t.*\t$MOD_HTTPD_USER\t/d" /tmp/flash/phpxmail/servers.php 2>/dev/null
+					echo -e "$(lang de:"Lokale" en:"Local") Fritz!Box\t127.0.0.1\t6017\t$MOD_HTTPD_USER\t$xmcryptpass\t0" >> /tmp/flash/phpxmail/servers.php
+				fi
 			fi
 		fi
 	fi
+
+	modsave flash >/dev/null
+	echo "<p>$(lang de:"Starte Weboberfl&auml;che neu ..." en:"Restarting webcfg ...")</p>"
+	nohup /mod/etc/init.d/rc.webcfg restart >/dev/null 2>&1 &
 
 	back_button mod status
 fi
