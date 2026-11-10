@@ -17,7 +17,8 @@ if [ "$result" -ne 0 ]; then
 	echo "<input type='button' value='$(lang de:"Zur&uuml;ck" en:"Back")' onclick='window.location.href=\"/cgi-bin/conf/mod/webcfg\"'>"
 else
 	echo "<h1>$(lang de:"Passwort erfolgreich ge&auml;ndert." en:"New password set.")</h1>"
-	echo -n "$MOD_HTTPD_USER$MOD_CGI_PASSWORD" | md5sum | sed 's/[ ]*-.*//' > /tmp/flash/mod/webmd5
+	echo -n "$MOD_CGI_PASSWORD" | md5sum | sed 's/ .*//' > /tmp/flash/mod/webmd5
+	modsave flash >/dev/null
 	rm /tmp/*.webcfg
 	echo "<p>$(lang de:"Starte Weboberfl&auml;che neu ..." en:"Restarting webcfg ...")</p>"
 	nohup /mod/etc/init.d/rc.webcfg restart >/dev/null 2>&1 &

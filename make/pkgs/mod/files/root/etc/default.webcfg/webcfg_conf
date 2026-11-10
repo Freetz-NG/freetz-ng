@@ -3,7 +3,7 @@
 # NEWLOGIN? Then no "Basic Auth", we try our own login ...
 if [ "$MOD_HTTPD_NEWLOGIN" = yes ]; then
 	# use standard PW "freetz" if no PW set
-	[ -e /tmp/flash/mod/webmd5 ] || echo -n "freetz" | md5sum | sed 's/[ ]*-.*//' > /tmp/flash/mod/webmd5
+	[ -e /tmp/flash/mod/webmd5 ] || echo -n "freetz" | md5sum | sed 's/ .*//' > /tmp/flash/mod/webmd5
 else
 	echo "/:$MOD_HTTPD_USER:$MOD_HTTPD_PASSWD"
 	# account to force logout

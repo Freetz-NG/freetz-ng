@@ -30,7 +30,7 @@ echo "</p>"
 
 cat << EOF
 <script >
-var conftext='$(lang de:"Noch in der Erprobung!\\nZur Sicherheit sollte ein anderer Zugang zur Box vorhanden sein (telnet/ssh).\\nStandard PW ist \"freetz\", beim PW-Setzen wird es auf \"<User><PW>\" gesetzt!\\n\\nDas PW kann in Konsole so gesetzt werden:\\necho -n \"<Passwort>\" | md5sum | sed \"s/ .*$//\" > /tmp/flash/mod/webmd5\\n" en:"Still under development!\\nPlease make sure, you have an alternate way to access your box (telnet/ssh).\\nDefault password is \"freetz\", changing password will set it to \"<User><PW>\"!\\n\\nYou can set the PW in console with this command:\\necho -n \"<password>\" | md5sum | sed \"s/ .*$//\" > /tmp/flash/mod/webmd5\\n")'
+var conftext='$(lang de:"Standard PW ist \"freetz\".\\n\\nDas PW kann in Konsole so gesetzt werden:" en:"Default password is \"freetz\".\\n\\nYou can set the PW in console with this command:")\\necho -n \"freetz\" | md5sum | sed \"s/ .*//\" > /tmp/flash/mod/webmd5\\n'
 var el=document.getElementById('httpd_newlogin_yes');
 var eltime=document.getElementById('httpd_sessiontimeout');
 $([ "$MOD_HTTPD_NEWLOGIN" = yes ] || echo "eltime.disabled = true;")

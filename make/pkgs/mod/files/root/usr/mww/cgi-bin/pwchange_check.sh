@@ -6,7 +6,7 @@ CHAL=${ID_IP%#*}
 IP=${ID_IP#*#}
 oldhash="$(echo "$QUERY_STRING" | sed -n "s%.*oldhash=\([^\?\&]*\).*%\1%p")"
 newhash="$(echo "$QUERY_STRING" | sed -n "s%.*newhash=\([^\?\&]*\).*%\1%p")"
-UPWHASH=$(cat /tmp/flash/mod/webmd5 | tr -d '\n' )
+UPWHASH="$(cat /tmp/flash/mod/webmd5)"
 myhash="$(echo -n "$CHAL$UPWHASH" | md5sum | sed 's/[ ]*-.*//')"
 
 
