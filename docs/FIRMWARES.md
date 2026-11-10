@@ -177,6 +177,7 @@ Currently supported devices and firmwares
     - 279.07.62 rev115017 {ALL} [FCS23]
     - 279.08.03 rev118508 {ALL} [Smart24 P1 FCS]
     - 279.08.25 rev134496 {ALL} [Smart24 P2 NL1]
+    - 279.08.51 rev137971 {ALL} [MyFRITZOS P1]
   * __Fritz!Box 5690 XGS (UNTESTED)__
     - 295.08.25 rev133396 {ALL} [Smart24 P2 NL1]
     - 295.08.51 rev137972 {ALL} [MyFRITZOS P1]
