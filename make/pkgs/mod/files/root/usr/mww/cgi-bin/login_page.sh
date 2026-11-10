@@ -3,8 +3,9 @@
 # keine Schleife, wenn wir schon libmodcgi.sh hatten ;-)
 [ -z "$SENDSID" ] && . /usr/lib/libmodcgi.sh
 
-# Schicken wir dem Browser eine SessionID, gueltig fuer alle Pfade
-echo "Set-Cookie: SID=$SENDSID;Path=/"
+# Schicken wir dem Browser eine SessionID, gueltig fuer alle Pfade. Dazu nicht
+# via JS auslesbar und nicht mitsenden bei Anfragen anderer Websites ans Webif.
+echo "Set-Cookie: SID=$SENDSID; Path=/; HttpOnly; SameSite=Strict"
 
 cgi_begin "$(lang de:"Anmelden" en:"Login")"
 
