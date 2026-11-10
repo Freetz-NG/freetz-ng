@@ -1,13 +1,13 @@
 name: make_kernel
 
 on:
-# push:
-#   branches: [ master ]
-#   paths:
-#     - '.github/workflows/make_kernel.yml'
-# schedule:
-#   - cron: '00 15 28 * *'
-#     timezone: "Etc/GMT-9"
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/make_kernel.yml'
+  schedule:
+    - cron: '00 15 28 * *'
+      timezone: "Etc/GMT-9"
   workflow_dispatch:
     inputs:
       fos:
@@ -57,7 +57,7 @@ jobs:
         password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
       options: --user 1001:1001
     runs-on: ubuntu-24.04
-    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+    if: github.repository != 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     outputs:
       gitsha: ${{ steps.parse.outputs.gitsha }}

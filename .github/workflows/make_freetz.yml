@@ -1,13 +1,13 @@
 name: make_freetz
 
 on:
-# push:
-#   branches: [ master ]
-#   paths:
-#     - '.github/workflows/make_freetz.yml'
-# schedule:
-#   - cron: '00 15 * * 6'
-#     timezone: "Etc/GMT-9"
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/make_freetz.yml'
+  schedule:
+    - cron: '00 15 * * 6'
+      timezone: "Etc/GMT-9"
   workflow_dispatch:
 
 concurrency:
@@ -32,7 +32,7 @@ jobs:
 #     matrix:
 #       fritz: [ "" ]
     runs-on: ubuntu-24.04
-    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+    if: github.repository != 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     steps:
 

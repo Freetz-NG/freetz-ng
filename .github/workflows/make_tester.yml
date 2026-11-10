@@ -1,10 +1,10 @@
 name: make_tester
 
 on:
-# push:
-#   branches: [ master ]
-#   paths:
-#     - '.github/workflows/make_tester.yml'
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/make_tester.yml'
   workflow_dispatch:
     inputs:
       url:
@@ -34,7 +34,7 @@ jobs:
 #     matrix:
 #       fritz: [ "" ]
     runs-on: ubuntu-24.04
-    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+    if: github.repository != 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     steps:
 
