@@ -2,7 +2,7 @@
 
 . /usr/lib/libmodcgi.sh
 
-CHALLENGE="$(echo -n "$(date +%s)" | md5sum | sed 's/ .*//')"
+CHALLENGE="$( (date "+%s";echo "$$";cat /etc/.freetz-ng-version /proc/avm/calib/avmzertifikate /proc/sys/urlader/environment 2>/dev/null) | md5sum | sed 's/ *-//')"
 
 cgi_begin "$(lang de:"Passwort &auml;ndern" en:"Change password")"
 # Waren wir schonmal hier? Dann war was falsch!
