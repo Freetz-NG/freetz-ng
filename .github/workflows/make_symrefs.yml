@@ -1,13 +1,13 @@
 name: make_symrefs
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/make_symrefs.yml'
-  schedule:
-    - cron: '00 15 14 * *'
-      timezone: "Etc/GMT-9"
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/make_symrefs.yml'
+# schedule:
+#   - cron: '00 15 14 * *'
+#     timezone: "Etc/GMT-9"
   workflow_dispatch:
     inputs:
       fos:
