@@ -50,6 +50,9 @@ menu "Download options"
 
 	source "config/mod/dl-toolchain.in"
 	source "config/mod/dl-kernel.in"
+	source "config/mod/dl-vanilla.in"
+	source "config/mod/dl-avmdiff.in"
+	source "config/mod/dl-symrefs.in"
 	source "config/mod/dl-firmware.in"
 
 endmenu # Download options #
