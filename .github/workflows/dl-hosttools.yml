@@ -1,13 +1,13 @@
 name: dl-hosttools
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/dl-hosttools.yml'
-      - 'tools/dl-hosttools'
-      - 'make/host-tools/tools-host/tools-host.mk'
-#     - 'make/host-tools/'
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/dl-hosttools.yml'
+#     - 'tools/dl-hosttools'
+#     - 'make/host-tools/tools-host/tools-host.mk'
+##    - 'make/host-tools/'
   workflow_dispatch:
 
 concurrency:

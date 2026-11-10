@@ -1,13 +1,13 @@
 name: dl-toolchains
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - '.github/workflows/dl-toolchains.yml'
-      - 'tools/dl-toolchains_*'
-      - 'config/mod/dl-toolchain.in'
-#     - 'make/toolchain/'
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/dl-toolchains.yml'
+#     - 'tools/dl-toolchains_*'
+#     - 'config/mod/dl-toolchain.in'
+##    - 'make/toolchain/'
   workflow_dispatch:
 
 concurrency:
