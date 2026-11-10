@@ -251,7 +251,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[linux-atm (libatm.so) 2.5.2](linux-atm.md)<a id='linux-atm'></a>**<br>
     Libatm is a library for accessing the Linux ATM subsystem.
 
-  * **[LZ4 (liblz4.so) 1.11.0](lz4.md)<a id='lz4'></a>**<br>
+  * **[LZ4 (liblz4.so) 1.11.1](lz4.md)<a id='lz4'></a>**<br>
     LZ4 is a very fast lossless compression algorithm, providing compression speed at 400 MB/s per core, scalable with multi-cores CPU. It also features an extremely fast decoder, with speed in multiple GB/s per core, typically reaching RAM speed limits on multi-core systems.
 
   * **[lzma1 465](lzma1.md)<a id='lzma1'></a>**<br>
