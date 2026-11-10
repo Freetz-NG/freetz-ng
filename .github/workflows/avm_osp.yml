@@ -7,7 +7,7 @@ on:
       - '.github/workflows/avm_osp.yml'
       - 'docs/osp/generate.sh'
   schedule:
-    - cron: '30 05 * * 1-6'
+    - cron: '30 05,12 * * 1-6'
       timezone: "Etc/GMT-9"
   workflow_dispatch:
 

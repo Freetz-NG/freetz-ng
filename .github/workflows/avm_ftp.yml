@@ -7,7 +7,7 @@ on:
       - '.github/workflows/avm_ftp.yml'
       - 'docs/ftp/generate.sh'
   schedule:
-    - cron: '00 15 * * 1-5'
+    - cron: '00 12,17 * * 1-5'
       timezone: "Etc/GMT-9"
   workflow_dispatch:
 

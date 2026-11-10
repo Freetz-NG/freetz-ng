@@ -7,7 +7,7 @@ on:
       - '.github/workflows/avm_juis.yml'
       - 'docs/juis/generate.sh'
   schedule:
-    - cron: '30 16 * * 1-5'
+    - cron: '30 15,19 * * 1-5'
       timezone: "Etc/GMT-9"
   workflow_dispatch:
 
