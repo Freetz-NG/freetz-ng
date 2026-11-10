@@ -1,0 +1,11 @@
+--- linux-5.4/Makefile
++++ linux-5.4/Makefile
+@@ -485,7 +485,7 @@
+ KBUILD_CFLAGS   := -Wall -Wundef -Werror=strict-prototypes -Wno-trigraphs \
+ 		   -fno-strict-aliasing -fno-common -fshort-wchar -fno-PIE \
+ 		   -Werror=implicit-function-declaration -Werror=implicit-int \
+-		   -Werror=return-type -Wno-format-security -Wno-error=unused-function\
++		                       -Wno-format-security -Wno-error=unused-function\
+ 		   -Wno-unused-parameter \
+ 		   -Wno-sign-compare \
+ 		   -Wno-error=cpp \
