@@ -114,7 +114,7 @@ menu "Build system options"
 	config FREETZ_MODULES_TEST
 		bool "Enable kernel modules test - DEVELOPER"
 		depends on FREETZ_SHOW_DEVELOPER
-		select FREETZ_DISABLE_SYMREFS
+		select FREETZ_DISABLE_SYMREFS if FREETZ_AVM_HAS_MODVERSIONS_BUILTIN
 		default n
 		help
 			Abort build on any problem with kernel modules
@@ -123,6 +123,7 @@ menu "Build system options"
 	config FREETZ_DISABLE_SYMREFS
 		bool "Disable kernel symrefs - DEVELOPER"
 		depends on FREETZ_SHOW_DEVELOPER
+		depends on FREETZ_AVM_HAS_MODVERSIONS_BUILTIN
 		default n
 		help
 			Disable symrefs used to preserve crc of kernel symbols
