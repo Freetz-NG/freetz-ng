@@ -99,15 +99,14 @@ menu "Build system options"
 			so, the package will be recreated.
 
 	config FREETZ_REPRODUCIBLE
-		bool "Enable reproducible build - DEVELOPER"
-		depends on FREETZ_SHOW_DEVELOPER
+		bool "Enable reproducible build - EXPERIMENTAL"
 		default n
 		help
 			Creates a reproducible image, hopefully.
-			 - Replace kernel is not tested
-			 - Only a few packages are tested
-			 - Squashfs is reproducible since 4.4,
-			   so v2+v3+v4.3 needs to be backported
+			 - Replace kernel are not all tested.
+			 - Only a few packages are tested.
+			 - Squashfs is reproducible since v4.4.
+			 - Squashfs v2+v3+v4.3 are backported.
 
 	comment "Kernel + Modules ------------------------------------"
 		depends on FREETZ_SHOW_DEVELOPER
