@@ -1,4 +1,4 @@
-# Apache2 2.4.69 (binary only)
+# Apache2 2.4.71 (binary only)
   - Homepage: [https://httpd.apache.org/](https://httpd.apache.org/)
   - Manpage: [https://httpd.apache.org/docs/2.4/](https://httpd.apache.org/docs/2.4/)
   - Changelog: [https://downloads.apache.org/httpd/CHANGES_2.4](https://downloads.apache.org/httpd/CHANGES_2.4)
