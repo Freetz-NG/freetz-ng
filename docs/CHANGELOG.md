@@ -98,7 +98,7 @@ Latest changes
     * Various Fritzos 8.50 related fixes
 
   - Packages:
-    * Apache2 2.4.69
+    * Apache2 2.4.71
     * axTLS wrapper 2.1.5
     * BIND 9.11.37/9.20.30
     * Bftpd 6.7
