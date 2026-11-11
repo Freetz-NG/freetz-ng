@@ -1909,7 +1909,10 @@ if [ "$action_names" ]; then
 	if [ "$FREETZ_AVM_HAS_UDEV" != "y" ]; then
 		[ -s "$MAKEDEVS_FILE" ] || error 1 "file $MAKEDEVS_FILE not found or empty"
 		$MAKEDEVS -d $MAKEDEVS_FILE $FILESYSTEM_MOD_DIR > $MOD_DIR/filesystem.log 2>&1
-		[ $? -ne 0 ] && cat $MOD_DIR/filesystem.log && error 1 "makedevs failed"
+		if [ $? -ne 0 ]; then
+			cat $MOD_DIR/filesystem.log 2>/dev/null
+			error 1 "makedevs failed"
+		fi
 	fi
 fi
 
@@ -2015,7 +2018,10 @@ if [ "$DO_PACK" -gt 0 ]; then
 		echo0 "copying kernel image"
 		cp -a "$RAW_KERNEL_MOD" "$KERNEL_MOD"
 	else
-		[ ! -s "$RAW_FILESYSTEM_MOD" ] && error 1 "creation of filesystem failed"
+		if [ ! -s "$RAW_FILESYSTEM_MOD" ]; then
+			cat $MOD_DIR/filesystem.log 2>/dev/null
+			error 1 "creation of filesystem failed"
+		fi
 
 		touch "$FILESYSTEM_MOD"
 
@@ -2071,7 +2077,10 @@ if [ "$DO_PACK" -gt 0 ]; then
 			if [ "${FREETZ_AVM_OUTER_FILESYSTEM_TYPE}" == "Ext2FS" ]; then
 				echo0 "creating outer-filesystem image (Ext2FS)"
 				$TOOLS_DIR/mke2img -G 2 -R 0 -d "${FILESYSTEM_OUTER_MOD_DIR}" -o "$ABS_BASE_DIR/$RAW_FILESYSTEM_MOD.ext2" >> $MOD_DIR/filesystem.log 2>&1
-				[ $? -ne 0 -o ! -s "$RAW_FILESYSTEM_MOD.ext2" ] && error 1 "creation of ext2 image failed"
+				if [ $? -ne 0 -o ! -s "$RAW_FILESYSTEM_MOD.ext2" ]; then
+					cat $MOD_DIR/filesystem.log 2>/dev/null
+					error 1 "creation of ext2 image failed"
+				fi
 
 				{
 					# create pseudo SquashFS-header: "sqsh" followed by 252 zeros
@@ -2088,7 +2097,10 @@ if [ "$DO_PACK" -gt 0 ]; then
 			fi
 		fi
 
-		[ ! -s "$RAW_FILESYSTEM_MOD" ] && error 1 "creation of filesystem failed"
+		if [ ! -s "$RAW_FILESYSTEM_MOD" ]; then
+			cat $MOD_DIR/filesystem.log 2>/dev/null
+			error 1 "creation of filesystem failed"
+		fi
 		let FILESYSTEM_SIZE="$(wc -c < "$RAW_FILESYSTEM_MOD")"
 		[ "$FILESYSTEM_SIZE" -eq 0 ] && error 1 "filesystem image is empty"
 
