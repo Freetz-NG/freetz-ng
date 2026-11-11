@@ -454,6 +454,9 @@ include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/Makefile.in)
 
+
+ifneq ($(filter-out $(KCONFIG_TARGETS),$(or $(MAKECMDGOALS),all)),)  # KCONFIG_TARGETS dont need target build rules !
+
 include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/busybox.mk)
@@ -490,6 +493,9 @@ include $(MAKE_DIR)/toolchain/target-toolchain.mk
 else
 include $(MAKE_DIR)/toolchain/download-toolchain.mk
 endif
+
+endif  # KCONFIG_TARGETS dont need target build rules !
+
 
 package-list: package-list-clean $(PACKAGES_LIST)
 	@touch .packages
