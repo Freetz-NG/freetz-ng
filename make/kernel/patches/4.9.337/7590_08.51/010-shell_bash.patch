@@ -1,0 +1,11 @@
+--- linux-4.9/Makefile
++++ linux-4.9/Makefile
+@@ -4,6 +4,8 @@
+ EXTRAVERSION =
+ NAME = Roaring Lionus
+ 
++SHELL := bash
++
+ # *DOCUMENTATION*
+ # To see a list of typical targets execute "make help"
+ # More info can be located in ./README

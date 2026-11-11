@@ -1,0 +1,42 @@
+--- linux-4.9/arch/mips/Makefile
++++ linux-4.9/arch/mips/Makefile
+@@ -343,6 +343,11 @@
+ boot-y			+= vmlinux.lzma.itb
+ boot-y			+= vmlinux.lzo.itb
+ 
++# Fritz!Box evaloader targets
++boot-y			+= vmlinux.lzma
++boot-y			+= vmlinux.eva
++boot-y			+= vmlinux.eva_pad
++
+ # compressed boot image targets (arch/mips/boot/compressed/)
+ bootz-y			:= vmlinuz
+ bootz-y			+= vmlinuz.bin
+--- linux-4.9/arch/mips/boot/Makefile
++++ linux-4.9/arch/mips/boot/Makefile
+@@ -166,3 +166,5 @@
+ 
+ $(obj)/vmlinux.lzo.itb: $(obj)/vmlinux.lzo.its $(obj)/vmlinux.bin.lzo FORCE
+ 	$(call if_changed,itb-image,$<)
++
++include $(srctree)/arch/mips/boot/Makefile.evaloader
+--- linux-4.9/arch/mips/boot/Makefile.evaloader
++++ linux-4.9/arch/mips/boot/Makefile.evaloader
+@@ -0,0 +1,17 @@
++targets += vmlinux.lzma
++$(obj)/vmlinux.lzma: $(obj)/vmlinux.bin FORCE
++	$${FREETZ_BASE_DIR}/tools/lzma e -lc1 -lp2 -pb2 $< $@
++
++targets += vmlinux.eva
++$(obj)/vmlinux.eva: $(obj)/vmlinux.lzma FORCE
++	loadaddr=$$($(AWK) '/[AT] _text/ { print "0x"$$1; }' < System.map); \
++	entry=$$($(AWK) '/T kernel_entry/ { print "0x"$$1; }' < System.map); \
++	echo loadaddr=$$loadaddr entry=$$entry; \
++	$${FREETZ_BASE_DIR}/tools/lzma2eva $$loadaddr $$entry $< $@
++
++DD = dd
++targets += vmlinux.eva_pad
++$(obj)/vmlinux.eva_pad: $(obj)/vmlinux.eva FORCE
++	$(DD) if=$< of=$@ bs=256 conv=sync
++
++clean-files += $(objtree)/vmlinux.{lzma,eva,eva_pad}

@@ -1,0 +1,47 @@
+--- linux-4.9/drivers/usb/serial/ftdi_sio_ids.h
++++ linux-4.9/drivers/usb/serial/ftdi_sio_ids.h
+@@ -541,6 +541,23 @@
+ #define FTDI_XF_640_PID 0xFC0E	/* 640: Two line Display */
+ #define FTDI_XF_642_PID 0xFC0F	/* 642: Two line Display */
+ 
++#define WBE_VID 0x104F
++
++#define WBE_SMARTMOUSE_PID1	0x0001	/* Smartmouse USB */
++#define WBE_SMARTMOUSE_PID2	0x0002	/* Smartmouse USB */
++#define WBE_SMARTMOUSE_PID3	0x0003	/* Smartmouse USB */
++#define WBE_SMARTMOUSE_PID4	0x0004	/* Smartmouse USB */
++
++#define QUADMOUSE_PID1	0x0001	/* Quadmouse USB */
++#define QUADMOUSE_PID2	0x0002	/* Quadmouse USB */
++#define QUADMOUSE_PID3	0x0003	/* Quadmouse USB */
++#define QUADMOUSE_PID4	0x0004	/* Quadmouse USB */
++
++#define FTDI_8U232AM_PID1	0x6001	/* FTDI USB2Serial */
++#define FTDI_8U232AM_PID2	0x6002	/* FTDI USB2Serial */
++#define FTDI_8U232AM_PID3	0x6003	/* FTDI USB2Serial */
++#define FTDI_8U232AM_PID4	0x6004	/* FTDI USB2Serial */
++
+ /*
+  * Video Networks Limited / Homechoice in the UK use an ftdi-based device
+  * for their 1Mb broadband internet service.  The following PID is exhibited
+--- linux-4.9/drivers/usb/serial/ftdi_sio.c
++++ linux-4.9/drivers/usb/serial/ftdi_sio.c
+@@ -1050,6 +1050,18 @@
+ 		.driver_info = (kernel_ulong_t)&ftdi_jtag_quirk },
+ 	{ USB_DEVICE(FTDI_VID, FTDI_FALCONIA_JTAG_UNBUF_PID),
+ 		.driver_info = (kernel_ulong_t)&ftdi_jtag_quirk },
++	{ USB_DEVICE(WBE_VID, WBE_SMARTMOUSE_PID1) },
++	{ USB_DEVICE(WBE_VID, WBE_SMARTMOUSE_PID2) },
++	{ USB_DEVICE(WBE_VID, WBE_SMARTMOUSE_PID3) },
++	{ USB_DEVICE(WBE_VID, WBE_SMARTMOUSE_PID4) },
++	{ USB_DEVICE(FTDI_VID, QUADMOUSE_PID1) },
++	{ USB_DEVICE(FTDI_VID, QUADMOUSE_PID2) },
++	{ USB_DEVICE(FTDI_VID, QUADMOUSE_PID3) },
++	{ USB_DEVICE(FTDI_VID, QUADMOUSE_PID4) },
++	{ USB_DEVICE(FTDI_VID, FTDI_8U232AM_PID1) },
++	{ USB_DEVICE(FTDI_VID, FTDI_8U232AM_PID2) },
++	{ USB_DEVICE(FTDI_VID, FTDI_8U232AM_PID3) },
++	{ USB_DEVICE(FTDI_VID, FTDI_8U232AM_PID4) },
+ 	{ }					/* Terminating entry */
+ };
+ 

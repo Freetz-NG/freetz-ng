@@ -1,0 +1,16 @@
+--- linux-4.9/drivers/char/avm_net_trace/include/uapi/avm/net_trace/Kbuild
++++ linux-4.9/drivers/char/avm_net_trace/include/uapi/avm/net_trace/Kbuild
+@@ -0,0 +1 @@
++
+--- linux-4.9/drivers/char/avm_new/include/uapi/avm/event/Kbuild
++++ linux-4.9/drivers/char/avm_new/include/uapi/avm/event/Kbuild
+@@ -0,0 +1 @@
++
+--- linux-4.9/drivers/char/tffs/include/uapi/avm/tffs/Kbuild
++++ linux-4.9/drivers/char/tffs/include/uapi/avm/tffs/Kbuild
+@@ -0,0 +1 @@
++
+--- linux-4.9/drivers/isdn/capi_oslib/include/uapi/avm/capi_oslib/Kbuild
++++ linux-4.9/drivers/isdn/capi_oslib/include/uapi/avm/capi_oslib/Kbuild
+@@ -0,0 +1 @@
++

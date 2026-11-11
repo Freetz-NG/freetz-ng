@@ -1,0 +1,10 @@
+--- linux-4.9/.kernelvariables
++++ linux-4.9/.kernelvariables
+@@ -29,7 +29,6 @@
+ 
+ EXTRA_CFLAGS = 
+ 
+-export AVM_KCONFIG_CONFIG = avm/conf/linux-4.9.grx5
+ 
+ # Enable reproducibility by setting 'reproducibility' to any nonempty value;
+ # defaults of KBUILD_BUILD_* and SOURCE_DATE_EPOCH match the variables that
