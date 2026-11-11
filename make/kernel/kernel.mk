@@ -38,6 +38,7 @@ KERNEL_COMMON_MAKE_OPTIONS += INSTALL_MOD_PATH="$(FREETZ_BASE_DIR)/$(KERNEL_DIR)
 ifeq ($(strip $(FREETZ_VERBOSITY_LEVEL)),2)
 KERNEL_COMMON_MAKE_OPTIONS += V=1
 endif
+ifneq ($(FREETZ_DISABLE_SYMREFS),y)
 ifeq ($(FREETZ_AVM_HAS_MODVERSIONS_BUILTIN),y)
 ifeq ($(filter kernel-symrefs,$(MAKECMDGOALS)),)
 ifneq ($(filter-out X,$(call qstrip,$(FREETZ_DL_KERNEL_SYMREFS_HASH))),)
@@ -48,6 +49,7 @@ endif
 KERNEL_COMMON_MAKE_OPTIONS += KBUILD_PRESERVE=1
 else
 KERNEL_COMMON_MAKE_OPTIONS += KBUILD_SYMTYPES=1
+endif
 endif
 endif
 # since kernel 4.2 extract-cert.c exists
@@ -302,7 +304,13 @@ kernel-recompile: kernel-distclean kernel-precompiled
 .PHONY: kernel-autofix kernel-recompile
 
 
-ifeq ($(FREETZ_AVM_HAS_MODVERSIONS_BUILTIN),y)
+ifneq ($(FREETZ_AVM_HAS_MODVERSIONS_BUILTIN),y)
+kernel-symrefs:
+	@echo WARNING: This kernel has no MODVERSIONS
+else ifeq ($(FREETZ_DISABLE_SYMREFS),y)
+kernel-symrefs:
+	$(error This kernel needs SYMREFS)
+else
 kernel-symrefs: kernel-recompile
 	find $(KERNEL_SOURCE_DIR) -name '*.symtypes' -exec bash -c 'f="$$0"; sed "s/^/override /" "$$f" > "$${f%.*}.symref"' {} ';'
 	find $(KERNEL_SOURCE_DIR) -name '*.symref' -printf '%P\n' | LANG=C sort | \
@@ -314,9 +322,6 @@ kernel-symrefs: kernel-recompile
 	@du -h "$(DL_DIR)/$(KERNEL_SYMREFS_SOURCE)"
 	@sha256sum "$(DL_DIR)/$(KERNEL_SYMREFS_SOURCE)" | sed 's/^/SHA256:=/;s/ .*//'
 	@echo "OUTPUT:=$(KERNEL_SYMREFS_SOURCE)"
-else
-kernel-symrefs:
-	@echo WARNING: This kernel has no MODVERSIONS
 endif
 .PHONY: kernel-symrefs
 

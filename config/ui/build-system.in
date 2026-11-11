@@ -109,13 +109,26 @@ menu "Build system options"
 			 - Squashfs is reproducible since 4.4,
 			   so v2+v3+v4.3 needs to be backported
 
+	comment "Kernel + Modules ------------------------------------"
+		depends on FREETZ_SHOW_DEVELOPER
+
 	config FREETZ_MODULES_TEST
 		bool "Enable kernel modules test - DEVELOPER"
 		depends on FREETZ_SHOW_DEVELOPER
+		select FREETZ_DISABLE_SYMREFS
 		default n
 		help
 			Abort build on any problem with kernel modules
 			and ignores problems like image-to-big errors.
+
+	config FREETZ_DISABLE_SYMREFS
+		bool "Disable kernel symrefs - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Disable symrefs used to preserve crc of kernel symbols
+			used for closed-source kernel module compatibility.
+			A kernel-recompile has run do manually!
 
 endmenu # "Build system options" #
 
