@@ -264,15 +264,18 @@ MKSQUASHFS_TOOL[3]="mksquashfs3-multi"
 MKSQUASHFS_TOOL[4]="mksquashfs4-avm-${FREETZ_AVM_SQUASHFS_ENDIANNESS}"
 MKSQUASHFS="${TOOLS_DIR}/${MKSQUASHFS_TOOL[${FREETZ_SQUASHFS_VERSION}]}"
 MKSQUASHFS_OPTIONS="-all-root -info"
-if [ "${FREETZ_SQUASHFS_VERSION}" -gt 2 ]; then
+if [ "${FREETZ_SQUASHFS_VERSION}" -ge 3 ]; then
 	MKSQUASHFS_OPTIONS+=" -no-progress -no-exports -no-sparse"
 fi
-if [ "${FREETZ_SQUASHFS_VERSION}" -lt 4 ]; then
+if [ "${FREETZ_SQUASHFS_VERSION}" -le 3 ]; then
 	MKSQUASHFS_OPTIONS+=" -noappend"
 	MKSQUASHFS_OPTIONS+=" -${FREETZ_AVM_SQUASHFS_ENDIANNESS}"
 fi
 if [ "${FREETZ_SQUASHFS_VERSION}" -eq 3 -a "${FREETZ_AVM_SQUASHFS_COMPRESSION}" == "lzma" ]; then
 	MKSQUASHFS_OPTIONS+=" -lzma1"
+fi
+if [ "${FREETZ_REPRODUCIBLE}" == "y" ]; then
+	MKSQUASHFS_OPTIONS+=" -reproducible"
 fi
 
 
