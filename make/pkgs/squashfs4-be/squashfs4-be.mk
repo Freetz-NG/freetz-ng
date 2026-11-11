@@ -22,6 +22,7 @@ $(PKG)_CFLAGS := $(TARGET_CFLAGS)
 $(PKG)_CFLAGS += -DTARGET_FORMAT=AVM_BE
 $(PKG)_CFLAGS += -ffunction-sections -fdata-sections
 $(PKG)_CFLAGS += -fcommon
+$(PKG)_CFLAGS += -fgnu89-inline
 
 $(PKG)_LDFLAGS := -Wl,--gc-sections
 $(PKG)_LDFLAGS += $(if $(FREETZ_PACKAGE_SQUASHFS4_BE_ALL_STAT),-static)
