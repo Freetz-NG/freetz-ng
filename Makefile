@@ -121,18 +121,18 @@ LZMA:=$(TOOLS_DIR)/lzma
 TAR:=$(TOOLS_DIR)/tar-gnu
 SED:=sed
 PATCHELF:=patchelf
-PYTHON3=python3
-MESON=meson
-CMAKE=cmake
-NINJA=ninja
-PERL=perl
+PYTHON3:=python3
+MESON:=meson
+CMAKE:=cmake
+NINJA:=ninja
+PERL:=perl
 ifeq ($(FREETZ_JLEVEL),0)
-NPROC=$(shell echo $$(( $$(nproc || echo 1) +1 )) )
+NPROC:=$(shell echo $$(( $$(nproc || echo 1) +1 )) )
 else
-NPROC=$(FREETZ_JLEVEL)
+NPROC:=$(FREETZ_JLEVEL)
 endif
-MAKE=make -j$(NPROC)
-MAKE1=make -j1
+MAKE:=make -j$(NPROC)
+MAKE1:=make -j1
 
 
 ifeq ($(FREETZ_REPRODUCIBLE),y)
