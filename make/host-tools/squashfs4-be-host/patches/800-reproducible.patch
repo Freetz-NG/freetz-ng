@@ -1,0 +1,612 @@
+Backport reproducible image support from squashfs-tools 4.4.
+
+Upstream: https://github.com/plougher/squashfs-tools
+Commits: ff37bf9, 9295555, 24da0c6, e0d74d0, 6cd66c6, 5883059
+         828888d, d1a546a, a033a3e, 7fa76a2, 7db33c9
+
+Keep the AVM mkfs_time == bytes_used convention from patch 550.
+Append/restore support is already removed by patch 240.
+SOURCE_DATE_EPOCH clamps inode timestamps; -all-time forces them.
+Parallel fragment ordering is reproducible by default and can be
+disabled with -not-reproducible.
+
+--- squashfs-tools/Makefile
++++ squashfs-tools/Makefile
+@@ -104,6 +104,13 @@
+ 
+ LEGACY_FORMATS_SUPPORT = 1
+ 
++###############################################
++#          Reproducible Image options         #
++###############################################
++# Select whether reproducible builds are the default.  Users can override
++# this with the -reproducible and -not-reproducible options.
++REPRODUCIBLE_DEFAULT = 0
++
+ 
+ ###############################################
+ #        End of BUILD options section         #
+@@ -131,6 +138,10 @@
+ 
+ ifeq ($(LEGACY_FORMATS_SUPPORT),1)
+ CFLAGS += -DLEGACY_FORMATS_SUPPORT
++endif
++
++ifeq ($(REPRODUCIBLE_DEFAULT),1)
++CFLAGS += -DREPRODUCIBLE_DEFAULT
+ endif
+ 
+ LIBS = -lpthread -lm
+--- squashfs-tools/caches-queues-lists.c
++++ squashfs-tools/caches-queues-lists.c
+@@ -2,7 +2,7 @@
+  * Create a squashfs filesystem.  This is a highly compressed read only
+  * filesystem.
+  *
+- * Copyright (c) 2013, 2014
++ * Copyright (c) 2013, 2014, 2019
+  * Phillip Lougher <phillip@squashfs.org.uk>
+  *
+  * This program is free software; you can redistribute it and/or
+@@ -148,8 +148,6 @@
+ /* Called with the cache mutex held */
+ REMOVE_HASH_TABLE(seq, struct seq_queue, CALCULATE_SEQ_HASH, sequence, seq);
+ 
+-static unsigned int sequence = 0;
+-
+ 
+ struct seq_queue *seq_queue_init()
+ {
+@@ -178,7 +176,7 @@
+ 	else
+ 		queue->block_count ++;
+ 
+-	if(entry->sequence == sequence)
++	if(entry->sequence == queue->sequence)
+ 		pthread_cond_signal(&queue->wait);
+ 
+ 	pthread_cleanup_pop(1);
+@@ -188,10 +186,10 @@
+ struct file_buffer *seq_queue_get(struct seq_queue *queue)
+ {
+ 	/*
+-	 * Look-up buffer matching sequence in the queue, if found return
+-	 * it, otherwise wait until it arrives
++	 * Return next buffer from queue in sequence order (queue->sequence).  If
++	 * found return it, otherwise wait for it to arrive.
+ 	 */
+-	int hash = CALCULATE_SEQ_HASH(sequence);
++	int hash = CALCULATE_SEQ_HASH(queue->sequence);
+ 	struct file_buffer *entry;
+ 
+ 	pthread_cleanup_push((void *) pthread_mutex_unlock, &queue->mutex);
+@@ -200,7 +198,7 @@
+ 	while(1) {
+ 		for(entry = queue->hash_table[hash]; entry;
+ 						entry = entry->seq_next)
+-			if(entry->sequence == sequence)
++			if(entry->sequence == queue->sequence)
+ 				break;
+ 
+ 		if(entry) {
+@@ -215,7 +213,7 @@
+ 
+ 			remove_seq_hash_table(queue, entry);
+ 
+-			sequence ++;
++			queue->sequence ++;
+ 
+ 			break;
+ 		}
+--- squashfs-tools/caches-queues-lists.h
++++ squashfs-tools/caches-queues-lists.h
+@@ -4,7 +4,7 @@
+  * Create a squashfs filesystem.  This is a highly compressed read only
+  * filesystem.
+  *
+- * Copyright (c) 2013, 2014
++ * Copyright (c) 2013, 2014, 2019
+  * Phillip Lougher <phillip@squashfs.org.uk>
+  *
+  * This program is free software; you can redistribute it and/or
+@@ -87,10 +87,8 @@
+ 
+ /* struct describing a cache entry passed between threads */
+ struct file_buffer {
+-	union {
+-		long long index;
+-		long long sequence;
+-	};
++	long long index;
++	long long sequence;
+ 	long long file_size;
+ 	union {
+ 		long long block;
+@@ -146,6 +144,7 @@
+ struct seq_queue {
+ 	int			fragment_count;
+ 	int			block_count;
++	long long		sequence;
+ 	struct file_buffer	*hash_table[HASH_SIZE];
+ 	pthread_mutex_t		mutex;
+ 	pthread_cond_t		wait;
+--- squashfs-tools/info.c
++++ squashfs-tools/info.c
+@@ -2,7 +2,7 @@
+  * Create a squashfs filesystem.  This is a highly compressed read only
+  * filesystem.
+  *
+- * Copyright (c) 2013, 2014
++ * Copyright (c) 2013, 2014, 2019
+  * Phillip Lougher <phillip@squashfs.org.uk>
+  *
+  * This program is free software; you can redistribute it and/or
+@@ -101,13 +101,23 @@
+ 	dump_queue(to_frag);
+ 
+ 
+-	printf("locked frag queue (compressed frags waiting while multi-block"
++	if(!reproducible) {
++		printf("locked frag queue (compressed frags waiting while multi-block"
+ 						" file is written)\n");
+-	dump_queue(locked_fragment);
++		dump_queue(locked_fragment);
+ 
+-	printf("compressed block queue (main & fragment deflate threads(s) ->"
++		printf("compressed block queue (main & fragment deflate threads(s) ->"
+ 						" writer thread)\n");
+-	dump_queue(to_writer);
++		dump_queue(to_writer);
++	} else {
++		printf("compressed fragment queue (fragment deflate threads(s) ->"
++						" fragment order thread)\n");
++		dump_seq_queue(to_order, 0);
++
++		printf("compressed block queue (main & fragment order threads ->"
++						" writer thread)\n");
++		dump_queue(to_writer);
++	}
+ 
+ 	printf("read cache (uncompressed blocks read by reader thread)\n");
+ 	dump_cache(reader_buffer);
+--- squashfs-tools/mksquashfs.c
++++ squashfs-tools/mksquashfs.c
+@@ -3,7 +3,7 @@
+  * filesystem.
+  *
+  * Copyright (c) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
+- * 2012, 2013, 2014
++ * 2012, 2013, 2014, 2019
+  * Phillip Lougher <phillip@squashfs.org.uk>
+  *
+  * This program is free software; you can redistribute it and/or
+@@ -261,6 +261,17 @@
+ pthread_mutex_t	pos_mutex = PTHREAD_MUTEX_INITIALIZER;
+ pthread_mutex_t	dup_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
++/* reproducible image queues and threads */
++struct seq_queue *to_order;
++pthread_t order_thread;
++pthread_cond_t fragment_waiting = PTHREAD_COND_INITIALIZER;
++int reproducible = REP_DEF;
++
++/* Time value override options */
++unsigned int mkfs_time, all_time;
++int mkfs_time_opt = FALSE, all_time_opt = FALSE;
++int clamping = TRUE;
++
+ /* user options that control parallelisation */
+ int processors = -1;
+ int bwriter_size;
+@@ -782,6 +793,19 @@
+ }
+ 
+ 	
++static inline time_t get_time(time_t time)
++{
++	if(all_time_opt) {
++		if(clamping)
++			return time > all_time ? all_time : time;
++		else
++			return all_time;
++	}
++
++	return time;
++}
++
++
+ int create_inode(squashfs_inode *i_no, struct dir_info *dir_info,
+ 	struct dir_ent *dir_ent, int type, long long byte_size,
+ 	long long start_block, unsigned int offset, unsigned int *block_list,
+@@ -835,7 +859,7 @@
+ 	base->inode_type = type;
+ 	base->guid = get_guid((unsigned int) global_gid == -1 ?
+ 		buf->st_gid : global_gid);
+-	base->mtime = buf->st_mtime;
++	base->mtime = get_time(buf->st_mtime);
+ 	base->inode_number = get_inode_no(dir_ent->inode);
+ 
+ 	if(type == SQUASHFS_FILE_TYPE) {
+@@ -1434,6 +1458,18 @@
+ }
+ 
+ 
++void ensure_fragments_flushed()
++{
++	pthread_cleanup_push((void *) pthread_mutex_unlock, &fragment_mutex);
++	pthread_mutex_lock(&fragment_mutex);
++
++	while(fragments_outstanding)
++		pthread_cond_wait(&fragment_waiting, &fragment_mutex);
++
++	pthread_cleanup_pop(1);
++}
++
++
+ void lock_fragments()
+ {
+ 	pthread_cleanup_push((void *) pthread_mutex_unlock, &fragment_mutex);
+@@ -1486,12 +1522,15 @@
+ 
+ void write_fragment(struct file_buffer *fragment)
+ {
++	static long long sequence = 0;
++
+ 	if(fragment == NULL)
+ 		return;
+ 
+ 	pthread_cleanup_push((void *) pthread_mutex_unlock, &fragment_mutex);
+ 	pthread_mutex_lock(&fragment_mutex);
+ 	fragment_table[fragment->block].unused = 0;
++	fragment->sequence = sequence ++;
+ 	fragments_outstanding ++;
+ 	queue_put(to_frag, fragment);
+ 	pthread_cleanup_pop(1);
+@@ -2408,6 +2447,60 @@
+ }
+ 
+ 
++void *frag_order_deflator(void *arg)
++{
++	void *stream = NULL;
++	int res;
++
++	res = compressor_init(comp, &stream, block_size, 1);
++	if(res)
++		BAD_ERROR("frag_deflator:: compressor_init failed\n");
++
++	while(1) {
++		int c_byte;
++		struct file_buffer *file_buffer = queue_get(to_frag);
++		struct file_buffer *write_buffer =
++			cache_get(fwriter_buffer, file_buffer->block);
++
++		c_byte = mangle2(stream, write_buffer->data, file_buffer->data,
++			file_buffer->size, block_size, noF, 1);
++		write_buffer->block = file_buffer->block;
++		write_buffer->sequence = file_buffer->sequence;
++		write_buffer->size = c_byte;
++		write_buffer->fragment = FALSE;
++		seq_queue_put(to_order, write_buffer);
++		TRACE("Writing fragment %lld, uncompressed size %d, "
++			"compressed size %d\n", file_buffer->block,
++			file_buffer->size, SQUASHFS_COMPRESSED_SIZE_BLOCK(c_byte));
++		cache_block_put(file_buffer);
++	}
++}
++
++
++void *frag_orderer(void *arg)
++{
++	pthread_cleanup_push((void *) pthread_mutex_unlock, &fragment_mutex);
++
++	while(1) {
++		struct file_buffer *write_buffer = seq_queue_get(to_order);
++		int block = write_buffer->block;
++
++		pthread_mutex_lock(&fragment_mutex);
++		fragment_table[block].size = write_buffer->size;
++		fragment_table[block].start_block = bytes;
++		write_buffer->block = bytes;
++		bytes += SQUASHFS_COMPRESSED_SIZE_BLOCK(write_buffer->size);
++		write_buffer->size = SQUASHFS_COMPRESSED_SIZE_BLOCK(write_buffer->size);
++		fragments_outstanding --;
++		queue_put(to_writer, write_buffer);
++		pthread_cond_signal(&fragment_waiting);
++		pthread_mutex_unlock(&fragment_mutex);
++	}
++
++	pthread_cleanup_pop(0);
++}
++
++
+ struct file_buffer *get_file_buffer()
+ {
+ 	struct file_buffer *file_buffer = seq_queue_get(to_main);
+@@ -2474,7 +2567,10 @@
+ 
+ 	*duplicate_file = FALSE;
+ 
+-	lock_fragments();
++	if(reproducible)
++		ensure_fragments_flushed();
++	else
++		lock_fragments();
+ 
+ 	file_bytes = 0;
+ 	start = bytes;
+@@ -2509,7 +2605,8 @@
+ 			goto read_err;
+ 	}
+ 
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	fragment = get_and_fill_fragment(fragment_buffer, dir_ent);
+ 
+ 	if(duplicate_checking)
+@@ -2545,7 +2642,8 @@
+ 			BAD_ERROR("Failed to truncate dest file because %s\n",
+ 				strerror(errno));
+ 	}
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	free(block_list);
+ 	cache_block_put(read_buffer);
+ 	return status;
+@@ -2576,7 +2674,10 @@
+ 	if(buffer_list == NULL)
+ 		MEM_ERROR();
+ 
+-	lock_fragments();
++	if(reproducible)
++		ensure_fragments_flushed();
++	else
++		lock_fragments();
+ 
+ 	file_bytes = 0;
+ 	start = dup_start = bytes;
+@@ -2644,7 +2745,8 @@
+ 		}
+ 	}
+ 
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	cache_block_put(fragment_buffer);
+ 	free(buffer_list);
+ 	file_count ++;
+@@ -2684,7 +2786,8 @@
+ 			BAD_ERROR("Failed to truncate dest file because %s\n",
+ 				strerror(errno));
+ 	}
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	for(blocks = thresh; blocks < block; blocks ++)
+ 		cache_block_put(buffer_list[blocks]);
+ 	free(buffer_list);
+@@ -2715,7 +2818,10 @@
+ 	if(block_list == NULL)
+ 		MEM_ERROR();
+ 
+-	lock_fragments();
++	if(reproducible)
++		ensure_fragments_flushed();
++	else
++		lock_fragments();
+ 
+ 	file_bytes = 0;
+ 	start = bytes;
+@@ -2746,7 +2852,8 @@
+ 		}
+ 	}
+ 
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	fragment = get_and_fill_fragment(fragment_buffer, dir_ent);
+ 
+ 	if(duplicate_checking)
+@@ -2793,7 +2900,8 @@
+ 			BAD_ERROR("Failed to truncate dest file because %s\n",
+ 				strerror(errno));
+ 	}
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	free(block_list);
+ 	cache_block_put(read_buffer);
+ 	return status;
+@@ -4077,8 +4185,11 @@
+ 	to_writer = queue_init(bwriter_size + fwriter_size);
+ 	from_writer = queue_init(1);
+ 	to_frag = queue_init(fragment_size);
+-	locked_fragment = queue_init(fragment_size);
+ 	to_main = seq_queue_init();
++	if(reproducible)
++		to_order = seq_queue_init();
++	else
++		locked_fragment = queue_init(fragment_size);
+ 	reader_buffer = cache_init(block_size, reader_size, 0, 0);
+ 	bwriter_buffer = cache_init(block_size, bwriter_size, 1, freelst);
+ 	fwriter_buffer = cache_init(block_size, fwriter_size, 1, freelst);
+@@ -4092,8 +4203,8 @@
+ 	for(i = 0; i < processors; i++) {
+ 		if(pthread_create(&deflator_thread[i], NULL, deflator, NULL))
+ 			BAD_ERROR("Failed to create thread\n");
+-		if(pthread_create(&frag_deflator_thread[i], NULL, frag_deflator,
+-				NULL) != 0)
++		if(pthread_create(&frag_deflator_thread[i], NULL, reproducible ?
++				frag_order_deflator : frag_deflator, NULL) != 0)
+ 			BAD_ERROR("Failed to create thread\n");
+ 		if(pthread_create(&frag_thread[i], NULL, frag_thrd,
+ 				(void *) destination_file) != 0)
+@@ -4101,6 +4212,9 @@
+ 	}
+ 
+ 	main_thread = pthread_self();
++
++	if(reproducible && pthread_create(&order_thread, NULL, frag_orderer, NULL))
++		BAD_ERROR("Failed to create thread\n");
+ 
+ 	printf("Parallel mksquashfs: Using %d processor%s\n", processors,
+ 			processors == 1 ? "" : "s");
+@@ -4657,6 +4771,18 @@
+ 	return parse_number(arg, res, 0);
+ }
+ 
++int parse_num_unsigned(char *arg, unsigned int *res)
++{
++	long long number;
++
++	if(!isdigit((unsigned char) arg[0]) ||
++			!parse_numberll(arg, &number, 0) || number > UINT_MAX)
++		return 0;
++
++	*res = (unsigned int) number;
++	return 1;
++}
++
+ #if defined(__UCLIBC__)
+ static long int get_proc_meminfo_value(const char *format) {
+ 	char buffer[8192];
+@@ -4704,6 +4830,28 @@
+ 	*bwriteq = mem / SQUASHFS_BWRITEQ_MEM;
+ 	*fwriteq = mem / SQUASHFS_FWRITEQ_MEM;
+ 	*fragq = mem - *readq - *bwriteq - *fwriteq;
++}
++
++
++void check_env_var()
++{
++	char *time_string = getenv("SOURCE_DATE_EPOCH");
++	unsigned int time;
++
++	if(time_string != NULL) {
++		if(mkfs_time_opt || all_time_opt)
++			BAD_ERROR("SOURCE_DATE_EPOCH and command line options "
++				"can't be used at the same time to set "
++				"timestamp(s)\n");
++
++		if(!parse_num_unsigned(time_string, &time)) {
++			ERROR("Env Var SOURCE_DATE_EPOCH has invalid time value\n");
++			EXIT_MKSQUASHFS();
++		}
++
++		all_time = mkfs_time = time;
++		all_time_opt = mkfs_time_opt = TRUE;
++	}
+ }
+ 
+ 
+@@ -4805,7 +4953,26 @@
+ 		comp = lookup_compressor(COMP_DEFAULT);
+ 
+ 	for(i = source + 2; i < argc; i++) {
+-		if(strcmp(argv[i], "-action") == 0 ||
++		if(strcmp(argv[i], "-mkfs-time") == 0) {
++			if((++i == argc) || !parse_num_unsigned(argv[i], &mkfs_time)) {
++				ERROR("%s: %s missing or invalid time value\n",
++					argv[0], argv[i - 1]);
++				exit(1);
++			}
++			mkfs_time_opt = TRUE;
++		} else if(strcmp(argv[i], "-all-time") == 0) {
++			if((++i == argc) || !parse_num_unsigned(argv[i], &all_time)) {
++				ERROR("%s: %s missing or invalid time value\n",
++					argv[0], argv[i - 1]);
++				exit(1);
++			}
++			all_time_opt = TRUE;
++			clamping = FALSE;
++		} else if(strcmp(argv[i], "-reproducible") == 0)
++			reproducible = TRUE;
++		else if(strcmp(argv[i], "-not-reproducible") == 0)
++			reproducible = FALSE;
++		else if(strcmp(argv[i], "-action") == 0 ||
+ 				strcmp(argv[i], "-a") ==0) {
+ 			if(++i == argc) {
+ 				ERROR("%s: %s missing action\n",
+@@ -5078,6 +5245,13 @@
+ 			ERROR("\t\t\tOptionally a suffix of K or M can be"
+ 				" given to specify\n\t\t\tKbytes or Mbytes"
+ 				" respectively\n");
++			ERROR("-reproducible\t\tbuild images that are reproducible"
++				REP_STR "\n");
++			ERROR("-not-reproducible\tbuild images that are not reproducible"
++				NOREP_STR "\n");
++			ERROR("-mkfs-time <time>\tset mkfs time to <time> (unsigned int)\n");
++			ERROR("-all-time <time>\tset all inode times to <time> (unsigned int)\n");
++			ERROR("\t\t\tAVM formats use bytes_used instead of mkfs time\n");
+ 			ERROR("-no-exports\t\tdon't make the filesystem "
+ 				"exportable via NFS\n");
+ 			ERROR("-no-sparse\t\tdon't detect sparse files\n");
+@@ -5152,6 +5326,8 @@
+ 		}
+ 	}
+ 
++	check_env_var();
++
+ 	/*
+ 	 * Some compressors may need the options to be checked for validity
+ 	 * once all the options have been processed
+@@ -5309,13 +5485,14 @@
+ 	sBlk.flags = SQUASHFS_MKFLAGS(noI, noD, noF, noX, no_fragments,
+ 		always_use_fragments, duplicate_checking, exportable,
+ 		no_xattrs, comp_opts);
+-	sBlk.mkfs_time = time(NULL);
++	sBlk.mkfs_time = mkfs_time_opt ? mkfs_time : time(NULL);
+ 
+ 	disable_info();
+ 
+ 	while((fragment = get_frag_action(fragment)))
+ 		write_fragment(*fragment);
+-	unlock_fragments();
++	if(!reproducible)
++		unlock_fragments();
+ 	pthread_cleanup_push((void *) pthread_mutex_unlock, &fragment_mutex);
+ 	pthread_mutex_lock(&fragment_mutex);
+ 	while(fragments_outstanding) {
+--- squashfs-tools/mksquashfs.h
++++ squashfs-tools/mksquashfs.h
+@@ -4,7 +4,7 @@
+  * Squashfs
+  *
+  * Copyright (c) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
+- * 2012, 2013, 2014
++ * 2012, 2013, 2014, 2019
+  * Phillip Lougher <phillip@squashfs.org.uk>
+  *
+  * This program is free software; you can redistribute it and/or
+@@ -131,12 +131,22 @@
+  * compressed size */
+ #define BLOCK_OFFSET 2
+ 
++#ifdef REPRODUCIBLE_DEFAULT
++#define NOREP_STR
++#define REP_STR " (default)"
++#define REP_DEF 1
++#else
++#define NOREP_STR " (default)"
++#define REP_STR
++#define REP_DEF 0
++#endif
++
+ extern struct cache *reader_buffer, *fragment_buffer, *reserve_cache;
+ struct cache *bwriter_buffer, *fwriter_buffer;
+ extern struct queue *to_reader, *to_deflate, *to_writer, *from_writer,
+ 	*to_frag, *locked_fragment, *to_process_frag;
+ extern struct append_file **file_mapping;
+-extern struct seq_queue *to_main;
++extern struct seq_queue *to_main, *to_order;
+ extern pthread_mutex_t fragment_mutex, dup_mutex;
+ extern struct squashfs_fragment_entry *fragment_table;
+ extern struct compressor *comp;
+@@ -150,4 +160,5 @@
+ extern unsigned int get_guid(unsigned int);
+ extern int read_bytes(int, void *, int);
+ extern unsigned short get_checksum_mem(char *, int);
++extern int reproducible;
+ #endif

@@ -1,0 +1,231 @@
+Backport reproducible image support from squashfs-tools 4.4 to 2.2-r2.
+
+Upstream: https://github.com/plougher/squashfs-tools
+Time options: 828888d, d1a546a, a033a3e, 7fa76a2, 7db33c9
+
+Reproducible ordering is disabled by default; enable with -reproducible.
+SOURCE_DATE_EPOCH fixes mkfs_time and clamps inode timestamps;
+-mkfs-time sets the creation time and -all-time forces inode timestamps.
+The 2.2 writer is already serial and directories are already sorted.
+Use a name tie-breaker for -sort and zero unused inode/superblock bits.
+
+--- squashfs-tools/Makefile
++++ squashfs-tools/Makefile
+@@ -1,5 +1,11 @@
+ INCLUDEDIR = .
+ 
++# Users can override this default with -(not-)reproducible.
++REPRODUCIBLE_DEFAULT = 0
++ifeq ($(REPRODUCIBLE_DEFAULT),1)
++CPPFLAGS += -DREPRODUCIBLE_DEFAULT
++endif
++
+ CFLAGS := -I$(INCLUDEDIR) -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -g
+ 
+ all: mksquashfs unsquashfs
+--- squashfs-tools/mksquashfs.c
++++ squashfs-tools/mksquashfs.c
+@@ -1,7 +1,7 @@
+ /*
+  * Create a squashfs filesystem.  This is a highly compressed read only filesystem.
+  *
+- * Copyright (c) 2002, 2003, 2004, 2005
++ * Copyright (c) 2002, 2003, 2004, 2005, 2019
+  * Phillip Lougher <phillip@lougher.demon.co.uk>
+  *
+  * This program is free software; you can redistribute it and/or
+@@ -25,6 +25,8 @@
+ #include <pwd.h>
+ #include <grp.h>
+ #include <time.h>
++#include <limits.h>
++#include <ctype.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <sys/types.h>
+@@ -81,6 +83,28 @@
+ int total_compressed = 0, total_uncompressed = 0;
+ int fd;
+ 
++/* Reproducible build options, backported from squashfs-tools 4.4. */
++#ifdef REPRODUCIBLE_DEFAULT
++#define REP_DEF 1
++#define REP_STR " (default)"
++#define NOREP_STR
++#else
++#define REP_DEF 0
++#define REP_STR
++#define NOREP_STR " (default)"
++#endif
++int reproducible = REP_DEF;
++unsigned int mkfs_time, all_time;
++int mkfs_time_opt = 0, all_time_opt = 0;
++int clamping = TRUE;
++
++static time_t get_time(time_t time)
++{
++	if(all_time_opt)
++		return clamping && time < all_time ? time : all_time;
++	return time;
++}
++
+ /* filesystem flags for building */
+ int duplicate_checking = 1, noF = 0, no_fragments = 0, always_use_fragments = 0;
+ int noI = 0, noD = 0, check_data = 0;
+@@ -506,7 +530,7 @@
+ int create_inode(squashfs_inode *i_no, char *filename, int type, int byte_size, squashfs_block start_block, unsigned int offset, unsigned int *block_list, struct fragment *fragment, struct cached_dir_index *index, unsigned int i_count, unsigned int i_size)
+ {
+ 	struct stat buf;
+-	squashfs_inode_header inode_header;
++	squashfs_inode_header inode_header = {0};
+ 	squashfs_base_inode_header *inode, *base = &inode_header.base;
+ 
+ 	if(filename[0] == '\0') {
+@@ -522,6 +546,8 @@
+ 		return FALSE;
+ 	}
+ 
++	buf.st_mtime = get_time(buf.st_mtime);
++
+ 	base->mode = SQUASHFS_MODE(buf.st_mode);
+ 	base->uid = get_uid((squashfs_uid) global_uid == -1 ? buf.st_uid : global_uid);
+ 	base->inode_type = type;
+@@ -1603,6 +1629,39 @@
+ }
+ 
+ 
++static int parse_num_unsigned(char *arg, unsigned int *res)
++{
++	char *end;
++	unsigned long long number;
++
++	if(!isdigit((unsigned char) arg[0]))
++		return FALSE;
++	errno = 0;
++	number = strtoull(arg, &end, 10);
++	if(errno || *end || number > UINT_MAX)
++		return FALSE;
++	*res = (unsigned int) number;
++	return TRUE;
++}
++
++
++static void check_env_var()
++{
++	char *time_string = getenv("SOURCE_DATE_EPOCH");
++	unsigned int time;
++
++	if(time_string == NULL)
++		return;
++	if(mkfs_time_opt || all_time_opt)
++		BAD_ERROR("SOURCE_DATE_EPOCH and command line options can't be "
++			"used at the same time to set timestamp(s)\n");
++	if(!parse_num_unsigned(time_string, &time))
++		BAD_ERROR("Env Var SOURCE_DATE_EPOCH has invalid time value\n");
++	all_time = mkfs_time = time;
++	all_time_opt = mkfs_time_opt = TRUE;
++}
++
++
+ #define VERSION() \
+ 	printf("mksquashfs version 2.2-r2\n");\
+ 	printf("copyright (C) 2005 Phillip Lougher (phillip@lougher.demon.co.uk)\n\n"); \
+@@ -1618,7 +1677,7 @@
+ {
+ 	struct stat buf;
+ 	int i;
+-	squashfs_super_block sBlk;
++	squashfs_super_block sBlk = {0};
+ 	char *b, *root_name = NULL;
+ 	int be, nopad = FALSE, delete = FALSE, keep_as_directory = FALSE, orig_be;
+ 	squashfs_inode inode;
+@@ -1640,7 +1699,24 @@
+ 	source_path = argv + 1;
+ 	source = i - 2;
+ 	for(; i < argc; i++) {
+-		if(strcmp(argv[i], "-b") == 0) {
++		if(strcmp(argv[i], "-mkfs-time") == 0) {
++			if(++i == argc || !parse_num_unsigned(argv[i], &mkfs_time)) {
++				ERROR("%s: -mkfs-time missing or invalid time value\n", argv[0]);
++				exit(1);
++			}
++			mkfs_time_opt = TRUE;
++		} else if(strcmp(argv[i], "-all-time") == 0) {
++			if(++i == argc || !parse_num_unsigned(argv[i], &all_time)) {
++				ERROR("%s: -all-time missing or invalid time value\n", argv[0]);
++				exit(1);
++			}
++			all_time_opt = TRUE;
++			clamping = FALSE;
++		} else if(strcmp(argv[i], "-reproducible") == 0)
++			reproducible = TRUE;
++		else if(strcmp(argv[i], "-not-reproducible") == 0)
++			reproducible = FALSE;
++		else if(strcmp(argv[i], "-b") == 0) {
+ 			if((++i == argc) || (block_size = strtol(argv[i], &b, 10), *b !='\0')) {
+ 				ERROR("%s: -b missing or invalid block size\n", argv[0]);
+ 				exit(1);
+@@ -1769,6 +1845,10 @@
+ 			ERROR("\nOptions are\n");
+ 			ERROR("-version\t\tprint version, licence and copyright message\n");
+ 			ERROR("-info\t\t\tprint files written to filesystem\n");
++			ERROR("-reproducible\t\tbuild images that are reproducible" REP_STR "\n");
++			ERROR("-not-reproducible\tbuild images that are not reproducible" NOREP_STR "\n");
++			ERROR("-mkfs-time <time>\tset mkfs time to <time> (unsigned int)\n");
++			ERROR("-all-time <time>\tset all inode times to <time> (unsigned int)\n");
+ 			ERROR("-b <block_size>\t\tset data block to <block_size>.  Default %d bytes\n", SQUASHFS_FILE_SIZE);
+ #if !defined(USE_LZMA_COMPRESSION)
+ 			ERROR("-2.0\t\t\tcreate a 2.0 filesystem\n");
+@@ -1807,6 +1887,8 @@
+ 	}
+ 
+ 
++	check_env_var();
++
+ 	for(i = 0; i < source; i++)
+ 		if(lstat(source_path[i], &buf) == -1) {
+ 			fprintf(stderr, "Cannot stat source directory \"%s\" because %s\n", source_path[i], strerror(errno));
+@@ -2009,7 +2091,7 @@
+ 	sBlk.block_size = block_size;
+ 	sBlk.block_log = block_log;
+ 	sBlk.flags = SQUASHFS_MKFLAGS(noI, noD, check_data, noF, no_fragments, always_use_fragments, duplicate_checking);
+-	sBlk.mkfs_time = time(NULL);
++	sBlk.mkfs_time = mkfs_time_opt ? mkfs_time : time(NULL);
+ 
+ restore_filesystem:
+ 	write_fragment();
+--- squashfs-tools/sort.c
++++ squashfs-tools/sort.c
+@@ -82,6 +82,7 @@
+ struct sorted_inode_entry *sorted_inode_list[65536];
+ 
+ extern int silent;
++extern int reproducible;
+ extern int excluded(char *filename, struct stat *buf);
+ extern squashfs_inode write_file(squashfs_inode *inode, char *filename, long long size, int *c_size);
+ 
+@@ -125,7 +126,7 @@
+ 
+ int add_priority_list(char *filename, struct stat *buf, int priority)
+ {
+-	struct priority_entry *new_priority_entry;
++	struct priority_entry *new_priority_entry, **list;
+ 
+ 	priority += 32768;
+ 	if((new_priority_entry = malloc(sizeof(struct priority_entry))) == NULL) {
+@@ -137,8 +138,13 @@
+ 	new_priority_entry->size = buf->st_size;
+ 	new_priority_entry->st_dev = buf->st_dev;
+ 	new_priority_entry->st_ino = buf->st_ino;
+-	new_priority_entry->next = priority_list[priority];
+-	priority_list[priority] = new_priority_entry;
++	list = &priority_list[priority];
++	if(reproducible)
++		/* Use a stable tie-breaker instead of readdir() order. */
++		while(*list && strcmp((*list)->filename, filename) < 0)
++			list = &(*list)->next;
++	new_priority_entry->next = *list;
++	*list = new_priority_entry;
+ 	return TRUE;
+ }
+ 
