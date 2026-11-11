@@ -15,7 +15,7 @@ check_requisite() {
 			[ -n "$(find /usr/lib/pkgconfig/  /usr/local/lib/pkgconfig/  /usr/lib/*/pkgconfig/ -name "$1" 2>/dev/null | grep -v 'x86_64')" ]
 			;;
 		program)
-			[ -x "$(command -v $1)" ]
+			command -v "$1" >/dev/null 2>&1
 			;;
 		binary)
 			[ -x "$1" ]
@@ -27,7 +27,8 @@ check_requisite() {
 			ldconfig -p | grep -v 'x86-64' | grep -Eq "^[[:space:]]*$1(\.[01])* "
 			;;
 		header)
-			[ -n "$(find /usr/include/ /usr/local/include/ -path "*/$1" 2>/dev/null)" ]
+			[ -e "/usr/include/$1" -o -e "/usr/local/include/$1" ] || \
+			[ -n "$(find /usr/include/ /usr/local/include/ -path "*/$1" -print -quit 2>/dev/null)" ]
 			;;
 		*)
 			false
