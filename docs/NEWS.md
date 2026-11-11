@@ -1,5 +1,15 @@
 # Neuigkeiten
 
+### 2026-11-11
+Der Start von `make` wurde beschleunigt. So wird zum Beispiel `make menuconfig` schneller<br>
+angezeigt und `make olddefconfig` benötigt bei mir nur noch 1,5 statt 9 Sekunden.
+
+Siehe<br>
+
+   - [9c017e00](https://github.com/Freetz-NG/freetz-ng/commit/9c017e0085457bec5dc27f0b397a1e6b753be38a)<br>
+   - [d5bd114b](https://github.com/Freetz-NG/freetz-ng/commit/d5bd114bc436e4abb5e4a98a171f083b9a413f94)<br>
+   - [de15e2f3](https://github.com/Freetz-NG/freetz-ng/commit/de15e2f3b6e35519d129ecf6cb79dc6b67d4cc25)<br>
+
 ### 2026-10-26
 Höhere Preise, dafür halber RAM und halber Flash. Bis zu 7 Fritzboxen betroffen.
 
