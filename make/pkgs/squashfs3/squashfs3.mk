@@ -16,8 +16,14 @@ $(PKG)_BINARIES            := mksquashfs-multi unsquashfs-multi
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_BUILD_DIR)/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%-multi=$($(PKG)_DEST_DIR)/usr/bin/%3-multi)
 
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
+$(PKG)_CFLAGS += -D_GNU_SOURCE
+$(PKG)_CFLAGS += -ffunction-sections -fdata-sections
+$(PKG)_CFLAGS += -fcommon
+
 $(PKG)_LDFLAGS := -Wl,--gc-sections
 $(PKG)_LDFLAGS += $(if $(FREETZ_PACKAGE_SQUASHFS3_ALL_STAT),-static)
+
 
 ifneq ($(strip $(DL_DIR)/$(SQUASHFS3_SOURCE)),$(strip $(DL_DIR)/$(SQUASHFS3_HOST_SOURCE)))
 $(PKG_SOURCE_DOWNLOAD)
@@ -28,11 +34,11 @@ $(PKG_CONFIGURED_NOP)
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(SQUASHFS3_BUILD_DIR) \
 		CC="$(TARGET_CC)" \
-		CFLAGS="$(TARGET_CFLAGS) -D_GNU_SOURCE -ffunction-sections -fdata-sections" \
+		CFLAGS="$(SQUASHFS3_CFLAGS)" \
+		LDFLAGS="$(SQUASHFS3_LDFLAGS)" \
 		LZMA1_SUPPORT=1 \
 		LZMA_LIBNAME=lzma1 \
-		$(if $(FREETZ_PACKAGE_SQUASHFS3_COMP_STAT),LINK_COMPRESSION_LIBS_STATICALLY=1) \
-		LDFLAGS="$(SQUASHFS3_LDFLAGS)"
+		$(if $(FREETZ_PACKAGE_SQUASHFS3_COMP_STAT),LINK_COMPRESSION_LIBS_STATICALLY=1)
 
 $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DEST_DIR)/usr/bin/%3-multi: $($(PKG)_BUILD_DIR)/%-multi
 	$(INSTALL_BINARY_STRIP)
@@ -40,6 +46,7 @@ $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DEST_DIR)/usr/bin/%3-multi: $($(PKG)_BUI
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(SQUASHFS3_BUILD_DIR) clean
