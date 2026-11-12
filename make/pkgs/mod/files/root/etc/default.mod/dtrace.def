@@ -1,4 +1,4 @@
-CAPTION='Freetz: dtrace'
+CAPTION='Freetz-NG: dtrace'
 DESCRIPTION="$(lang de:"Dieses Skript wird ausgef&uuml;hrt wenn dieser dtrace-Telefoncode erkannt wird" en:"This script will be executed if the following dtrace-phonecode is detected"): #97*3*"
 
 CONFIG_FILE='/tmp/flash/mod/dtrace'

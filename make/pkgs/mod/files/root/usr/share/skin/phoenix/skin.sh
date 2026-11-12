@@ -3,7 +3,7 @@ skin_head() {
 	local hname="$(hostname -s|html)"
 	[ "$hname" != "fritz" ] && hname="&nbsp;&#64;${hname}" || hname=""
 	cat << EOF
-<title>$title&nbsp;&ndash; Freetz${hname}</title>
+<title>$title&nbsp;&ndash; Freetz-NG${hname}</title>
 <link rel="stylesheet" type="text/css" href="/style/phoenix/base.css">
 <link rel="stylesheet" type="text/css" href="/style/colorscheme.css">
 EOF
@@ -29,7 +29,7 @@ skin_body_begin() {
 	cat << EOF
 <div id="world">
 <div id="header">
-<h1><a href="https://freetz-ng.github.io" target="_blank" class="logo">Freetz</a>&nbsp;<a id="about" href="/cgi-bin/about.cgi" target="_blank">&ndash;</a>&nbsp;<span class="title">$title</span></h1>
+<h1><a href="https://freetz-ng.github.io" target="_blank" class="logo">Freetz-NG</a>&nbsp;<a id="about" href="/cgi-bin/about.cgi" target="_blank">&ndash;</a>&nbsp;<span class="title">$title</span></h1>
 EOF
 if [ -n "$_CGI_HELP" ]; then
 	echo "<a class='help' href='$(html "$_CGI_HELP")'>$(lang de:"Hilfe" en:"Help")</a>"

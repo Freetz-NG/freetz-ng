@@ -19,7 +19,7 @@ $(lang de:"Ausgelagerte Script so nutzen:" en:"Handle externalised scripts:")?
 EOF
 fi
 
-cgi_print_checkbox_p "external_freetz_services" "$MOD_EXTERNAL_FREETZ_SERVICES" "$(lang de:"Folgende externalisierte Freetz-Dienste behandeln" en:"Manage these externalized services of Freetz")" ": $_services"
+cgi_print_checkbox_p "external_freetz_services" "$MOD_EXTERNAL_FREETZ_SERVICES" "$(lang de:"Folgende externalisierte Freetz-NG Dienste behandeln" en:"Manage these externalized services of Freetz-NG")" ": $_services"
 
 cat << EOF
 $(lang de:"Folgende selbst definierten Dienste behandeln" en:"Manage these self defined services"):<p>

@@ -1,4 +1,4 @@
-CAPTION='Freetz: crontab'
+CAPTION='Freetz-NG: crontab'
 DESCRIPTION="Syntax: $(lang de:"Minute Stunde Tag Monat Wochentag Befehl" en:"minute hour day month day-of-week command")"
 
 CONFIG_FILE='/tmp/flash/mod/crontab'

@@ -3,7 +3,7 @@ skin_head() {
 	local hname="$(hostname -s|html)"
 	[ "$hname" != "fritz" ] && hname="&#64;${hname}&nbsp;" || hname=""
 	cat << EOF
-<title>Freetz&nbsp;${hname}&ndash; $title</title>
+<title>Freetz-NG&nbsp;${hname}&ndash; $title</title>
 <link rel="stylesheet" type="text/css" href="/style/newfreetz/base.css">
 <link rel="stylesheet" type="text/css" href="/style/newfreetz/colorscheme.css">
 EOF

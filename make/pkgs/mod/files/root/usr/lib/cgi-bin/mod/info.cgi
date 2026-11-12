@@ -21,7 +21,7 @@ fi
 if [ -n "$_kernelversion" ]; then
 	echo "<dl class='info'><dt>Kernel$(lang de:"version" en:" version")</dt><dd>$_kernelversion</dd></dl>"
 fi
-echo "<dl class='info'><dt>Freetz$(lang de:"-Version" en:" version")</dt><dd>$FREETZ_INFO_VERSION</dd></dl>"
+echo "<dl class='info'><dt>Freetz-NG$(lang de:" Version" en:" version")</dt><dd>$(echo "$FREETZ_INFO_VERSION" | sed 's/^freetz-//;s/^ng-//')</dd></dl>"
 date_de_format=$(echo "$FREETZ_INFO_MAKEDATE" \
   | sed -re 's/([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2})(.*)/\3.\2.\1 \4\:\5\:\6/')
 [ "$date_de_format" != "reproducible" ] && \

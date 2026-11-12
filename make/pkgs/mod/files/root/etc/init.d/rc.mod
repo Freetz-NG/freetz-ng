@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -z "$1" ] && [ -e /tmp/.mod.started ] && echo "Freetz is yet started!" && exit 1
+[ -z "$1" ] && [ -e /tmp/.mod.started ] && echo "Freetz-NG is yet started!" && exit 1
 
 DAEMON=mod
 . /etc/init.d/modlibrc
@@ -99,7 +99,7 @@ update_lfs() {
 }
 
 start() {
-	echo "Freetz version $(sed 's/^freetz-//' /etc/.freetz-version)"
+	echo "Freetz-NG version $(sed 's/^freetz-//;s/^ng-//' /etc/.freetz-version)"
 
 	# Basic Packages: links
 	for pkg in crond telnetd webcfg stickymon dsld ftpd rextd multid swap external websrv smbd; do
@@ -231,7 +231,7 @@ modreg_file() {
 register() {
 	AUML="$(echo -ne '\344')"
 
-	modreg cgi mod "Freetz"
+	modreg cgi mod "Freetz-NG"
 	modreg conf mod webcfg "$(lang de:"Weboberfl${AUML}che" en:"Web interface")"
 	modreg cgi avm "$(lang de:"AVM-Dienste" en:"AVM services")"
 

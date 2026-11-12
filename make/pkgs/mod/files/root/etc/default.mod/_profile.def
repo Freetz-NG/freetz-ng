@@ -1,4 +1,4 @@
-CAPTION='Freetz: .profile'
+CAPTION='Freetz-NG: .profile'
 DESCRIPTION="$(lang de:"Skript wird w&auml;hrend des Loginprozesses von root aufgerufen" en:"script will be executed while the login process of root")"
 
 CONFIG_FILE='/tmp/flash/mod/.profile'

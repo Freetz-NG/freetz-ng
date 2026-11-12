@@ -20,4 +20,4 @@ status=$(/mod/etc/init.d/rc.webcfg status)
 [ "$status" = "running" -o "$status" = "inetd" ] || \
 	log=$(/mod/etc/init.d/rc.webcfg start 2>&1)
 
-redirect "http://$(self_host):$MOD_HTTPD_PORT/" "Freetz" show_log
+redirect "http://$(self_host):$MOD_HTTPD_PORT/" "Freetz-NG" show_log

@@ -1,4 +1,4 @@
-CAPTION='Freetz: udev-final'
+CAPTION='Freetz-NG: udev-final'
 DESCRIPTION="$(lang de:"Diese Regeln werden am Ende von UDEV ausgef&uuml;hrt" en:"rules are executed at the end of udev").<br>
 $(lang de:"Daten auslesen: 'udevadm monitor --udev' & Ger&auml;t verbinden & 'udevadm info -ap /PFAD/VOM/MONITOR'" en:"To get data: 'udevadm monitor --udev' & attach device & 'udevadm info -ap /PATH/FROM/MONITOR'")"
 

@@ -16,8 +16,8 @@ cat << EOF
 
 	<p>
 	$(lang \
-	  de:"Sichern s&auml;mtlicher Einstellungen aus dem Flash-Speicher <i>/var/flash</i>. Dies umfa&szlig;t sowohl die Einstellungen von AVM als auch die von Freetz sowie s&auml;mtlicher sonstiger installierten Erweiterungen." \
-	  en:"Save all settings from flash memory <i>/var/flash</i>. This includes firmware settings of AVM as well as Freetz and other installed extensions." \
+	  de:"Sichern s&auml;mtlicher Einstellungen aus dem Flash-Speicher <i>/var/flash</i>. Dies umfa&szlig;t sowohl die Einstellungen von AVM als auch die von Freetz-NG sowie s&auml;mtlicher sonstiger installierten Erweiterungen." \
+	  en:"Save all settings from flash memory <i>/var/flash</i>. This includes firmware settings of AVM as well as Freetz-NG and other installed extensions." \
 	)
 	</p>
 EOF
@@ -108,7 +108,7 @@ fi
 
 cat << EOF
 	<input type=checkbox name="freetz_only" id="freetz_only">
-	<label for="freetz_only">$(lang de:"Nur Freetz-Einstellungen wiederherstellen" en:"Restore Freetz settings only")</label>
+	<label for="freetz_only">$(lang de:"Nur Freetz-NG Einstellungen wiederherstellen" en:"Restore Freetz-NG settings only")</label>
 	<br>
 	<input type=checkbox name="restart" id="restart" checked>
 	<label for="restart">$(lang de:"Neustart nach Wiederherstellung" en:"Reboot after restore")</label>

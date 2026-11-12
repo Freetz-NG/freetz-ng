@@ -3,7 +3,7 @@ skin_head() {
 	local hname="$(hostname -s|html)"
 	[ "$hname" != "fritz" ] && hname="&#64;${hname}&nbsp;" || hname=""
 	cat << EOF
-<title>Freetz&nbsp;${hname}&ndash; $title</title>
+<title>Freetz-NG&nbsp;${hname}&ndash; $title</title>
 <link rel="stylesheet" type="text/css" href="/style/legacy/base.css">
 <link rel="stylesheet" type="text/css" href="/style/colorscheme.css">
 EOF
@@ -36,7 +36,7 @@ skin_body_begin() {
 <td id="edge-top-left"></td>
 <td id="edge-top">
 <div class="version">$(html < /etc/.freetz-version)</div>
-<div class="titlebar"><a href="https://freetz-ng.github.io" target="_blank" class="logo">Freetz</a>&nbsp;${hname}<a href="/cgi-bin/about.cgi" target="_blank">&ndash;</a>&nbsp;<span class="title">$title</span>$help &nbsp; &nbsp; $([ "$isauth" = 1 ] && echo "<small>Session timeout: $(date -d @$(( $MOD_HTTPD_SESSIONTIMEOUT + $(date +%s) )) +'%H:%M:%S')</small>") </div>
+<div class="titlebar"><a href="https://freetz-ng.github.io" target="_blank" class="logo">Freetz-NG</a>&nbsp;${hname}<a href="/cgi-bin/about.cgi" target="_blank">&ndash;</a>&nbsp;<span class="title">$title</span>$help &nbsp; &nbsp; $([ "$isauth" = 1 ] && echo "<small>Session timeout: $(date -d @$(( $MOD_HTTPD_SESSIONTIMEOUT + $(date +%s) )) +'%H:%M:%S')</small>") </div>
 </td>
 <td id="edge-top-right"></td>
 </tr>

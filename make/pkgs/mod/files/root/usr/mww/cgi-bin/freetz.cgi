@@ -11,7 +11,7 @@ false && \
   | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|github-actions\[bot\]|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke|ufo)$' \
   | sed -r 's/([äöüÄÜÖ])/\&\1uml\;/g;y/äöüÄÖÜ/aouAOU/;s/\ß/\&szlig\;/g'
 
-cgi_begin "$(lang de:"&Uuml;ber" en:"About")"
+cgi_begin "$(lang de:"&Uuml;ber" en:"About")&nbsp;Freetz-NG"
 cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
 
