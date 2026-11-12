@@ -100,15 +100,18 @@ modern_remove() {
 	modsed "s/pageData\[\"$1\"\] and /&false and /" "${MENU_DATA_LUA}"
 }
 
-#menulua_remove <page-link>
+#menulua_remove [old-page-link] {and/or} [new-page-link]
 #removes links within menu_data.lua (left menu)
 menulua_remove() {
 	local file="${MENU_DATA_LUA}"
 	if [ "$FREETZ_AVM_HAS_LUA_SCALABLE" == "y" ]; then
 		# find ["lua"] line
-		local pattern='\["lua"\] = "[^"]*'"$1"'.lua"'
-		local matchLine=$(cat "$file" | get_line_number_of_1st_match "${pattern}")
-		[ -z "${matchLine}" ] && error 1 "menulua_remove: no matches for '${pattern}' found"
+		local pattern1='\["lua"\] = "[^"]*'"${1//\//\\/}"'.lua"'
+		local pattern2='\["route"\] = "'"${2//\//\\/}"'"'
+		local matchLine
+		[ -z "${matchLine}" ] && [ -n "$1" ] && matchLine=$(cat "$file" | get_line_number_of_1st_match "${pattern1}")
+		[ -z "${matchLine}" ] && [ -n "$2" ] && matchLine=$(cat "$file" | get_line_number_of_1st_match "${pattern2}")
+		[ -z "${matchLine}" ] && error 1 "menulua_remove: no matches for '${pattern1}'${2:+ or '${pattern2}'} found"
 		# the  ["show"] line is either one or two lines before
 		modsed -r \
 		  "$((${matchLine}-2)),$((${matchLine}-1))"' {
@@ -117,7 +120,7 @@ menulua_remove() {
 		  "$file"
 	else
 		modsed \
-		  "/{* *page = \".*\/$1.lua\",/d" \
+		  "/{* *page = \".*\/${1//\//\\/}.lua\",/d" \
 		  "$file"
 	fi
 }
