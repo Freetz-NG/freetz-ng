@@ -1880,7 +1880,7 @@ if [ "$action_names" ]; then
 		export_modmakedate="$modmakedate"
 		export_modstring="$modstring"
 	else
-		export_modmakedate="$(date -d "@$SOURCE_DATE_EPOCH" +%Y%m%d-%H%M%S) (reproducible)"
+		export_modmakedate="$(date -u -d "@$SOURCE_DATE_EPOCH" +%Y%m%d-%H%M%S) UTC (reproducible)"
 		export_modstring="${modstring/$modmakedate/*}"
 	fi
 
