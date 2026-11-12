@@ -577,7 +577,7 @@ Currently supported devices and firmwares
     - 285.07.62 rev115134 {ALL} [FCS23]
     - 285.08.02 rev117971 {ALL} [Smart24 P1 FCS]
     - 285.08.25 rev134025 {ALL} [Smart24 P2 NL1]
-    - 285.08.50 rev136731 {ALL} [MyFRITZOS P1]
+    - 285.08.51 rev138145 {ALL} [MyFRITZOS P1]
   * __Fritz!Box 7695 <DSL/Fiber 7-90>__
     - 316.08.51 rev137968 {ALL} [MyFRITZOS P1]
 
