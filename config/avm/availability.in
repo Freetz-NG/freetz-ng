@@ -636,6 +636,7 @@ config FREETZ_AVM_HAS_FIRMWARE_08_5X
 		)) \
 		|| \
 		( FREETZ_TYPE_LANG_DE && ( \
+			FREETZ_TYPE_6660 || \
 			FREETZ_TYPE_6670 || \
 			FREETZ_TYPE_6690_NIX \
 		))
