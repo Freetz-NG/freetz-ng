@@ -600,6 +600,7 @@ config FREETZ_AVM_HAS_FIRMWARE_08_5X_LABOR
 	default y
 	depends on \
 		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_1700 || \
 			FREETZ_TYPE_7510 || \
 			FREETZ_TYPE_xxxx \
 		))
