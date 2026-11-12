@@ -1880,8 +1880,8 @@ if [ "$action_names" ]; then
 		export_modmakedate="$modmakedate"
 		export_modstring="$modstring"
 	else
-		export_modmakedate="reproducible"
-		export_modstring="${modstring/$modmakedate/reproducible}"
+		export_modmakedate="$(date -d "@$SOURCE_DATE_EPOCH" +%Y%m%d-%H%M%S) (reproducible)"
+		export_modstring="${modstring/$modmakedate/*}"
 	fi
 
 	# collect externalized files
