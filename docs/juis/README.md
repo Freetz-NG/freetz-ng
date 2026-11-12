@@ -82,6 +82,8 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 276: [FRITZ.Box_7520_B-08.25.image](http://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-08.25.image)
 
 ### FOS-Labor
+  - HWR 185: [FRITZ.Box_7490-07.62.image](http://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.62.image)
+  - HWR 190: [FRITZ.Powerline_546E.118.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
   - HWR 233: [FRITZ.Box_6591_Cable-08.24-130621-LabBETA.image](http://download.example.com/labor/Smart24P2NL1/6591Cable/FRITZ.Box_6591_Cable-08.24-130621-LabBETA.image)
   - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.example.com/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
   - HWR 253: [FRITZ.Repeater_6000-08.40-137934-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1/6000/FRITZ.Repeater_6000-08.40-137934-LabBETA.image)
@@ -95,6 +97,8 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 272: [FRITZ.Box_5590_Fiber-08.40-138197-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1/5590Fiber/FRITZ.Box_5590_Fiber-08.40-138197-LabBETA.image)
 
 ### FOS-Inhaus
+  - HWR 185: [FRITZ.Box_7490-07.62-138281-Inhaus.image](http://download.example.com/inhaus/MOVE21NL3WU25/7490/FRITZ.Box_7490-07.62-138281-Inhaus.image)
+  - HWR 206: [FRITZ.Box_WLAN_Repeater_1750E-07.31-111633-Inhaus.image](http://download.example.com/inhaus/WU22PSQ19/1750E/FRITZ.Box_WLAN_Repeater_1750E-07.31-111633-Inhaus.image)
   - HWR 226: [FRITZ.Box_7590-08.40-137808-Inhaus.image](http://download.example.com/inhaus/MyFRITZOSP1/7590/FRITZ.Box_7590-08.40-137808-Inhaus.image)
   - HWR 229: [FRITZ.Powerline_1260E-08.24-132169-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/1260E/FRITZ.Powerline_1260E-08.24-132169-Inhaus.image)
   - HWR 236: [FRITZ.Box_7530-08.24-131636-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/7530/FRITZ.Box_7530-08.24-131636-Inhaus.image)
