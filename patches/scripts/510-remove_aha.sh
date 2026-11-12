@@ -24,7 +24,7 @@ supervisor_delete_service "aha"
 if ! isFreetzType 3272; then
 	homelua_disable_wrapper smart_home
 fi
-[ "$FREETZ_AVM_VERSION_07_1X_MAX" == "y" ] && menulua_remove home_auto_overview
+[ "$FREETZ_AVM_VERSION_07_1X_MAX" == "y" ] && menulua_remove "home_auto_overview"
 
 sedfile="${HTML_LANG_MOD_DIR}/home/home.lua"
 echo1 "patching ${sedfile##*/}"

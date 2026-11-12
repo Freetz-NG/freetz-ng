@@ -5,7 +5,7 @@ echo1 "removing ddnsd"
 modsed \
   's/^pageData\["dyndns"\] =/& nil ; dummy =/g' \
   "${MENU_DATA_LUA}"
-menulua_remove internet.dyn_dns
+menulua_remove "internet.dyn_dns" "/access/dyndns"
 htmltab_remove "/js3/views/internet/access/access.html" "/access/dyndns"
 js3tab_remove "/js3/views/internet/access/access.html" "dyndns"
 

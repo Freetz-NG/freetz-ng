@@ -29,7 +29,7 @@ if isFreetzType 3170 && [ "$FREETZ_REPLACE_KERNEL" = "y" ] ; then
 fi
 
 # patcht Internet > Filter > Kindersicherung
-[ "$FREETZ_AVM_VERSION_06_5X_MIN" != "y" ] && menulua_remove kids
+[ "$FREETZ_AVM_VERSION_06_5X_MIN" != "y" ] && menulua_remove "kids"
 
 # patcht Internet > Filter > Kindersicherung
 htmltab_remove "/js3/views/internet/filter/filter.html" "/filter"

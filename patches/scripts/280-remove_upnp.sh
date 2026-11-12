@@ -12,7 +12,7 @@ modsed "/.*javascript:doNetPage('upnp').*/d" "${HTML_SPEC_MOD_DIR}/home/clients.
 # html: Netzwerkeinstellungen
 modsed "/.*javascript:DoTabsUpnp().*/d" "${HTML_SPEC_MOD_DIR}/system/net.html"
 # patcht Heimetz > Netzwerk > Programme (lua)
-[ "$FREETZ_AVM_VERSION_07_2X_MAX" == "y" ] && menulua_remove upnp
+[ "$FREETZ_AVM_VERSION_07_2X_MAX" == "y" ] && menulua_remove "upnp"
 # patcht Internet > Freigaben > Portfreigaben > Änderungen der Sicherheitseinstellungen über UPnP gestatten
 sedfile="${HTML_LANG_MOD_DIR}/internet/port_fw.lua"
 if [ -e $sedfile ]; then

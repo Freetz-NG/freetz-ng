@@ -12,9 +12,9 @@ echo1 "remove mediasrv"
 sedfile="${HTML_LANG_MOD_DIR}/storage/settings.lua"
 if [ -e "${HTML_LANG_MOD_DIR}/storage/media_settings.lua" ]; then
 	# entfernt Heimnetz > Mediaserver (06.xx)
-	menulua_remove storage.media_settings
-	menulua_remove dect.internetradio
-	menulua_remove dect.podcast
+	menulua_remove "storage.media_settings" "/media-server"
+	menulua_remove "dect.internetradio" "/media-server/internet-radio"
+	menulua_remove "dect.podcast" "/media-server/podcast"
 	# Heimnetz > Speicher (NAS) > Speicher an der FRITZ!Box > Speicher (NAS) aktiv > Datei-Index
 	if [ -e $sedfile ]; then
 		modsed 's!function get_scan_state.*!&\nif true then return "" end!g' $sedfile
@@ -87,11 +87,11 @@ if [ -e "${HTML_SPEC_MOD_DIR}/nas/einstellungen.html" ]; then
 fi
 
 # patcht Heimnetz > Mediaserver
-menulua_remove dect.internetradio 
-menulua_remove dect.podcast
+menulua_remove "dect.internetradio" "/media-server/internet-radio"
+menulua_remove "dect.podcast" "/media-server/podcast"
 
 # patcht Dect > Internetdienste
-[ "$FREETZ_AVM_HAS_DECT" == "y" ] && menulua_remove dect.radiopodcast
+[ "$FREETZ_AVM_HAS_DECT" == "y" ] && menulua_remove "dect.radiopodcast" "/devices/radio"
 
 # patcht USB-Geraete > USB-Speicher >  Musikbox aktivieren
 mod_del_area \

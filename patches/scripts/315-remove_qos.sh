@@ -1,7 +1,7 @@
 [ "$FREETZ_REMOVE_QOS" == "y" ] || return 0
 echo1 "removing qos files"
 
-[ -e "${HTML_LANG_MOD_DIR}/internet/trafapp.lua" ] && traf='trafapp' || traf='trafficappl'
+[ -e "${HTML_LANG_MOD_DIR}/internet/trafapp.lua" ] && traf="trafapp" || traf="trafficappl"
 rm_files \
   "${MODULES_DIR}/kernel/net/sched/" \
   "${FILESYSTEM_MOD_DIR}/sbin/qos" \
@@ -25,9 +25,9 @@ fi
 
 if [ "$FREETZ_TYPE_EXTENDER" != "y" ]; then
 	# patcht Internet > Filter > Priorisierung
-	menulua_remove trafficprio
+	menulua_remove "trafficprio" "/filter/priority"
 	# patcht Internet > Filter > Listen
-	menulua_remove "$traf"
+	menulua_remove "$traf" "/filter/lists"
 fi
 
 echo1 "patching rc.conf"

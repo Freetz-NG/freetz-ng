@@ -39,8 +39,8 @@ modsed "/jslGoTo('dect'/d;/^<?.*[dD]ect.*?>$/d" "${HTML_SPEC_MOD_DIR}/menus/menu
 menu2html_remove dect
 
 # patcht Heimnetz > Mediaserver
-menulua_remove dect.internetradio
-menulua_remove dect.podcast
+menulua_remove "dect.internetradio" "/media-server/internet-radio"
+menulua_remove "dect.podcast" "/media-server/podcast"
 
 # don't patch this in firmwares < 05.5x (see Ticket #2056)
 if [ "$FREETZ_AVM_VERSION_05_5X_MIN" == "y" ]; then

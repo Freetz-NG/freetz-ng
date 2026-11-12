@@ -3,8 +3,8 @@ echo1 "removing nas"
 
 # if nas, mediaserv und samba are removed -> remove_nas deletes menu item Heimnetz > Speicher (NAS)
 if [ "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" -o "$FREETZ_REMOVE_SAMBA" == "y" ] && [ "$FREETZ_REMOVE_MEDIASRV" == "y" ]; then
-	[ -e "${HTML_LANG_MOD_DIR}/usb/usb_overview.lua" ] && page="usb\/usb_overview" || page="storage\/settings"
-	menulua_remove "$page"
+	[ -e "${HTML_LANG_MOD_DIR}/usb/usb_overview.lua" ] && page="usb/usb_overview" || page="storage/settings"
+	menulua_remove "$page" "/usb"
 fi
 
 rm -rf "${FILESYSTEM_MOD_DIR}/usr/www.nas"
