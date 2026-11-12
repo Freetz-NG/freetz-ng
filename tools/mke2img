@@ -114,20 +114,42 @@ main() {
     [ -n "$SOURCE_DATE_EPOCH" ] && genext2fs_opts+=( -f )
     $TOOLS/genext2fs "${genext2fs_opts[@]}" "${image}"
 
+    # Set reproducible UUID before creating the journal !
+    if [ -n "$SOURCE_DATE_EPOCH" ]; then
+        # command -v python >/dev/null && uuid="$(python -c "import uuid; print(uuid.uuid5(uuid.NAMESPACE_DNS,'freetz-ng-$SOURCE_DATE_EPOCH'))")"
+        uuid="$(uuidgen --sha1 --namespace @dns --name "freetz-ng-$SOURCE_DATE_EPOCH")"
+    fi
+
     # genext2fs does not generate a UUID, but fsck will whine if one
     # is missing, so we need to add a UUID.
     # Of course, this has to happen _before_ we run fsck.
     # Also, some ext4 metadata are based on the UUID, so we must
     # set it before we can convert the filesystem to ext4.
     # If the user did not specify a UUID, we generate a random one.
-    # Although a random UUID may seem bad for reproducibility, there
-    # already are so many things that are not reproducible in a
-    # filesystem: file dates, file ordering, content of the files...
     $TOOLS/tune2fs -U "${uuid:-random}" "${image}"
 
     # Upgrade the filesystem
     if [ ${#tune2fs_opts[@]} -ne 0 ]; then
         $TOOLS/tune2fs "${tune2fs_opts[@]}" "${image}"
+    fi
+
+    if [ -n "$SOURCE_DATE_EPOCH" ]; then
+
+        # "journal" inode stats
+        if [ "$gen" -ge 3 ]; then
+            for field in atime mtime ctime; do
+                $TOOLS/debugfs -w \
+                  -R "set_inode_field <8> $field @$SOURCE_DATE_EPOCH" \
+                  "${image}" >/dev/null
+            done
+        fi
+
+        # ext4 hash_seed
+        if [ "$gen" -ge 4 ]; then
+            $TOOLS/debugfs -w \
+              -R "set_super_value hash_seed $uuid" \
+              "${image}" >/dev/null
+        fi
     fi
 
     # After changing filesystem options, running fsck is required
@@ -153,11 +175,9 @@ main() {
     trace "e2fsck was successfully run on '%s' (ext%d)\n" "${image}" ${gen}
     printf "\n"
 
-    # set a reproducible uuid and last-check date
+    # set a reproducible last-check date
     if [ -n "$SOURCE_DATE_EPOCH" ]; then
-        # command -v python >/dev/null && UUID="$(python -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
         $TOOLS/tune2fs \
-          -U "$(uuidgen --sha1 --namespace @dns --name "freetz-$SOURCE_DATE_EPOCH")" \
           -T "$(date -d@"$SOURCE_DATE_EPOCH" "+%Y%m%d%H%M%S")" \
           "${image}"
     fi
