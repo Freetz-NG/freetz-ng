@@ -64,6 +64,9 @@ Latest changes
 
 ### devel
 
+  - FritzOS
+    * Version 08.50+
+
   - Build system:
     * ccache 4.14.3
 
@@ -162,6 +165,9 @@ Latest changes
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
 ### ng26090
+
+  - FritzOS
+    * Version 08.25+
 
   - Build system:
     * ccache 4.14
@@ -320,6 +326,9 @@ Latest changes
     * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng26090/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng26020
+
+  - FritzOS
+    * Version 08.20+
 
   - Build system:
     * binutils (kernel) 2.18/2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.42/2.45.1
