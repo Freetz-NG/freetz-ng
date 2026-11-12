@@ -796,6 +796,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7490-07.12.image"                                                          if FREETZ_TYPE_7490     && FREETZ_TYPE_LANG_DE   && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_7490-07.29.image"                                                          if FREETZ_TYPE_7490                              && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7490-07.62.image"                                                          if (FREETZ_TYPE_7490 || FREETZ_TYPE_3490_7490)   && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_7490-07.62-138281-Inhaus.image"                                            if (FREETZ_TYPE_7490 || FREETZ_TYPE_3490_7490)   && FREETZ_TYPE_FIRMWARE_07_5X_PLUS
 	#
 	default "FRITZ.Box_7510-07.30.image"                                                          if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7510-07.59.image"                                                          if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_07_5X

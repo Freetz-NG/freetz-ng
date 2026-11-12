@@ -478,6 +478,15 @@ config FREETZ_AVM_HAS_FIRMWARE_07_5X
 			FREETZ_TYPE_6820_V3 \
 		))
 
+config FREETZ_AVM_HAS_FIRMWARE_07_5X_PLUS
+	bool
+	default y
+	depends on \
+		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_7490 || \
+			FREETZ_TYPE_xxxx \
+		))
+
 
 config FREETZ_AVM_HAS_FIRMWARE_08_0X
 	bool

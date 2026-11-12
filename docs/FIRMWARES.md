@@ -463,6 +463,7 @@ Currently supported devices and firmwares
     - 113.07.12 rev70401 {INT} [MESH18 NL2]
     - 113.07.29 rev92201 {ALL} [PSQ19P2NL4]
     - 113.07.62 rev127819 {ALL} [MOVE21 NL3 WU25]
+    - 113.07.62 rev138281 {ALL} [MOVE21 NL3 WU25] (Inhaus)
 
 ### Fritz!Box Fon WLAN (75xx)
 
