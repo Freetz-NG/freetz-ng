@@ -101,7 +101,7 @@ menu "Build system options"
 	config FREETZ_REPRODUCIBLE
 		bool "Enable reproducible build - EXPERIMENTAL"
 		depends on !(FREETZ_KERNEL_VERSION_2 && FREETZ_REPLACE_KERNEL)
-		default y
+		default n
 		help
 			Creates a reproducible image, hopefully.
 			 - (Replace-)Kernel has full support since v3, partialy since v2.6.22.
