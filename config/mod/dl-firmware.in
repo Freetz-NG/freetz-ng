@@ -616,6 +616,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_6690_Cable-08.51.image"                                                    if FREETZ_TYPE_6690_NIX                          && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Box_6690_Pro-08.26.image"                                                      if FREETZ_TYPE_6690_PRO                          && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Box_6690_Pro-08.51.image"                                                      if FREETZ_TYPE_6690_PRO                          && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Repeater_6700_Pro-08.40-136004-Inhaus.image"                                   if FREETZ_TYPE_6700                              && FREETZ_TYPE_FIRMWARE_08_5X_INHAUS
 	#
