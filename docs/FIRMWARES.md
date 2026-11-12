@@ -679,6 +679,7 @@ Currently supported devices and firmwares
   * __Fritz!Repeater 2700__
     - 301.08.07 rev128070 {ALL} [Smart24 P1 FCS]
     - 301.08.26 rev136868 {ALL} [Smart24 P2 NL1]
+    - 301.08.40 rev138212 {ALL} [MyFRITZOS P1] (Labor)
   * __Fritz!Repeater 3000__
     - 174.07.04 rev66458 {ALL}
     - 174.07.14 rev73940 {ALL} [MESH18 NL4]

@@ -433,6 +433,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Repeater_2700-08.07.image"                                                     if FREETZ_TYPE_2700                              && FREETZ_TYPE_FIRMWARE_08_0X
 	default "FRITZ.Repeater_2700-08.26.image"                                                     if FREETZ_TYPE_2700                              && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Repeater_2700-08.40-138212-LabBETA.image"                                      if FREETZ_TYPE_2700                              && FREETZ_TYPE_FIRMWARE_08_5X_LABOR
 	#
 	default "fritz.box_sl_wlan.09.04.34.image"                                                    if FREETZ_TYPE_3020                              && FREETZ_TYPE_FIRMWARE_04_XX
 	#
