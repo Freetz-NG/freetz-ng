@@ -146,6 +146,7 @@ FIRMWARE_EXTENSION="${FIRMWARE_EXTENSION,,}"
 SOURCE_SUBDIR="source"
 FIRMWARE_SUBDIR="firmware"
 FITIMAGE_SUBDIR="fit-image"
+STRIPPED_SUBDIR="stripped"
 FILESYSTEM_SUBDIR="filesystem"
 FILESYSTEM_OUTER_SUBDIR="filesystem.outer"
 AVMPLUGINS_SUBDIR="plugins.image"
@@ -430,6 +431,7 @@ fi
 ORG_DIR="${DIR}/original"
 FIRMWARE_DIR="${ORG_DIR}/${FIRMWARE_SUBDIR}"
 FITIMAGE_DIR="${ORG_DIR}/${FITIMAGE_SUBDIR}"
+STRIPPED_DIR="${ORG_DIR}/${STRIPPED_SUBDIR}"
 FILESYSTEM_DIR="${ORG_DIR}/${FILESYSTEM_SUBDIR}"
 FILESYSTEM_OUTER_DIR="${ORG_DIR}/${FILESYSTEM_OUTER_SUBDIR}"
 KERNEL_DIR="${ORG_DIR}/${KERNEL_SUBDIR}"
@@ -445,7 +447,7 @@ if [ "${FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE}" == "y" ]; then
 		FILESYSTEM="${FILESYSTEM_OUTER_DIR}/${FILESYSTEM_INNER_IMAGE}"
 		INNER_FS_PREFIX="inner-"
 	else
-		FILESYSTEM="${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}"
+		FILESYSTEM="${STRIPPED_DIR}/${FILESYSTEM_IMAGE}"
 	fi
 else
 	FILESYSTEM="${RAW_FILESYSTEM}"
@@ -548,34 +550,38 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	[ ! -r "${KERNEL}" ] && error 1 "cannot find kernel.image (${KERNEL})"
 	[ ! -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" ] && error 1 "cannot find filesystem.image (${FIRMWARE_DIR}/${FILESYSTEM_IMAGE})"
 
+	# Keep original/ files unchanged !
+	mkdir -p "${STRIPPED_DIR}/${FREETZ_AVM_IMAGES_SUBDIR}"
+	cp -p "${KERNEL}" "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" "${STRIPPED_DIR}/${FREETZ_AVM_IMAGES_SUBDIR}/" || error 1 "copying images failed"
+
 	# Remove NMI vector from SquashFS
 	if [ "$FREETZ_AVM_HAS_NMI_VECTOR" == "y" ]; then
 		echo0 "removing NMI vector from SquashFS"
-		[ "$FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE" == "y" ] && FILE_WITH_NMI_VECTOR_TO_PROCESS="${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" || FILE_WITH_NMI_VECTOR_TO_PROCESS="$KERNEL"
+		[ "$FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE" == "y" ] && FILE_WITH_NMI_VECTOR_TO_PROCESS="${FILESYSTEM_IMAGE}" || FILE_WITH_NMI_VECTOR_TO_PROCESS="${KERNEL_IMAGE}"
 		if [ "$FREETZ_VERBOSITY_LEVEL" -lt 2 ]; then
-			"$TOOLS_DIR/remove-nmi-vector" "$FILE_WITH_NMI_VECTOR_TO_PROCESS" "$FILE_WITH_NMI_VECTOR_TO_PROCESS.no-nmi" >/dev/null 2>&1
+			"$TOOLS_DIR/remove-nmi-vector" "${FIRMWARE_DIR}/$FILE_WITH_NMI_VECTOR_TO_PROCESS" "${STRIPPED_DIR}/$FILE_WITH_NMI_VECTOR_TO_PROCESS" >/dev/null 2>&1
 		else
-			"$TOOLS_DIR/remove-nmi-vector" "$FILE_WITH_NMI_VECTOR_TO_PROCESS" "$FILE_WITH_NMI_VECTOR_TO_PROCESS.no-nmi"
+			"$TOOLS_DIR/remove-nmi-vector" "${FIRMWARE_DIR}/$FILE_WITH_NMI_VECTOR_TO_PROCESS" "${STRIPPED_DIR}/$FILE_WITH_NMI_VECTOR_TO_PROCESS"
 		fi
 		case "$?" in
-			0) mv -f "$FILE_WITH_NMI_VECTOR_TO_PROCESS.no-nmi" "$FILE_WITH_NMI_VECTOR_TO_PROCESS" ;;
+			0) ;;
 			1) warn2 "NMI vector not found. Assuming Freetz or Freetz-repacked image." ;;
 			*) error 1 "fatal error while removing NMI vector from SquashFS." ;;
 		esac
 	fi
 
 	[ ! -x "$TICHKSUM" ] && error 1 "cannot find the tool $TICHKSUM"
-	"$TICHKSUM" -r "${KERNEL}" > /dev/null
-	"$TICHKSUM" -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" > /dev/null
+	"$TICHKSUM" -r "${STRIPPED_DIR}/${KERNEL_IMAGE}" > /dev/null 
+	"$TICHKSUM" -r "${STRIPPED_DIR}/${FILESYSTEM_IMAGE}" > /dev/null 
 
 	mkdir -p "$KERNEL_DIR"
 	if [ "${FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE}" == "y" ]; then
-		cp "${KERNEL}" "${RAW_KERNEL}"
+		cp "${STRIPPED_DIR}/${KERNEL_IMAGE}" "${RAW_KERNEL}"
 		[ ! -r "$RAW_KERNEL" ] && error 1 "copying kernel image failed"
 
 		if [ "${FREETZ_AVM_HAS_INNER_OUTER_FILESYSTEM}" == "y" ]; then
 			echo "unpacking outer-filesystem image"
-			modunpack_autodetect_fs "${FILESYSTEM_OUTER_DIR}" "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}"
+			modunpack_autodetect_fs "${FILESYSTEM_OUTER_DIR}" "${STRIPPED_DIR}/${FILESYSTEM_IMAGE}"
 			[ ! -r "$FILESYSTEM" ] && error 1 "unpacking outer-filesystem image failed"
 		fi
 
@@ -585,7 +591,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		[ ! -x "$FINDSQUASHFS" ] && error 1 "cannot find the tool $FINDSQUASHFS"
 
 		echo "splitting kernel image"
-		( cd "$KERNEL_DIR" && "${TOOLS_DIR}/${FINDSQUASHFS_TOOL}" "../${FIRMWARE_SUBDIR}/${KERNEL_IMAGE}" > /dev/null 2>&1 )
+		( cd "$KERNEL_DIR" && "${TOOLS_DIR}/${FINDSQUASHFS_TOOL}" "../${STRIPPED_SUBDIR}/${KERNEL_IMAGE}" > /dev/null 2>&1 )
 
 		if [ ! -r "$RAW_KERNEL" -o ! -r "$FILESYSTEM" ]; then
 			if [ -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" ] && [ $(stat -c %s "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}") -gt 0 ]; then
@@ -803,7 +809,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	[ -n "$PV" ] && echo0 "preparing directory build/modified/"
 	mkdir -p "$MOD_DIR"
 	[ "$FREETZ_AVM_HAS_UDEV" == y ] || exclude_dev="--exclude=./filesystem/dev"
-	"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR_BBA" -x -C "$MOD_DIR" || error 1 "tar failed"
+	"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "$ORG_DIR" $exclude_dev  --exclude='*.log' --exclude='./stripped' . | ${PV:-cat} | "$TAR_BBA" -x -C "$MOD_DIR" || error 1 "tar failed"
 
 	# Fix some permissions
 	find "${FILESYSTEM_MOD_DIR}" ! -type l -exec chmod u+w {} '+'
