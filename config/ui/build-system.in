@@ -100,13 +100,14 @@ menu "Build system options"
 
 	config FREETZ_REPRODUCIBLE
 		bool "Enable reproducible build - EXPERIMENTAL"
-		default n
+		depends on !(FREETZ_KERNEL_VERSION_2 && FREETZ_REPLACE_KERNEL)
+		default y
 		help
 			Creates a reproducible image, hopefully.
-			 - Replace kernel are not all tested.
-			 - Only a few packages are tested.
-			 - Squashfs is reproducible since v4.4.
-			 - Squashfs v2+v3+v4.3 are backported.
+			 - (Replace-)Kernel has full support since v3, partialy since v2.6.22.
+			 - Only a few packages are tested, maybe individual patches are needed.
+			 - Squashfs is reproducible since v4.4, older v2+v3+v4.3 have backports.
+			 - You need a full rebuild if this option was disabled before!
 
 	comment "Kernel + Modules ------------------------------------"
 		depends on FREETZ_SHOW_DEVELOPER
