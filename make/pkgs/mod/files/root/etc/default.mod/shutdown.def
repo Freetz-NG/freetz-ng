@@ -1,4 +1,4 @@
-CAPTION='Freetz-NG: shutdown'
+CAPTION='Freetz: shutdown'
 DESCRIPTION="$(lang de:"Hier k&ouml;nnen Befehle eingetragen werden, die w&auml;hrend des Herunterfahren ausgef&uuml;hrt werden sollen." en:"Here you can enter commands to be executed during system shutdown.")"
 
 CONFIG_FILE="/tmp/flash/mod/shutdown"

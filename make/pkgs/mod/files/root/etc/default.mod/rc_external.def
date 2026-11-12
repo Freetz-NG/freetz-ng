@@ -1,4 +1,4 @@
-CAPTION='Freetz-NG: rc.external'
+CAPTION='Freetz: rc.external'
 DESCRIPTION="$(lang de:"Skript wird am Ende von external aufgerufen" en:"script is executed at the end of external")"
 
 CONFIG_FILE='/tmp/flash/mod/rc.external'

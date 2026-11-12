@@ -99,7 +99,7 @@ update_lfs() {
 }
 
 start() {
-	echo "Freetz-NG version $(sed 's/^freetz-//;s/^ng-//' /etc/.freetz-version)"
+	echo "Freetz-NG $(sed 's/^freetz-//;s/^ng-//' /etc/.freetz-version)"
 
 	# Basic Packages: links
 	for pkg in crond telnetd webcfg stickymon dsld ftpd rextd multid swap external websrv smbd; do
@@ -231,7 +231,7 @@ modreg_file() {
 register() {
 	AUML="$(echo -ne '\344')"
 
-	modreg cgi mod "Freetz-NG"
+	modreg cgi mod "Freetz"
 	modreg conf mod webcfg "$(lang de:"Weboberfl${AUML}che" en:"Web interface")"
 	modreg cgi avm "$(lang de:"AVM-Dienste" en:"AVM services")"
 

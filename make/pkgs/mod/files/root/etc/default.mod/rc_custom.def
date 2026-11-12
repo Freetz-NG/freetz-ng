@@ -1,4 +1,4 @@
-CAPTION='Freetz-NG: rc.custom'
+CAPTION='Freetz: rc.custom'
 DESCRIPTION="$(lang de:"Skript wird am Ende des Bootprozesses aufgerufen" en:"script is executed at the end of the boot process")"
 
 CONFIG_FILE='/tmp/flash/mod/rc.custom'

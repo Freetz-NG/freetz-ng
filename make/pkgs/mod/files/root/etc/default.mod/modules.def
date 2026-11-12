@@ -1,4 +1,4 @@
-CAPTION='Freetz-NG: modules'
+CAPTION='Freetz: modules'
 DESCRIPTION="$(lang de:"Hier k&ouml;nnen Module eingetragen werden, die w&auml;hrend des Bootprozesses geladen werden sollen (z.B. pl2303)." en:"Here you can enter modules to be loaded during boot process (e.g. pl2303).")"
 
 CONFIG_FILE='/tmp/flash/mod/modules'

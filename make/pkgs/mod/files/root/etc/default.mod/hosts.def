@@ -1,4 +1,4 @@
-CAPTION='Freetz-NG: hosts'
+CAPTION='Freetz: hosts'
 DESCRIPTION="Syntax: &lt;ip&gt; &lt;mac&gt; &lt;interface&gt; &lt;host&gt; [&lt;aliases|#description&gt;]<br>
 ($(lang de:"z.B.: 10.0.0.1 * * www.local mfh1 # Mein Server" en:"e.g. 10.0.0.1 * * www.local mfh1 # my server")) *=&quot;$(lang de:"nicht definiert" en:"not defined")&quot;"
 
