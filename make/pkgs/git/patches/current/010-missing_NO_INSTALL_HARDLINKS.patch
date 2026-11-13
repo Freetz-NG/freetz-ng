@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -2707,6 +2707,7 @@
+@@ -2709,6 +2709,7 @@
  
  $(BUILT_INS): git$X
  	$(QUIET_BUILT_IN)$(RM) $@ && \
@@ -8,7 +8,7 @@
  	ln $< $@ 2>/dev/null || \
  	ln -s $< $@ 2>/dev/null || \
  	cp $< $@
-@@ -3021,6 +3022,7 @@
+@@ -3023,6 +3024,7 @@
  
  $(REMOTE_CURL_ALIASES): $(REMOTE_CURL_PRIMARY)
  	$(QUIET_LNCP)$(RM) $@ && \

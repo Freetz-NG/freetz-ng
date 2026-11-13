@@ -111,7 +111,7 @@ Latest changes
     * Empty 0.6.23d
     * endlessh 1.1
     * FFmpeg 5.1.10/7.1.5
-    * Git 2.26.2/2.56.0
+    * Git 2.26.2/2.56.1
     * GnuTLS 3.7.11/3.8.13
     * htpdate 2.1.0
     * ImageMagick 7.1.0-62/7.1.2-35
