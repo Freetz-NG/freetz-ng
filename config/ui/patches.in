@@ -134,7 +134,6 @@ config FREETZ_REMOVE_DSLD
 	bool "Remove dsld"
 	default n
 	depends on FREETZ_AVM_HAS_DSLD
-	depends on FREETZ_AVM_VERSION_08_0X_MAX || FREETZ_REAL_DEVELOPER_ONLY  # never tested by anyone with fos 8.2x+
 	select FREETZ_REMOVE_UPNP
 	select FREETZ_REMOVE_KIDS if FREETZ_AVM_HAS_KIDS
 	help
@@ -328,7 +327,6 @@ config FREETZ_REMOVE_NEXUS
 	bool "Remove NEXUS - EXPERIMENTAL"
 	default n
 	depends on FREETZ_AVM_HAS_NEXUS
-	depends on FREETZ_AVM_VERSION_08_0X_MAX || FREETZ_REAL_DEVELOPER_ONLY  # never tested by anyone with fos 8.2x+
 	help
 		Removes "nexus" related files like
 		the daemon, service and some scripts.
@@ -699,7 +697,6 @@ config FREETZ_REMOVE_HELP
 config FREETZ_REMOVE_LIBFUSE
 	bool "Remove libfuse.so"
 	depends on FREETZ_AVM_HAS_LIBFUSE
-	depends on FREETZ_AVM_VERSION_08_0X_MAX || FREETZ_REAL_DEVELOPER_ONLY  # never tested by anyone with fos 8.2x+
 	select FREETZ_REMOVE_NTFS if FREETZ_AVM_HAS_NTFS && !FREETZ_AVMPLUGINS_NTFS
 	select FREETZ_REMOVE_WEBDAV if FREETZ_AVM_HAS_WEBDAV
 	default n
@@ -823,7 +820,6 @@ config FREETZ_REMOVE_NLS
 config FREETZ_REMOVE_USBHOST
 	bool "Remove USB Host"
 	depends on FREETZ_AVM_HAS_USB_HOST
-	depends on FREETZ_AVM_VERSION_08_0X_MAX || FREETZ_REAL_DEVELOPER_ONLY  # never tested by anyone with fos 8.2x+
 	default n
 	help
 		Remove USB Host
@@ -993,7 +989,6 @@ config FREETZ_REMOVE_UMTSD
 config FREETZ_REMOVE_UPNP
 	bool "Remove UPnP (igdd/upnpd)"
 	depends on !FREETZ_TYPE_EXTENDER
-	depends on FREETZ_AVM_VERSION_08_0X_MAX || FREETZ_REAL_DEVELOPER_ONLY  # never tested by anyone with fos 8.2x+
 	select FREETZ_AVMDAEMON_DISABLE_IGD
 	select FREETZ_REMOVE_UPNP_LIBS if \
 		FREETZ_TYPE_2170 || \
