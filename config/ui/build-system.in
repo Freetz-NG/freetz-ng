@@ -99,7 +99,7 @@ menu "Build system options"
 			so, the package will be recreated.
 
 	config FREETZ_REPRODUCIBLE
-		bool "Enable reproducible build - EXPERIMENTAL"
+		bool "Reproducible build - EXPERIMENTAL"
 		depends on !(FREETZ_KERNEL_VERSION_2 && FREETZ_REPLACE_KERNEL)
 		default n
 		help
