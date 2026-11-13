@@ -77,6 +77,9 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
 
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
+
 config FREETZ_AVM_HAS_DMESG_FILE
 	def_bool y
 
