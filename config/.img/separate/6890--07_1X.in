@@ -128,6 +128,9 @@ config FREETZ_AVM_HAS_LEDPAGE
 config FREETZ_AVM_HAS_DDNSD
 	def_bool y
 
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
+
 config FREETZ_AVM_HAS_UMTS
 	def_bool y
 

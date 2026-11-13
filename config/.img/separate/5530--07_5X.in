@@ -113,6 +113,9 @@ config FREETZ_AVM_HAS_KMOD
 config FREETZ_AVM_HAS_SVCTL
 	def_bool y
 
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
+
 config FREETZ_AVM_HAS_FAX
 	def_bool y
 
