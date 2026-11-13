@@ -129,6 +129,9 @@ config FREETZ_AVM_HAS_KMOD
 config FREETZ_AVM_HAS_SVCTL
 	def_bool y
 
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
+
 config FREETZ_AVM_HAS_UMTS
 	def_bool y
 
