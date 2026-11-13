@@ -134,7 +134,7 @@ config FREETZ_REMOVE_DSLD
 	bool "Remove dsld"
 	default n
 	depends on FREETZ_AVM_HAS_DSLD
-	select FREETZ_REMOVE_UPNP
+	select FREETZ_REMOVE_UPNP if FREETZ_AVM_HAS_UPNP
 	select FREETZ_REMOVE_KIDS if FREETZ_AVM_HAS_KIDS
 	help
 		Remove DSL daemon (dsld), if you are planning to use your box as a simple
@@ -988,7 +988,7 @@ config FREETZ_REMOVE_UMTSD
 
 config FREETZ_REMOVE_UPNP
 	bool "Remove UPnP (igdd/upnpd)"
-	depends on !FREETZ_TYPE_EXTENDER
+	depends on FREETZ_AVM_HAS_UPNP
 	select FREETZ_AVMDAEMON_DISABLE_IGD
 	select FREETZ_REMOVE_UPNP_LIBS if \
 		FREETZ_TYPE_2170 || \
