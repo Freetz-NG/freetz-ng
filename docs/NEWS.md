@@ -1,5 +1,17 @@
 # Neuigkeiten
 
+### 2026-11-13
+Eine Firmware kann als "Reproducible build" (`FREETZ_REPRODUCIBLE`) gebaut werden, dh bei<br>
+gleichem GIT-Stand und gleicher .config soll immer ein identisches .image erzeugt werden.<br>
+Falls Fehler bei aktivierter Option auftreten ist die Ursache vermutlich, dass squashfs<br>
+ohne Backport gebaut wurde.<br>
+Abhilfe entsprechend des ausgewählten Gerätes:<br>
+
+   - `make squashfs2-host-recompile`
+   - `make squashfs3-host-recompile` 
+   - `make squashfs4-be-host-recompile`
+   - `make squashfs4-le-host-recompile`
+
 ### 2026-11-11
 Der Start von `make` wurde beschleunigt. So wird zum Beispiel `make menuconfig` schneller<br>
 angezeigt und `make olddefconfig` benötigt bei mir nur noch 1,5 statt 9 Sekunden.
