@@ -88,7 +88,7 @@ show_usage() {
 
 	Zensical http server
 
-	Usage: $0 [ install [-y] | setup | run [port] | build | cleanup ]
+	Usage: $0 < i [-y] | install [-y] | s | setup | r [port] | run [port] | b | build | c | cleanup >
 
 	 - install [-y]
 	   Installs packages by package-manager, python3, pip3 and venv.
