@@ -9,9 +9,13 @@ body:
         Please fill out the form as completely as possible.
 
         **Especially important for troubleshooting:**
-        - attach the `.config` used as a file
         - provide the complete output of `push_firmware`
         - specify the device and FRITZ!OS version
+
+        The `.config` is optional for a pure transfer/bootloader problem. It is
+        useful, and may be needed, when the image itself must be rebuilt or its
+        selected packages, patches, kernel options, or other build settings
+        must be compared. In that case please attach the exact `.config` used.
 
   - type: input
     id: device
@@ -53,16 +57,19 @@ body:
     attributes:
       label: 'Freetz-NG ".config"'
       description: |
-        **Please make sure to attach the `.config` file used for the build.**
+        Optional for a pure `push_firmware` transfer problem. Please attach the
+        exact file used for the build if the image needs to be rebuilt or the
+        build settings may explain the problem.
 
         The file is located in the root directory of your Freetz-NG build.
         You can drag and drop the file into this field.
 
-        Please do not provide a screenshot of the `.config` file.
+        Please do not provide a screenshot. Remove passwords, tokens, or other
+        confidential values before attaching the file.
       placeholder: |
         Attach the ".config" file here ...
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: command
@@ -159,8 +166,6 @@ body:
       label: 'Checklist'
       options:
         - label: I have provided the complete output of "push_firmware".
-          required: true
-        - label: I have attached the ".config" used as a file.
           required: true
         - label: I have searched for existing Discussions about this issue.
           required: true

@@ -130,12 +130,20 @@ body:
     attributes:
       label: 'Freetz-NG ".config"'
       description: |
-        **If this is a Freetz build problem, please make sure to attach the `.config` file that was used.**
+        Optional for general questions, flashing, or runtime problems.
+
+        **For build/image problems, please attach the `.config` that was used if
+        possible.** It contains the selected device, FRITZ!OS source, packages,
+        patches, kernel options, and other build settings. Without it, an image
+        usually cannot be rebuilt or compared reliably. If the problem depends
+        on a particular selection, please attach it (or explain why it cannot
+        be provided).
 
         The file is located in the root directory of your Freetz-NG build.
         You can drag and drop the file into this field.
 
-        Please do not provide a screenshot of the `.config` file.
+        Please do not provide a screenshot. Remove passwords, tokens, or other
+        confidential values before attaching the file.
       placeholder: |
         Attach the ".config" file here ...
     validations:
