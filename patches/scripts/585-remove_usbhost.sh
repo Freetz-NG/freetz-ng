@@ -11,3 +11,7 @@ rm_files "${MODULES_DIR}/kernel/drivers/scsi/sg.ko"
 
 modsed -r 's/(CONFIG_USB.*)=.*/\1="n"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 
+# patcht Heimnetz > USB/Speicher
+menulua_remove "usb/usb_mode" "/usb/settings"
+menulua_remove "usb/usb_remote" "/usb/sharing"
+
