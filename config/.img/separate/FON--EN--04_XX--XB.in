@@ -32,6 +32,9 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
+
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 

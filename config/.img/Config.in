@@ -6886,6 +6886,8 @@ config FREETZ_AVM_HAS_USB_HOST
 	def_bool y
 config FREETZ_AVM_HAS_TR064
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 config FREETZ_AVM_HAS_SAMBA_SMBD
@@ -9078,6 +9080,8 @@ config FREETZ_AVM_HAS_WLAN
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -9144,6 +9148,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 config FREETZ_AVM_HAS_TR069
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -9217,6 +9223,8 @@ config FREETZ_AVM_HAS_USB_HOST
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -9305,6 +9313,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 config FREETZ_AVM_HAS_DSLD
@@ -9379,6 +9389,8 @@ config FREETZ_AVM_HAS_USB_HOST_AHCI
 config FREETZ_AVM_HAS_USB_HOST
 	def_bool y
 config FREETZ_AVM_HAS_TR064
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
@@ -16976,6 +16988,8 @@ config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
@@ -17036,6 +17050,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 config FREETZ_AVM_HAS_PHONE
 	def_bool y
 config FREETZ_AVM_HAS_TR069
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -17111,6 +17127,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -17207,6 +17225,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -17299,6 +17319,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
@@ -34724,6 +34746,8 @@ config FREETZ_AVM_HAS_PHONE
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -34796,6 +34820,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -34880,6 +34906,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -34963,6 +34991,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -35043,6 +35073,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_MINID
 	def_bool y
@@ -35143,6 +35175,8 @@ config FREETZ_AVM_HAS_PHONE
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -35229,6 +35263,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -35330,6 +35366,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -35438,6 +35476,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_MINID
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
@@ -35545,6 +35585,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -35639,6 +35681,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -35749,6 +35793,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_MINID
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
@@ -35854,6 +35900,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -35956,6 +36004,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
@@ -36347,6 +36397,8 @@ config FREETZ_AVM_HAS_TR064
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_MINID
 	def_bool y
@@ -54479,6 +54531,8 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_UMTS
@@ -63123,6 +63177,8 @@ config FREETZ_AVM_HAS_PHONE
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -63188,6 +63244,8 @@ config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
@@ -63248,6 +63306,8 @@ config FREETZ_AVM_HAS_PHONE
 config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
@@ -63865,6 +63925,8 @@ config FREETZ_AVM_HAS_PHONE
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -63932,6 +63994,8 @@ config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
@@ -63994,6 +64058,8 @@ config FREETZ_AVM_HAS_PHONE
 config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
@@ -64064,6 +64130,8 @@ config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
+config FREETZ_AVM_HAS_UPNP
+	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 config FREETZ_AVM_HAS_DMESG_LINK
@@ -64126,6 +64194,8 @@ config FREETZ_AVM_HAS_WLAN
 config FREETZ_AVM_HAS_TR064
 	def_bool y
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+config FREETZ_AVM_HAS_UPNP
 	def_bool y
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
