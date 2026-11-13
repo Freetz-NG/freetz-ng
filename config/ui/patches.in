@@ -142,6 +142,8 @@ config FREETZ_REMOVE_DSLD
 		IP client ("Internet mitbenutzen") without routing.
 		ATA ("via Lan1") and DSL mode will not work anymore.
 
+		WARNING: Switch to IP client BEFORE flash an image without dsld!
+
 		ATTENTION: You won't be able to use your box as a modem nor a router anymore.
 		As well do *not* use this option if your ATA mode box uses PPPoE passthrough,
 		because in this case dsld is still needed! Furthermore, selecting this patch
