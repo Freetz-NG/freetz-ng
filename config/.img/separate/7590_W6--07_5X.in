@@ -209,6 +209,9 @@ config FREETZ_AVM_HAS_MESHD
 config FREETZ_AVM_HAS_PCPD
 	def_bool y
 
+config FREETZ_AVM_HAS_MOVED
+	def_bool y
+
 config FREETZ_AVM_HAS_UNTRUSTEDD
 	def_bool y
 
