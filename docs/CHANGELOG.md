@@ -151,6 +151,7 @@ Latest changes
     * GLib2 2.32.4/2.90.1
     * harfbuzz 15.1.0
     * libconfuse 3.4
+    * libffi 3.8.1
     * libgcrypt 1.12.4
     * libgpg-error 1.61
     * libpcap 1.11.0
