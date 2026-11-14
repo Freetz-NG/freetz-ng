@@ -200,6 +200,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Remove module bins</u><a id='remove-module-bins'></a>**<br>
     Removes these (unused) kernel files: modules.alias.bin modules.builtin.bin modules.dep.bin modules.symbols.bin
 
+  * **<u>Remove MOVED (settings migration)</u><a id='remove-moved'></a>**<br>
+    Removes "moved" binary and related files (270kB uncompressed). MOVED is used for settings migration to a new device.
+
   * **<u>REMOVE_MULTI_ANNEX_FIRMWARE_DIFFS: Remove 2nd Annex firmware</u><a id='remove-multi-annex-firmware-diffs'></a>**<br>
     Remove the diffs to the prime firmware. This saves about 120-230 KB of uncompressed data size and 67 KB of bspatch. Select this only if you don't want to switch the firmware. See https://web.archive.org/20200701000000/www.wehavemorefun.de/fritzbox/Multi-DSL-Firmware
 
