@@ -97,6 +97,7 @@ Latest changes
     * New tagging: custom & modded
     * New Patch: Remove ASSETSD (assets downloader)
     * New Patch: Remove DSL_DAEMON (dsl_control successor)
+    * New Patch: Remove MOVED (settings migration)
     * Various Fritzos 8.25 related fixes
     * Various Fritzos 8.50 related fixes
 

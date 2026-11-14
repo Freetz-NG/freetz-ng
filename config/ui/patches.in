@@ -300,6 +300,14 @@ config FREETZ_REMOVE_PCPD
 		does not work without MESHD (don't ask).
 		There are NO changes of the avm-webif!
 
+config FREETZ_REMOVE_MOVED
+	bool "Remove MOVED (settings migration)"
+	default n
+	depends on FREETZ_AVM_HAS_MOVED
+	help
+		Removes "moved" binary and related files (270kB uncompressed).
+		MOVED is used for settings migration to a new device.
+
 config FREETZ_REMOVE_PLCD
 	bool "Remove PLCD (AVM Powerline)"
 	default n
