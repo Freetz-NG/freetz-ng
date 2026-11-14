@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libffi
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libffi.so.8.5.0
+		 ${FREETZ_LIBRARY_DIR}/libffi.so.8.5.1
 
