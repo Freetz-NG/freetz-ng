@@ -543,7 +543,9 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	elif [ "$FREETZ_AVM_HAS_FWLAYOUT_5" == "y" ]; then
 		echo0 "unpacking fitimg file"
 		$TOOLS_DIR/fit.sh unpack "$FIRMWARE_DIR/var/tmp/fit-image" "$FITIMAGE_DIR" || error 1 "unpacking failed"
+		var_tmp_mtime="$(stat -c %y "$FIRMWARE_DIR/var/tmp")"
 		for x in kernel filesystem; do ln $FITIMAGE_DIR/$x.image $FIRMWARE_DIR/var/tmp/; done
+		touch -d "$var_tmp_mtime" "$FIRMWARE_DIR/var/tmp"
 	fi
 
 	# Do the images exist ?
