@@ -597,7 +597,7 @@ config FREETZ_BUSYBOX__MANDATORY_08_2X
 
 config FREETZ_BUSYBOX__BUILD_TIMESTAMP
 	bool "allow build timestamp in banner"
-	depends on !FREETZ_REPRODUCIBLE
+	depends on !(FREETZ_REPRODUCIBLE && FREETZ_BUSYBOX__VERSION_V127)
 	default y
 	help
 		no build timestamp allows reproducible binary
