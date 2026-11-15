@@ -534,7 +534,7 @@ test: $(BUILD_DIR)/modified
 toolchain-depend: | $(TOOLCHAIN)
 # Use KTV and TTV variables to provide new toolchain versions, i.e.
 #   make KTV=freetz-0.4 TTV=freetz-0.5 toolchain
-toolchain: $(DL_DIR) $(SOURCE_DIR_ROOT) $(TOOLCHAIN) tools lzma1-host
+toolchain: $(DL_DIR) $(SOURCE_DIR_ROOT) tools $(TOOLCHAIN) lzma1-host
 	@echo
 	@echo "################################################################"
 	@echo
