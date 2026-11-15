@@ -46,9 +46,9 @@ $(PKG)_CONFIGURE_OPTIONS += --with-readline-ldflags="-L$(TARGET_TOOLCHAIN_STAGIN
 endif
 endif
 
+ifeq ($(strip $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_ENV += ac_cv_header_zlib_h=no
 # Disable math functions for uClibc 0.9.28/29 (missing trunc() and other C99 math functions)
-ifeq ($(strip $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_ENV += CFLAGS="$(TARGET_CFLAGS) -USQLITE_ENABLE_MATH_FUNCTIONS"
 endif
 
