@@ -23,7 +23,8 @@ endif
 endif
 endif
 KERNEL_TARGET_BINARY:=kernel-$(KERNEL_ID).bin
-KERNEL_CONFIG_FILE:=$(KERNEL_MAKE_DIR)/configs/freetz/config-$(KERNEL_ID)
+KERNEL_CONFIG_FILE_FREETZ:=$(KERNEL_MAKE_DIR)/configs/freetz/config-$(KERNEL_ID)
+KERNEL_CONFIG_FILE_SOURCE:=$(KERNEL_SOURCE_DIR)/.config
 
 KERNEL_COMMON_MAKE_OPTIONS := -C $(KERNEL_SOURCE_DIR)
 KERNEL_COMMON_MAKE_OPTIONS += CROSS_COMPILE="$(KERNEL_CROSS)"
@@ -249,16 +250,16 @@ ifeq ($(strip $(FREETZ_MODULES_KOON)),y)
 $(shell grep '^FREETZ_MODULE_' $(TOPDIR)/.config | diff -du --label "old" --label "new" "$(KERNEL_DIR)/.configured" - >/dev/null 2>&1 || $(RM) "$(KERNEL_DIR)/.configured" >/dev/null 2>&1)
 endif
 
-$(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
+$(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE_FREETZ)
 	$(call _ECHO,configuring,$(KERNEL_ECHO_TYPE))
-	cp $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
+	cp $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
 	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
 else
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig $(SILENT)
 endif
-	@cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
+	@cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
@@ -371,20 +372,20 @@ kernel-help: $(KERNEL_DIR)/.unpacked
 
 kernel-menuconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) menuconfig
-	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-xconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) xconfig
-	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-oldconfig: $(KERNEL_DIR)/.configured
-	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-olddefconfig: $(KERNEL_DIR)/.configured
-	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-source: $(KERNEL_DIR)/.unpacked
@@ -394,9 +395,9 @@ kernel-clean:
 	-$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) clean
 
 kernel-mrproper:
-	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE)
+	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ)
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) mrproper
-	-cp -f $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
+	-cp -f $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 	-$(SUBMAKE) kernel-oldconfig
 else
