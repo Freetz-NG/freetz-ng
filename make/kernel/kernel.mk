@@ -289,7 +289,13 @@ kernel-load: $(KERNEL_DIR)/.configured
 	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 	$(KERNEL_DEFCONFIG)
 	touch $<
-.PHONY: kernel-diff kernel-save kernel-load
+kernel-crappy: $(KERNEL_DIR)/.configured
+	cp -f $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
+	$(KERNEL_DEFCONFIG)
+	touch $<
+	cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ)
+	touch -r $< $(KERNEL_CONFIG_FILE_FREETZ)
+.PHONY: kernel-diff kernel-save kernel-load kernel-crappy
 
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 KERNEL_DEFCONFIG = yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
