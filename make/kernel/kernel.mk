@@ -256,7 +256,7 @@ $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE_FREETZ)
 	cp $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
 	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 	$(KERNEL_DEFCONFIG)
-	@cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
+	@grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
@@ -388,22 +388,18 @@ kernel-help: $(KERNEL_DIR)/.unpacked
 
 kernel-menuconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) menuconfig
-	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-xconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) xconfig
-	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-oldconfig: $(KERNEL_DIR)/.configured
 	$(KERNEL_DEFCONFIG)
-	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-olddefconfig: $(KERNEL_DIR)/.configured
 	$(KERNEL_DEFCONFIG)
-	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-source: $(KERNEL_DIR)/.unpacked
