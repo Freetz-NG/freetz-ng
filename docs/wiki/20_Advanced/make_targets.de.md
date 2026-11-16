@@ -40,9 +40,17 @@ $(pkg)-autofix                          Passt Patches des Pakets/der Bibliothek 
 $(pkg)-dirclean                         Entfernt das Build-Verzeichnis von $(pkg)
 $(pkg)-distclean                        Entfernt das Build-Verzeichnis und alle Ziel-Dateien von $(pkg)
 
+kernel-*                                Wie $(pkg)-* und zusätzlich:
 kernel-menuconfig                       Konfiguration des ausgewählten Kernels
-kernel-precompiled                      Kompiliert den ausgewählten Kernel
-kernel-dirclean                         Löscht alle Dateien des ausgewählten Kernels
+kernel-olddefconfig                     Aktualisiert die Konfigurationsdatei
+kernel-diff                             Zeigt Unterschiede von Standard- und Kernel-Konfiguration
+kernel-save                             Kernel Konfiguration ins Repository kopieren
+kernel-load                             Standard-Konfiguration in Kernel kopieren
+kernel-symrefs                          Kompiliert den kernel neu und erstellt ein symrefs-Archiv
+
+uclibc-*                                Wie $(pkg)-* und zusätzlich:
+uclibc-menuconfig                       Konfiguration der ausgewählten uClibc
+uclibc-olddefconfig                     Aktualisiert die .config-Datei der ausgewählten uClibc
 
 tools-push_firmware                     Erstellt die für push_firmware (pfp) erforderlichen Tools
 tools                                   Erstellt die für die aktuelle Auswahl erforderlichen Tools
@@ -50,10 +58,6 @@ tools-all                               Erstellt alle verfügbaren Freetz-Tools
 tools-allexcept-local                   Erstellt alle nicht lokalen Freetz-Tools (dl-tools)
 tools-distclean-local                   Löscht alle lokalen Tools (dl-tools)
 tools-dirclean                          Löscht alle Freetz-Tools
-
-uclibc-autofix                          Passt Patches der ausgewählten uClibc an
-uclibc-menuconfig                       Konfiguration der ausgewählten uClibc
-uclibc-olddefconfig                     Aktualisiert die .config-Datei der ausgewählten uClibc
 
 firmware-nocompile                      Erstellt eine Firmware ohne Pakete und Bibliotheken
 mirror                                  Lädt alle ausgewählten Paketquellen-Dateien herunter

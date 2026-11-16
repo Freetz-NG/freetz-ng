@@ -40,9 +40,17 @@ $(pkg)-autofix                          Adjusts patches of package/library $(pkg
 $(pkg)-dirclean                         Removes build-directory of $(pkg)
 $(pkg)-distclean                        Removes build-directory and all target files of $(pkg)
 
+kernel-*                                Same as $(pkg)-* and additional:
 kernel-menuconfig                       Configuration of selected kernel
-kernel-precompiled                      Compiles the selected kernel
-kernel-dirclean                         Cleans everything of the selected kernel
+kernel-olddefconfig                     Updates the configuration file
+kernel-diff                             Shows differences of default and kernel configuration
+kernel-save                             Copy kernel configuration to repository
+kernel-load                             Copy default configuration to kernel
+kernel-symrefs                          Recompiled the kernel and creates a symrefs archive
+
+uclibc-*                                Same as $(pkg)-* and additional:
+uclibc-menuconfig                       Configuration of selected uClibc
+uclibc-olddefconfig                     Updates selected uClibc .config file
 
 tools-push_firmware                     Builds the tools required by push_firmware (pfp)
 tools                                   Builds the tools required by current selection
@@ -50,10 +58,6 @@ tools-all                               Builds all available tools of Freetz
 tools-allexcept-local                   Builds all non-local tools of Freetz (dl-tools)
 tools-distclean-local                   Cleans everything of local tools (dl-tools)
 tools-dirclean                          Cleans everything of all Freetz tools
-
-uclibc-autofix                          Adjusts patches of selected uClibc
-uclibc-menuconfig                       Configuration of selected uClibc
-uclibc-olddefconfig                     Updates selected uClibc .config file
 
 firmware-nocompile                      Creates firmware without packages and libraries
 mirror                                  Downloads all selected package sources files
