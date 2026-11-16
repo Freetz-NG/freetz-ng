@@ -134,6 +134,10 @@ ifeq ($(KERNEL_SYMREFS_AVAILABLE),y)
 	@echo "#unpacking symrefs archive" $(SILENT)
 	@$(call UNPACK_TARBALL,$(DL_DIR)/$(KERNEL_SYMREFS_SOURCE),$(KERNEL_SOURCE_DIR))
 endif
+	@if [ -e "$(KERNEL_SOURCE_DIR)/scripts/lxdialog/Makefile" ]; then \
+		echo "#fixing ncurses detection bug" $(SILENT); \
+		$(SED) 's/"main()/"int main()/' -i $(KERNEL_SOURCE_DIR)/scripts/lxdialog/Makefile; \
+	fi;
 	@if [ -e "$(KERNEL_SOURCE_DIR)/scripts/kconfig/lxdialog/check-lxdialog.sh" ]; then \
 		echo "#fixing ncurses detection bug" $(SILENT); \
 		$(SED) 's/^main()/int &/' -i $(KERNEL_SOURCE_DIR)/scripts/kconfig/lxdialog/check-lxdialog.sh; \
