@@ -261,7 +261,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### M
 
-  * **[mbedtls: 2.7 - DEPRECATED 2.7.19/2.28.10/3.6.7](mbedtls.md)<a id='mbedtls'></a>**<br>
+  * **[mbedtls: 2.7 - DEPRECATED 2.7.19/2.28.10/3.6.8](mbedtls.md)<a id='mbedtls'></a>**<br>
     Enables support for the Blowfish block cipher.
 
   * **[mpc: GNU MPC Library (libmpc.so) 1.4.1](mpc.md)<a id='mpc'></a>**<br>
