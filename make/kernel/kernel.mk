@@ -255,11 +255,7 @@ $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE_FREETZ)
 	$(call _ECHO,configuring,$(KERNEL_ECHO_TYPE))
 	cp $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
 	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
-ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
-	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
-else
-	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig $(SILENT)
-endif
+	$(KERNEL_DEFCONFIG)
 	@cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
@@ -281,6 +277,13 @@ target-toolchain-kernel-headers: $(TARGET_TOOLCHAIN_KERNEL_VERSION_HEADER)
 $(TARGET_TOOLCHAIN_KERNEL_VERSION_HEADER): $(TOPDIR)/.config $(KERNEL_HEADERS_DEVEL_DIR)/include/linux/version.h | $(if $(FREETZ_BUILD_TOOLCHAIN),$(TARGET_TOOLCHAIN_STAGING_DIR),$(TARGET_CROSS_COMPILER))
 	@$(call COPY_KERNEL_HEADERS,$(KERNEL_HEADERS_DEVEL_DIR),$(TARGET_TOOLCHAIN_STAGING_DIR)/usr)
 	@touch $@
+
+
+ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
+KERNEL_DEFCONFIG = yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
+else
+KERNEL_DEFCONFIG = $(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig >/dev/null
+endif
 
 
 ifeq ($(strip $(FREETZ_AVM_KERNEL_CONFIG_AREA_KNOWN)),y)
@@ -399,11 +402,7 @@ kernel-mrproper: $(KERNEL_DIR)/.configured
 	cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_PROPER)
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) mrproper
 	mv -f $(KERNEL_CONFIG_FILE_PROPER) $(KERNEL_CONFIG_FILE_SOURCE)
-ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
-	-$(SUBMAKE) kernel-oldconfig
-else
-	-$(SUBMAKE) kernel-olddefconfig
-endif
+	$(KERNEL_DEFCONFIG)
 	touch $<
 
 kernel-dirclean:
