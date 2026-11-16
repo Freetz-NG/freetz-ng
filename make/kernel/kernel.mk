@@ -385,10 +385,12 @@ kernel-xconfig: $(KERNEL_DIR)/.configured
 	touch $<
 
 kernel-oldconfig: $(KERNEL_DIR)/.configured
+	$(KERNEL_DEFCONFIG)
 	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
 kernel-olddefconfig: $(KERNEL_DIR)/.configured
+	$(KERNEL_DEFCONFIG)
 	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ) && \
 	touch $<
 
