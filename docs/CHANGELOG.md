@@ -160,6 +160,7 @@ Latest changes
     * libtasn1 4.21.0
     * libzip 1.12.1
     * lz4 1.11.1
+    * MbedTLS 2.7.19/2.28.10/3.6.8
     * pcre2 10.49
     * utf8proc 2.12.0
     * zlib 1.4

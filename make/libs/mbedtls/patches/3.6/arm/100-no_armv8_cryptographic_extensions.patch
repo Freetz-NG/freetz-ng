@@ -1,6 +1,6 @@
 --- include/mbedtls/mbedtls_config.h
 +++ include/mbedtls/mbedtls_config.h
-@@ -2382,7 +2382,6 @@
+@@ -2393,7 +2393,6 @@
   *
   * This module adds support for the AES Armv8-A Cryptographic Extensions on Armv8 systems.
   */

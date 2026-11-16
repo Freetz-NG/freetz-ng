@@ -1,12 +1,12 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_MBEDTLS_VERSION_207),2.7.19,$(if $(FREETZ_MBEDTLS_VERSION_228),2.28.10,3.6.7)))
+$(call PKG_INIT_LIB, $(if $(FREETZ_MBEDTLS_VERSION_207),2.7.19,$(if $(FREETZ_MBEDTLS_VERSION_228),2.28.10,3.6.8)))
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.$(if $(filter $($(PKG)_MAJOR_VERSION),2.7 2.28),gz,bz2)
 $(PKG)_HASH_2.7  :=3da12b1cebe1a25da8365d5349f67db514aefcaa75e26082d7cb2fa3ce9608aa
 $(PKG)_HASH_2.28 :=c785ddf2ad66976ab429c36dffd4a021491e40f04fe493cfc39d6ed9153bc246
-$(PKG)_HASH_3.6  :=a7e8bcbec0e6f761b4af24f25677626b35f762f68eef79c08677a363212d11f6
+$(PKG)_HASH_3.6  :=bc54b818e87f49c0b3281dd85d24adaede0e63b4e822e3fbd49c005a38b9595b
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_MAJOR_VERSION))
 $(PKG)_SITE:=https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-$($(PKG)_VERSION),https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
-### VERSION:=2.7.19/2.28.10/3.6.7
+### VERSION:=2.7.19/2.28.10/3.6.8
 ### WEBSITE:=https://www.trustedfirmware.org/projects/mbed-tls/
 ### MANPAGE:=https://mbed-tls.readthedocs.io/en/latest/
 ### CHANGES:=https://github.com/Mbed-TLS/mbedtls/releases
