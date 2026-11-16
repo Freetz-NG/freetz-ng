@@ -279,6 +279,18 @@ $(TARGET_TOOLCHAIN_KERNEL_VERSION_HEADER): $(TOPDIR)/.config $(KERNEL_HEADERS_DE
 	@touch $@
 
 
+kernel-diff: $(KERNEL_DIR)/.configured
+	@diff -dauN --color $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE) || test $$? -eq 1
+kernel-save: $(KERNEL_DIR)/.configured
+	cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ)
+	touch -r $< $(KERNEL_CONFIG_FILE_FREETZ)
+kernel-load: $(KERNEL_DIR)/.configured
+	cp -f $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
+	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
+	$(KERNEL_DEFCONFIG)
+	touch $<
+.PHONY: kernel-diff kernel-save kernel-load
+
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 KERNEL_DEFCONFIG = yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
 else
