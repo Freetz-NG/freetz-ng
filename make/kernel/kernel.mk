@@ -395,7 +395,7 @@ kernel-source: $(KERNEL_DIR)/.unpacked
 kernel-clean:
 	-$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) clean
 
-kernel-mrproper:
+kernel-mrproper: $(KERNEL_DIR)/.configured
 	cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_PROPER)
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) mrproper
 	mv -f $(KERNEL_CONFIG_FILE_PROPER) $(KERNEL_CONFIG_FILE_SOURCE)
@@ -404,6 +404,7 @@ ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 else
 	-$(SUBMAKE) kernel-olddefconfig
 endif
+	touch $<
 
 kernel-dirclean:
 	$(RM) -r $(KERNEL_DIR)
