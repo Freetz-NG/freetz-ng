@@ -25,6 +25,7 @@ endif
 KERNEL_TARGET_BINARY:=kernel-$(KERNEL_ID).bin
 KERNEL_CONFIG_FILE_FREETZ:=$(KERNEL_MAKE_DIR)/configs/freetz/config-$(KERNEL_ID)
 KERNEL_CONFIG_FILE_SOURCE:=$(KERNEL_SOURCE_DIR)/.config
+KERNEL_CONFIG_FILE_PROPER:=$(KERNEL_CONFIG_FILE_SOURCE).mrproper
 
 KERNEL_COMMON_MAKE_OPTIONS := -C $(KERNEL_SOURCE_DIR)
 KERNEL_COMMON_MAKE_OPTIONS += CROSS_COMPILE="$(KERNEL_CROSS)"
@@ -305,8 +306,8 @@ $(shell diff -q "$(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.S" "$(AVM_KERNE
 $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.S: $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.$(DL_SOURCE_ID).S
 	@cat "$<" >"$@"
 
-.PHONY: avm_kernel_config
 avm_kernel_config: $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.S
+.PHONY: avm_kernel_config
 endif
 
 
@@ -395,9 +396,9 @@ kernel-clean:
 	-$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) clean
 
 kernel-mrproper:
-	-cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_FREETZ)
+	cp -f $(KERNEL_CONFIG_FILE_SOURCE) $(KERNEL_CONFIG_FILE_PROPER)
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) mrproper
-	-cp -f $(KERNEL_CONFIG_FILE_FREETZ) $(KERNEL_CONFIG_FILE_SOURCE)
+	mv -f $(KERNEL_CONFIG_FILE_PROPER) $(KERNEL_CONFIG_FILE_SOURCE)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 	-$(SUBMAKE) kernel-oldconfig
 else
