@@ -10,7 +10,6 @@ program     filterdiff             FREETZ_SHOW_DEVELOPER
 program     find
 program     flex
 program     g++
-program     gawk
 program     gcc
 program     gettext
 program     git
