@@ -73,6 +73,7 @@ Latest changes
   - Host tools:
     * ca-bundle 2026-11-05
     * cmake 4.4.5
+    * gawk 5.4.2
     * kconfig 7.3
     * openssl 3.5.9
     * patchelf 0.14.5/0.19.3
