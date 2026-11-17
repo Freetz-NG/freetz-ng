@@ -163,6 +163,7 @@ Currently supported devices and firmwares
     - 272.07.58 rev109907 {ALL} [MOVE21NL1]
     - 272.08.02 rev117989 {ALL} [Smart24 P1 NL1]
     - 272.08.25 rev133860 {ALL} [Smart24 P2 NL1]
+    - 272.08.51 rev138199 {ALL} [MyFRITZOS P1]
 
   * __Fritz!Box 5630 (UNTESTED)__
     - 302.08.50 rev137059 {ALL} [MyFRITZOS P1]
