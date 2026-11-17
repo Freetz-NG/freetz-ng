@@ -6,6 +6,7 @@ config FREETZ_DOWNLOAD_TOOLCHAIN
 	depends on FREETZ_SHOW_DEVELOPER
 	depends on !FREETZ_ANCIENT_SYSTEM
 	select FREETZ_TOOLCHAIN_CCACHE
+	select FREETZ_TARGET_UCLIBC_REDUCED_LOCALE_SET if FREETZ_TARGET_UCLIBC_0_9_29 || FREETZ_TARGET_UCLIBC_0_9_32 || FREETZ_TARGET_UCLIBC_0_9_33 || FREETZ_TARGET_UCLIBC_1_0_14
 	default n
 
 config FREETZ_BUILD_TOOLCHAIN
@@ -1406,13 +1407,8 @@ choice
 endchoice
 
 config FREETZ_TARGET_UCLIBC_REDUCED_LOCALE_SET
-	bool "Use reduced set of locales" if FREETZ_BUILD_TOOLCHAIN && \
-						( \
-						FREETZ_TARGET_UCLIBC_0_9_29 || \
-						FREETZ_TARGET_UCLIBC_0_9_32 || \
-						FREETZ_TARGET_UCLIBC_0_9_33 || \
-						FREETZ_TARGET_UCLIBC_1         \
-						)
+	bool "Use reduced set of locales"
+	depends on FREETZ_TARGET_UCLIBC_0_9_29 || FREETZ_TARGET_UCLIBC_0_9_32 || FREETZ_TARGET_UCLIBC_0_9_33 || FREETZ_TARGET_UCLIBC_1_0_14
 	default y
 	help
 		This option causes only the following locales to be included into uClibc:
