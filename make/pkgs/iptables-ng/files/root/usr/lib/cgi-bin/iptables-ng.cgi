@@ -725,7 +725,7 @@ EOF
 <summary><b>$chain</b>$( [ -z "$rule_text" ] && echo " - $(lang de:"leer" en:"empty")" )</summary>
 <div style='margin:3px 0;'>
 <textarea id='$area_id' name='$key' rows='$row_count' cols='90' style='width:98%;'>$(html "$rule_text")</textarea><br>
-<button type='button' onclick="(function(){var t=document.getElementById('$area_id');var u='$(cgi_url "view=$VIEW&action=save_chain&edit_family=$family&edit_table=$table&edit_chain=$chain")';u += '&$key=' + encodeURIComponent(t ? t.value : '');window.location.href=u;})(); return false;">$(lang de:"Kette speichern" en:"Save chain")</button>
+<button type='button' onclick="(function(){var t=document.getElementById('$area_id');var u='$(cgi_url "view=$VIEW&action=save_chain&edit_family=$family&edit_table=$table&edit_chain=$chain")';u += '&$key=' + encodeURIComponent(t ? t.value : '');window.location.href=csrfUrl(u);})(); return false;">$(lang de:"Kette speichern" en:"Save chain")</button>
 </div>
 </details>
 EOF
@@ -738,6 +738,10 @@ EOF
 
 run_action() {
 	[ -n "$ACTION" ] || return
+	case $ACTION in
+		status|get_fwd) ;;
+		*) csrf_check required ;;
+	esac
 	case "$ACTION" in
 		start|stop|restart|status)
 			if /mod/etc/init.d/rc.iptables-ng "$ACTION" >/tmp/iptables-ng_action.log 2>&1; then
@@ -958,7 +962,7 @@ function iptNgSetFwd(fam, ifn, val, stateId) {
 		}
 		iptNgVerifyFwd(fam, ifn, expected, stateId, 5);
 	};
-	xhr.open('GET', '$(cgi_url "view=$VIEW&action=set_fwd&ajax=1")' + '&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_val=' + encodeURIComponent(val), true);
+	xhr.open('GET', csrfUrl('$(cgi_url "view=$VIEW&action=set_fwd&ajax=1")' + '&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_val=' + encodeURIComponent(val)), true);
 	xhr.send(null);
 }
 
@@ -976,7 +980,7 @@ function iptNgSetFwdPersist(fam, ifn, persistVal, checkboxId) {
 		if (cb) cb.checked = (persistVal !== '1');
 		iptNgSetMsg((p.kind === 'err' && p.msg) ? p.msg : '$(lang de:"Persistenz-Update fehlgeschlagen" en:"Persistence update failed")', '#b00020');
 	};
-	xhr.open('GET', '$(cgi_url "view=$VIEW&action=set_fwd_persist&ajax=1")' + '&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_persist=' + encodeURIComponent(persistVal), true);
+	xhr.open('GET', csrfUrl('$(cgi_url "view=$VIEW&action=set_fwd_persist&ajax=1")' + '&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_persist=' + encodeURIComponent(persistVal)), true);
 	xhr.send(null);
 }
 </script>
@@ -1001,22 +1005,22 @@ cat << EOF
 </div>
 <div style='margin-bottom:2px;'>
 <b>$(lang de:"Aktionen" en:"Actions"):</b>&nbsp;
-<button type='button' onclick="window.location.href='$(cgi_url "view=$VIEW&action=save")';">$(lang de:"Alles speichern" en:"Save all")</button>
+<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=save")');">$(lang de:"Alles speichern" en:"Save all")</button>
 &nbsp;
-<button type='button' onclick="window.location.href='$(cgi_url "view=$VIEW&action=restore")';">$(lang de:"Alles wiederherstellen" en:"Restore all")</button>
+<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=restore")');">$(lang de:"Alles wiederherstellen" en:"Restore all")</button>
 </div>
 <div style='margin-bottom:2px;'>
 <b>IPv4:</b>&nbsp;
-<button type='button' onclick="window.location.href='$(cgi_url "view=$VIEW&action=save&family=ipv4")';">$(lang de:"IPv4 speichern" en:"Save IPv4")</button>
+<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=save&family=ipv4")');">$(lang de:"IPv4 speichern" en:"Save IPv4")</button>
 &nbsp;
-<button type='button' onclick="window.location.href='$(cgi_url "view=$VIEW&action=restore&family=ipv4")';">$(lang de:"IPv4 wiederherstellen" en:"Restore IPv4")</button>
+<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=restore&family=ipv4")');">$(lang de:"IPv4 wiederherstellen" en:"Restore IPv4")</button>
 &nbsp;<span style='font-size:11px;'>$SAVEFILE_V4 ($(savefile_status "$SAVEFILE_V4"))</span>
 </div>
 <div>
 <b>IPv6:</b>&nbsp;
-<button type='button' onclick="window.location.href='$(cgi_url "view=$VIEW&action=save&family=ipv6")';">$(lang de:"IPv6 speichern" en:"Save IPv6")</button>
+<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=save&family=ipv6")');">$(lang de:"IPv6 speichern" en:"Save IPv6")</button>
 &nbsp;
-<button type='button' onclick="window.location.href='$(cgi_url "view=$VIEW&action=restore&family=ipv6")';">$(lang de:"IPv6 wiederherstellen" en:"Restore IPv6")</button>
+<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=restore&family=ipv6")');">$(lang de:"IPv6 wiederherstellen" en:"Restore IPv6")</button>
 &nbsp;<span style='font-size:11px;'>$SAVEFILE_V6 ($(savefile_status "$SAVEFILE_V6"))</span>
 </div>
 </div>

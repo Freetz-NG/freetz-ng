@@ -2,6 +2,7 @@
 
 . /usr/lib/libmodcgi.sh
 . /mod/etc/conf/rrdstats.cfg
+csrf_check required
 
 cgi_begin "$(lang de:"DigiTemp initialisieren" en:"Initialize DigiTemp")"
 

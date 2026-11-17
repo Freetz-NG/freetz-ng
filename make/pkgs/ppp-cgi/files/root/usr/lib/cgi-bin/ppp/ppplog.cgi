@@ -109,6 +109,7 @@ cat << EOF
 
 <td>
 <form class="btn" action="$(href status ppp ppplog)" method="post" style="display:inline;">
+$(csrf_input)
 <input type="hidden" name="cmd" value="refresh">
 <input type="submit" value="$(lang de:"aktualisieren" en:"refresh")">
 </form>

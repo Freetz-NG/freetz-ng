@@ -2,6 +2,7 @@
 
 
 . /usr/lib/libmodcgi.sh
+[ -n "$QUERY_STRING" ] && csrf_check required
 
 SELF='downremover'
 TITLE="$(lang de:"Downloader - Aufr&auml;umen" en:"Downloader - Removing")"
@@ -12,6 +13,7 @@ local name=${1:-cmd} act=$2 cmd=$3 label=$4 method=get
 cat << EOF
 <div class="btn">
 <form class="btn" action="$act" method="$method">
+$(csrf_input)
 EOF
 if [ $cmd ]; then
 cat << EOF

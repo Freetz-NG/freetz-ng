@@ -5,6 +5,7 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
 if  $(echo "$QUERY_STRING" | grep -q genconfigname ); then
+	csrf_check required
 	NAME="$(cgi_param genconfigname)"
 	sh /mod/etc/default.openvpn/generate_virtual_pkg "$NAME"
 	sed -i "/$NAME/ d" /tmp/flash/openvpn/configs

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 cgi_begin 'Addhole - clear'
 

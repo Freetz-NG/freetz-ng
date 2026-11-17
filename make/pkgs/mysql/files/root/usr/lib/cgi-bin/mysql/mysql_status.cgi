@@ -22,6 +22,7 @@ cat << EOF
 
 <center>
 <form class="btn" action="$(href status mysql mysql_status)" method="post" style="display:inline;">
+$(csrf_input)
 <input type="hidden" name="cmd" value="">
 <input type="submit" value="$(lang de:"aktualisieren" en:"refresh")">
 </form>

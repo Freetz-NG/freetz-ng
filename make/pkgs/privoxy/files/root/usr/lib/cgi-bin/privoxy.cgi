@@ -11,6 +11,7 @@ check "$PRIVOXY_CGI_CRUNCH" 1:cgi_crunch_yes "*":cgi_crunch_no
 select "$PRIVOXY_FORWARD_SOCKS_TYPE" socks5:socks5 socks5t:socks5t "*":socks4a
 
 if [ "$(cgi_param load_adblocklist)" == "yes" -a -n "$(cgi_param alt_path)" ]; then
+	csrf_check required
 	PRIVOXY_ALT_PATH=$(cgi_param alt_path)
 	/mod/etc/default.privoxy/privoxy_loadadblocklist ${PRIVOXY_ALT_PATH}
 fi
@@ -53,7 +54,7 @@ sec_begin "$(lang de:"AdBlock Plus"  en:"AdBlock Plus")"
 if [ "$FREETZ_PACKAGE_PRIVOXY_WITH_ADBLOCK" = "y" ]; then
 cat << EOF
 <p><input type="hidden" name="get_adblocklist" value="">
-<input id="e10" type="checkbox" name="get_adblocklist" value="yes" $getadblocklist_chk><label for="e10"> $(lang de:"Filterliste von AdBlock Plus bei jedem Start importieren" en:"Import AdBlock Plus filter on every startup")</label> <input type="button" value="$(lang en:"Import now" de:"Jetzt importieren")" onclick='tmp="$(href cgi privoxy load_adblocklist=yes alt_path=)"+document.getElementById("e11").value; location.href=tmp'><br />
+<input id="e10" type="checkbox" name="get_adblocklist" value="yes" $getadblocklist_chk><label for="e10"> $(lang de:"Filterliste von AdBlock Plus bei jedem Start importieren" en:"Import AdBlock Plus filter on every startup")</label> <input type="button" value="$(lang en:"Import now" de:"Jetzt importieren")" onclick='tmp="$(href cgi privoxy load_adblocklist=yes alt_path=)"+document.getElementById("e11").value; location.href=csrfUrl(tmp)'><br />
 <span style="font-size:x-small">$(lang de:"Wartet bis zu 15 Sekunden auf die Verf&uuml;gbarkeit des Internets; wegen der Gr&ouml;&szlig;e nur mit externem Verzeichnis sinnvoll" en:"Waiting for internet connectivity may delay startup for up to 15 seconds; because of the size only reasonable with external directory")</span>
 </p>
 <p><label for="e12">$(lang de:"URL zur Adblock Plus Filterliste:" en:"URL to AdBlock Plus filter list:")</label>  <input id="e12" type="text" name="adblock_url" value="$PRIVOXY_ADBLOCK_URL" size="60" maxlength="255" title="https://easylist-downloads.adblockplus.org/easylistgermany+easylist.txt"><br />

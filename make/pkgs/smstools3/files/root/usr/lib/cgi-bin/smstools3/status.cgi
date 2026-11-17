@@ -5,6 +5,7 @@
 
 eval "$(modcgi branding:pkg:number:message:flash mod_cgi)"
 if [ -n "$MOD_CGI_NUMBER" -a "$MOD_CGI_NUMBER" != "+49" ]; then
+	csrf_check required
 	sec_begin "$(lang de:"Hinweis" en:"Remark")"
 	echo "<font color=red><br>"
 	/mod/etc/init.d/rc.smstools3 sendsms $MOD_CGI_FLASH $MOD_CGI_NUMBER $MOD_CGI_MESSAGE
@@ -19,6 +20,7 @@ list_sms() {
 sec_begin "$(lang de:"SMS versenden" en:"Send SMS")"
 cat << EOF
 <form class="btn" action="$(href status smstools3)" method="post" style="display:inline;">
+$(csrf_input)
 <p><textarea name="message" cols="51" rows="3" maxlength="159"></textarea></p>
 <p>
 <input type="text"     value="+49" name="number" size="25" maxlength="35">

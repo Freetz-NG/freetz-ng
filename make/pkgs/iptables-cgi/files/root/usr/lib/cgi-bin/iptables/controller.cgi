@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 # HTML QUERY STRING for remove option
 IPTABLES_DELETE_CHAIN=$(cgi_param chain)

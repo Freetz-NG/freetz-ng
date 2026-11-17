@@ -51,6 +51,7 @@ elif [ "$action" = "clean" ]; then
 	else
 cat << EOF
 <form name="clean" action="/cgi-bin/clean.cgi" method="post">
+$(csrf_input)
 <table>
 <tr>
 <td>$(lang de:"Reinigungsstufe" en:"clean level")</td>

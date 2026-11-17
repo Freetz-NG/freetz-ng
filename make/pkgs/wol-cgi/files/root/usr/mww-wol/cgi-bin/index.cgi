@@ -50,6 +50,7 @@ cat << EOF
 </p>
 <p>$(lang de:"MAC und Netzwerk-Schnittstelle f&uuml;r Etherwake angeben oder einen der bekannten Hosts w&auml;hlen." en:"Fill in a MAC address and a network interface for etherwake or select a known host from the drop down list above.")</p>
 <form style="padding-top: 10px; padding-bottom: 10px;" name="wake" action="/cgi-bin/wake.cgi" method="post">
+$(csrf_input)
 <table border="0" cellspacing="1" cellpadding="0">
 <tr>
 <td width="200">MAC: <input type="text" name="mac" size="17" maxlength="17" value=""></td>

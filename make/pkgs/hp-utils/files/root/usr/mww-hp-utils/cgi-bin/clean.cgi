@@ -6,6 +6,7 @@
 
 cgi_width=560
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 eval "$(modcgi level clean)"
 
