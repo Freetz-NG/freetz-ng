@@ -27,6 +27,7 @@ cgi_print_checkbox "httpd_newlogin" "$MOD_HTTPD_NEWLOGIN" "$(lang de:"Neue Login
 echo "<p>"
 cgi_print_textline "httpd_sessiontimeout" "$MOD_HTTPD_SESSIONTIMEOUT" 5 "$(lang de:"Session-ID Timeout:" en:"Session id timeout:") " " $(lang de:"Sekunden" en:"seconds")"
 echo "</p>"
+cgi_print_checkbox_p "httpd_csrf_rudi" "$MOD_HTTPD_CSRF_RUDI" "$(lang de:"CSRF-Ausnahme f&uuml;r Legacy-Apps (Rudi-Shell via GET)" en:"CSRF exception for legacy apps (Rudi shell via GET)")"
 
 cat << EOF
 <script >
