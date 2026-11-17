@@ -651,7 +651,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[PCP client 1c783fb (binary only)](../../docs/make/pcp.md)<a id='pcp'></a>**<br>
     PCP client library implements client side of PCP (RFC 6887) and NATPMP (RFC 6886) protocols. Switch to NATPMP is done automatically by version negotiation. This library enables any network application to manage network edge device (e.g. to create NAT mapping or ask router for specific flow treatment).
 
-  * **[PCSC-lite 1.9.5/2.5.2 (binary only)](../../docs/make/pcsc-lite.md)<a id='pcsc-lite'></a>**<br>
+  * **[PCSC-lite 1.9.5/2.5.3 (binary only)](../../docs/make/pcsc-lite.md)<a id='pcsc-lite'></a>**<br>
     The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a very small form factor for communicating to smart cards and readers.
 
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
