@@ -69,7 +69,7 @@ EOF
 if $(grep -q jffs2 /proc/mtd); then
 cat << EOF
 	<p>
-	<input id="jffs" type="checkbox" name"delete_jffs2" value="no">
+	<input id="jffs" type="checkbox" name="delete_jffs2" value="no">
 	<label for="jffs">$(lang de:"JFFS2 Partition l&ouml;schen" en:"Delete JFFS2 partition")</label>
 	</p>
 EOF
