@@ -1,7 +1,7 @@
 --- os.hpp
 +++ os.hpp
-@@ -176,7 +176,7 @@
- #define SAVE_LINKS
+@@ -178,7 +178,7 @@
+ #endif
  #endif
  
 -#if defined(__linux) || defined(__FreeBSD__)

@@ -144,6 +144,7 @@ Latest changes
     * Tor 0.4.8.25/0.4.9.17
     * Transmission 3.00/4.1.4
     * Unbound 1.26.2
+    * UnRAR 6.1.7/7.3.2
     * Vim 9.2.1169
     * vnStat 1.18/2.14
 
