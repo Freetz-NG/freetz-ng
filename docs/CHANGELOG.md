@@ -121,6 +121,7 @@ Latest changes
     * iPerf3 3.3/3.22
     * lsof 4.99.7
     * Lua 5.1.5/5.5.1
+    * Mosquitto 2.0.23/2.1.4
     * Nano 9.2/9.3
     * Nmap 4.76/5.51/7.993
     * OpenSSH 9.3p2/10.6p2

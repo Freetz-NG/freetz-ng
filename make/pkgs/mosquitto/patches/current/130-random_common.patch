@@ -12,7 +12,7 @@
 @@ -66,7 +68,13 @@
  
  	CryptReleaseContext(provider, 0);
- #else
+ #else /* For legacy Makefiles */
 -#  error "No suitable random function found."
 +	int fd = open("/dev/urandom", O_RDONLY);
 +	if(fd != -1){
