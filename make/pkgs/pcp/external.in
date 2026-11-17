@@ -1,8 +1,0 @@
-config EXTERNAL_FREETZ_PACKAGE_PCP
-	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_PCP
-	bool "PCP client"
-	default n
-	help
-		externals the following file(s):
-		 /usr/bin/pcp
-

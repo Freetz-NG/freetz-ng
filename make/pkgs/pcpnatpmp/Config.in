@@ -1,0 +1,11 @@
+config FREETZ_PACKAGE_PCPNATPMP
+	bool "PCP/NAT-PMP client 1.0.0 (binary only)"
+	default n
+	help
+		Port Control Protocol (PCP) and NAT-PMP client library
+		Implements client side of PCP (RFC 6887) and NAT-PMP (RFC 6886)
+		protocols. Switch to NAT-PMP is done automatically by version
+		negotiation. This library enables any network application to
+		manage network edge device (e.g. to create NAT mapping or ask
+		router for specific flow treatment).
+

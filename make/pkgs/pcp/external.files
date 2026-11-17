@@ -1,2 +1,0 @@
-[ "$EXTERNAL_FREETZ_PACKAGE_PCP" == "y" ] && EXTERNAL_FILES+=" /usr/bin/pcp"
-
