@@ -1,4 +1,4 @@
-# lsof 4.89 (binary only) - DEPRECATED
+# lsof 4.99.7 (binary only)
   - Homepage: [https://people.freebsd.org/~abe/](https://people.freebsd.org/~abe/)
   - Manpage: [https://lsof.readthedocs.io/](https://lsof.readthedocs.io/)
   - Changelog: [https://github.com/lsof-org/lsof/releases](https://github.com/lsof-org/lsof/releases)
