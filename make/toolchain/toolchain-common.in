@@ -1,15 +1,12 @@
 TOOLCHAIN_HOSTCC:=gcc
 TOOLCHAIN_HOSTCXX:=g++
 TOOLCHAIN_HOST_CFLAGS:=
-ifeq ($(strip $(FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION)),y)
 
 # avoids dependency on __isoc99_sscanf@@GLIBC_2.7 (added in GLIBC 2.7)
 TOOLCHAIN_HOST_CFLAGS+=-D_GNU_SOURCE
 
 # avoids dependency on __stack_chk_fail@@GLIBC_2.4 (added in GLIBC 2.4)
 TOOLCHAIN_HOST_CFLAGS+=-fno-stack-protector
-
-endif
 
 
 GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES:=

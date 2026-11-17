@@ -28,10 +28,6 @@ config FREETZ_TOOLCHAIN_CCACHE
 		as a bourne shell script. ccache is a re-implementation of Erik's idea
 		in C with more features and better performance.
 
-config FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION
-#	bool "Minimize required GLIBC version" if FREETZ_BUILD_TOOLCHAIN
-	def_bool y
-
 menu "Own precompiled toolchains"
 	visible if FREETZ_REAL_DEVELOPER_ONLY
 
