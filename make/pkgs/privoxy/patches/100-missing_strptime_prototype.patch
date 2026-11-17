@@ -1,6 +1,6 @@
 --- GNUmakefile.in
 +++ GNUmakefile.in
-@@ -286,7 +286,7 @@
+@@ -294,7 +294,7 @@
  # Add your flags here
  OTHER_CFLAGS =
  

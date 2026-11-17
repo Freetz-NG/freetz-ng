@@ -130,6 +130,7 @@ Latest changes
     * Patchelf 0.19.3
     * PCSC-lite 1.9.5/2.5.3
     * PHP 5.6.40/8.2.35/8.3.36/8.4.27/8.5.12
+    * Privoxy 4.2.0
     * procps-ng 4.0.7
     * Python3 3.14.8
     * rpcbind 1.3.1
