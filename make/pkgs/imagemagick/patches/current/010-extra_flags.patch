@@ -1,6 +1,6 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -3235,7 +3235,7 @@
+@@ -3250,7 +3250,7 @@
  CC = @CC@
  CCDEPMODE = @CCDEPMODE@
  CCMALLOCDelegate = @CCMALLOCDelegate@
@@ -9,7 +9,7 @@
  CHANNEL_MASK_DEPTH = @CHANNEL_MASK_DEPTH@
  CODER_DIRNAME = @CODER_DIRNAME@
  CODER_PATH = @CODER_PATH@
-@@ -3338,7 +3338,7 @@
+@@ -3353,7 +3353,7 @@
  LCMS_CFLAGS = @LCMS_CFLAGS@
  LCMS_LIBS = @LCMS_LIBS@
  LD = @LD@

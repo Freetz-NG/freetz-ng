@@ -116,7 +116,7 @@ Latest changes
     * Git 2.26.2/2.56.1
     * GnuTLS 3.7.11/3.8.13
     * htpdate 2.1.0
-    * ImageMagick 7.1.0-62/7.1.2-35
+    * ImageMagick 7.1.0-62/7.1.2-36
     * iPerf3 3.3/3.22
     * lsof 4.99.7
     * Lua 5.1.5/5.5.1
