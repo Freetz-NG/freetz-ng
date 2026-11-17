@@ -402,7 +402,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[module-init-tools 3.12 (binary only) - DEPRECATED](module-init-tools.md)<a id='module-init-tools'></a>**<br>
     The module-init-tools (m-i-t) package provides many of the utilities needed by Linux systems for managing loadable Linux Kernel Modules. This includes depmod, insmod, rmmod, modprobe and tools like modinfo.
 
-  * **[Mosquitto 2.0.23/2.1.2](mosquitto.md)<a id='mosquitto'></a>**<br>
+  * **[Mosquitto 2.0.23/2.1.4](mosquitto.md)<a id='mosquitto'></a>**<br>
     Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. MQTT provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for "Internet of Things" messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers like the Arduino.
 
   * **[MTR 0.80/0.96 (binary only)](mtr.md)<a id='mtr'></a>**<br>

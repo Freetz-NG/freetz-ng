@@ -1,4 +1,4 @@
-# Mosquitto 2.0.23/2.1.2
+# Mosquitto 2.0.23/2.1.4
   - Homepage: [https://www.mosquitto.org/](https://www.mosquitto.org/)
   - Manpage: [https://www.mosquitto.org/documentation/](https://www.mosquitto.org/documentation/)
   - Changelog: [https://mosquitto.org/blog/](https://mosquitto.org/blog/)
