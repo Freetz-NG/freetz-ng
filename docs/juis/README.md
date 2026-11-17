@@ -77,7 +77,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 268: [FRITZ.Repeater_1200_AX-08.51.image](http://download.avm.de/fritzwlan/fritzrepeater-1200-ax/deutschland/fritz.os/FRITZ.Repeater_1200_AX-08.51.image)
   - HWR 270: [FRITZ.Repeater_3000_AX-08.51.image](https://download.avm.de/fritzwlan/fritzmesh-set-4200/other/fritz.os/FRITZ.Repeater_3000_AX-08.51.image)
   - HWR 271: [FRITZ.Box_7510-08.26.image](http://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-08.26.image)
-  - HWR 272: [FRITZ.Box_5590_Fiber-08.25.image](http://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-08.25.image)
+  - HWR 272: [FRITZ.Box_5590_Fiber-08.51.image](http://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-08.51.image)
   - HWR 275: [FRITZ.Powerline_1240_AX.275.08.25.image](http://download.avm.de/fritzpowerline/fritzpowerline-1240-ax/deutschland/fritz.os/FRITZ.Powerline_1240_AX.275.08.25.image)
   - HWR 276: [FRITZ.Box_7520_B-08.25.image](http://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-08.25.image)
 
@@ -103,7 +103,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 229: [FRITZ.Powerline_1260E-08.24-132169-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/1260E/FRITZ.Powerline_1260E-08.24-132169-Inhaus.image)
   - HWR 236: [FRITZ.Box_7530-08.25-138287-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1WU25/7530/FRITZ.Box_7530-08.25-138287-Inhaus.image)
   - HWR 240: [FRITZ.Repeater_600-08.40-138250-Inhaus.image](http://download.example.com/inhaus/MyFRITZOSP1/600/FRITZ.Repeater_600-08.40-138250-Inhaus.image)
-  - HWR 241: [FRITZ.Repeater_2400-08.40-138246-Inhaus.image](http://download.example.com/inhaus/MyFRITZOSP1/2400/FRITZ.Repeater_2400-08.40-138246-Inhaus.image)
+  - HWR 241: [FRITZ.Repeater_2400-08.40-138393-Inhaus.image](http://download.example.com/inhaus/MyFRITZOSP1/2400/FRITZ.Repeater_2400-08.40-138393-Inhaus.image)
   - HWR 244: [FRITZ.Repeater_1200-08.24-132636-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/1200/FRITZ.Repeater_1200-08.24-132636-Inhaus.image)
   - HWR 246: [FRITZ.Repeater_3000-08.24-132637-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/3000/FRITZ.Repeater_3000-08.24-132637-Inhaus.image)
   - HWR 247: [FRITZ.Box_7520-08.24-132172-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/7520/FRITZ.Box_7520-08.24-132172-Inhaus.image)
