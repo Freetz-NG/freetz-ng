@@ -32,6 +32,7 @@ function CheckInput(form) {
 		file_selector.name += ":downgrade";
 	if (delete_jffs2 && delete_jffs2.checked)
 		file_selector.name += ":delete_jffs2";
+	file_selector.name += ":csrf_token=$_CGI_CSRF_TOKEN";
 
 	return true;
 }
@@ -45,6 +46,7 @@ function CheckInput(form) {
 )</p>
 
 <form action="do_firmware.cgi" method="POST" enctype="multipart/form-data" onsubmit="return CheckInput(this);">
+$(csrf_input)
 	<p>
 	<label for="fw_file">$(lang de:"Firmware-Image" en:"Firmware image")</label>
 	<input type=file size=50 id="fw_file">

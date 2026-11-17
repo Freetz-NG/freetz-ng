@@ -1,6 +1,7 @@
 frm_begin() {
 	cat << EOF
 <form method="post" action="$SCRIPT_NAME$PATH_INFO">
+$(csrf_input)
 EOF
 }
 
@@ -9,6 +10,7 @@ frm_end() {
 <div class="btn"><input type="submit" value="$(lang de:"&Uuml;bernehmen" en:"Apply")"></div>
 </form>
 <form class="btn" action="?default" method="post" onsubmit="return confirm('$(lang de:"Zur&uuml;cksetzen" en:"Reset")?')">
+$(csrf_input)
 <div class="btn"><input type="submit" value="$(lang de:"Standard" en:"Defaults")"></div>
 </form>
 EOF
@@ -18,7 +20,7 @@ source /usr/lib/mod/service.sh
 stat_button() {
 	local pkg=$1 daemon=$2 cmd=$3 active=$4
 	if ! $active; then disabled=" disabled"; else disabled=""; fi
-	echo "<td><form class='btn' action='?$cmd' method='post'> <input type='hidden' name='rc' value='${daemon:-$pkg}'> <input type='submit' name='cmd' value='$cmd'$disabled> </form></td>"
+	echo "<td><form class='btn' action='?$cmd' method='post'> $(csrf_input) <input type='hidden' name='rc' value='${daemon:-$pkg}'> <input type='submit' name='cmd' value='$cmd'$disabled> </form></td>"
 }
 
 SERVICE_REG=/mod/etc/reg/daemon.reg

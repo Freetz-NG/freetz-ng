@@ -2,6 +2,8 @@
 <%
 
 . /usr/lib/libmodcgi.sh
+csrf_check required
+
 cgi --id=do_restore
 cgi_begin "$(lang de:"Konfiguration wiederherstellen (Restore)" en:"Restore configuration")"
 echo "<h1>$(lang de:"Wiederherstellung (Restore)" en:"Restore configuration")</h1>"

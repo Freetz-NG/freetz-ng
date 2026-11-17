@@ -27,6 +27,7 @@ function CheckInput(form) {
 <h1>$(lang de:"Passwort &auml;ndern" en:"Change password")</h1>
 
 <form method=POST onsubmit="return CheckInput(this)">
+$(csrf_input)
 <table>
 <tr><td><label for="oldpassword">$(lang de:"Altes Passwort" en:"Old password"):&nbsp;</label></td><td><input type="password" size=20 name="oldpassword" id="oldpassword"></td></tr>
 <tr><td><label for="password">$(lang de:"Neues Passwort" en:"New password"):&nbsp;</label></td><td><input type="password" size=20 name="password" id="password"></td></tr>

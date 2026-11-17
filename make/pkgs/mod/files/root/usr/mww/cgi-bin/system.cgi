@@ -10,7 +10,7 @@ stat_button() {
 		linux_fs_start)	CHECK="onsubmit='return window.confirm(\"$3?\")'" ;;
 		messagebox)	CHECK="onsubmit='alert(\"$3\"); return false'" ;;
 	esac
-	echo "<form action='/cgi-bin/exec.cgi/$1' $CHECK method='post'><p><input type='submit' value='$2'></p></form>"
+	echo "<form action='/cgi-bin/exec.cgi/$1' $CHECK method='post'>$(csrf_input)<p><input type='submit' value='$2'></p></form>"
 }
 
 cgi --id=system

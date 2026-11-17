@@ -43,6 +43,7 @@ cat << EOF
 				his.remove(0)
 		}
 		function ajax_exec(params){
+			params = "csrf_token=$_CGI_CSRF_TOKEN&" + params;
 			var ajax = new XMLHttpRequest();
 			ajax.open("POST","/cgi-bin/shell/cmd.cgi?pid=$$",false);
 			ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -70,7 +71,7 @@ cat << EOF
 			}
 			else{
 				if(dl.checked){
-					window.location = "/cgi-bin/shell/cmd.cgi?pid=$$&dl=true&script="+encodeURIComponent(code.value)+"&tar="+tar.checked+"&gz="+gz.checked;
+					window.location = "/cgi-bin/shell/cmd.cgi?pid=$$&csrf_token=$_CGI_CSRF_TOKEN&dl=true&script="+encodeURIComponent(code.value)+"&tar="+tar.checked+"&gz="+gz.checked;
 				}
 				else{
 					output.innerHTML=ajax_exec("script="+encodeURIComponent(code.value));
@@ -90,6 +91,7 @@ cat << EOF
 	<input type="checkbox" id="gz"><label for="gz">.gz</label> )
 	<table>
 		<form action="/cgi-bin/shell/upload.cgi?pid=$$" target="upload" method="POST" enctype="multipart/form-data">
+			$(csrf_input)
 			<tr><td><label for="source">$(lang de:"Quelldatei" en:"Source file")</label></td><td><input type="file" name="source" id="source" size=50></td></tr>
 			<tr><td><label for="target">$(lang de:"Zieldatei" en:"Target file")</label></td><td><input type="text" name="target" id="target" value="/var/tmp/rudi_upload" size=50> <input type="submit" value="$(lang de:"Hochladen" en:"Upload")"></td></tr>
 		</form>

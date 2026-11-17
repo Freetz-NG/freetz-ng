@@ -72,6 +72,7 @@ cat << EOF
 </form>
 <hr>
 <form action="do_restore.cgi" method="POST" enctype="multipart/form-data">
+	$(csrf_input)
 	<h1>$(lang de:"Wiederherstellung" en:"Restore")</h1>
 
 	<p>

@@ -26,6 +26,7 @@ function CheckInput(form) {
 	if (ex_start.checked) {
 		file_selector.name += ":external_start";
 	}
+	file_selector.name += ":csrf_token=$_CGI_CSRF_TOKEN";
 	return true;
 }
 </script>
@@ -39,6 +40,7 @@ $(lang de:"hochgeladen werden." en:"upload the appropriate firmware afterwards."
 </p>
 
 <form action="do_external.cgi" method=POST enctype="multipart/form-data" onsubmit="return CheckInput(this);">
+$(csrf_input)
 	<p>$(lang de:"external-Datei" en:"External-file") <input type=file size=50 id="ex_file"></p>
 	<p>$(lang de:"Zielverzeichnis" en:"Target directory") <input type="textfield" size=50 id="the_target" name="the_target" value="$MOD_EXTERNAL_DIRECTORY"></p>
 	<p><input type="checkbox" id="delete" name="delete" value="delete">$(lang de:"Alte External-Dateien l&ouml;schen" en:"Delete old external files")</p>

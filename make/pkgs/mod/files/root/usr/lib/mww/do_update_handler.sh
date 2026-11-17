@@ -4,6 +4,8 @@
 exec < "$1"
 
 . /usr/lib/libmodcgi.sh
+csrf_check required
+
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
 footer() {

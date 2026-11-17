@@ -79,6 +79,7 @@ print_mp() {
 	echo '<td colspan="1" class="actions">'
 	if [ "$outsize" != "small" ]; then
 		echo "<form class='btn' action='$formact' method='post' onsubmit='return confirm(\"$(lang de:"Ausf&uuml;hren" en:"Execute")?\")' >"
+		csrf_input
 		echo "<input type='hidden' name='path' value='$(html "$path")'>"
 		echo "<input class='button' type='submit' name='cmd' value='R' $rdisabled>"
 		echo "<input class='button' type='submit' name='cmd' value='W' $wdisabled>"
@@ -102,6 +103,7 @@ print_mp() {
 
 errpath=""
 if [ "$sec_level" -eq 0 -a -n "$MOUNTED_CMD" ]; then
+	csrf_check required
 	case $MOUNTED_CMD in
 		R)       do_remount -r "$MOUNTED_PATH" ;;
 		W)       do_remount -w "$MOUNTED_PATH" ;;

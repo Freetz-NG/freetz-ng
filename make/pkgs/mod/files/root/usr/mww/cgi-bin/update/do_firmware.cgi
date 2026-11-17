@@ -2,6 +2,7 @@
 
 <%
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 if [ -e /tmp/fw_update.done ]; then
 	rm -f /tmp/fw_update.done

@@ -14,6 +14,7 @@ eval "$CONFIG_PREPARE"
 case $CONFIG_TYPE in
 	text)
 		echo "<form method='post'>"
+		csrf_input
 		echo -n "<div class='textwrapper'><textarea name='content' rows='$TEXT_ROWS' cols='60' wrap='off' $($readonly && echo "readonly")>"
 		[ -n "$CONFIG_CMD" ] && $CONFIG_CMD | html
 		[ -r "$CONFIG_FILE" ] && html < "$CONFIG_FILE"

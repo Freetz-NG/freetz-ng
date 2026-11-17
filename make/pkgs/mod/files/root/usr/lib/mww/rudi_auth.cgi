@@ -1,5 +1,7 @@
 <%
 . /usr/lib/libmodcgi.sh
+csrf_check required
+
 pid1=$(cgi_param pid)
 pid2=$(cat /var/run/rudi_shell.pid)
 unset error

@@ -236,7 +236,7 @@ echo "<dt>WLAN</dt><dd><small>$mac_wlan</small></dd>"
 echo "</dl></dd></dl>"
 
 fi
-[ "${donet_val#0}" == "$donet_val" ] && echo "<form class='btn' method='post'><input type='reset' value='$donet_msg' onclick='window.location=\"$(href status mod box_info)$donet_arg\" '></form>"
+[ "${donet_val#0}" == "$donet_val" ] && echo "<form class='btn' method='post'> $(csrf_input) <input type='reset' value='$donet_msg' onclick='window.location=\"$(href status mod box_info)$donet_arg\" '></form>"
 
 sec_end
 fi

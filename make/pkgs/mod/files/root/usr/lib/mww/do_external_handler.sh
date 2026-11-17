@@ -4,6 +4,7 @@
 exec < "$1"
 
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 footer() {
 	echo "<p>"

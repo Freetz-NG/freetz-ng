@@ -41,7 +41,7 @@ EOF
 [ "$WRONGPW" = 1 ] && echo "<tr><td colspan=2><p><b><font color=red>$(lang de:"Das alte Passwort war falsch!" en:"The old password was wrong!")</font></b></p></td></tr>"
 cat << EOF
 <tr><td><input type="button" value="$(lang de:"Zur&uuml;ck" en:"Back")" onclick="window.location.href='/cgi-bin/conf/mod/webcfg'"></td><td><input type="button" name="go" value="$(lang de:"Speichern" en:"Save")"
-      onclick='if (checkpw (document.getElementById("inp_pw").value , document.getElementById("inp_pw2").value)) { location.href="/cgi-bin/pwchange.cgi?oldhash="+makemd5(document.getElementById("old_pw").value, challenge)+"&newhash="+md5(document.getElementById("inp_pw").value) ; }'></td></tr>
+      onclick='if (checkpw (document.getElementById("inp_pw").value , document.getElementById("inp_pw2").value)) { location.href="/cgi-bin/pwchange.cgi?oldhash="+makemd5(document.getElementById("old_pw").value, challenge)+"&newhash="+md5(document.getElementById("inp_pw").value)+"&csrf_token=$_CGI_CSRF_TOKEN" ; }'></td></tr>
 </table>
 
 EOF

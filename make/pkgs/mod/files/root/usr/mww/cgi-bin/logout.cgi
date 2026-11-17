@@ -1,5 +1,8 @@
 #!/bin/sh
 
+. /usr/lib/libmodcgi.sh
+csrf_check required
+
 if [ "$AUTH_TYPE" == "Basic" ]; then
 	. /usr/lib/libmodredir.sh
 	redirect_302 "$(self_prot)://$(sed -n 's/^\/cgi-bin\/invalidate.cgi://p' /mod/etc/webcfg.conf)@$(self_host)$(self_port)/cgi-bin/invalidate.cgi"

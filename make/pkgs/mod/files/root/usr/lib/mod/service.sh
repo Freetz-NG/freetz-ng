@@ -17,7 +17,7 @@ STAT_SERVICE_URL=$(href mod daemons)
 stat_button() {
 	local pkg=$1 daemon=$2 cmd=$3 active=$4
 	if ! $active; then disabled=" disabled"; else disabled=""; fi
-	echo "<td><form class='btn' action='${STAT_SERVICE_URL}/$pkg/$daemon' method='post'> <input type='submit' name='cmd' value='$cmd'$disabled> </form></td>"
+	echo "<td><form class='btn' action='${STAT_SERVICE_URL}/$pkg/$daemon' method='post'> $(csrf_input) <input type='submit' name='cmd' value='$cmd'$disabled> </form></td>"
 }
 
 stat_packagelink() {

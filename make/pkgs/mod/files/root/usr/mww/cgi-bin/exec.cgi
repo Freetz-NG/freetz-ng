@@ -2,6 +2,7 @@
 
 
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 path_info command _
 case $command in

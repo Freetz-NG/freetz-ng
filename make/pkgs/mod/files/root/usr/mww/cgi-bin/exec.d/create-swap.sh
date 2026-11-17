@@ -45,9 +45,10 @@ fi
 if $error; then
 	cat << EOF
 <form action="/cgi-bin/exec.cgi/create-swap" method="post">
+$(csrf_input)
 <p>$(lang de:"Swap-Datei" en:"Swapfile"): <input type="text" name="swap_file" size="50" maxlength="50" value="$swap_file"></p>
 <p><input type="text" name="swap_size" size="4" maxlength="5" value="$swap_size" /> MB</p>
-<p><input type="button" value="$(lang de:"Swapfile anlegen" en:"Create swapfile")" onclick="location.href='/cgi-bin/exec.cgi/create-swap?swap_file='+encodeURIComponent(document.forms[0].swap_file.value)+'&swap_size='+encodeURIComponent(document.forms[0].swap_size.value)" /></p>
+<p><input type="button" value="$(lang de:"Swapfile anlegen" en:"Create swapfile")" onclick="location.href=csrfUrl('/cgi-bin/exec.cgi/create-swap?swap_file='+encodeURIComponent(document.forms[0].swap_file.value)+'&swap_size='+encodeURIComponent(document.forms[0].swap_size.value))" /></p>
 </form>
 EOF
 else

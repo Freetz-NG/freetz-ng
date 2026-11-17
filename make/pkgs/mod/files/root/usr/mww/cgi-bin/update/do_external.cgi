@@ -2,6 +2,7 @@
 
 <%
 . /usr/lib/libmodcgi.sh
+csrf_check required
 
 if [ -e /tmp/ex_update.done ]; then
 	rm -f /tmp/ex_update.done

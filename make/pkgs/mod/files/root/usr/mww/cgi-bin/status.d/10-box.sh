@@ -29,6 +29,7 @@ done
 
 if [ $brands_cnt -gt 1 -a "$FREETZ_AVM_VERSION_07_0X_MIN" != "y" ]; then
 	echo '<form class="btn" action="/cgi-bin/exec.cgi/branding" method="post">'
+	csrf_input
 	echo "$(lang de:"Branding" en:"Branding"):"
 	echo '<select name="branding" size="1">'
 	branding=$(get_env firmware_version)
