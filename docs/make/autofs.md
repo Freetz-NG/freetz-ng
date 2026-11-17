@@ -1,4 +1,4 @@
-# AutoFS 5.0.5/5.1.9
+# AutoFS 5.0.5/5.2.0
   - Homepage: [https://docs.kernel.org/filesystems/autofs.html](https://docs.kernel.org/filesystems/autofs.html)
   - Manpage: [https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst](https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst)
   - Changelog: [https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/](https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/)
