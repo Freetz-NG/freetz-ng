@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /usr/lib/libmodcgi.sh
+
 if [ "$1" = "successful" ]; then
 	. /usr/lib/libmodcgi.sh
 	cgi --id=PW_changed

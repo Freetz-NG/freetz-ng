@@ -1,5 +1,8 @@
 #!/bin/sh
 
+. /usr/lib/libmodcgi.sh
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+
 if  $(echo "$QUERY_STRING" | grep -q dogencert ); then
 	sh /mod/etc/default.shellinabox/generate_cert.sh
 	echo '<textarea id="certout">'
@@ -9,9 +12,6 @@ if  $(echo "$QUERY_STRING" | grep -q dogencert ); then
 	rm /tmp/shellinabox_certificate.pem
 	exit
 fi
-
-. /usr/lib/libmodcgi.sh
-[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 check "$SHELLINABOX_NOSSL" true:ssldis
 if [ "$SHELLINABOX_NOSSL" = true  -o "$FREETZ_PACKAGE_SHELLINABOX_SSL" != "y" ]; then

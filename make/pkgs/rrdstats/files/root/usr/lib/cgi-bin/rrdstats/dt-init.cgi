@@ -11,12 +11,12 @@ echo "<p>$(lang de:"Initialisiere DigiTemp" en:"Initializing DigiTemp") ... $(la
 
 echo -n '<pre>'
 {
-    /mod/etc/init.d/rc.rrdstats stop
-    killall digitemp >/dev/null 2>&1
-    mkdir -p /tmp/flash/rrdstats
-    cd /tmp
-    digitemp $rs_param -i
-    mv .digitemprc /tmp/flash/rrdstats/digitemp.conf >/dev/null 2>&1
+	/mod/etc/init.d/rc.rrdstats stop
+	killall digitemp >/dev/null 2>&1
+	mkdir -p /tmp/flash/rrdstats
+	cd /tmp
+	digitemp $rs_param -i
+	mv .digitemprc /tmp/flash/rrdstats/digitemp.conf >/dev/null 2>&1
 } 2>&1 | html
 echo '</pre>'
 
