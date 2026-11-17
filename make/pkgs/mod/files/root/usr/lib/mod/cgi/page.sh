@@ -75,7 +75,6 @@ cgi_begin() {
 	cat << EOF
 Content-Type: text/html; charset=ISO-8859-1${CRet}
 Content-Language: $(lang de:"de" en:"en")${CRet}
-Cache-Control: no-store${CRet}
 Expires: 0${CRet}
 Pragma: no-cache${CRet}
 X-UA-Compatible: IE=edge${CRet}
