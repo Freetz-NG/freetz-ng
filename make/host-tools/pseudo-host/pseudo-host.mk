@@ -51,7 +51,7 @@ $($(PKG)_MAINARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 		$(if $(HOST_BIARCH),--bits=32) \
 		--cflags="-Wno-cast-function-type -Wno-nonnull-compare -fcommon $(if $(HOST_BIARCH),$(HOST_CFLAGS_FORCE_32BIT_CODE))" \
 		--libdir=$(PSEUDO_HOST_MAINARCH_LD_PRELOAD_PATH) \
-		$(DISABLE_NLS) \
+		--disable-nls \
 		$(QUIET) \
 		$(SILENT) \
 	);
@@ -74,7 +74,7 @@ $($(PKG)_BIARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 		--bits=$(HOST_BITNESS) \
 		--cflags="-Wno-cast-function-type -Wno-nonnull-compare -fcommon" \
 		--libdir=$(PSEUDO_HOST_BIARCH_LD_PRELOAD_PATH) \
-		$(DISABLE_NLS) \
+		--disable-nls \
 		$(QUIET) \
 		$(SILENT) \
 	);

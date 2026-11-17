@@ -61,7 +61,7 @@ $(BINUTILS_KERNEL_DIR1)/.configured: $(BINUTILS_KERNEL_DIR)/.unpacked
 		--host=$(GNU_HOST_NAME) \
 		--target=$(REAL_GNU_KERNEL_NAME) \
 		--disable-multilib \
-		$(DISABLE_NLS) \
+		--disable-nls \
 		--disable-werror \
 		--without-headers \
 		$(SILENT) \

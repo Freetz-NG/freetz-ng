@@ -49,7 +49,7 @@ $(LIBTOOL_STAGING_DIR)/.configured: $(LIBTOOL_STAGING_DIR)/.unpacked | $(TARGET_
 		--disable-ltdl-install \
 		--enable-shared \
 		--enable-static \
-		$(DISABLE_NLS) \
+		--disable-nls \
 		$(SILENT) \
 	);
 	touch $@
