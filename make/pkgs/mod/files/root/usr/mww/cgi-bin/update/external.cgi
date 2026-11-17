@@ -11,10 +11,10 @@ cgi_begin "$(lang de:"external-Datei Update" en:"external-file update")"
 cat << EOF
 <script type=text/javascript>
 function CheckInput(form) {
-	file_selector=form.elements[0];
-	target_text=form.elements[1];
-	delete_chk=form.elements[2];
-	ex_start=form.elements[3];
+	file_selector=document.getElementById('ex_file');
+	target_text=form.elements.the_target;
+	delete_chk=form.elements.delete;
+	ex_start=form.elements.ex_start;
 	if (file_selector.value=="") {
 		alert("$(lang de:"Keine external-Datei angegeben!" en:"No external-file provided!")");
 		return false;
@@ -38,7 +38,7 @@ $(lang de:"die Box geladen und dort entpackt. Anschlie&szlig;end sollte die ents
 $(lang de:"hochgeladen werden." en:"upload the appropriate firmware afterwards.")
 </p>
 
-<form action="do_external.cgi" method=POST enctype="multipart/form-data" onsubmit="return CheckInput(document.forms[0]);">
+<form action="do_external.cgi" method=POST enctype="multipart/form-data" onsubmit="return CheckInput(this);">
 	<p>$(lang de:"external-Datei" en:"External-file") <input type=file size=50 id="ex_file"></p>
 	<p>$(lang de:"Zielverzeichnis" en:"Target directory") <input type="textfield" size=50 name="the_target" value="$MOD_EXTERNAL_DIRECTORY"></p>
 	<p><input type="checkbox" name="delete" value="delete">$(lang de:"Alte External-Dateien l&ouml;schen" en:"Delete old external files")</p>

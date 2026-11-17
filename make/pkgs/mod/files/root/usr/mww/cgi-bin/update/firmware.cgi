@@ -9,12 +9,12 @@ cgi_begin "$(lang de:"Firmware-Update" en:"Firmware update")"
 cat << EOF
 <script type="text/javascript">
 function CheckInput(form) {
-	file_selector=form.elements[0];
-	downgrade=form.elements[1];
-	radio_stop=form.elements[2];
-	radio_semistop=form.elements[3];
-	radio_nostop=form.elements[4];
-	delete_jffs2=form.elements[5];
+	file_selector=document.getElementById('fw_file');
+	downgrade=form.elements.downgrade;
+	radio_stop=document.getElementById('stop_avm');
+	radio_semistop=document.getElementById('semistop_avm');
+	radio_nostop=document.getElementById('nostop_avm');
+	delete_jffs2=document.getElementById('jffs');
 
 	if (file_selector.value=="") {
 		alert("$(lang de:"Keine Firmware-Datei angegeben!" en:"No firmware file provided!")");
@@ -44,7 +44,7 @@ function CheckInput(form) {
   en:"First you are encouraged to select a firmware image for uploading. This image will be loaded to and extracted on the box. Subsequently, <i>/var/install</i> will be called. If successful, the update starts by an automatic reboot." \
 )</p>
 
-<form action="do_firmware.cgi" method="POST" enctype="multipart/form-data" onsubmit="return CheckInput(document.forms[0]);">
+<form action="do_firmware.cgi" method="POST" enctype="multipart/form-data" onsubmit="return CheckInput(this);">
 	<p>
 	<label for="fw_file">$(lang de:"Firmware-Image" en:"Firmware image")</label>
 	<input type=file size=50 id="fw_file">
