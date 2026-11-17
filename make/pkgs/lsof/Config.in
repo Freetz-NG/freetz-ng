@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_LSOF
-	bool "lsof 4.89 (binary only) - DEPRECATED"
+	bool "lsof 4.99.7 (binary only)"
 	default n
 	select FREETZ_REMOVE_LSOF if FREETZ_AVM_HAS_LSOF
 	help
