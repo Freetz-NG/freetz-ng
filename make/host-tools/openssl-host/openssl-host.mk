@@ -19,6 +19,7 @@ $(PKG)_INSTALLDIR         := $(OPENSSL_HOST_DIR)/installdir
 $(PKG)_PATCH_POST_CMDS += $(RM) Makefile Makefile.bak;
 $(PKG)_PATCH_POST_CMDS += ln -s Configure configure;
 
+$(PKG)_CONFIGURE_DEFOPTS := n
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(OPENSSL_HOST_INSTALLDIR)
 
 

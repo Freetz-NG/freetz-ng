@@ -19,6 +19,7 @@ $(PKG)_BINARIES            := ccmake cmake cpack ctest
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
 $(PKG)_DOC_TARGET_DIR      := $($(PKG)_DESTDIR)/doc/$(pkg_short)-$($(PKG)_MAJOR_VERSION)
 
+$(PKG)_CONFIGURE_DEFOPTS := n
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(CMAKE_HOST_DESTDIR)
 $(PKG)_CONFIGURE_OPTIONS += --generator='Unix Makefiles'
 $(PKG)_CONFIGURE_OPTIONS += --enable-ccache
