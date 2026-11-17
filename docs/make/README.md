@@ -489,8 +489,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[p7zip 16.02 (binary only)](p7zip.md)<a id='p7zip'></a>**<br>
     7-Zip  is  a  file  archiver  with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better  than ratio in ZIP format.
 
-  * **[PCP client 1c783fb (binary only)](pcp.md)<a id='pcp'></a>**<br>
-    PCP client library implements client side of PCP (RFC 6887) and NATPMP (RFC 6886) protocols. Switch to NATPMP is done automatically by version negotiation. This library enables any network application to manage network edge device (e.g. to create NAT mapping or ask router for specific flow treatment).
+  * **[pcpnatpmp: PCP/NAT-PMP client 1.0.0 (binary only)](pcpnatpmp.md)<a id='pcpnatpmp'></a>**<br>
+    Port Control Protocol (PCP) and NAT-PMP client library Implements client side of PCP (RFC 6887) and NAT-PMP (RFC 6886) protocols. Switch to NAT-PMP is done automatically by version negotiation. This library enables any network application to manage network edge device (e.g. to create NAT mapping or ask router for specific flow treatment).
 
   * **[PCSC-lite 1.9.5/2.5.3 (binary only)](pcsc-lite.md)<a id='pcsc-lite'></a>**<br>
     The purpose of PCSC Lite is to provide a Windows(R) SCard interface in a very small form factor for communicating to smart cards and readers.
