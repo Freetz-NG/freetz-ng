@@ -1,6 +1,6 @@
 --- meson.build
 +++ meson.build
-@@ -224,14 +224,6 @@
+@@ -226,14 +226,6 @@
      include_directories : incdir,
      soversion : 1,
      install : true)

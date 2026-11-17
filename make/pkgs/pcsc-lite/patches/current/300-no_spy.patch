@@ -1,6 +1,6 @@
 --- meson.build
 +++ meson.build
-@@ -232,26 +232,6 @@
+@@ -234,26 +234,6 @@
      c_args: '-DLIBPCSCLITE -DSIMCLIST_NO_DUMPRESTORE',
      soversion : 1,
      install : true)

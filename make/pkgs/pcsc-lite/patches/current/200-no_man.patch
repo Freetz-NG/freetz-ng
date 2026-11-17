@@ -1,6 +1,6 @@
 --- meson.build
 +++ meson.build
-@@ -321,16 +321,6 @@
+@@ -323,16 +323,6 @@
  configure_file(output : 'pcscd.h',
    input : 'src/pcscd.h.in',
    configuration : confgen_data)

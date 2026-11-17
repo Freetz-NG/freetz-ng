@@ -17,7 +17,7 @@ config FREETZ_LIB_libpcsclite
 				The C11 atomics are available since GCC v4.9 only.
 
 		config FREETZ_LIB_libpcsclite_WITH_VERSION_CURRENT
-			bool "2.5.2"
+			bool "2.5.3"
 			depends on !FREETZ_TARGET_GCC_4_MAX
 
 	endchoice

@@ -1,6 +1,6 @@
 --- meson.build
 +++ meson.build
-@@ -309,14 +309,6 @@
+@@ -311,14 +311,6 @@
    install_dir : polkit_dep.get_variable('policydir'))
  endif
  
@@ -15,7 +15,7 @@
  # generate config.h
  configure_file(output : 'config.h',
    configuration : conf_data)
-@@ -329,16 +321,6 @@
+@@ -331,16 +323,6 @@
  configure_file(output : 'pcscd.h',
    input : 'src/pcscd.h.in',
    configuration : confgen_data)
