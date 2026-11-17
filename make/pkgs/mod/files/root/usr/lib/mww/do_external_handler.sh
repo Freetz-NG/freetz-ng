@@ -1,9 +1,9 @@
 #!/bin/sh
 
-. /usr/lib/libmodcgi.sh
-
 # link FIFO to stdin
-exec < $1
+exec < "$1"
+
+. /usr/lib/libmodcgi.sh
 
 footer() {
 	echo "<p>"

@@ -1,10 +1,10 @@
 #!/bin/sh
 
+# link FIFO to stdin
+exec < "$1"
+
 . /usr/lib/libmodcgi.sh
 [ -r /etc/options.cfg ] && . /etc/options.cfg
-
-# link FIFO to stdin
-exec < $1
 
 footer() {
 	echo "<p>"
