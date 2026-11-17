@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.6.33)
+$(call PKG_INIT_BIN, 2.6.35)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=8241e273117c5547a4c1a4e042bcd6cd580b71f3762cb449804156898271a5a2
+$(PKG)_HASH:=cb2649300e5fc2c09ac2a2f708276912c1e09a8c68eb981507588b98de1381d5
 $(PKG)_SITE:=https://www.haproxy.org/download/2.6/src
 ### WEBSITE:=https://www.haproxy.org/
 ### MANPAGE:=https://linux.die.net/man/1/haproxy
