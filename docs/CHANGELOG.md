@@ -104,6 +104,7 @@ Latest changes
 
   - Packages:
     * Apache2 2.4.71
+    * AutoFS 5.0.5/5.2.0
     * axTLS wrapper 2.1.5
     * BIND 9.11.37/9.20.30
     * Bftpd 6.7

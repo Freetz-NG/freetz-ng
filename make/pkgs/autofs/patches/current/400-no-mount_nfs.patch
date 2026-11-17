@@ -1,6 +1,6 @@
 --- lib/mounts.c
 +++ lib/mounts.c
-@@ -286,6 +286,9 @@
+@@ -288,6 +288,9 @@
  	char *s_ver;
  	int cancel_state;
  
