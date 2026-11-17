@@ -35,8 +35,16 @@ include width
 include skin
 
 include_module menu
+
 if [ "$MOD_HTTPD_NEWLOGIN" = yes ]; then
-    include login
-    checklogin
-    [ "$isauth" = 0 ] && . /usr/mww/cgi-bin/login_page.sh && exit
+	include login
+	checklogin
+	[ "$isauth" = 0 ] && . /usr/mww/cgi-bin/login_page.sh && exit
 fi
+
+include csrf
+if [ -n "$REQUEST_METHOD" ]; then
+	csrf_load
+	csrf_check
+fi
+

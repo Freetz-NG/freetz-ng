@@ -13,6 +13,10 @@ if [ ! -r "/mod/etc/conf/mod.cfg" ]; then
 fi
 . /mod/etc/conf/mod.cfg
 
+## reduced entropy on boot!
+#. /usr/lib/mod/cgi/csrf.sh
+#csrf_init || exit 1
+
 homedir=/usr/mww/
 
 #redirect of stderr is needed to prevent corrupted html headers:
