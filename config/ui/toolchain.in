@@ -1441,7 +1441,8 @@ config FREETZ_TARGET_TOOLCHAIN
 	select FREETZ_LIB_libgmp
 	select FREETZ_LIB_libmpfr
 	select FREETZ_LIB_libmpc
-	bool "Build binutils and gcc for target" if FREETZ_BUILD_TOOLCHAIN
+	bool "Build binutils and gcc for target"
+	depends on FREETZ_BUILD_TOOLCHAIN
 	depends on FREETZ_REAL_DEVELOPER_ONLY
 	default n
 	help
