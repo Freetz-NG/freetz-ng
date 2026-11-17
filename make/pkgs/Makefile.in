@@ -15,12 +15,6 @@ CONFIGURE=conf_cmd() { ./configure $(QUIET) "$$$$@" $(SILENT) || { $(call ERROR,
 CONFCMAKE=cmake_cmd() { $(MAKE_ENV) $(CMAKE) "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
 CONFMESON=meson_cmd() { $(MESON) setup "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
 
-ifeq ($(strip $(FREETZ_TARGET_NLS)),y)
-DISABLE_NLS:=
-else
-DISABLE_NLS:=--disable-nls
-endif
-
 TARGET_CROSS:=$(call qstrip,$(FREETZ_TARGET_CROSS))
 KERNEL_CROSS:=$(call qstrip,$(FREETZ_KERNEL_CROSS))
 
@@ -194,7 +188,7 @@ TARGET_CONFIGURE_OPTIONS += --mandir=/usr/share/man
 TARGET_CONFIGURE_OPTIONS += --sbindir=/usr/sbin
 TARGET_CONFIGURE_OPTIONS += --sysconfdir=/etc
 TARGET_CONFIGURE_OPTIONS += --with-gnu-ld
-TARGET_CONFIGURE_OPTIONS += $(DISABLE_NLS)
+TARGET_CONFIGURE_OPTIONS += --disable-nls
 
 ### Convenience macros
 # Since the makefiles for the packages contain many similar parts, we define some macros to simplify

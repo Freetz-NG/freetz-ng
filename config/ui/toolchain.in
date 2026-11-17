@@ -1423,20 +1423,6 @@ config FREETZ_TARGET_UCLIBC_PROVIDES_SSP
 	def_bool y
 	depends on FREETZ_TARGET_UCLIBC_1
 
-config FREETZ_TARGET_NLS
-#	bool "Native language support (NLS) for target toolchain" if FREETZ_BUILD_TOOLCHAIN
-	bool
-	default n
-	help
-		Support NLS-enabled programs and Linux tools on target system.
-
-		Example:
-			$ ls /foo/bar
-			ls: /foo/bar: No such file or directory
-			$ export LANG=de_DE.8859-1
-			$ ls /foo/bar
-			ls: /foo/bar: Datei oder Verzeichnis nicht gefunden
-
 config FREETZ_TARGET_TOOLCHAIN
 	select FREETZ_LIB_libgmp
 	select FREETZ_LIB_libmpfr

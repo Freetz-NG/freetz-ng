@@ -85,7 +85,7 @@ $(GDB_HOST_DIR)/.configured: | $(GDB_DIR)/.unpacked
 		--build=$(GNU_HOST_NAME) \
 		--host=$(GNU_HOST_NAME) \
 		--target=$(REAL_GNU_TARGET_NAME) \
-		$(DISABLE_NLS) \
+		--disable-nls \
 		--enable-threads \
 		--disable-tui \
 		--disable-gdbtk \
