@@ -10,7 +10,7 @@ cat << EOF
 <script type="text/javascript">
 function CheckInput(form) {
 	file_selector=document.getElementById('fw_file');
-	downgrade=form.elements.downgrade;
+	downgrade=document.getElementById('downgrade');
 	radio_stop=document.getElementById('stop_avm');
 	radio_semistop=document.getElementById('semistop_avm');
 	radio_nostop=document.getElementById('nostop_avm');
