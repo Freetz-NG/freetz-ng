@@ -1,0 +1,18 @@
+--- lib/src/net/pcp_socket.c
++++ lib/src/net/pcp_socket.c
+@@ -456,13 +456,14 @@
+ #if defined(IPV6_PKTINFO)
+     if (src_addr) {
+ #ifndef WIN32
+-        struct in6_pktinfo ipi6 = {0};
++        struct in6_pktinfo ipi6;
+ 
+         uint8_t c[CMSG_SPACE(sizeof(struct in6_pktinfo))] = {0};
+         struct iovec iov;
+         struct msghdr msg;
+         struct cmsghdr *cmsg;
+ 
++        memset(&ipi6, 0, sizeof(ipi6));
+         iov.iov_base = (void *)buf;
+         iov.iov_len = len;
+         memset(&msg, 0, sizeof(msg));
