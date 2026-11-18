@@ -1,5 +1,8 @@
 #!/bin/sh
 
+trap 'touch /tmp/ex_update.done' EXIT
+
+(
 # link FIFO to stdin
 exec < "$1"
 
@@ -12,7 +15,6 @@ footer() {
 	back_button --title="$(lang de:"Zur&uuml;ck zum Update" en:"Back to update")" mod update
 
 	cgi_end
-	touch /tmp/ex_update.done
 }
 pre_begin() {
 	echo "<pre class='log'>"
@@ -125,4 +127,6 @@ if [ -e /mod/etc/init.d/rc.external ] && $external_start; then
 fi
 
 do_exit 0
+
+)
 
