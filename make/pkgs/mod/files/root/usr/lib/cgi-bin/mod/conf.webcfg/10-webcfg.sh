@@ -24,18 +24,18 @@ sec_end
 sec_begin "$(lang de:"Authentifizierung" en:"Authentification")"
 
 cgi_print_checkbox "httpd_newlogin" "$MOD_HTTPD_NEWLOGIN" "$(lang de:"Neue Loginversion mit Session-ID" en:"New login with session id")"
+if [ "$MOD_HTTPD_NEWLOGIN" == yes ]; then
 echo "<p>"
 cgi_print_textline "httpd_sessiontimeout" "$MOD_HTTPD_SESSIONTIMEOUT" 5 "$(lang de:"Session-ID Timeout:" en:"Session id timeout:") " " $(lang de:"Sekunden" en:"seconds")"
 echo "</p>"
+fi
 cgi_print_checkbox_p "httpd_csrf_rudi" "$MOD_HTTPD_CSRF_RUDI" "$(lang de:"CSRF-Ausnahme f&uuml;r Legacy-Apps (Rudi-Shell via GET)" en:"CSRF exception for legacy apps (Rudi shell via GET)")"
 
 cat << EOF
 <script >
 var conftext='$(lang de:"Standard PW ist \"freetz\".\\n\\nDas PW kann in Konsole so gesetzt werden:" en:"Default password is \"freetz\".\\n\\nYou can set the PW in console with this command:")\\necho -n \"freetz\" | md5sum | sed \"s/ .*//\" > /tmp/flash/mod/webmd5\\n'
 var el=document.getElementById('httpd_newlogin_yes');
-var eltime=document.getElementById('httpd_sessiontimeout');
-$([ "$MOD_HTTPD_NEWLOGIN" = yes ] || echo "eltime.disabled = true;")
-el.onchange=function(){eltime.disabled = this.checked ? false : true; if (this.checked){ this.checked = confirm(conftext) ? true : false;}; };
+el.onchange=function(){ if (this.checked){ this.checked = confirm(conftext) ? true : false;}; };
 </script>
 EOF
 
