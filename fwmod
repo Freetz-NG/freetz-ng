@@ -1993,7 +1993,7 @@ if [ "$DO_ZIP" -gt 0 ]; then
 	fi
 	echo0 "zipping root file system to $zip_name"
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_MOD_DIR" "$FILESYSTEM_DIR"
-	"$TAR_BBA" -C "$FILESYSTEM_MOD_DIR" -czf "$zip_name" .
+	"$TAR_GNU"  --sort=name  -C "$FILESYSTEM_MOD_DIR" -czf "$zip_name" .
 	if [ $? -ne 0 ] || ! is_valid_tarball "$zip_name"; then
 		mv "${zip_name}" "${zip_name}.corrupted" 2>/dev/null
 		error 1 "zipping of root file system failed"
@@ -2321,7 +2321,7 @@ if [ "$action_names" ]; then
 		modexternal="${FW_IMAGES_DIR:-$DIR}/${modstring}.external"
 		echo "packing ${modexternal}"
 		[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$EXTERNAL_MOD_DIR"
-		"$TAR_BBA" -C "$EXTERNAL_MOD_DIR" -cf "$modexternal" .
+		"$TAR_GNU"  --sort=name  -C "$EXTERNAL_MOD_DIR" -cf "$modexternal" .
 		if [ $? -ne 0 ] || ! is_valid_tarball "$modexternal"; then
 			mv "${modexternal}" "${modexternal}.corrupted" 2>/dev/null
 			error 1 "packing of external tar failed"
@@ -2335,7 +2335,7 @@ if [ "$action_names" ]; then
 				pkgexternal="${FW_IMAGES_DIR:-$DIR}/${modstring}_${pkg}.external"
 				echo "packing ${pkgexternal}"
 				[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$EXTERNAL_MOD_DIR-${pkg}"
-				"$TAR_BBA" -C "$EXTERNAL_MOD_DIR-${pkg}" -cf "$pkgexternal" .
+				"$TAR_GNU"  --sort=name  -C "$EXTERNAL_MOD_DIR-${pkg}" -cf "$pkgexternal" .
 				if [ $? -ne 0 ] || ! is_valid_tarball "$pkgexternal"; then
 					mv "${pkgexternal}" "${pkgexternal}.corrupted" 2>/dev/null
 					error 1 "packing of external-$pkg tar failed"
