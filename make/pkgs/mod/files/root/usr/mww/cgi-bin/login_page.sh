@@ -24,7 +24,10 @@ echo "<script> document.getElementById(\"inp_pw\").focus(); </script>"
 echo '<br><br>'
 
 # Waren wir schonmal hier? Dann war was falsch!
-[ "$WRONGPW" = 1 ] && echo "<p><b><font color=red>$(lang de:"Passwort falsch!" en:"Wrong password!")</font></b></p></b>"
+if [ "$WRONGPW" == "1" ]; then
+	echo "<p><b><font color=red>$(lang de:"Passwort falsch!" en:"Wrong password!")</font></b></p></b>"
+	echo "<p><a href='https://freetz-ng.github.io/freetz-ng/make/mod/#weboberflache' target='_blank'>$(lang de:"Passwort vergessen?" en:"Forgot password?")</a></p>"
+fi
 
 cgi_end
 
