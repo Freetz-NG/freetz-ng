@@ -5,7 +5,23 @@
 installiert.
 Hiermit können grundlegende Dienste von Freetz wie Swap, FREETZMOUNT,
 external und das Freetz-Webinterface konfiguriert werden.<br>
- * Abhängig von der Konfiguration sind nur bestimmte zu sehen!
+**Abhängig von der Konfiguration sind nur bestimmte zu sehen!**
+
+### Weboberfläche
+
+Falls das Passwort vergessen wurde, kann es so über Telnet/SSH wieder auf 'freetz' zurückgesetzt werden:<br>
+
+  - old-login: Basic-Auth<br>
+    `modconf set mod MOD_HTTPD_PASSWD="$(mkpasswd -m md5 "freetz" freetzng)"`<br>
+    `modconf set mod MOD_HTTPD_PASSWD='$1$freetzng$i0SVp/Hgvxd80q6MIUq701'`<br>
+    `modconf set mod MOD_HTTPD_USER="admin"`<br>
+    `rc.webcfg restart`<br>
+    `modsave` (optional)<br>
+
+  - new-login: Web-Login<br>
+    `echo -n "freetz" | md5sum | sed 's/ .*//' > /tmp/flash/mod/webmd5`<br>
+    `echo '465d0ff27bb239292778dc3a0c2f28d9' > /tmp/flash/mod/webmd5`<br>
+    `modsave flash` (optional)<br>
 
 ### swap
 
