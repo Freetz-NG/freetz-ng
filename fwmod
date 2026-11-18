@@ -1908,7 +1908,7 @@ if [ "$action_names" ]; then
 	# oldgnu should be enough compatibility ...
 	echo0 "packing var.tar"
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$VARTAR_MOD_DIR" "$VARTAR_DIR"
-	"$TAR_GNU" -f "$VARTAR_MOD"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$VARTAR_MOD_DIR"  --create ./var/
+	"$TAR_GNU" -f "$VARTAR_MOD"   --sort=name  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$VARTAR_MOD_DIR"  --create ./var/
 	if [ $? -ne 0 ] || ! is_valid_tarball "$VARTAR_MOD"; then
 		mv "${VARTAR_MOD}" "${VARTAR_MOD}.corrupted" 2>/dev/null
 		error 1 "packing of var.tar failed"
@@ -2256,7 +2256,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 	fi
 	echo0 "packing ${img_name}"
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FIRMWARE_MOD_DIR" "$FIRMWARE_DIR"
-	"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
+	"$TAR_GNU" -f "${img_name}"   --sort=name  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
 	if [ $? -ne 0 ] || ! is_valid_tarball "${img_name}"; then
 		mv "${img_name}" "${img_name}.packed.corrupted" 2>/dev/null
 		error 1 "packing of firmware image failed"
