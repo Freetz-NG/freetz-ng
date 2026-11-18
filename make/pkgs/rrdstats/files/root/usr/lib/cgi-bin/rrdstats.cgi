@@ -525,7 +525,7 @@ cat << EOF
 </p>
 
 <p>
-<input type="button" value="SmartHome aktualisieren" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) window.open(csrfUrl('$(href extra rrdstats sh-init)'),'Aktualisieren_von_SmartHome','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" /> &nbsp;&nbsp;
+<input type="button" value="SmartHome aktualisieren" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) csrfPost('$(href extra rrdstats sh-init)',null,'Aktualisieren_von_SmartHome','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" /> &nbsp;&nbsp;
 <br><font size="-2">$(lang de:"Vor dem ersten Aktivieren und nach Ver&auml;nderungen oder Umbenennung der Ger&auml;te ausf&uuml;hren" en:"Run this before the first start and if you change or rename your devices")</font>
 </p>
 
@@ -682,7 +682,7 @@ $(lang de:"Anzahl Wiederholungen, falls ein Sensor keinen Wert zur&uuml;ckliefer
 </p>
 
 <p>
-<input type="button" value="DigiTemp initialisieren" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) window.open(csrfUrl('$(href extra rrdstats dt-init)'),'Initialisieren_von_DigiTemp','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" /> &nbsp;&nbsp;
+<input type="button" value="DigiTemp initialisieren" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) csrfPost('$(href extra rrdstats dt-init)',null,'Initialisieren_von_DigiTemp','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" /> &nbsp;&nbsp;
 <br><font size="-2">$(lang de:"Vor dem ersten Aktivieren oder nach Ver&auml;nderungen der Ger&auml;te ausf&uuml;hren" en:"Run this before the first start of if you change your devices")</font>
 </p>
 

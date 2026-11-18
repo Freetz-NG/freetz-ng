@@ -1417,7 +1417,7 @@ graphit() {
 					refresh="$(cgi_param refresh | tr -d .)"
 					[ -n "$refresh" ] && refresh="&refresh=$refresh"
 
-					if [ -n "$(cgi_param ain | tr -d .)" ]; then
+					if [ "$REQUEST_METHOD" == "POST" -a -n "$(cgi_param ain | tr -d .)" ]; then
 						csrf_check required
 						echo "<center><br><b>Processing ...</b><br><br><font size=1>"
 						/usr/bin/aha.sh docmd "$(cgi_param ain | tr -d .)" "$(cgi_param state | tr -d .)" >/dev/null
@@ -1470,8 +1470,8 @@ EOF
 						[ "$state" == 1 ] && buttstate=lightgreen || buttstate=mediumvioletred
 						[ "$lock" == 1 ] && buttlock=disabled || buttlock=enabled
 						[ -z "$state" ] && buttstate=yellow
-						butact="onclick=\"if (confirm('$name schalten?')==true) window.location=csrfUrl('$SCRIPT_NAME?pdev=$pdev$refresh&ain=$ain&state=$(( ($state+1)%2 ))')\""
-						[ -z "$state" ] && butact="onclick=\"val = prompt('Solltemperatur (8-28|253|254):');if (val) window.location=csrfUrl('$SCRIPT_NAME?pdev=$pdev$refresh&ain=$ain&state='+(parseFloat(val) < 253 ? parseFloat(val.replace(',','.'))*2 : parseFloat(val)))\""
+						butact="onclick=\"if (confirm('$name schalten?')==true) csrfPost('$SCRIPT_NAME?pdev=$pdev$refresh&ain=$ain&state=$(( ($state+1)%2 ))')\""
+						[ -z "$state" ] && butact="onclick=\"val = prompt('Solltemperatur (8-28|253|254):');if (val) csrfPost('$SCRIPT_NAME?pdev=$pdev$refresh&ain=$ain&state='+(parseFloat(val) < 253 ? parseFloat(val.replace(',','.'))*2 : parseFloat(val)))\""
 						if [ -n "$celsius" ]; then
 							grad="$(echo $celsius | sed 's/.$/,&/g')"
 							if [ -n "$tsoll" ]; then
