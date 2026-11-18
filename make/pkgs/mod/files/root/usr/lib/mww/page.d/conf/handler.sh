@@ -31,7 +31,13 @@ fi
 cgi --id="conf:$PACKAGE/$ID" --help="$help" --style=mod/daemons.css
 
 case $REQUEST_METHOD in
-	POST)   source "${HANDLER_DIR}/save.sh" ;;
-	GET|*)  source "${HANDLER_DIR}/edit.sh" ;;
+	POST)
+		if [ "$(cgi_param freetz_action)" != "1" ]; then
+			source "${HANDLER_DIR}/save.sh"
+		else
+			source "${HANDLER_DIR}/edit.sh"
+		fi
+		;;
+	GET|*)		source "${HANDLER_DIR}/edit.sh" ;;
 esac
 

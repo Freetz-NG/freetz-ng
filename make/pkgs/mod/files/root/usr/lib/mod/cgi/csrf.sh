@@ -96,3 +96,7 @@ csrf_check() {
 	export _CGI_CSRF_CHECKED=yes
 }
 
+csrf_require_post() {
+	[ "$REQUEST_METHOD" == "POST" ] || csrf_error '405 Method Not Allowed' 'This action requires POST.' 'Allow: POST'
+}
+
