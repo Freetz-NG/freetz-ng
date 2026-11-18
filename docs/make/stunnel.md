@@ -45,10 +45,11 @@ Homepage](http://www.stunnel.org/examples/).
    <pre><code>
    [freetz https Web-Interface]
    client = no
+   accept = 4433
+   connect = 127.0.0.1:81
+   sslVersionMin = TLSv1.2
    cert = /tmp/flash/stunnel/certs.pem
    key = /tmp/flash/stunnel/key.pem
-   accept = 4433
-   connect = 81
    </code></pre>
 
 4. Zugriff (intern) über
