@@ -1,1 +1,1 @@
-/var/media/autofs	/tmp/flash/autofs/auto.conf	--timeout=300
+/var/media/autofs	file:/tmp/flash/autofs/auto.conf	--timeout=300
