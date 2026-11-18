@@ -46,6 +46,8 @@ $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/pkgconfig/libcjson.pc
+	$(SED) -i 's|"/usr/|"$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/|g' \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/cmake/cJSON/*.cmake
 	@touch -c $@
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
