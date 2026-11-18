@@ -4,7 +4,7 @@
 
 DAEMON=websrv
 DAEMON_BIN=httpd-$DAEMON
-DAEMON_ENV="PATH=$PATH WEBIF=avm"
+DAEMON_ENV="PATH=$PATH WEBIF=avm _CGI_CSRF_SCOPE=$DAEMON"
 
 
 #redirect of stderr is needed to prevent corrupted html headers:

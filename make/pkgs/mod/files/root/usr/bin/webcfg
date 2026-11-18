@@ -4,7 +4,7 @@
 
 DAEMON=webcfg
 DAEMON_BIN=httpd-$DAEMON
-DAEMON_ENV="PATH=$PATH WEBIF=mww"
+DAEMON_ENV="PATH=$PATH WEBIF=mww _CGI_CSRF_SCOPE=$DAEMON"
 
 
 if [ ! -r "/mod/etc/conf/mod.cfg" ]; then

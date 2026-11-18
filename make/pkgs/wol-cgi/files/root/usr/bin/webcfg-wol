@@ -4,7 +4,7 @@
 
 DAEMON=wol
 DAEMON_BIN=httpd-$DAEMON
-DAEMON_ENV="PATH=$PATH"
+DAEMON_ENV="PATH=$PATH _CGI_CSRF_SCOPE=$DAEMON"
 
 
 if [ ! -r "/mod/etc/conf/${DAEMON}.cfg" ]; then

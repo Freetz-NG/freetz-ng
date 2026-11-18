@@ -1,3 +1,4 @@
+_CGI_CSRF_FILE="/var/run/webcfg/csrf.${_CGI_CSRF_SCOPE:-default}"
 
 modcgi() {
 	if [ "$REQUEST_METHOD" == "POST" ] && [ -n "$_CGI_POST_FILE" ]; then
@@ -22,19 +23,19 @@ csrf_init() (
 	umask 077
 	mkdir -p /var/run/webcfg
 	chmod 700 /var/run/webcfg
-	[ -s /var/run/webcfg/csrf ] && exit 0
-	local tmp="/var/run/webcfg/csrf.$$"
+	[ -s "$_CGI_CSRF_FILE" ] && exit 0
+	local tmp="$_CGI_CSRF_FILE.$$"
 	[ -e "$tmp" ] && exit 1
 	trap 'rm -f "$tmp"' EXIT
 	hexdump -n 32 -v -e '1/1 "%02x"' /dev/urandom > "$tmp"
 	[ "$(wc -c < "$tmp")" != "64" ] && exit 1
-	ln "$tmp" /var/run/webcfg/csrf 2>/dev/null || [ -s /var/run/webcfg/csrf ]
+	ln "$tmp" "$_CGI_CSRF_FILE" 2>/dev/null || [ -s "$_CGI_CSRF_FILE" ]
 	# do not replace if race lost !
 )
 
 csrf_load() {
-	[ -s /var/run/webcfg/csrf ] || csrf_init || csrf_error '503 Service Unavailable' 'Cannot create CSRF token.'
-	_CGI_CSRF_TOKEN="$(cat /var/run/webcfg/csrf 2>/dev/null)"
+	[ -s "$_CGI_CSRF_FILE" ] || csrf_init || csrf_error '503 Service Unavailable' 'Cannot create CSRF token.'
+	_CGI_CSRF_TOKEN="$(cat "$_CGI_CSRF_FILE" 2>/dev/null)"
 	case $_CGI_CSRF_TOKEN in
 		''|*[!0123456789abcdef]*) csrf_error '503 Service Unavailable' 'CSRF token data invalid. Restart webcfg.' ;;
 	esac

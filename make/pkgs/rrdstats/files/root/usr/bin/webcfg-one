@@ -5,7 +5,7 @@
 DAEMON=rrdstats
 SUBDAEMON=one
 DAEMON_BIN=httpd-$SUBDAEMON
-DAEMON_ENV="PATH=$PATH"
+DAEMON_ENV="PATH=$PATH _CGI_CSRF_SCOPE=$SUBDAEMON"
 
 if [ ! -r "/mod/etc/conf/${DAEMON}.cfg" ]; then
 	echo "Error[$DAEMON]: not configured" 1>&2
