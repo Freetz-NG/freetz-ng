@@ -1,0 +1,11 @@
+--- ext/iconv/iconv.c
++++ ext/iconv/iconv.c
+@@ -38,7 +38,7 @@
+ #endif
+ 
+ #ifdef HAVE_LIBICONV
+-#undef iconv
++/*#undef iconv*/
+ #endif
+ 
+ /* iconv can have different constiness for src on some platforms;
