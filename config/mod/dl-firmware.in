@@ -803,7 +803,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7510-07.59.image"                                                          if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Box_7510-08.02.image"                                                          if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_08_0X
 	default "FRITZ.Box_7510-08.26.image"                                                          if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_08_2X
-	default "FRITZ.Box_7510-08.40-137640-LabBETA.image"                                           if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_08_5X_LABOR
+	default "FRITZ.Box_7510-08.51.image"                                                          if FREETZ_TYPE_7510                              && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Box_7520-07.14.image"                                                          if FREETZ_TYPE_7520_V1  && FREETZ_TYPE_LANG_DE   && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_7520-07.29.image"                                                          if FREETZ_TYPE_7520_V1                           && FREETZ_TYPE_FIRMWARE_07_2X
