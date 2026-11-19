@@ -9,6 +9,12 @@ external und das Freetz-Webinterface konfiguriert werden.<br>
 
 ### Weboberfläche
 
+##### HTTPS aktivieren
+Um auf das Freetz-Webinterface via HTTPS zugreifen ist ein zusätzliches Package nötig, zB [Stunnel](stunnel).<br>
+In der Standardkonfiguration von Stunnel kann Freetz auf Port :4433 erreicht werden
+und dafür wird das Zertifikat von FritzOS mitgenutzt.<br>
+
+##### Passwort zurücksetzen
 Falls das Passwort vergessen wurde, kann es so über Telnet/SSH wieder auf 'freetz' zurückgesetzt werden:<br>
 
   - old-login: Basic-Auth<br>
