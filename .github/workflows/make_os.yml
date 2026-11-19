@@ -46,7 +46,7 @@ jobs:
           - ubuntu-24.04-arm
     name: "${{ matrix.docker }} - ${{ endsWith(matrix.runner, '-arm') && 'arm64' || 'amd64' }}"
     runs-on: "${{ matrix.runner }}"
-    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+    if: github.repository != 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     steps:
 
@@ -157,6 +157,8 @@ jobs:
           echo '# FREETZ_ADD_INACTIVE_SYSTEM is not set'                                              >> .config
           echo 'FREETZ_MODULES_TEST=y'                                                                >> .config
           echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'    >> .config
+          echo 'FREETZ_REPRODUCIBLE=y'                                                                >> .config
+          echo '# FREETZ_FWMOD_SIGN is not set'                                                       >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
           [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
@@ -186,3 +188,38 @@ jobs:
           echo "##########################################################"
           ls -l images/
           sha256sum images/*
+
+      - name: rename
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          MATRIX_DOCKER: ${{ matrix.docker }}
+          MATRIX_ARCH: ${{ runner.arch }}
+        working-directory: ${{ github.workspace }}/images
+        run: |
+          MATRIX_DOCKER_NAME="$(echo "${MATRIX_DOCKER}" | tr ':' '-')"
+          for x in *.image; do
+            mv -v "$x" "$(date '+%Y-%m-%d')-${MATRIX_DOCKER_NAME}-${MATRIX_ARCH}-${GITHUB_RUN_ID}.image"
+          done
+      - name: result_again
+        run: |
+          echo "##########################################################"
+          ls -l images/
+          sha256sum images/*
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        if: github.repository == 'freetz-ng/freetz-ng'
+        with:
+          owner: Freetz-NG
+          repo: freetz-ng
+          tag: image-os
+          name: image-os
+          body: These files are internally used!
+          draft: true
+          prerelease: true
+          allowUpdates: true
+          removeArtifacts: false
+          artifacts: "images/*.image"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: false
+          artifactErrorsFailBuild: false
