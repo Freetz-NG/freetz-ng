@@ -43,13 +43,11 @@ Homepage](http://www.stunnel.org/examples/).
    verwaltet werden (Punkt 2).
    Zum Beispiel:
    <pre><code>
-   [freetz https Web-Interface]
+   [freetz-ng]
    client = no
    accept = 4433
    connect = 127.0.0.1:81
    sslVersionMin = TLSv1.2
-   cert = /tmp/flash/stunnel/certs.pem
-   key = /tmp/flash/stunnel/key.pem
    </code></pre>
 
 4. Zugriff (intern) über
