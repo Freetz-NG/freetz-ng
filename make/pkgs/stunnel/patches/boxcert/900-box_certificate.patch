@@ -1,14 +1,10 @@
 --- src/ctx.c
 +++ src/ctx.c
-@@ -1465,19 +1465,42 @@
-     return 0; /* OK */
- }
+@@ -36,6 +36,16 @@
+  */
  
+ #include "prototypes.h"
 +#include <privatekeypassword/privatekeypassword.h>
-+
-+NOEXPORT int fritzbox_passwd_get_cb(char *buf, int size, int rwflag, __attribute__((unused)) void *userdata) {
-+    return getPrivateKeyPassword_OpenSSL_Callback(buf, size, rwflag, NULL);
-+}
 +
 +NOEXPORT int is_fritzbox_key(const char *file_name) {
 +    struct stat sb;
@@ -17,6 +13,34 @@
 +        return 0;
 +    /* if it's a character device, assume it's the Fritz!OS private key file from TFFS */
 +    return S_ISCHR(sb.st_mode);
++}
+ 
+ #define MAX_ERRORS 10
+ #define MAX_ERROR_LEN 256
+@@ -213,6 +223,17 @@
+ 
+     /* NOTE: NULL cb_data value indicates a password that is not supposed
+      * to be cached, such as a CKA_ALWAYS_AUTHENTICATE PIN in PKCS#11 */
++
++    /* Supply the device password for FRITZ!OS keys loaded via OSSL_STORE. */
++    if(cb_data && cb_data->prompt_info &&
++            UI_get_string_type(uis)==UIT_PROMPT &&
++            is_fritzbox_key(cb_data->prompt_info)) {
++        if(UI_set_result(ui, uis, getPrivateKeyPassword()) < 0) {
++            s_log(LOG_ERR, "Failed to set the FRITZ!Box private key password");
++            return 0; /* FAILED */
++        }
++        return 1; /* OK */
++    }
+ 
+     /* return the cached password if available */
+     if(cb_data && cb_data->password) {
+@@ -1465,19 +1486,31 @@
+     return 0; /* OK */
+ }
+ 
++NOEXPORT int fritzbox_passwd_get_cb(char *buf, int size, int rwflag, __attribute__((unused)) void *userdata) {
++    return getPrivateKeyPassword_OpenSSL_Callback(buf, size, rwflag, NULL);
 +}
 +
  NOEXPORT int load_key_file(SERVICE_OPTIONS *section, const char *file, int *key_needed) {
@@ -28,13 +52,15 @@
  
 -    s_log(LOG_INFO, "Loading private key from file: %s", file);
 -    if(file_permissions(file))
+-        return 1; /* FAILED */
+-
+-    /* try the cached value first */
 +	fritzbox_key=is_fritzbox_key(file);
 +
 +    s_log(LOG_INFO, "Loading private%s key from file: %s", (fritzbox_key ? " FRITZ!Box" : ""), file);
 +    if(!fritzbox_key && file_permissions(file))
-         return 1; /* FAILED */
- 
--    /* try the cached value first */
++        return 1; /* FAILED */
++
      set_prompt(file);
 +    if (fritzbox_key) {
 +      /* read the Fritz!Box key */
