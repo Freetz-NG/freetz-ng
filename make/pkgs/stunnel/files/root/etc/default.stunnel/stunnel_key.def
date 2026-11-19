@@ -1,4 +1,4 @@
-CAPTION="Stunnel: $(lang de:"Privater Schl&uuml;ssel" en:"private key")"
+CAPTION="Stunnel: $(lang de:"Privater Schl&uuml;ssel" en:"Private key")"
 DESCRIPTION="$(lang de:"Hier wird die .pem Datei des privaten Schl&uuml;ssels f&uuml;r den Server-Modus hinterlegt. Diese Datei kann in der <i>key</i> Option mit dem Wert '/tmp/flash/stunnel/key.pem' unter den Stunnel-Diensten verwendet werden.<br/>Weitere Informationen sind in der <a href='http://www.stunnel.org/faq/stunnel.html#item_key__3d_keyfile' target='_blank'>Stunnel FAQ</a> zu finden." en:"The .pem private key file for the server mode is saved here. This file can be used for the <i>key</i> option with the value '/tmp/flash/stunnel/key.pem' for the stunnel services.<br/>More infos about this file can be found in the <a href='http://www.stunnel.org/faq/stunnel.html#item_key__3d_keyfile' target='_blank'>Stunnel FAQ</a>.")"
 
 CONFIG_FILE='/tmp/flash/stunnel/key.pem'

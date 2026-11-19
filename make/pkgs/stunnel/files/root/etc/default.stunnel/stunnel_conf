@@ -1,4 +1,5 @@
 #!/bin/sh
+[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 cat << EOF
 # stunnel config
@@ -14,7 +15,7 @@ RNDoverwrite = yes
 socket = a:TCP_NODELAY=1
 EOF
 
-if [ "$STUNNEL_USE_BOX_CERT" = "yes" ]; then
+if [ "$STUNNEL_USE_BOX_CERT" == "yes" ] && [ "$FREETZ_PACKAGE_STUNNEL_BOXCERT" == "y" ]; then
 	echo "cert = /var/flash/websrv_ssl_cert.pem"
 	echo "key = /var/flash/websrv_ssl_key.pem"
 else
@@ -22,10 +23,11 @@ else
 	echo "key = /tmp/flash/stunnel/key.pem"
 fi
 
-if [ ! -z "$STUNNEL_SSLOPTIONS" ]; then
+if [ -n "$STUNNEL_SSLOPTIONS" ]; then
 	echo "options = $STUNNEL_SSLOPTIONS"
 fi
 
-if [ ! -z "$STUNNEL_VERBOSE" ]; then
+if [ -n "$STUNNEL_VERBOSE" ]; then
 	echo "debug = $STUNNEL_VERBOSE"
 fi
+

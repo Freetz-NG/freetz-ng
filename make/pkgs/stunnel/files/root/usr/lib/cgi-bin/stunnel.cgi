@@ -1,24 +1,22 @@
 #!/bin/sh
 
 . /usr/lib/libmodcgi.sh
+[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 for i in crit err warning notice info debug; do
 	select "$STUNNEL_VERBOSE" "$i":verbose_${i}
 done
 
 sec_begin "$(lang de:"Starttyp" en:"Start type")"
-
 cgi_print_radiogroup_service_starttype "enabled" "$STUNNEL_ENABLED" "" "" 0
-
 sec_end
 
 sec_begin "$(lang de:"Konfiguration" en:"Configuration")"
-
+[ "$FREETZ_PACKAGE_STUNNEL_BOXCERT" == y ] && \
 cgi_print_radiogroup \
 	"use_box_cert" "$STUNNEL_USE_BOX_CERT" "" "$(lang de:"Standard-Zertifikat f&uuml;r Server-Dienste" en:"Default certificate for non-client services"):&nbsp;" \
-		"yes::$(lang de:"Ger&auml;te-Zertifikat verwenden" en:"use device certificate")" \
-		"no::$(lang de:"Eigenes Zertifikat verwenden" en:"use own certificate")"
-
+		"yes::$(lang de:"Ger&auml;te-Zertifikat" en:"Device certificate")" \
+		"no::$(lang de:"Eigenes Zertifikat" en:"Own certificate")"
 cat << EOF
 <h2>$(lang de:"Erweiterte Einstellungen" en:"Advanced settings"):</h2>
 EOF
@@ -36,13 +34,4 @@ cat << EOF
 </p>
 EOF
 sec_end
-sec_begin "$(lang de:"Dienste" en:"Services")"
 
-cat << EOF
-<ul>
-<li><a href="$(href file stunnel svcs)">$(lang de:"Dienste bearbeiten" en:"Edit services file")</a></li>
-<li><a href="$(href file stunnel certchain)">$(lang de:"Eigene Zertifikatskette bearbeiten" en:"Edit own certificate chain")</a></li>
-<li><a href="$(href file stunnel key)">$(lang de:"Eigenen privaten Schl&uuml;ssel bearbeiten" en:"Edit own private key")</a></li>
-</ul>
-EOF
-sec_end

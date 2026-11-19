@@ -1,4 +1,4 @@
-CAPTION="Stunnel: $(lang de:"Dienste" en:"services")"
+CAPTION="Stunnel: $(lang de:"Dienste" en:"Services")"
 
 CONFIG_FILE='/tmp/flash/stunnel/svcs'
 CONFIG_SAVE='modsave flash; [ "$(/mod/etc/init.d/rc.stunnel status)" != "stopped" ] && /mod/etc/init.d/rc.stunnel restart'

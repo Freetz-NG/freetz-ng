@@ -4,8 +4,7 @@ default
 { en }
 files
 {
-	etc/default.stunnel/stunnel_svcs.def
-	etc/default.stunnel/stunnel_key.def
-	etc/default.stunnel/stunnel_certchain.def
+	etc/default.stunnel/*.def
+	etc/init.d/rc.stunnel
 	usr/lib/cgi-bin/stunnel.cgi
 }

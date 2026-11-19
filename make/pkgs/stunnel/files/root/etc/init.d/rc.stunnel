@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DAEMON=stunnel
+DAEMON_LONG_NAME="Stunnel"
 . /etc/init.d/modlibrc
 
 config() {
@@ -17,20 +18,21 @@ start() {
 
 case $1 in
 	""|load)
-		[ ! -d "/tmp/flash/stunnel" ] && mkdir /tmp/flash/stunnel
+		[ ! -d "/tmp/flash/stunnel" ] && mkdir -p /tmp/flash/stunnel
+		[ ! -e "/tmp/flash/stunnel/svcs" ] && cat /mod/etc/default.stunnel/stunnel.defaults > /tmp/flash/stunnel/svcs 2>/dev/null
 
-		modreg cgi 'stunnel' 'Stunnel'
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
-		modreg file stunnel svcs 'services' 0 "stunnel_svcs"
-		modreg file stunnel key 'Own Private Key' 0 "stunnel_key"
-		modreg file stunnel certchain 'Own Certificate Chain' 0 "stunnel_certchain"
+		modreg file $DAEMON svcs "$(lang de:"Dienste" en:"Services")" 0 "stunnel_svcs"
+		modreg file $DAEMON key "$(lang de:"Privater Schlüssel" en:"Own Private Key")" 0 "stunnel_key"
+		modreg file $DAEMON certchain "$(lang de:"Zertifikats-Kette" en:"Own Certificate Chain")" 0 "stunnel_certchain"
 
 		modlib_start $STUNNEL_ENABLED
 		;;
 	unload)
-		modunreg file stunnel
+		modunreg file $DAEMON
 		modunreg daemon $DAEMON
-		modunreg cgi stunnel
+		modunreg cgi $DAEMON
 		modlib_stop
 		;;
 	start)

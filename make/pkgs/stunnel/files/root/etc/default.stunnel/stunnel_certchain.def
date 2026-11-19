@@ -1,4 +1,4 @@
-CAPTION="Stunnel: $(lang de:"Zertifikats-Kette" en:"certificate chain")"
+CAPTION="Stunnel: $(lang de:"Zertifikats-Kette" en:"Certificate chain")"
 DESCRIPTION="$(lang de:"Hier wird die .pem Datei mit der Zertifikats-Kette (&ouml;ffentliche Schl&uuml;ssel) hinterlegt. Diese Datei kann in der <i>cert</i> Option mit dem Wert '/tmp/flash/stunnel/certs.pem' unter den Stunnel-Diensten verwendet werden.<br/>Weitere Informationen sind in der <a href='http://www.stunnel.org/faq/stunnel.html#item_cert__3d_pemfile' target='_blank'>Stunnel FAQ</a> zu finden." en:"The .pem file for the certificate chain (public keys) is saved here. This file can be used for the <i>certs</i> option with the value '/tmp/flash/stunnel/certs.pem' for the stunnel services.<br/>More infos about this file can be found in the <a href='http://www.stunnel.org/faq/stunnel.html#item_cert__3d_pemfile' target='_blank'>Stunnel FAQ</a>.")"
 
 CONFIG_FILE='/tmp/flash/stunnel/certs.pem'

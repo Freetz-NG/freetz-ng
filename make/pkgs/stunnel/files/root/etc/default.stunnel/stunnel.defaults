@@ -1,0 +1,6 @@
+[freetz-ng]
+client = no
+accept = 4433
+connect = 127.0.0.1:81
+sslVersionMin = TLSv1.2
+

@@ -14,7 +14,7 @@ if FREETZ_PACKAGE_STUNNEL
 		bool "build with support for FRITZ!OS certificate"
 		depends on FREETZ_BOX_CERTIFICATE_SUPPORT_AVAILABLE
 		select FREETZ_PACKAGE_PRIVATEKEYPASSWORD
-		default n
+		default y
 		help
 			Building stunnel with FRITZ!OS support enables reuse
 			of existing key and certificate from /var/flash
