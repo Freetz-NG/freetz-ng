@@ -13,7 +13,7 @@ if FREETZ_PACKAGE_STUNNEL
 	config FREETZ_PACKAGE_STUNNEL_BOXCERT
 		bool "build with support for FRITZ!OS certificate"
 		depends on FREETZ_BOX_CERTIFICATE_SUPPORT_AVAILABLE
-		select FREETZ_PACKAGE_PRIVATEKEYPASSWORD
+		select FREETZ_LIB_libprivatekeypassword
 		default y
 		help
 			Building stunnel with FRITZ!OS support enables reuse
