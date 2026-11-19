@@ -17,7 +17,7 @@ config FREETZ_LIB_libfontconfig
 			depends on FREETZ_TARGET_UCLIBC_0
 
 		config FREETZ_LIB_libfontconfig_WITH_VERSION_CURRENT
-			bool "2.18.3"
+			bool "2.18.4"
 			depends on !FREETZ_TARGET_UCLIBC_0
 
 	endchoice
