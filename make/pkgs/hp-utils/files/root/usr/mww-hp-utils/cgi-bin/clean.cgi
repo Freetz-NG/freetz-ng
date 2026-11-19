@@ -32,6 +32,6 @@ else
 	fi
 fi
 
-echo "<form action="/cgi-bin/maint.cgi"><input type="hidden" name="action" value="clean"><input type="submit" value="$(lang de:'Zur&uuml;ck' en:'Back')"></form>"
+echo "<form action="/cgi-bin/maint.cgi"><input type="hidden" name="action" value="clean"><input type="submit" value="$(lang de:"Zur&uuml;ck" en:"Back")"></form>"
 
 cgi_end
