@@ -5,7 +5,16 @@
  dnl until the problem is fixed properly, copy_file_range() is used only on Linux
  AC_CACHE_CHECK([for copy_file_range], ac_cv_copy_file_range,
 -[AC_RUN_IFELSE([AC_LANG_SOURCE([[
-+[AC_LINK_IFELSE([AC_LANG_SOURCE([
++[AC_LINK_IFELSE([AC_LANG_SOURCE([[
  #ifdef __linux__
  #ifndef _GNU_SOURCE
  #define _GNU_SOURCE
+@@ -726,7 +726,7 @@
+ #else
+ #error "unsupported platform"
+ #endif
+-]])], [ac_cv_copy_file_range=yes], [ac_cv_copy_file_range=no], [ac_cv_copy_file_range=no])
++]])], [ac_cv_copy_file_range=yes], [ac_cv_copy_file_range=no])
+ ])
+ 
+ if test "$ac_cv_copy_file_range" = yes; then
