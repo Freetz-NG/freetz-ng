@@ -38,7 +38,7 @@ skin_body_begin() {
 <td id="edge-top-left"></td>
 <td id="edge-top">
 <div class="version">$(html < /etc/.freetz-version)</div>
-<div class="titlebar"><a href="https://freetz-ng.github.io" target="_blank" class="logo">Freetz-NG</a>&nbsp;${hname}<a href="/cgi-bin/about.cgi" target="_blank">&ndash;</a>&nbsp;<span class="title">$title</span>$help &nbsp; &nbsp; $([ "$isauth" = 1 ] && echo "<small>Session timeout: $(date -d @$(( $MOD_HTTPD_SESSIONTIMEOUT + $(date +%s) )) +'%H:%M:%S')</small>") </div>
+<div class="titlebar"><a href="https://freetz-ng.github.io" target="_blank" class="logo">Freetz-NG</a>&nbsp;${hname}<a href="/cgi-bin/about.cgi" target="_blank">&ndash;</a>&nbsp;<span class="title">$title</span>$help</div>
 </td>
 <td id="edge-top-right"></td>
 </tr>
@@ -65,7 +65,7 @@ skin_body_end() {
 <div id="footer">
 <span class="datetime" title="$(lang de:"Systemzeit des Routers" en:"Router's system time")">$(date +"$(lang de:"%d.%m.%Y" en:"%m/%d/%Y") %H:%M")</span>&nbsp;&ndash;
 <span class="uptime" title="Uptime">$(uptime | sed -r 's/.*(up.*), *load.*/\1/')</span>&nbsp;&ndash;
-<span class="opt">$(lang de:"optimiert f&uuml;r" en:"optimized for") Mozilla Firefox</span>
+<span class="opt">$([ "$isauth" = 1 ] && echo "$(lang de:"Abmeldung bei Inaktivit&auml;t" en:"Logout on inactivity") (${MOD_HTTPD_SESSIONTIMEOUT}sec): $(date -d @$(( $MOD_HTTPD_SESSIONTIMEOUT + $(date +%s) )) +'%H:%M:%S')" || echo "$(lang de:"optimiert f&uuml;r" en:"optimized for") Mozilla Firefox")</span>
 </div>
 EOF
 }
