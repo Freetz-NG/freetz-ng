@@ -158,8 +158,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzSmart
     - deutschland: [FRITZ.Box_7490-07.62.image](https://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.62.image)
     - other: [FRITZ.Box_7490-07.62.image](https://download.avm.de/fritzbox/fritzbox-7490/other/fritz.os/FRITZ.Box_7490-07.62.image)
   * fritzbox-7510/
-    - deutschland: [FRITZ.Box_7510-08.26.image](https://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-08.26.image)
-    - other: [FRITZ.Box_7510-08.26.image](https://download.avm.de/fritzbox/fritzbox-7510/other/fritz.os/FRITZ.Box_7510-08.26.image)
+    - deutschland: [FRITZ.Box_7510-08.51.image](https://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-08.51.image)
+    - other: [FRITZ.Box_7510-08.51.image](https://download.avm.de/fritzbox/fritzbox-7510/other/fritz.os/FRITZ.Box_7510-08.51.image)
   * fritzbox-7520/
     - deutschland: [FRITZ.Box_7520-08.25.image](https://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-08.25.image)
   * fritzbox-7520-B/
