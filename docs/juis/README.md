@@ -97,7 +97,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 272: [FRITZ.Box_5590_Fiber-08.40-138197-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1/5590Fiber/FRITZ.Box_5590_Fiber-08.40-138197-LabBETA.image)
 
 ### FOS-Inhaus
-  - HWR 185: [FRITZ.Box_7490-07.62-138281-Inhaus.image](http://download.example.com/inhaus/MOVE21NL3WU25/7490/FRITZ.Box_7490-07.62-138281-Inhaus.image)
+  - HWR 185: [FRITZ.Box_7490-07.62-138504-Inhaus.image](http://download.example.com/inhaus/MOVE21NL3WU25/7490/FRITZ.Box_7490-07.62-138504-Inhaus.image)
   - HWR 206: [FRITZ.Box_WLAN_Repeater_1750E-07.31-111633-Inhaus.image](http://download.example.com/inhaus/WU22PSQ19/1750E/FRITZ.Box_WLAN_Repeater_1750E-07.31-111633-Inhaus.image)
   - HWR 226: [FRITZ.Box_7590-08.54-138437-Inhaus.image](http://download.example.com/inhaus/MyFRITZOSP1NL1/7590/FRITZ.Box_7590-08.54-138437-Inhaus.image)
   - HWR 229: [FRITZ.Powerline_1260E-08.24-132169-Inhaus.image](http://download.example.com/inhaus/Smart24P2NL1/1260E/FRITZ.Powerline_1260E-08.24-132169-Inhaus.image)
