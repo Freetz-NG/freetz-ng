@@ -1,0 +1,13 @@
+--- src/pkpwd.c
++++ src/pkpwd.c
+@@ -118,6 +118,10 @@
+ 	
+ 	if (!__privateKeyPassword_GetMAC(maca))
+ 		return;
++
++	/* maca is not upcase on all devices */
++	for (size_t i = 0; maca[i]; i++)
++		maca[i] = (unsigned char) toupper(maca[i]);
+ 
+ 	md5(hash, maca, strlen((char *) maca));
+ 	
