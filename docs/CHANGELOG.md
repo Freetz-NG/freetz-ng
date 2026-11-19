@@ -115,6 +115,7 @@ Latest changes
     * Empty 0.6.23d
     * endlessh 1.1
     * FFmpeg 5.1.10/7.1.5
+    * Fontconfig 2.17.1/2.18.4
     * Git 2.26.2/2.56.1
     * GnuTLS 3.7.11/3.8.13
     * HAProxy 2.6.35
