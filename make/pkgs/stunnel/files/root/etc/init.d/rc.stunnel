@@ -24,7 +24,7 @@ case $1 in
 		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
 		modreg file $DAEMON svcs "$(lang de:"Dienste" en:"Services")" 0 "stunnel_svcs"
-		modreg file $DAEMON key "$(lang de:"Privater SchlÃ¼ssel" en:"Own Private Key")" 0 "stunnel_key"
+		modreg file $DAEMON key "$(lang de:"Privater Schlüssel" en:"Own Private Key")" 0 "stunnel_key"
 		modreg file $DAEMON certchain "$(lang de:"Zertifikats-Kette" en:"Own Certificate Chain")" 0 "stunnel_certchain"
 
 		modlib_start $STUNNEL_ENABLED
