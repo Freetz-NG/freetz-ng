@@ -5,7 +5,5 @@ default
 files
 {
 	usr/lib/cgi-bin/openssh.cgi
-	etc/default.openssh/rsa_key.def
-	etc/default.openssh/dsa_key.def
-	etc/default.openssh/ed25519_key.def
+	etc/default.openssh/*.def
 }
