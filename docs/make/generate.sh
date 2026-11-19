@@ -69,7 +69,7 @@ echo "$PKGS" | sed 's/##.*//g' | uniq | while read cat; do
 		help="$(tail -n "$T" "$INPWD/$pkg/Config.in" | head -n "$(( ${N:-99} - 1 ))" | grep -vP '^[ \t]*$' | sed 's/[ \t]*$//g;s/^[ \t]*//g;s/$/ /g' | tr -d '\n' | sed 's/ $//')"
 		[ -z "$help" ] && echo "nohelp2: $pkg" 1>&2 || echo "    $help"
 
-		[ -n "$lst" ] && echo "$lst" | while read line; do echo "     - [$line](../../docs/make/$pkg.md#$(echo "$line" | sed -re 's/(.*)/\L\1/;s/[ _]/-/g;s/[^-0-9a-z]//g'))"; done
+		[ -n "$lst" ] && echo "$lst" | while read line; do echo "     - [$line](../../docs/make/$pkg.md#$(echo "$line" | sed -re 's/(.*)/\L\1/;y/äöü/aou/;s/[ _]/-/g;s/[^-0-9a-z]//g'))"; done
 
 	done
 done >> "$INPWD/README.md"

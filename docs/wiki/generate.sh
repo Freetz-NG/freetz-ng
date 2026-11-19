@@ -13,7 +13,7 @@ for dir in $(find "$MYPWD" -mindepth 1 -type d | sed "s,^$MYPWD/,,g" | sort); do
 		echo "  - [$dsc]($dir/$file)" >> "$MYPWD/README.md"
 		echo "  - [$dsc]($file)" >> "$MYPWD/$dir/README.md"
 		sed -n 's/^### //p' "$MYPWD/$dir/$file" | while read sub; do
-			anc="$(echo "$sub" | sed -re 's/(.*)/\L\1/;s/[ _]/-/g;s/[^-0-9a-z]//g')"
+			anc="$(echo "$sub" | sed -re 's/(.*)/\L\1/;y/äöü/aou/;s/[ _]/-/g;s/[^-0-9a-z]//g')"
 			echo "    * [$sub]($file#$anc)" >> "$MYPWD/$dir/README.md"
 		done
 	done
