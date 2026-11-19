@@ -36,10 +36,10 @@ include skin
 
 include_module menu
 
-if [ "$MOD_HTTPD_NEWLOGIN" = yes ]; then
+if [ "$MOD_HTTPD_NEWLOGIN" == "yes" ] && [ "$WEBIF" == "mww" ]; then
 	include login
 	checklogin
-	[ "$isauth" = 0 ] && . /usr/mww/cgi-bin/login_page.sh && exit
+	[ "$isauth" == "0" ] && . /usr/mww/cgi-bin/login_page.sh && exit
 fi
 
 include csrf
