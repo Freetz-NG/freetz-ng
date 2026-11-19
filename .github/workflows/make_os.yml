@@ -46,7 +46,7 @@ jobs:
           - ubuntu-24.04-arm
     name: "${{ matrix.docker }} - ${{ endsWith(matrix.runner, '-arm') && 'arm64' || 'amd64' }}"
     runs-on: "${{ matrix.runner }}"
-    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+    if: github.repository != 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
 
     steps:
 
