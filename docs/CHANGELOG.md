@@ -103,6 +103,7 @@ Latest changes
     * Various Fritzos 8.50 related fixes
 
   - Packages:
+    * ACME.sh 3.1.7
     * Apache2 2.4.71
     * AutoFS 5.0.5/5.2.0
     * axTLS wrapper 2.1.5
