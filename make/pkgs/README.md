@@ -658,7 +658,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
     A set of tools for reading and converting Fritz!Box phone book to such (easy parseable) formats like: - .csv (comma-separated values), or - .tsv (tab-separated values).
 
-  * **[PHP 5.6.40/8.2.35/8.3.36/8.4.27/8.5.12 (binary only)](../../docs/make/php.md)<a id='php'></a>**<br>
+  * **[PHP 5.6.40/8.2.36/8.3.37/8.4.28/8.5.13/8.6.0 (binary only)](../../docs/make/php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
      - [Memory usage](../../docs/make/php.md#memory-usage)
 

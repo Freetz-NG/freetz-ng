@@ -1,4 +1,4 @@
-# PHP 5.6.40/8.2.35/8.3.36/8.4.27/8.5.12 (binary only)
+# PHP 5.6.40/8.2.36/8.3.37/8.4.28/8.5.13/8.6.0 (binary only)
   - Homepage: [https://www.php.net](https://www.php.net)
   - Manpage: [https://www.php.net/docs.php](https://www.php.net/docs.php)
   - Changelog: [https://github.com/php/php-src/releases](https://github.com/php/php-src/releases)
