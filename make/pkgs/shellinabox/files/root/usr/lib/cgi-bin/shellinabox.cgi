@@ -3,8 +3,8 @@
 . /usr/lib/libmodcgi.sh
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
-if  $(echo "$QUERY_STRING" | grep -q dogencert ); then
-	csrf_check required
+eval "$(modcgi dogencert shellinabox_action)"
+if [ "$REQUEST_METHOD" == "POST" ] && [ "$SHELLINABOX_ACTION_DOGENCERT" == "yes" ]; then
 	sh /mod/etc/default.shellinabox/generate_cert.sh
 	echo '<textarea id="certout">'
 	cat /tmp/shellinabox_certificate.pem
@@ -75,7 +75,7 @@ if which openssl_req >/dev/null 2>&1; then
 cat << EOF
 $(lang de:"Die Box kann ein minimales, selbst signiertes Zertifikat erstellen. Das dauert etwas..." en:"This will build a self signed certificate on the box. Will take some time..")
 <iframe name="dummy" id="id_iframe" style="display:none;" width=500 height=100 frameborder="0"> </iframe>
-<input type="button" value="$(lang de:"Zertifikat erstellen" en:"Generate certificate")" onclick='document.getElementById("id_iframe").src=csrfUrl("/cgi-bin/conf/shellinabox?dogencert"); target="dummy"'>
+<input type="button" value="$(lang de:"Zertifikat erstellen" en:"Generate certificate")" onclick='csrfPost("/cgi-bin/conf/shellinabox?freetz_action=1",{dogencert:"yes"},"dummy")'>
 EOF
 fi
 

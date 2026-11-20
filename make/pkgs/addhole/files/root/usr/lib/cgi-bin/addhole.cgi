@@ -18,9 +18,9 @@ let INIT_WINDOW_WIDTH=$MOD_CGI_WIDTH+78
 
 cat << EOF
 <p>
-<input type="button" value="$(lang de:"Hosts jetzt herunterladen" en:"Download hosts now")" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) window.open(csrfUrl('$(href extra addhole download)'),'$(lang de:"Lade Hosts herunterladen" en:"Downloading hosts now")','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" />
+<input type="button" value="$(lang de:"Hosts jetzt herunterladen" en:"Download hosts now")" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) csrfPost('$(href extra addhole download)',null,'$(lang de:"Lade Hosts herunterladen" en:"Downloading hosts now")','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" />
 &nbsp;
-<input type="button" value="$(lang de:"Hosts-Datei leeren" en:"Clear hosts file")" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) window.open(csrfUrl('$(href extra addhole clear)'),'$(lang de:"Leere Hosts-Datei" en:"Clearing hosts file")','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" />
+<input type="button" value="$(lang de:"Hosts-Datei leeren" en:"Clear hosts file")" onclick="if (confirm('$(lang de:"Fortfahren?" en:"Proceed?")')==true) csrfPost('$(href extra addhole clear)',null,'$(lang de:"Leere Hosts-Datei" en:"Clearing hosts file")','menubar=no,width=$INIT_WINDOW_WIDTH,height=600,toolbar=no,resizable=yes,scrollbars=yes');" />
 </p>
 EOF
 

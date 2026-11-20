@@ -6,8 +6,7 @@
 
 eval "$(modcgi branding:pkg:cmd mod_cgi)"
 
-if [ -n "$MOD_CGI_CMD" ]; then
-	csrf_check required
+if [ "$REQUEST_METHOD" == "POST" ] && [ -n "$MOD_CGI_CMD" ]; then
 	sec_begin "$(lang de:"Hinweis" en:"Remark")"
 	echo "<font size=-2 color=red><br>$(lang de:"Die Datenbank wird neu aufgebaut. Dies kann eine Weile dauern." en:"The database will be recreated. This may take a while.")<br></font>"
 	sec_end

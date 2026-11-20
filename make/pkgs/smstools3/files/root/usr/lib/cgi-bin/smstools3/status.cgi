@@ -4,8 +4,7 @@
 . /usr/lib/libmodcgi.sh
 
 eval "$(modcgi branding:pkg:number:message:flash mod_cgi)"
-if [ -n "$MOD_CGI_NUMBER" -a "$MOD_CGI_NUMBER" != "+49" ]; then
-	csrf_check required
+if [ "$REQUEST_METHOD" == "POST" ] && [ -n "$MOD_CGI_NUMBER" ] && [ "$MOD_CGI_NUMBER" != "+49" ]; then
 	sec_begin "$(lang de:"Hinweis" en:"Remark")"
 	echo "<font color=red><br>"
 	/mod/etc/init.d/rc.smstools3 sendsms $MOD_CGI_FLASH $MOD_CGI_NUMBER $MOD_CGI_MESSAGE

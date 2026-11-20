@@ -4,7 +4,7 @@
 
 cgi_width=560
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 eval "$(modcgi mac:interf:prog wol)"
 

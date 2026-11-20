@@ -16,6 +16,13 @@ fi
 ACTION="$(cgi_param action)"
 FAMILY="$(cgi_param family)"
 VIEW="$(cgi_param view)"
+AJAX="$(cgi_param ajax)"
+if [ "$REQUEST_METHOD" == "POST" ]; then
+	eval "$(modcgi action:family:ajax:fwd_family:fwd_if:fwd_val:fwd_persist:edit_family:edit_table:edit_chain:chain_rules iptng)"
+	ACTION=$IPTNG_ACTION
+	FAMILY=$IPTNG_FAMILY
+	AJAX=$IPTNG_AJAX
+fi
 ACTION_MSG=""
 ACTION_RC=0
 SERVICE_RUNNING=0
@@ -725,7 +732,7 @@ EOF
 <summary><b>$chain</b>$( [ -z "$rule_text" ] && echo " - $(lang de:"leer" en:"empty")" )</summary>
 <div style='margin:3px 0;'>
 <textarea id='$area_id' name='$key' rows='$row_count' cols='90' style='width:98%;'>$(html "$rule_text")</textarea><br>
-<button type='button' onclick="(function(){var t=document.getElementById('$area_id');var u='$(cgi_url "view=$VIEW&action=save_chain&edit_family=$family&edit_table=$table&edit_chain=$chain")';u += '&$key=' + encodeURIComponent(t ? t.value : '');window.location.href=csrfUrl(u);})(); return false;">$(lang de:"Kette speichern" en:"Save chain")</button>
+<button type='button' onclick="var t=document.getElementById('$area_id');return csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'save_chain',edit_family:'$family',edit_table:'$table',edit_chain:'$chain',chain_rules:t?t.value:''});">$(lang de:"Kette speichern" en:"Save chain")</button>
 </div>
 </details>
 EOF
@@ -740,7 +747,7 @@ run_action() {
 	[ -n "$ACTION" ] || return
 	case $ACTION in
 		status|get_fwd) ;;
-		*) csrf_check required ;;
+		*) [ "$REQUEST_METHOD" == "POST" ] || return ;;
 	esac
 	case "$ACTION" in
 		start|stop|restart|status)
@@ -767,9 +774,9 @@ run_action() {
 			;;
 		set_fwd)
 			local fwd_family fwd_if fwd_val
-			fwd_family="$(cgi_param fwd_family)"
-			fwd_if="$(cgi_param fwd_if)"
-			fwd_val="$(cgi_param fwd_val)"
+			fwd_family="$IPTNG_FWD_FAMILY"
+			fwd_if="$IPTNG_FWD_IF"
+			fwd_val="$IPTNG_FWD_VAL"
 			[ -n "$fwd_family" ] || fwd_family=ipv4
 			if set_iface_forwarding "$fwd_family" "$fwd_if" "$fwd_val" >/tmp/iptables-ng_action.log 2>&1; then
 				# If this iface is marked persistent, update only the staged persistence file.
@@ -785,9 +792,9 @@ run_action() {
 			;;
 		set_fwd_persist)
 			local fwd_family fwd_if fwd_persist fwd_state
-			fwd_family="$(cgi_param fwd_family)"
-			fwd_if="$(cgi_param fwd_if)"
-			fwd_persist="$(cgi_param fwd_persist)"
+			fwd_family="$IPTNG_FWD_FAMILY"
+			fwd_if="$IPTNG_FWD_IF"
+			fwd_persist="$IPTNG_FWD_PERSIST"
 			[ -n "$fwd_family" ] || fwd_family=ipv4
 			if [ "$fwd_persist" = 1 ]; then
 				fwd_state="$(iface_forward_state "$fwd_family" "$fwd_if")"
@@ -834,12 +841,11 @@ run_action() {
 			esac
 			;;
 		save_chain)
-			local edit_family edit_table edit_chain key chain_payload
-			edit_family="$(cgi_param edit_family)"
-			edit_table="$(cgi_param edit_table)"
-			edit_chain="$(cgi_param edit_chain)"
-			key="chain_rules_${edit_family}_${edit_table}_${edit_chain}"
-			chain_payload="$(cgi_param "$key")"
+			local edit_family edit_table edit_chain chain_payload
+			edit_family="$IPTNG_EDIT_FAMILY"
+			edit_table="$IPTNG_EDIT_TABLE"
+			edit_chain="$IPTNG_EDIT_CHAIN"
+			chain_payload=$IPTNG_CHAIN_RULES
 			if [ -z "$edit_family" ] || [ -z "$edit_table" ] || [ -z "$edit_chain" ]; then
 				ACTION_RC=1
 				ACTION_MSG="$(lang de:"Chain-Editor: ungueltige Parameter" en:"Chain editor: invalid parameters")"
@@ -856,7 +862,7 @@ run_action() {
 
 run_action
 
-if [ "$(cgi_param ajax)" = "1" ]; then
+if [ "$AJAX" = "1" ]; then
 	if [ "$ACTION_RC" -eq 0 ]; then
 		echo "__IPTNG_OK__|$ACTION_MSG"
 	else
@@ -962,8 +968,9 @@ function iptNgSetFwd(fam, ifn, val, stateId) {
 		}
 		iptNgVerifyFwd(fam, ifn, expected, stateId, 5);
 	};
-	xhr.open('GET', csrfUrl('$(cgi_url "view=$VIEW&action=set_fwd&ajax=1")' + '&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_val=' + encodeURIComponent(val)), true);
-	xhr.send(null);
+	xhr.open('POST', '$(cgi_url "view=$VIEW&freetz_action=1")', true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.send('csrf_token=$_CGI_CSRF_TOKEN&action=set_fwd&ajax=1&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_val=' + encodeURIComponent(val));
 }
 
 function iptNgSetFwdPersist(fam, ifn, persistVal, checkboxId) {
@@ -980,8 +987,9 @@ function iptNgSetFwdPersist(fam, ifn, persistVal, checkboxId) {
 		if (cb) cb.checked = (persistVal !== '1');
 		iptNgSetMsg((p.kind === 'err' && p.msg) ? p.msg : '$(lang de:"Persistenz-Update fehlgeschlagen" en:"Persistence update failed")', '#b00020');
 	};
-	xhr.open('GET', csrfUrl('$(cgi_url "view=$VIEW&action=set_fwd_persist&ajax=1")' + '&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_persist=' + encodeURIComponent(persistVal)), true);
-	xhr.send(null);
+	xhr.open('POST', '$(cgi_url "view=$VIEW&freetz_action=1")', true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhr.send('csrf_token=$_CGI_CSRF_TOKEN&action=set_fwd_persist&ajax=1&fwd_family=' + encodeURIComponent(fam) + '&fwd_if=' + encodeURIComponent(ifn) + '&fwd_persist=' + encodeURIComponent(persistVal));
 }
 </script>
 <p style='margin:4px 0;'>
@@ -1005,22 +1013,22 @@ cat << EOF
 </div>
 <div style='margin-bottom:2px;'>
 <b>$(lang de:"Aktionen" en:"Actions"):</b>&nbsp;
-<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=save")');">$(lang de:"Alles speichern" en:"Save all")</button>
+<button type='button' onclick="csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'save'});">$(lang de:"Alles speichern" en:"Save all")</button>
 &nbsp;
-<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=restore")');">$(lang de:"Alles wiederherstellen" en:"Restore all")</button>
+<button type='button' onclick="csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'restore'});">$(lang de:"Alles wiederherstellen" en:"Restore all")</button>
 </div>
 <div style='margin-bottom:2px;'>
 <b>IPv4:</b>&nbsp;
-<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=save&family=ipv4")');">$(lang de:"IPv4 speichern" en:"Save IPv4")</button>
+<button type='button' onclick="csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'save',family:'ipv4'});">$(lang de:"IPv4 speichern" en:"Save IPv4")</button>
 &nbsp;
-<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=restore&family=ipv4")');">$(lang de:"IPv4 wiederherstellen" en:"Restore IPv4")</button>
+<button type='button' onclick="csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'restore',family:'ipv4'});">$(lang de:"IPv4 wiederherstellen" en:"Restore IPv4")</button>
 &nbsp;<span style='font-size:11px;'>$SAVEFILE_V4 ($(savefile_status "$SAVEFILE_V4"))</span>
 </div>
 <div>
 <b>IPv6:</b>&nbsp;
-<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=save&family=ipv6")');">$(lang de:"IPv6 speichern" en:"Save IPv6")</button>
+<button type='button' onclick="csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'save',family:'ipv6'});">$(lang de:"IPv6 speichern" en:"Save IPv6")</button>
 &nbsp;
-<button type='button' onclick="window.location.href=csrfUrl('$(cgi_url "view=$VIEW&action=restore&family=ipv6")');">$(lang de:"IPv6 wiederherstellen" en:"Restore IPv6")</button>
+<button type='button' onclick="csrfPost('$(cgi_url "view=$VIEW&freetz_action=1")',{action:'restore',family:'ipv6'});">$(lang de:"IPv6 wiederherstellen" en:"Restore IPv6")</button>
 &nbsp;<span style='font-size:11px;'>$SAVEFILE_V6 ($(savefile_status "$SAVEFILE_V6"))</span>
 </div>
 </div>

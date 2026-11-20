@@ -10,10 +10,9 @@ check "$PRIVOXY_ENFORCE_BLOCKS" 1:enforce_blocks_yes "*":enforce_blocks_no
 check "$PRIVOXY_CGI_CRUNCH" 1:cgi_crunch_yes "*":cgi_crunch_no
 select "$PRIVOXY_FORWARD_SOCKS_TYPE" socks5:socks5 socks5t:socks5t "*":socks4a
 
-if [ "$(cgi_param load_adblocklist)" == "yes" -a -n "$(cgi_param alt_path)" ]; then
-	csrf_check required
-	PRIVOXY_ALT_PATH=$(cgi_param alt_path)
-	/mod/etc/default.privoxy/privoxy_loadadblocklist ${PRIVOXY_ALT_PATH}
+eval "$(modcgi load_adblocklist:alt_path privoxy_action)"
+if [ "$REQUEST_METHOD" == "POST" ] && [ "$PRIVOXY_ACTION_LOAD_ADBLOCKLIST" == "yes" ] && [ -n "$PRIVOXY_ACTION_ALT_PATH" ]; then
+	/mod/etc/default.privoxy/privoxy_loadadblocklist ${PRIVOXY_ACTION_ALT_PATH}
 fi
 
 sec_begin "$(lang de:"Starttyp" en:"Start type")"
@@ -34,7 +33,7 @@ sec_begin "$(lang de:"Filter" en:"Content Filter")"
 cat << EOF
 <h2>$(lang de:"Privoxy soll Inhalte beim Surfen filtern" en:"Privoxy shall filter internet content")</h2>
 <p><input id="e3" type="radio" name="toggle" value="1"$toggle_chk><label for="e3"> $(lang de:"Ja" en:"Yes")</label> <input id="e4" type="radio" name="toggle" value="0"$neutral_chk><label for="e4"> $(lang de:"Nein" en:"No")</label></p>
-<p>$(lang de:"Externes Verzeichnis f&uuml;r Privoxy Filterdateien:" en:"External directory for privoxy filter files:")  <input id="e11" type="text" name="alt_path" value="$PRIVOXY_ALT_PATH" size="30" maxlength="255"><br />
+<p>$(lang de:"Externes Verzeichnis f&uuml;r Privoxy Filterdateien:" en:"External directory for privoxy filter files:")  <input id="e11" type="text" name="alt_path" value="$PRIVOXY_ACTION_ALT_PATH" size="30" maxlength="255"><br />
 <span style="font-size:x-small">$(lang de:"Der Flashspeicher der Box ist begrenzt und aktuelle Filterdateien teilweise recht gro&szlig;. Mit dieser Option werden die Dateien <i>user.action</i> und <i>user.filter</i> aus dem angegeben Verzeichnis verwendet (verweist sinnvollerweise auf ein externes Verzeichnis)." en:"Internal flash memory is limited. With this option privoxy loads <i>user.action</i> and <i>user.filter</i> from the given directory (usually outside the flash memory of the box).")</span>
 </p>
 <p>enable-remote-toggle:  <input id="e5" type="radio" name="enable_remote_toggle" value="1"$remote_toggle_yes_chk><label for="e5"> $(lang de:"Ja" en:"set")</label> <input id="e6" type="radio" name="enable_remote_toggle" value="0"$remote_toggle_no_chk><label for="e6"> $(lang de:"Nein" en:"unset")</label><br />
@@ -54,7 +53,7 @@ sec_begin "$(lang de:"AdBlock Plus"  en:"AdBlock Plus")"
 if [ "$FREETZ_PACKAGE_PRIVOXY_WITH_ADBLOCK" = "y" ]; then
 cat << EOF
 <p><input type="hidden" name="get_adblocklist" value="">
-<input id="e10" type="checkbox" name="get_adblocklist" value="yes" $getadblocklist_chk><label for="e10"> $(lang de:"Filterliste von AdBlock Plus bei jedem Start importieren" en:"Import AdBlock Plus filter on every startup")</label> <input type="button" value="$(lang en:"Import now" de:"Jetzt importieren")" onclick='tmp="$(href cgi privoxy load_adblocklist=yes alt_path=)"+document.getElementById("e11").value; location.href=csrfUrl(tmp)'><br />
+<input id="e10" type="checkbox" name="get_adblocklist" value="yes" $getadblocklist_chk><label for="e10"> $(lang de:"Filterliste von AdBlock Plus bei jedem Start importieren" en:"Import AdBlock Plus filter on every startup")</label> <input type="button" value="$(lang en:"Import now" de:"Jetzt importieren")" onclick='csrfPost("$(href cgi privoxy freetz_action=1)",{load_adblocklist:"yes",alt_path:document.getElementById("e11").value})'><br />
 <span style="font-size:x-small">$(lang de:"Wartet bis zu 15 Sekunden auf die Verf&uuml;gbarkeit des Internets; wegen der Gr&ouml;&szlig;e nur mit externem Verzeichnis sinnvoll" en:"Waiting for internet connectivity may delay startup for up to 15 seconds; because of the size only reasonable with external directory")</span>
 </p>
 <p><label for="e12">$(lang de:"URL zur Adblock Plus Filterliste:" en:"URL to AdBlock Plus filter list:")</label>  <input id="e12" type="text" name="adblock_url" value="$PRIVOXY_ADBLOCK_URL" size="60" maxlength="255" title="https://easylist-downloads.adblockplus.org/easylistgermany+easylist.txt"><br />
