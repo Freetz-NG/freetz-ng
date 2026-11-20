@@ -102,8 +102,7 @@ print_mp() {
 
 
 errpath=""
-if [ "$sec_level" -eq 0 -a -n "$MOUNTED_CMD" ]; then
-	csrf_check required
+if [ "$REQUEST_METHOD" == "POST" ] && [ "$sec_level" -eq 0 ] && [ -n "$MOUNTED_CMD" ]; then
 	case $MOUNTED_CMD in
 		R)       do_remount -r "$MOUNTED_PATH" ;;
 		W)       do_remount -w "$MOUNTED_PATH" ;;

@@ -11,7 +11,8 @@ cgi_begin "$(lang de:"Konfiguration sichern/wiederherstellen" en:"Backup/restore
 #  wget "https://github.com/PeterPawn/decoder/raw/master/bin/decoder.$(uname -m)" -O /mod/usr/bin/decoder
 
 cat << EOF
-<form action="do_backup.cgi" method="GET">
+<form action="do_backup.cgi" method="POST">
+$(csrf_input)
 	<h1>$(lang de:"Sicherung" en:"Backup")</h1>
 
 	<p>

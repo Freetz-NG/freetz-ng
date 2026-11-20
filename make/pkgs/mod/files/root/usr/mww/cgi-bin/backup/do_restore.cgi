@@ -2,7 +2,7 @@
 <%
 
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 cgi --id=do_restore
 cgi_begin "$(lang de:"Konfiguration wiederherstellen (Restore)" en:"Restore configuration")"

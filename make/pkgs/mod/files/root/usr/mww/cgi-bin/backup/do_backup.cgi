@@ -1,5 +1,8 @@
 #!/bin/sh
 
+. /usr/lib/libmodcgi.sh
+csrf_require_post
+
 . /bin/env.mod.rcconf
 
 # Make sure that no command accidentally writes stdout or stderr stuff into
@@ -11,8 +14,9 @@ fail() {
 	[ -z "$FAIL" ] && FAIL="$@"
 }
 
+csrf_check__read_post
 para() {
-	echo "&$QUERY_STRING" | sed -rn "s/.*&${1}=([^&]*).*/\1/p"
+	sed -rn "s/(^|.*&)${1}=([^&]*).*/\\2/p" "$_CGI_POST_FILE"
 }
 DOEXP="$(para 'do_export')"
 DOENC="$(para 'do_encrypt')"
