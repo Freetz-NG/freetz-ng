@@ -1,0 +1,10 @@
+. /mod/etc/conf/mod.cfg
+inetdcfg_desc="Rudi"
+inetdcfg_port=$MOD_RUDI_PORT
+inetdcfg_sock=stream
+inetdcfg_proto=tcp$1
+inetdcfg_flags=nowait
+inetdcfg_user=root
+inetdcfg_exe=/usr/bin/webcfg-rudi
+inetdcfg_arg0=webcfg-rudi
+inetdcfg_args="-i"

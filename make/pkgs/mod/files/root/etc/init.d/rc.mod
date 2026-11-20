@@ -102,7 +102,7 @@ start() {
 	echo "Freetz-NG $(sed 's/^freetz-//;s/^ng-//' /etc/.freetz-version)"
 
 	# Basic Packages: links
-	for pkg in crond telnetd webcfg stickymon dsld ftpd rextd multid swap external websrv smbd; do
+	for pkg in crond telnetd webcfg stickymon dsld ftpd rextd multid rudi swap external websrv smbd; do
 		local pkg_default=/etc/default.$pkg
 		[ -d "$pkg_default" -a ! -e "/mod${pkg_default}" ] && ln -s "$pkg_default" "/mod${pkg_default}"
 		local rc="/etc/init.d/rc.$pkg"
@@ -133,7 +133,7 @@ start() {
 	fi
 
 	# Basic Packages: load
-	for pkg in crond telnetd webcfg stickymon dsld ftpd rextd multid swap external websrv; do
+	for pkg in crond telnetd webcfg stickymon dsld ftpd rextd multid rudi swap external websrv; do
 		local rc="/etc/init.d/rc.$pkg"
 		[ -x "$rc" ] && "$rc"
 	done
@@ -209,7 +209,7 @@ stop() {
 	[ -n "$MOD_SHUTDOWN_FIRST" ] && stop_helper $MOD_SHUTDOWN_FIRST
 
 	local all_packages=""
-	for pkg in $(cat /etc/static.pkg 2>/dev/null) crond telnetd webcfg stickymon dsld ftpd rextd multid; do
+	for pkg in $(cat /etc/static.pkg 2>/dev/null) crond telnetd webcfg stickymon dsld ftpd rextd multid rudi; do
 		if ! echo " $MOD_SHUTDOWN_FIRST $MOD_SHUTDOWN_IGNORE $MOD_SHUTDOWN_LAST " | grep -q " $pkg "; then
 			all_packages="$all_packages $pkg"
 		fi

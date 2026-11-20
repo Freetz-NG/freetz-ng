@@ -33,6 +33,7 @@ apply_changes() {
 			start_stop $startORstop websrv "$OLDSTATUS_websrv"
 			;;
 		mod)
+			start_stop $startORstop rudi "$OLDSTATUS_rudi"
 			start_stop $startORstop swap "$OLDSTATUS_swap"
 			# external
 			if [ -x /mod/etc/init.d/rc.external ]; then
@@ -108,7 +109,7 @@ echo -n "<pre class='log.small'>"
 exec 2>&1
 
 back="mod status"
-unset OLDSTATUS_telnetd OLDSTATUS_multid OLDSTATUS_rextd OLDSTATUS_websrv OLDSTATUS_swap OLDSTATUS_external RELOAD_external OLDSTATUS_webcfg
+unset OLDSTATUS_telnetd OLDSTATUS_multid OLDSTATUS_rextd OLDSTATUS_websrv OLDSTATUS_swap OLDSTATUS_external RELOAD_external OLDSTATUS_webcfg OLDSTATUS_rudi
 
 if $default; then
 	hook=def
@@ -149,6 +150,7 @@ if [ -r "/mod/etc/default.$package/$package.cfg" ]; then
 			OLDSTATUS_swap=$(rc_status swap)
 			OLDSTATUS_external=$(rc_status external)
 			OLDSTATUS_webcfg=$(rc_status webcfg)
+			OLDSTATUS_rudi=$(rc_status rudi)
 			;;
 		*)
 			back="cgi $package"

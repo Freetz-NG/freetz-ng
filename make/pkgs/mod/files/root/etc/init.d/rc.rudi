@@ -1,0 +1,52 @@
+#!/bin/sh
+
+DAEMON=rudi
+DAEMON_LONG_NAME="Rudi"
+DAEMON_BIN=httpd-$DAEMON
+PID_FILE=/var/run/webcfg-$DAEMON.pid
+DAEMON_CONFIG=/mod/etc/httpd-$DAEMON.conf
+CONF_NAME=mod
+CONF_ENABLED=MOD_RUDI_ENABLED
+. /etc/init.d/modlibrc
+
+config() {
+	modlib_config httpd-$DAEMON
+}
+
+start() {
+	modlib_startdaemon webcfg-$DAEMON -P "$PID_FILE"
+}
+
+case $1 in
+	config)
+		config
+		;;
+	""|load)
+		modlib_add_httpd_symlink $DAEMON
+		modreg daemon -p mod $DAEMON
+
+		modlib_start $MOD_RUDI_ENABLED
+		;;
+	unload)
+		modunreg daemon mod $DAEMON
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status|config]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

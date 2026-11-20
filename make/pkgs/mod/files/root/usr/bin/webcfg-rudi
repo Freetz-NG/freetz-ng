@@ -1,0 +1,18 @@
+#!/bin/sh
+
+. /var/env.mod.daemon
+
+DAEMON=mod
+SUBDAEMON=rudi
+DAEMON_BIN=httpd-$SUBDAEMON
+DAEMON_ENV="PATH=$PATH _CGI_CSRF_SCOPE=$SUBDAEMON"
+
+if [ ! -r "/mod/etc/conf/${DAEMON}.cfg" ]; then
+	echo "Error[$DAEMON]: not configured" 1>&2
+	exit 1
+fi
+. /mod/etc/conf/${DAEMON}.cfg
+
+homedir=/usr/mww-rudi/
+
+exec env - $DAEMON_ENV $DAEMON_BIN "$@" -p "$MOD_RUDI_PORT" -c /mod/etc/httpd-${SUBDAEMON}.conf -h "$homedir" -r "Rudi"

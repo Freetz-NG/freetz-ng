@@ -1,0 +1,2 @@
+#!/bin/sh
+[ "$MOD_RUDI_AUTH" = yes ] && echo "/:$MOD_RUDI_USER:$(httpd -m $MOD_RUDI_PASS)"
