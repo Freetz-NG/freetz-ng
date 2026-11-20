@@ -23,7 +23,7 @@ case $1 in
 		;;
 	""|load)
 		modlib_add_httpd_symlink $DAEMON
-		modreg daemon -p mod $DAEMON
+		modreg daemon -p mod -n "$DAEMON_LONG_NAME" $DAEMON
 
 		modlib_start $MOD_RUDI_ENABLED
 		;;
