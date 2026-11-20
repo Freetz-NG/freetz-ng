@@ -36,7 +36,7 @@ include skin
 
 include_module menu
 
-if [ "$MOD_HTTPD_NEWLOGIN" == "yes" ] && [ "$WEBIF" == "mww" ]; then
+if [ -n "$REQUEST_METHOD" ] && [ "$MOD_HTTPD_NEWLOGIN" == "yes" ] && [ "$WEBIF" == "mww" ]; then
 	include login
 	checklogin
 	[ "$isauth" == "0" ] && . /usr/mww/cgi-bin/login_page.sh && exit
