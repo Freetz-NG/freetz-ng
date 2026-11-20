@@ -10,7 +10,7 @@ _cgi_print_extra_styles() {
 _cgi_print_session_timeout() {
 	local label="$(lang de:"Abmeldung bei Inaktivit&auml;t" en:"Logout on inactivity")"
 	if [ "$MOD_HTTPD_TIMEOUT" -gt 0 ] 2>/dev/null; then
-		echo "$label (${MOD_HTTPD_TIMEOUT} min): $(date -d @$(( ${MOD_HTTPD_TIMEOUT#"${MOD_HTTPD_TIMEOUT%%[!0]*}"} * 60 + $(date +%s) )) +'%H:%M:%S')"
+		echo "$label: $(date -d @$(( ${MOD_HTTPD_TIMEOUT#"${MOD_HTTPD_TIMEOUT%%[!0]*}"} * 60 + $(date +%s) )) +'%H:%M:%S') (${MOD_HTTPD_TIMEOUT} min)"
 	else
 		echo "$label: $(lang de:"deaktiviert" en:"disabled")"
 	fi
