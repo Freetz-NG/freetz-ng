@@ -10,7 +10,7 @@ $(PKG)_SITE:=git@https://github.com/TangoCash/lcd4linux.git
 $(PKG)_BINARY:=$($(PKG)_DIR)/lcd4linux
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/lcd4linux
 
-$(PKG)_DEPENDS_ON += ncurses libgd jpeg libusb libusb1 libftdi
+$(PKG)_DEPENDS_ON += ncurses libgd jpeg libusb0 libusb1 libftdi
 
 $(PKG)_CONFIGURE_PRE_CMDS += echo "\#define VCS_VERSION \"$($(PKG)_VERSION)\"" > vcs_version.h;
 $(PKG)_CONFIGURE_PRE_CMDS += ./bootstrap;
