@@ -15,4 +15,4 @@ fi
 
 homedir=/mod/pkg/${DAEMON}/usr/mww-${SUBDAEMON}/
 
-exec env - $DAEMON_ENV $DAEMON_BIN "$@" -p "$LCD4LINUX_WEB_PORT" -h "$homedir"
+exec env - $DAEMON_ENV $DAEMON_BIN "$@" -p "$LCD4LINUX_WEB_PORT" -h "$homedir" -r "LCD4linux"

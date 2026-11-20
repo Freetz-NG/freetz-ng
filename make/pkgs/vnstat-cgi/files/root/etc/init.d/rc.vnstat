@@ -9,7 +9,7 @@ DAEMON_LONG_NAME="vnStat"
 DAEMON_CFGFILE=/tmp/flash/$DAEMON/$DAEMON.conf
 . /etc/init.d/modlibrc
 
-HTTPD_PID_VNS=/var/run/httpd_vns.pid
+HTTPD_PID_VNS=/var/run/httpd-vns.pid
 
 config_vns1() {
 	if [ -z "$VNSTAT_INTERFACES" ]; then
