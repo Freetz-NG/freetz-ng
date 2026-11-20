@@ -4,10 +4,10 @@ WRONGPW=0
 ID_IP=$(cat /tmp/pwchangesid 2>/dev/null)
 CHAL=${ID_IP%#*}
 IP=${ID_IP#*#}
-oldhash="$(echo "$QUERY_STRING" | sed -n "s%.*oldhash=\([^\?\&]*\).*%\1%p")"
-newhash="$(echo "$QUERY_STRING" | sed -n "s%.*newhash=\([^\?\&]*\).*%\1%p")"
+oldhash=$PWCHANGE_OLDHASH
+newhash=$PWCHANGE_NEWHASH
 UPWHASH="$(cat /tmp/flash/mod/webmd5)"
-myhash="$(echo -n "$CHAL$UPWHASH" | md5sum | sed 's/[ ]*-.*//')"
+myhash="$(echo -n "$CHAL$UPWHASH" | md5sum | sed 's/  .*//')"
 
 
 if [ "$REMOTE_ADDR" = "$IP" -a  "$oldhash" = "$myhash" ]; then
@@ -18,6 +18,7 @@ if [ "$REMOTE_ADDR" = "$IP" -a  "$oldhash" = "$myhash" ]; then
 else
 	WRONGPW=1
 	QUERY_STRING=""
+	REQUEST_METHOD=GET
 	. /usr/mww/cgi-bin/pwchange.cgi && exit
 fi
 

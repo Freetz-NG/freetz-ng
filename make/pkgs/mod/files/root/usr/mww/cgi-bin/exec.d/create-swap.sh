@@ -1,5 +1,6 @@
-swap_file=$(cgi_param swap_file | tr -d .)
-swap_size=$(cgi_param swap_size | tr -d .)
+eval "$(modcgi swap_file:swap_size swap)"
+swap_file=$(echo "$SWAP_SWAP_FILE" | tr -d .)
+swap_size=$(echo "$SWAP_SWAP_SIZE" | tr -d .)
 size=$(echo "$swap_size" | sed -re "s/^ *([0-9]+) *$/\1/")
 error=true
 
@@ -48,7 +49,7 @@ if $error; then
 $(csrf_input)
 <p>$(lang de:"Swap-Datei" en:"Swapfile"): <input type="text" name="swap_file" size="50" maxlength="50" value="$swap_file"></p>
 <p><input type="text" name="swap_size" size="4" maxlength="5" value="$swap_size" /> MB</p>
-<p><input type="button" value="$(lang de:"Swapfile anlegen" en:"Create swapfile")" onclick="location.href=csrfUrl('/cgi-bin/exec.cgi/create-swap?swap_file='+encodeURIComponent(document.forms[0].swap_file.value)+'&swap_size='+encodeURIComponent(document.forms[0].swap_size.value))" /></p>
+<p><input type="submit" value="$(lang de:"Swapfile anlegen" en:"Create swapfile")" /></p>
 </form>
 EOF
 else

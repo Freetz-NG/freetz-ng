@@ -11,7 +11,7 @@ cgi_print_textline_p "swap_file" "$MOD_SWAP_FILE" 50/255 "$(lang de:"Pfad" en:"P
 echo "<p>"
 cgi_print_textline "swap_size" "" "" "$(lang de:"Gr&ouml;&szlig;e" en:"Size"): " " MB "
 cat << EOF
-<input type="button" value="$(lang de:"Swap-Datei anlegen" en:"Create swap file")" onclick="window.open(csrfUrl('/cgi-bin/exec.cgi/create-swap?swap_file='+encodeURIComponent(document.getElementById('swap_file').value)+'&amp;swap_size='+encodeURIComponent(document.getElementById('swap_size').value)),'swapfilepopup','menubar=no,width=800,height=600,toolbar=no,resizable=yes,scrollbars=yes')">
+<input type="button" value="$(lang de:"Swap-Datei anlegen" en:"Create swap file")" onclick="csrfPost('/cgi-bin/exec.cgi/create-swap',{swap_file:document.getElementById('swap_file').value,swap_size:document.getElementById('swap_size').value},'swapfilepopup','menubar=no,width=800,height=600,toolbar=no,resizable=yes,scrollbars=yes')">
 </p>
 EOF
 cgi_print_textline_p "swap_swappiness" "$MOD_SWAP_SWAPPINESS" 3/4 '<a href="http://lwn.net/Articles/83588/">$(lang de:"Swappiness" en:"Swappiness")</a> (0-100): '

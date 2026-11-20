@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -n "${QUERY_STRING##*hash=}" ]; then
+if [ "$REQUEST_METHOD" == "POST" ]; then
 	source /usr/mww/cgi-bin/login_check.sh
 else
 	source /usr/mww/cgi-bin/login_page.sh

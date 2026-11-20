@@ -101,7 +101,7 @@ new_menu_deliver() {
 	new_menu_tree "$dir/system"
 	new_menu_package_tree "mod"
 	ls /usr/lib/cgi-bin/conf.avm/* &>/dev/null && new_menu_package_tree "avm"
-	echo "<li><a id='logout' onclick='return confirm(\"Logout?\")' href='/cgi-bin/logout.cgi?csrf_token=$_CGI_CSRF_TOKEN'>Logout</a></li>"
+	echo "<li><a id='logout' onclick='if (!confirm(\"Logout?\")) return false; return csrfPost(this.href)' href='/cgi-bin/logout.cgi'>Logout</a></li>"
 
 	echo "<hr>"
 

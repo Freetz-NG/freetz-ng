@@ -1,7 +1,7 @@
 #!/bin/sh
 
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 if [ "$AUTH_TYPE" == "Basic" ]; then
 	. /usr/lib/libmodredir.sh
@@ -14,6 +14,7 @@ else
 	[ -n "$SID" ] && rm -f "/tmp/$SID.webcfg"
 	isauth="0"
 	QUERY_STRING=""
-	source /usr/mww/cgi-bin/login.cgi
+	. /usr/lib/libmodredir.sh
+	redirect_302 /cgi-bin/login.cgi
 fi
 
