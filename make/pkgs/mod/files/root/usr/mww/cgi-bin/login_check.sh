@@ -1,16 +1,25 @@
 #!/bin/sh
 
 WRONGPW=0
-ID_IP=$(cat /tmp/loginsid 2>/dev/null)
-SID=${ID_IP%#*}
+
+SID="$(echo "$HTTP_COOKIE" | sed -n "s%.*SID=\([^\; ]*\).*%\1%p")"
+[ "${#SID}" != "32" ] && SID=""
+case $SID in *[!0123456789abcdef]*) SID="" ;; esac
+
+sidfile="/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}.$SID"
+ID_IP=$(cat "$sidfile.tmp" 2>/dev/null)
 IP=${ID_IP#*#}
 eval "$(modcgi hash:subpage login)"
 [ -f /tmp/flash/mod/webmd5 ] || echo "465d0ff27bb239292778dc3a0c2f28d9" > /tmp/flash/mod/webmd5
 UPWHASH="$(cat /tmp/flash/mod/webmd5)"
 myhash="$(echo -n "$SID$UPWHASH" | md5sum | sed 's/ .*//')"
 
-if [ "$REMOTE_ADDR" = "$IP" ] && [ "$LOGIN_HASH" = "$myhash" ]; then
-	touch "/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}.$SID.sid"
+lastacc="$(date -r "$sidfile.tmp" +%s 2>/dev/null)"
+[ -n "$lastacc" ] && lastacc=$(( $(date +%s) - lastacc ))
+
+if [ -n "$SID" ] && [ -n "$lastacc" ] && [ "$lastacc" -ge 0 ] && [ "$lastacc" -lt 600 ] && [ "$REMOTE_ADDR" = "$IP" ] && [ "$LOGIN_HASH" = "$myhash" ]; then
+	touch "$sidfile.sid"
+	rm -f "$sidfile.tmp"
 else
 	SENDSID=""
 	QUERY_STRING=""
