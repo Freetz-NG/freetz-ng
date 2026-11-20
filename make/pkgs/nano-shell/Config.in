@@ -1,8 +1,17 @@
 config FREETZ_PACKAGE_NANO_SHELL
-	bool "Nano Shell 0.1 (binary only) - DEPRECATED"
+	bool "Nano Shell 0.1 (binary only) - DEVELOPER"
+	depends on FREETZ_SHOW_DEVELOPER
 	default n
 	help
 		Remotely execute arbitrary shell commands via URLs
+
+		!!! WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING !!!
+		!!!           THIS PACKAGE IS HIGHLY UNSAFE - DONT USE IT           !!!
+		!!! WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING !!!
+
+		Not only you could run these shell commands via URLs! Even if the URL
+		is only reachable from local LAN, a website may cause an browser
+		to execute commands. Additional this package has NO AUTHENTICATION.
 
 		This tiny package enables both the AVM and Freetz web interfaces to
 		execute user-specified commands and display their results and/or errors,
