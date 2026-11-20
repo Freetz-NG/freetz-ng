@@ -29,7 +29,6 @@ echo "<p>"
 cgi_print_textline "httpd_timeout" "$MOD_HTTPD_TIMEOUT" 4 "$(lang de:"Abmeldung bei Inaktivit&auml;t:" en:"Logout on inactivity:") " " $(lang de:"Minuten (0 = kein Timeout)" en:"minutes (0 = no timeout)")"
 echo "</p>"
 fi
-cgi_print_checkbox_p "httpd_csrf_rudi" "$MOD_HTTPD_CSRF_RUDI" "$(lang de:"CSRF-Ausnahme f&uuml;r Legacy-Apps (Rudi-Shell via GET)" en:"CSRF exception for legacy apps (Rudi shell via GET)")"
 
 sec_end
 sec_begin "$(lang de:"Erweiterte Einstellungen" en:"Advanced settings")"
