@@ -7,7 +7,7 @@ if [ -e /tmp/fw_update.done ]; then
 fi
 
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 cgi_error "$(lang de:"Keine Firmware hochgeladen" en:"No firmware has been uploaded")"
 %>

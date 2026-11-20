@@ -12,7 +12,8 @@ cat << EOF
   en:"A file with config and log files is created to find errors. Confidential details like Callmonitor phonenumbers, DSL-serial, MAC-, IPv4- and IPv6-addresses will be removed. But please check the file before publishing it!" \
 )</p>
 
-<form action="do_support.cgi" method="GET">
+<form action="do_support.cgi" method="POST">
+$(csrf_input)
 <p><input type=submit value="$(lang de:"anfordern" en:"request")" style="width:150px"></p>
 </form>
 

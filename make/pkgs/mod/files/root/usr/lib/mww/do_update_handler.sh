@@ -7,7 +7,7 @@ trap 'touch /tmp/fw_update.done' EXIT
 exec < "$1"
 
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 

@@ -7,7 +7,7 @@ if [ -e /tmp/ex_update.done ]; then
 fi
 
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 cgi_error "$(lang de:"External-Update fehlgeschlagen." en:"external update failed.")"
 %>

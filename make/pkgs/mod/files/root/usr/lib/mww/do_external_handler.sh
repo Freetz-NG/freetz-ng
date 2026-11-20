@@ -7,7 +7,7 @@ trap 'touch /tmp/ex_update.done' EXIT
 exec < "$1"
 
 . /usr/lib/libmodcgi.sh
-csrf_check required
+csrf_require_post
 
 footer() {
 	echo "<p>"
