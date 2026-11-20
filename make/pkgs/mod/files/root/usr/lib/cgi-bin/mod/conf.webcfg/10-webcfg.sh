@@ -26,7 +26,7 @@ sec_begin "$(lang de:"Authentifizierung" en:"Authentification")"
 cgi_print_checkbox "httpd_newlogin" "$MOD_HTTPD_NEWLOGIN" "$(lang de:"Neue Loginversion mit Session-ID" en:"New login with session id")"
 if [ "$MOD_HTTPD_NEWLOGIN" == yes ]; then
 echo "<p>"
-cgi_print_textline "httpd_sessiontimeout" "$MOD_HTTPD_SESSIONTIMEOUT" 5 "$(lang de:"Session-ID Timeout:" en:"Session id timeout:") " " $(lang de:"Sekunden" en:"seconds")"
+cgi_print_textline "httpd_timeout" "$MOD_HTTPD_TIMEOUT" 4 "$(lang de:"Abmeldung bei Inaktivit&auml;t:" en:"Logout on inactivity:") " " $(lang de:"Minuten" en:"minutes")"
 echo "</p>"
 fi
 cgi_print_checkbox_p "httpd_csrf_rudi" "$MOD_HTTPD_CSRF_RUDI" "$(lang de:"CSRF-Ausnahme f&uuml;r Legacy-Apps (Rudi-Shell via GET)" en:"CSRF exception for legacy apps (Rudi shell via GET)")"
