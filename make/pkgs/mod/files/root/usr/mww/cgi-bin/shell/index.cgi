@@ -71,7 +71,7 @@ cat << EOF
 			}
 			else{
 				if(dl.checked){
-					window.location = "/cgi-bin/shell/cmd.cgi?pid=$$&csrf_token=$_CGI_CSRF_TOKEN&dl=true&script="+encodeURIComponent(code.value)+"&tar="+tar.checked+"&gz="+gz.checked;
+					csrfPost('/cgi-bin/shell/cmd.cgi?pid=$$',{dl:'true',script:code.value,tar:tar.checked,gz:gz.checked});
 				}
 				else{
 					output.innerHTML=ajax_exec("script="+encodeURIComponent(code.value));

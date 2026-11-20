@@ -1,7 +1,7 @@
 <%
 . /usr/lib/libmodcgi.sh
 if [ "$MOD_HTTPD_CSRF_RUDI" != "yes" ] || [ "$REQUEST_METHOD" != "GET" ] || [ "$SCRIPT_NAME" != "/cgi-bin/shell/cmd.cgi" ]; then
-	csrf_check required
+	csrf_require_post
 fi
 
 pid1=$(cgi_param pid)
