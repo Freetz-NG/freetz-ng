@@ -63,7 +63,7 @@ skin_body_end() {
 <div id="footer">
 <span class="datetime" title="$(lang de:"Systemzeit des Routers" en:"Router's system time")">$(date +"$(lang de:"%d.%m.%Y" en:"%m/%d/%Y") %H:%M")</span>&nbsp;&ndash;
 <span class="uptime" title="Uptime">$(uptime | sed -r 's/.*(up.*), *load.*/\1/')</span>&nbsp;&ndash;
-<span class="opt">$([ "$isauth" = 1 ] && echo "$(lang de:"Abmeldung bei Inaktivit&auml;t" en:"Logout on inactivity") (${MOD_HTTPD_TIMEOUT} min): $(date -d @$(( $MOD_HTTPD_TIMEOUT * 60 + $(date +%s) )) +'%H:%M:%S')" || echo "$(lang de:"optimiert f&uuml;r" en:"optimized for") Mozilla Firefox")</span>
+<span class="opt">$([ "$isauth" = 1 ] && _cgi_print_session_timeout || echo "$(lang de:"optimiert f&uuml;r" en:"optimized for") Mozilla Firefox")</span>
 </div>
 EOF
 }

@@ -6,6 +6,16 @@ _cgi_print_extra_styles() {
 	done
 }
 
+# Helper for new-login session-timeout footer
+_cgi_print_session_timeout() {
+	local label="$(lang de:"Abmeldung bei Inaktivit&auml;t" en:"Logout on inactivity")"
+	if [ "$MOD_HTTPD_TIMEOUT" -gt 0 ] 2>/dev/null; then
+		echo "$label (${MOD_HTTPD_TIMEOUT} min): $(date -d @$(( ${MOD_HTTPD_TIMEOUT#"${MOD_HTTPD_TIMEOUT%%[!0]*}"} * 60 + $(date +%s) )) +'%H:%M:%S')"
+	else
+		echo "$label: $(lang de:"deaktiviert" en:"disabled")"
+	fi
+}
+
 #
 # Set options for the following CGI page
 #
