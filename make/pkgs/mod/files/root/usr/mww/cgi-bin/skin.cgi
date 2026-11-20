@@ -3,12 +3,13 @@
 # "skin.cgi?name=foo": select skin "foo"
 # "skin.cgi?reset=1": reset to default
 
+. /usr/lib/libmodcgi.sh
+
 SKIN_DIR=/usr/share/skin
 CR=$'\r'
 
 invalid_skin() {
 	local name=$1
-	source /usr/lib/libmodcgi.sh
 	cgi --id=skin
 	cgi_begin 'Skins'
 	[ $# -gt 0 ] && print_error "$(lang \
@@ -22,10 +23,10 @@ invalid_skin() {
 	echo "<ul>"
 	local skin
 	for skin in $(ls "$SKIN_DIR"); do
-		echo "<li><a href="?name=$skin">$skin</a></li>"
+		echo "<li><a href='?name=$skin' onclick=\"return csrfPost(this.href,{name:'$skin'})\">$skin</a></li>"
 	done
 	echo "</ul>"
-	echo "<p><a href="?reset=1">$(lang \
+	echo "<p><a href='?reset=1' onclick=\"return csrfPost(this.href,{reset:'1'})\">$(lang \
 	  de:"Zur&uuml;ck zum Standard-Skin" \
 	  en:"Switch back to default skin" \
 	)</a></p>"
@@ -53,6 +54,8 @@ ${CR}
 EOF
 	exit
 }
+
+[ "$REQUEST_METHOD" == "POST" ] || invalid_skin
 
 eval "$(modcgi name:reset skin)"
 [ -n "${SKIN_RESET+1}" ] && reset_skin
