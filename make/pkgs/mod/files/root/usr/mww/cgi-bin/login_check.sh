@@ -10,7 +10,7 @@ UPWHASH="$(cat /tmp/flash/mod/webmd5)"
 myhash="$(echo -n "$SID$UPWHASH" | md5sum | sed 's/ .*//')"
 
 if [ "$REMOTE_ADDR" = "$IP" ] && [ "$LOGIN_HASH" = "$myhash" ]; then
-	touch /tmp/$SID.webcfg
+	touch "/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}.$SID.sid"
 else
 	SENDSID=""
 	QUERY_STRING=""

@@ -18,7 +18,7 @@ if [ "$result" -ne 0 ]; then
 else
 	echo "<h1>$(lang de:"Passwort erfolgreich ge&auml;ndert." en:"New password set.")</h1>"
 	echo -n "$MOD_CGI_PASSWORD" | md5sum | sed 's/ .*//' > /tmp/flash/mod/webmd5
-	rm /tmp/*.webcfg
+	rm "/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}."*.sid
 
 	#XMail admin account
 	if [ -x /usr/lib/MailRoot/bin/XMCrypt ]; then

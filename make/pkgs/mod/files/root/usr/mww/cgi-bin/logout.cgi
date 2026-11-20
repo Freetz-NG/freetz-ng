@@ -11,7 +11,7 @@ else
 	# SIDs are 32 hex digits
 	[ "${#SID}" == "32" ] || SID=""
 	case $SID in *[!0123456789abcdef]*) SID="" ;; esac
-	[ -n "$SID" ] && rm -f "/tmp/$SID.webcfg"
+	[ -n "$SID" ] && rm -f "/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}.$SID.sid"
 	isauth="0"
 	QUERY_STRING=""
 	. /usr/lib/libmodredir.sh

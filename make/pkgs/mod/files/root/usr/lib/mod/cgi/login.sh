@@ -6,7 +6,7 @@ SID="$(echo "$HTTP_COOKIE" | sed -n "s%.*SID=\([^\; ]*\).*%\1%p")"
 [ "${#SID}" == "32" ] || SID=""
 case $SID in *[!0123456789abcdef]*) SID="" ;; esac
 local lastacc=0
-local idfile="/tmp/$SID.webcfg"
+local idfile="/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}.$SID.sid"
 [ "$MOD_HTTPD_TIMEOUT" -gt 0 ] 2>/dev/null && [ -f "$idfile" ] && lastacc="$(( $(date +%s) - $(date -r "$idfile" +%s 2>/dev/null) ))"
 if [ -z "$SID" ] || [ ! -f "$idfile" ] || { [ "$MOD_HTTPD_TIMEOUT" -gt 0 ] 2>/dev/null && [ $lastacc -gt $(( ${MOD_HTTPD_TIMEOUT#"${MOD_HTTPD_TIMEOUT%%[!0]*}"} * 60 )) ]; }; then
 	isauth="0";
