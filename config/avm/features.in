@@ -292,7 +292,7 @@ config FREETZ_AVM_HAS_FIT_IMG_SIZE
 	default 50   if FREETZ_TYPE_7530_W6_V1
 	default 80   if FREETZ_TYPE_7682
 	default 80   if FREETZ_TYPE_7690
-	default 999  if FREETZ_TYPE_7695
+	default 80   if FREETZ_TYPE_7695
 	default 0
 	depends on FREETZ_AVM_HAS_FWLAYOUT_5
 	help
