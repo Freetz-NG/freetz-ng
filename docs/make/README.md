@@ -852,8 +852,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[ltrace 0.7.3-git/0.8.1 (binary only)](ltrace.md)<a id='ltrace'></a>**<br>
     ltrace - library call tracer ltrace is a debugging tool, similar to strace, but it traces library calls instead of system calls.
 
-  * **[Nano Shell 0.1 (binary only) - DEPRECATED](nano-shell.md)<a id='nano-shell'></a>**<br>
-    Remotely execute arbitrary shell commands via URLs This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
+  * **[Nano Shell 0.1 (binary only) - DEVELOPER](nano-shell.md)<a id='nano-shell'></a>**<br>
+    Remotely execute arbitrary shell commands via URLs !!! WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING !!! !!!           THIS PACKAGE IS HIGHLY UNSAFE - DONT USE IT           !!! !!! WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING !!! Not only you could run these shell commands via URLs! Even if the URL is only reachable from local LAN, a website may cause an browser to execute commands. Additional this package has NO AUTHENTICATION. This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
 
   * **[PatchELF 0.19.3 (binary only)](patchelf.md)<a id='patchelf'></a>**<br>
     Modifies existing ELF executables and libraries. Can change the interpreter, RPATH, and other ELF metadata.

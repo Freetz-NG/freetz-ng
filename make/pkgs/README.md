@@ -1149,8 +1149,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     ltrace - library call tracer ltrace is a debugging tool, similar to strace, but it traces library calls instead of system calls.
      - [ctlmgr mit ltrace auf den Zahn fühlen](../../docs/make/ltrace.md#ctlmgr-mit-ltrace-auf-den-zahn-fuhlen)
 
-  * **[Nano Shell 0.1 (binary only) - DEPRECATED](../../docs/make/nano-shell.md)<a id='nano-shell'></a>**<br>
-    Remotely execute arbitrary shell commands via URLs This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
+  * **[Nano Shell 0.1 (binary only) - DEVELOPER](../../docs/make/nano-shell.md)<a id='nano-shell'></a>**<br>
+    Remotely execute arbitrary shell commands via URLs !!! WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING !!! !!!           THIS PACKAGE IS HIGHLY UNSAFE - DONT USE IT           !!! !!! WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING !!! Not only you could run these shell commands via URLs! Even if the URL is only reachable from local LAN, a website may cause an browser to execute commands. Additional this package has NO AUTHENTICATION. This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
      - [Sicherheitshinweis](../../docs/make/nano-shell.md#sicherheitshinweis)
      - [Benutzung](../../docs/make/nano-shell.md#benutzung)
 
