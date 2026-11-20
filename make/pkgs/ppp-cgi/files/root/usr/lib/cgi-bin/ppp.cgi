@@ -33,7 +33,7 @@ sec_end
 
 if [ -n "$PPP_DIAGTTY" ]; then
 sec_begin "$(lang de:"Modus" en:"Mode")"
-if [ -n "$MOD_CGI_CMD" ] && [ -n "$PPP_DIAGTTY" ]; then
+if [ "$REQUEST_METHOD" == "POST" ] && [ -n "$MOD_CGI_CMD" ] && [ -n "$PPP_DIAGTTY" ]; then
 	outMOD=$MOD_CGI_CMD
 	if [ "$MOD_CGI_CMD" = "o3G" ]; then
 		outMOD="3G (ausschliesslich)"
@@ -51,18 +51,18 @@ if [ -n "$MOD_CGI_CMD" ] && [ -n "$PPP_DIAGTTY" ]; then
 		outMOD="2G (ausschliesslich)"
 		sysMOD=13,1
 	fi
-	[ -n "$sysMOD"] && echo -en "AT^SYSCFG=$sysMOD,3FFFFFFF,2,4\r" > $PPP_DIAGTTY &
+	[ -n "$sysMOD" ] && echo -en "AT^SYSCFG=$sysMOD,3FFFFFFF,2,4\r" > "$PPP_DIAGTTY" &
 	echo "<font color=red size=-1>Modus $outMOD gesetzt.</font>"
 fi
 cat << EOF
 <p>
-<input id="m2" type="radio" name="gmode" value="p3G"$p3G_chk><label for="m2"><a href="$(href cgi ppp cmd=p3G)">3G $(lang de:"bevorzugt" en:"preferred")</a></label>
+<input id="m2" type="radio" name="gmode" value="p3G"$p3G_chk><label for="m2"><a href="$(href cgi ppp freetz_action=1)" onclick="return csrfPost(this.href,{cmd:'p3G'})">3G $(lang de:"bevorzugt" en:"preferred")</a></label>
 &nbsp;
-<input id="m1" type="radio" name="gmode" value="o3G"$o3G_chk><label for="m1"><a href="$(href cgi ppp cmd=o3G)">3G $(lang de:"ausschliesslich" en:"only")</a></label>
+<input id="m1" type="radio" name="gmode" value="o3G"$o3G_chk><label for="m1"><a href="$(href cgi ppp freetz_action=1)" onclick="return csrfPost(this.href,{cmd:'o3G'})">3G $(lang de:"ausschliesslich" en:"only")</a></label>
 &nbsp;
-<input id="m3" type="radio" name="gmode" value="p2G"$p2G_chk><label for="m3"><a href="$(href cgi ppp cmd=p2G)">2G $(lang de:"bevorzugt" en:"preferred")</a></label>
+<input id="m3" type="radio" name="gmode" value="p2G"$p2G_chk><label for="m3"><a href="$(href cgi ppp freetz_action=1)" onclick="return csrfPost(this.href,{cmd:'p2G'})">2G $(lang de:"bevorzugt" en:"preferred")</a></label>
 &nbsp;
-<input id="m4" type="radio" name="gmode" value="o2G"$o2G_chk><label for="m4"><a href="$(href cgi ppp cmd=o2G)">2G $(lang de:"ausschliesslich" en:"only")</a></label>
+<input id="m4" type="radio" name="gmode" value="o2G"$o2G_chk><label for="m4"><a href="$(href cgi ppp freetz_action=1)" onclick="return csrfPost(this.href,{cmd:'o2G'})">2G $(lang de:"ausschliesslich" en:"only")</a></label>
 &nbsp;
 <input id="m0" type="radio" name="gmode" value="xXG"$xXG_chk><label for="m0">$(lang de:"nicht gesetzt" en:"not selected")</label>
 </p>

@@ -8,7 +8,7 @@
 if [ -n "$PPP_DIAGTTY" ]; then
 
 eval "$(modcgi branding:pkg:cmd mod_cgi)"
-if [ -n "$MOD_CGI_CMD" ]; then
+if [ "$REQUEST_METHOD" == "POST" ] && [ -n "$MOD_CGI_CMD" ]; then
 	sec_begin "$(lang de:"Hinweis" en:"Remark")"
 	echo "<font size=-2 color=red><br>$(lang de:"Aktualisierung wurde angefordert. Dies kann bis zu einer Minute dauern." en:"Refresh initiated. This max take up to one minute.")<br></font>"
 	sec_end
