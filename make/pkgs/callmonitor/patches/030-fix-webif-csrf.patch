@@ -1,0 +1,62 @@
+diff --git base/usr/lib/callmonitor/applets/maint.cgi.sh base/usr/lib/callmonitor/applets/maint.cgi.sh
+index 1abc948..d85a79f 100644
+--- base/usr/lib/callmonitor/applets/maint.cgi.sh
++++ base/usr/lib/callmonitor/applets/maint.cgi.sh
+@@ -14,6 +14,7 @@ cmd_button() {
+     echo "
+ <div class='btn'>
+     <form class='btn' action='$SELF' method='$method'>
++$([ "$method" != post ] || csrf_input)
+     	$(empty "$cmd" || echo "<input name='cmd' value='$cmd' type='hidden'>")
+ 	<input value='$label' type='submit'>
+     </form>
+diff --git base/usr/lib/callmonitor/applets/reverse.cgi.sh base/usr/lib/callmonitor/applets/reverse.cgi.sh
+index f449cda..32b47c3 100644
+--- base/usr/lib/callmonitor/applets/reverse.cgi.sh
++++ base/usr/lib/callmonitor/applets/reverse.cgi.sh
+@@ -39,8 +39,11 @@ if [ -n "$REVERSE_SAVE" ]; then
+     new_provider=${new_provider# }
+ 
+     ## delegate to Freetz saving mechanism
+-    PATH_INFO=/callmonitor webui_post_form_generic /usr/mww/cgi-bin/conf \
+-    	"reverse_provider=$(urlencode "$new_provider")&area_provider=$(urlencode "$REVERSE_AREA")"
++    (
++        unset _CGI_POST_FILE _CGI_CSRF_CHECKED
++        PATH_INFO=/callmonitor webui_post_form_generic /usr/mww/cgi-bin/conf \
++            "reverse_provider=$(urlencode "$new_provider")&area_provider=$(urlencode "$REVERSE_AREA")&csrf_token=$(urlencode "$_CGI_CSRF_TOKEN")"
++    )
+     exit $?
+ fi
+ 
+@@ -55,6 +58,7 @@ cgi --help="$HELP"
+ cgi_begin "$TITLE"
+ 
+ echo "<form action='$SELF' method='post'>"
++csrf_input
+ 
+ sec_begin '$(lang de:"Anbieter für vollständige Rufnummern" en:"Providers for complete numbers")'
+ 
+diff --git base/usr/lib/callmonitor/applets/testcall.cgi.sh base/usr/lib/callmonitor/applets/testcall.cgi.sh
+index 5505c5b..954a065 100644
+--- base/usr/lib/callmonitor/applets/testcall.cgi.sh
++++ base/usr/lib/callmonitor/applets/testcall.cgi.sh
+@@ -15,6 +15,7 @@ dest_val=$(html "$TESTCALL_DEST")
+ new_testcall_form() {
+     echo "
+ <form action='$SELF' method='post'>
++$(csrf_input)
+     <table><tr>
+ 	<td><label for='event'>$(lang de:"Ereignis" en:"Event"):</label> </td>
+ 	<td>
+diff --git base/usr/lib/callmonitor/web/reverse/lib/test_form.sh base/usr/lib/callmonitor/web/reverse/lib/test_form.sh
+index 844d820..0230fc9 100644
+--- base/usr/lib/callmonitor/web/reverse/lib/test_form.sh
++++ base/usr/lib/callmonitor/web/reverse/lib/test_form.sh
+@@ -2,6 +2,7 @@ new_test_form() {
+     local test=$1
+     echo "
+ <form action='$test' method='post'>
++$(csrf_input)
+     <table><tr>
+ 	<td><label for='test-number'>$(lang
+ 	    de:"Rufnummer" en:"Number"):</label>&nbsp;</td>
