@@ -70,6 +70,7 @@ config FREETZ_PACKAGE_CALLMONITOR_phonebook
 	select FREETZ_PACKAGE_CURL
 	select FREETZ_PACKAGE_JQ
 	select FREETZ_PACKAGE_JQ_WITH_RE_SUPPORT
+	select FREETZ_LIB_libcrypto_WITH_EC
 	help
 		This option makes Callmonitor map phone numbers to names using several
 		sources of information: reverse-lookup Web services, AVM's built-in
@@ -77,12 +78,6 @@ config FREETZ_PACKAGE_CALLMONITOR_phonebook
 
 		Only say NO here if you are not interested in who is calling you.
 
-
-if FREETZ_PACKAGE_CALLMONITOR_phonebook && !FREETZ_LIB_libcrypto_WITH_EC
-comment "Warning: HTTPS reverse lookup may fail without elliptic curve support."
-comment "Warning: Enable elliptic curve support manually in Expert mode."
-comment "Search with / for FREETZ_LIB_libcrypto_WITH_EC."
-endif
 
 if FREETZ_PACKAGE_CALLMONITOR_phonebook && (!FREETZ_PACKAGE_CURL_SELECT_SSL || !FREETZ_PACKAGE_CURL_SELECT_CA_BUNDLE)
 comment "Warning: HTTPS reverse lookup requires Curl SSL and CA-bundle support."
