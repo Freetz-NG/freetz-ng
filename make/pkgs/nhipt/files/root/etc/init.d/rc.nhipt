@@ -44,6 +44,12 @@ start() {
 	fi
 	if [ "$NHIPT_START_CGI" = "running" ]; then
 		if [ "$cgi_run" = "no" ]; then
+			# This standalone WebIF cannot validate the main WebIF's sessions.
+			# Refuse to start if webcfg.conf contains no root Basic Auth rule.
+			if ! grep -q '^/:[^:][^:]*:.' /mod/etc/webcfg.conf; then
+				echo "NHIPT: HTTP Basic authentication is required." >&2
+				return 1
+			fi
 			# Do not inherit a CGI request's checked token or cached POST body.
 			env - PATH="$PATH" _CGI_CSRF_SCOPE=nhipt httpd -P /var/run/nhipd.pid -p $NHIPT_SERVERIP:$NHIPT_PORT -h $NHIPT_ROOT -c /mod/etc/webcfg.conf -r Freetz
 		fi
