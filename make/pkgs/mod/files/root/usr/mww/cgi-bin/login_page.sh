@@ -4,7 +4,7 @@
 [ -z "$SENDSID" ] && . /usr/lib/libmodcgi.sh
 
 # Nach 10 Minuten läuft der Login ab
-find /tmp -maxdepth 1 -type f -name ".webcfg.${_CGI_CSRF_SCOPE:-default}.*.tmp" -mmin +9 -exec rm -f {} \;
+find /tmp/ -maxdepth 1 -type f -name ".webcfg.${_CGI_CSRF_SCOPE:-default}.*.tmp" -mmin +9 -exec rm -f {} \;
 echo "$SENDSID#$REMOTE_ADDR" > "/tmp/.webcfg.${_CGI_CSRF_SCOPE:-default}.$SENDSID.tmp"
 
 # Schicken wir dem Browser eine SessionID, gueltig fuer alle Pfade. Dazu nicht
