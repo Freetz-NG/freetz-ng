@@ -962,7 +962,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[NFSD CGI](nfsd-cgi.md)<a id='nfsd'></a>**<br>
     Configuration frontend to NFS-server If this does not work, enable replace-kernel!
 
-  * **[NHIPT Iptables CGI 0.8.3a - DEPRECATED](nhipt.md)<a id='nhipt'></a>**<br>
+  * **[NHIPT Iptables CGI 0.8.3a - DEVELOPER](nhipt.md)<a id='nhipt'></a>**<br>
     New Iptables configuration interface.
 
   * **[Onlinechanged-CGI](onlinechanged-cgi.md)<a id='onlinechanged'></a>**<br>

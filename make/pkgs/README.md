@@ -1318,7 +1318,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [rsize and wsize buffers](../../docs/make/nfsd-cgi.md#rsize-and-wsize-buffers)
      - [References](../../docs/make/nfsd-cgi.md#references)
 
-  * **[NHIPT Iptables CGI 0.8.3a - DEPRECATED](../../docs/make/nhipt.md)<a id='nhipt'></a>**<br>
+  * **[NHIPT Iptables CGI 0.8.3a - DEVELOPER](../../docs/make/nhipt.md)<a id='nhipt'></a>**<br>
     New Iptables configuration interface.
      - [MOTIVATION](../../docs/make/nhipt.md#motivation)
      - [VORAUSSETZUNGEN:](../../docs/make/nhipt.md#voraussetzungen)
