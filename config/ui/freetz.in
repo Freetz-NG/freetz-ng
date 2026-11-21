@@ -27,6 +27,11 @@ menu "Web Interface"
 			This is usefull to restore to another device by AVM webif.
 			It uses tr069fwupdate which can not be removed anymore.
 
+	config FREETZ_ADD_RUDI
+		bool "Add Rudi-Shell"
+		default y
+		help
+			Adds Rudi shell to the web interface.
 
 	choice
 		prompt "Freetz language"
