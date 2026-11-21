@@ -44,7 +44,8 @@ start() {
 	fi
 	if [ "$NHIPT_START_CGI" = "running" ]; then
 		if [ "$cgi_run" = "no" ]; then
-			httpd -P /var/run/nhipd.pid -p $NHIPT_SERVERIP:$NHIPT_PORT -h $NHIPT_ROOT -c /mod/etc/webcfg.conf -r Freetz
+			# Do not inherit a CGI request's checked token or cached POST body.
+			env - PATH="$PATH" _CGI_CSRF_SCOPE=nhipt httpd -P /var/run/nhipd.pid -p $NHIPT_SERVERIP:$NHIPT_PORT -h $NHIPT_ROOT -c /mod/etc/webcfg.conf -r Freetz
 		fi
 	fi
 	if [ "$NHIPT_START_LOG" = "running" ]; then
