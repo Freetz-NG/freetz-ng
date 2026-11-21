@@ -289,10 +289,9 @@ endif # FREETZ_ADD_JUIS_CHECK
 			To do this the yf-bootmanager is selected. After every device start
 			it could take up to 1 minute until the informations are available.
 
-	# TODO: invert logic
-	config FREETZ_REMOVE_BOX_INFO
-		bool "Remove BOX-Info page"
-		default n
+	config FREETZ_ADD_AVM_INFO
+		bool "Add AVM-Info page"
+		default y
 		help
 			BOX-Info is a special status page for compact presentation of important
 			information about your Fritz!Box: ROM/RAM size, processor type,
@@ -302,10 +301,9 @@ endif # FREETZ_ADD_JUIS_CHECK
 			from your image. But usualy it is not necessary: The size of BOX-Info cgi
 			is very small (2-3 kByte).
 
-	# TODO: invert logic
-	config FREETZ_REMOVE_FLASH_INFO
-		bool "Remove Flash-Info page"
-		default n
+	config FREETZ_ADD_FLASH_INFO
+		bool "Add Flash-Info page"
+		default y
 		help
 			Flash-Info is a special status page for compact presentation of important
 			information about MTDs, UBI and filesystems.
@@ -314,10 +312,9 @@ endif # FREETZ_ADD_JUIS_CHECK
 			from your image. But usualy it is not necessary: The size of Flash-Info cgi
 			is very small (2-3 kByte).
 
-	# TODO: invert logic
-	config FREETZ_REMOVE_FREETZ_INFO
-		bool "Remove FREETZ-Info page"
-		default n
+	config FREETZ_ADD_MOD_INFO
+		bool "Add Mod-Info page"
+		default y
 		help
 			FREETZ-Info is a special status page for compact presentation of important
 			information about FREETZ. This status page can also show the .config,

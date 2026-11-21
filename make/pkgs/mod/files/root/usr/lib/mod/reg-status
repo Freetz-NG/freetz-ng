@@ -13,9 +13,9 @@ if [ "$MOD_MOUNTED_SUB" = yes ]; then
 	modreg status mod "$(lang de:"Datenspeicher" en:"Storages")" mounted
 fi
 
-[ "$mode" = reload ] && modunreg status mod box_info
-if [ "$MOD_SHOW_BOX_INFO" = yes -a -r "/usr/lib/cgi-bin/mod/box_info.cgi" ]; then
-	modreg status mod "$(lang de:"AVM-Info" en:"AVM info")" box_info
+[ "$mode" = reload ] && modunreg status mod avm_info
+if [ "$MOD_SHOW_BOX_INFO" = yes -a -r "/usr/lib/cgi-bin/mod/avm_info.cgi" ]; then
+	modreg status mod "$(lang de:"AVM-Info" en:"AVM info")" avm_info
 fi
 
 [ "$mode" = reload ] && modunreg status mod flash_info

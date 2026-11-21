@@ -1552,11 +1552,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 		# FREETZMOUNT
 		[ ! "$FREETZ_PATCH_FREETZMOUNT" != "y" ] && echo1 "integrated FREETZMOUNT"
 		# Box-Info
-		[ "$FREETZ_REMOVE_BOX_INFO" != "y" ] && echo1 "integrated Box-Info"
+		[ "$FREETZ_ADD_AVM_INFO" == "y" ] && echo1 "integrated AVM-Info"
 		# Flash-Info
-		[ "$FREETZ_REMOVE_FLASH_INFO" != "y" ] && echo1 "integrated Flash-Info"
+		[ "$FREETZ_ADD_FLASH_INFO" == "y" ] && echo1 "integrated Flash-Info"
 		# FREETZ-Info
-		[ "$FREETZ_REMOVE_FREETZ_INFO" != "y" ] && echo1 "integrated FREETZ-Info"
+		[ "$FREETZ_ADD_MOD_INFO" == "y" ] && echo1 "integrated Mod-Info"
 
 		# .config
 		if [ "$FREETZ_DOT_CONFIG_DONOTADD" == "y" ]; then
