@@ -15,7 +15,8 @@ In der Standardkonfiguration von Stunnel kann Freetz auf Port :4433 erreicht wer
 und dafür wird das Zertifikat von FritzOS mitgenutzt.<br>
 
 ##### Passwort zurücksetzen
-Falls das Passwort vergessen wurde, kann es so über Telnet/SSH wieder auf 'freetz' zurückgesetzt werden:<br>
+Falls das Passwort vergessen wurde, kann es so über Telnet/SSH wieder auf 'freetz' zurückgesetzt werden.<br>
+Bei neueren Geräten mit `webgui_pass` nutzt `new-login` das AVM-Gerätepasswort als Standardpasswort.<br>
 
   - old-login: Basic-Auth<br>
     `modconf set mod MOD_HTTPD_PASSWD="$(mkpasswd -m md5 "freetz" freetzng)"`<br>
