@@ -1,5 +1,17 @@
 # Neuigkeiten
 
+### 2026-11-21
+In der letzten Zeit hat es Sicherheitsverbesserungen rund um das Freetz-Webinterface gegeben.
+Es wurden `modcgi` und `haserl` gepatch und ein CSRF-Schutz eingebaut.
+Außerdem gab es viele Korrekturen rund um `new-login`, ein webbasiertes Loginverfahren mit SID und Timeout.
+Dieses Loginverfahren ist nun das Standardloginverfahren und kann wenn nötig wieder im Freetz-Webif deaktiviert werden.
+Falls `new-login` noch nie konfiguriert wurde ist das Standardpasswort bei alten Geräten `freetz`,
+bei neueren Geräten mit `webgui_pass` ist es das auf den Boden der Fritzbox gedruckte AVM-Passwort!<br>
+Außerdem wurde das Package [Stunnel](make/stunnel) überarbeitet, es ermöglicht den Zugriff auf der Freetz-Webif via HTTPS.
+In der Standardkonfiguration nutzt es der HTTPS-Zertifikat welches im Fritzos hinterlegt ist,
+also entweder ein selbst generiertes oder hochgeladenes.
+Auf das Freetz-Webif kann nach dem Starten von Stunnel über Port `:4433` statt wie bisher `:81` zugegriffen werden: `https://fritz.box:4433/`
+
 ### 2026-11-13
 Eine Firmware kann als "Reproducible build" (`FREETZ_REPRODUCIBLE`) gebaut werden, dh bei<br>
 gleichem GIT-Stand und gleicher .config soll immer ein identisches .image erzeugt werden.<br>
