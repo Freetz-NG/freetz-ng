@@ -51,7 +51,40 @@ ignore_site() {
 
 run_httpserver() {
 	local PORT="$1"
-	[ "$PORT" -gt 0 ] 2>/dev/null || PORT="8000"
+	local -a EXTERNAL_ORIGIN_ARGS=()
+
+	if [ "$PORT" -gt 0 ] 2>/dev/null; then
+		shift
+	else
+		PORT="8000"
+	fi
+
+	while [ "$#" -gt 0 ]; do
+		case "$1" in
+			http://*|https://*)
+				EXTERNAL_ORIGIN_ARGS+=(--external-origin "$1")
+				shift
+				;;
+			*)
+				echo "Invalid url: $1"
+				return 1
+				;;
+		esac
+	done
+
+	if [ "${#EXTERNAL_ORIGIN_ARGS[@]}" -eq 0 ]; then
+		local HOSTNAMES HOSTNAME
+		HOSTNAMES="$(hostname -A)" || {
+			echo "Failed to detect hostnames for external origins."
+			return 1
+		}
+		HOSTNAMES="$(printf '%s\n' "$HOSTNAMES" | sed 's/ /\n/g' | sort -u)"
+		while IFS= read -r HOSTNAME; do
+			if [ -n "$HOSTNAME" ]; then
+				EXTERNAL_ORIGIN_ARGS+=(--external-origin "http://$HOSTNAME" --external-origin "https://$HOSTNAME")
+			fi
+		done <<< "$HOSTNAMES"
+	fi
 
 	[ -d "$VENV_DIR" ] || setup_virtenv || exit 1
 	ignore_site
@@ -61,7 +94,7 @@ run_httpserver() {
 	echo "########################################################################"
 
 	source "$VENV_DIR/bin/activate"
-	zensical serve --dev-addr "[::]:$PORT" --config-file "$CONFIG"  # --open
+	zensical serve --dev-addr "[::]:$PORT" --config-file "$CONFIG" "${EXTERNAL_ORIGIN_ARGS[@]}"  # --open
 }
 
 build_site() {
@@ -88,7 +121,7 @@ show_usage() {
 
 	Zensical http server
 
-	Usage: $0 < i [-y] | install [-y] | s | setup | r [port] | run [port] | b | build | c | cleanup >
+	Usage: $0 < i [-y] | install [-y] | s | setup | r [port] [url]... | run [port] [url]... | b | build | c | cleanup >
 
 	 - install [-y]
 	   Installs packages by package-manager, python3, pip3 and venv.
@@ -101,9 +134,11 @@ show_usage() {
 	   Sets up virtual Python environemnt for Zensical.
 	   Executed by "run" if not yet done.
 
-	 - run [port]
+	 - run [port] [url]...
 	   Runs Zensical http server listening on all ips.
 	   Default Port: 8000/tcp
+	   URLs can be specified multiple times for reverse proxy origins.
+	   If no URL is specified, detected hostnames are used with both HTTP and HTTPS.
 
 	 - build
 	   Build website locally only.
@@ -118,13 +153,15 @@ EOF
 
 ARG="$1"
 shift
-[ "$1" == '-y' ] && shift && DOY="-y" || DOY=""
-PORT="$1"
+DOY=""
+if [ "$ARG" = "i" ] || [ "$ARG" = "install" ]; then
+	[ "$1" == '-y' ] && shift && DOY="-y"
+fi
 
 case "$ARG" in
 	i|install)	install_python "$DOY" ;;
 	s|setup)	setup_virtenv ;;
-	r|run)		run_httpserver "$PORT" ;;
+	r|run)		run_httpserver "$@" ;;
 	b|build)	build_site ;;
 	c|cleanup)	cleanup_virtenv ;;
 	*)		show_usage ;;
