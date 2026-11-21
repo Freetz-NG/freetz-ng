@@ -51,7 +51,7 @@ start() {
 				return 1
 			fi
 			# Do not inherit a CGI request's checked token or cached POST body.
-			env - PATH="$PATH" _CGI_CSRF_SCOPE=nhipt httpd -P /var/run/nhipd.pid -p $NHIPT_SERVERIP:$NHIPT_PORT -h $NHIPT_ROOT -c /mod/etc/webcfg.conf -r Freetz
+			env - PATH="$PATH" _CGI_CSRF_SCOPE=nhipt httpd -P /var/run/nhipd.pid -p $NHIPT_SERVERIP:$NHIPT_PORT -h $NHIPT_ROOT -c /mod/etc/webcfg.conf -r NHIPT
 		fi
 	fi
 	if [ "$NHIPT_START_LOG" = "running" ]; then
