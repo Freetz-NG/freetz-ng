@@ -12,6 +12,10 @@ IP=${ID_IP#*#}
 eval "$(modcgi hash:subpage login)"
 [ -f /tmp/flash/mod/webmd5 ] || echo "465d0ff27bb239292778dc3a0c2f28d9" > /tmp/flash/mod/webmd5
 UPWHASH="$(cat /tmp/flash/mod/webmd5)"
+if [ "$UPWHASH" == "465d0ff27bb239292778dc3a0c2f28d9" ]; then
+	WGPASS="$(sed -n 's/^webgui_pass[\t ]*//p' /proc/sys/urlader/environment)"
+	[ -n "$WGPASS" ] && UPWHASH="$(echo -n "$WGPASS" | md5sum | sed 's/ .*//')"
+fi
 myhash="$(echo -n "$SID$UPWHASH" | md5sum | sed 's/ .*//')"
 
 lastacc="$(date -r "$sidfile.tmp" +%s 2>/dev/null)"

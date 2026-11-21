@@ -7,6 +7,7 @@ CHALLENGE="$( (date "+%s";echo "$$";cat /etc/.freetz-ng-version /proc/avm/calib/
 cgi_begin "$(lang de:"Passwort &auml;ndern" en:"Change password")"
 # Waren wir schonmal hier? Dann war was falsch!
 [ "$(cat /tmp/flash/mod/webmd5)" == "465d0ff27bb239292778dc3a0c2f28d9" ] && \
+[ -z "$(sed -n 's/^webgui_pass[\t ]*//p' /proc/sys/urlader/environment)" ] && \
   echo "<b>$(lang de:"Standard Passwort gesetzt. Bitte &auml;ndern!" en:"Default password set. Please change it!")</b><p>"
 
 . /usr/mww/cgi-bin/md5hash.sh
