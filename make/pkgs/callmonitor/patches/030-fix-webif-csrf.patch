@@ -1,8 +1,18 @@
-diff --git base/usr/lib/callmonitor/applets/maint.cgi.sh base/usr/lib/callmonitor/applets/maint.cgi.sh
-index 1abc948..d85a79f 100644
+--- base/usr/lib/callmonitor/applets/exec.cgi.sh
++++ base/usr/lib/callmonitor/applets/exec.cgi.sh
+@@ -2,6 +2,9 @@
+ require if_jfritz_status
+ 
+ eval "$(modcgi jfritz exec)"
++case $EXEC_JFRITZ in
++    on|off) csrf_require_post ;;
++esac
+ cgi_begin callmonitor
+ 
+ case $EXEC_JFRITZ in
 --- base/usr/lib/callmonitor/applets/maint.cgi.sh
 +++ base/usr/lib/callmonitor/applets/maint.cgi.sh
-@@ -14,6 +14,7 @@ cmd_button() {
+@@ -14,6 +14,7 @@
      echo "
  <div class='btn'>
      <form class='btn' action='$SELF' method='$method'>
@@ -10,11 +20,25 @@ index 1abc948..d85a79f 100644
      	$(empty "$cmd" || echo "<input name='cmd' value='$cmd' type='hidden'>")
  	<input value='$label' type='submit'>
      </form>
-diff --git base/usr/lib/callmonitor/applets/reverse.cgi.sh base/usr/lib/callmonitor/applets/reverse.cgi.sh
-index f449cda..32b47c3 100644
+@@ -26,6 +27,7 @@
+ cgi --help="$HELP"
+ 
+ if ! empty "$MAINT_CMD"; then
++    csrf_require_post
+     cgi_begin "$TITLE ..."
+     case $MAINT_CMD in
+ 	phonebook_tidy)
 --- base/usr/lib/callmonitor/applets/reverse.cgi.sh
 +++ base/usr/lib/callmonitor/applets/reverse.cgi.sh
-@@ -39,8 +39,11 @@ if [ -n "$REVERSE_SAVE" ]; then
+@@ -32,6 +32,7 @@
+ eval "$(modcgi "$PARAMS" reverse)"
+ 
+ if [ -n "$REVERSE_SAVE" ]; then
++    csrf_require_post
+     new_provider=
+     for lkz in $LKZ_LIST other; do
+        eval "new_provider=\"\$new_provider $lkz:\$REVERSE_FULL_$lkz\""
+@@ -39,8 +40,11 @@
      new_provider=${new_provider# }
  
      ## delegate to Freetz saving mechanism
@@ -28,7 +52,7 @@ index f449cda..32b47c3 100644
      exit $?
  fi
  
-@@ -55,6 +58,7 @@ cgi --help="$HELP"
+@@ -55,6 +59,7 @@
  cgi_begin "$TITLE"
  
  echo "<form action='$SELF' method='post'>"
@@ -36,11 +60,9 @@ index f449cda..32b47c3 100644
  
  sec_begin '$(lang de:"Anbieter für vollständige Rufnummern" en:"Providers for complete numbers")'
  
-diff --git base/usr/lib/callmonitor/applets/testcall.cgi.sh base/usr/lib/callmonitor/applets/testcall.cgi.sh
-index 5505c5b..954a065 100644
 --- base/usr/lib/callmonitor/applets/testcall.cgi.sh
 +++ base/usr/lib/callmonitor/applets/testcall.cgi.sh
-@@ -15,6 +15,7 @@ dest_val=$(html "$TESTCALL_DEST")
+@@ -15,6 +15,7 @@
  new_testcall_form() {
      echo "
  <form action='$SELF' method='post'>
@@ -48,11 +70,27 @@ index 5505c5b..954a065 100644
      <table><tr>
  	<td><label for='event'>$(lang de:"Ereignis" en:"Event"):</label> </td>
  	<td>
-diff --git base/usr/lib/callmonitor/web/reverse/lib/test_form.sh base/usr/lib/callmonitor/web/reverse/lib/test_form.sh
-index 844d820..0230fc9 100644
+@@ -74,6 +75,7 @@
+ cgi_main() {
+     cgi --help="$HELP"
+     if let "${TESTCALL_SOURCE+1}"; then
++	csrf_require_post
+ 	cgi_begin "$TITLE ..."
+ 	show_testcall_results
+     else
+--- base/usr/lib/callmonitor/applets/testlookup.cgi.sh
++++ base/usr/lib/callmonitor/applets/testlookup.cgi.sh
+@@ -87,6 +87,7 @@
+ cgi_main() {
+     cgi --help="$HELP"
+     if let "${TEST_NUMBER+1}"; then
++	csrf_require_post
+ 	cgi_begin "$TITLE ..."
+ 	show_test_results "$TEST_NUMBER"
+     else
 --- base/usr/lib/callmonitor/web/reverse/lib/test_form.sh
 +++ base/usr/lib/callmonitor/web/reverse/lib/test_form.sh
-@@ -2,6 +2,7 @@ new_test_form() {
+@@ -2,6 +2,7 @@
      local test=$1
      echo "
  <form action='$test' method='post'>
