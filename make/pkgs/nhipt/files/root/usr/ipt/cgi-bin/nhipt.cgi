@@ -225,7 +225,7 @@ function checkAirbag(){
 		if (myModules["iptable_nat"] == 1){
 			tst = system("iptables -t nat -S PREROUTING 1 | grep " RCOD " | grep \"ACCEPT\" 1> /dev/null");
 			if (tst != 0) {ret += system("iptables -t nat -I PREROUTING 1 -s " RCOD " -j ACCEPT");}
-			tst = system("iptables -t nat -S OUTPUT 1 | grep " RCOnoloadmodules=D " | grep \"ACCEPT\" 1> /dev/null");
+			tst = system("iptables -t nat -S OUTPUT 1 | grep " RCOD " | grep \"ACCEPT\" 1> /dev/null");
 			if (tst != 0) {ret += system("iptables -t nat -I OUTPUT 1 -d " RCOD " -j ACCEPT");}
 			tst = system("iptables -t nat -S POSTROUTING 1 | grep " RCOD " | grep \"ACCEPT\" 1> /dev/null");
 			if (tst != 0) {ret += system("iptables -t nat -I POSTROUTING 1 -d " RCOD " -j ACCEPT");}
@@ -241,8 +241,8 @@ function loadModules(){
 		for (x in Param) {if (index(Param[x], "ip_conntrack") > 0) {conntrack=1;} if (index(Param[x], "ip_nat") > 0) {nat=1;} if (index(Param[x], "iptable_mangle") > 0) {mangle=1;} if (index(Param[x], "iptable_raw") > 0) {raw=1;}}
 		if (conntrack==1){Param["ip_conntrack"] = "ip_conntrack";}
 		if (nat==1)		{Param["ip_nat"] = "ip_nat"; if (myModules["iptable_nat"] != 1) {system("modprobe iptable_nat"); changed=1;}} else { if (myModules["iptable_nat"] == 1){ system("rmmod ipt_REDIRECT\nrmmod iptable_nat"); changed=1;}}
-		if (mangle==1)	{if (myModules["iptable_mangle"] != 1) {system("modprobe iptable_mangle") changed=1;}} else { if (myModules["iptable_mangle"] == 1){ system("rmmod iptable_mangle"); changed=1;}}
-		if (raw==1)		{if (myModules["iptable_raw"] != 1) {system("modprobe iptable_raw") changed=1;}} else { if (myModules["iptable_raw"] == 1){ system("rmmod iptable_raw"); changed=1;}}
+		if (mangle==1)	{if (myModules["iptable_mangle"] != 1) {system("modprobe iptable_mangle"); changed=1;}} else { if (myModules["iptable_mangle"] == 1){ system("rmmod iptable_mangle"); changed=1;}}
+		if (raw==1)		{if (myModules["iptable_raw"] != 1) {system("modprobe iptable_raw"); changed=1;}} else { if (myModules["iptable_raw"] == 1){ system("rmmod iptable_raw"); changed=1;}}
 		for (x in y){
 			if (Param["ip_conntrack" y[x]] == ("ip_conntrack" y[x]) && myModules["ip_conntrack" y[x]] != 1) {ret = system("modprobe ip_conntrack" y[x]); print "Loading " x " ..."; changed=1;}
 			else if (Param["ip_conntrack" y[x]] == "" && myModules["ip_conntrack" y[x]] == 1) {ret = system("rmmod ip_conntrack" y[x]); print "Un-Load " x "..."; changed=1;}
@@ -494,7 +494,7 @@ function urldecode (s) {
 	hextab["6"] = 6; hextab["E"] = hextab["e"] = 14;
 	hextab["7"] = 7; hextab["F"] = hextab["f"] = 15;
  	decoded = "";
-	i = 1;RELATED,ESTABLISHED
+	i = 1;
 	len = length (s);
 	while ( i <= len ) {
 		c = substr (s, i, 1);
@@ -522,8 +522,7 @@ function urldecode (s) {
 } # end urldecode
 	{
 	} # end main
-	END
-	{
+	END {
 	}' 2>&1) >> /var/tmp/nhipt.log
 fi
 
