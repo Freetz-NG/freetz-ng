@@ -1,0 +1,11 @@
+--- linux-5.4/GNUmakefile
++++ linux-5.4/GNUmakefile
+@@ -265,6 +265,8 @@
+ 	fi
+ 
+ modules_install: $(_modlib)/build/$(project).symvers
++else
++modules_install:
+ endif
+ 
+ .PHONY: FORCE
