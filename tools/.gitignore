@@ -16,6 +16,7 @@
 /cpio
 /crc32
 /debugfs
+/depmod
 /dos2unix
 /e2fsck
 /eva2bzimage

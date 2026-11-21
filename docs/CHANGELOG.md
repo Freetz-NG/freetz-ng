@@ -112,6 +112,7 @@ Latest changes
     * bridge-utils 1.7.1
     * CA-bundle 2026-11-05
     * Curl 8.12.1/8.23.0
+    * kmod 34.3
     * Empty 0.6.23d
     * endlessh 1.1
     * FFmpeg 5.1.10/7.1.5
