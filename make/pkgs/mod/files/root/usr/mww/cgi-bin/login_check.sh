@@ -18,7 +18,13 @@ lastacc="$(date -r "$sidfile.tmp" +%s 2>/dev/null)"
 [ -n "$lastacc" ] && lastacc=$(( $(date +%s) - lastacc ))
 
 if [ -n "$SID" ] && [ -n "$lastacc" ] && [ "$lastacc" -ge 0 ] && [ "$lastacc" -lt 600 ] && [ "$REMOTE_ADDR" = "$IP" ] && [ "$LOGIN_HASH" = "$myhash" ]; then
-	touch "$sidfile.sid"
+	{
+		echo -n "TICK=" ; date +%s
+		echo -n "DATE=" ; date '+%Y-%m-%dT%H:%M:%S%z'
+		echo "HOST=$REMOTE_ADDR"
+		echo "PORT=$REMOTE_PORT"
+		echo "USER=$HTTP_USER_AGENT"
+	} > "$sidfile.sid"
 	rm -f "$sidfile.tmp"
 else
 	SENDSID=""
