@@ -1,0 +1,615 @@
+--- Makefile
++++ Makefile
+@@ -39,7 +39,7 @@
+ 
+ check:
+ 	find base -name .svn -prune \
+-	    -or -type f -not \( -name "*.sed" -or -name "*.txt" -or -name "*.cfg" \) -print0 \
++	    -or -type f -not \( -name "*.sed" -or -name "*.txt" -or -name "*.cfg" -or -name "parse.awk" -or -name "parse.jq" \) -print0 \
+ 	| ${BUSYBOX} xargs -null -n1 -- $(BUSYBOX) ash -n
+ 
+ clean:
+--- base/usr/lib/callmonitor/modules/reverse.sh
++++ base/usr/lib/callmonitor/modules/reverse.sh
+@@ -3,6 +3,8 @@
+ require tel
+ require reverse_config
+ ## requires /usr/lib/callmonitor/reverse/*.sh
++## requires /usr/lib/callmonitor/reverse/parse.awk
++## requires /usr/lib/callmonitor/reverse/parse.jq
+ 
+ ## resolve numbers to names and addresses; returns 1 if no lookup
+ ## performed or if there were errors (no need to cache)
+@@ -76,7 +78,7 @@
+     if empty "$prov"; then return 0; fi
+     eval $({
+ 	{ _reverse_${prov}_request "$number"; echo exit=$? >&4; } |
+-	_reverse_${prov}_extract
++	_reverse_${prov}_extract "$number"
+     } 4>&1 >&9)
+ ## 141: nc: Broken pipe
+     return $(( exit == 141 ? 0 : exit ))
+@@ -135,6 +137,37 @@
+     s#[,; ]*$##
+ '
+ 
++_reverse_result() {
++    if [ -n "$1" ]; then
++        printf '%s\n' "$1" |
++            sed -e "$REVERSE_DECODE_ENTITIES_UTF8" -e 's/^[[:space:]]*//; s/[[:space:]]*;[[:space:]]*/; /; s/[[:space:]][[:space:]]*/ /g; s/[[:space:]]*$//; s/^/OK:/' |
++            utf8_latin1
++    fi
++}
++
++_reverse_parse_html() {
++    local result
++    result=$(awk -v provider="$1" -v country="$2" -v number="$3" \
++        -f "$CALLMONITOR_LIBDIR/reverse/parse.awk")
++    _reverse_result "$result"
++}
++
++_reverse_parse_json() {
++    local mode=$1 country=$2 number=$3 result
++    result=$(awk -v mode="$mode" '
++        BEGIN { RS = "<" }
++        mode == "schema" && /^script[[:space:]][^>]*application\/ld\+json[^>]*>/ {
++            sub(/^[^>]*>/, ""); gsub(/[\r\n]/, " "); print
++        }
++        mode == "flight" && /^script[^>]*>self\.__next_f\.push\(\[1,/ {
++            sub(/^[^>]*>self\.__next_f\.push\(/, ""); sub(/\)[[:space:]]*$/, ""); print
++        }' |
++        jq -Rr --arg mode "$mode" --arg country "$country" --arg number "$number" \
++            -f "$CALLMONITOR_LIBDIR/reverse/parse.jq" |
++        sed -n '1p')
++    _reverse_result "$result"
++}
++
+ ## initialization: load required provider modules
+ 
+ _reverse_require_provider() {
+--- base/usr/lib/callmonitor/reverse/11880.sh
++++ base/usr/lib/callmonitor/reverse/11880.sh
+@@ -1,30 +1,14 @@
+ _reverse_11880_url() {
+     local number="0${1#+49}"
+-    URL="http://www.11880.com/inverssuche/index/search?method=searchSimple&_dvform_posted=1&phoneNumber=$(urlencode "$number")"
++    URL="https://www.11880.com/rueckwaertssuche/$number"
+ }
++
+ _reverse_11880_request() {
+     local URL=
+     _reverse_11880_url "$@"
+-    wget_callmonitor "$URL" -q -O - 
++    curl -4fsSL --max-time 12 "$URL"
+ }
++
+ _reverse_11880_extract() {
+-    sed -n -e '
+-	/class="noResultCities"\|keinen Teilnehmer ermitteln/ {
+-	    '"$REVERSE_NA"'
+-	}
+-	/<[^[:space:]>]*[[:space:]]class="head[[:space:]]/,/<[^[:space:]>]*[[:space:]]class="numericdata/ {
+-	    /<[^[:space:]>]*[[:space:]]class="numericdata/ b found
+-	    /<a href=[^>]*#ratings/ d
+-	    H
+-	}
+-	b
+-	: found
+-	g
+-	s#<a class="namelink"[^>]>#<rev:name>#
+-	s#</a>#</rev:name>#
+-	s#<br />#, #g
+-	'"$REVERSE_DECODE_ENTITIES"'
+-	'"$REVERSE_SANITIZE"'
+-	'"$REVERSE_OK"'
+-    '
++    _reverse_parse_json schema 49 "$1"
+ }
+--- base/usr/lib/callmonitor/reverse/country.cfg
++++ base/usr/lib/callmonitor/reverse/country.cfg
+@@ -2,6 +2,4 @@
+ 49	$(lang de:"Deutschland" en:"Germany")
+ 41	$(lang de:"Schweiz" en:"Switzerland")
+ 43	$(lang de:"÷sterreich" en:"Austria")
+-39	$(lang de:"Italien" en:"Italy")
+-32	$(lang de:"Belgien" en:"Belgium")
+ 1	USA
+--- base/usr/lib/callmonitor/reverse/dasoertliche.sh
++++ base/usr/lib/callmonitor/reverse/dasoertliche.sh
+@@ -1,11 +1,12 @@
+ _reverse_dasoertliche_url() {
+     local number="0${1#+49}"
+-    URL="http://www.dasoertliche.de/Controller?form_name=search_inv&ph=$(urlencode "$number")"
++    URL="https://www.dasoertliche.de/Controller?form_name=search_inv&ph=$(urlencode "$number")"
+ }
+ _reverse_dasoertliche_request() {
+     local URL=
+     _reverse_dasoertliche_url "$@"
+-    wget_callmonitor "$URL" -q -O -
++    require recode
++    (set -o pipefail; curl -4fsS --max-time 12 "$URL" | utf8_latin1)
+ }
+ _reverse_dasoertliche_extract() {
+    sed -n -e '
+--- base/usr/lib/callmonitor/reverse/goyellow.sh
++++ /dev/null
+@@ -1,44 +0,0 @@
+-_reverse_goyellow_url() {
+-    local number="0${1#+49}"
+-    URL="http://www.goyellow.de/inverssuche/?TEL=$(urlencode "$number")"
+-}
+-_reverse_goyellow_request() {
+-    local URL=
+-    _reverse_goyellow_url "$@" 
+-    wget_callmonitor "$URL" -q -O -
+-}
+-_reverse_goyellow_extract() {
+-    local b=$'\1' e=$'\2'
+-    local c="[^$b$e]"
+-    sed -n -e '
+-	\#\(haben wir nichts\|Keine.*\) gefunden# {
+-	    '"$REVERSE_NA"'
+-	}
+-	\#<div id="searchResultListing"#,\#<p class="moreInfo"# {
+-	    \#<span class="normal fn# b name
+-	    \#<span class="\(comma\|postcode\|city \)# H
+-	    \#<span class="street encAdr"># b street
+-	    \#<span class="street # H
+-	}
+-	\#<p class="moreInfo"# {
+-	    g
+-	    '"$REVERSE_SANITIZE"'
+-	    '"$REVERSE_OK"'
+-	}
+-	b
+-	: name
+-	s#.*#<rev:name>&</rev:name>#
+-	h
+-	b
+-	: street
+-	s#.*<span[^>]*>#'"$b$b$b"'#
+-	s#</span>.*#'"$e"'#
+-	H
+-	b
+-    ' | utf8_latin1 | sed -r "
+-    	: loop
+-	s/$b($c*)$b($c*)$b($c)($c)?/$b\1\3$b\4\2$b/
+-	t loop
+-	s/[$b$e]//g
+-    "
+-}
+--- base/usr/lib/callmonitor/reverse/herold_at.sh
++++ base/usr/lib/callmonitor/reverse/herold_at.sh
+@@ -1,27 +1,13 @@
+ _reverse_herold_at_url() {
+-    local number="0${1#+43}"
+-    URL="http://www.herold.mobi/redirect/findlisting?what=$(urlencode "$number")&searchtype=WHITEPAGES"
++    URL="https://www.herold.at/telefonbuch/suche/?term=$(urlencode "$1")"
+ }
+ 
+ _reverse_herold_at_request() {
+     local URL=
+     _reverse_herold_at_url "$@"
+-    wget_callmonitor -q -O - "$URL"
++    curl -4fsSL --max-time 12 "$URL"
+ }
+ 
+ _reverse_herold_at_extract() {
+-    sed -n -e '
+-    /keine Treffer/ {
+-        '"$REVERSE_NA"'
+-    }
+-    /myMap\.addMarker/ {
+-        s/.*new Map([^)]\+);myMap\.addMarker//
+-        s/myMap\.addMarker.*//
+-        s/^.*.title.:.\(.*\).,.tel.:.*.,.addr.:.\(.*\).,.icon.*/<rev:name>\1<\/rev:name> \2/
+-        s#<br/>#, #g
+-        '"$REVERSE_DECODE_ENTITIES_UTF8"'
+-        '"$REVERSE_SANITIZE"'
+-        '"$REVERSE_OK"'
+-    }
+-    ' | utf8_latin1
++    _reverse_parse_html herold_at 43 "$1"
+ }
+--- base/usr/lib/callmonitor/reverse/local_ch.sh
++++ base/usr/lib/callmonitor/reverse/local_ch.sh
+@@ -1,27 +1,15 @@
+ _reverse_local_ch_url() {
+     local number="0${1#+41}"
+-    URL="http://mobile.tel.local.ch/de/q/?what=$(urlencode "$number")"
++    number=$(printf '%s' "$number" | sed 's/^\(...\)\(...\)\(..\)\(..\)$/\1%20\2%20\3%20\4/')
++    URL="https://www.local.ch/de/s/$number"
+ }
++
+ _reverse_local_ch_request() {
+     local URL=
+     _reverse_local_ch_url "$@"
+-    wget_callmonitor "$URL" -q -O -
++    curl -4fsSL --max-time 12 "$URL"
+ }
+ 
+ _reverse_local_ch_extract() {
+-    sed -n -e '
+-	\#keine Eintr..\?ge gefunden# {
+-	    '"$REVERSE_NA"'
+-	}
+-	\#<div class="[^"]*\(bus\|res\)result# {
+-	    s#<div class="adr">\(\([^<]\|<\([^/]\|/\([^d]\|d[^i]\|di[^v]\)\)\)*\)</div>.*$# \1#
+-	    s#<p class="phoneNumber">\([^<]\|<[^/]\|</[^p]\|</p[^ >]\)*</p>##
+-	    s#^.*<div class="[^"]*\(bus\|res\)result"[^>]*>##
+-	    s#</\?a\(>\| [^>]*>\)##g
+-	    s#<h2 class="fn">\([^<]*\)</h2>#<rev:name>\1</rev:name>#
+-	    s#<br/>#,#g
+-	    '"$REVERSE_SANITIZE"'
+-	    '"$REVERSE_OK"'
+-	}
+-    ' | utf8_latin1
++    _reverse_parse_json flight 41 "$1"
+ }
+--- /dev/null
++++ base/usr/lib/callmonitor/reverse/parse.awk
+@@ -0,0 +1,104 @@
++# Split markup using '<' as the record separator. Only match phone numbers
++# inside the same listing as the returned name and address.
++function attr(tag, key,    value) {
++    if (!match(tolower(tag), "[[:space:]]" tolower(key) "=[^[:space:]]"))
++        return ""
++    value = substr(tag, RSTART + RLENGTH - 1)
++    if (substr(value, 1, 1) == "\"" || substr(value, 1, 1) == "'") {
++        split(value, parts, substr(value, 1, 1))
++        return parts[2]
++    }
++    sub(/[[:space:]].*$/, "", value)
++    return value
++}
++
++function digits(value) {
++    gsub(/[^0-9]/, "", value)
++    if (substr(value, 1, 2) == "00")
++        return substr(value, 3)
++    if (substr(value, 1, 1) == "0")
++        return country substr(value, 2)
++    return value
++}
++
++function finish() {
++    if (matched && (name != "" || given != "" || family != "")) {
++        if (name == "") name = given " " family
++        print name "; " (address != "" ? address : street " " zip " " locality)
++        found = 1
++        exit
++    }
++    name = given = family = street = zip = locality = address = capture = ""
++    matched = 0
++}
++
++BEGIN { RS = "<"; target = digits(number) }
++
++{
++    end = index($0, ">")
++    if (!end) next
++    tag = substr($0, 1, end - 1)
++    body = substr($0, end + 1)
++    gsub(/[[:space:]]+/, " ", body)
++    prop = tolower(attr(tag, "itemprop"))
++    class = attr(tag, "class")
++    href = attr(tag, "href")
++    content = attr(tag, "content")
++
++    if (provider == "search_ch") {
++        if (tag ~ /^article / && class ~ /(^| )tel-resultentry( |$)/) {
++            finish()
++            listing = "article"
++        }
++        if (tag ~ /^section / && class ~ /(^| )tel-detail-title( |$)/) {
++            finish()
++            listing = "detail"
++        }
++        if (listing == "") next
++        if (listing == "article" && tag ~ /^\/article([[:space:]]|$)/ ||
++            listing == "detail" && tag ~ /^\/section([[:space:]]|$)/) {
++            finish()
++            listing = ""
++            next
++        }
++        if (listing == "detail" && tag ~ /^h1([[:space:]]|$)/) name = body
++        if (class == "tel-result-detail-link") name = attr(tag, "title")
++        if (class == "tel-address" || class == "street-address") street = body
++        if (class == "postal-code") zip = body
++        if (class == "locality") locality = body
++        if ((class ~ /(^| )tel-callable( |$)/ ||
++             listing == "detail" && class == "sl-icon-call") &&
++            href ~ /^tel:/ && digits(href) == target)
++            matched = 1
++        next
++    }
++
++    if (provider == "telefonbuch" && attr(tag, "id") ~ /^entry_[0-9]+$/ ||
++        provider == "herold_at" && tag ~ /^li / && prop == "itemlistelement" ||
++        provider == "telefonbuch_at" && tag ~ /^article / && class ~ /search-result/)
++        finish()
++
++    if (capture == "schnelle-name" && tag ~ /^\/h3/) capture = ""
++    if (capture == "address" && tag ~ /^\/p/) capture = ""
++
++    if (prop == "name" && name == "") name = content != "" ? content : body
++    if (prop == "givenname") given = content
++    if (prop == "familyname") family = content
++    if (prop == "streetaddress") street = body
++    if (prop == "postalcode") zip = body
++    if (prop == "addresslocality") locality = body
++    if (provider == "telefonbuch_at" && tag ~ /^h3 /) capture = "schnelle-name"
++    if (prop == "address" && provider == "herold_at" || class == "adresse")
++        capture = "address"
++    if (capture == "schnelle-name" && tag ~ /^a /) name = body
++    if (capture == "address" && class == "hidden") capture = ""
++    if (capture == "address") address = address " " body
++
++    if (provider == "telefonbuch" && tag ~ /^!-- phoneTo:/ && digits(tag) == target)
++        matched = 1
++    if ((prop == "telephone" && (digits(body) == target || digits(content) == target)) ||
++        (href ~ /^tel:/ && digits(href) == target))
++        matched = 1
++}
++
++END { if (!found) finish() }
+--- /dev/null
++++ base/usr/lib/callmonitor/reverse/parse.jq
+@@ -0,0 +1,24 @@
++def normalize:
++    gsub("[^0-9]"; "")
++    | if startswith("00") then .[2:]
++      elif startswith("0") then $country + .[1:]
++      else . end;
++
++def matches($phones):
++    any($phones[]; type == "string" and normalize == ($number | normalize));
++
++def display($name; $street; $zip; $city):
++    [$name, ";", $street, $zip, $city] | map(select(type == "string")) | join(" ");
++
++if $mode == "schema" then
++    fromjson? | .. | objects
++    | select((.name | type) == "string" and (.address | type) == "object")
++    | select(matches([.telephone | arrays[] , strings]))
++    | display(.name; .address.streetAddress; .address.postalCode; .address.addressLocality)
++else
++    fromjson? | .[1] | strings | split("\n")[]
++    | sub("^[0-9a-f]+:"; "") | fromjson?
++    | .. | objects | select(.__typename == "Entry" and (.title | type) == "string")
++    | select(matches([.contacts[]? | select(.__typename == "CustomerProvidedPhoneContact") | .value]))
++    | display(.title; .address.streetLine; .address.zipCode; .address.city)
++end
+--- base/usr/lib/callmonitor/reverse/pronto_it.sh
++++ /dev/null
+@@ -1,31 +0,0 @@
+-_reverse_pronto_it_url() {
+-    local number="0${1#+39}"
+-    URL="http://pronto.it/?q=$(urlencode "$number")"
+-}
+-_reverse_pronto_it_request() {
+-    local URL=
+-    _reverse_pronto_it_url "$@"
+-    wget_callmonitor "$URL" -q -O -
+-}
+-
+-_reverse_pronto_it_extract() {
+-    sed -n -e '
+-    	/Non ho trovato/ {
+-	    '"$REVERSE_NA"'
+-	}
+-	\#<div class="blocco_info"#,\#</div># {
+-	    \#<span class="cognome# b name
+-	    \#<span class="via"# H
+-	    \#</div># b output
+-	}
+-	b
+-	: name
+-	s#.*#<rev:name>&</rev:name>#
+-	h
+-	b
+-	: output
+-	g
+-	'"$REVERSE_SANITIZE"'
+-	'"$REVERSE_OK"'
+-    '
+-}
+--- base/usr/lib/callmonitor/reverse/provider.cfg
++++ base/usr/lib/callmonitor/reverse/provider.cfg
+@@ -1,12 +1,9 @@
+ ## type	id	countries	site	label
+-R	dasoertliche	49	www.dasoertliche.de	Das÷rtliche
+-R	telefonbuch	49!	www.dastelefonbuch.de	DasTelefonbuch
+-R	goyellow	49	www.goyellow.de	GoYellow
++R	dasoertliche	49!	www.dasoertliche.de	Das÷rtliche
++R	telefonbuch	49	www.dastelefonbuch.de	DasTelefonbuch
+ R	11880	49	www.11880.com	11880
+ R	telefonbuch_at	43!	www.dasschnelle.at	DasSchnelle.at
+ R	herold_at	43	www.herold.at	herold.at
+-R	search_ch	41!	www.search.ch	search.ch
+-R	local_ch	41	tel.local.ch	local.ch
+-R	pronto_it	39!	pronto.it	pronto.it
+-R	wittegids_be	32!	www.wittegids.be	wittegids.be
+-R	userdef	*	.	$(lang de:"Benutzerdefiniert" en:"User-defined")
++R	search_ch	41!	search.ch	search.ch
++R	local_ch	41	www.local.ch	local.ch
++R	userdef	*!	.	$(lang de:"Benutzerdefiniert" en:"User-defined")
+--- base/usr/lib/callmonitor/reverse/search_ch.sh
++++ base/usr/lib/callmonitor/reverse/search_ch.sh
+@@ -1,31 +1,26 @@
+ _reverse_search_ch_url() {
+     local number="0${1#+41}"
+-    URL="http://tel.search.ch/?tel=$(urlencode "$number")"
++    URL="https://search.ch/tel/?tel=$number"
+ }
++
+ _reverse_search_ch_request() {
+     local URL=
+     _reverse_search_ch_url "$@"
+-    wget_callmonitor "$URL" -q -O -
++    curl -4fsSL --max-time 12 "$URL"
+ }
+ 
+ _reverse_search_ch_extract() {
+-    sed -n -e '
+-	\#Keine Eintr..\?ge gefunden# {
+-	    '"$REVERSE_NA"'
+-	}
+-	\#^<div [^>]*class="tel_item"><div#,\#</div></div>$# {
+-	    \#<h5># b name
+-	    \#<span class="adrgroup# b address
+-	}
+-	b
+-	: name
+-	s#.*#<rev:name>&</rev:name>#
+-	h
+-	b
+-	: address
+-	H
+-	x
+-	'"$REVERSE_SANITIZE"'
+-	'"$REVERSE_OK"'
+-    '
++    (
++        local response result
++        response=$(mktemp) || exit 1
++        trap 'rm -f "$response"' EXIT
++        cat > "$response" || exit 1
++
++        result=$(_reverse_parse_json schema 41 "$1" < "$response")
++        if [ -n "$result" ]; then
++            printf '%s\n' "$result"
++        else
++            _reverse_parse_html search_ch 41 "$1" < "$response"
++        fi
++    )
+ }
+--- base/usr/lib/callmonitor/reverse/telefonbuch.sh
++++ base/usr/lib/callmonitor/reverse/telefonbuch.sh
+@@ -1,39 +1,14 @@
+ _reverse_telefonbuch_url() {
+     local number="0${1#+49}"
+-    URL="http://www.dastelefonbuch.de/?la=de&kw=$(urlencode "$number")&cmd=search"
++    URL="https://www.dastelefonbuch.de/R%C3%BCckw%C3%A4rts-Suche/$number"
+ }
+ 
+ _reverse_telefonbuch_request() {
+     local URL=
+     _reverse_telefonbuch_url "$@"
+-    wget_callmonitor -q -O - "$URL" 2>&1
++    curl -4fsSL --max-time 12 "$URL"
+ }
+-REVERSE_TELEFONBUCH_NBSP=$(echo -e '\xa0')
++
+ _reverse_telefonbuch_extract() {
+-    sed -n -e '
+-        /wget: server returned error: HTTP.* 410 Gone\|Kein Treffer gefunden/ {
+-            '"$REVERSE_NA"'
+-        }
+-        /<a id="name0"/,/<\/address>/ {
+-            /<a id="name0"/,/<\/a>/ {
+-                H
+-                /<\/a>/ {
+-                    g
+-                    s/.*/<rev:name>&<\/rev:name>/
+-                    h
+-                }
+-            }
+-            /<address class=/,/<\/address>/ {
+-                H
+-                /<\/address>/ b found
+-            }
+-        }
+-        b
+-        :found
+-        g
+-        s/'$REVERSE_TELEFONBUCH_NBSP'/ /g
+-        '"$REVERSE_DECODE_ENTITIES"'
+-        '"$REVERSE_SANITIZE"'
+-        '"$REVERSE_OK"'
+-   '
++    _reverse_parse_html telefonbuch 49 "$1"
+ }
+--- base/usr/lib/callmonitor/reverse/telefonbuch_at.sh
++++ base/usr/lib/callmonitor/reverse/telefonbuch_at.sh
+@@ -1,37 +1,14 @@
+ _reverse_telefonbuch_at_url() {
+     local number="0${1#+43}"
+-    URL="http://www.dasschnelle.at/result/index/results?what=$(urlencode "$number")&resultsPerPage=1"
++    URL="https://www.dasschnelle.at/suche/$number/0/1"
+ }
++
+ _reverse_telefonbuch_at_request() {
+     local URL=
+     _reverse_telefonbuch_at_url "$@"
+-    wget_callmonitor -q -O - "$URL"
++    curl -4fsSL --max-time 12 "$URL"
+ }
++
+ _reverse_telefonbuch_at_extract() {
+-    sed -n -e '
+-	/countResults : "0"/ {
+-	    '"$REVERSE_NA"'
+-	}
+-	/^[[:space:]]*entries : \[[[:space:]]*$/,/^[[:space:]]result : / {
+-	    /^[[:space:]]*\(name\|strasse\|plz\|ort\) : / b json
+-	}
+-	/^[[:space:]]*result : / b cleanup
+-	$ b cleanup
+-	b
+-
+-	: json
+-	s#^[[:space:]]*\([a-z]\+\) : "\(.*\)",[[:space:]]*$#<\1>\2</\1>#
+-	s#\\[bfnrt]##g
+-	s#\\\(["\\/]\)#\1#g
+-	# \u four-hex-digits is not handled
+-	H
+-	b
+-	
+-	: cleanup
+-	g
+-	s#\(</\?\)name>#\1rev:name>#g
+-	s#</strasse>#&, #
+-	'"$REVERSE_SANITIZE"'
+-	'"$REVERSE_OK"'
+-    ' | utf8_latin1
++    _reverse_parse_html telefonbuch_at 43 "$1"
+ }
+--- base/usr/lib/callmonitor/reverse/wittegids_be.sh
++++ /dev/null
+@@ -1,35 +0,0 @@
+-_reverse_wittegids_be_url() {
+-    local number="0${1#+32}"
+-    URL="http://www.wittegids.be/q/name/telephone/$(urlencode "$number")/?customerType=ALL"
+-}
+-_reverse_wittegids_be_request() {
+-    local URL=
+-    _reverse_wittegids_be_url "$@"
+-    wget_callmonitor "$URL" -q -O -
+-}
+-
+-_reverse_wittegids_be_extract() {
+-    sed -n -e '
+-	/Geen resultaten voor/ {
+-	    '"$REVERSE_NA"'
+-	}
+-	\#<span[^>]*class="result-title#,\#</span># {
+-	    H
+-	    \#</span># b name
+-	}
+-	\#<div class="result-address#,\#</div># {
+-	    H
+-	}
+-	\#<div class="result-icons# b output
+-	b
+-	: name
+-	g
+-	s#.*#<rev:name>&</rev:name>#
+-	h
+-	b
+-	: output
+-	g
+-	'"$REVERSE_SANITIZE"'
+-	'"$REVERSE_OK"'
+-    ' | utf8_latin1
+-}
