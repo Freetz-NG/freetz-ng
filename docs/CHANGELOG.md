@@ -108,7 +108,7 @@ Latest changes
     * Apache2 2.4.71
     * AutoFS 5.0.5/5.2.0
     * axTLS wrapper 2.1.5
-    * BIND 9.11.37/9.20.30
+    * BIND 9.11.37/9.20.31
     * Bftpd 6.7
     * bridge-utils 1.7.1
     * CA-bundle 2026-11-05
