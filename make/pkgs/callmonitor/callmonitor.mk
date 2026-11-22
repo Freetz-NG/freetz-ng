@@ -46,7 +46,7 @@ $(pkg)-precompiled: $($(PKG)_TARGET_DIR)/.packaged
 
 $($(PKG)_TARGET_DIR)/.packaged: $($(PKG)_DIR)/.configured $($(PKG)_TARGET_BINARY)
 	$(call COPY_USING_TAR,$(CALLMONITOR_BUILD_DIR)/root,$(CALLMONITOR_DEST_DIR),--files-from=$(CALLMONITOR_BUILD_DIR)/.files)
-ifeq ($(strip $(FREETZ_PACKAGE_CALLMONITOR_phonebook_https)),y)
+ifneq ($(strip $(FREETZ_PACKAGE_CALLMONITOR_phonebook_https)),y)
 	cd $(CALLMONITOR_DEST_DIR)/usr/lib/callmonitor/reverse && \
 		sed -i -E '/^(#|R[[:space:]]+userdef[[:space:]])/!d' provider.cfg && \
 		find . -maxdepth 1 -type f ! -name '*.cfg' ! -name 'userdef.sh' -delete
