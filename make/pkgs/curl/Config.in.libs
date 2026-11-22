@@ -39,6 +39,7 @@ config FREETZ_LIB_libcurl
 
 			config FREETZ_LIB_libcurl_WITH_OPENSSL
 				bool "OpenSSL"
+				select FREETZ_LIB_libcrypto_WITH_EC
 				select FREETZ_LIB_libcrypto
 				select FREETZ_LIB_libssl
 
