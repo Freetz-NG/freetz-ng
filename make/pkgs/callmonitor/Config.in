@@ -60,25 +60,33 @@ config FREETZ_PACKAGE_CALLMONITOR_monitor
 
 		You want to say YES here if you are new to Callmonitor.
 
-config FREETZ_PACKAGE_CALLMONITOR_phonebook
+menuconfig FREETZ_PACKAGE_CALLMONITOR_phonebook
 	bool "Phonebook support"
 	default y
 	depends on FREETZ_PACKAGE_CALLMONITOR
 	select FREETZ_PACKAGE_PHONEBOOK_TOOLS
 	select FREETZ_WGET
-	select FREETZ_BUSYBOX_AWK
-	select FREETZ_PACKAGE_CURL
-	select FREETZ_PACKAGE_JQ
-	select FREETZ_PACKAGE_JQ_WITH_RE_SUPPORT
-	select FREETZ_LIB_libcrypto_WITH_EC
 	help
 		This option makes Callmonitor map phone numbers to names using several
-		sources of information: reverse-lookup Web services, AVM's built-in
-		phonebook and an additional text file named 'Callers'.
+		sources of information: AVM's built-in phonebook, an additional text
+		file named 'Callers' and optional online reverse lookup.
 
 		Only say NO here if you are not interested in who is calling you.
 
+config FREETZ_PACKAGE_CALLMONITOR_phonebook_https
+	bool "Online reverse lookup (HTTPS)"
+	default y
+	depends on FREETZ_PACKAGE_CALLMONITOR_phonebook && FREETZ_AVM_VERSION_07_0X_MIN
+	select FREETZ_BUSYBOX_AWK
+	select FREETZ_PACKAGE_CURL
+	select FREETZ_PACKAGE_CURL_SELECT_SSL
+	select FREETZ_PACKAGE_CURL_SELECT_CA_BUNDLE
+	select FREETZ_LIB_libcrypto_WITH_EC
+	select FREETZ_PACKAGE_JQ
+	select FREETZ_PACKAGE_JQ_WITH_RE_SUPPORT
+	help
+		Include built-in online reverse lookup providers. This sends unknown
+		phone numbers to the configured provider over HTTPS.
 
-if FREETZ_PACKAGE_CALLMONITOR_phonebook && (!FREETZ_PACKAGE_CURL_SELECT_SSL || !FREETZ_PACKAGE_CURL_SELECT_CA_BUNDLE)
-comment "Warning: HTTPS reverse lookup requires Curl SSL and CA-bundle support."
-endif
+		Disable this to save flash space while keeping local phonebooks and
+		any user-defined lookup script.
