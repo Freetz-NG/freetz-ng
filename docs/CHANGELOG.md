@@ -123,7 +123,7 @@ Latest changes
     * HAProxy 2.6.35
     * htpdate 2.1.0
     * ImageMagick 7.1.0-62/7.1.2-36
-    * iPerf3 3.3/3.22
+    * iPerf3 3.3/3.22.1
     * lsof 4.99.7
     * Lua 5.1.5/5.5.1
     * Mosquitto 2.0.23/2.1.4

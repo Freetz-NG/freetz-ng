@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_IPERF
-	bool "iPerf3 3.3/3.22 (binary only)"
+	bool "iPerf3 3.3/3.22.1 (binary only)"
 	default n
 	help
 		iPerf3 is a tool for active measurements of the maximum achievable
@@ -23,7 +23,7 @@ if FREETZ_PACKAGE_IPERF
 				And libatomic exists only since gcc 4.8.
 
 		config FREETZ_PACKAGE_IPERF_VERSION_CURRENT
-			bool "3.22"
+			bool "3.22.1"
 			depends on  FREETZ_TARGET_IPV6_SUPPORT && !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29) &&  FREETZ_TARGET_GCC_4_8_MIN
 			select FREETZ_LIB_libatomic if !FREETZ_PACKAGE_IPERF_STATIC && FREETZ_TARGET_GCC_4_8_MIN
 
