@@ -723,7 +723,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Build Configuration](../../docs/make/procps-ng.md#build-configuration)
      - [Known Limitations](../../docs/make/procps-ng.md#known-limitations)
 
-  * **[ProxyChains-NG 4.17](../../docs/make/proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
+  * **[ProxyChains-NG 4.18](../../docs/make/proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
     A preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies, tor is also supported. Usage: proxychains4 telnet mail.example.com 25
 
   * **[psl 0.21.5 (binary only)](../../docs/make/psl.md)<a id='psl'></a>**<br>
