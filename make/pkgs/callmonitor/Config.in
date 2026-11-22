@@ -60,7 +60,7 @@ config FREETZ_PACKAGE_CALLMONITOR_monitor
 
 		You want to say YES here if you are new to Callmonitor.
 
-menuconfig FREETZ_PACKAGE_CALLMONITOR_phonebook
+config FREETZ_PACKAGE_CALLMONITOR_phonebook
 	bool "Phonebook support"
 	default y
 	depends on FREETZ_PACKAGE_CALLMONITOR
@@ -81,7 +81,6 @@ config FREETZ_PACKAGE_CALLMONITOR_phonebook_https
 	select FREETZ_PACKAGE_CURL
 	select FREETZ_PACKAGE_CURL_SELECT_SSL
 	select FREETZ_PACKAGE_CURL_SELECT_CA_BUNDLE
-	select FREETZ_LIB_libcrypto_WITH_EC
 	select FREETZ_PACKAGE_JQ
 	select FREETZ_PACKAGE_JQ_WITH_RE_SUPPORT
 	help
