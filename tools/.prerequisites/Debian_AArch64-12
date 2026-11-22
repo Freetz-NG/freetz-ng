@@ -1,4 +1,3 @@
-gawk
 autopoint
 bc
 binutils
@@ -12,6 +11,7 @@ ecj
 flex
 ftp
 g++
+gawk
 gcc
 gettext
 git
