@@ -138,6 +138,7 @@ Latest changes
     * PHP 5.6.40/8.2.36/8.3.37/8.4.28/8.5.13/8.6.0
     * Privoxy 4.2.0
     * procps-ng 4.0.7
+    * ProxyChains-NG 4.18
     * Python3 3.14.8
     * rpcbind 1.3.1
     * rsync 3.4.1/3.5.2
