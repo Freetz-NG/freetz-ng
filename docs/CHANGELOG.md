@@ -161,7 +161,7 @@ Latest changes
     * fribidi 1.0.18
     * gensio 3.0.4
     * GLib2 2.32.4/2.90.1
-    * harfbuzz 15.1.0
+    * harfbuzz 15.2.0
     * libconfuse 3.4
     * libffi 3.8.1
     * libgcrypt 1.12.4
