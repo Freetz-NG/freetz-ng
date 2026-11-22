@@ -43,7 +43,7 @@ if [ "$UPWHASH" == "465d0ff27bb239292778dc3a0c2f28d9" ]; then
 fi
 #. $PWD/index.cgi
 
-subpage="$(echo "$LOGIN_SUBPAGE" | sed 's/^\/*//;s/&.*//;s/[^-_a-zA-Z0-9\.\/]//g;s/\.\.//g')"
+subpage="$(echo "$LOGIN_SUBPAGE" | sed 's/^\/*//;s/&.*//;s/[^-_a-zA-Z0-9\.\/]//g;s/\.\.//g;s#^/*##')"
 [ "$subpage" == "cgi-bin/login.cgi" -o "$subpage" == "cgi-bin/logout.cgi" ] && subpage=''
 . /usr/lib/libmodredir.sh
 redirect "/$subpage"
