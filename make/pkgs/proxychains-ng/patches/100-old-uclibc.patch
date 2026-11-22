@@ -1,0 +1,18 @@
+--- src/core.h
++++ src/core.h
+@@ -23,6 +23,15 @@
+ 
+ #ifndef __CORE_HEADER
+ #define __CORE_HEADER
++
++#ifndef AI_ADDRCONFIG
++#define AI_ADDRCONFIG 0
++#endif
++
++#ifndef EAI_OVERFLOW
++#define EAI_OVERFLOW EAI_FAIL
++#endif
++
+ #define     MAX_LOCALNET 64
+ #define     MAX_DNAT 64
+ 
