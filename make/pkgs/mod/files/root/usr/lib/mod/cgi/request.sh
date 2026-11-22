@@ -27,9 +27,10 @@ _path_info() {
 # get a single query parameter (unescaped)
 cgi_param() {
 	local key=$1
-	case "&$QUERY_STRING" in
+	local value="&$QUERY_STRING"
+	case $value in
 		*"&$key="*)
-			local value=${QUERY_STRING##*$key=}
+			value=${value##*"&$key="}
 			value=${value%%&*}
 			httpd -d "$value"
 			;;
