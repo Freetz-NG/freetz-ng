@@ -76,7 +76,7 @@ config FREETZ_PACKAGE_CALLMONITOR_phonebook
 config FREETZ_PACKAGE_CALLMONITOR_phonebook_https
 	bool "Online reverse lookup (HTTPS)"
 	default y
-	depends on FREETZ_PACKAGE_CALLMONITOR_phonebook && FREETZ_AVM_VERSION_07_0X_MIN
+	depends on FREETZ_PACKAGE_CALLMONITOR_phonebook
 	select FREETZ_BUSYBOX_AWK
 	select FREETZ_PACKAGE_CURL
 	select FREETZ_PACKAGE_CURL_SELECT_SSL

@@ -11,8 +11,8 @@
  export CALLMONITOR_MON_HOST='127.0.0.1'
 --- base/usr/lib/callmonitor/reverse/provider.cfg
 +++ base/usr/lib/callmonitor/reverse/provider.cfg
-@@ -10,4 +10,3 @@
- R	pronto_it	39!	pronto.it	pronto.it
- R	wittegids_be	32!	www.wittegids.be	wittegids.be
- R	userdef	*	.	$(lang de:"Benutzerdefiniert" en:"User-defined")
+@@ -7,4 +7,3 @@
+ R	search_ch	41!	search.ch	search.ch
+ R	local_ch	41	www.local.ch	local.ch
+ R	userdef	*!	.	$(lang de:"Benutzerdefiniert" en:"User-defined")
 -A	billiger	*	www.billiger-telefonieren.de	billiger-telefonieren.de

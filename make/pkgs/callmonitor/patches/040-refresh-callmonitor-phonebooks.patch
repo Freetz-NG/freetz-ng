@@ -132,7 +132,7 @@
  _reverse_dasoertliche_extract() {
     sed -n -e '
 --- base/usr/lib/callmonitor/reverse/goyellow.sh
-+++ /dev/null
++++ base/usr/lib/callmonitor/reverse/goyellow.sh
 @@ -1,44 +0,0 @@
 -_reverse_goyellow_url() {
 -    local number="0${1#+49}"
@@ -246,7 +246,7 @@
 -    ' | utf8_latin1
 +    _reverse_parse_json flight 41 "$1"
  }
---- /dev/null
+--- base/usr/lib/callmonitor/reverse/parse.awk
 +++ base/usr/lib/callmonitor/reverse/parse.awk
 @@ -0,0 +1,104 @@
 +# Split markup using '<' as the record separator. Only match phone numbers
@@ -353,7 +353,7 @@
 +}
 +
 +END { if (!found) finish() }
---- /dev/null
+--- base/usr/lib/callmonitor/reverse/parse.jq
 +++ base/usr/lib/callmonitor/reverse/parse.jq
 @@ -0,0 +1,24 @@
 +def normalize:
@@ -381,7 +381,7 @@
 +    | display(.title; .address.streetLine; .address.zipCode; .address.city)
 +end
 --- base/usr/lib/callmonitor/reverse/pronto_it.sh
-+++ /dev/null
++++ base/usr/lib/callmonitor/reverse/pronto_it.sh
 @@ -1,31 +0,0 @@
 -_reverse_pronto_it_url() {
 -    local number="0${1#+39}"
@@ -416,7 +416,7 @@
 -}
 --- base/usr/lib/callmonitor/reverse/provider.cfg
 +++ base/usr/lib/callmonitor/reverse/provider.cfg
-@@ -1,12 +1,9 @@
+@@ -1,13 +1,10 @@
  ## type	id	countries	site	label
 -R	dasoertliche	49	www.dasoertliche.de	DasÖrtliche
 -R	telefonbuch	49!	www.dastelefonbuch.de	DasTelefonbuch
@@ -434,6 +434,7 @@
 +R	search_ch	41!	search.ch	search.ch
 +R	local_ch	41	www.local.ch	local.ch
 +R	userdef	*!	.	$(lang de:"Benutzerdefiniert" en:"User-defined")
+ A	billiger	*	www.billiger-telefonieren.de	billiger-telefonieren.de
 --- base/usr/lib/callmonitor/reverse/search_ch.sh
 +++ base/usr/lib/callmonitor/reverse/search_ch.sh
 @@ -1,31 +1,26 @@
@@ -545,8 +546,7 @@
 -    wget_callmonitor -q -O - "$URL"
 +    curl -4fsSL --max-time 12 "$URL"
  }
-+
- _reverse_telefonbuch_at_extract() {
+-_reverse_telefonbuch_at_extract() {
 -    sed -n -e '
 -	/countResults : "0"/ {
 -	    '"$REVERSE_NA"'
@@ -557,7 +557,7 @@
 -	/^[[:space:]]*result : / b cleanup
 -	$ b cleanup
 -	b
--
+ 
 -	: json
 -	s#^[[:space:]]*\([a-z]\+\) : "\(.*\)",[[:space:]]*$#<\1>\2</\1>#
 -	s#\\[bfnrt]##g
@@ -573,10 +573,11 @@
 -	'"$REVERSE_SANITIZE"'
 -	'"$REVERSE_OK"'
 -    ' | utf8_latin1
++_reverse_telefonbuch_at_extract() {
 +    _reverse_parse_html telefonbuch_at 43 "$1"
  }
 --- base/usr/lib/callmonitor/reverse/wittegids_be.sh
-+++ /dev/null
++++ base/usr/lib/callmonitor/reverse/wittegids_be.sh
 @@ -1,35 +0,0 @@
 -_reverse_wittegids_be_url() {
 -    local number="0${1#+32}"
