@@ -48,7 +48,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>bfusb: AVM BlueFRITZ! USB stick support (binary only)</u><a id='bfusb'></a>**<br>
     This package adds support for the AVM BlueFRITZ! USB stick.
 
-  * **[BIND 9.11.37/9.20.30](bind.md)<a id='bind'></a>**<br>
+  * **[BIND 9.11.37/9.20.31](bind.md)<a id='bind'></a>**<br>
     BIND is a suite of software for interacting with the Domain Name System (DNS). The name BIND stands for "Berkeley Internet Name Daemon".
 
   * **[Bip 0.9.2 - DEPRECATED](bip.md)<a id='bip'></a>**<br>
@@ -311,7 +311,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[iodine 0.7.0 - DEPRECATED](iodine.md)<a id='iodine'></a>**<br>
     iodine lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed.
 
-  * **[iPerf3 3.3/3.22 (binary only)](iperf.md)<a id='iperf'></a>**<br>
+  * **[iPerf3 3.3/3.22.1 (binary only)](iperf.md)<a id='iperf'></a>**<br>
     iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters. S. https://github.com/esnet/iperf for more details.
 
   * **<u>IPsec-tools 0.7.2 - DEPRECATED</u><a id='ipsec-tools'></a>**<br>
@@ -528,7 +528,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[procps-ng 4.0.7 (binaries only)](procps-ng.md)<a id='procps-ng'></a>**<br>
     procps-ng - /proc filesystem utilities This package provides the full versions of procps utilities with the suffix "-ng" to avoid conflicts with BusyBox versions.
 
-  * **[ProxyChains-NG 4.17](proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
+  * **[ProxyChains-NG 4.18](proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
     A preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies, tor is also supported. Usage: proxychains4 telnet mail.example.com 25
 
   * **[psl 0.21.5 (binary only)](psl.md)<a id='psl'></a>**<br>

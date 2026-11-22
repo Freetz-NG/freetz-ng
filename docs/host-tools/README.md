@@ -58,6 +58,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[kconfig 7.3](kconfig-host.md)<a id='kconfig-host'></a>**<br>
 
+  * **[kmod 34.3](kmod-host.md)<a id='kmod-host'></a>**<br>
+
 ### L
 
   * **[libtool 2.6.2](libtool-host.md)<a id='libtool-host'></a>**<br>
@@ -150,7 +152,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
-  * **[tools 2026-11-16](tools-host.md)<a id='tools-host'></a>**<br>
+  * **[tools 2026-11-22](tools-host.md)<a id='tools-host'></a>**<br>
 
 ### U
 

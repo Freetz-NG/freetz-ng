@@ -1,4 +1,3 @@
-
 bc
 binutils
 bison
@@ -9,6 +8,7 @@ curl
 ecj
 elfutils-libelf-devel
 flex
+gawk
 gcc
 gcc-c++
 gettext

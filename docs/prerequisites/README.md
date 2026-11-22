@@ -60,8 +60,8 @@ sudo dnf -y update && sudo systemctl daemon-reload
   - Fedora 45 64-Bit:
 ```
 sudo dnf -y install \
-  bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gcc gcc-c++ gettext \
-  git glib2-devel glibc-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
+  bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gawk gcc gcc-c++ \
+  gettext git glib2-devel glibc-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
   javapackages-tools kmod libacl-devel libatomic libatomic.i686 libattr-devel libcap-devel libgcc \
   libglade2-devel libstdc++-devel libtool libuuid-devel libxml2-devel libzstd-devel make ncurses \
   ncurses-devel ncurses-term netcat net-tools openssl openssl3-devel openssl3-devel-engine patch \
@@ -180,7 +180,7 @@ sudo apt -y dist-upgrade
   - Debian 13/14 64-Bit:
 ```
 sudo apt -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -192,7 +192,7 @@ sudo apt -y install \
   - Debian 12 64-Bit:
 ```
 sudo apt -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -258,7 +258,7 @@ sudo apt-get remove --allow-remove-essential coreutils-from-uutils
   - Ubuntu 23/24/25/26 64-Bit:
 ```
 sudo apt-get -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -270,7 +270,7 @@ sudo apt-get -y install \
   - Ubuntu 22 64-Bit:
 ```
 sudo apt-get -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \

@@ -11,6 +11,7 @@ ecj
 flex
 ftp
 g++
+gawk
 gcc
 gcc-multilib
 gettext

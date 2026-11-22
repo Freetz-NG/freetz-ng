@@ -4,7 +4,7 @@ config EXTERNAL_FREETZ_LIB_libdns
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libdns-9.20.30.so
+		 ${FREETZ_LIBRARY_DIR}/libdns-9.20.31.so
 
 config EXTERNAL_FREETZ_LIB_libisc
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libisc
@@ -12,7 +12,7 @@ config EXTERNAL_FREETZ_LIB_libisc
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libisc-9.20.30.so
+		 ${FREETZ_LIBRARY_DIR}/libisc-9.20.31.so
 
 config EXTERNAL_FREETZ_LIB_libisccc
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libisccc
@@ -20,7 +20,7 @@ config EXTERNAL_FREETZ_LIB_libisccc
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libisccc-9.20.30.so
+		 ${FREETZ_LIBRARY_DIR}/libisccc-9.20.31.so
 
 config EXTERNAL_FREETZ_LIB_libisccfg
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libisccfg
@@ -28,7 +28,7 @@ config EXTERNAL_FREETZ_LIB_libisccfg
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libisccfg-9.20.30.so
+		 ${FREETZ_LIBRARY_DIR}/libisccfg-9.20.31.so
 
 config EXTERNAL_FREETZ_LIB_libns
 	depends on EXTERNAL_ENABLED && FREETZ_LIB_libns
@@ -36,5 +36,5 @@ config EXTERNAL_FREETZ_LIB_libns
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libns-9.20.30.so
+		 ${FREETZ_LIBRARY_DIR}/libns-9.20.31.so
 

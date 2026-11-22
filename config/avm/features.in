@@ -118,7 +118,7 @@ config FREETZ_TYPE_WAN
 config FREETZ_AVM_HAS_MODTEMP
 	bool
 	default y
-	depends on !FREETZ_REMOVE_BOX_INFO || FREETZ_PACKAGE_RRDSTATS_TEMPERATURE_SENSOR
+	depends on FREETZ_ADD_AVM_INFO || FREETZ_PACKAGE_RRDSTATS_TEMPERATURE_SENSOR
 
 
 # Multi-Annex support, i.e. the same firmware image can be used both for Annex A and B

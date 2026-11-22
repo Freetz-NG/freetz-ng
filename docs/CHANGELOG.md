@@ -89,6 +89,7 @@ Latest changes
     * 5690 XGS 8.51 - 5.4.302
     * 6000     8.51 - 5.4.213
     * 6670     8.51 - 5.15.215
+    * 7510     8.51 - 5.4.213
     * 7530 ax  8.50 - 4.19.183
     * 7590     8.51 - 4.9.337
     * 7690     8.50 - 5.4.213
@@ -107,11 +108,12 @@ Latest changes
     * Apache2 2.4.71
     * AutoFS 5.0.5/5.2.0
     * axTLS wrapper 2.1.5
-    * BIND 9.11.37/9.20.30
+    * BIND 9.11.37/9.20.31
     * Bftpd 6.7
     * bridge-utils 1.7.1
     * CA-bundle 2026-11-05
     * Curl 8.12.1/8.23.0
+    * kmod 34.3
     * Empty 0.6.23d
     * endlessh 1.1
     * FFmpeg 5.1.10/7.1.5
@@ -121,7 +123,7 @@ Latest changes
     * HAProxy 2.6.35
     * htpdate 2.1.0
     * ImageMagick 7.1.0-62/7.1.2-36
-    * iPerf3 3.3/3.22
+    * iPerf3 3.3/3.22.1
     * lsof 4.99.7
     * Lua 5.1.5/5.5.1
     * Mosquitto 2.0.23/2.1.4
@@ -136,6 +138,7 @@ Latest changes
     * PHP 5.6.40/8.2.36/8.3.37/8.4.28/8.5.13/8.6.0
     * Privoxy 4.2.0
     * procps-ng 4.0.7
+    * ProxyChains-NG 4.18
     * Python3 3.14.8
     * rpcbind 1.3.1
     * rsync 3.4.1/3.5.2
@@ -159,7 +162,7 @@ Latest changes
     * fribidi 1.0.18
     * gensio 3.0.4
     * GLib2 2.32.4/2.90.1
-    * harfbuzz 15.1.0
+    * harfbuzz 15.2.0
     * libconfuse 3.4
     * libffi 3.8.1
     * libgcrypt 1.12.4

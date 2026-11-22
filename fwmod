@@ -1443,7 +1443,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 			  "$MODULES_DIR/modules.builtin" \
 			  "$MODULES_DIR/modules.builtin.modinfo" \
 			  "$MODULES_DIR/modules.order"
-			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
+			LANG=C depmod -e \
+			  -C /dev/null \
+			  -b "$FILESYSTEM_MOD_DIR" \
 			  -F "${KERNEL_REP_DIR}/System-${KERNEL_ID}.map" \
 			  $FREETZ_KERNEL_VERSION \
 			  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
@@ -1464,7 +1466,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 		# symvers
 		if [ "$FREETZ_REPLACE_KERNEL" == "y" ] && [ "$FREETZ_AVM_HAS_MODVERSIONS_BUILTIN" == "y" ]; then
 			DEPMOD_SYMVERS="${BASE_DIR}/${SOURCE_SUBDIR}/kernel/ref-${KERNEL_ID}/linux-${FREETZ_KERNEL_VERSION_MAJOR}/Module.symvers"
-			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
+			LANG=C depmod -e \
+			  -C /dev/null \
+			  -b "$FILESYSTEM_MOD_DIR" \
 			  -E "${DEPMOD_SYMVERS}" \
 			  $FREETZ_KERNEL_VERSION \
 			  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
@@ -1548,15 +1552,17 @@ if [ "$DO_MOD" -gt 0 ]; then
 		sed -i -e "s/sec_level=1/sec_level=$FREETZ_SECURITY_LEVEL/g" ${FILESYSTEM_MOD_DIR}/usr/lib/libmodcgi.sh
 
 		# external
-		[ ! "$EXTERNAL_ENABLED" != "y" ] && echo1 "integrated external"
+		[ "$EXTERNAL_ENABLED" == "y" ] && echo1 "integrated external"
 		# FREETZMOUNT
-		[ ! "$FREETZ_PATCH_FREETZMOUNT" != "y" ] && echo1 "integrated FREETZMOUNT"
-		# Box-Info
-		[ "$FREETZ_REMOVE_BOX_INFO" != "y" ] && echo1 "integrated Box-Info"
+		[ "$FREETZ_PATCH_FREETZMOUNT" == "y" ] && echo1 "integrated FREETZMOUNT"
+		# AVM-Info
+		[ "$FREETZ_ADD_AVM_INFO" == "y" ] && echo1 "integrated AVM-Info"
+		# Mod-Info
+		[ "$FREETZ_ADD_MOD_INFO" == "y" ] && echo1 "integrated Mod-Info"
 		# Flash-Info
-		[ "$FREETZ_REMOVE_FLASH_INFO" != "y" ] && echo1 "integrated Flash-Info"
-		# FREETZ-Info
-		[ "$FREETZ_REMOVE_FREETZ_INFO" != "y" ] && echo1 "integrated FREETZ-Info"
+		[ "$FREETZ_ADD_FLASH_INFO" == "y" ] && echo1 "integrated Flash-Info"
+		# Rudi-Shell
+		[ "$FREETZ_ADD_RUDI" == "y" ] && echo1 "integrated Rudi-Shell"
 
 		# .config
 		if [ "$FREETZ_DOT_CONFIG_DONOTADD" == "y" ]; then

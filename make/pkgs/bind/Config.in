@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_BIND
-	bool "BIND 9.11.37/9.20.30"
+	bool "BIND 9.11.37/9.20.31"
 	select FREETZ_LIB_libdns             if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libisc             if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libisccfg          if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
@@ -27,7 +27,7 @@ if FREETZ_PACKAGE_BIND
 			bool "9.11.37"
 
 		config FREETZ_PACKAGE_BIND_VERSION_CURRENT
-			bool "9.20.30"
+			bool "9.20.31"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice
