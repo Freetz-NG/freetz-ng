@@ -160,7 +160,7 @@ Latest changes
     * Voicemail-XML parser 1.0
 
   - Libraries:
-    * expat 2.7.5/2.10.0
+    * expat 2.7.5/2.11.0
     * FreeType 2.15.0
     * fribidi 1.0.18
     * gensio 3.0.4
