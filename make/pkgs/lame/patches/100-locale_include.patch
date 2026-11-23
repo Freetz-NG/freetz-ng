@@ -1,0 +1,18 @@
+--- frontend/parse.c
++++ frontend/parse.c
+@@ -28,6 +28,7 @@
+ 
+ #include <assert.h>
+ #include <ctype.h>
++#include <locale.h>
+ #include <math.h>
+  
+ #ifdef STDC_HEADERS
+@@ -71,7 +72,6 @@
+ #include <iconv.h>
+ #include <errno.h>
+ #ifdef HAVE_LANGINFO_H
+-#include <locale.h>
+ #include <langinfo.h>
+ #endif
+ #if defined(__KLIBC__) && !defined(iconv_open)
