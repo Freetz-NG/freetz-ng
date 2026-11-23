@@ -35,6 +35,22 @@ for ifname in $VNSTAT_INTERFACES; do
 done
 [ $ifcnt -eq 1 ] && netif=$VNSTAT_INTERFACES
 
+#check ifs
+if [ -z "$VNSTAT_INTERFACES" ]; then
+	if [ "$FREETZ_PACKAGE_VNSTAT_VERSION_ABANDON" == "y" ]; then
+		VNSTAT_INTERFACES=$(ls /var/lib/vnstat/ 2>/dev/null)
+	else
+		VNSTAT_INTERFACES=$(vnstat --dbiflist 1 2>/dev/null)
+	fi
+fi
+if [ -n "$netif" ]; then
+	knownif=no
+	for ifname in $VNSTAT_INTERFACES; do
+		[ "$netif" == "$ifname" ] && knownif=yes
+	done
+	[ "$knownif" != yes ] && cgi_error "Unknown network interface." && exit 1
+fi
+
 #show pix
 if [ -n "$netif" ]; then
 	#subpages
@@ -54,13 +70,6 @@ if [ -n "$netif" ]; then
 else
 	#mainpage
 	echo "<p><font size=+1><b>vnStat</b></font></p>"
-	if [ -z "$VNSTAT_INTERFACES" ]; then
-		if [ "$FREETZ_PACKAGE_VNSTAT_VERSION_ABANDON" == "y" ]; then
-			VNSTAT_INTERFACES=$(ls /var/lib/vnstat/ 2>/dev/null)
-		else
-			VNSTAT_INTERFACES=$(vnstat --dbiflist 1 2>/dev/null)
-		fi
-	fi
 	for dbfile in $VNSTAT_INTERFACES; do
 		echo "<a href=\"$SCRIPT_NAME?netif=$dbfile\" class='image'>"
 		gen_pic "$dbfile" summary
