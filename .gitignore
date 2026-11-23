@@ -19,6 +19,7 @@
 /.packages
 /.signature
 /.tmpcache.*
+/.zensical.urls
 /*.log
 /build
 /dl

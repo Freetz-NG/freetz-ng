@@ -3,6 +3,7 @@ SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname ${SCRIPT%/*})"
 SETUP="$PARENT/zensical.txt"
 CONFIG="$PARENT/zensical.toml"
+ORIGINS="$PARENT/.zensical.urls"
 OUT_DIR="$PARENT/_site"
 VENV_DIR="$PARENT/.zensical"
 CACHE_DIR="$PARENT/.cache"
@@ -49,6 +50,12 @@ ignore_site() {
 	echo '*' > "$OUT_DIR/.gitignore"
 }
 
+external_origin() {
+	local PORT="$1"
+	[ -s "$ORIGINS" ] || { echo localhost; hostname; hostname -s; hostname -f; hostname -a; hostname -A; } 2>/dev/null | xargs -n1 | sort -u > "$ORIGINS"
+	for HOST in $(cat "$ORIGINS"); do echo -n "--external-origin http://$HOST:$PORT --external-origin https://$HOST:$PORT "; done
+}
+
 run_httpserver() {
 	local PORT="$1"
 	[ "$PORT" -gt 0 ] 2>/dev/null || PORT="8000"
@@ -61,7 +68,7 @@ run_httpserver() {
 	echo "########################################################################"
 
 	source "$VENV_DIR/bin/activate"
-	zensical serve --dev-addr "[::]:$PORT" --config-file "$CONFIG"  # --open
+	zensical serve --dev-addr "[::]:$PORT" --config-file "$CONFIG" $(external_origin $PORT)  # --open
 }
 
 build_site() {
