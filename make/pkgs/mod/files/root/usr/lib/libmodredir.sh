@@ -1,3 +1,4 @@
+. /usr/lib/mod/cgi/html.sh
 
 # Try to determine protocol
 self_prot() {
@@ -45,6 +46,17 @@ self_port() {
 redirect__int() {
 	local status="$1" location="$2" title="${3:-Redirect}" body_func="${4:-true}"
 	local CR=$'\r'
+	local LF=$'\n'
+	case $location in
+		*"$CR"*|*"$LF"*) location=/ ;;
+		*) ;;
+	esac
+	case $location in
+		/*|http://*|https://*) ;;
+		*) location=/ ;;
+	esac
+	local html_location="$(html "$location")"
+	local html_title="$(html "$title")"
 	cat << EOF
 Status: $status${CR}
 Location: $location${CR}
@@ -52,12 +64,12 @@ Content-type: text/html; charset=iso-8859-1${CR}
 ${CR}
 <html>
 <head>
-<title>$title</title>
-<meta http-equiv="refresh" content="0;url=$location">
+<title>$html_title</title>
+<meta http-equiv="refresh" content="0;url=$html_location">
 </head>
 <body style="margin: 0px: padding: 0px; color: #b0b0b0; font-size: 10px;">
 $("$body_func")
-<p>Redirecting ... <a style="color: #b0b0b0;" href="$location">$title</a></p>
+<p>Redirecting ... <a style="color: #b0b0b0;" href="$html_location">$html_title</a></p>
 </body>
 </html>
 EOF
