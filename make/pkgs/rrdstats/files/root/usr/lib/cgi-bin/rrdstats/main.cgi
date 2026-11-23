@@ -10,8 +10,12 @@ RRDTOOL="rrdtool-freetz"
 
 DATESTRING=$(date -R)
 [ -n "$_cgi_width" ] && let WIDTH=_cgi_width-145 || let WIDTH=500
-GROUP_PERIOD="$(cgi_param group | tr -d .)"
-ALL_GRAPHS="$(cgi_param graph | tr -d .)"
+GROUP_PERIOD="$(cgi_param group)"
+ALL_GRAPHS="$(cgi_param graph)"
+PDEV_ARG="$(cgi_param pdev)"
+REFRESH_ARG="$(cgi_param refresh)"
+AIN_ARG="$(cgi_param ain)"
+STATE_ARG="$(cgi_param state)"
 while [ $# -gt 0 ]; do
 	case "$1" in
 		-graph=*)
@@ -1039,7 +1043,7 @@ generate_graph() {
 			_SENSOR_CUR=0
 
 
-			pdev="$(cgi_param pdev | tr -d .)"
+			pdev="$PDEV_ARG"
 			[ "$pdev" == "x" ] && pdev=""
 			IMAGENAME=$IMAGENAME$pdev
 			if [ -n "$pdev" ]; then
@@ -1323,11 +1327,11 @@ gen_main() {
 
 graphit() {
 	graph=$1
-	#graph=$(cgi_param graph | tr -d .)
+	#graph="ALL_GRAPHS"
 	case $graph in
 		cpu|mem|swap|upt|pow|temp|thg0|thg1|thg2|thg3|epc0|epcA|epcB|epcC|epc1|epc2|arris0|arris1|arris2|arris3|dvb|csl0|csl1|csl2|diskio1|diskio2|diskio3|diskio4|if1|if2|if3|if4|one|aha*)
 			set_lazy "$RRDSTATS_NOTLAZYS"
-			#GROUP_PERIOD=$(cgi_param group | tr -d .)
+			#GROUP_PERIOD="$GROUP_PERIOD"
 			if [ -z "$GROUP_PERIOD" ]; then
 				heading=$(echo $graph | sed "s/^upt$/Uptime/;s/^pow$/Power/;s/^temp$/Temperature/;s/^cpu$/Processor/;s/^mem$/Memory/;s/^swap$/Swapspace/;\
 				  s/^thg0$/Thomson THG - basic/;s/^thg1$/Thomson THG - System Uptime/;s/^thg2/Thomson THG - Downstream Frequency/;s/^thg3$/Thomson THG - Upstream Channel/;\
@@ -1390,7 +1394,7 @@ graphit() {
 				sec_begin "last $periodnn"
 				generate_graph "$graph" "$periodG" "$graph-$period" "" ${GROUP_PERIOD:+"$GROUP_PERIOD"}
 				echo "<center><a href=\"$SCRIPT_NAME\" class=\"image\">"
-				echo "<img src=\"/statpix/$graph-$period$GROUP_PERIOD$(cgi_param pdev | tr -d .).$IMAGETYPE$NOCACHE\" alt=\"$heading stats for last $periodnn\" border=\"0\" $HTMLWIDTH />"
+				echo "<img src=\"/statpix/$graph-$period$GROUP_PERIOD$PDEV_ARG.$IMAGETYPE$NOCACHE\" alt=\"$heading stats for last $periodnn\" border=\"0\" $HTMLWIDTH />"
 				echo "</a></center>"
 				sec_end
 			done
@@ -1401,7 +1405,7 @@ graphit() {
 			set_lazy "$RRDSTATS_NOTLAZYM"
 			[ -n "$PERIOD_ARG" ] && CURRENT_PERIOD="$PERIOD_ARG" || CURRENT_PERIOD="$RRDSTATS_PERIODMAIN"
 			set_period "$CURRENT_PERIOD"
-			[ "$(cgi_param pdev | tr -d .)" == "z" ] && echo "<br>" || echo "<center><font size=+1><br><b>Stats for last $periodnn</b></font></center>"
+			[ "$PDEV_ARG" == "z" ] && echo "<br>" || echo "<center><font size=+1><br><b>Stats for last $periodnn</b></font></center>"
 			case $RRD_DISPLAY_TYPE in
 				rrddt)
 					ALL_GROUPS=$(grep -vE "^#|^$|^ " /var/tmp/flash/rrdstats/digitemp.group 2>/dev/null | tr -s " " | cut -d " " -f2 | uniq)
@@ -1411,16 +1415,16 @@ graphit() {
 					done
 					;;
 				avmha)
-					pdev="$(cgi_param pdev | tr -d .)"
+					pdev="$PDEV_ARG"
 					[ -z "$pdev" ] && pdev=x
 
-					refresh="$(cgi_param refresh | tr -d .)"
+					refresh="$REFRESH_ARG"
 					[ -n "$refresh" ] && refresh="&refresh=$refresh"
 
-					if [ "$REQUEST_METHOD" == "POST" -a -n "$(cgi_param ain | tr -d .)" ]; then
+					if [ "$REQUEST_METHOD" == "POST" -a -n "$AIN_ARG" ]; then
 						csrf_check required
 						echo "<center><br><b>Processing ...</b><br><br><font size=1>"
-						/usr/bin/aha.sh docmd "$(cgi_param ain | tr -d .)" "$(cgi_param state | tr -d .)" >/dev/null
+						/usr/bin/aha.sh docmd "$AIN_ARG" "$STATE_ARG" >/dev/null
 						sleep 1
 						echo '<font style="opacity:0">'
 						. /usr/lib/libmodredir.sh
