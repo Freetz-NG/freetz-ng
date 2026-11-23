@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 3.101)
+$(call PKG_INIT_BIN, 4.0)
 $(PKG)_LIB_VERSION:=0.0.0
 $(PKG)_SOURCE:=lame-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=7578af6eebd578b2bd64e468fac4ae1f03670a7e028166e67f855674b9b6aeac
+$(PKG)_HASH:=3df5124d5ad3a98312ffd7ba6a9b36230e4f8a3e66d3ce0f425e336c32d216eb
 $(PKG)_SITE:=@SF/lame
 ### WEBSITE:=https://lame.sourceforge.io/
 ### MANPAGE:=https://lame.sourceforge.io/using.php
@@ -31,6 +31,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --disable-gtktest
 $(PKG)_CONFIGURE_OPTIONS += --disable-cpml
 $(PKG)_CONFIGURE_OPTIONS += --disable-efence
+$(PKG)_CONFIGURE_OPTIONS += --without-dot
 $(PKG)_CONFIGURE_OPTIONS += --with-fileio=lame
 
 # needs libmpg123 >= 1.26.0
