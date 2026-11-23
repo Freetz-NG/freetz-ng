@@ -24,6 +24,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_lib_termcap_initscr=no
 $(PKG)_CONFIGURE_ENV += ac_cv_lib_curses_initscr=no
 $(PKG)_CONFIGURE_ENV += ac_cv_lib_ncurses_initscr=no
 $(PKG)_CONFIGURE_ENV += ac_cv_lib_ffm_cos=no
+$(PKG)_CONFIGURE_ENV += $(if $(FREETZ_TARGET_UCLIBC_0_9_28),am_cv_func_iconv=no)
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
