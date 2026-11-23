@@ -112,6 +112,7 @@ Latest changes
     * Bftpd 6.7
     * bridge-utils 1.7.1
     * CA-bundle 2026-11-05
+    * Callmonitor: optional answering machine events and mail actions
     * Curl 8.12.1/8.23.0
     * kmod 34.3
     * Empty 0.6.23d

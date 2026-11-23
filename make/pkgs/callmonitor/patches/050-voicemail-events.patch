@@ -1,0 +1,798 @@
+--- base/usr/lib/callmonitor/applets/callmonitor-test.sh
++++ base/usr/lib/callmonitor/applets/callmonitor-test.sh
+@@ -14,6 +14,30 @@
+ id=1 ext=4 duration=16 timestamp=$(date +"%d.%m.%y %H:%M")
+ uuid=$(cat /proc/sys/kernel/random/uuid)
+ 
++case $event in
++    in:voicemail|in:voicemail-empty)
++        have voicemail || exit 1
++        VOICEMAIL_MAILBOX_NAME=TestVoicemail
++        VOICEMAIL_TEST=yes
++        unset VOICEMAIL_RECORDING
++        export VOICEMAIL_MAILBOX_NAME VOICEMAIL_TEST
++        ;;
++esac
++
++if [ "$event" = in:voicemail ]; then
++    umask 077
++    voicemail_test_dir=$(mktemp -d /var/tmp/callmonitor-test.XXXXXX) || exit 1
++    trap 'rm -rf -- "$voicemail_test_dir"' EXIT
++    VOICEMAIL_RECORDING="$voicemail_test_dir/TestVoicemail.wav"
++    export VOICEMAIL_RECORDING
++    {
++        # One second of unsigned 8-bit PCM silence at 8000 Hz.
++        printf 'RIFF\144\037\000\000WAVEfmt \020\000\000\000\001\000\001\000\100\037\000\000\100\037\000\000\001\000\010\000data\100\037\000\000'
++        dd if=/dev/zero bs=8000 count=1 2>/dev/null | LC_ALL=C tr '\000' '\200'
++    } > "$VOICEMAIL_RECORDING" || exit 1
++    [ "$(wc -c < "$VOICEMAIL_RECORDING")" -eq 8044 ] || exit 1
++fi
++
+ _j_output "$event"
+ 
+ wait
+--- base/usr/lib/callmonitor/applets/check.sh
++++ base/usr/lib/callmonitor/applets/check.sh
+@@ -22,6 +22,9 @@
+ dis_r='d(i(s(c(o(n(n(e(ct?)?)?)?)?)?)?)?)?'
+ type_r="($req_r|$can_r|$con_r|$dis_r|\\*)"
+ pat_r="($dir_r:$type_r|\\*)"
++if have voicemail; then
++    pat_r="($pat_r|$in_r:voicemail(-empty)?)"
++fi
+ spec_r="^$pat_r(,$pat_r)*\$"
+ 
+ check_event() {
+--- base/usr/lib/callmonitor/applets/testcall.cgi.sh
++++ base/usr/lib/callmonitor/applets/testcall.cgi.sh
+@@ -6,8 +6,21 @@
+ 
+ eval "$(modcgi source:dest:event:event_dir testcall)"
+ 
+-select "$TESTCALL_EVENT_DIR" in out
+-select "$TESTCALL_EVENT" request cancel connect disconnect
++test_direction=${TESTCALL_EVENT_DIR:-in}
++test_stage=${TESTCALL_EVENT:-request}
++test_event=$test_direction:$test_stage
++case $test_event in
++    in:request|in:cancel|in:connect|in:disconnect|out:request|out:cancel|out:connect|out:disconnect)
++        valid_event=yes ;;
++    in:voicemail|in:voicemail-empty)
++        if have voicemail; then valid_event=yes; fi ;;
++esac
++
++testcall_option() {
++    local selected=
++    [ "$1" != "$2" ] || selected=' selected'
++    printf "<option value='%s'%s>%s</option>\n" "$1" "$selected" "$1"
++}
+ 
+ source_val=$(html "$TESTCALL_SOURCE")
+ dest_val=$(html "$TESTCALL_DEST")
+@@ -18,28 +31,17 @@
+     <table><tr>
+ 	<td><label for='event'>$(lang de:"Ereignis" en:"Event"):</label> </td>
+ 	<td>
+-	    <select name='event_dir'>
+-		<option value='in'$in_sel title='$(lang
+-		    de:"Eingehender Anruf" en:"Incoming call")'>in</option>
+-		<option value='out'$out_sel title='$(lang
+-		    de:"Ausgehender Anruf" en:"Outgoing call")'>out</option>
+-	    </select>:<select name='event'>
+-		<option value='request'$request_sel title='$(lang
+-		    de:"Verbindungsanfrage (Klingeln)"
+-		    en:"Connection request (ringing)"
+-		)'>request</option>
+-		<option value='cancel'$cancel_sel title='$(lang
+-		    de:"Verbindungsanfrage abgebrochen"
+-		    en:"Connection request canceled"
+-		)'>cancel</option>
+-		<option value='connect'$connect_sel title='$(lang 
+-		    de:"Verbindung zustandegekommen"
+-		    en:"Connection established"
+-		)'>connect</option>
+-		<option value='disconnect'$disconnect_sel title='$(lang
+-		    de:"Verbindung beendet"
+-		    en:"Connection terminated"
+-		)'>disconnect</option>
++	    <select name='event_dir' id='event_dir' aria-label='$(lang de:"Richtung" en:"Direction")'>
++		$(testcall_option in "$test_direction")
++		$(testcall_option out "$test_direction")
++	    </select>:<select name='event' id='event'>
++		$(for stage in request cancel connect disconnect; do
++		    testcall_option "$stage" "$test_stage"
++		done
++		if [ "$test_direction" = in ] && have voicemail; then
++		    testcall_option voicemail "$test_stage"
++		    testcall_option voicemail-empty "$test_stage"
++		fi)
+ 	    </select>
+ 	</td>
+     </tr><tr>
+@@ -57,17 +59,58 @@
+ 	value='$(lang de:"Testanruf" en:"Test call")'></div>
+ </form>
+ "
++    if have voicemail; then
++        cat <<'EOF_VOICEMAIL_MENU'
++<script>
++(function () {
++    var direction = document.getElementById('event_dir');
++    var stages = document.getElementById('event');
++    direction.addEventListener('change', function () {
++        if (direction.value === 'out' &&
++            (stages.value === 'voicemail' || stages.value === 'voicemail-empty')) {
++            stages.value = 'request';
++        }
++        ['voicemail', 'voicemail-empty'].forEach(function (event) {
++            var option = stages.querySelector('option[value="' + event + '"]');
++            if (direction.value === 'in' && !option) {
++                stages.add(new Option(event, event));
++            } else if (direction.value === 'out' && option) {
++                stages.removeChild(option);
++            }
++        });
++    });
++}());
++</script>
++EOF_VOICEMAIL_MENU
++    fi
+ }
+ 
+ do_testcall() {
+-    callmonitor-test "$TESTCALL_EVENT_DIR:$TESTCALL_EVENT" \
++    if [ "${valid_event:-}" != yes ]; then
++        echo "$(lang de:"Ungültiges Ereignis." en:"Invalid event.")"
++        return 1
++    fi
++    if [ "$test_event" = in:voicemail ]; then
++	echo "$(lang
++	    de:"Der Test verwendet eine stumme Aufnahme für TestVoicemail. Passende Regeln können eine echte Testmail senden."
++	    en:"This test uses a silent recording for TestVoicemail. Matching rules can send an actual test email."
++	)"
++	printf '\n'
++    elif [ "$test_event" = in:voicemail-empty ]; then
++        echo "$(lang
++            de:"Der Test simuliert TestVoicemail ohne Aufnahme. Passende Regeln können eine Testmail ohne Anhang senden."
++            en:"This simulates TestVoicemail without a recording. Matching rules can send a test email without an attachment."
++        )"
++        printf '\n'
++    fi
++    callmonitor-test "$test_event" \
+ 	"$TESTCALL_SOURCE" "$TESTCALL_DEST" 2>&1
+ }
+ 
+ show_testcall_results() {
+     echo -n "<p>$(lang de:"Testanruf von" en:"Test call from") \"$source_val\""
+     echo "${TESTCALL_DEST:+ $(lang de:"an" en:"to") \"$dest_val\"}" \
+-	"[${TESTCALL_EVENT_DIR}:${TESTCALL_EVENT}]:</p>"
++	"[$(html "$test_event")]:</p>"
+     do_testcall | pre
+ }
+ 
+--- /dev/null
++++ base/usr/lib/callmonitor/features/voicemail
+@@ -0,0 +1,2 @@
++## requires /usr/lib/callmonitor/modules/voicemail.sh
++## requires /usr/bin/mail
+--- base/usr/lib/callmonitor/modules/callmonitor.sh
++++ base/usr/lib/callmonitor/modules/callmonitor.sh
+@@ -225,7 +225,11 @@
+ 	    *:*) 
+ 		dir=${pattern%:*}
+ 		type=${pattern#*:}
+-		case $event in $dir*:$type*) result=0;; esac
++	case $type in
++	    voicemail|voicemail-empty)
++		case $event in $dir*:"$type") result=0;; esac ;;
++	    *) case $event in $dir*:$type*) result=0;; esac ;;
++	esac
+ 		;;
+ 	    *) 
+ 		case $event in $pattern*:*|*:$pattern*) result=0;; esac
+--- base/usr/lib/callmonitor/modules/if_jfritz.sh
++++ base/usr/lib/callmonitor/modules/if_jfritz.sh
+@@ -1,12 +1,13 @@
+ require if_jfritz_status
+ require hash
+ require uuid
++support voicemail
+ 
+ readonly var_jfritz="event id timestamp ext source dest remote duration provider state output uuid"
+ 
+ ## analyze call information
+ __read() {
+-    local $var_jfritz
++    local $var_jfritz voicemail_context= ring_timestamp= ring_snapshot=
+     export INSTANCE
+     while _j_parse; do
+ 
+@@ -16,22 +17,49 @@
+ 	    DISCONNECT)	_j_load source dest provider ext ;;
+ 	esac
+ 
+-	_j_load state uuid
++	_j_load state uuid voicemail_context ring_timestamp ring_snapshot
+ 	_j_transition
+ 	
+ 	case $state in
+ 	    disconnected)
+-		_j_remove state source dest provider ext uuid
++		if [ -n "$voicemail_context" ]; then
++		    if [ "$output" = in:disconnect ] &&
++			printf '%s\n' "${timestamp%:*}" >> "$voicemail_context/minutes"; then
++			_voicemail_stop_tracking "$voicemail_context"
++			_voicemail_dispatch "$voicemail_context" &
++		    else
++			rm -rf "$voicemail_context"
++		    fi
++		fi
++		[ -z "$ring_snapshot" ] || rm -rf "$ring_snapshot"
++		_j_remove state source dest provider ext uuid voicemail_context ring_timestamp ring_snapshot
+ 		;;
+ 	    *)
+ 		case $event in
+-		    RING) _j_store source dest provider ;;
++		    RING)
++			ring_timestamp=$timestamp
++			if [ -n "$voicemail_run" ]; then
++			    ring_snapshot=$(_voicemail_start_ring "$voicemail_run") || ring_snapshot=
++			fi
++			_j_store source dest provider ring_timestamp ring_snapshot
++			;;
+ 		    CALL|CONNECT)   _j_store source dest provider ext ;;
+ 		esac
++		if [ "$output" = in:connect ] && [ -n "$voicemail_run" ] &&
++		    _voicemail_is_tam_port "$ext" && [ -n "$ring_timestamp" ]; then
++		    _voicemail_begin "$voicemail_run" "$ext" "$source" "$dest" \
++			"${ring_timestamp%:*}" "${timestamp%:*}" "$id" "$uuid" "$ring_snapshot" &&
++			_j_store voicemail_context
++		fi
++		if [ "$event" = CONNECT ] && [ -n "$ring_snapshot" ]; then
++		    rm -rf "$ring_snapshot"
++		    _j_remove ring_snapshot
++		fi
+ 		_j_store state uuid
+ 		;;
+ 	esac
+     done
++    [ -z "$voicemail_run" ] || wait
+ }
+ 
+ ## separate state maschine for each connection id
+@@ -130,6 +158,7 @@
+ 
+ __read_from_iface() {
+     local pidfile='/var/run/callmonitor/pid/sleep'
++    local voicemail_run=
+     _j_SLEEP=$(((_j_SLEEP < 1) ? 1 : _j_SLEEP))
+     if ! _j_is_up; then
+ 	__info "Auto-dialing #96*5* to enable telefon's interface ..."
+@@ -141,6 +170,10 @@
+ 	let "_j_SLEEP = (_j_SLEEP > 3600) ? 3600 : _j_SLEEP"
+     else
+ 	_j_SLEEP=
++	if have voicemail && [ -x /usr/bin/tam_play ] &&
++	    [ -d "${CALLMONITOR_VOICEMAIL_DIR:-/data/tam/rec}" ]; then
++	    voicemail_run=$(_voicemail_prepare) || voicemail_run=
++	fi
+ 	## hack to provide "never"-ending but empty stdin: FIXME
+ 	{
+ 	    sleep 20000d &
+@@ -151,6 +184,7 @@
+ 	    busybox nc "${CALLMONITOR_MON_HOST:-127.0.0.1}" "${CALLMONITOR_MON_PORT:-1012}"
+ 	    read pid < "$pidfile" && kill "$pid" > /dev/null 2>&1
+ 	} | __read
++	if [ -n "$voicemail_run" ]; then rm -rf "$voicemail_run"; fi
+     fi
+ }
+ 
+--- /dev/null
++++ base/usr/lib/callmonitor/modules/voicemail.sh
+@@ -0,0 +1,463 @@
++require user
++
++# AVM TR-064 OnTel, section 5.2, identifies ports 6 and 40-49 as TAM ports.
++_voicemail_is_tam_port() {
++    case $1 in
++        6|4[0-9]) return 0 ;;
++        *) return 1 ;;
++    esac
++}
++
++_voicemail_http() {
++    local netrc="${CALLMONITOR_VOICEMAIL_NETRC:-/tmp/flash/callmonitor/voicemail.netrc}"
++    local username=${CALLMONITOR_USERNAME:-} password=${CALLMONITOR_PASSWORD:-} credentials
++    if [ -n "${CALLMONITOR_VOICEMAIL_NETRC:-}" ] || [ -z "$username" ]; then
++        [ -s "$netrc" ] || return 1
++        curl -q --noproxy '*' --globoff -fsS --max-time 4 --digest --netrc-file "$netrc" "$@"
++        return
++    fi
++    [ -n "$password" ] || password=$(user_getpw "$username") || return 1
++    [ -n "$password" ] || return 1
++    case $username:$password in
++        *'
++'*) return 1 ;;
++    esac
++    credentials=$(printf '%s:%s' "$username" "$password" | sed 's/[\\"]/\\&/g')
++    printf 'user = "%s"\n' "$credentials" |
++        curl -q --config - --noproxy '*' --globoff -fsS --max-time 4 --digest "$@"
++}
++
++_voicemail_soap_post() {
++    local url=$1 action=$2 body=$3
++    printf '%s' "$body" | curl -q --noproxy '*' --globoff -sS --max-time 4 \
++        -H 'Content-Type: text/xml; charset=utf-8' -H "SOAPAction: \"$action\"" \
++        --data-binary @- "$url"
++}
++
++_voicemail_soap() {
++    local service=$1 route=$2 method=$3 args=$4
++    local urn="urn:dslforum-org:service:$service:1"
++    local url="http://127.0.0.1:49000/upnp/control/$route"
++    local envelope='<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">'
++    local body="<s:Body><u:$method xmlns:u=\"$urn\">$args</u:$method></s:Body></s:Envelope>"
++    local username=${CALLMONITOR_USERNAME:-} password=${CALLMONITOR_PASSWORD:-}
++    local user_xml ns challenge nonce realm secret auth response
++    if [ -z "$username" ] || [ -n "${CALLMONITOR_VOICEMAIL_NETRC:-}" ]; then
++        _voicemail_http -H 'Content-Type: text/xml; charset=utf-8' \
++            -H "SOAPAction: \"$urn#$method\"" --data-binary "$envelope$body" "$url"
++        return
++    fi
++    [ -n "$password" ] || password=$(user_getpw "$username") || return 1
++    [ -n "$password" ] || return 1
++    user_xml=$(printf '%s' "$username" | sed 's/\&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
++    ns='xmlns:h="http://soap-authentication.org/digest/2001/10/" s:mustUnderstand="1"'
++    challenge=$(_voicemail_soap_post "$url" "$urn#$method" \
++        "$envelope<s:Header><h:InitChallenge $ns><UserID>$user_xml</UserID></h:InitChallenge></s:Header>$body") || return 1
++    nonce=$(printf '%s' "$challenge" | sed -n 's/.*<Nonce>\([[:xdigit:]]\{1,128\}\)<\/Nonce>.*/\1/p')
++    realm=$(printf '%s' "$challenge" | sed -n 's/.*<Realm>\([^<]*\)<\/Realm>.*/\1/p')
++    [ -n "$nonce" ] && [ "$realm" = 'F!Box SOAP-Auth' ] || return 1
++    secret=$(printf '%s' "$username:$realm:$password" | md5sum) || return 1
++    auth=$(printf '%s' "${secret%% *}:$nonce" | md5sum) || return 1
++    response=$(_voicemail_soap_post "$url" "$urn#$method" \
++        "$envelope<s:Header><h:ClientAuth $ns><Nonce>$nonce</Nonce><Auth>${auth%% *}</Auth><UserID>$user_xml</UserID><Realm>$realm</Realm></h:ClientAuth></s:Header>$body") || return 1
++    case $response in *"<u:${method}Response"*|*"<${method}Response"*) printf '%s\n' "$response" ;; *) return 1 ;; esac
++}
++
++_voicemail_list_uri() {
++    local uri=${2#*://}
++    uri=/${uri#*/}
++    case $uri in /"$1"\?*) printf '%s\n' "$uri" ;; *) return 1 ;; esac
++}
++
++_voicemail_messages() (
++    set -o pipefail
++    local parser="$CALLMONITOR_LIBDIR/bin/voicemail-xml" url uri
++    url=$(_voicemail_soap X_AVM-DE_TAM x_tam GetMessageList "<NewIndex>$1</NewIndex>" |
++        "$parser" tam-url) || exit 1
++    uri=$(_voicemail_list_uri tamcalllist.lua "$url") || exit 1
++    _voicemail_http "http://127.0.0.1:49000$uri" | "$parser" messages
++)
++
++# Reuse the authorized URL until it fails, then refresh it.
++_voicemail_fetch() (
++    set -o pipefail
++    local parser="$CALLMONITOR_LIBDIR/bin/voicemail-xml" mode=${1:-calls}
++    local run=${2:-} url uri response cache
++    [ -x "$parser" ] || exit 1
++    if [ -z "$run" ] || ! read -r uri 2>/dev/null < "$run/list-uri" ||
++        ! response=$(_voicemail_http "http://127.0.0.1:49000$uri"); then
++        url=$(_voicemail_soap X_AVM-DE_OnTel x_contact GetCallList '' | "$parser" url) || exit 1
++        uri=$(_voicemail_list_uri calllist.lua "$url") || exit 1
++        response=$(_voicemail_http "http://127.0.0.1:49000$uri") || exit 1
++        if [ -n "$run" ] && cache=$(mktemp "$run/list-uri.XXXXXX"); then
++            printf '%s\n' "$uri" > "$cache" && mv "$cache" "$run/list-uri"
++            rm -f "$cache"
++        fi
++    fi
++    printf '%s\n' "$response" | "$parser" "$mode"
++)
++
++_voicemail_pause() {
++    usleep 250000 2>/dev/null || sleep 1
++}
++
++# A slow or unavailable TR-064 service must not delay the call stream.
++_voicemail_prepare() (
++    local run
++    run=$(mktemp -d /var/run/callmonitor/voicemail.XXXXXX) || exit 1
++    if ! mkdir "$run/seen" "$run/reserved"; then
++        rm -rf "$run"
++        exit 1
++    fi
++    _voicemail_init_baseline "$run" </dev/null >/dev/null 2>&1 &
++    printf '%s\n' "$run"
++)
++
++_voicemail_init_baseline() {
++    [ -f "$1/before.ids" ] || _voicemail_snapshot "$1" "$1" || [ -f "$1/before.ids" ]
++}
++
++# Publish a complete list only while the destination directory is open.
++_voicemail_snapshot() (
++    local run=$1 dest=$2 snapshot
++    snapshot=$(mktemp -d "$run/snapshot.XXXXXX") || exit 1
++    trap 'rm -rf "$snapshot"' EXIT
++    _voicemail_fetch calls "$run" > "$snapshot/rows" || exit 1
++    cut -d '|' -f 1 "$snapshot/rows" > "$snapshot/ids" || exit 1
++    ln "$snapshot/ids" "$dest/before.ids"
++)
++
++_voicemail_start_ring() (
++    local run=$1 ring
++    ring=$(mktemp -d "$run/ring.XXXXXX") || exit 1
++    _voicemail_snapshot "$run" "$ring" </dev/null >/dev/null 2>&1 &
++    printf '%s\n' "$ring"
++)
++
++_voicemail_begin() {
++    local run=$1 ring=${9:-} context match other baseline="$1/before.ids"
++    context=$(mktemp -d "$run/call.XXXXXX") || return 1
++    match="$2|$3|$4"
++    if ! { printf '%s\n' "$match" > "$context/connection" &&
++        printf '%s\n' "$5" "$6" > "$context/minutes" &&
++        printf '%s|%s\n' "$7" "$8" > "$context/identity" &&
++        date +%s > "$context/since"; }; then
++        rm -rf "$context"
++        return 1
++    fi
++    if [ -n "$ring" ] && [ -f "$ring/before.ids" ]; then
++        baseline="$ring/before.ids"
++    fi
++    if [ -f "$baseline" ]; then
++        ln "$baseline" "$context/baseline.ids" 2>/dev/null || :
++    fi
++    for other in "$run"/call.*/connection; do
++        [ "$other" != "$context/connection" ] || continue
++        if grep -Fqx -- "$match" "$other" 2>/dev/null; then
++            # A claim and a conflict compete for the same state. A call
++            # that already owns its row may still be sending mail.
++            if ln -s ambiguous "${other%/*}/resolution" 2>/dev/null ||
++                [ "$(readlink "${other%/*}/resolution")" = ambiguous ]; then
++                ln -s ambiguous "$context/resolution" 2>/dev/null || :
++            fi
++        fi
++    done
++    voicemail_context=$context
++    if [ ! -L "$context/resolution" ] && mkdir "$context/observing"; then
++        if [ -n "$ring" ] && [ -f "$ring/before.ids" ]; then
++            ln "$ring/before.ids" "$context/observing/before.ids" 2>/dev/null || :
++        fi
++        _voicemail_track_active "$context" </dev/null >/dev/null 2>&1 &
++    fi
++}
++
++# Closing the observation directory at DISCONNECT freezes the result. A
++# request that completes after hang-up cannot bind the next active call.
++_voicemail_track_active() (
++    set -o pipefail
++    local context=$1 run=${1%/*} row attempt=0
++    if [ ! -f "$context/observing/before.ids" ]; then
++        _voicemail_snapshot "$run" "$context/observing" || :
++    fi
++    while [ "$attempt" -lt 24 ] && [ -d "$context/observing" ] &&
++        [ ! -L "$context/resolution" ]; do
++        if row=$(_voicemail_fetch active-calls "$run" | _voicemail_candidate "$context"); then
++            ln -s "${row%%|*}" "$context/observing/id"
++            exit $?
++        fi
++        attempt=$((attempt + 1))
++        _voicemail_pause
++    done
++)
++
++_voicemail_stop_tracking() {
++    local bound
++    [ -d "$1/observing" ] || return 0
++    mv "$1/observing" "$1/observed" || return 1
++    if bound=$(readlink "$1/observed/id" 2>/dev/null); then
++        _voicemail_bind "$1" "$bound"
++    fi
++}
++
++# FRITZ!OS can list the call in the answering minute instead of the
++# ringing minute. Only accept minutes observed on this connection.
++_voicemail_candidate() (
++    local context=$1 active_id=${2:-} fresh=${3:-} run=${1%/*} row id port caller called when rest candidate= owner
++    local match_port match_caller match_called
++    [ "$(readlink "$context/resolution" 2>/dev/null)" != ambiguous ] || exit 1
++    IFS='|' read -r match_port match_caller match_called < "$context/connection" || exit 1
++    [ -n "$match_called" ] || exit 1
++    while IFS= read -r row; do
++        IFS='|' read -r id port caller called when rest <<EOF_ROW
++$row
++EOF_ROW
++        [ -z "$active_id" ] || [ "$id" = "$active_id" ] || continue
++        [ "$port" = "$match_port" ] && [ "$caller" = "$match_caller" ] &&
++            [ "$called" = "$match_called" ] || continue
++        grep -Fqx -- "$when" "$context/minutes" || continue
++        [ ! -d "$run/seen/$id" ] || continue
++        if [ -f "$context/baseline.ids" ] && grep -Fqx "$id" "$context/baseline.ids"; then continue; fi
++        if [ -n "$fresh" ] && grep -Fqx "$id" "$fresh"; then continue; fi
++        if owner=$(readlink "$run/reserved/$id" 2>/dev/null) && [ "$owner" != "$context/identity" ]; then
++            continue
++        fi
++        [ -z "$candidate" ] || exit 1
++        candidate=$row
++    done
++    [ -n "$candidate" ] && printf '%s\n' "$candidate"
++)
++
++# Bind an ID before waiting for the attachment. The reservation is kept
++# for this run so later calls cannot take an ID that already had an owner.
++_voicemail_bind() {
++    local context=$1 id=$2 owner="${1%/*}/reserved/$2"
++    [ "$(readlink "$context/resolution" 2>/dev/null)" != ambiguous ] || return 1
++    if ! ln -s "$context/identity" "$owner" 2>/dev/null; then
++        [ "$(readlink "$owner" 2>/dev/null)" = "$context/identity" ] || return 1
++    fi
++    if ln -s "$id" "$context/resolution" 2>/dev/null ||
++        [ "$(readlink "$context/resolution" 2>/dev/null)" = "$id" ]; then
++        return 0
++    fi
++    rm -f "$owner"
++    return 1
++}
++
++_voicemail_claim() {
++    _voicemail_bind "$1" "$2" && mkdir "${1%/*}/seen/$2" 2>/dev/null
++}
++
++_voicemail_recording_path() {
++    local path=$1 root canonical
++    local directory="${CALLMONITOR_VOICEMAIL_DIR:-/data/tam/rec}"
++    case $path in
++        /download.lua\?path=*|download.lua\?path=*) path=${path#*\?path=} ;;
++    esac
++    path=${path%%&*}
++    case ${path##*/} in rec.[0-9].[0-9][0-9][0-9]) ;; *) return 1 ;; esac
++    root=$(realpath "$directory") || return 1
++    canonical=$(realpath "$path" 2>/dev/null) || return 1
++    [ "$canonical" = "$root/${path##*/}" ] && [ -f "$canonical" ] || return 1
++    printf '%s\n' "$directory/${path##*/}"
++}
++
++_voicemail_capture() (
++    local context=$1 row=$2 since=$3
++    local id port caller called when mailbox path caller_name recording signature mtime
++    local archive base index other other_path matches=0
++    IFS='|' read -r id port caller called when mailbox path caller_name <<EOF_ROW
++$row
++EOF_ROW
++    [ -n "$id" ] && [ -n "$when" ] || exit 1
++    recording=$(_voicemail_recording_path "$path") || exit 1
++    signature=$(stat -c '%i:%s:%Y' "$recording") || exit 1
++    mtime=${signature##*:}
++    [ "$mtime" -ge "$since" ] || exit 1
++
++    archive=$(mktemp -d "$context/audio.XXXXXX") || exit 1
++    trap 'rm -rf "$archive"' EXIT
++    base=${recording##*/}
++    cp "$recording" "$archive/$base" || exit 1
++    [ -s "$archive/$base" ] || exit 1
++    /usr/bin/tam_play "$recording" > "$archive/Anrufbeantworter.wav" || exit 1
++    [ "$(head -c 4 "$archive/Anrufbeantworter.wav")" = RIFF ] &&
++        [ "$(dd if="$archive/Anrufbeantworter.wav" bs=1 skip=8 count=4 2>/dev/null)" = WAVE ] || exit 1
++    # Confirm the same call-list row and original audio after conversion.
++    _voicemail_fetch > "$archive/confirm" || exit 1
++    while IFS= read -r other; do
++        if [ "${other%%|*}" = "$id" ] && [ "$other" != "$row" ]; then
++            exit 1
++        fi
++        other_path=$(printf '%s\n' "$other" | cut -d '|' -f 7)
++        case ${other_path%%&*} in */"$base") ;; *) continue ;; esac
++        [ "$(_voicemail_recording_path "$other_path")" = "$recording" ] || continue
++        [ "$other" = "$row" ] || exit 1
++        matches=$((matches + 1))
++    done < "$archive/confirm"
++    [ "$matches" -eq 1 ] || exit 1
++    [ "$(stat -c '%i:%s:%Y' "$recording")" = "$signature" ] || exit 1
++    cmp -s "$recording" "$archive/$base" || exit 1
++    _voicemail_claim "$context" "$id" || exit 1
++    : > "$context/recording-found"
++
++    index=${base#rec.}
++    index=${index%%.*}
++    local EVENT=in:voicemail ID UUID SOURCE=$caller DEST=$called EXT=$port
++    local TIMESTAMP=$when SOURCE_OPTIONS= DEST_OPTIONS=--local PROVIDER= DURATION=
++    local VOICEMAIL_CALL_LIST_ID=$id
++    IFS='|' read -r ID UUID < "$context/identity" || exit 1
++    local VOICEMAIL_RECORDING="$archive/Anrufbeantworter.wav" VOICEMAIL_MAILBOX_INDEX=$index
++    local VOICEMAIL_MAILBOX_NAME="${mailbox:-Anrufbeantworter $((index + 1))}"
++    local VOICEMAIL_CALLER_NAME=$caller_name
++    local VOICEMAIL_ORIGINAL=$recording VOICEMAIL_COMPARISON="$archive/$base"
++    export VOICEMAIL_RECORDING VOICEMAIL_MAILBOX_INDEX VOICEMAIL_MAILBOX_NAME VOICEMAIL_CALLER_NAME
++    export VOICEMAIL_ORIGINAL VOICEMAIL_COMPARISON VOICEMAIL_CALL_LIST_ID
++    incoming_call
++    exit $?
++)
++
++_voicemail_dispatch_empty() (
++    local context=$1 row=$2 id port caller called when mailbox path caller_name
++    IFS='|' read -r id port caller called when mailbox path caller_name <<EOF_ROW
++$row
++EOF_ROW
++    [ -z "$path" ] && _voicemail_claim "$context" "$id" || exit 1
++    local EVENT=in:voicemail-empty ID UUID SOURCE=$caller DEST=$called EXT=$port
++    local TIMESTAMP=$when SOURCE_OPTIONS= DEST_OPTIONS=--local PROVIDER= DURATION=
++    local VOICEMAIL_MAILBOX_NAME="${mailbox:-Anrufbeantworter}" VOICEMAIL_CALLER_NAME=$caller_name
++    local VOICEMAIL_CALL_LIST_ID=$id
++    IFS='|' read -r ID UUID < "$context/identity" || exit 1
++    export VOICEMAIL_MAILBOX_NAME VOICEMAIL_CALLER_NAME VOICEMAIL_CALL_LIST_ID
++    incoming_call
++)
++
++_voicemail_dispatch() (
++    local context=$1 run=${1%/*} since row previous= id bound= early_previous= fallback=
++    local started now deadline timeout fresh=
++    trap 'rm -rf "$context"' EXIT
++    read -r since < "$context/since" || exit 0
++    [ ! -f "$context/observed/before.ids" ] || fresh="$context/observed/before.ids"
++    # During a cold start, use the call's own snapshot or an active ID.
++    [ -f "$context/baseline.ids" ] || fallback=$fresh
++    started=$(date +%s)
++    deadline=$((started + 10))
++    timeout=$((started + 20))
++    while :; do
++        bound=$(readlink "$context/resolution" 2>/dev/null) || bound=
++        [ "$bound" != ambiguous ] || exit 0
++        [ -z "$bound" ] || fallback=
++        now=$(date +%s)
++        row=
++        id=
++        if _voicemail_fetch calls "$run" > "$context/current"; then
++            if [ -z "$bound" ] && [ -n "$fresh" ] && [ "$now" -lt "$deadline" ]; then
++                row=$(_voicemail_candidate "$context" "" "$fresh" < "$context/current") || row=
++                id=${row%%|*}
++                if [ -n "$id" ] && [ "$id" = "$early_previous" ] && _voicemail_bind "$context" "$id"; then
++                    bound=$id
++                    fallback=
++                else
++                    row=
++                fi
++            fi
++            if [ -z "$row" ] && { [ -n "$bound$fallback" ] || [ -f "$context/baseline.ids" ]; }; then
++                row=$(_voicemail_candidate "$context" "$bound" "$fallback" < "$context/current") || row=
++            fi
++            if [ -n "$row" ] && [ "$row" = "$previous" ]; then
++                _voicemail_capture "$context" "$row" "$since" || :
++                [ ! -e "$context/recording-found" ] || exit 0
++                if [ "$now" -ge "$deadline" ]; then
++                    if _voicemail_dispatch_empty "$context" "$row"; then
++                        exit 0
++                    fi
++                fi
++            fi
++        fi
++        [ "$now" -lt "$timeout" ] || exit 0
++        early_previous=$id
++        previous=$row
++        if [ -z "$bound" ] && [ -n "$fresh" ] && [ "$now" -lt "$((started + 4))" ]; then
++            _voicemail_pause
++        else
++            sleep 1
++        fi
++    done
++)
++
++_voicemail_delete_after_send() (
++    local index=$VOICEMAIL_MAILBOX_INDEX message_index= id tam number when path
++    local counter=0 rows
++    rows=$(_voicemail_messages "$index") || exit 1
++    while IFS='|' read -r id tam number when path; do
++        [ "$tam" = "$index" ] && [ "$number" = "$SOURCE" ] && [ "$when" = "$TIMESTAMP" ] || continue
++        [ "$(_voicemail_recording_path "$path")" = "$VOICEMAIL_ORIGINAL" ] || continue
++        message_index=$id
++        counter=$((counter + 1))
++    done <<EOF_ROWS
++$rows
++EOF_ROWS
++    [ "$counter" -eq 1 ] && cmp -s "$VOICEMAIL_ORIGINAL" "$VOICEMAIL_COMPARISON" || exit 1
++    _voicemail_soap X_AVM-DE_TAM x_tam DeleteMessage \
++        "<NewIndex>$index</NewIndex><NewMessageIndex>$message_index</NewMessageIndex>" > /dev/null
++)
++
++voicemailmail() (
++    local work wav attachment format=wav mailbox caller caller_name
++    local delete=no send=send inline=- status subject intro
++    local VOICEMAIL_ATTACH_AUDIO=yes
++    while [ "$#" -gt 0 ]; do
++        case $1 in
++            --mp3) format=mp3; shift ;;
++            --no-attachment) VOICEMAIL_ATTACH_AUDIO=no; shift ;;
++            --delete-after-send) delete=yes; shift ;;
++            *) break ;;
++        esac
++    done
++    case $EVENT in
++        in:voicemail) [ -s "${VOICEMAIL_RECORDING:-}" ] || exit 1 ;;
++        in:voicemail-empty) VOICEMAIL_ATTACH_AUDIO=no; delete=no ;;
++        *) exit 1 ;;
++    esac
++    [ "${VOICEMAIL_TEST:-}" != yes ] || delete=no
++    wav=${VOICEMAIL_RECORDING:-}
++    mailbox=${VOICEMAIL_MAILBOX_NAME:-Anrufbeantworter}
++    caller=${SOURCE:-Unbekannt}
++    caller_name=${VOICEMAIL_CALLER_NAME:-}
++    attachment=$wav
++    [ "$VOICEMAIL_ATTACH_AUDIO" = yes ] || attachment=
++    subject="Neue Nachricht auf $mailbox"
++    intro="Neue Nachricht auf $mailbox."
++    if [ "$EVENT" = in:voicemail-empty ]; then
++        attachment=
++        subject='Keine Nachricht hinterlassen'
++        intro="$mailbox hat den Anruf angenommen. Es wurde keine Nachricht hinterlassen."
++    fi
++    umask 077
++    work=$(mktemp -d /var/tmp/callmonitor-voicemail.XXXXXX) || exit 1
++    voicemail_mail_cleanup=$work
++    trap 'rm -rf "$voicemail_mail_cleanup"' EXIT
++    if [ -n "$attachment" ] && [ "$format" = mp3 ] && command -v lame >/dev/null 2>&1; then
++        if lame --quiet -m m -b 32 "$wav" "$work/Anrufbeantworter.mp3" &&
++            [ -s "$work/Anrufbeantworter.mp3" ]; then
++            attachment="$work/Anrufbeantworter.mp3"
++        fi
++    fi
++    if [ -n "${CALLMONITOR_VOICEMAIL_TEMPLATE:-}" ]; then
++        "$CALLMONITOR_VOICEMAIL_TEMPLATE" > "$work/nachricht.html" || exit 1
++        inline="-,$work/nachricht.html"
++    fi
++    [ "$delete" = no ] || send=sendchecked
++    [ -z "$attachment" ] || set -- -d "$attachment" "$@"
++    {
++        printf '%s\n\n' "$intro"
++        printf 'Rufnummer: %s\n' "$caller"
++        [ -z "$caller_name" ] || printf 'Name: %s\n' "$caller_name"
++        printf 'Datum und Uhrzeit: %s\n' "$TIMESTAMP"
++    } | mail "$send" -s "$subject: $caller" -i "$inline" "$@"
++    status=$?
++    [ "$status" -eq 0 ] || exit "$status"
++    if [ "$delete" = yes ]; then
++        _voicemail_delete_after_send || exit 1
++    fi
++    exit 0
++)
+--- base/usr/bin/mail
++++ base/usr/bin/mail
+@@ -7,7 +7,7 @@
+ usage() {
+ #<
+     cat <<EOF
+-Usage: $PROGRAM {send|sendonce|enqueue} [MAILER_OPTION]...
++Usage: $PROGRAM {send|sendonce|sendchecked|enqueue} [MAILER_OPTION]...
+        $PROGRAM {process|config|list}
+ EOF
+ #>
+@@ -173,7 +173,7 @@
+ unset SUBJECT FROM TO MAILSERVER AUTHNAME PASSWORD ATTACHMENTS INLINES RELATED
+ unset STARTTLS
+ case $1 in
+-    send|sendonce|enqueue) 
++    send|sendonce|sendchecked|enqueue)
+ 	## use push service configuration per default
+ 	eval "$(config)"
+ 	FROM=$From
+@@ -219,7 +219,7 @@
+ 	    send|enqueue)
+ 		trap "spool $id" EXIT
+ 		;;
+-	    sendonce)
++	    sendonce|sendchecked)
+ 		trap "remove $id" EXIT
+ 		;;
+ 	esac
+@@ -238,6 +238,13 @@
+ 	send $id
+ 	remove $id
+ 	;;
++    sendchecked)
++	send $id
++	status=$?
++	remove $id
++	trap "" EXIT
++	exit "$status"
++	;;
+     enqueue)
+ 	spool $id
+ 	;;

@@ -13,7 +13,7 @@ $(PKG)_BUILD_DIR := $($(PKG)_DIR)/build/freetz/$(pkg)-$($(PKG)_VERSION)
 $(PKG)_BINARY:=$($(PKG)_BUILD_DIR)/src/recode
 $(PKG)_TARGET_BINARY:=$($(PKG)_BUILD_DIR)/root/usr/lib/callmonitor/bin/recode
 
-$(PKG)_SUBOPTS := webif actions monitor phonebook
+$(PKG)_SUBOPTS := webif actions monitor phonebook voicemail
 $(PKG)_REBUILD_SUBOPTS += $(foreach subopt,$($(PKG)_SUBOPTS),FREETZ_PACKAGE_CALLMONITOR_$(subopt))
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_CALLMONITOR_phonebook_https
 $(PKG)_FEATURES := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_SUBOPTS))
