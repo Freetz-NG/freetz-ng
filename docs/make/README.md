@@ -352,6 +352,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### L
 
+  * **[LAME 3.100 (MP3 encoder)](lame.md)<a id='lame'></a>**<br>
+    Encode WAV audio as MP3.
+
   * **[LCD4linux 63fffafb](lcd4linux.md)<a id='lcd4linux'></a>**<br>
     LCD4Linux is a small program that grabs information from the kernel and some subsystems and displays it on an external liquid crystal display.
 
