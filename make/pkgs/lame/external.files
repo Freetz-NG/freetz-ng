@@ -1,0 +1,2 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_LAME" == "y" ] && EXTERNAL_FILES+=" /usr/bin/lame"
+[ "$EXTERNAL_FREETZ_LIB_libmp3lame" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmp3lame.so.0.0.0"

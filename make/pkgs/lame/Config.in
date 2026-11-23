@@ -1,0 +1,14 @@
+config FREETZ_PACKAGE_LAME
+	bool "LAME 3.100 (MP3 encoder)"
+	default n
+	select FREETZ_LIB_libmp3lame if !FREETZ_PACKAGE_LAME_STATIC
+	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	help
+		Encode WAV audio as MP3.
+
+config FREETZ_PACKAGE_LAME_STATIC
+	bool "Link libmp3lame statically"
+	depends on FREETZ_PACKAGE_LAME
+	default n
+	help
+		Link the encoder against the static libmp3lame archive.

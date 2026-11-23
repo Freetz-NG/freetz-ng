@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libmp3lame
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libmp3lame
+	bool "libmp3lame"
+	default n
+	help
+		Externals the following file:
+		 ${FREETZ_LIBRARY_DIR}/libmp3lame.so.0.0.0
