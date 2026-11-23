@@ -23,7 +23,7 @@ if [ -z "$HP_UTILS_URI" ]; then
 	echo "error"
 	echo "Printer not configured.</pre>"
 else
-	if hp-clean --device "$HP_UTILS_URI" --mode printserv --clean-level $CLEAN_LEVEL >/dev/null 2>&1; then
+	if hp-clean --device "$HP_UTILS_URI" --mode printserv --clean-level "$CLEAN_LEVEL" >/dev/null 2>&1; then
 		echo "done"
 		echo "wait for cleaning to complete</pre>"
 	else

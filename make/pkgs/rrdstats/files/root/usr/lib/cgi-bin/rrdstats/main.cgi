@@ -100,7 +100,7 @@ generate_graph() {
 			if [ -e $FILE ]; then
 				[ "$RRDSTATS_CPU100PERC" = "yes" ] && CPU100PERC=" -u 100 -r "
 				$_NICE $RRDTOOL graph $GRAPHARGS                           \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                    \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                  \
 				--title "$TITLE"                                           \
 				--start now-$PERIODE                                       \
 				--width $WIDTH --height $HEIGHT                            \
@@ -136,7 +136,7 @@ generate_graph() {
 			if [ -e $FILE ]; then
 				let RAM=$(grep MemTotal /proc/meminfo | tr -s [:blank:] " " | cut -d " " -f 2)*1024
 				$_NICE $RRDTOOL graph $GRAPHARGS                                       \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                              \
 				--title "$TITLE"                                                       \
 				--start now-$PERIODE -u $RAM -r -l 0 $LAZY                             \
 				--width $WIDTH --height $HEIGHT                                        \
@@ -182,7 +182,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/upt_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                           \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                    \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                  \
 				--title "$TITLE"                                           \
 				--start -1-$PERIODE -l 0 -r                                \
 				--width $WIDTH --height $HEIGHT $LAZY                      \
@@ -227,7 +227,7 @@ generate_graph() {
 					"
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                          \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                   \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                 \
 				--title "$TITLE"                                          \
 				--start -1-$PERIODE -l 0 -u 100 -r                        \
 				--width $WIDTH --height $HEIGHT $LAZY                     \
@@ -244,7 +244,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/temp_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                                    \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                             \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                           \
 				--title "$TITLE"                                                    \
 				--start -1-$PERIODE -l 0 -r                                         \
 				--width $WIDTH --height $HEIGHT $LAZY                               \
@@ -327,7 +327,7 @@ generate_graph() {
 				done
 
 				$_NICE $RRDTOOL graph $GRAPHARGS                                                               \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                                        \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                                                      \
 				--title "$TITLE"                                                                               \
 				--start now-$PERIODE                                                                           \
 				--width $WIDTH --height $HEIGHT                                                                \
@@ -370,7 +370,7 @@ generate_graph() {
 						GPRINT:rxsn$count:LAST:%4.1lf\n "
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
 				--width $WIDTH --height $HEIGHT                          \
@@ -409,7 +409,7 @@ generate_graph() {
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                                                             \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                                      \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                                                    \
 				--title "$TITLE"                                                                             \
 				--start now-$PERIODE                                                                         \
 				--width $WIDTH --height $HEIGHT                                                              \
@@ -458,7 +458,7 @@ generate_graph() {
 				done
 
 				$_NICE $RRDTOOL graph $GRAPHARGS                                                               \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                                        \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                                                        \
 				--title "$TITLE"                                                                               \
 				--start now-$PERIODE                                                                           \
 				--width $WIDTH --height $HEIGHT                                                                \
@@ -480,7 +480,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/epc_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
 				--width $WIDTH --height $HEIGHT                          \
@@ -522,7 +522,7 @@ generate_graph() {
 						GPRINT:rxfq$count:LAST:%3.0lf\n "
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                                       \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                              \
 				--title "$TITLE"                                                       \
 				--start now-$PERIODE                                                   \
 				--width $WIDTH --height $HEIGHT                                        \
@@ -541,7 +541,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                          \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                   \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                 \
 				--title "$TITLE"                                          \
 				--start now-$PERIODE                                      \
 				--width $WIDTH --height $HEIGHT                           \
@@ -586,7 +586,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
 				--width $WIDTH --height $HEIGHT                          \
@@ -610,7 +610,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                                  \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                           \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                         \
 				--title "$TITLE"                                                  \
 				--start now-$PERIODE                                              \
 				--width $WIDTH --height $HEIGHT                                   \
@@ -634,7 +634,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                            \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                     \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                   \
 				--title "$TITLE"                                            \
 				--start now-$PERIODE                                        \
 				--width $WIDTH --height $HEIGHT                             \
@@ -658,7 +658,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                          \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                   \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                 \
 				--title "$TITLE"                                          \
 				--start now-$PERIODE                                      \
 				--width $WIDTH --height $HEIGHT                           \
@@ -703,7 +703,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
 				--width $WIDTH --height $HEIGHT                          \
@@ -727,7 +727,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                        \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                 \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"               \
 				--title "$TITLE"                                        \
 				--start now-$PERIODE                                    \
 				--width $WIDTH --height $HEIGHT                         \
@@ -751,7 +751,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                          \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                   \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                 \
 				--title "$TITLE"                                          \
 				--start now-$PERIODE                                      \
 				--width $WIDTH --height $HEIGHT                           \
@@ -800,7 +800,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/mem_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                                      \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                               \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                             \
 				--title "$TITLE"                                                      \
 				--start -1-$PERIODE -l 0 -u 100 -r                                    \
 				--width $WIDTH --height $HEIGHT	$LAZY                                 \
@@ -869,7 +869,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/$1_$RRDSTATS_INTERVAL-$DISK.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                               \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                        \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                      \
 				--title "$TITLE"                                               \
 				--start -1-$PERIODE $LOGARITHMIC $LAZY $MAXIMALBW              \
 				--width $WIDTH --height $HEIGHT                                \
@@ -948,7 +948,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/$1_$RRDSTATS_INTERVAL-$(echo $IF | sed 's/\:/_/g').rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                             \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                      \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                    \
 				--title "$TITLE"                                             \
 				--start -1-$PERIODE $LOGARITHMIC $LAZY $MAXIMALBW            \
 				--width $WIDTH --height $HEIGHT                              \
@@ -1009,18 +1009,18 @@ generate_graph() {
 				let _SENSOR_CUR=_SENSOR_CUR+1
 			done
 			if [ -n "$_SENSOR_GEN" ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE  \
-				--title "$TITLE"                         \
-				--start now-$PERIODE                     \
-				--width $WIDTH --height $HEIGHT          \
-				--vertical-label "${GRAD}$_SENSOR_UOM"   \
-				$DEFAULT_COLORS                          \
-				--slope-mode HRULE:0#000000              \
-				$LAZY $_SENSOR_LOW                       \
-				-W "Generated on: $DATESTRING"           \
-				COMMENT:"$(mamc "${GRAD}$_SENSOR_UOM")"  \
-				$_SENSOR_GEN                             > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS           \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"  \
+				--title "$TITLE"                           \
+				--start now-$PERIODE                       \
+				--width $WIDTH --height $HEIGHT            \
+				--vertical-label "${GRAD}$_SENSOR_UOM"     \
+				$DEFAULT_COLORS                            \
+				--slope-mode HRULE:0#000000                \
+				$LAZY $_SENSOR_LOW                         \
+				-W "Generated on: $DATESTRING"             \
+				COMMENT:"$(mamc "${GRAD}$_SENSOR_UOM")"    \
+				$_SENSOR_GEN                               > /dev/null
 			fi
 			;;
 		aha*)
@@ -1138,18 +1138,18 @@ generate_graph() {
 				done
 			fi
 			if [ -n "$_SENSOR_GEN" ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE  \
-				--title "$TITLE"                         \
-				--start now-$PERIODE                     \
-				--width $WIDTH --height $HEIGHT          \
-				--vertical-label "$DNAME [$DESCR]"       \
-				$DEFAULT_COLORS                          \
-				--slope-mode HRULE:0#000000              \
-				$LAZY  $RANGE                            \
-				-W "Generated on: $DATESTRING"           \
-				COMMENT:"$(mamc "$DESCR")"               \
-				$_SENSOR_GEN                             > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS           \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"  \
+				--title "$TITLE"                           \
+				--start now-$PERIODE                       \
+				--width $WIDTH --height $HEIGHT            \
+				--vertical-label "$DNAME [$DESCR]"         \
+				$DEFAULT_COLORS                            \
+				--slope-mode HRULE:0#000000                \
+				$LAZY  $RANGE                              \
+				-W "Generated on: $DATESTRING"             \
+				COMMENT:"$(mamc "$DESCR")"                 \
+				$_SENSOR_GEN                               > /dev/null
 			fi
 			;;
 		*)
@@ -1272,7 +1272,7 @@ csl_graph() {
 		#LINE2:rpn_MIN$GREEN
 
 		$_NICE $RRDTOOL graph $GRAPHARGS                         \
-		$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+		"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                \
 		--title "$TITLE"                                         \
 		--start now-$PERIODE -l 0 $MAXSPEEDP -r                  \
 		--width $WIDTH --height $HEIGHT                          \

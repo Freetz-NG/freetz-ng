@@ -17,7 +17,7 @@ gen_pic() {
 		[ "$VNSTAT_DARK_MODE" = "yes" ] && dark='--invert-colors'
 		[ "$VNSTAT_TRANS_BGD" = "yes" ] && trans=' --transparent 1'
 	fi
-	$_NICE vnstati -i $1 --$range -o $TEMPDIR/$1-$2.png --config /tmp/flash/vnstat/vnstat.conf $trans $dark
+	$_NICE vnstati -i "$1" --$range -o "$TEMPDIR/$1-$2.png" --config /tmp/flash/vnstat/vnstat.conf $trans $dark
 	echo "<p><img src=\"/vnspix/$1-$2.png$NOCACHE\" alt=\"vnStat: $2 of $1\" border=\"0\"/></p>"
 }
 
@@ -41,7 +41,7 @@ if [ -n "$netif" ]; then
 	  || periods="summary hours days months years top10"
 	for period in $periods; do
 		[ $ifcnt -ne 1 ] && echo "<a href=\"$SCRIPT_NAME\" class='image'>"
-		gen_pic $netif $period
+		gen_pic "$netif" "$period"
 		[ $ifcnt -ne 1 ] && echo "</a>"
 	done
 	if [ $ifcnt -ne 1 ]; then
@@ -60,7 +60,7 @@ else
 	fi
 	for dbfile in $VNSTAT_INTERFACES; do
 		echo "<a href=\"$SCRIPT_NAME?netif=$dbfile\" class='image'>"
-		gen_pic $dbfile summary
+		gen_pic "$dbfile" summary
 		echo "</a>"
 	done
 fi
