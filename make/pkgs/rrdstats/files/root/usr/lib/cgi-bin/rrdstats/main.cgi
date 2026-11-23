@@ -1314,7 +1314,7 @@ gen_main() {
 	[ $# -ge 4 ] && GROUP_URL="&group=$4"
 	[ $# -ge 5 ] && GROUP_URL="&pdev=$5$GROUP_URL"
 	sec_begin "$FNAME"
-	generate_graph "$SNAME" "$CURRENT_PERIOD" "$SNAME" "" $GROUP $5
+	generate_graph "$SNAME" "$CURRENT_PERIOD" "$SNAME" "" ${GROUP:+"$GROUP"} ${5:+"$5"}
 	echo "<center><a href=\"$SCRIPT_NAME?graph=$SNAME$GROUP_URL\" class=\"image\">"
 	echo "<img src=\"/statpix/$SNAME$GROUP$5.$IMAGETYPE$NOCACHE\" alt=\"$FNAME stats for last $LAPSE\" border=\"0\" $HTMLWIDTH />"
 	echo "</a></center>"
@@ -1388,7 +1388,7 @@ graphit() {
 			for period in $CURRENT_PERIOD; do
 				set_period $period
 				sec_begin "last $periodnn"
-				generate_graph "$graph" "$periodG" "$graph-$period" "" $GROUP_PERIOD
+				generate_graph "$graph" "$periodG" "$graph-$period" "" ${GROUP_PERIOD:+"$GROUP_PERIOD"}
 				echo "<center><a href=\"$SCRIPT_NAME\" class=\"image\">"
 				echo "<img src=\"/statpix/$graph-$period$GROUP_PERIOD$(cgi_param pdev | tr -d .).$IMAGETYPE$NOCACHE\" alt=\"$heading stats for last $periodnn\" border=\"0\" $HTMLWIDTH />"
 				echo "</a></center>"
