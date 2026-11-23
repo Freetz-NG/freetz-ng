@@ -104,7 +104,6 @@ Latest changes
     * Various Fritzos 8.50 related fixes
 
   - Packages:
-    * Voicemail XML parser
     * ACME.sh 3.1.7
     * Apache2 2.4.71
     * AutoFS 5.0.5/5.2.0
@@ -156,6 +155,7 @@ Latest changes
     * UnRAR 6.1.7/7.3.2
     * Vim 9.2.1302
     * vnStat 1.18/2.14
+    * Voicemail-XML parser 1.0
 
   - Libraries:
     * expat 2.7.5/2.10.0
