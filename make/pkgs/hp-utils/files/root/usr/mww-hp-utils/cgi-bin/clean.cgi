@@ -11,9 +11,14 @@ csrf_require_post
 eval "$(modcgi level clean)"
 
 if [ -z "$CLEAN_LEVEL" ]; then
-	cgi_error "$(lang de:"Keine Reinigungsstufe angegeben" en:"no clean level")"
+	cgi_error "$(lang de:"Keine Reinigungsstufe angegeben" en:"No clean level")"
 	exit 1
 fi
+
+case $CLEAN_LEVEL in
+	1|2|3) ;;
+	*) cgi_error "$(lang de:"Ung&uuml;ltige Reinigungsstufe angegeben" en:"Invalid clean level")"; exit 1 ;;
+esac
 
 cgi_begin "$(lang de:"Reinige" en:"Cleaning")"
 

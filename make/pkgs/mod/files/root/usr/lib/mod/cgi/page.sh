@@ -127,7 +127,10 @@ sec_end() {
 }
 
 site_refresh() {
-	local refresh="$(cgi_param refresh | tr -d .)"
+	local refresh="$(cgi_param refresh)"
+	case $refresh in
+		*[!0-9]*) refresh="" ;;
+	esac
 	[ -n "$refresh" ] && echo "<meta http-equiv='refresh' content='$refresh'>"
 }
 

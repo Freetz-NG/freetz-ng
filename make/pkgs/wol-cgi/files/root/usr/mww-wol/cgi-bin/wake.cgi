@@ -15,6 +15,18 @@ if [ -z "$WOL_MAC" ]; then
 	exit 1
 fi
 
+case $WOL_PROG in
+	ether-wake|wol) ;;
+	*) cgi_error "$(lang de:"Ung&uuml;ltiges WOL-Programm" en:"Invalid WOL program")"; exit 1 ;;
+esac
+case $WOL_MAC in
+	[[:xdigit:]][[:xdigit:]]:[[:xdigit:]][[:xdigit:]]:[[:xdigit:]][[:xdigit:]]:[[:xdigit:]][[:xdigit:]]:[[:xdigit:]][[:xdigit:]]:[[:xdigit:]][[:xdigit:]]) ;;
+	*) cgi_error "$(lang de:"Ung&uuml;ltiges MaC-Adresse" en:"Invalid MAC address")"; exit 1 ;;
+esac
+case $WOL_INTERF in
+	-*|*[!a-zA-Z0-9_.:-]*) cgi_error "$(lang de:"Ung&uuml;ltiges WOL-Interface" en:"Invalid WOL interface")"; exit 1 ;;
+esac
+
 cgi_begin "$(lang de:"Wecke '\"$WOL_MAC\"' auf ..." en:"Wake up '\"$WOL_MAC\"' ...")"
 
 echo -n '<pre>sending magic frame ... '

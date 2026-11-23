@@ -12,6 +12,9 @@ mkdir -p $TEMPDIR
 
 gen_pic() {
 	local trans dark range="$2"
+	case $1 in
+		''|-*|*[!a-zA-Z0-9_.:-]*) cgi_error "$(lang de:"Ung&uuml;ltige Netzwerk-Schnittstelle" en:"Invalid network interface")"; exit 1 ;;
+	esac
 	if [ "$FREETZ_PACKAGE_VNSTAT_VERSION_ABANDON" != "y" ]; then
 		[ "$range" = "top10" ] && range="top 10"
 		[ "$VNSTAT_DARK_MODE" = "yes" ] && dark='--invert-colors'
