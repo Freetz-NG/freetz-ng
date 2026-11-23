@@ -1,14 +1,15 @@
-$(call PKG_INIT_BIN, 3.100)
+$(call PKG_INIT_BIN, 3.101)
 $(PKG)_LIB_VERSION:=0.0.0
-$(PKG)_HASH:=ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
-$(PKG)_SITE:=@DEBIAN/lame
-$(PKG)_SOURCE:=lame_$($(PKG)_VERSION).orig.tar.gz
+$(PKG)_SOURCE:=lame-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=7578af6eebd578b2bd64e468fac4ae1f03670a7e028166e67f855674b9b6aeac
+$(PKG)_SITE:=@SF/lame
 ### WEBSITE:=https://lame.sourceforge.io/
 ### MANPAGE:=https://lame.sourceforge.io/using.php
 ### CHANGES:=https://svn.code.sf.net/p/lame/svn/trunk/lame/doc/html/history.html
 ### CVSREPO:=https://sourceforge.net/p/lame/svn/HEAD/tree/
 
 $(PKG)_CATEGORY_LIBS:=Multimedia##Audio
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/frontend/$(if $(FREETZ_PACKAGE_LAME_STATIC),,.libs/)lame
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/lame
 $(PKG)_LIB_BINARY:=$($(PKG)_DIR)/libmp3lame/.libs/libmp3lame.so.$($(PKG)_LIB_VERSION)
