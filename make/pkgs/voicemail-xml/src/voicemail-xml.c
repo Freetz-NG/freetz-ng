@@ -51,7 +51,7 @@ static void start(void *data, const char *name, const char **attributes)
         return;
 
     for (i = 0; i < FIELDS; ++i) {
-        if ((p->mode == 0 && i >= URL) ||
+        if (((p->mode == 0 || p->mode == 4) && i >= URL) ||
             (p->mode == 1 && i != URL) ||
             (p->mode == 2 && i != IDX && i != TAM && i != PATH && i != NUM && i != DATE) ||
             (p->mode == 3 && i != TAMURL))
@@ -104,7 +104,7 @@ static void print_call(struct parse *p)
     }
 
     if (p->invalid || v[ID][0] == '\0' || strspn(v[ID], "0123456789") != strlen(v[ID]) ||
-        strcmp(v[TYPE], "1") != 0 || !tam_port(v[PORT]) || !v[DATE][0])
+        strcmp(v[TYPE], p->mode == 4 ? "9" : "1") != 0 || !tam_port(v[PORT]) || !v[DATE][0])
         return;
     if (v[CALLER_NUMBER][0])
         memcpy(v[CALLER], v[CALLER_NUMBER], sizeof v[CALLER]);
@@ -143,6 +143,7 @@ int main(int argc, char **argv)
     else if (strcmp(argv[1], "url") == 0) p.mode = 1;
     else if (strcmp(argv[1], "messages") == 0) p.mode = 2;
     else if (strcmp(argv[1], "tam-url") == 0) p.mode = 3;
+    else if (strcmp(argv[1], "active-calls") == 0) p.mode = 4;
     else return 2;
     p.parser = XML_ParserCreateNS(NULL, '|');
     if (!p.parser)

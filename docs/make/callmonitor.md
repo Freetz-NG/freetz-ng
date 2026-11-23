@@ -187,8 +187,8 @@ nötig, da über die Listeners beliebiger Code ausgeführt werden kann.
 ## Format
 
 Seit Version 1.0 des Callmonitors gilt folgendes Format für die
-Listeners, mit dem auf bis zu acht verschiedene Ereignisse
-unterschiedlich reagiert werden kann:
+Listeners. Die folgenden vier Ereignistypen stehen für ein- und
+ausgehende Anrufe zur Verfügung:
 
 -   ***:request**: Anruf kommt an (es klingelt)
 -   ***:cancel**: Anruf wurde abgebrochen, bevor eine Verbindung
@@ -407,6 +407,63 @@ Ausgangsereignisse; das Ereignis `in:accept` wird nur intern benutzt):
 
 [![[CallMonitor: Ereignisse]](../../docs/screenshots/36_md.png)](../../docs/screenshots/36.png)
 
+
+## Anrufbeantworter
+
+Die Build-Option **Answering machine message events** ist standardmäßig
+deaktiviert. Sie benötigt den Callmonitor-Daemon, den integrierten
+FRITZ!OS-Anrufbeantworter mit lokalem Aufnahmeverzeichnis, `tam_play` und
+die Anrufliste über TR-064. Wählt in den Callmonitor-Einstellungen einen
+FRITZ!OS-Benutzer mit der Berechtigung für Sprachnachrichten und Anrufliste.
+Getestet wurde die Funktion auf einer FRITZ!Box 7510 mit FRITZ!OS 8.51.
+
+Nach einem eingehenden Anruf, den der Anrufbeantworter angenommen hat,
+können zusätzlich zu `in:disconnect` folgende Ereignisse auftreten:
+
+-   `in:voicemail` bei einer eindeutig zugeordneten Aufnahme.
+-   `in:voicemail-empty` bei einem eindeutig zugeordneten
+    Anruflisteneintrag ohne Aufnahme nach Ablauf der Wartezeit.
+
+Bei einem fehlgeschlagenen Abruf oder einer unklaren Zuordnung bleibt
+die Meldung aus. Legt der Anrufer vor der Annahme auf, gilt weiterhin
+`in:cancel`.
+
+Callmonitor liest die Anrufliste im Hintergrund. Die Auswertung beginnt
+mit dem Klingeln und reserviert den Listeneintrag, sobald er eindeutig
+zugeordnet ist. Die Prüfung auf eine Aufnahme läuft nach dem Auflegen
+weiter, auch wenn bereits der nächste Anruf eingeht.
+
+Beide Ereignisse verwenden die ursprünglichen Werte für `ID` und `UUID`.
+Die separate ID aus der TR-064-Anrufliste steht in
+`VOICEMAIL_CALL_LIST_ID`.
+
+```
+in:voicemail ^ ^ voicemailmail -t test@example.com
+in:voicemail-empty ^ ^ voicemailmail -t test@example.com
+```
+
+Für eine reine Benachrichtigung mit vorhandener Aufnahme:
+
+```
+in:voicemail ^ ^ voicemailmail --no-attachment -t test@example.com
+```
+
+`voicemailmail` hängt die Aufnahme standardmäßig als WAV an. Mit der
+optionalen MP3-Unterstützung kann `--mp3` verwendet werden. Wenn die
+Konvertierung fehlschlägt, wird die WAV-Datei angehängt. Mit
+`--no-attachment` entfällt auch die MP3-Konvertierung. Die Aufnahme bleibt
+auf der Box, sofern `--delete-after-send` nicht zusätzlich gesetzt ist.
+`--delete-after-send` löscht die Originalaufnahme erst nach bestätigtem
+Versand und erneuter eindeutiger Zuordnung. Die Mail zu
+`in:voicemail-empty` hat keinen Anhang.
+
+Im Webinterface unter **Testanruf** stehen beide Ereignisse bei
+eingehenden Anrufen zur Verfügung, wenn die Build-Option aktiviert ist.
+Der simulierte Anruf verwendet den Namen `TestVoicemail`.
+`in:voicemail` erzeugt eine stumme WAV-Datei, `in:voicemail-empty`
+verwendet keine Audiodatei. Passende Regeln können dabei echte Testmails
+senden. Gespeicherte Aufnahmen bleiben beim Test erhalten. Für die
+Prüfung der Zuordnung ist ein echter Anruf auf dem Anrufbeantworter nötig.
 
 ## Aktionen
 

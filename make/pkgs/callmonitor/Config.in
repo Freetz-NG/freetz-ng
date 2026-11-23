@@ -60,6 +60,33 @@ config FREETZ_PACKAGE_CALLMONITOR_monitor
 
 		You want to say YES here if you are new to Callmonitor.
 
+config FREETZ_PACKAGE_CALLMONITOR_voicemail
+	bool "Answering machine message events"
+	default n
+	depends on FREETZ_PACKAGE_CALLMONITOR_monitor
+	select FREETZ_BUSYBOX_STAT
+	select FREETZ_BUSYBOX_MKTEMP
+	select FREETZ_BUSYBOX_HEAD
+	select FREETZ_BUSYBOX_DD
+	select FREETZ_BUSYBOX_CMP
+	select FREETZ_PACKAGE_CURL
+	select FREETZ_PACKAGE_VOICEMAIL_XML
+	help
+		Emit in:voicemail when a built-in answering machine saves a recording.
+		Emit in:voicemail-empty when it answers without saving a recording.
+		Requires AVM's tam_play, a local recording directory and TR-064
+		credentials with the Phone right.
+		The voicemailmail action uses tam_play to attach the recording as WAV.
+
+config FREETZ_PACKAGE_CALLMONITOR_voicemail_mp3
+	bool "Include MP3 encoder for voicemail attachments"
+	default n
+	depends on FREETZ_PACKAGE_CALLMONITOR_voicemail
+	select FREETZ_PACKAGE_LAME
+	help
+		Install LAME so rules can use voicemailmail --mp3 to compress WAV
+		attachments. The default voicemailmail action still sends WAV.
+
 config FREETZ_PACKAGE_CALLMONITOR_phonebook
 	bool "Phonebook support"
 	default y
