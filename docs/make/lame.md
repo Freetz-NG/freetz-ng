@@ -1,4 +1,4 @@
-# LAME 3.101 (binary only)
+# LAME 4.0 (binary only)
   - Homepage: [https://lame.sourceforge.io/](https://lame.sourceforge.io/)
   - Manpage: [https://lame.sourceforge.io/using.php](https://lame.sourceforge.io/using.php)
   - Changelog: [https://svn.code.sf.net/p/lame/svn/trunk/lame/doc/html/history.html](https://svn.code.sf.net/p/lame/svn/trunk/lame/doc/html/history.html)
