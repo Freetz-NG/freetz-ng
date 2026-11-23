@@ -1050,6 +1050,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Dunkler Modus von v2](../../docs/make/vnstat.md#dunkler-modus-von-v2)
      - [Migration](../../docs/make/vnstat.md#migration)
 
+  * **<u>voicemail-xml 1.0</u><a id='voicemail-xml'></a>**<br>
+    Parse FRITZ!OS call and answering machine lists for Callmonitor.
+
   * **[Vpnc 0.5.3 - DEPRECATED](../../docs/make/vpnc.md)<a id='vpnc'></a>**<br>
     Cisco IPSec VPN Client
 
