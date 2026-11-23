@@ -26,6 +26,8 @@ vnstat		87/tcp
 lcd4linux	89/tcp
 aha		90/tcp
 rudi		91/tcp
+tinyproxy	92/tcp
+nhipt		93/tcp
 stunnel		4433/tcp
 pyload-remote	7227/tcp
 pyload-webif	8000/tcp
