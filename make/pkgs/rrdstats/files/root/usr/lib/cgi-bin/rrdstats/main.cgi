@@ -10,8 +10,8 @@ RRDTOOL="rrdtool-freetz"
 
 DATESTRING=$(date -R)
 [ -n "$_cgi_width" ] && let WIDTH=_cgi_width-145 || let WIDTH=500
-GROUP_PERIOD="$(cgi_param group)"
 ALL_GRAPHS="$(cgi_param graph)"
+GROUP_PERIOD="$(cgi_param group)"
 PDEV_ARG="$(cgi_param pdev)"
 REFRESH_ARG="$(cgi_param refresh)"
 AIN_ARG="$(cgi_param ain)"
@@ -37,6 +37,58 @@ while [ $# -gt 0 ]; do
 	shift
 done
 [ -z "$ALL_GRAPHS" ] && ALL_GRAPHS="mainpage"
+
+
+badarg() {
+	echo "RRDstats: Invalid argument"
+	exit 1
+}
+
+case $ALL_GRAPHS in
+	*[!a-zA-Z0-9_\ ]*) badarg ;;
+esac
+for graph in $ALL_GRAPHS; do
+	case $graph in
+		mainpage|cpu|mem|swap|upt|pow|temp|thg[0-3]|epc[012ABC]|arris[0-3]|dvb|csl[0-2]|diskio[1-4]|if[1-4]|one|aha_pdev|aha_watt|aha_sein|aha_blnd|aha_volt|aha_kilo|aha_grad|aha_curr|aha_fact) ;;
+		*) badarg ;;
+	esac
+done
+
+case $GROUP_PERIOD in
+	*[[:space:]/\\\*\?\[\]\<\>\&\"\'\`\$\;\|\(\)\{\}]*) badarg ;;
+esac
+case $PDEV_ARG in
+	''|w|s|x|z) ;;
+	*) badarg ;;
+esac
+case $REFRESH_ARG in
+	*[!0-9]*) badarg ;;
+esac
+case $AIN_ARG in
+	*[!a-zA-Z0-9:-]*) badarg ;;
+esac
+case $STATE_ARG in
+	''|-1|0|1|on|off|toggle|1[6-9]|[2-4][0-9]|5[0-6]|253|254) ;;
+	*) badarg ;;
+esac
+
+case $WIDTH in
+	''|*[!0-9]*) badarg ;;
+esac
+case $PERIOD_ARG in
+	*[!0-9hdwmy\ ]*) badarg ;;
+esac
+for period in $PERIOD_ARG; do
+	case $period in
+		*[hdwmy])
+			case ${period%?} in
+				''|*[!0-9]*) badarg ;;
+			esac
+			;;
+		*) badarg ;;
+	esac
+done
+
 
 if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
 	NBSP="$(echo -e  '\240')"
@@ -462,7 +514,7 @@ generate_graph() {
 				done
 
 				$_NICE $RRDTOOL graph $GRAPHARGS                                                               \
-				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                                                        \
+				"$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE"                                                      \
 				--title "$TITLE"                                                                               \
 				--start now-$PERIODE                                                                           \
 				--width $WIDTH --height $HEIGHT                                                                \
