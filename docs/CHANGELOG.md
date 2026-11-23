@@ -104,6 +104,7 @@ Latest changes
     * Various Fritzos 8.50 related fixes
 
   - Packages:
+    * LAME 3.100 and libmp3lame
     * ACME.sh 3.1.7
     * Apache2 2.4.71
     * AutoFS 5.0.5/5.2.0

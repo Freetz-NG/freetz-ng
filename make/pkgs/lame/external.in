@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_PACKAGE_LAME
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_LAME
+	bool "LAME"
+	default n
+	help
+		Externals the following file:
+		 /usr/bin/lame
