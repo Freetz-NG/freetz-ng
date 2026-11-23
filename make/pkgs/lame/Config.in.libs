@@ -4,3 +4,4 @@ config FREETZ_LIB_libmp3lame
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	help
 		The LAME MP3 encoding library.
+

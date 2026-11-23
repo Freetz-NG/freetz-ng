@@ -4,6 +4,9 @@ $(PKG)_HASH:=ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
 $(PKG)_SITE:=@DEBIAN/lame
 $(PKG)_SOURCE:=lame_$($(PKG)_VERSION).orig.tar.gz
 ### WEBSITE:=https://lame.sourceforge.io/
+### MANPAGE:=https://lame.sourceforge.io/using.php
+### CHANGES:=https://svn.code.sf.net/p/lame/svn/trunk/lame/doc/html/history.html
+### CVSREPO:=https://sourceforge.net/p/lame/svn/HEAD/tree/
 
 $(PKG)_CATEGORY_LIBS:=Multimedia##Audio
 $(PKG)_BINARY:=$($(PKG)_DIR)/frontend/$(if $(FREETZ_PACKAGE_LAME_STATIC),,.libs/)lame
@@ -20,10 +23,12 @@ $(PKG)_EXCLUDED += $(addprefix $($(PKG)_TARGET_LIBDIR)/,libmp3lame.so libmp3lame
 endif
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LAME FREETZ_PACKAGE_LAME_STATIC FREETZ_LIB_libmp3lame
-$(PKG)_CONFIGURE_OPTIONS += --enable-shared --enable-static
+$(PKG)_CONFIGURE_OPTIONS += --enable-shared
+$(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --disable-gtktest
 # LAME's frontend defaults to linking libmp3lame statically when this option is omitted.
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_LAME_STATIC),,--enable-dynamic-frontends)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -51,6 +56,7 @@ $(pkg):
 
 $(pkg)-precompiled: $(if $(FREETZ_PACKAGE_LAME),$($(PKG)_TARGET_BINARY)) \
 	$(if $(FREETZ_LIB_libmp3lame),$($(PKG)_LIB_TARGET_BINARY))
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LAME_DIR) clean
