@@ -110,7 +110,7 @@ if [ "$REQUEST_METHOD" = "POST" ] || [ "$NHIPT_CONFIG" = "box" ]; then
 					ret = loadModules();
 					ret = persist("settings");}
 				if (Param["SETIP"] == "set")    {cfgchanged=1; myCmd = ""; myConf["ADMINIP"] = Param["ADMIP"]; persist("settings");}
-				if (Param["EXEC"] == "execute") {myCmd = Param["EXPERT"];  	ret = system(myCmd);  if (ret==0){changed=1;}; }
+				if (Param["EXEC"] == "execute") {myCmd = expertCommand(Param["EXPERT"]);  	ret = system(myCmd);  if (ret==0){changed=1;}; }
 				if (Param["MODE"] == "New")     {myCmd = myCmdPrefix "tables -t " table " -N " Param["CHAIN"];	ret = system(myCmd);  if (ret==0){changed=1;}}
 				if (Param["DOIT"] == "Insert")  {myCmd = "";
 					iprange    = "-m iprange ";
@@ -505,7 +505,7 @@ function saveSettings(Settings){
 }
 # Request values reach system() and generated boot scripts. Validate both
 # POST fields and action-URL fields; EXTRA must also survive rules replay.
-# EXPERT is the existing, deliberate root shell and is not a data field.
+# EXPERT is restricted separately to one iptables/ip6tables invocation.
 function invalidParam() {
 	print "Invalid NHIPT parameter." > "/dev/stderr";
 	exit 1;
@@ -546,8 +546,54 @@ function readParams(encoded,    count, fields, field, pos, key) {
 	}
 }
 function shellquote(value) {
-	# validateValue excludes quotes, backslashes and shell substitutions here.
+	gsub(/\47/, "\47\42\47\42\47", value);
 	return "\47" value "\47";
+}
+function expertCommand(value,    words, count, word, quoted, active, i, c, option, arg, pos, named, j, k, needsname, rename, command) {
+	# Rules are later replayed as shell scripts: reject substitutions and controls
+	# even inside quoted values. Keep quotes/spaces and IPv6/LOG brackets usable.
+	if (value ~ /[^][a-zA-Z0-9_.,:\/ +!@%=\42\47\t-]/) invalidParam();
+	for (i=1; i<=length(value); i++) {
+		c = substr(value, i, 1);
+		if (quoted != "") {
+			if (c == quoted) quoted = ""; else word = word c;
+		} else if (c == "\42" || c == "\47") {
+			quoted = c; active = 1;
+		} else if (c == " " || c == "\t") {
+			if (active) {words[++count] = word; word = ""; active = 0;}
+		} else {word = word c; active = 1;}
+	}
+	if (quoted != "") invalidParam();
+	if (active) words[++count] = word;
+	if (words[1] != "iptables" && words[1] != "ip6tables") invalidParam();
+	command = words[1];
+	split("match jump goto protocol new-chain rename-chain", named, " ");
+	for (i=2; i<=count; i++) {
+		option = words[i]; pos = index(option, "=");
+		arg = pos ? substr(option, pos+1) : words[i+1];
+		if (pos) option = substr(option, 1, pos-1);
+		# Allow no-argument short options together (-nvL), but keep values separate.
+		if (option ~ /^-[^-]./) {
+			for (k=2; k<length(option); k++)
+				if (index("nvxfV046", substr(option, k, 1)) == 0) invalidParam();
+			option = "-" substr(option, length(option), 1);
+		}
+		# getopt_long also accepts abbreviated --modprobe options, e.g. --mo.
+		if (option == "-M" ||
+		    (length(option) > 2 && index("--modprobe", option) == 1)) invalidParam();
+		needsname = (option ~ /^-[mjgpNE]$/); rename = (option == "-E");
+		for (j in named) {
+			if (length(option) > 2 && index("--" named[j], option) == 1) {
+				needsname = 1;
+				if (named[j] == "rename-chain") rename = 1;
+			}
+		}
+		# Match/target/protocol and new chain names can trigger shared-library loads.
+		if (needsname && arg !~ /^[a-zA-Z0-9_][a-zA-Z0-9_.:+-]*$/) invalidParam();
+		if (rename && words[i+(pos ? 1 : 2)] !~ /^[a-zA-Z0-9_][a-zA-Z0-9_.:+-]*$/) invalidParam();
+		command = command " " shellquote(words[i]);
+	}
+	return command;
 }
 function urldecode (s) {
 	hextab["0"] = 0; hextab["8"] = 8;
@@ -905,7 +951,7 @@ function myTBHL (chain) {
 				print "</TABLE><P></TD><TD COLSPAN=6 class=noborder>" AdminIFC() "</TD><TD class=noborder></TD><TD COLSPAN=2 class=noborder>" AdminButtons() "</TD></TR>";
 				inSubTable=0;
 				print "<FORM METHOD=POST ACTION=" myURL ">" csrfInput;
-				print "<TR><TH COLSPAN=\"2\">Experts only: /var/mod/root # </TH><TD COLSPAN=\"9\"><INPUT TYPE=TEXT NAME=EXPERT class=expert></TD><TD><INPUT TYPE=SUBMIT NAME=EXEC VALUE=execute></TD></TR></FORM>";
+			print "<TR><TH COLSPAN=\"2\">Experts only: iptables / ip6tables </TH><TD COLSPAN=\"9\"><INPUT TYPE=TEXT NAME=EXPERT class=expert></TD><TD><INPUT TYPE=SUBMIT NAME=EXEC VALUE=execute></TD></TR></FORM>";
 				} else {inSubTable=0; print "</TABLE><P></TD><TD CLASS=noborder COLSPAN=9></TD></TR>"}
 			}
 		if (CurrentChain != myArray["Chain"]) {
@@ -943,7 +989,7 @@ function myTBHL (chain) {
 		if (editRule==1 && Param["TABLE"] == table && Param["CHAIN"] == myArray["Chain"] && Param["IDX"] == i && Param["IPV6"] == ipv6){
 			myRule=$0; gsub(/\"/,"\47", myRule); gsub("-A " myArray["Chain"],"-t " table " -R " myArray["Chain"] " " i " ", myRule);
 			if (ipv6 == 1) {myCmd = "ip6tables ";} else {myCmd = "iptables ";}
-			print "<TR><TD>" i "</TD><TD><B>/var/mod/root #</B></TD><TD COLSPAN=9><INPUT TYPE=TEXT NAME=EXPERT class=expert VALUE=\"" html(myCmd myRule) "\"></TD><TD><INPUT TYPE=SUBMIT NAME=EXEC VALUE=execute></TD></TR></FORM>";
+			print "<TR><TD>" i "</TD><TD><B>iptables / ip6tables</B></TD><TD COLSPAN=9><INPUT TYPE=TEXT NAME=EXPERT class=expert VALUE=\"" html(myCmd myRule) "\"></TD><TD><INPUT TYPE=SUBMIT NAME=EXEC VALUE=execute></TD></TR></FORM>";
 		} else {
 			print "<TR><TD>&nbsp;" i "</TD><TD>&nbsp;" \
 			myArray["SourceIP"] "</TD><TD>&nbsp;" myArray["DestIP"] "</TD><TD>&nbsp;" myArray["InIF"] "</TD><TD>&nbsp;" \
@@ -969,7 +1015,7 @@ function myTBHL (chain) {
 				print "</TABLE><P></TD><TD COLSPAN=6 class=noborder>" AdminIFC() "</TD><TD class=noborder></TD><TD COLSPAN=2 class=noborder>" AdminButtons() "</TD></TR>";
 				inSubTable=0;
 				print "<FORM METHOD=POST ACTION=" myURL ">" csrfInput;
-				print "<TR><TH COLSPAN=\"2\">Experts only: /var/mod/root # </TH><TD COLSPAN=\"9\"><INPUT TYPE=TEXT NAME=EXPERT class=expert></TD><TD><INPUT TYPE=SUBMIT NAME=EXEC VALUE=execute></TD></TR></FORM>";
+			print "<TR><TH COLSPAN=\"2\">Experts only: iptables / ip6tables </TH><TD COLSPAN=\"9\"><INPUT TYPE=TEXT NAME=EXPERT class=expert></TD><TD><INPUT TYPE=SUBMIT NAME=EXEC VALUE=execute></TD></TR></FORM>";
 				} else {inSubTable=0; print "</TABLE><P></TD><TD CLASS=noborder COLSPAN=9></TD></TR>"}
 		 }
 	if (formPrinted == 1){
