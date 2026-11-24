@@ -48,7 +48,7 @@ cgi_print_radiogroup()
 	local nr nr_chk val chk id text
 	shift 4
 
-	if [ -n "$head" ]; then
+	if [ -n "$h2" ]; then
 		echo "<h2>$h2</h2>"
 	fi
 	echo "<p>"
