@@ -39,7 +39,7 @@ stop_post() {
 config() {
 	[ "$FREETZ_PACKAGE_UNBOUND_WEBIF_CRON" != "y" ] && return
 	local NEW OLD="$(cat /tmp/cron.d/$DAEMON 2>/dev/null)"
-	if [ "$UNBOUND_CRON_ENABLED" == "yes" -a -n "$UNBOUND_CRON_TIMEM" -a -n "UNBOUND_CRON_TIMEH" -a -n "UNBOUND_CRON_WEEKD" ]; then
+	if [ "$UNBOUND_CRON_ENABLED" == "yes" -a -n "$UNBOUND_CRON_TIMEM" -a -n "$UNBOUND_CRON_TIMEH" -a -n "$UNBOUND_CRON_WEEKD" ]; then
 		NEW="$UNBOUND_CRON_TIMEM $UNBOUND_CRON_TIMEH * * $UNBOUND_CRON_WEEKD  /mod/etc/init.d/rc.unbound update"
 	fi
 	if [ "$OLD" != "$NEW" ] ; then
