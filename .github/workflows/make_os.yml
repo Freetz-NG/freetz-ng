@@ -92,7 +92,6 @@ jobs:
         uses: actions/checkout@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          filter: blob:none
           repository: ${{ github.repository }}
           ref: ${{ github.sha }}
           path: ${{ github.workspace }}
@@ -150,7 +149,6 @@ jobs:
         uses: actions/checkout@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          filter: blob:none
           set-safe-directory: true
           repository: ${{ github.repository }}
           ref: ${{ github.sha }}

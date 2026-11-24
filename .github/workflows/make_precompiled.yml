@@ -53,7 +53,7 @@ jobs:
           REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
-          git clone --filter=blob:none https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
           git checkout $REF_NAME
 
       - name: parse
@@ -145,7 +145,7 @@ jobs:
           REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
-          git clone --filter=blob:none https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
           git checkout $REF_NAME
 
       - name: cache_load

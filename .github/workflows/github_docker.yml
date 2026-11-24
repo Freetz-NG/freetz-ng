@@ -36,8 +36,6 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v7
-        with:
-          filter: blob:none
 
       - name: parse
         id: parse
@@ -71,7 +69,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v7
         with:
-          filter: blob:none
           ref: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
 
       - name: login

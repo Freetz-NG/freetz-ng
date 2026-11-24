@@ -26,8 +26,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-        with:
-          filter: blob:none
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Build with Jekyll
