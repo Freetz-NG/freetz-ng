@@ -21,6 +21,10 @@ $(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections
 $(PKG)_EXTRA_CFLAGS  += $(if $(FREETZ_PACKAGE_WGET_CA_BUNDLE),-DWGET_DEFAULT_CA_BUNDLE='\"/etc/ssl/certs/ca-bundle.crt\"')
 $(PKG)_EXTRA_LDFLAGS += -Wl,--gc-sections
 
+ifeq ($(TARGET_ARCH_ENDIANNESS_DEPENDENT),armeb)
+$(PKG)_CONFIGURE_ENV += gl_cv_header_working_byteswap_h=yes
+endif
+
 ifeq ($(strip $(FREETZ_PACKAGE_WGET_WITH_SSL)),y)
 
 ifeq ($(strip $(FREETZ_PACKAGE_WGET_OPENSSL)),y)
