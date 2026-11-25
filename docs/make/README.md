@@ -800,7 +800,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### W
 
-  * **[Wget 1.21.1/1.25.0 (binary only)](wget.md)<a id='wget'></a>**<br>
+  * **[Wget 1.21.2/1.25.0 (binary only)](wget.md)<a id='wget'></a>**<br>
     GNU Wget is a free software package for retrieving files using HTTP, HTTPS and FTP, the most widely-used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals, etc.
 
   * **[Whois 5.6.6 (binary only)](whois.md)<a id='whois'></a>**<br>
