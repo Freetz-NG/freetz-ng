@@ -1,0 +1,11 @@
+--- lib/getrandom.c
++++ lib/getrandom.c
+@@ -18,7 +18,7 @@
+ /* Written by Paul Eggert.  */
+ 
+ #include <config.h>
+-
++#include <stddef.h>
+ #include <sys/random.h>
+ 
+ #include <errno.h>

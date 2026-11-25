@@ -1,0 +1,13 @@
+--- lib/cdefs.h
++++ lib/cdefs.h
+@@ -73,7 +73,10 @@
+    gcc 2.8.x and egcs.  For gcc 3.4 and up we even mark C functions
+    as non-throwing using a function attribute since programs can use
+    the -fexceptions options for C code as well.  */
++/* uClibc 0.9.28 puts __THROW before the asm label in LFS redirects.  */
+ # if !defined __cplusplus \
++     && !(defined __UCLIBC__ && __UCLIBC_MAJOR__ == 0 \
++          && __UCLIBC_MINOR__ == 9 && __UCLIBC_SUBLEVEL__ == 28) \
+      && (__GNUC_PREREQ (3, 4) || __glibc_has_attribute (__nothrow__))
+ #  define __THROW	__attribute__ ((__nothrow__ __LEAF))
+ #  define __THROWNL	__attribute__ ((__nothrow__))

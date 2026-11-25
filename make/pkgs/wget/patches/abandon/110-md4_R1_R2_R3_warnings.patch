@@ -1,0 +1,35 @@
+Silences
+
+md4.c:286:0: warning: "R1" redefined
+ #define R1(a,b,c,d,k,s) a=rol(a+F(b,c,d)+x[k],s);
+ ^
+In file included from /freetz/freetz-dev/toolchain/build/arm_gcc-5.5.0_uClibc-1.0.14-nptl_kernel-4.4/arm-linux-uclibcgnueabi/include/signal.h:358:0,
+                 from ./signal.h:52,
+                 from ./sys/select.h:110,
+                 from /freetz/freetz-dev/toolchain/build/arm_gcc-5.5.0_uClibc-1.0.14-nptl_kernel-4.4/arm-linux-uclibcgnueabi/include/sys/types.h:219,
+                 from ./sys/types.h:39,
+                 from ./stdio.h:58,
+                 from md4.h:22,
+                 from md4.c:24:
+/freetz/freetz-dev/toolchain/build/arm_gcc-5.5.0_uClibc-1.0.14-nptl_kernel-4.4/arm-linux-uclibcgnueabi/include/sys/ucontext.h:45:0: note: this is the location of the previous definition
+ #define R1 R1
+ ^
+
+--- lib/md4.c
++++ lib/md4.c
+@@ -283,6 +283,15 @@
+ #define G(x, y, z) (((x) & (y)) | ((x) & (z)) | ((y) & (z)))
+ #define H(x, y, z) ((x) ^ (y) ^ (z))
+ #define rol(x, n) (((x) << (n)) | ((uint32_t) (x) >> (32 - (n))))
++
++/*
++ avoid
++   warning: "R1/R2/R3" redefined
++   include/sys/ucontext.h:L:C: note: this is the location of the previous definition
++*/
++#undef R1
++#undef R2
++#undef R3
+ #define R1(a,b,c,d,k,s) a=rol(a+F(b,c,d)+x[k],s);
+ #define R2(a,b,c,d,k,s) a=rol(a+G(b,c,d)+x[k]+K1,s);
+ #define R3(a,b,c,d,k,s) a=rol(a+H(b,c,d)+x[k]+K2,s);

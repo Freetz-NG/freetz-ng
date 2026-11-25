@@ -1,0 +1,44 @@
+--- src/main.c
++++ src/main.c
+@@ -1251,8 +1251,6 @@
+ {
+   const char *wgetrc_title  = _("Wgetrc: ");
+   const char *locale_title  = _("Locale: ");
+-  const char *compile_title = _("Compile: ");
+-  const char *link_title    = _("Link: ");
+   char *env_wgetrc, *user_wgetrc;
+   int i;
+ 
+@@ -1312,18 +1310,6 @@
+     exit (WGET_EXIT_IO_FAIL);
+ #endif /* def ENABLE_NLS */
+ 
+-  if (compilation_string != NULL)
+-    if (format_and_print_line (compile_title,
+-                               compilation_string,
+-                               MAX_CHARS_PER_LINE) < 0)
+-      exit (WGET_EXIT_IO_FAIL);
+-
+-  if (link_string != NULL)
+-    if (format_and_print_line (link_title,
+-                               link_string,
+-                               MAX_CHARS_PER_LINE) < 0)
+-      exit (WGET_EXIT_IO_FAIL);
+-
+   if (printf ("\n") < 0)
+     exit (WGET_EXIT_IO_FAIL);
+ 
+--- src/Makefile.in
++++ src/Makefile.in
+@@ -2813,11 +2813,6 @@
+ 	echo '' >> $@
+ 	echo '#include "version.h"' >> $@
+ 	echo 'const char *version_string = "@VERSION@";' >> $@
+-	echo 'const char *compilation_string = "'$(COMPILE)'";' \
+-	    | $(ESCAPEQUOTE) >> $@
+-	echo 'const char *link_string = "'$(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+-	$(AM_LDFLAGS) $(LDFLAGS) $(LIBS) $(wget_LDADD)'";' \
+-	    | $(ESCAPEQUOTE) >> $@
+ 
+ css.c: $(srcdir)/css.l
+ 	$(LEX) $(LFLAGS) -o$@ $^
