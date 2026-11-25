@@ -147,10 +147,7 @@ ip_public "$IPADDR" && echo "$IPADDR" && exit 0
 [ $# -eq 0 ] && method="$MOD_GET_IP_METHOD" || method="$1"
 
 case $method in
-	-a|--all|""|-e|--extquery|-o|--ostat)
-		# for compatibility reason only, may be removed later
-		[ "$method" ] && [ "$method" != "-a" ] && [ "$method" != "--all" ] &&
-			echo "warning: method $method is obsolete, using --all instead" >&2
+	-a|--all|"")
 		# Why this order?
 		#   1.) STUN should always work and is fast
 		#   2.) route is fast, works in all firmwares, problematic routing configs are rare
@@ -173,7 +170,7 @@ case $method in
 	-w|--webcm)
 		via_webcm
 		;;
-	-?|-h|--help)
+	-h|--help)
 		helpmsg
 		exit 0
 		;;
@@ -185,3 +182,4 @@ esac
 
 [ $? -ne 0 ] && echo "get_ip error" >&2 && exit 1
 echo "$IP"
+

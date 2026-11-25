@@ -78,14 +78,10 @@ Das Skript *get_ip* ermittelt die öffentliche IP, was an verschiedenen
 Stellen in Freetz und dessen Packages benötigt wird.
 
 Hier kann das standardmäßige Verhalten von *get_ip* an die lokalen
-Gegebenheiten angepasst werden. So funktioniert bei einer FritzBox, die
-das Internet "mitbenutzt" (IP-Client) oder UMTS verwendet, nur die
-`--extquery` Methode, da die Box keine öffentliche IP erhält (NAT). Die
-Standardeinstellung `--all` deckt diesen Fall jedoch ab, weil sie
+Gegebenheiten angepasst werden.
+Die Standardeinstellung `--all` deckt alle Fälle ab, weil sie
 nacheinander mehrere Methoden durchprobiert, bis die externe IP
-ermittelt wurde. Wer ca. 0,4 s pro Abfrage (also 90%) sparen möchte,
-kann hier in diesem Fall aber die Methode von `-all` auf `--extquery`
-ändern.
+ermittelt wurde.
 
 ### Konfigurationsdateien
 
