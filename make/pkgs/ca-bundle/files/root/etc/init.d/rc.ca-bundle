@@ -20,15 +20,6 @@ case $1 in
 			[ ! -e /mod/etc/ssl/openssl.cnf ] && ln -s /etc/ssl/openssl.cnf /mod/etc/ssl/openssl.cnf
 		fi
 
-		if [ "$FREETZ_PACKAGE_CURL" == "y" ]; then
-			[ ! -e ~root/.curlrc -a ! -L ~root/.curlrc ] && ln -s /tmp/flash/mod/.curlrc ~root/.curlrc
-			[ ! -e ~root/.curlrc ] && echo "cacert /mod/etc/ssl/certs/ca-bundle.crt" > ~root/.curlrc
-		fi
-
-		if [ "$FREETZ_PACKAGE_WGET" == "y" ]; then
-			grep 'ca_certificate=' /etc/wgetrc &>/dev/null || echo "ca_certificate=/mod/etc/ssl/certs/ca-bundle.crt" >> /etc/wgetrc
-		fi
-
 		echo "done."
 		;;
 	unload)

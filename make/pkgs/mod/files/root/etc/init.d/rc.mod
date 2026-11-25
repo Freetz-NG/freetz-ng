@@ -63,6 +63,18 @@ utmp_wtmp() {
 	fi
 }
 
+curlrc() {
+	[ "$FREETZ_PACKAGE_CURL" != "y" ] && return
+	#compat 2026/11 may be removed later
+	[ -f /tmp/flash/mod/.curlrc ] && mv /tmp/flash/mod/.curlrc /tmp/flash/mod/curlrc
+	[ ! -e ~root/.curlrc ] && [ ! -L ~root/.curlrc ] && ln -s /tmp/flash/mod/curlrc ~root/.curlrc
+}
+
+wgetrc() {
+	[ "$FREETZ_PACKAGE_WGET" != "y" ] && return
+	[ ! -e ~root/.wgetrc ] && [ ! -L ~root/.wgetrc ] && ln -s /tmp/flash/mod/wgetrc ~root/.wgetrc
+}
+
 wlan_up() {
 	[ "$FREETZ_PATCH_START_WLAN_IF_ON_BOOT" != "y" ] && return
 	echo -n "Starting wlan interface ... "
@@ -171,6 +183,8 @@ start() {
 	vulcheck_2014
 	vulcheck_2023
 	utmp_wtmp
+	curlrc
+	wgetrc
 	wlan_up
 	motd
 	ar7lite
