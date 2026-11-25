@@ -1,4 +1,4 @@
-# Wget 1.25.0 (binary only)
+# Wget 1.21.1/1.25.0 (binary only)
   - Homepage: [https://www.gnu.org/software/wget/](https://www.gnu.org/software/wget/)
   - Manpage: [https://www.gnu.org/software/wget/manual/](https://www.gnu.org/software/wget/manual/)
   - Changelog: [https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS](https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS)
