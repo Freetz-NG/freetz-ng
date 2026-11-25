@@ -1,0 +1,10 @@
+--- src/init.c
++++ src/init.c
+@@ -451,4 +451,7 @@
+ #ifdef HAVE_SSL
+   opt.check_cert = CHECK_CERT_ON;
++# ifdef WGET_DEFAULT_CA_BUNDLE
++  opt.ca_cert = xstrdup (WGET_DEFAULT_CA_BUNDLE);
++# endif
+   opt.ftps_resume_ssl = true;
+   opt.ftps_fallback_to_ftp = false;
