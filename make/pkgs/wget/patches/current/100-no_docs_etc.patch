@@ -1,0 +1,11 @@
+--- Makefile.in
++++ Makefile.in
+@@ -2128,7 +2128,7 @@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+ # subdirectories in the distribution
+-SUBDIRS = lib src doc po gnulib_po util fuzz tests testenv
++SUBDIRS = lib src
+ EXTRA_DIST = MAILING-LIST \
+              msdos/config.h msdos/Makefile.DJ \
+              msdos/Makefile.WC ABOUT-NLS \

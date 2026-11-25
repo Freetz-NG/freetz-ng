@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_WGET
-	bool "Wget 1.25.0 (binary only)"
+	bool "Wget 1.21.1/1.25.0 (binary only)"
 	default n
 	help
 		GNU Wget is a free software package for retrieving files using
@@ -7,46 +7,64 @@ config FREETZ_PACKAGE_WGET
 		is a non-interactive commandline tool, so it may easily be
 		called from scripts, cron jobs, terminals, etc.
 
-config FREETZ_PACKAGE_WGET_WITH_SSL
-	bool "build with SSL support"
-	depends on FREETZ_PACKAGE_WGET
-	default y
-	help
-		This option enables SSL support for Wget.
-
-if FREETZ_PACKAGE_WGET_WITH_SSL
+if FREETZ_PACKAGE_WGET
 
 	choice
-		prompt "SSL library"
-		default FREETZ_PACKAGE_WGET_OPENSSL
+		prompt "Version"
+			default FREETZ_PACKAGE_WGET_VERSION_CURRENT
 
-		config FREETZ_PACKAGE_WGET_OPENSSL
-			bool "OpenSSL"
-			select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_WGET_STATIC
-			select FREETZ_LIB_libcrypto_WITH_EC
-			select FREETZ_LIB_libssl    if !FREETZ_PACKAGE_WGET_STATIC
+		config FREETZ_PACKAGE_WGET_VERSION_ABANDON
+			bool "1.21.1"
+			depends on FREETZ_TARGET_UCLIBC_0_9_28
 
-		config FREETZ_PACKAGE_WGET_GNUTLS
-			bool "GnuTLS"
-			select FREETZ_LIB_libgnutls if !FREETZ_PACKAGE_WGET_STATIC
+		config FREETZ_PACKAGE_WGET_VERSION_CURRENT
+			bool "1.25.0"
+			depends on !FREETZ_TARGET_UCLIBC_0_9_28
+
 	endchoice
 
-	config FREETZ_PACKAGE_WGET_CA_BUNDLE
-		bool "Select CA-bundle"
+	config FREETZ_PACKAGE_WGET_WITH_SSL
+		bool "build with SSL support"
 		default y
-		select FREETZ_PACKAGE_CA_BUNDLE
-
-	config FREETZ_PACKAGE_WGET_STATIC
-		bool "Link statically"
-		default n
 		help
-			Wget with SSL support needs the following shared libraries which
-			can be linked in statically by activating this switch:
-			- libcrypto
-			- libssl
-			- libgnutls
+			This option enables SSL support for Wget.
 
-endif # FREETZ_PACKAGE_WGET_WITH_SSL
+	if FREETZ_PACKAGE_WGET_WITH_SSL
+
+		choice
+			prompt "SSL library"
+			default FREETZ_PACKAGE_WGET_OPENSSL
+
+			config FREETZ_PACKAGE_WGET_OPENSSL
+				bool "OpenSSL"
+				select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_WGET_STATIC
+				select FREETZ_LIB_libcrypto_WITH_EC
+				select FREETZ_LIB_libssl    if !FREETZ_PACKAGE_WGET_STATIC
+
+			config FREETZ_PACKAGE_WGET_GNUTLS
+				bool "GnuTLS"
+				select FREETZ_LIB_libgnutls if !FREETZ_PACKAGE_WGET_STATIC
+		endchoice
+
+		config FREETZ_PACKAGE_WGET_CA_BUNDLE
+			bool "Select CA-bundle"
+			default y
+			select FREETZ_PACKAGE_CA_BUNDLE
+
+		config FREETZ_PACKAGE_WGET_STATIC
+			bool "Link statically"
+			default n
+			help
+				Wget with SSL support needs the following shared libraries which
+				can be linked in statically by activating this switch:
+				- libcrypto
+				- libssl
+				- libgnutls
+
+	endif # FREETZ_PACKAGE_WGET_WITH_SSL
+
+endif # FREETZ_PACKAGE_WGET
+
 
 config FREETZ_WGET
 	bool

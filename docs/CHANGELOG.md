@@ -158,6 +158,7 @@ Latest changes
     * Vim 9.2.1302
     * vnStat 1.18/2.14
     * Voicemail-XML parser 1.0
+    * Wget 1.21.2/1.25.0
 
   - Libraries:
     * expat 2.7.5/2.11.0
