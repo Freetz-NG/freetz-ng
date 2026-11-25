@@ -134,7 +134,7 @@ case $1 in
 		modlib_add_httpd_symlink vns
 
 		[ ! -d "/tmp/flash/vnstat" ] && mkdir -p /tmp/flash/vnstat
-		[ ! -L "$DAEMON_CFGFILE" ] && [ -s "$DAEMON_CFGFILE" ] && mv "$DAEMON_CFGFILE" "/tmp/flash/vnstat/vnstat-vns1.conf"  # compat
+		[ ! -L "$DAEMON_CFGFILE" ] && [ -s "$DAEMON_CFGFILE" ] && mv "$DAEMON_CFGFILE" "/tmp/flash/vnstat/vnstat-vns1.conf"  #compat 2026/11 may be removed later
 		ln -sf "vnstat-$CONF_VER.conf" "$DAEMON_CFGFILE"
 		[ ! -e "$DAEMON_CFGFILE" ] && "/mod/etc/default.vnstat/vnstat_$CONF_VER" > "$DAEMON_CFGFILE"
 

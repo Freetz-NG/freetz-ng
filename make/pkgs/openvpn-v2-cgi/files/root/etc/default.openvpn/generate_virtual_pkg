@@ -19,14 +19,6 @@ for deffile in /mod/etc/default.openvpn/*.def; do
 	  $deffile > /mod/etc/default.${packagename}/${deffile##*/}
 done
 
-#compat, remove me later
-if [ -d /tmp/flash/openvpn/${packagename#openvpn-} ]; then
-	mv /tmp/flash/openvpn/${packagename#openvpn-} /tmp/flash/openvpn/${packagename}
-	for x in /tmp/flash/openvpn/${packagename}/*; do
-		[ -e "$x" ] && sed "s%/tmp/flash/openvpn/${packagename#openvpn-}%/tmp/flash/openvpn/${packagename}%g" -i "$x"
-	done
-fi
-
 mkdir -p /tmp/flash/openvpn/${packagename}
 modconf load ${packagename}
 /mod/etc/init.d/rc.${packagename} load
