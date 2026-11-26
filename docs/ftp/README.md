@@ -94,8 +94,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzSmart
     - deutschland: [FRITZ.Box_6820v4_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v4/deutschland/fritz.os/FRITZ.Box_6820v4_LTE-07.59.image)
     - other: [FRITZ.Box_6820v4_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v4/other/fritz.os/FRITZ.Box_6820v4_LTE-07.59.image)
   * fritzbox-6825-4g/
-    - deutschland: [FRITZ.Box_6825_4G-08.25.image](https://download.avm.de/fritzbox/fritzbox-6825-4g/deutschland/fritz.os/FRITZ.Box_6825_4G-08.25.image)
-    - other: [FRITZ.Box_6825_4G-08.25.image](https://download.avm.de/fritzbox/fritzbox-6825-4g/other/fritz.os/FRITZ.Box_6825_4G-08.25.image)
+    - deutschland: [FRITZ.Box_6825_4G-08.51.image](https://download.avm.de/fritzbox/fritzbox-6825-4g/deutschland/fritz.os/FRITZ.Box_6825_4G-08.51.image)
+    - other: [FRITZ.Box_6825_4G-08.51.image](https://download.avm.de/fritzbox/fritzbox-6825-4g/other/fritz.os/FRITZ.Box_6825_4G-08.51.image)
   * fritzbox-6840-lte/
     - deutschland: [FRITZ.Box_6840_LTE.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/deutschland/fritz.os/FRITZ.Box_6840_LTE.105.06.88.image)
     - other: [FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/other/fritz.os/FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image)
@@ -114,11 +114,11 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzSmart
     - deutschland: [FRITZ.Box_6850_LTE-08.25.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/deutschland/fritz.os/FRITZ.Box_6850_LTE-08.25.image)
     - other: [FRITZ.Box_6850_LTE-08.25.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/other/fritz.os/FRITZ.Box_6850_LTE-08.25.image)
   * fritzbox-6860-5g/
-    - deutschland: [FRITZ.Box_6860_5G-08.25.image](https://download.avm.de/fritzbox/fritzbox-6860-5g/deutschland/fritz.os/FRITZ.Box_6860_5G-08.25.image)
-    - other: [FRITZ.Box_6860_5G-08.25.image](https://download.avm.de/fritzbox/fritzbox-6860-5g/other/fritz.os/FRITZ.Box_6860_5G-08.25.image)
+    - deutschland: [FRITZ.Box_6860_5G-08.51.image](https://download.avm.de/fritzbox/fritzbox-6860-5g/deutschland/fritz.os/FRITZ.Box_6860_5G-08.51.image)
+    - other: [FRITZ.Box_6860_5G-08.51.image](https://download.avm.de/fritzbox/fritzbox-6860-5g/other/fritz.os/FRITZ.Box_6860_5G-08.51.image)
   * fritzbox-6860-5g-v2/
-    - deutschland: [FRITZ.Box_6860_5G_v2-08.25.image](https://download.avm.de/fritzbox/fritzbox-6860-5g-v2/deutschland/fritz.os/FRITZ.Box_6860_5G_v2-08.25.image)
-    - other: [FRITZ.Box_6860_5G_v2-08.25.image](https://download.avm.de/fritzbox/fritzbox-6860-5g-v2/other/fritz.os/FRITZ.Box_6860_5G_v2-08.25.image)
+    - deutschland: [FRITZ.Box_6860_5G_v2-08.51.image](https://download.avm.de/fritzbox/fritzbox-6860-5g-v2/deutschland/fritz.os/FRITZ.Box_6860_5G_v2-08.51.image)
+    - other: [FRITZ.Box_6860_5G_v2-08.51.image](https://download.avm.de/fritzbox/fritzbox-6860-5g-v2/other/fritz.os/FRITZ.Box_6860_5G_v2-08.51.image)
   * fritzbox-6890-lte/
     - belgium: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/belgium/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
     - deutschland: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/deutschland/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
