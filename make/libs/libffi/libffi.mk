@@ -1,5 +1,5 @@
 $(call PKG_INIT_LIB, 3.8.2)
-$(PKG)_LIB_VERSION:=8.5.1
+$(PKG)_LIB_VERSION:=8.5.2
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=a699fda2b090c4b46cb79cf60c4dacfce480eb05742c0de66acf3af174a47f92
 $(PKG)_SITE:=https://github.com/libffi/libffi/releases/download/v$($(PKG)_VERSION),ftp://sourceware.org/pub/libffi
