@@ -668,6 +668,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_6860_5G-08.03.image"                                                       if FREETZ_TYPE_6860_V1                           && FREETZ_TYPE_FIRMWARE_08_0X
 	default "FRITZ.Box_6860_5G-08.25.image"                                                       if FREETZ_TYPE_6860_V1                           && FREETZ_TYPE_FIRMWARE_08_2X
+	default "FRITZ.Box_6860_5G-08.51.image"                                                       if FREETZ_TYPE_6860_V1                           && FREETZ_TYPE_FIRMWARE_08_5X
 	#
 	default "FRITZ.Box_6860_5G_v2-08.25.image"                                                    if FREETZ_TYPE_6860_V2                           && FREETZ_TYPE_FIRMWARE_08_2X
 	#
