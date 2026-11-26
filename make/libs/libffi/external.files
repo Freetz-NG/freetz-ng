@@ -1,2 +1,2 @@
-[ "$EXTERNAL_FREETZ_LIB_libffi" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libffi.so.8.5.1"
+[ "$EXTERNAL_FREETZ_LIB_libffi" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libffi.so.8.5.2"
 
