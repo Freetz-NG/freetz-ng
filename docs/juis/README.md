@@ -53,7 +53,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 231: [FRITZ.Box_6430_Cable-07.30.image](http://download.avm.de/fritzbox/fritzbox-6430-cable/deutschland/fritz.os/FRITZ.Box_6430_Cable-07.30.image)
   - HWR 233: [FRITZ.Box_6591_Cable-08.25.image](http://download.avm.de/fritzbox/fritzbox-6591-cable/deutschland/fritz.os/FRITZ.Box_6591_Cable-08.25.image)
   - HWR 234: [FRITZ.Box_6890_LTE-07.57.image](http://download.avm.de/fritzbox/fritzbox-6890-lte/deutschland/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
-  - HWR 236: [FRITZ.Box_7530-08.25.image](http://download.avm.de/fritzbox/fritzbox-7530/deutschland/fritz.os/FRITZ.Box_7530-08.25.image)
+  - HWR 236: [FRITZ.Box_7530-08.26.image](http://download.avm.de/fritzbox/fritzbox-7530/deutschland/fritz.os/FRITZ.Box_7530-08.26.image)
   - HWR 239: [FRITZ.Box_7583-08.26.image](http://download.avm.de/fritzbox/fritzbox-7583/deutschland/fritz.os/FRITZ.Box_7583-08.26.image)
   - HWR 240: [FRITZ.Repeater_600-08.25.image](http://download.avm.de/fritzwlan/fritzrepeater-600/deutschland/fritz.os/FRITZ.Repeater_600-08.25.image)
   - HWR 241: [FRITZ.Repeater_2400-08.25.image](http://download.avm.de/fritzwlan/fritzrepeater-2400/deutschland/fritz.os/FRITZ.Repeater_2400-08.25.image)
@@ -98,7 +98,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 267: [FRITZ.Box_6690_Cable-08.54-138492-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1NL1/6690Cable/FRITZ.Box_6690_Cable-08.54-138492-LabBETA.image)
   - HWR 270: [FRITZ.Repeater_3000_AX-08.40-137909-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1/3000AX/FRITZ.Repeater_3000_AX-08.40-137909-LabBETA.image)
   - HWR 271: [FRITZ.Box_7510-08.40-137910-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1/7510/FRITZ.Box_7510-08.40-137910-LabBETA.image)
-  - HWR 272: [FRITZ.Box_5590_Fiber-08.54-138542-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1NL1/5590Fiber/FRITZ.Box_5590_Fiber-08.54-138542-LabBETA.image)
+  - HWR 272: [FRITZ.Box_5590_Fiber-08.54-138606-LabBETA.image](http://download.example.com/labor/MyFRITZOSP1NL1/5590Fiber/FRITZ.Box_5590_Fiber-08.54-138606-LabBETA.image)
 
 ### FOS-Inhaus
   - HWR 185: [FRITZ.Box_7490-07.62-138504-Inhaus.image](http://download.example.com/inhaus/MOVE21NL3WU25/7490/FRITZ.Box_7490-07.62-138504-Inhaus.image)
