@@ -371,7 +371,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### Y
 
-  * **[yaml: libyaml (libyaml.so) 0.2.5](yaml.md)<a id='yaml'></a>**<br>
+  * **[yaml: libyaml (libyaml.so) 0.2.7](yaml.md)<a id='yaml'></a>**<br>
     LibYAML is a YAML 1.1 configuration file parser and emitter.
 
 ### Z
