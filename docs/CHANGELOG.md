@@ -175,6 +175,7 @@ Latest changes
     * libpcap 1.11.0
     * libpng 1.6.59
     * libtasn1 4.21.0
+    * libyaml 0.2.7
     * libzip 1.12.1
     * lz4 1.11.1
     * MbedTLS 2.7.19/2.28.10/3.6.8

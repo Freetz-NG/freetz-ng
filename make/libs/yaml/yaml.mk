@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, 0.2.5)
-$(PKG)_LIB_VERSION:=2.0.9
+$(call PKG_INIT_LIB, 0.2.7)
+$(PKG)_LIB_VERSION:=2.0.11
 $(PKG)_SOURCE:=yaml-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4
-$(PKG)_SITE:=https://pyyaml.org/download/libyaml/
+$(PKG)_HASH:=0c39256b8be0fc689f5c7bfdea1bc9f3fb1fd648468fd3cc6fd375e09ffb6f13
+$(PKG)_SITE:=https://github.com/yaml/libyaml/releases/download/$($(PKG)_VERSION)/
 ### WEBSITE:=https://pyyaml.org/wiki/LibYAML
 ### CHANGES:=https://github.com/yaml/libyaml/releases
 ### CVSREPO:=https://github.com/yaml/libyaml
