@@ -302,6 +302,18 @@ DLCHG:=y
 $(warning You have buggy uutils-coreutils installed. Please remove it!)
 $(warning To uninstall run: apt remove --allow-remove-essential coreutils-from-uutils)
 endif
+# check for download token
+ifeq ($(strip $(FREETZ_DLTOKEN)),)
+ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
+$(warning Missing FREETZ_DLTOKEN, precompiled (download) toolchains automatically disabled.)
+endif
+ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
+$(warning Missing FREETZ_DLTOKEN, precompiled (download) host-tools automatically disabled.)
+endif
+endif
 # check cpu for x86_64
 ifneq ($(shell uname -m),x86_64)
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
