@@ -172,7 +172,7 @@ Latest changes
     * libffi 3.8.2
     * libgcrypt 1.12.4
     * libgpg-error 1.61
-    * libpcap 1.11.0
+    * libpcap 1.11.1
     * libpng 1.6.59
     * libtasn1 4.21.0
     * libyaml 0.2.7
