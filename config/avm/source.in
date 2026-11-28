@@ -203,6 +203,8 @@ config FREETZ_AVM_SOURCE_4050_08_51
 	bool
 config FREETZ_AVM_SOURCE_6860_08_20
 	bool
+config FREETZ_AVM_SOURCE_6860_08_51
+	bool
 config FREETZ_AVM_SOURCE_7510_07_30
 	bool
 config FREETZ_AVM_SOURCE_7510_07_56
@@ -472,6 +474,7 @@ config FREETZ_AVM_SOURCE_ID
 	default "4050_08.21"    if FREETZ_AVM_SOURCE_4050_08_21
 	default "4050_08.51"    if FREETZ_AVM_SOURCE_4050_08_51
 	default "6860_08.20"    if FREETZ_AVM_SOURCE_6860_08_20
+	default "6860_08.51"    if FREETZ_AVM_SOURCE_6860_08_51
 	default "7510_07.30"    if FREETZ_AVM_SOURCE_7510_07_30
 	default "7510_07.56"    if FREETZ_AVM_SOURCE_7510_07_56
 	default "7510_08.00"    if FREETZ_AVM_SOURCE_7510_08_00
@@ -759,7 +762,8 @@ config FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MAPLE
 	select FREETZ_AVM_SOURCE_7510_08_20 if FREETZ_AVM_VERSION_08_2X     && (FREETZ_TYPE_7510       || FREETZ_TYPE_7530_W6_V2                                                                  )
 	select FREETZ_AVM_SOURCE_7510_08_51 if FREETZ_AVM_VERSION_08_5X_MIN && (FREETZ_TYPE_7510       || FREETZ_TYPE_7530_W6_V2                                                                  )
 	#
-	select FREETZ_AVM_SOURCE_6860_08_20 if FREETZ_AVM_VERSION_08_2X_MIN && (                                                    FREETZ_TYPE_6860_V1 || FREETZ_TYPE_6860_V2 || FREETZ_TYPE_6825)
+	select FREETZ_AVM_SOURCE_6860_08_20 if FREETZ_AVM_VERSION_08_2X     && (                                                    FREETZ_TYPE_6860_V1 || FREETZ_TYPE_6860_V2 || FREETZ_TYPE_6825)
+	select FREETZ_AVM_SOURCE_6860_08_51 if FREETZ_AVM_VERSION_08_5X_MIN && (                                                    FREETZ_TYPE_6860_V1 || FREETZ_TYPE_6860_V2 || FREETZ_TYPE_6825)
 	#
 	select FREETZ_AVM_SOURCE_4050_07_58 if FREETZ_AVM_VERSION_07_5X     &&  FREETZ_TYPE_4050
 	select FREETZ_AVM_SOURCE_4050_08_02 if FREETZ_AVM_VERSION_08_0X     &&  FREETZ_TYPE_4050
