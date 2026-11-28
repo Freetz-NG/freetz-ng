@@ -23,25 +23,35 @@ Anwendung selbst dies nicht unterstützt, und somit dem
 Anwendungsbeispiele finden sich auf der [Stunnel
 Homepage](http://www.stunnel.org/examples/).
 
-### Konfiguration
+### HTTPS Zertifkat
+Es kann ein eigenes Zertifkat genutzt werden
+oder das im FritzOS hinterlegte Zertifkat.
 
-1. Erzeugen der Keys auf dem PC (unter Linux):
+##### FritzOS Zertifikat
+Dieses Zertifkat wurde entweder von FritzOS generiert
+oder vom Benutzer im AVM-Webinterface hochgeladen.
+
+##### Eigenes Zertifikat
+Dieses Zertifikat ist unabhängig von FritzOS
+
+1. Erzeugen der Keys:
    <pre><code>
-   openssl genrsa 1024 > host.key
-   openssl req -new -x509 -nodes -sha1 -days 365 -key host.key > host.cert
+   openssl genrsa 1024 > key.pem
+   openssl req -new -x509 -nodes -sha1 -days 365 -key key.pem > certs.pem
    </code></pre>
 
-2. Das Zertifikat und den Schlüssel im Webinterface unter Einstellungen
-   → Stunnel: "Certificate Chain" (host.cert) und "Private Key"
-   (host.key) einfügen.
+2. Das Zertifikat und den Schlüssel im Webinterface unter Einstellungen → Stunnel einfügen:
+    - "Certificate Chain" (certs.pem)
+    - "Private Key" (host.key)
 
-3. Die gewünschten Services hinzufügen.
+### Services
    Die Angabe des Pfads zum Zertifikat und zum Schlüssel sind optional.
-   Ohne ausdrückliche Angabe wird das Zertifikat
-   `/tmp/flash/stunnel/certs.pem` und der Schlüssel
-   `/tmp/flash/stunnel/key.pem` verwendet, welche vom Webinterface aus
-   verwaltet werden (Punkt 2).
-   Zum Beispiel:
+   Ohne ausdrückliche Angabe und bei "Eigenes Zertifikat"
+   wird das Zertifikat `/tmp/flash/stunnel/certs.pem`
+   und der Schlüssel `/tmp/flash/stunnel/key.pem`
+   verwendet, welche vom Webinterface verwaltet werden.
+
+##### Beispiel Freetz-Webif (default)
    <pre><code>
    [freetz-ng]
    client = no
@@ -49,11 +59,27 @@ Homepage](http://www.stunnel.org/examples/).
    connect = 127.0.0.1:81
    sslVersionMin = TLSv1.2
    </code></pre>
+   Zugriff (intern) über [https://fritz.box:4433](https://fritz.box:4433).
 
-4. Zugriff (intern) über
-   [https://fritz.box:4433](https://fritz.box:4433).
-   Für den externen Zugriff muss noch eine Port-Freigabe eingetragen
-   werden.
+##### Beispiel Rudi-Shell
+   <pre><code>
+   [rudi]
+   client = no
+   accept = 44391
+   connect = 127.0.0.1:91
+   </code></pre>
+   Zugriff (intern) über [https://fritz.box:44391](https://fritz.box:44391).
+
+##### Beispiel vnStat
+   <pre><code>
+   [vnstat]
+   accept = 44387
+   connect = 87
+   </code></pre>
+   Zugriff (intern) über [https://fritz.box:44387](https://fritz.box:44387).
+
+### Hinweis
+Für den externen Zugriff muss noch eine Port-Freigabe angelegt werden.
 
 ### Erweitert
 
@@ -83,5 +109,5 @@ Zum Beispiel:
 
 -   [Wikipedia (EN)](http://en.wikipedia.org/wiki/Stunnel)
 -   [xrelayd](xrelayd.md)
--   [Artikel im Forum](http://www.ip-phone-forum.de/showthread.php?t=123174)
+-   [Artikel im IPPF](http://www.ip-phone-forum.de/showthread.php?t=123174)
 
