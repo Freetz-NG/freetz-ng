@@ -12,7 +12,7 @@ cat << EOF
 <input id="manual" type="radio" name="enabled" value="no"$man_chk><label for="manual"> $(lang de:"Deaktiviert" en:"Disabled")</label>
 </p>
 <font size="1">
-$(lang de:"Htpdate l&auml;uft nicht als Dienst, da es die die Zeit nach einem IP-Wechsel, beim Systemstart und in den eingestellten Intervallen aktualisiert." en:"Htpdate doesn't run as a daemon, it updates the time after an IP change, during system startup and the given intervals automatically.")
+$(lang de:"Htpdate l&auml;uft nicht als Dienst, da es die Zeit nach einem IP-Wechsel, beim Systemstart und in den eingestellten Intervallen aktualisiert." en:"Htpdate doesn't run as a daemon, it updates the time after an IP change, during system startup and the given intervals automatically.")
 </font>
 EOF
 sec_end
