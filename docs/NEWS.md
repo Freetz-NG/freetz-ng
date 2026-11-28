@@ -12,6 +12,11 @@ In der Standardkonfiguration nutzt es der HTTPS-Zertifikat welches im Fritzos hi
 also entweder ein selbst generiertes oder hochgeladenes.
 Auf das Freetz-Webif kann nach dem Starten von Stunnel über Port `:4433` statt wie bisher `:81` zugegriffen werden: `https://fritz.box:4433/`
 
+Siehe<br>
+
+   - [Passwort zurücksetzen](https://freetz-ng.github.io/freetz-ng/make/mod/#passwort-zurucksetzen)<br>
+   - [Standardloginverfahren ändern](https://freetz-ng.github.io/freetz-ng/make/mod/#standardloginverfahren-andern)<br>
+
 ### 2026-11-13
 Eine Firmware kann als "Reproducible build" (`FREETZ_REPRODUCIBLE`) gebaut werden, dh bei<br>
 gleichem GIT-Stand und gleicher .config soll immer ein identisches .image erzeugt werden.<br>
