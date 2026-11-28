@@ -912,7 +912,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[Stunnel 5.82](../../docs/make/stunnel.md)<a id='stunnel'></a>**<br>
     Stunnel universal SSL proxy
-     - [Konfiguration](../../docs/make/stunnel.md#konfiguration)
+     - [HTTPS Zertifkat](../../docs/make/stunnel.md#https-zertifkat)
+     - [Services](../../docs/make/stunnel.md#services)
+     - [Hinweis](../../docs/make/stunnel.md#hinweis)
      - [Erweitert](../../docs/make/stunnel.md#erweitert)
 
   * **[Subversion 1.9.12/1.15.0](../../docs/make/subversion.md)<a id='subversion'></a>**<br>
